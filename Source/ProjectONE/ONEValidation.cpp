@@ -113,6 +113,11 @@ void AONEValidation::Tick(float Dt)
         return;
     }
     if (Stage<10 || Stage==13) P->Health->Restore();
+    // Keep the reload/moving-fire lane perpendicular to the arm-loss pursuit
+    // lane. Desktop cursor position must not decide whether this fixture shoots
+    // and kills its own surviving-pursuit subject.
+    if (Stage<8) P->SetAimOverride(true,P->GetActorLocation()+FVector(0,1500,30));
+    else P->SetAimOverride(false,FVector::ZeroVector);
     if (Stage==0 && Elapsed>3)
     {
         Check(P->GetMesh()->GetSkeletalMeshAsset()!=nullptr,TEXT("Player skeletal mesh loaded"));
@@ -148,6 +153,13 @@ void AONEValidation::Tick(float Dt)
     }
     else if (Stage==2 && Elapsed-StageTime>1)
     {
+        // Measure locomotion while the target is still stationary. Later pursuit
+        // can legitimately return the infected near its original spawn point.
+        const float ApproachTravel = ArmTest ? FVector::Dist2D(ArmTest->GetActorLocation(),InitialArmLocation) : 0.f;
+        const float ApproachDistance = ArmTest ? FVector::Dist2D(ArmTest->GetActorLocation(),P->GetActorLocation()) : InitialDistance;
+        Check(ArmTest && !ArmTest->IsDead() && !ArmTest->HasRightArm() && ArmTest->HasLeftArm() &&
+            ApproachTravel>40 && ApproachDistance<InitialDistance-40,
+            FString::Printf(TEXT("Surviving one-arm infected approaches stationary player: travel=%.3fcm distance=%.3fcm initial=%.3fcm alive=%d right=%d left=%d"),ApproachTravel,ApproachDistance,InitialDistance,ArmTest && !ArmTest->IsDead(),ArmTest && ArmTest->HasRightArm(),ArmTest && ArmTest->HasLeftArm()));
         Capture(TEXT("02_surviving_arm_loss"));
         HeadTest=SpawnTest(P->GetActorLocation()+FVector(-230,0,0));
         Stage=3; StageTime=Elapsed;
@@ -189,7 +201,9 @@ void AONEValidation::Tick(float Dt)
     {
         Check(W->GetAmmo()==W->MagazineSize && W->GetReserveAmmo()==ReserveBefore-W->MagazineSize,TEXT("Reload conserves total ammunition"));
         Check(!W->IsReloading(),TEXT("Reload completion exits reload state"));
-        Check(ArmTest && FVector::Dist2D(ArmTest->GetActorLocation(),InitialArmLocation)>40 && FVector::Dist2D(ArmTest->GetActorLocation(),P->GetActorLocation())<InitialDistance+50,TEXT("One-arm infected moves and continues pursuing"));
+        const float PursuitDistance = ArmTest ? FVector::Dist2D(ArmTest->GetActorLocation(),P->GetActorLocation()) : InitialDistance+50;
+        Check(ArmTest && !ArmTest->IsDead() && !ArmTest->HasRightArm() && ArmTest->HasLeftArm() && PursuitDistance<InitialDistance+50,
+            FString::Printf(TEXT("Surviving one-arm infected continues pursuing moving player: distance=%.3fcm limit=%.3fcm alive=%d right=%d left=%d"),PursuitDistance,InitialDistance+50,ArmTest && !ArmTest->IsDead(),ArmTest && ArmTest->HasRightArm(),ArmTest && ArmTest->HasLeftArm()));
         Capture(TEXT("05_combat")); Stage=8; StageTime=Elapsed;
     }
     else if (Stage==8)
