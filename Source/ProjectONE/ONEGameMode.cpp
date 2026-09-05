@@ -84,7 +84,7 @@ void AONEGameMode::Tick(float DeltaSeconds)
     if (bSandbox)
     {
         for (auto It=Alive.CreateIterator();It;++It) if (!It->IsValid()) It.RemoveCurrent();
-        const FVector Origin(-650,-260,6);
+        const FVector Origin(-500,300,6);
         DrawDebugLine(GetWorld(),Origin,Origin+FVector(1000,0,0),FColor(64,180,173),false,-1,0,2);
         for (int32 Distance : {0,200,500,1000})
         {

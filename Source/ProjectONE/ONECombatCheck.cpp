@@ -83,7 +83,7 @@ void AONECombatCheck::Compare(float Dt)
     if (Elapsed<2) return;
     if (!bRecording)
     {
-        Player->SetActorLocation(FVector(-350,-160,98));
+        Player->SetActorLocation(FVector(-250,200,98));
         Player->GetCharacterMovement()->StopMovementImmediately();
         W->RefillAllAmmo();
         UAudioMixerBlueprintLibrary::StartRecordingOutput(this,28.f);
@@ -109,7 +109,7 @@ void AONECombatCheck::Compare(float Dt)
         if (Phase==6)
         {
             W->CancelReload();
-            Player->SetActorLocation(FVector(-350,-160,98));
+            Player->SetActorLocation(FVector(-250,200,98));
             Target=GM->SpawnSandboxEnemyAt(Player->GetActorLocation()+FVector(270,0,0));
             if (Target) { Target->AttackDamage=0; }
         }
@@ -122,6 +122,7 @@ void AONECombatCheck::Compare(float Dt)
         FootTravel=FMath::Max(FootTravel,FVector::Dist(FirstFoot,Player->GetMesh()->GetSocketTransform(TEXT("foot_l"),RTS_Component).GetLocation()));
     }
     if ((Phase==4 || Phase==6) && W->CanFire()) { W->SetTrigger(false); W->SetTrigger(true); }
+    if (Phase==5 && !W->IsBusy() && W->GetAmmo()<W->GetDefinition().Capacity) W->BeginReload();
     if (Phase==6 && W->GetAmmo()==0 && !W->IsBusy()) W->BeginReload();
     const double Now=FPlatformTime::Seconds();
     if (PendingFrame.IsEmpty() && Now-LastCapture>=1.0/24.0)
