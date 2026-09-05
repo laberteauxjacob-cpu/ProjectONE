@@ -34,7 +34,7 @@ void AONEPlayerController::SetupInputComponent()
 void AONEPlayerController::FlushPressedKeys()
 {
     Super::FlushPressedKeys();
-    if (AONEPlayer* Player=Cast<AONEPlayer>(GetPawn())) Player->ReleaseHeldInputs();
+    if (AONEPlayer* ControlledPawn=Cast<AONEPlayer>(GetPawn())) ControlledPawn->ReleaseHeldInputs();
 }
 void AONEPlayerController::TogglePause()
 {
