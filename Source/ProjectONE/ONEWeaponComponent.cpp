@@ -168,7 +168,7 @@ void UONEWeaponComponent::CancelAllOperations()
 bool UONEWeaponComponent::SelectWeapon(int32 I)
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (!P || P->IsDead() || !Carried.IsValidIndex(I) || (I==EquippedIndex && Operation!=EONEWeaponOperation::Equip)) return false;
+    if (!P || P->IsDead() || !Carried.IsValidIndex(I) || (I==EquippedIndex && PendingIndex<0)) return false;
     CancelAllOperations();
     if (I==EquippedIndex) { if (NeedsPump(I)) StartOperation(EONEWeaponOperation::Pump); return true; }
     PendingIndex=I; StartOperation(EONEWeaponOperation::Equip,I); return true;
