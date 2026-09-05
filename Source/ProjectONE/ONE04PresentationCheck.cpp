@@ -49,7 +49,7 @@ void AONE04PresentationCheck::BeginPlay()
     Report=TEXT("Candidate04 machine/inventory presentation\n");
     Report+=bManual?TEXT("Passive native-input recorder: no scripted keys, cursor, movement, health, ammo or transactions.\n"):
         TEXT("Scripted production PlayerController key dispatch and projected mouse cursor over real frames; not native human input. No teleports, camera overrides, direct inventory installs or direct machine commits. T/X/C are the disclosed ordinary sandbox grant/forced-roll controls.\n");
-    if (bProfile) Report+=TEXT("Profile: no screenshots/audio capture. Production-input acquisition setup and initial actor/asset construction precede CSV and are not measured by this scenario. CSV includes deposit, both-machine overlap, combat and ready-state tail without removal of spikes. Registered sandbox enemies are replenished toward the requested live count; actual counts are recorded. Player health is restored during this stress fixture only. This is not an ordinary survival claim or an identical workload to older stationary living-only profiles.\n");
+    if (bProfile) Report+=TEXT("Profile: no screenshots/audio capture. Production-input acquisition and pistol-upgrade setup plus initial actor/asset construction precede CSV and are not measured by this scenario. Setup combat can leave a real corpse/blood or survivor. CSV includes M4 deposit/Overcurrent machine preview, both-machine overlap, actual carried Last Word combat and ready-state tail without removal of spikes. It does not measure carried Overcurrent or Gravebreaker fire. Registered sandbox enemies are replenished toward the requested live count; actual counts are recorded. Player health is restored during this stress fixture only. This is not an ordinary survival claim or an identical workload to older stationary living-only profiles.\n");
     FramesCsv=TEXT("file,audio_seconds,world_seconds,phase,weapon,ammo,reserve,operation\n");
     InputCsv=TEXT("world_seconds,frame,phase,key,event,handled\n");
     ObservationCsv=TEXT("world_seconds,phase,profile_seconds,live,box_state,upgrade_state,box_previews,upgrade_previews,box_loops,upgrade_loops,weapon,family,upgraded,ammo,reserve,operation,shots,magazine_drops,live_magazines,cases,points,health,x,y,z,interaction_progress,dim,cursor_x,cursor_y,aim_x,aim_y,aim_z,body_yaw\n");
@@ -120,6 +120,11 @@ void AONE04PresentationCheck::Plan()
     Buy(EONEWeaponFamily::Carbine);
     if (bProfile)
     {
+        Select(EONEWeaponFamily::Pistol,TEXT("PROFILE SETUP / SELECT ORIGINAL PISTOL"));
+        UpgradeGun(EONEWeaponFamily::Pistol);
+        auto& VerifiedUpgrade=Add(EStep::Verify,TEXT("PROFILE SETUP / ACTUAL LAST WORD ACQUIRED"),.2f);
+        VerifiedUpgrade.Family=EONEWeaponFamily::Pistol; VerifiedUpgrade.bUpgraded=true;
+        Select(EONEWeaponFamily::Carbine,TEXT("PROFILE SETUP / SELECT M4 FOR MEASURED DEPOSIT"));
         Walk(1,TEXT("PROFILE SETUP / WALK TO UPGRADE CONTACT"));
         Add(EStep::StartProfile,TEXT("CSV START / REGISTERED COMBAT FIXTURE"),12.f);
         Hold(1,TEXT("PROFILE / PHYSICAL DEPOSIT AND INTAKE"));
@@ -127,7 +132,7 @@ void AONE04PresentationCheck::Plan()
         Tap(EKeys::C,TEXT("PROFILE / DISCLOSED NEXT SHOTGUN REWARD"));
         Walk(0,TEXT("PROFILE / WALK TO SECOND MACHINE WHILE PROCESSING"));
         Hold(0,TEXT("PROFILE / START SECOND MACHINE DURING UPGRADE"));
-        Add(EStep::Combat,TEXT("PROFILE / COMBAT WITH BOTH MACHINES PRESENT"),25.f);
+        Add(EStep::Combat,TEXT("PROFILE / CARRIED LAST WORD COMBAT WITH BOTH MACHINES PRESENT"),25.f);
         return;
     }
     Gun(EONEWeaponFamily::Carbine,false,TEXT("M4A1 / BASE AUTOMATIC FIRE AND MAGAZINE RELOAD"));
@@ -199,6 +204,13 @@ void AONE04PresentationCheck::EnterStep()
     ChaptersCsv+=FString::Printf(TEXT("%d,%.6f,%s\n"),Phase,Elapsed,*Segment);
     UE_LOG(LogTemp,Display,TEXT("ONE04_PHASE phase=%d seconds=%.6f label=%s"),Phase,Elapsed,*Segment);
     if (S.Kind==EStep::Tap) Key(S.Key,true);
+    if (S.Kind==EStep::Combat)
+    {
+        const auto* D=Player->GetWeaponComponent()->GetDefinitionForWeapon(Player->GetWeaponComponent()->GetEquippedIndex());
+        Check(D && D->Family==EONEWeaponFamily::Pistol && D->bUpgraded,TEXT("Measured combat starts with actual carried Last Word"));
+        if (Failures) { Finish(false); return; }
+        CSV_EVENT(ONEProgression,TEXT("ONE04_UPGRADED_COMBAT_BEGIN phase=%d shots=%d"),Phase,ShotsAtStep);
+    }
 }
 void AONE04PresentationCheck::Advance()
 { ReleaseKeys(); ++Phase; EnterStep(); }
@@ -315,7 +327,15 @@ void AONE04PresentationCheck::RunStep(float Dt)
         // existing arena and machine placement. Sprint would cancel real reloads.
         Key(EKeys::D,T<2.f || (T>=6.f && T<8.f));
         Key(EKeys::A,T>=3.f && T<5.f);
-        if (T>=S.Seconds) Advance();
+        if (T>=S.Seconds)
+        {
+            const auto* D=W->GetDefinitionForWeapon(W->GetEquippedIndex());
+            const int32 Committed=W->GetTotalShotsFired()-ShotsAtStep;
+            Check(D && D->Family==EONEWeaponFamily::Pistol && D->bUpgraded,TEXT("Measured combat ends with the same carried Last Word variant"));
+            Check(Committed>=2,TEXT("Measured Last Word combat committed at least two actual discharges"));
+            CSV_EVENT(ONEProgression,TEXT("ONE04_UPGRADED_COMBAT_END phase=%d shots_committed=%d"),Phase,Committed);
+            if (Failures) Finish(false); else Advance();
+        }
         break;
     }
     if (!bFinished && Phase==PreviousPhase && T>S.Seconds+2.f)
@@ -357,6 +377,8 @@ void AONE04PresentationCheck::Observe(float Dt)
         CSV_CUSTOM_STAT(ONEProgression,Phase,Phase,ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONEProgression,ProfileSeconds,ProfileSeconds,ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONEProgression,LiveMagazines,Player->GetWeaponComponent()->GetLiveMagazineCount(),ECsvCustomStatOp::Set);
+        const auto* Effective=Player->GetWeaponComponent()->GetDefinitionForWeapon(Player->GetWeaponComponent()->GetEquippedIndex());
+        CSV_CUSTOM_STAT(ONEProgression,EffectiveUpgraded,Effective && Effective->bUpgraded?1:0,ECsvCustomStatOp::Set);
     }
     if (Elapsed<NextObservation) return;
     NextObservation=Elapsed+.1f;
