@@ -1,0 +1,283 @@
+{
+  "schema": 1,
+  "result": "ENCODED_TIMING_CHAPTERS_AND_AUDIO_ENERGY_VERIFIED",
+  "source_revision": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "source_state": "exact-commit",
+  "capture_kind": "packaged",
+  "movie": "Evidence/Candidate03/stage_d_physicality.mp4",
+  "movie_sidecar": "Evidence/Candidate03/stage_d_physicality.json",
+  "movie_sha256": "efcbcf9946977a1124b0f23ec87da18061a070ec1488b4426f29740ece7549a0",
+  "movie_bytes": 28413320,
+  "dimensions": [
+    1600,
+    900
+  ],
+  "source_selection": {
+    "original_frames": 3069,
+    "assembly_frames": 3068,
+    "source_checks": 249,
+    "source_failures": 0,
+    "source_checks_scope": "Unchanged original checks.txt reports the original 3069-frame capture, not the assembly subset.",
+    "source_audio": {
+      "sample_frames": 5619712,
+      "sample_rate": 48000,
+      "channels": 2,
+      "sample_width_bytes": 2
+    },
+    "audio_duration_seconds": 117.07733333333333,
+    "source_wav_sha256": "dff2df583528673cad85d85ced019008ed4d89696359df51a0f3146ea512d6e6",
+    "first_frame_audio_seconds": 0.024755,
+    "last_included_frame_audio_seconds": 117.065953,
+    "last_original_frame_audio_seconds": 117.102929,
+    "final_included_frame_hold_seconds": 0.011380333333335102,
+    "excluded_frames": [
+      {
+        "csv_row_1based": 3070,
+        "file": "frame_03068.jpg",
+        "audio_seconds": "117.102929",
+        "world_seconds": "122.087723",
+        "phase": "10",
+        "weapon": "0",
+        "ammo": "24",
+        "reserve": "192",
+        "operation": "0",
+        "beyond_wav_seconds": 0.025595666666674788,
+        "jpeg_sha256": "54490f149704dcca2bcccf6ee330a95bd11390d7b32ebbb60df6c26bfd42c597",
+        "reason": "Screenshot callback timestamp exceeds the available PCM audio endpoint."
+      }
+    ],
+    "diagnosis": "One final cleanup callback lies 25.596ms beyond the WAV. Screenshot timestamps use wall-clock elapsed time; WAV duration uses actual audio sample frames. This is consistent with endpoint clock/callback timing, not proof of the exact stop/callback ordering.",
+    "excluded_frame_visual_inspection": "frame_03068.jpg was inspected at full view: cleared arena, phase10 cleanup label, living player, no visible infected or remains.",
+    "original_frames_csv_sha256": "401ca36b604e4ed88781d7b7d38b904c00e5670ee722b94174990e2a440ef377",
+    "subset_frames_csv_sha256": "0d764a94b9d78afe48764e8cf7daea775abbdeafa4c19b7c6f76b5c13a0bb71d",
+    "phase_labels_sha256": "eb40153550b9730315cb5ace0fecaa034886921ddb3b88b310a36c6e96d93a55",
+    "all_eleven_phases_retained": true,
+    "frame_timestamp_strings_unchanged": true,
+    "original_capture_bytes_changed": false,
+    "audio_samples_changed": false,
+    "generated_pixels": false,
+    "ordered_frame_identity_sha256": "6496903a2d17d408abe2a299abdb73645c1607acdfcac929093435fee15eaa88",
+    "storage_provenance": "Read-only hardlinks to original captured JPEG/WAV payloads. A separate CSV omits only the single explicitly listed unsupported final row."
+  },
+  "chapter_labels": "Evidence/Candidate03/StageD/phase_labels.json",
+  "chapters": [
+    {
+      "phase": 0,
+      "title": "Minor moving wound / finite trail",
+      "start_seconds": 0,
+      "end_seconds": 7.038759
+    },
+    {
+      "phase": 1,
+      "title": "Severe torso wound / physical collapse / growing pool",
+      "start_seconds": 7.038759,
+      "end_seconds": 19.059165
+    },
+    {
+      "phase": 2,
+      "title": "Anatomical left arm / remaining right arm / collapse",
+      "start_seconds": 19.059165,
+      "end_seconds": 29.067563
+    },
+    {
+      "phase": 3,
+      "title": "Anatomical right arm / remaining left arm / collapse",
+      "start_seconds": 29.067563,
+      "end_seconds": 39.061891
+    },
+    {
+      "phase": 4,
+      "title": "Head and left leg / fatal loss / physical parts",
+      "start_seconds": 39.061891,
+      "end_seconds": 48.079819
+    },
+    {
+      "phase": 5,
+      "title": "Six moving deaths / physical corpse contact",
+      "start_seconds": 48.079819,
+      "end_seconds": 61.108643
+    },
+    {
+      "phase": 6,
+      "title": "Corner crowd / close pursuit and attacks",
+      "start_seconds": 61.108643,
+      "end_seconds": 72.107193
+    },
+    {
+      "phase": 7,
+      "title": "Rack side passage / crowd contact",
+      "start_seconds": 72.107193,
+      "end_seconds": 83.111861
+    },
+    {
+      "phase": 8,
+      "title": "Bench end / crowd contact",
+      "start_seconds": 83.111861,
+      "end_seconds": 94.120192
+    },
+    {
+      "phase": 9,
+      "title": "Sustained mixed crowd / normal equipped weapon",
+      "start_seconds": 94.120192,
+      "end_seconds": 114.132982
+    },
+    {
+      "phase": 10,
+      "title": "Encounter cleanup / no reappearing blood",
+      "start_seconds": 114.132982,
+      "end_seconds": 117.07733333333333
+    }
+  ],
+  "chapter_metadata_remux": {
+    "method": "FFmpeg stream-copy remux with explicit per-chapter title metadata; no AV re-encoding",
+    "original_encoded_sha256": "5c9d9fe4ba1ae26670b30888fbc3148b23161b297bb4b18f09261edd91e9edb1",
+    "encoded_video_audio_packet_hashes_unchanged": true,
+    "av_stream_sha256": [
+      "0,v,SHA256=2617e5ebf51cbddca1d48274b3bf0ba3c34437b64a2c9c0f1327275fbe0a37b0",
+      "1,a,SHA256=1a38a045355bc82808ac3d2b5d952fe8757489a33fdba96279ed2efa129ceb1e"
+    ],
+    "chapter_count": 11,
+    "all_chapter_titles_verified": true,
+    "maximum_chapter_time_rounding_seconds": 0.000437000000001575,
+    "missing_qt_chapter_track_warning": false,
+    "full_av_decode_exit_code": 0,
+    "container_duration_seconds_rounded_to_10ms": 117.08,
+    "decoded_audio_peak_dbfs_rounded": -13.4,
+    "decoded_audio_mean_dbfs_rounded": -46.6,
+    "audio_audition_performed": false,
+    "original_encoded_file_preserved_privately": true
+  },
+  "frame_treatment": "Captured images held according to callback timestamps; first image held from audio time zero. CFR output duplicates or drops captured frames on the 30fps grid; no generated pixels, motion interpolation or retiming to hide stalls.",
+  "audio_treatment": "AAC transcode of the supplied engine WAV at original duration; this assembler does not replace, pad, stretch or synthesize audio. The source gameplay may itself use provisional synthesized sound assets.",
+  "source_audio_energy": {
+    "duration_seconds": 117.07733333,
+    "sample_peak_dbfs": -13.385969,
+    "rms_dbfs": -46.516807,
+    "nonzero_sample_count": 1411190,
+    "nonzero_sample_percent": 12.555715,
+    "full_scale_sample_count": 0,
+    "required_mixed_weapon_phase": {
+      "name": "mixed_weapon",
+      "start_seconds": 94.120192,
+      "end_seconds": 114.132982,
+      "coverage": "complete",
+      "available_start_seconds": 94.1201875,
+      "available_end_seconds": 114.13297917,
+      "requested_duration_seconds": 20.012789999999995,
+      "covered_duration_seconds": 20.01279167,
+      "covered_fraction": 1.00000008,
+      "metrics": {
+        "duration_seconds": 20.01279167,
+        "frame_count": 960614,
+        "channel_sample_count": 1921228,
+        "sample_peak_normalized": 0.2141418457,
+        "sample_peak_dbfs": -13.385969,
+        "rms_normalized": 0.0113308753,
+        "rms_dbfs": -38.914731,
+        "crest_factor_db": 25.528762,
+        "sample_peak_headroom_db": 13.385969,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 1269346,
+        "nonzero_sample_percent": 66.069514,
+        "exact_zero_frame_count": 325941,
+        "longest_exact_zero_seconds": 1.69541667,
+        "silent_frame_count_at_threshold": 453949,
+        "silent_frame_percent_at_threshold": 47.25613,
+        "longest_silence_seconds_at_threshold": 1.73989583,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -13.385969,
+            "rms_dbfs": -38.914731,
+            "dc_normalized": -1.5352e-06,
+            "absolute_dc_dbfs": -116.276719,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 634673
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -13.385969,
+            "rms_dbfs": -38.914731,
+            "dc_normalized": -1.5352e-06,
+            "absolute_dc_dbfs": -116.276719,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 634673
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ]
+    },
+    "required_checks": {
+      "phase_coverage_passed": true,
+      "audible_phases_passed": true,
+      "uncovered_phases": [],
+      "phases_without_samples_above_silence_threshold": []
+    },
+    "scope": "Numerical PCM energy/coverage analysis of the original engine WAV; it is not an audio audition or a verdict on sound quality."
+  },
+  "audio_audition_performed": false,
+  "limitations": [
+    "A single final cleanup screenshot callback lies beyond the available WAV endpoint and is excluded explicitly; the original3069-frame capture is preserved.",
+    "Video is encoded to30fps using actual callback times, so output repeats/drops captures on the output frame grid; no motion interpolation or generated pixels.",
+    "Chapter titles required an explicit stream-copy metadata remux; encoded video/audio packet hashes are unchanged.",
+    "MP4 chapter endpoints are rounded to the container timebase; measured maximum deviation is recorded above.",
+    "Functional249-check provenance belongs to the original full capture, not a new runtime execution by the assembler."
+  ]
+}

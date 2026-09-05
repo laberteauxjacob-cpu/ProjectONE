@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "result": "PASS",
+  "verified_utc": "2026-09-05T11:14:18.073115+00:00",
+  "candidate03_built_source": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "candidate02": {
+    "preserved_public_source": "aa4d55d04bf375bbef41362af77eec10d9ea224f",
+    "baseline_record": {
+      "file": "preserved_candidate02.json",
+      "bytes": 1236,
+      "sha256": "959c8948bcf27ef33838bac1b7b36639ec911c74a9beda064461d1f01f4d54ca"
+    },
+    "baseline_recorded_utc": "2026-09-05T07:29:27.329650+00:00",
+    "all_five_runtime_baseline_files_unchanged": true,
+    "files": [
+      {
+        "path": "Packaged/Candidate02/Windows/ProjectONE.exe",
+        "bytes": 164864,
+        "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+        "matches_recorded_baseline": true
+      },
+      {
+        "path": "Packaged/Candidate02/Windows/ProjectONE/Binaries/Win64/ProjectONE.exe",
+        "bytes": 291411968,
+        "sha256": "53966e40e59f9a0ca99ddabc6beec0199ee8ffda807abeb9d9187709617c0350",
+        "matches_recorded_baseline": true
+      },
+      {
+        "path": "Packaged/Candidate02/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+        "bytes": 10716673,
+        "sha256": "2c4b08b53082b2fc9b3f3b7e744bf07f7d7017763b4106fcf985af972ec77bdb",
+        "matches_recorded_baseline": true
+      },
+      {
+        "path": "Packaged/Candidate02/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+        "bytes": 208679920,
+        "sha256": "771487592fb1366d584dbd3d713d04e9215142dc4ba2d321c86fceb9f782e6fb",
+        "matches_recorded_baseline": true
+      },
+      {
+        "path": "Packaged/Candidate02/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+        "bytes": 190471,
+        "sha256": "bdba214b4872653187e5a7aa04bee06c27c79f19aa45b2031d5c846297e60017",
+        "matches_recorded_baseline": true
+      }
+    ],
+    "archive": {
+      "file": "ProjectONE-Candidate02-Windows.zip",
+      "bytes": 397321284,
+      "sha256": "0cb433a407c46e511c9fc831d516dfbfa68e660bad8c505a3786f04f5e54e7a3",
+      "expected_bytes": 397321284,
+      "expected_sha256": "0cb433a407c46e511c9fc831d516dfbfa68e660bad8c505a3786f04f5e54e7a3",
+      "matches": true
+    }
+  },
+  "candidate03": {
+    "archive": {
+      "file": "ProjectONE-Candidate03-Windows.zip",
+      "bytes": 398043452,
+      "sha256": "ada689b2314d3047d581d0523a2cbcd91f57661d06554d6288a6b4fae79600d2",
+      "expected_bytes": 398043452,
+      "expected_sha256": "ada689b2314d3047d581d0523a2cbcd91f57661d06554d6288a6b4fae79600d2",
+      "matches": true
+    },
+    "adopted_package": "Packaged/Candidate03/Windows",
+    "existing_passed_archive_audit": {
+      "file": "archive_audit.json",
+      "bytes": 2969,
+      "sha256": "8747d12595e88060c0f47031c76025e0a3de6ea17d919b84914c394128e8aa78"
+    },
+    "existing_passed_release_audit": {
+      "file": "release_audit.json",
+      "bytes": 28724,
+      "sha256": "febedc6d7a77a2234e7867e4b2d8ead04a3e62486e8cec1b9a59037820475530"
+    },
+    "complete_private_audit_inventory": {
+      "file": "audit.json",
+      "bytes": 281068,
+      "sha256": "f9e091fdd389bad29a67a716445292de763f58f443a92740ddbfdc3323ad36ae"
+    },
+    "all_adopted_distribution_files_match_audit": true,
+    "distribution_files_verified": 1217,
+    "verified_categories": {
+      "distribution_documentation": 3,
+      "byte_identical_audited_fresh_runtime": 45,
+      "unchanged_engine_notice": 1169
+    },
+    "runtime_files_match_release_audit": true,
+    "runtime_files_verified": 45,
+    "unexpected_non_saved_files": 0,
+    "runtime_saved_files_excluded": 9927,
+    "runtime_saved_exclusion_roots": [
+      "ProjectONE/Saved",
+      "Engine/Saved"
+    ]
+  },
+  "preserved_tags": [
+    {
+      "tag": "candidate01",
+      "expected_preserved_commit": "02c590a75141b48564715d130018f0cbe9a8a092",
+      "local_tag_object": "0a37781dc39461c846dac55f33cac7d3334b3ea0",
+      "remote_tag_object": "0a37781dc39461c846dac55f33cac7d3334b3ea0",
+      "local_peeled_commit": "02c590a75141b48564715d130018f0cbe9a8a092",
+      "remote_peeled_commit": "02c590a75141b48564715d130018f0cbe9a8a092",
+      "preserved_target_matches": true,
+      "local_remote_tag_object_matches": true
+    },
+    {
+      "tag": "candidate02",
+      "expected_preserved_commit": "aa4d55d04bf375bbef41362af77eec10d9ea224f",
+      "local_tag_object": "869c3a139be372804efd6b0bfeb3175528888704",
+      "remote_tag_object": "869c3a139be372804efd6b0bfeb3175528888704",
+      "local_peeled_commit": "aa4d55d04bf375bbef41362af77eec10d9ea224f",
+      "remote_peeled_commit": "aa4d55d04bf375bbef41362af77eec10d9ea224f",
+      "preserved_target_matches": true,
+      "local_remote_tag_object_matches": true
+    }
+  ],
+  "remote": "https://github.com/laberteauxjacob-cpu/ProjectONE",
+  "runtime_or_archive_mutation_performed": false,
+  "git_reference_mutation_or_push_performed": false,
+  "limits": [
+    "This is an independent identity/preservation check, not another gameplay, performance or perceptual review.",
+    "Archives were rehashed; their contents were not independently decompressed or rescanned for secrets in this check.",
+    "Adopted runtime, notices and distribution documents were rehashed against every entry of the prior passed archive audit.",
+    "Candidate01/02 peeled targets match the known preserved public commits; local and remote annotated tag objects agree. No earlier tag-object hash record was supplied for a separate historical annotation comparison.",
+    "Runtime Saved configuration, logs and captures are mutable and excluded from distribution identity checks."
+  ]
+}

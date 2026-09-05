@@ -1,0 +1,248 @@
+{
+  "schema": 1,
+  "source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "archive_sha256": "ada689b2314d3047d581d0523a2cbcd91f57661d06554d6288a6b4fae79600d2",
+  "status": "NATIVE_INPUT_OBSERVED_WITH_DOCUMENTED_LIMITS",
+  "capture": {
+    "id": "20260905_110414",
+    "kind": "packaged observer; actual native mouse/key input",
+    "frames": 4970,
+    "frame_dimensions": [
+      1600,
+      900
+    ],
+    "raw_phase": -1,
+    "first_audio_seconds": 0.014582,
+    "last_audio_seconds": 179.981721,
+    "checks": {
+      "bytes": 184,
+      "sha256": "0eb9f918b586507992868d0b7a7513353b1c3f89f05b3d1b79ec8ea73c5723cb"
+    },
+    "frames_csv": {
+      "bytes": 244821,
+      "sha256": "4c786f76e965a849b58f8c7b7fd735bf21026b2287a491e4ed6e55b0298d6864"
+    },
+    "functional_assertion_count": 0,
+    "completion_marker": "ONE03_MOVEMENT_COMPLETE failures=0",
+    "completion_utc": "2026-09-05T11:07:16.305Z",
+    "completion_scope": "Observer completion and frame count; not a scripted functional test result.",
+    "actual_discharges": {
+      "carbine": 2,
+      "shotgun": 2
+    },
+    "kills": 0,
+    "points": 0
+  },
+  "normal_launch": {
+    "command": ".\\Scripts\\Launch.ps1 -Candidate Candidate03",
+    "effective_arguments": [
+      "-windowed",
+      "-ResX=1600",
+      "-ResY=900"
+    ],
+    "validation_or_recorder_flags": false,
+    "startup_and_restart_round_count": 6,
+    "exit_requested_status": 0,
+    "all_owned_game_processes_exited": true
+  },
+  "events": [
+    {
+      "utc": "2026-09-05T11:04:14.168Z",
+      "action": "F5 restart sandbox and begin fresh 180-second observer capture",
+      "observed_result": "F5 reset sandbox: health100, zero infected; carbine24/192, shotgun6/36. Observer capture began after map startup."
+    },
+    {
+      "utc": "2026-09-05T11:04:21.062Z",
+      "action": "carbine mouse drag fire across open floor",
+      "observed_result": "Carbine aim changed and one shot consumed ammunition24 to23."
+    },
+    {
+      "utc": "2026-09-05T11:04:27.721Z",
+      "action": "carbine mouse drag to opposite side",
+      "observed_result": "Opposite aim change and one shot consumed ammunition23 to22."
+    },
+    {
+      "utc": "2026-09-05T11:04:33.958Z",
+      "action": "R carbine reload from22",
+      "observed_result": "Carbine RELOADING observed22/192; completed24/190 before selection."
+    },
+    {
+      "utc": "2026-09-05T11:04:39.954Z",
+      "action": "2 select shotgun",
+      "observed_result": "Shotgun selection/equip observed; shotgun6/36 and carbine24/190 retained."
+    },
+    {
+      "utc": "2026-09-05T11:04:46.939Z",
+      "action": "shotgun single left click open floor",
+      "observed_result": "One shotgun shot:6 to5; PUMP ACTION observed."
+    },
+    {
+      "utc": "2026-09-05T11:04:51.671Z",
+      "action": "R shotgun reload from5",
+      "observed_result": "Shotgun RELOADING observed5/36; completed6/35."
+    },
+    {
+      "utc": "2026-09-05T11:04:58.390Z",
+      "action": "1 select carbine",
+      "observed_result": "Carbine selected24/190; shotgun6/35 retained."
+    },
+    {
+      "utc": "2026-09-05T11:05:07.937Z",
+      "action": "Tab cycle to shotgun",
+      "observed_result": "Tab selected shotgun6/35."
+    },
+    {
+      "utc": "2026-09-05T11:05:12.685Z",
+      "action": "wheel up select carbine",
+      "observed_result": "Wheel up selected carbine24/190."
+    },
+    {
+      "utc": "2026-09-05T11:05:19.161Z",
+      "action": "wheel down select shotgun",
+      "observed_result": "Wheel down selected shotgun6/35."
+    },
+    {
+      "utc": "2026-09-05T11:05:29.741Z",
+      "action": "F7 dim lighting",
+      "observed_result": "Room became dim; DIM HUD indication visible."
+    },
+    {
+      "utc": "2026-09-05T11:05:39.702Z",
+      "action": "shotgun dim shot6to5",
+      "observed_result": "One dim shotgun shot:6 to5/35; pump action observed."
+    },
+    {
+      "utc": "2026-09-05T11:05:49.160Z",
+      "action": "F4 refill both weapons",
+      "observed_result": "Both weapons refilled: carbine24/192, shotgun6/36 and READY."
+    },
+    {
+      "utc": "2026-09-05T11:05:55.255Z",
+      "action": "F7 bright lighting",
+      "observed_result": "Room became bright; BRIGHT HUD indication visible."
+    },
+    {
+      "utc": "2026-09-05T11:06:00.187Z",
+      "action": "Escape pause",
+      "observed_result": "SIMULATION PAUSED overlay appeared."
+    },
+    {
+      "utc": "2026-09-05T11:06:06.022Z",
+      "action": "Escape resume",
+      "observed_result": "Pause overlay cleared; gameplay resumed."
+    },
+    {
+      "utc": "2026-09-05T11:06:13.024Z",
+      "action": "F2 spawn one infected",
+      "observed_result": "One infected appeared; HUD one remaining. It reached and killed the stationary player."
+    },
+    {
+      "utc": "2026-09-05T11:06:26.893Z",
+      "action": "shotgun fire toward spawned infected",
+      "observed_result": "Input was AFTER death at11:06:21.898 UTC. LMB at11:06:27.013 did not discharge; shotgun remained6/36. The action label records intent, not a hit."
+    },
+    {
+      "utc": "2026-09-05T11:07:03.433Z",
+      "action": "R while dead; verify no reload",
+      "observed_result": "R after death left shotgun6/36 and death overlay unchanged; no reload began."
+    },
+    {
+      "utc": "2026-09-05T11:10:22.692Z",
+      "action": "Q: quit completed recorder from death screen",
+      "observed_result": "Q exited the recorder session normally; both process instances disappeared."
+    },
+    {
+      "utc": "2026-09-05T11:10:45.650Z",
+      "action": "Normal launch via Scripts/Launch.ps1 -Candidate Candidate03, no recorder or validation flags",
+      "observed_result": "Normal launch had only window/resolution options, with round1, six remaining, health100 and full inventory."
+    },
+    {
+      "utc": "2026-09-05T11:10:51.182Z",
+      "action": "Normal launch F1 enter sandbox",
+      "observed_result": "F1 reset into developer sandbox: zero remaining, health100, full ammunition."
+    },
+    {
+      "utc": "2026-09-05T11:10:57.557Z",
+      "action": "F3 spawn six in normal-launch sandbox",
+      "observed_result": "F3 displayed six infected and six remaining. Log later records death just before F5; no native crowd victory is claimed."
+    },
+    {
+      "utc": "2026-09-05T11:11:03.992Z",
+      "action": "F5 reset six-infected encounter",
+      "observed_result": "F5 reset to zero infected, health100 and full ammunition after the logged death."
+    },
+    {
+      "utc": "2026-09-05T11:11:10.135Z",
+      "action": "Normal launch LMB shot before cleanup",
+      "observed_result": "Carbine shot consumed24 to23; aim followed the mouse."
+    },
+    {
+      "utc": "2026-09-05T11:11:16.848Z",
+      "action": "F6 cleanup after carbine shot; no visible corpse/blood population",
+      "observed_result": "F6 accepted without an error or encounter reset. No populated corpse/blood cleanup or specific casing disappearance was observable; the six-second case lifetime had already elapsed."
+    },
+    {
+      "utc": "2026-09-05T11:11:22.509Z",
+      "action": "F1 return to rounds",
+      "observed_result": "F1 returned to round mode with a five-second next-wave countdown and full ammunition."
+    },
+    {
+      "utc": "2026-09-05T11:11:26.657Z",
+      "action": "Escape pause normal rounds",
+      "observed_result": "Escape displayed the pause overlay."
+    },
+    {
+      "utc": "2026-09-05T11:11:31.753Z",
+      "action": "Enter restart from normal round pause",
+      "observed_result": "Enter removed the pause overlay, restarted the five-second countdown, and restored full inventory."
+    },
+    {
+      "utc": "2026-09-05T11:11:41.035Z",
+      "action": "Escape pause restarted normal round",
+      "observed_result": "After the countdown, round1 had six remaining; pause showed health100, carbine24/192 and shotgun6/36. No stray discharge observed."
+    },
+    {
+      "utc": "2026-09-05T11:11:49.922Z",
+      "action": "Q quit normal launch from pause; restarted round 1 six remaining, health100, carbine24/192 and shotgun6/36",
+      "observed_result": "Q exited normally through the pause menu. Engine logged status0, and both process instances disappeared."
+    }
+  ],
+  "private_source_logs": {
+    "manual_engine.log": {
+      "private_original": true,
+      "bytes": 107546,
+      "sha256": "0f4562361993f0ebf99c619a835db9adab4c222fe382e5b0951bf72804c4ff59",
+      "warning_count": 26,
+      "warning_categories": {
+        "socket_before_mesh": 24,
+        "missing_recast_crowd_manager": 2,
+        "other": 0
+      },
+      "error_fatal_ensure_lines": 0
+    },
+    "normal_launch_engine.log": {
+      "private_original": true,
+      "bytes": 108407,
+      "sha256": "5b243365f194171426d22967f9400c673d012b16cf5b48a3882a8557251a855a",
+      "warning_count": 65,
+      "warning_categories": {
+        "socket_before_mesh": 60,
+        "missing_recast_crowd_manager": 5,
+        "other": 0
+      },
+      "error_fatal_ensure_lines": 0
+    }
+  },
+  "limitations": [
+    "The first capture was blocked/idle around an OS permission prompt and is excluded from review media. The prompt later cleared; the agent did not act on it.",
+    "The observer starts in sandbox and records engine audio and gameplay frames. It does not drive player input, aim, health or ammunition.",
+    "The recorder session used a process-only background-audio setting; the normal launch used no such override.",
+    "Available native key taps do not establish sustained WASD or held Shift. Eight-direction movement, sprint cancellation and empty/pump edge cases rely on separate frame-spaced production-input tests.",
+    "No successful native infected hit or kill was recorded; both the single-infected session and later six-infected encounter killed the stationary player.",
+    "Native F6 invocation did not establish populated cleanup. The separate final physicality scenario supplies that evidence.",
+    "Audio was captured and numerically measured, but perceptual audition and mix approval were unavailable.",
+    "The final approximately95 seconds are silent; this native capture does not establish audible infected attacks or an approved mixed combat soundscape.",
+    "Live UI snapshots establish directly observed controls; dense chronological saved-frame review is separately documented in native_motion_review.md.",
+    "Window presentation/input and engine-frame capture are separate; private desktop/window metadata and raw logs are excluded from Git."
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "schema": "project-one-native-motion-review-v1",
+  "source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "capture_id": "Manual/20260905_110414",
+  "capture_kind": "Final packaged game observing ordinary native input; no scripted player steering",
+  "capture_relative_directory": "Packaged/Candidate03/Windows/ProjectONE/Saved/Candidate03/Manual/20260905_110414",
+  "status": "BOUNDED_VISUAL_REVIEW_COMPLETE_WITH_LIMITATIONS",
+  "capture_frame_count": 4970,
+  "source_records": {
+    "frames.csv": {
+      "sha256": "4c786f76e965a849b58f8c7b7fd735bf21026b2287a491e4ed6e55b0298d6864",
+      "bytes": 244821
+    },
+    "checks.txt": {
+      "sha256": "0eb9f918b586507992868d0b7a7513353b1c3f89f05b3d1b79ec8ea73c5723cb",
+      "bytes": 184
+    }
+  },
+  "review_method": {
+    "dense_consecutive_frames": 245,
+    "distinct_reviewed_source_frames": 245,
+    "native_resolution_frames": 9,
+    "native_frames_are_subset_of_dense": true,
+    "private_contact_sheets": 18,
+    "native_resolution_pixels": [
+      1600,
+      900
+    ],
+    "all_dense_rows_private_manifest_sha256": "273f3bf4723b56af95cf4f45490269156caadf8b51a9ef70ff33a4706224a6f4",
+    "public_manifest_scope": "Sparse representative frames with source hashes; every reviewed dense interval is identified by inclusive consecutive filenames and exact CSV endpoints. No full raw grids are published."
+  },
+  "windows": [
+    {
+      "label": "carbine_turn_fire_1",
+      "first_frame": "frame_00131.jpg",
+      "last_frame": "frame_00165.jpg",
+      "consecutive_frame_count": 35,
+      "audio_seconds": [
+        4.709532,
+        5.966255
+      ],
+      "world_seconds": [
+        6.696771,
+        7.953078
+      ],
+      "phase": -1,
+      "crop_pixels": [
+        620,
+        340,
+        1020,
+        585
+      ],
+      "private_sheet_count": 3,
+      "finding": "A short aim change, one brief visible muzzle flash and subsequent small pose adjustment. In frame_00137 the small pale muzzle flash appears attached to the current muzzle. A separate thin world-space tracer is visible above it on the fired trajectory; that tracer is intended to remain in world space rather than follow later gun rotation. The visible separation alone is not evidence of a flash-attachment regression. This image review does not establish the precise temporal cause of the trajectory/current-heading difference."
+    },
+    {
+      "label": "carbine_turn_fire_2",
+      "first_frame": "frame_00313.jpg",
+      "last_frame": "frame_00352.jpg",
+      "consecutive_frame_count": 40,
+      "audio_seconds": [
+        11.354034,
+        12.788739
+      ],
+      "world_seconds": [
+        13.340534,
+        14.775543
+      ],
+      "phase": -1,
+      "crop_pixels": [
+        620,
+        340,
+        1020,
+        585
+      ],
+      "private_sheet_count": 3,
+      "finding": "The gun reverses heading between frame_00319 and frame_00320, followed by a brief foot repositioning sequence. No large full-body teleport is apparent in these captured images; this is not a measured foot-contact test."
+    },
+    {
+      "label": "shotgun_bright",
+      "first_frame": "frame_00843.jpg",
+      "last_frame": "frame_00872.jpg",
+      "consecutive_frame_count": 30,
+      "audio_seconds": [
+        30.654977,
+        31.716909
+      ],
+      "world_seconds": [
+        32.641537,
+        33.70343
+      ],
+      "phase": -1,
+      "crop_pixels": [
+        670,
+        340,
+        1070,
+        585
+      ],
+      "private_sheet_count": 2,
+      "finding": "A short bright muzzle flash and pellet traces appear at frame_00847 and disappear over the next captured frames. A tiny red ejected hull becomes visible during the pump, including frame_00860. The support-hand/pump change is subtle at gameplay scale."
+    },
+    {
+      "label": "shotgun_dim",
+      "first_frame": "frame_02297.jpg",
+      "last_frame": "frame_02326.jpg",
+      "consecutive_frame_count": 30,
+      "audio_seconds": [
+        83.423382,
+        84.484662
+      ],
+      "world_seconds": [
+        85.410179,
+        86.472046
+      ],
+      "phase": -1,
+      "crop_pixels": [
+        670,
+        340,
+        1070,
+        585
+      ],
+      "private_sheet_count": 2,
+      "finding": "The flash at frame_02301 is legible against the dim room and adds brief local warmth to the floor/arm. It does not persist across the following frames. A small hull speck is faint; fine hand contact and the later landing are not resolved by this window."
+    },
+    {
+      "label": "infected_approach",
+      "first_frame": "frame_03228.jpg",
+      "last_frame": "frame_03287.jpg",
+      "consecutive_frame_count": 60,
+      "audio_seconds": [
+        117.017599,
+        119.17144
+      ],
+      "world_seconds": [
+        118.999832,
+        121.153679
+      ],
+      "phase": -1,
+      "crop_pixels": [
+        650,
+        320,
+        1150,
+        650
+      ],
+      "private_sheet_count": 4,
+      "finding": "The infected advances across open floor with alternating leg extension, reaches the stationary player, and begins a close arm swing. Long low strides remain visibly mechanical. At close range the shotgun silhouette overlaps the infected; this does not test obstacle avoidance or weapon penetration physics."
+    },
+    {
+      "label": "player_death",
+      "first_frame": "frame_03439.jpg",
+      "last_frame": "frame_03488.jpg",
+      "consecutive_frame_count": 50,
+      "audio_seconds": [
+        124.715971,
+        126.499011
+      ],
+      "world_seconds": [
+        126.698227,
+        128.479767
+      ],
+      "phase": -1,
+      "crop_pixels": [
+        570,
+        340,
+        1110,
+        640
+      ],
+      "private_sheet_count": 4,
+      "finding": "The infected winds up and swings while the player remains upright. RESPONSE LOST first appears at frame_03465 (audio 125.667172 seconds), then obscures the characters. This confirms the visible death-state transition, not a reviewed player-collapse animation."
+    }
+  ],
+  "sparse_selected_source_frames": [
+    {
+      "file": "frame_00131.jpg",
+      "audio_seconds": 4.709532,
+      "world_seconds": 6.696771,
+      "phase": -1,
+      "weapon": 0,
+      "ammo": 24,
+      "reserve": 192,
+      "operation": 0,
+      "sha256": "61283a35722a174e51d8de125873ffe43325035248fef4b684249f85fca7563f",
+      "window": "carbine_turn_fire_1",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_00137.jpg",
+      "audio_seconds": 4.935167,
+      "world_seconds": 6.916906,
+      "phase": -1,
+      "weapon": 0,
+      "ammo": 23,
+      "reserve": 192,
+      "operation": 2,
+      "sha256": "e95a872e87e958e2df0c81f335d0e574362579b1307b7fbc1fae1bb35929b7ed",
+      "window": "carbine_turn_fire_1",
+      "native_resolution_inspected": true
+    },
+    {
+      "file": "frame_00148.jpg",
+      "audio_seconds": 5.337943,
+      "world_seconds": 7.323969,
+      "phase": -1,
+      "weapon": 0,
+      "ammo": 23,
+      "reserve": 192,
+      "operation": 0,
+      "sha256": "f1878b6168242f0bc97ac0cf015c7511138b056a6e627b25f7e76ee190bf9990",
+      "window": "carbine_turn_fire_1",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_00165.jpg",
+      "audio_seconds": 5.966255,
+      "world_seconds": 7.953078,
+      "phase": -1,
+      "weapon": 0,
+      "ammo": 23,
+      "reserve": 192,
+      "operation": 0,
+      "sha256": "a66c44d96c57dc7c92201e39a7710ad34f408a88a6318b27d9b617d31dbc2bde",
+      "window": "carbine_turn_fire_1",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_00313.jpg",
+      "audio_seconds": 11.354034,
+      "world_seconds": 13.340534,
+      "phase": -1,
+      "weapon": 0,
+      "ammo": 23,
+      "reserve": 192,
+      "operation": 0,
+      "sha256": "85a284c2a0b2228a28355ef9bee23c54f6a4a852a1c93e8508a86283b6ba23ec",
+      "window": "carbine_turn_fire_2",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_00319.jpg",
+      "audio_seconds": 11.577987,
+      "world_seconds": 13.563557,
+      "phase": -1,
+      "weapon": 0,
+      "ammo": 22,
+      "reserve": 192,
+      "operation": 2,
+      "sha256": "591ea234e6052be1ba15a3e8caf454098ea2f5fb5d97e66dda8e86c503554d81",
+      "window": "carbine_turn_fire_2",
+      "native_resolution_inspected": true
+    },
+    {
+      "file": "frame_00320.jpg",
+      "audio_seconds": 11.615737,
+      "world_seconds": 13.601029,
+      "phase": -1,
+      "weapon": 0,
+      "ammo": 22,
+      "reserve": 192,
+      "operation": 2,
+      "sha256": "5b277b1f8dcc3f7c077164a6dbc9f9f733d7cfadd691408b1e83eb296fdf1858",
+      "window": "carbine_turn_fire_2",
+      "native_resolution_inspected": true
+    },
+    {
+      "file": "frame_00333.jpg",
+      "audio_seconds": 12.096101,
+      "world_seconds": 14.082517,
+      "phase": -1,
+      "weapon": 0,
+      "ammo": 22,
+      "reserve": 192,
+      "operation": 0,
+      "sha256": "e33a6a90d5a2064c99485dff533bb68e072b4f3815d1bb6fd7db34be9c75c03f",
+      "window": "carbine_turn_fire_2",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_00352.jpg",
+      "audio_seconds": 12.788739,
+      "world_seconds": 14.775543,
+      "phase": -1,
+      "weapon": 0,
+      "ammo": 22,
+      "reserve": 192,
+      "operation": 0,
+      "sha256": "c8248c7215e70603000b70d4c1e70e8cbfebc643bfe54f580a044c385cef63bf",
+      "window": "carbine_turn_fire_2",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_00843.jpg",
+      "audio_seconds": 30.654977,
+      "world_seconds": 32.641537,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "f2e32dc31df69f32e848934f8fa6c98ae7fd273fe426517fb8fb2f5817a2ccad",
+      "window": "shotgun_bright",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_00847.jpg",
+      "audio_seconds": 30.805647,
+      "world_seconds": 32.790085,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 5,
+      "reserve": 36,
+      "operation": 2,
+      "sha256": "c2fd975a7bda8089a39c019df05eb113bfec8619cbca1ac69a7d0295ed665c70",
+      "window": "shotgun_bright",
+      "native_resolution_inspected": true
+    },
+    {
+      "file": "frame_00858.jpg",
+      "audio_seconds": 31.21011,
+      "world_seconds": 33.196522,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 5,
+      "reserve": 36,
+      "operation": 3,
+      "sha256": "114468b1152e26e0c861d549e74f517416c873df247ef94ef31503252ebf5e8f",
+      "window": "shotgun_bright",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_00860.jpg",
+      "audio_seconds": 31.28345,
+      "world_seconds": 33.269855,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 5,
+      "reserve": 36,
+      "operation": 3,
+      "sha256": "78805e0f79b3982fdb183264634b3c1386fad36f67117b6e0805d2af8f0a69e9",
+      "window": "shotgun_bright",
+      "native_resolution_inspected": true
+    },
+    {
+      "file": "frame_00872.jpg",
+      "audio_seconds": 31.716909,
+      "world_seconds": 33.70343,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 5,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "393d1508bcc42c099a962a5ca6adbb648053e4025a6516b5f51ac6b72a09667e",
+      "window": "shotgun_bright",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_02297.jpg",
+      "audio_seconds": 83.423382,
+      "world_seconds": 85.410179,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 35,
+      "operation": 0,
+      "sha256": "a5bc5adf1a714af91c521070d4dbc277bfe50be5e33584c82f5288c00ab1dece",
+      "window": "shotgun_dim",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_02301.jpg",
+      "audio_seconds": 83.573146,
+      "world_seconds": 85.558372,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 5,
+      "reserve": 35,
+      "operation": 2,
+      "sha256": "001815451e7eaa5503bbb879ace7193519a9c2082ecb06afe97f82c80b9c158e",
+      "window": "shotgun_dim",
+      "native_resolution_inspected": true
+    },
+    {
+      "file": "frame_02312.jpg",
+      "audio_seconds": 83.98015,
+      "world_seconds": 85.96611,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 5,
+      "reserve": 35,
+      "operation": 3,
+      "sha256": "0c98d461dde3e819aadc03dc6b65515a5df3ec8ced0ce90cbd373e31029372cc",
+      "window": "shotgun_dim",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_02326.jpg",
+      "audio_seconds": 84.484662,
+      "world_seconds": 86.472046,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 5,
+      "reserve": 35,
+      "operation": 0,
+      "sha256": "af734fd45cda43a47ab9752d8489c8eb332ab4215cd91a1d8238ace739cd2447",
+      "window": "shotgun_dim",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_03228.jpg",
+      "audio_seconds": 117.017599,
+      "world_seconds": 118.999832,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "f3c6aa038efa6f8793939970fa5d436d9805b392fb199d42c758c9af296f4337",
+      "window": "infected_approach",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_03258.jpg",
+      "audio_seconds": 118.116572,
+      "world_seconds": 120.098885,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "9142d7075eed2ff404a655b7e7cce0991e01f339d6ca71376e91c3498fd005a9",
+      "window": "infected_approach",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_03282.jpg",
+      "audio_seconds": 118.988826,
+      "world_seconds": 120.971024,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "276b078460aa279585c67e1b498fad58d1c6b135296e328d7fb87072fd9d7cf2",
+      "window": "infected_approach",
+      "native_resolution_inspected": true
+    },
+    {
+      "file": "frame_03287.jpg",
+      "audio_seconds": 119.17144,
+      "world_seconds": 121.153679,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "c7b08fd61363d90a21d0466bad75f0f8f9ef0ebb640c6316b9fb21f026076727",
+      "window": "infected_approach",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_03439.jpg",
+      "audio_seconds": 124.715971,
+      "world_seconds": 126.698227,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "05e290f680544ed265be91f6da25f53ec7898912ef95626ec0bd5919f1d9bbed",
+      "window": "player_death",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_03460.jpg",
+      "audio_seconds": 125.484633,
+      "world_seconds": 127.466263,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "c0970ada27c48e815fed652cd2436352c829ed1a06f3be2944c520f1bb42c959",
+      "window": "player_death",
+      "native_resolution_inspected": true
+    },
+    {
+      "file": "frame_03464.jpg",
+      "audio_seconds": 125.630614,
+      "world_seconds": 127.612175,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "1a3a25c7bc8c3e94eed9780c00d3ad71b11afd896f0392aeaf1e559d683bb9f3",
+      "window": "player_death",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_03465.jpg",
+      "audio_seconds": 125.667172,
+      "world_seconds": 127.648582,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "3712c11e11048d72a9422168f80dbba952fc1bbd7ed5b354565c56bac3e66604",
+      "window": "player_death",
+      "native_resolution_inspected": false
+    },
+    {
+      "file": "frame_03480.jpg",
+      "audio_seconds": 126.207667,
+      "world_seconds": 128.189651,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "10a40a44599d0f02c5e5510759d8b6e331ed263c25f4352e453bc8f6ea830d2a",
+      "window": "player_death",
+      "native_resolution_inspected": true
+    },
+    {
+      "file": "frame_03488.jpg",
+      "audio_seconds": 126.499011,
+      "world_seconds": 128.479767,
+      "phase": -1,
+      "weapon": 1,
+      "ammo": 6,
+      "reserve": 36,
+      "operation": 0,
+      "sha256": "537ed936f25249162cea7f125c3048789b1c7c243360a16322fa5dfe5015cff6",
+      "window": "player_death",
+      "native_resolution_inspected": false
+    }
+  ],
+  "limitations": [
+    "Consecutive JPEGs were inspected chronologically as contact sheets, plus nine original 1600x900 images. This was not real-time video playback and no perceptual audio audition was available.",
+    "The six windows contain 245 distinct source frames, not all 4970 recorded frames. Short mouse drags do not establish sustained 360-degree turning, held W+Shift movement, reload cancellation, or all directional gait quality.",
+    "This review does not assess reload-hand choreography: the reload windows were outside its selected dense scope. Ordinary input delivery and the four actual shots are documented separately in native_input_review.",
+    "Fine grip contact, individual finger motion, all casing landings, world-space foot drift, frame-exact input latency and collision correctness cannot be established from these camera images.",
+    "The source CSV records phase -1 throughout this manual observer capture. The descriptive window labels here are review labels, not scripted test phases.",
+    "The capture observer reports Failures 0; that recorder status is not an additional automated assertion suite or a claim that every visual issue passed.",
+    "The player death overlay obscures both characters. No hidden collapse, corpse dynamics, or post-death response is inferred.",
+    "The abrupt upper-body heading reversal, low mechanical stance, and subtle pump-hand movement remain presentation limitations. The first-carbine world-space tracer/current-muzzle separation is a distinct observation, not evidence that its attached muzzle flash regressed; exact temporal causation remains unproven. This review makes no source-fix claim."
+  ],
+  "related_reports": {
+    "native_input": "native_input_review.md",
+    "movie_assembly": "native_capture_assembly.json",
+    "audio_measurements": "native_audio.json",
+    "packaged_automated_checks": "packaged_checks.json"
+  }
+}

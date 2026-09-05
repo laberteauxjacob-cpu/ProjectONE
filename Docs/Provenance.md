@@ -117,6 +117,32 @@ and asserts one fresh NDOP18 hull, preventing accumulation on reimport.
 
 This establishes collision-generation provenance and measured navigation
 connectivity. Headless pursuit checks are separate from rendered corpse contact,
-pool readability and natural movement. Stage D visual gates and final user
-playtest acceptance remain pending; neither asset-generation success nor an
-agent-run check substitutes for the user's playtest.
+pool readability and natural movement. The fourth Stage D editor capture passed
+244 assertions and its bounded motion review; final packaged source
+`e81e1137ed891570c73c8c278fc2c8cc2250bd04` passed a separate 249-assertion capture.
+The [final motion records](../Evidence/Candidate03/StageE) distinguish visible
+results, hidden contacts and provisional pile/locomotion aesthetics. Neither
+asset-generation success nor an agent-run check substitutes for the user's
+playtest approval.
+
+## Candidate03 distribution and recording provenance
+
+The [fresh-source audit](../Evidence/Candidate03/StageE/fresh_build.json) verifies
+the public checkout and its editable LFS payloads. The release archive contains
+the exact audited runtime, Windows prerequisites and retained third-party
+notices; the [archive audit](../Evidence/Candidate03/StageE/archive_audit.json)
+records its contents and SHA-256. No executable was patched after compilation.
+Earlier Candidate01/Candidate02 references and the separate Candidate02 package
+remain preserved. No external asset pack, paid service or broad license was
+introduced by Candidate03.
+
+Review movies use actual Unreal screenshot callbacks and engine master-output
+audio. Their adjacent JSON files retain built/working-tree provenance, timing
+and any excluded terminal callback. Constant-frame-rate output holds/drops real
+images against the recorded audio clock; it does not interpolate motion or
+replace the audio. Final physicality and native chapter metadata were repaired
+by stream copy with unchanged encoded video/audio packet hashes. The native
+movie preserves all 4,970 original frames and the full engine WAV; its ten
+navigation chapters are explicitly derived annotations in a separate assembly
+CSV, while the original observer phase remains unchanged. Numerical audio
+checks do not constitute a perceptual audition.

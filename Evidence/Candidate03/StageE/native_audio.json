@@ -1,0 +1,385 @@
+{
+  "schema": 1,
+  "result": "NATIVE_ENGINE_AUDIO_ENERGY_AND_COVERAGE_PASS",
+  "source_revision": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "capture_identifier": "native_manual_20260905_110414",
+  "source_audio_sha256": "d1e821578105f5455ad725a2f56c2a3d7e8e2e79cceb11e45f0c596755ae36b6",
+  "source_file_bytes": 34557996,
+  "format": {
+    "encoding": "integer PCM",
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "bits_per_sample": 16,
+    "frame_count": 8639488,
+    "duration_seconds": 179.98933333
+  },
+  "overall": {
+    "duration_seconds": 179.98933333,
+    "frame_count": 8639488,
+    "channel_sample_count": 17278976,
+    "sample_peak_normalized": 0.1830749512,
+    "sample_peak_dbfs": -14.747421,
+    "rms_normalized": 0.0014756897,
+    "rms_dbfs": -56.620099,
+    "crest_factor_db": 41.872678,
+    "sample_peak_headroom_db": 14.747421,
+    "full_scale_sample_count": 0,
+    "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+    "nonzero_sample_count": 352290,
+    "nonzero_sample_percent": 2.038836,
+    "exact_zero_frame_count": 8463343,
+    "longest_exact_zero_seconds": 95.6539375,
+    "silent_frame_count_at_threshold": 8520524,
+    "silent_frame_percent_at_threshold": 98.62302,
+    "longest_silence_seconds_at_threshold": 95.69308333,
+    "channels": [
+      {
+        "channel_index": 0,
+        "sample_peak_dbfs": -14.747421,
+        "rms_dbfs": -56.620099,
+        "dc_normalized": -5.16e-08,
+        "absolute_dc_dbfs": -145.741594,
+        "full_scale_sample_count": 0,
+        "nonzero_sample_count": 176145
+      },
+      {
+        "channel_index": 1,
+        "sample_peak_dbfs": -14.747421,
+        "rms_dbfs": -56.620099,
+        "dc_normalized": -5.16e-08,
+        "absolute_dc_dbfs": -145.741594,
+        "full_scale_sample_count": 0,
+        "nonzero_sample_count": 176145
+      }
+    ]
+  },
+  "measured_windows": [
+    {
+      "name": "carbine_shot_1",
+      "start_seconds": 4.5,
+      "end_seconds": 5.6,
+      "coverage": "complete",
+      "available_start_seconds": 4.5,
+      "available_end_seconds": 5.6,
+      "requested_duration_seconds": 1.0999999999999996,
+      "covered_duration_seconds": 1.1,
+      "covered_fraction": 1.0,
+      "metrics": {
+        "duration_seconds": 1.1,
+        "frame_count": 52800,
+        "channel_sample_count": 105600,
+        "sample_peak_normalized": 0.1317749023,
+        "sample_peak_dbfs": -17.603346,
+        "rms_normalized": 0.0050809908,
+        "rms_dbfs": -45.881032,
+        "crest_factor_db": 28.277686,
+        "sample_peak_headroom_db": 17.603346,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 17274,
+        "nonzero_sample_percent": 16.357955,
+        "exact_zero_frame_count": 44163,
+        "longest_exact_zero_seconds": 0.528,
+        "silent_frame_count_at_threshold": 48791,
+        "silent_frame_percent_at_threshold": 92.407197,
+        "longest_silence_seconds_at_threshold": 0.528,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -17.603346,
+            "rms_dbfs": -45.881032,
+            "dc_normalized": -2.624e-07,
+            "absolute_dc_dbfs": -131.62056,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 8637
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -17.603346,
+            "rms_dbfs": -45.881032,
+            "dc_normalized": -2.624e-07,
+            "absolute_dc_dbfs": -131.62056,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 8637
+          }
+        ]
+      }
+    },
+    {
+      "name": "carbine_shot_2",
+      "start_seconds": 11.3,
+      "end_seconds": 12.2,
+      "coverage": "complete",
+      "available_start_seconds": 11.3,
+      "available_end_seconds": 12.2,
+      "requested_duration_seconds": 0.8999999999999986,
+      "covered_duration_seconds": 0.9,
+      "covered_fraction": 1.0,
+      "metrics": {
+        "duration_seconds": 0.9,
+        "frame_count": 43200,
+        "channel_sample_count": 86400,
+        "sample_peak_normalized": 0.1161193848,
+        "sample_peak_dbfs": -18.701905,
+        "rms_normalized": 0.0051669027,
+        "rms_dbfs": -45.735394,
+        "crest_factor_db": 27.033489,
+        "sample_peak_headroom_db": 18.701905,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 25782,
+        "nonzero_sample_percent": 29.840278,
+        "exact_zero_frame_count": 30309,
+        "longest_exact_zero_seconds": 0.33310417,
+        "silent_frame_count_at_threshold": 37617,
+        "silent_frame_percent_at_threshold": 87.076389,
+        "longest_silence_seconds_at_threshold": 0.4083125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -18.701905,
+            "rms_dbfs": -45.735394,
+            "dc_normalized": 1.462e-07,
+            "absolute_dc_dbfs": -136.699267,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 12891
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -18.701905,
+            "rms_dbfs": -45.735394,
+            "dc_normalized": 1.462e-07,
+            "absolute_dc_dbfs": -136.699267,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 12891
+          }
+        ]
+      }
+    },
+    {
+      "name": "carbine_reload",
+      "start_seconds": 17.7,
+      "end_seconds": 20.1,
+      "coverage": "complete",
+      "available_start_seconds": 17.7,
+      "available_end_seconds": 20.1,
+      "requested_duration_seconds": 2.400000000000002,
+      "covered_duration_seconds": 2.4,
+      "covered_fraction": 1.0,
+      "metrics": {
+        "duration_seconds": 2.4,
+        "frame_count": 115200,
+        "channel_sample_count": 230400,
+        "sample_peak_normalized": 0.0633239746,
+        "sample_peak_dbfs": -23.968637,
+        "rms_normalized": 0.0027897014,
+        "rms_dbfs": -51.088846,
+        "crest_factor_db": 27.120209,
+        "sample_peak_headroom_db": 23.968637,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 48328,
+        "nonzero_sample_percent": 20.975694,
+        "exact_zero_frame_count": 91036,
+        "longest_exact_zero_seconds": 0.61866667,
+        "silent_frame_count_at_threshold": 101009,
+        "silent_frame_percent_at_threshold": 87.681424,
+        "longest_silence_seconds_at_threshold": 0.6214375,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -23.968637,
+            "rms_dbfs": -51.088846,
+            "dc_normalized": -5.449e-07,
+            "absolute_dc_dbfs": -125.273362,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 24164
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -23.968637,
+            "rms_dbfs": -51.088846,
+            "dc_normalized": -5.449e-07,
+            "absolute_dc_dbfs": -125.273362,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 24164
+          }
+        ]
+      }
+    },
+    {
+      "name": "shotgun_shot_bright",
+      "start_seconds": 30.5,
+      "end_seconds": 31.8,
+      "coverage": "complete",
+      "available_start_seconds": 30.5,
+      "available_end_seconds": 31.8,
+      "requested_duration_seconds": 1.3000000000000007,
+      "covered_duration_seconds": 1.3,
+      "covered_fraction": 1.0,
+      "metrics": {
+        "duration_seconds": 1.3,
+        "frame_count": 62400,
+        "channel_sample_count": 124800,
+        "sample_peak_normalized": 0.1681213379,
+        "sample_peak_dbfs": -15.487543,
+        "rms_normalized": 0.0099278039,
+        "rms_dbfs": -40.062936,
+        "crest_factor_db": 24.575393,
+        "sample_peak_headroom_db": 15.487543,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 66202,
+        "nonzero_sample_percent": 53.046474,
+        "exact_zero_frame_count": 29299,
+        "longest_exact_zero_seconds": 0.384,
+        "silent_frame_count_at_threshold": 34405,
+        "silent_frame_percent_at_threshold": 55.136218,
+        "longest_silence_seconds_at_threshold": 0.384,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.487543,
+            "rms_dbfs": -40.062936,
+            "dc_normalized": 1.3557e-06,
+            "absolute_dc_dbfs": -117.356826,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 33101
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.487543,
+            "rms_dbfs": -40.062936,
+            "dc_normalized": 1.3557e-06,
+            "absolute_dc_dbfs": -117.356826,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 33101
+          }
+        ]
+      }
+    },
+    {
+      "name": "shotgun_shell_reload",
+      "start_seconds": 35.5,
+      "end_seconds": 37.2,
+      "coverage": "complete",
+      "available_start_seconds": 35.5,
+      "available_end_seconds": 37.2,
+      "requested_duration_seconds": 1.7000000000000028,
+      "covered_duration_seconds": 1.7,
+      "covered_fraction": 1.0,
+      "metrics": {
+        "duration_seconds": 1.7,
+        "frame_count": 81600,
+        "channel_sample_count": 163200,
+        "sample_peak_normalized": 0.0487060547,
+        "sample_peak_dbfs": -26.248341,
+        "rms_normalized": 0.0033232632,
+        "rms_dbfs": -49.568705,
+        "crest_factor_db": 23.320364,
+        "sample_peak_headroom_db": 26.248341,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 50818,
+        "nonzero_sample_percent": 31.13848,
+        "exact_zero_frame_count": 56191,
+        "longest_exact_zero_seconds": 0.77904167,
+        "silent_frame_count_at_threshold": 65605,
+        "silent_frame_percent_at_threshold": 80.398284,
+        "longest_silence_seconds_at_threshold": 0.8086875,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -26.248341,
+            "rms_dbfs": -49.568705,
+            "dc_normalized": 8.68e-08,
+            "absolute_dc_dbfs": -141.233042,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 25409
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -26.248341,
+            "rms_dbfs": -49.568705,
+            "dc_normalized": 8.68e-08,
+            "absolute_dc_dbfs": -141.233042,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 25409
+          }
+        ]
+      }
+    },
+    {
+      "name": "shotgun_shot_dim",
+      "start_seconds": 83.3,
+      "end_seconds": 84.5,
+      "coverage": "complete",
+      "available_start_seconds": 83.3,
+      "available_end_seconds": 84.5,
+      "requested_duration_seconds": 1.2000000000000028,
+      "covered_duration_seconds": 1.2,
+      "covered_fraction": 1.0,
+      "metrics": {
+        "duration_seconds": 1.2,
+        "frame_count": 57600,
+        "channel_sample_count": 115200,
+        "sample_peak_normalized": 0.1830749512,
+        "sample_peak_dbfs": -14.747421,
+        "rms_normalized": 0.0112898054,
+        "rms_dbfs": -38.946271,
+        "crest_factor_db": 24.198849,
+        "sample_peak_headroom_db": 14.747421,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 73060,
+        "nonzero_sample_percent": 63.420139,
+        "exact_zero_frame_count": 21070,
+        "longest_exact_zero_seconds": 0.26266667,
+        "silent_frame_count_at_threshold": 28912,
+        "silent_frame_percent_at_threshold": 50.194444,
+        "longest_silence_seconds_at_threshold": 0.26266667,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -14.747421,
+            "rms_dbfs": -38.946271,
+            "dc_normalized": -3.3188e-06,
+            "absolute_dc_dbfs": -109.580413,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 36530
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -14.747421,
+            "rms_dbfs": -38.946271,
+            "dc_normalized": -3.3188e-06,
+            "absolute_dc_dbfs": -109.580413,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 36530
+          }
+        ]
+      }
+    }
+  ],
+  "required_checks": {
+    "phase_coverage_passed": true,
+    "audible_phases_passed": true,
+    "uncovered_phases": [],
+    "phases_without_samples_above_silence_threshold": []
+  },
+  "silence_threshold_dbfs": -60,
+  "measurement_script": "Scripts/audit_gameplay_audio.py",
+  "measurement_interpretation": "All four actual shot windows and both reload windows contain recorded samples above\u221260dBFS. These are energy/coverage checks, not a sound-quality or synchrony verdict.",
+  "decoded_movie_audio": {
+    "sample_peak_dbfs_rounded": -14.8,
+    "rms_dbfs_rounded": -56.7,
+    "full_av_decode_exit_code": 0
+  },
+  "audio_audition_performed": false,
+  "source_audio_trimmed_padded_stretched_or_replaced": false,
+  "limitations": [
+    "Measured PCM sample peaks are not oversampled true peaks or LUFS.",
+    "Audio operation labels derive from the actual frame state changes and input log; sound identity is not inferred automatically.",
+    "The source game uses its original provisional authored/synthesized assets; no perceptual approval is claimed."
+  ]
+}

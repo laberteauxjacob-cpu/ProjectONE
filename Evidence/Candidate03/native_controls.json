@@ -1,0 +1,153 @@
+{
+  "candidate": "Candidate03",
+  "capture_kind": "packaged",
+  "capture_mode": "generic",
+  "provenance_basis": "Runtime kind and source identity supplied by operator; encoding does not establish packaged validation or visual/audio approval.",
+  "source_revision": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "source_state": "exact-commit",
+  "source": "Actual gameplay JPEG screenshot callbacks plus Unreal master-output WAV",
+  "frames": 4970,
+  "dimensions": [
+    1600,
+    900
+  ],
+  "capture_span_seconds": 179.967139,
+  "actual_capture_fps": 27.610596176672008,
+  "first_frame_audio_seconds": 0.014582,
+  "last_frame_audio_seconds": 179.981721,
+  "audio_duration_seconds": 179.98933333333332,
+  "final_frame_hold_seconds": 0.007612333333327115,
+  "maximum_frame_hold_seconds": 0.050253,
+  "source_audio": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "sample_width_bytes": 2,
+    "sample_frames": 8639488
+  },
+  "frames_csv_sha256": "73182a1643ed3300fe26b43c7c845238eb7533bc1a45703114b781f3a7068916",
+  "source_wav_sha256": "d1e821578105f5455ad725a2f56c2a3d7e8e2e79cceb11e45f0c596755ae36b6",
+  "ordered_frame_identity_sha256": "50e8dde9eef8b3397a86f3c59605664da0b331ce4d194e357620efc27604116e",
+  "frame_identity_method": "SHA256 of UTF-8 JSON lines [relative filename, original audio_seconds string, JPEG SHA256] in CSV order",
+  "video_output_fps": 30,
+  "frame_treatment": "Captured images held according to callback timestamps; first image held from audio time zero. CFR output duplicates or drops captured frames on the 30fps grid; no generated pixels, motion interpolation or retiming to hide stalls.",
+  "audio_treatment": "AAC transcode of the supplied engine WAV at original duration; this assembler does not replace, pad, stretch or synthesize audio. The source gameplay may itself use provisional synthesized sound assets.",
+  "audio_review": "Encoding does not establish perceptual audition or audible-phase coverage; run the separate gameplay-audio audit.",
+  "observed_phase_order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "chapters": [
+    {
+      "phase": 0,
+      "title": "Carbine aim and two native mouse shots",
+      "start_seconds": 0,
+      "end_seconds": 17.830815
+    },
+    {
+      "phase": 1,
+      "title": "Carbine magazine reload / R",
+      "start_seconds": 17.830815,
+      "end_seconds": 23.80486
+    },
+    {
+      "phase": 2,
+      "title": "2: shotgun selection, shot and shell reload",
+      "start_seconds": 23.80486,
+      "end_seconds": 42.257569
+    },
+    {
+      "phase": 3,
+      "title": "1, Tab and mouse-wheel weapon selection",
+      "start_seconds": 42.257569,
+      "end_seconds": 73.604369
+    },
+    {
+      "phase": 4,
+      "title": "F7 dim lighting and shotgun shot",
+      "start_seconds": 73.604369,
+      "end_seconds": 93.040328
+    },
+    {
+      "phase": 5,
+      "title": "F4 refill and F7 return to bright",
+      "start_seconds": 93.040328,
+      "end_seconds": 104.055181
+    },
+    {
+      "phase": 6,
+      "title": "Escape pause and resume",
+      "start_seconds": 104.055181,
+      "end_seconds": 116.907678
+    },
+    {
+      "phase": 7,
+      "title": "F2 infected spawn, approach and attack",
+      "start_seconds": 116.907678,
+      "end_seconds": 125.667172
+    },
+    {
+      "phase": 8,
+      "title": "Player death and unchanged post-death fire attempt",
+      "start_seconds": 125.667172,
+      "end_seconds": 166.796438
+    },
+    {
+      "phase": 9,
+      "title": "R while dead / ammunition unchanged",
+      "start_seconds": 166.796438,
+      "end_seconds": 179.98933333333332
+    }
+  ],
+  "chapter_timing": "Editorial navigation chapters assigned to exact original frame rows in a separate CSV. Raw recorder phase remains\u22121; chapter boundaries are not claimed as exact engine input-event times.",
+  "encoded": true,
+  "encoder_exit_code": 0,
+  "output_sha256": "2fe10bc37db895e1d2c1d411f4930cef980121f66bd5e3f77479f749ef5c2011",
+  "output_bytes": 11131144,
+  "chapter_metadata_remux": {
+    "method": "FFmpeg stream-copy remux with explicit per-chapter title metadata; no AV re-encoding",
+    "original_encoded_sha256": "3a4ce3ccf451d291353c25bba2a8322a7e423048e140d59d0cb390d02dd5a333",
+    "encoded_video_audio_packet_hashes_unchanged": true,
+    "av_stream_sha256": [
+      "0,v,SHA256=5617ea355a995b6137bad5fec349d146716deef7929baa318f38657451aa884b",
+      "1,a,SHA256=d785489c91809c769481ffe478bca715ce767126872e5938753f27bc82299424"
+    ],
+    "chapter_count": 10,
+    "all_chapter_titles_verified": true,
+    "maximum_chapter_time_rounding_seconds": 0.000438000000002603,
+    "missing_qt_chapter_track_warning": false,
+    "full_av_decode_exit_code": 0,
+    "container_duration_seconds_rounded_to_10ms": 180.0,
+    "decoded_audio_peak_dbfs_rounded": -14.8,
+    "decoded_audio_mean_dbfs_rounded": -56.7,
+    "audio_audition_performed": false,
+    "original_encoded_file_preserved_privately": true
+  },
+  "derived_chapter_annotation": {
+    "raw_source_phase": -1,
+    "editorial_phase_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "original_frames_retained": 4970,
+    "timestamps_changed": false,
+    "source_audio_changed": false,
+    "exact_source_frame_mapping": "StageE/native_capture_assembly.json"
+  },
+  "audio_energy_verification": "StageE/native_audio.json"
+}

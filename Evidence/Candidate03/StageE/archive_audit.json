@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "result": "PASS",
+  "verified_utc": "2026-09-05T10:45:41.665444+00:00",
+  "candidate": "Candidate03",
+  "source_revision": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "archive": "ProjectONE-Candidate03-Windows.zip",
+  "archive_bytes": 398043452,
+  "archive_sha256": "ada689b2314d3047d581d0523a2cbcd91f57661d06554d6288a6b4fae79600d2",
+  "archive_entries": 1217,
+  "entry_count_derivation": {
+    "runtime": 45,
+    "retained_notices": 1169,
+    "distribution_documents": 3
+  },
+  "decompressed_bytes": 663287293,
+  "all_entry_crc_verified": true,
+  "manifest_sizes_and_sha256_verified": true,
+  "distribution_notice_source_text_verified_with_checkout_line_endings": true,
+  "sidecars_match_complete_zip": true,
+  "duplicate_or_case_colliding_entries": false,
+  "unsafe_or_private_debug_source_entry_paths": false,
+  "runtime_files_verified": 45,
+  "all_runtime_files_byte_identical_to_audited_fresh_package": true,
+  "required_six_runtime_files_match_fresh_build_record": true,
+  "both_native_prerequisite_installers_bound_to_fresh_build": true,
+  "runtime_privacy_clearance_inherited_by_exact_hash_from_passed_release_audit": true,
+  "notice_catalog": {
+    "engine_version": "5.7.2",
+    "retained_entries": 1169,
+    "all_retained_notices_byte_identical_to_current_catalog": true,
+    "excluded_unused_component_notices": [
+      "Logitech G SDK License Agreement.pdf",
+      "MarketplacePlugins/EOSOnlineSubsystem_EpicOnlineServicesSDK_License.pdf",
+      "NvidiaGameworks_License.docx",
+      "UnrealStudio/DatasmithCADImporter_ThirdPartySoftwareNotices.pdf",
+      "UnrealStudio/DatasmithImporter_ThirdPartySoftwareNotices.pdf",
+      "VisualC++RedistributableforVisualStudio2010_LICENSE.pdf"
+    ],
+    "legal_notice_bodies_edited": false
+  },
+  "source_archive_generator_sha256": "77004a9436ef1fedef0795727ac07a82af689427fdf7e30dd00c1d0aca3878cc",
+  "input_record_hashes": {
+    "build_record": {
+      "bytes": 61482,
+      "sha256": "cb74855bfeb60b57c1b13a1bdec28d086660e184a427fb84bbdd2ba185d4f84e"
+    },
+    "release_audit": {
+      "bytes": 120270,
+      "sha256": "900cb632bad7b5053c5054e06922cbc7e976d7d47820c9bfab02190140d8f803"
+    }
+  },
+  "main_executable_sha256": "a87eedc25e8f042b6bebc1e2f8200e3ec0d0e5d59f0c6fac8bdd6ad8522785c6",
+  "bootstrap_executable_sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+  "mutation_performed": false,
+  "runtime_qa_or_publication_proven_by_this_audit": false,
+  "limitations": [
+    "This verifies archive identity/integrity and prior audit binding, not runtime or performance results.",
+    "Runtime privacy findings are inherited from byte-identical passed release-audit payloads; no new binary secret scan is claimed.",
+    "Retained legal notices are byte-identical to the current catalog; this is not a new PDF/Word metadata or legal-sufficiency review.",
+    "No archive extraction, signing, upload, release adoption, or Git ref mutation is performed."
+  ]
+}

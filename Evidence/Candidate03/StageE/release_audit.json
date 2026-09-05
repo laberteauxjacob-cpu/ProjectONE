@@ -1,0 +1,732 @@
+{
+  "schema": 1,
+  "verified_utc": "2026-09-05T10:24:25.476074+00:00",
+  "source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "package": "Packaged/Candidate03/Windows",
+  "result": "PASS",
+  "mutation_performed": false,
+  "retained_file_count": 45,
+  "retained_bytes": 653635299,
+  "required_runtime_matches_exact_source_build": true,
+  "omitted_file_count": 614,
+  "findings": [],
+  "upstream_engine_diagnostic": {
+    "source": "Engine/Source/Runtime/D3D12RHI/Private/Windows/WindowsD3D12Device.cpp",
+    "line": 1357,
+    "classification": "Unchanged Unreal Engine diagnostic example shown only when LOCALAPPDATA is missing while clearing the driver PSO cache. It is not a path from this project or validation host and is not used for filesystem access.",
+    "matched_occurrences": 1,
+    "verified_source_context": {
+      "function": "static void ClearPSODriverCache()",
+      "function_line": 1297,
+      "environment_read_line": 1299,
+      "environment_read": "FString LocalAppDataFolder = FPlatformMisc::GetEnvironmentVariable(TEXT(\"LOCALAPPDATA\"));",
+      "condition_line": 1300,
+      "condition": "if (!LocalAppDataFolder.IsEmpty())",
+      "diagnostic_branch": "The else branch at lines 1355-1358 logs an Error when LOCALAPPDATA is empty. The message asks for the normal user-local AppData location; its example path literal is intentionally omitted here.",
+      "diagnostic_line": 1357,
+      "diagnostic_prefix": "clearPSODriverCache failed: please ensure that LOCALAPPDATA points to",
+      "engine_version": "5.7.2",
+      "engine_changelist": 49658320,
+      "source_context_inspected_locally": true
+    }
+  },
+  "scope": "Read-only SHA256 inventory; scans all retained raw file bytes for ASCII and UTF16 Windows Users roots; parses PE CodeView and signing metadata. Cooked archives may contain compressed data and are additionally covered by the source asset publication audit.",
+  "files": [
+    {
+      "path": "Engine/Binaries/ThirdParty/DbgHelp/dbghelp.dll",
+      "bytes": 2232712,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "c61402133c5a961be61cf8fc651cca42be2232f502549d239150b855fab173d2",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 20872,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "dbghelp.pdb",
+            "absolute_path": false,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/MsQuic/v220/win64/msquic.dll",
+      "bytes": 2547104,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "f71b5f857abe1509756947a4f4863f293e583ea6050583e6942843694d8d9938",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 20896,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "msquic.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/NVIDIA/NVaftermath/Win64/GFSDK_Aftermath_Lib.x64.dll",
+      "bytes": 5442616,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "99e10fd351e3154fd7f0b819c8ad39b16ee01223a61c1994bd24bcdb82972430",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 20536,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "GFSDK_Aftermath_Lib.x64.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Ogg/Win64/VS2015/libogg_64.dll",
+      "bytes": 59856,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "77bfe5db8b9b2227dd25a02de2947a7cce3afd7e520cde3cc019b5b568e3c925",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 10704,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "libogg_64.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vorbis/Win64/VS2015/libvorbis_64.dll",
+      "bytes": 1724880,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "b67768dd12b0895833f306f5ae12d28964830e00f2b431135425f5b24077915d",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 10704,
+        "codeview_records": []
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vorbis/Win64/VS2015/libvorbisfile_64.dll",
+      "bytes": 48592,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "b8610a446acbe9e553cff7290cf9b0f3e190800ad4c08d9eea90c06aa382f680",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 10704,
+        "codeview_records": []
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_api_dump.dll",
+      "bytes": 11001096,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "377cefcb66f5f018d55641083c32404de5658a1e86d484b92f57f25b74c54ff9",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21256,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "VkLayer_api_dump.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_api_dump.json",
+      "bytes": 12828,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "281669fdf39baf7e49e0507387645997451187be2f7d444b0c169ef078004e46",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_crash_diagnostic.dll",
+      "bytes": 2029320,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "c6586cbec5d6de0daed5d2452914d099b8e63c86bf0970df6dca38c7c3129590",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21256,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "VkLayer_crash_diagnostic.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_crash_diagnostic.json",
+      "bytes": 9527,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "3601109840469aea0b9008512157e043c89500705cb346270fb019d7ed6f724e",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_gfxreconstruct.dll",
+      "bytes": 5603072,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "e519bb52d80c40fba7dc474331d39ecf66aacf7486bc9019e46c60941711f399",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21248,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "VkLayer_gfxreconstruct.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_gfxreconstruct.json",
+      "bytes": 27234,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "a6c78d253715f260a0fe7c8e1b0ce3e153aa8a802a2ba89b0dd46561e686b636",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_profiles.dll",
+      "bytes": 1776392,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "92701f48cc945f4d30602aead362dc9f77729a0a9efbcceb378a8f61877d0277",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21256,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "VkLayer_khronos_profiles.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_profiles.json",
+      "bytes": 70320,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "8c9d6e4bf6d38c2cf223b598aaf86a08242a1a07d62b24236cca3e64e0daf91c",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_shader_object.dll",
+      "bytes": 371464,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "8f037a67ffa89af0fca90d91393e7854265bb515de7bffbe01513ed514a4fdf2",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21256,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "VkLayer_khronos_shader_object.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_shader_object.json",
+      "bytes": 4455,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "98b9a12a5723665abab2eadfcab700a5785172adad22e5ca1364ab466268185f",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_synchronization2.dll",
+      "bytes": 341768,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "8707201541cec52165828c92b494022567ae97d42245bf272a656f6965dbfd5e",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21256,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "VkLayer_khronos_synchronization2.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_synchronization2.json",
+      "bytes": 1910,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "80a014d0b4337ea6ab05b8295fe6d1ba7f4cc0cf6bfe918873a0d30960973696",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_validation.dll",
+      "bytes": 17958152,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "c6bdf73e611635a22b00981ebfb3117a05b3384b4a1d9e115d5fdc7fdc85db8f",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21256,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "VkLayer_khronos_validation.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_validation.json",
+      "bytes": 82965,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "be1722a7a84efca54cd0bd1625f37016b556dd696586620f81ff5fa1c155a198",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64/WinPixEventRuntime.dll",
+      "bytes": 69080,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "283c554d3b72142041bb5680739b39b96b58162c6b7a9e968dc2a76235150da1",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 30680,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "WinPixEventRuntime.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Windows/XAudio2_9/x64/xaudio2_9redist.dll",
+      "bytes": 858176,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "bbd9bec2356aa0b03ca6b02d6fb107e63ff2d5975f4217c5b79fba14c5b913df",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 20032,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "XAudio2_9Redist.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Config/StagedBuild_ProjectONE.ini",
+      "bytes": 3,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Content/Renderer/TessellationTable.bin",
+      "bytes": 259568,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "edc4f3b628a139c5e185bbaeca661c95c1f427368d3b92892c5cff36c56dd941",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Content/Slate/Cursor/invisible.cur",
+      "bytes": 326,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "fef3980fa567e9c45d5d8dcaa432a2c1a3f3bb17fe67d7ab198164f56c142aa1",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Content/SlateDebug/Fonts/LastResort.tps",
+      "bytes": 930,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "0f775fa99d05e21d43d2d06d55982b23dcdccdb512a9a5a07aff674f212c41b8",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Content/SlateDebug/Fonts/LastResort.ttf",
+      "bytes": 5395052,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "fff0f8de0b868b964950fe97c9b60f893e9bc85a4f90b3629c5693db058b97b9",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Extras/GPUDumpViewer/GPUDumpViewer.html",
+      "bytes": 187194,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "15966544a010b56930a7389b5e9cbeee7a9ae545d132906e983ac954a839df67",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Extras/GPUDumpViewer/OpenGPUDumpViewer.bat",
+      "bytes": 879,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "e8f7ef9c88697041bd87902b76e52558979ca866c7450b1da108a94a027f441b",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Extras/GPUDumpViewer/OpenGPUDumpViewer.sh",
+      "bytes": 2165,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "1b222b5d5aad6dd9b5b9f0a1c72d38635149540f2c7a368600ec76c1d304390a",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.arm64.exe",
+      "bytes": 11733072,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "0423f7d1c765afea32a414eb156478d694924ea948ac21a4565a4fb1025b258f",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21136,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "burn.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21128,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "burn.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "Engine/Plugins/NNE/NNERuntimeORT/Binaries/ThirdParty/Onnxruntime/Win64/onnxruntime.dll",
+      "bytes": 14692896,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "8ba79c4cb4809413348fca0d5f4d1b7a2d529d8b32de0f9ca514c6f2488b4223",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21024,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "onnxruntime.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/D3D12/x64/D3D12Core.dll",
+      "bytes": 4544032,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "ecfc9f71a15739d69a246fcc7b737789392793496a073c0ffc6d3127c3183e56",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21024,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "D3D12Core.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/D3D12/x64/d3d12SDKLayers.dll",
+      "bytes": 5104656,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "4dee11053a4082c5c9e3d6fba9b9c49e076dda28679601792a81f57a09dac614",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21008,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "d3d12SDKLayers.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/DML/x64/DirectML.dll",
+      "bytes": 18537992,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "30a8a708b05eafe25e6a4d1e66554c92d5e63da6a5d8faa3fae1e39226c10b49",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 21000,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "DirectML.pdb",
+            "absolute_path": true,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 291752448,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "a87eedc25e8f042b6bebc1e2f8200e3ec0d0e5d59f0c6fac8bdd6ad8522785c6",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 1,
+      "pe": {
+        "security_directory_bytes": 0,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "ProjectONE.pdb",
+            "absolute_path": false,
+            "private_user_path": false
+          }
+        ]
+      }
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/tbb12.dll",
+      "bytes": 331728,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "0278433e085de109e2be36b4e0027116c53bf46a83d82d08b6c95ba2a5e98eb3",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 10704,
+        "codeview_records": []
+      }
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/tbbmalloc.dll",
+      "bytes": 117712,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "58535cfe511f13e074d460f146123880cac25268560527ad5e248cbce897adc9",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 10704,
+        "codeview_records": []
+      }
+    },
+    {
+      "path": "ProjectONE/Content/Paks/global.ucas",
+      "bytes": 2640128,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "20a863e48b5f8764e620050bd5d35294e0c7bfa342470a907ebcf57b08dde237",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "ProjectONE/Content/Paks/global.utoc",
+      "bytes": 686,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "b8944d77a97c5ba0e0825a4a37d4d24a4b2fcdcf62ccf6249555d6b6ee2d3c86",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10718725,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "8f63887316597bb7c43d4d865744b828d441d5cd527496afa3a7086758a845f9",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 209333184,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "acb8de9366240b77f7d391971d41c7e794a5908d7f905a3993c774524256996a",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 197036,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "ffcd400882e08d523390610a2d1266d5dea18c253ad12327da41de0712a02b28",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0
+    },
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "publication": "retain_runtime_or_notice",
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+      "personal_path_ascii_count": 0,
+      "personal_path_utf16_unclassified_count": 0,
+      "upstream_engine_diagnostic_count": 0,
+      "pe": {
+        "security_directory_bytes": 10704,
+        "codeview_records": [
+          {
+            "format": "CodeView_RSDS",
+            "pdb_basename": "BootstrapPackagedGame-Win64-Shipping.pdb",
+            "absolute_path": false,
+            "private_user_path": false
+          }
+        ]
+      }
+    }
+  ],
+  "verification_scope": "Staged runtime file inventory and privacy audit of the exact fresh source build. This is not a final ZIP/notice-content audit, packaged gameplay pass or manual approval.",
+  "pe_byte_editing_performed": false,
+  "limitations": [
+    "Raw-byte ASCII/UTF16 scans do not decompress every cooked archive member; compressed cooked data also relies on the separate source-asset publication audit.",
+    "CodeView absolute_path=true may identify an upstream toolchain path without a private user root. The recorded private_user_path flags and basenames are preserved; no claim that every upstream path is relative.",
+    "Staged-file exclusion classifications do not prove final archive contents. Archive notices and exclusions require the separate actual-ZIP audit.",
+    "This report does not certify packaged gameplay, performance, perceptual audio quality or user acceptance."
+  ],
+  "evidence_origin": {
+    "audit_record": "FreshReleaseAudit_e81e1137ed89.json",
+    "audit_record_sha256": "900cb632bad7b5053c5054e06922cbc7e976d7d47820c9bfab02190140d8f803",
+    "curation": "All retained runtime paths, hashes, scan counts and PE metadata preserved. Omitted local diagnostics are represented by category counts and byte totals instead of raw filenames or session identifiers. No runtime byte edits."
+  },
+  "omitted_groups": [
+    {
+      "classification": "debug_symbols",
+      "file_count": 1,
+      "bytes": 343003136
+    },
+    {
+      "classification": "engine_runtime_saved_configuration",
+      "file_count": 1,
+      "bytes": 25
+    },
+    {
+      "classification": "project_runtime_saved_diagnostics",
+      "file_count": 609,
+      "bytes": 178875769
+    },
+    {
+      "classification": "staging_manifests",
+      "file_count": 3,
+      "bytes": 263793
+    }
+  ],
+  "file_inventory_scope": "Individual entries cover all retained runtime/notice files. Omitted files are accounted for by omitted_groups; their local filenames are not published.",
+  "exclusion_scope": "All 614 omissions are local runtime diagnostics/configuration, debug symbols or staging manifests. Runtime Saved output can include earlier validation captures carried over in the package directory. These omissions are separate from unused third-party notice exclusions in the actual final archive filter.",
+  "scan_totals": {
+    "retained_ascii_user_root_occurrences": 0,
+    "retained_unclassified_utf16_user_root_occurrences": 0,
+    "classified_upstream_engine_diagnostic_occurrences": 1,
+    "pe_files": 25,
+    "private_codeview_path_records": 0
+  }
+}

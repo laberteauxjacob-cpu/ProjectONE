@@ -1,0 +1,3017 @@
+{
+  "schema": "projectone.csv_performance.v1",
+  "input": {
+    "filename": "Profile(20260905_035321).csv",
+    "sha256": "5c2f4fa87ee95e62f543902f5756bc9b5902ebbba57d865942a954063a988150",
+    "bytes": 28356262,
+    "completed_capture": true
+  },
+  "method": {
+    "units": "milliseconds",
+    "percentile": "linear interpolation at (n-1)*p",
+    "spike_comparison": "strictly greater than threshold",
+    "elapsed_clock": "cumulative CSV FrameTime, relative to capture start, not world/actor time",
+    "physics_interpretation": "individual CPU scope durations; nested scopes and task-worker aggregates overlap and MUST NOT be summed as wall time",
+    "privacy": "allowlisted footer fields only; command line, device/login IDs and event text omitted",
+    "late_scope_columns": "use final header; earlier absent values are zero, matching UE writer semantics"
+  },
+  "capture_metadata": {
+    "platform": "Windows",
+    "config": "Development",
+    "buildversion": "++UE5+Release-5.7-CL-49658320",
+    "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+    "enginereleaseversion": "5.7.2",
+    "os": "Windows 11 (25H2) [10.0.26200.9168]",
+    "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+    "systemresolution.resx": "1600",
+    "systemresolution.resy": "900",
+    "deviceprofile": "Windows",
+    "one_scenario": "candidate03_physicality_all_11_phases"
+  },
+  "metadata_fields_omitted": 25,
+  "operator_metadata": {
+    "scenario": "physicality_phase04",
+    "source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+    "resolution": "1600x900",
+    "max_fps": 120.0,
+    "vsync": "0",
+    "recording_enabled": "no"
+  },
+  "duplicate_unselected_columns": {
+    "TextureStreaming/RenderAssetStreamingUpdate": [
+      18,
+      371
+    ],
+    "FMsgLogf/FMsgLogfCount": [
+      235,
+      340,
+      370
+    ]
+  },
+  "benchmark_log_metadata": {},
+  "selection": {
+    "start_seconds": 39.0203406,
+    "end_seconds": 48.02331039999994,
+    "excluded_intervals_seconds": [],
+    "capture_duration_seconds": 117.0604198,
+    "capture_rows": 14038,
+    "selected_frames": 1080,
+    "zero_duration_rows": 0,
+    "excluded_positive_frames": 12958,
+    "selected_duration_seconds": 9.002969799999999,
+    "declared_rule": {
+      "phase": 4,
+      "name": "head and left leg loss",
+      "begin_event_capture_frame": 4681,
+      "end_event_capture_frame": 5761,
+      "first_selected_capture_frame": 4682,
+      "last_selected_capture_frame": 5761,
+      "method": "Recorded ONEPhysicality/Phase counter within matching original begin/end event frames; no raw event text exported.",
+      "boundary_limit": "A transition frame can contain next-fixture setup work; full-run results retain all such cost."
+    }
+  },
+  "frame_time": {
+    "column": "FrameTime",
+    "samples": 1080,
+    "mean_ms": 8.336083148148148,
+    "median_ms": 8.32985,
+    "p95_ms": 8.50592,
+    "p99_ms": 8.623362000000002,
+    "max_ms": 13.7867,
+    "nonzero_samples": 1080,
+    "spikes": {
+      "above_16.7_ms": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "above_33.3_ms": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "above_50_ms": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "above_100_ms": {
+        "count": 0,
+        "percent": 0.0
+      }
+    }
+  },
+  "thread_timings": {
+    "RenderThreadTime": {
+      "samples": 1080,
+      "mean_ms": 1.827388148148148,
+      "median_ms": 1.8118,
+      "p95_ms": 2.00287,
+      "p99_ms": 2.2272990000000004,
+      "max_ms": 2.8615,
+      "nonzero_samples": 1080,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "GameThreadTime": {
+      "samples": 1080,
+      "mean_ms": 1.6667911111111111,
+      "median_ms": 1.6516,
+      "p95_ms": 2.101355,
+      "p99_ms": 2.2435950000000005,
+      "max_ms": 6.5904,
+      "nonzero_samples": 1080,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "RHIThreadTime": {
+      "samples": 1080,
+      "mean_ms": 1.3433259259259258,
+      "median_ms": 1.3337500000000002,
+      "p95_ms": 1.485955,
+      "p99_ms": 1.5582610000000003,
+      "max_ms": 2.05,
+      "nonzero_samples": 1080,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    }
+  },
+  "physics": {
+    "status": "available",
+    "scopes": {
+      "PhysicsVerbose/AllWorkers/StepSolver": {
+        "samples": 1080,
+        "mean_ms": 0.38283064814814816,
+        "median_ms": 0.23675000000000002,
+        "p95_ms": 0.7078549999999999,
+        "p99_ms": 0.7602640000000003,
+        "max_ms": 1.0147,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_Integrate": {
+        "samples": 1080,
+        "mean_ms": 0.005422407407407408,
+        "median_ms": 0.0056,
+        "p95_ms": 0.0091,
+        "p99_ms": 0.0105,
+        "max_ms": 0.0125,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": {
+        "samples": 1080,
+        "mean_ms": 0.004523611111111111,
+        "median_ms": 0.0046,
+        "p95_ms": 0.0069,
+        "p99_ms": 0.007921000000000004,
+        "max_ms": 0.0105,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": {
+        "samples": 1080,
+        "mean_ms": 0.00041333333333333337,
+        "median_ms": 0.0004,
+        "p95_ms": 0.0007,
+        "p99_ms": 0.0009,
+        "max_ms": 0.0014,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": {
+        "samples": 1080,
+        "mean_ms": 0.048828333333333335,
+        "median_ms": 0.054650000000000004,
+        "p95_ms": 0.0821,
+        "p99_ms": 0.09104200000000001,
+        "max_ms": 0.1472,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": {
+        "samples": 1080,
+        "mean_ms": 0.06267018518518519,
+        "median_ms": 0.0698,
+        "p95_ms": 0.09910999999999999,
+        "p99_ms": 0.109463,
+        "max_ms": 0.1592,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": {
+        "samples": 1080,
+        "mean_ms": 0.02737472222222222,
+        "median_ms": 0.0048,
+        "p95_ms": 0.06391,
+        "p99_ms": 0.071663,
+        "max_ms": 0.1476,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": {
+        "samples": 1080,
+        "mean_ms": 0.04013296296296297,
+        "median_ms": 0.00195,
+        "p95_ms": 0.09771499999999998,
+        "p99_ms": 0.11779000000000032,
+        "max_ms": 0.1857,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": {
+        "samples": 1080,
+        "mean_ms": 0.09290694444444444,
+        "median_ms": 0.01985,
+        "p95_ms": 0.209115,
+        "p99_ms": 0.245321,
+        "max_ms": 0.2952,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/CCD": {
+        "samples": 1080,
+        "mean_ms": 0.00027175925925925924,
+        "median_ms": 0.0003,
+        "p95_ms": 0.0005,
+        "p99_ms": 0.0008,
+        "max_ms": 0.0009,
+        "nonzero_samples": 1077,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": {
+        "samples": 1080,
+        "mean_ms": 0.010093796296296295,
+        "median_ms": 0.0101,
+        "p95_ms": 0.0141,
+        "p99_ms": 0.0155,
+        "max_ms": 0.0938,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": {
+        "samples": 1080,
+        "mean_ms": 0.0038608333333333333,
+        "median_ms": 0.00295,
+        "p95_ms": 0.009904999999999995,
+        "p99_ms": 0.0128,
+        "max_ms": 0.0165,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": {
+        "samples": 1080,
+        "mean_ms": 0.0013822222222222222,
+        "median_ms": 0.0013,
+        "p95_ms": 0.0024,
+        "p99_ms": 0.0032420000000000075,
+        "max_ms": 0.0078,
+        "nonzero_samples": 1074,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": {
+        "samples": 1080,
+        "mean_ms": 0.00017962962962962963,
+        "median_ms": 0.0002,
+        "p95_ms": 0.0004,
+        "p99_ms": 0.0007,
+        "max_ms": 0.0008,
+        "nonzero_samples": 1078,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": {
+        "samples": 1080,
+        "mean_ms": 0.016495092592592592,
+        "median_ms": 0.01385,
+        "p95_ms": 0.026,
+        "p99_ms": 0.029726000000000023,
+        "max_ms": 0.1021,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": {
+        "samples": 1080,
+        "mean_ms": 0.07947027777777778,
+        "median_ms": 0.0027,
+        "p95_ms": 0.20042,
+        "p99_ms": 0.21618400000000002,
+        "max_ms": 0.246,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": {
+        "samples": 1080,
+        "mean_ms": 0.0007281481481481481,
+        "median_ms": 0.0007,
+        "p95_ms": 0.0012,
+        "p99_ms": 0.0013,
+        "max_ms": 0.0017,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": {
+        "samples": 1080,
+        "mean_ms": 0.0001200925925925926,
+        "median_ms": 0.0001,
+        "p95_ms": 0.0002,
+        "p99_ms": 0.0005,
+        "max_ms": 0.0007,
+        "nonzero_samples": 864,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": {
+        "samples": 1080,
+        "mean_ms": 0.005163981481481481,
+        "median_ms": 0.0034,
+        "p95_ms": 0.011,
+        "p99_ms": 0.012363000000000011,
+        "max_ms": 0.0433,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": {
+        "samples": 1080,
+        "mean_ms": 0.2956239814814815,
+        "median_ms": 0.1454,
+        "p95_ms": 0.5840799999999999,
+        "p99_ms": 0.626757,
+        "max_ms": 0.7054,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_PullData": {
+        "samples": 1080,
+        "mean_ms": 0.026355648148148145,
+        "median_ms": 0.0248,
+        "p95_ms": 0.0424,
+        "p99_ms": 0.04956800000000003,
+        "max_ms": 0.0813,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": {
+        "samples": 1080,
+        "mean_ms": 8.027777777777777e-05,
+        "median_ms": 0.0001,
+        "p95_ms": 0.0002,
+        "p99_ms": 0.0002,
+        "max_ms": 0.0004,
+        "nonzero_samples": 673,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/GameThread/AcquireSceneWriteLock": {
+        "samples": 1080,
+        "mean_ms": 0.0034643518518518517,
+        "median_ms": 0.0036,
+        "p95_ms": 0.0069,
+        "p99_ms": 0.008,
+        "max_ms": 0.0276,
+        "nonzero_samples": 1080,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "ONEPhysicality/GameThread/RegionalDamage": {
+        "samples": 1080,
+        "mean_ms": 0.0019732407407407407,
+        "median_ms": 0.0,
+        "p95_ms": 0.0,
+        "p99_ms": 0.0,
+        "max_ms": 1.0999,
+        "nonzero_samples": 2,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "ONEPhysicality/GameThread/BloodFixedStep": {
+        "samples": 1080,
+        "mean_ms": 0.003299722222222222,
+        "median_ms": 0.0,
+        "p95_ms": 0.03680999999999999,
+        "p99_ms": 0.05068300000000008,
+        "max_ms": 0.118,
+        "nonzero_samples": 82,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "ONEPhysicality/GameThread/StumpCollisionTransfer": {
+        "samples": 1080,
+        "mean_ms": 1.62037037037037e-05,
+        "median_ms": 0.0,
+        "p95_ms": 0.0,
+        "p99_ms": 0.0,
+        "max_ms": 0.0141,
+        "nonzero_samples": 2,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "ONEPhysicality/GameThread/RagdollInitialize": {
+        "samples": 1080,
+        "mean_ms": 0.0006464814814814814,
+        "median_ms": 0.0,
+        "p95_ms": 0.0,
+        "p99_ms": 0.0,
+        "max_ms": 0.3706,
+        "nonzero_samples": 2,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_Gather": {
+        "samples": 1080,
+        "mean_ms": 0.027626574074074074,
+        "median_ms": 0.0,
+        "p95_ms": 0.0785,
+        "p99_ms": 0.08476800000000002,
+        "max_ms": 0.1184,
+        "nonzero_samples": 524,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "Chaos/AllWorkers/ApplyConstraints": {
+        "samples": 1080,
+        "mean_ms": 0.03790111111111111,
+        "median_ms": 0.0,
+        "p95_ms": 0.1093,
+        "p99_ms": 0.1177,
+        "max_ms": 0.1756,
+        "nonzero_samples": 524,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "PhysicsVerbose/AllWorkers/StepSolver_Scatter": {
+        "samples": 1080,
+        "mean_ms": 0.007546111111111112,
+        "median_ms": 0.0,
+        "p95_ms": 0.0227,
+        "p99_ms": 0.02564200000000001,
+        "max_ms": 0.0312,
+        "nonzero_samples": 524,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "ONEPhysicality/GameThread/RagdollRest": {
+        "samples": 1080,
+        "mean_ms": 0.0008962037037037036,
+        "median_ms": 0.0,
+        "p95_ms": 0.005904999999999995,
+        "p99_ms": 0.019363000000000012,
+        "max_ms": 0.0274,
+        "nonzero_samples": 82,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "ONEPhysicality/GameThread/PartInitialize": {
+        "samples": 1080,
+        "mean_ms": 0.0010168518518518517,
+        "median_ms": 0.0,
+        "p95_ms": 0.0,
+        "p99_ms": 0.0,
+        "max_ms": 0.5949,
+        "nonzero_samples": 2,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      }
+    },
+    "counters": {
+      "PhysicsCounters/NumDisabledBodies": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 0.026851851851851852,
+        "max": 24.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumBodies": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 110.525,
+        "max": 174.0,
+        "last": 114.0
+      },
+      "PhysicsCounters/NumDynamicBodies": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 27.733333333333334,
+        "max": 32.0,
+        "last": 32.0
+      },
+      "PhysicsCounters/NumKinematicBodies": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 19.733333333333334,
+        "max": 48.0,
+        "last": 19.0
+      },
+      "PhysicsCounters/NumStaticBodies": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 63.05833333333333,
+        "max": 126.0,
+        "last": 63.0
+      },
+      "PhysicsCounters/NumMovingBodies": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 22.189814814814813,
+        "max": 49.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumGeometryCollectionBodies": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 0.0,
+        "max": 0.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumIslands": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 2.598148148148148,
+        "max": 4.0,
+        "last": 3.0
+      },
+      "PhysicsCounters/NumIslandGroups": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 0.7870370370370371,
+        "max": 2.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumContacts": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 18.70925925925926,
+        "max": 61.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumJoints": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 24.266666666666666,
+        "max": 28.0,
+        "last": 28.0
+      },
+      "PhysicsCounters/NumCharacterGroundConstraints": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 0.0,
+        "max": 0.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumValidConstraints": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 18.70925925925926,
+        "max": 61.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumActiveConstraints": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 9.15925925925926,
+        "max": 30.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumRestoredConstraints": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 4.462037037037037,
+        "max": 14.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumManifoldPoints": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 40.922222222222224,
+        "max": 132.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumActiveManifoldPoints": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 13.62962962962963,
+        "max": 46.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumRestoredManifoldPoints": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 13.374074074074073,
+        "max": 42.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumUpdatedManifoldPoints": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 0.0,
+        "max": 0.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumStaticShapes": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 0.0,
+        "max": 0.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumKinematicShapes": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 0.0,
+        "max": 0.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumDynamicShapes": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 13.264814814814814,
+        "max": 34.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumBroadPhasePairs": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 76.03148148148148,
+        "max": 240.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumMidPhases": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 31.908333333333335,
+        "max": 106.0,
+        "last": 0.0
+      },
+      "PhysicsCounters/NumPositionIterations": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 8.007407407407408,
+        "max": 16.0,
+        "last": 8.0
+      },
+      "PhysicsCounters/NumVelocityIterations": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 2.001851851851852,
+        "max": 4.0,
+        "last": 2.0
+      },
+      "PhysicsCounters/NumProjectionIterations": {
+        "unit": "native_counter_not_time",
+        "samples": 1080,
+        "mean": 1.000925925925926,
+        "max": 2.0,
+        "last": 1.0
+      },
+      "ONEPhysicality/Live": {
+        "unit": "project_counter_not_time",
+        "samples": 1080,
+        "mean": 0.26481481481481484,
+        "max": 2.0,
+        "last": 0.0
+      },
+      "ONEPhysicality/RigidBodies": {
+        "unit": "project_counter_not_time",
+        "samples": 1080,
+        "mean": 27.762962962962963,
+        "max": 32.0,
+        "last": 32.0
+      },
+      "ONEPhysicality/Awake": {
+        "unit": "project_counter_not_time",
+        "samples": 1080,
+        "mean": 12.507407407407408,
+        "max": 32.0,
+        "last": 0.0
+      },
+      "ONEPhysicality/Wounds": {
+        "unit": "project_counter_not_time",
+        "samples": 1080,
+        "mean": 2.311111111111111,
+        "max": 4.0,
+        "last": 0.0
+      },
+      "ONEPhysicality/Phase": {
+        "unit": "project_counter_not_time",
+        "samples": 1080,
+        "mean": 4.0,
+        "max": 4.0,
+        "last": 4.0
+      },
+      "ONEPhysicality/Droplets": {
+        "unit": "project_counter_not_time",
+        "samples": 1080,
+        "mean": 0.16018518518518518,
+        "max": 6.0,
+        "last": 0.0
+      },
+      "ONEPhysicality/Pools": {
+        "unit": "project_counter_not_time",
+        "samples": 1080,
+        "mean": 1.048148148148148,
+        "max": 16.0,
+        "last": 16.0
+      },
+      "ONEPhysicality/ProjectionTraces": {
+        "unit": "project_counter_not_time",
+        "samples": 1080,
+        "mean": 0.16018518518518518,
+        "max": 6.0,
+        "last": 0.0
+      }
+    }
+  },
+  "worst_frames": [
+    {
+      "capture_frame_index": 5761,
+      "elapsed_start_seconds": 48.009523699999946,
+      "event_count": 2,
+      "timings_ms": {
+        "FrameTime": 13.7867,
+        "RenderThreadTime": 1.7865,
+        "GameThreadTime": 6.5904,
+        "RHIThreadTime": 1.1858,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.1368,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0024,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0021,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0221,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0298,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0029,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0012,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.0137,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0094,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0022,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0019,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0101,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.0018,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0005,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0013,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.0809,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0166,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0001,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0276,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0188,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0058,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 0.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 0.0,
+        "PhysicsCounters/NumContacts": 0.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 0.0,
+        "PhysicsCounters/NumActiveConstraints": 0.0,
+        "PhysicsCounters/NumRestoredConstraints": 0.0,
+        "PhysicsCounters/NumManifoldPoints": 0.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 0.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 0.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 0.0,
+        "PhysicsCounters/NumBroadPhasePairs": 0.0,
+        "PhysicsCounters/NumMidPhases": 0.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 0.0,
+        "ONEPhysicality/Wounds": 0.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 16.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 4873,
+      "elapsed_start_seconds": 40.60992510000002,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 9.6921,
+        "RenderThreadTime": 1.7312,
+        "GameThreadTime": 3.1727,
+        "RHIThreadTime": 1.3825,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.5312,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0081,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.004,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0707,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0867,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.047,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0687,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.1515,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0076,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0038,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0007,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0168,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.1226,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.001,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.008,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.4293,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0325,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0002,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0073,
+        "ONEPhysicality/GameThread/RegionalDamage": 1.0999,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.1084,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0141,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.3706,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0304,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0391,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0078,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0144,
+        "ONEPhysicality/GameThread/PartInitialize": 0.5949
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 101.0,
+        "PhysicsCounters/NumDynamicBodies": 16.0,
+        "PhysicsCounters/NumKinematicBodies": 22.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 36.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 2.0,
+        "PhysicsCounters/NumIslandGroups": 1.0,
+        "PhysicsCounters/NumContacts": 19.0,
+        "PhysicsCounters/NumJoints": 14.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 19.0,
+        "PhysicsCounters/NumActiveConstraints": 7.0,
+        "PhysicsCounters/NumRestoredConstraints": 2.0,
+        "PhysicsCounters/NumManifoldPoints": 38.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 8.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 8.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 17.0,
+        "PhysicsCounters/NumBroadPhasePairs": 102.0,
+        "PhysicsCounters/NumMidPhases": 44.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 32.0,
+        "ONEPhysicality/Wounds": 4.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 4.0,
+        "ONEPhysicality/Pools": 4.0,
+        "ONEPhysicality/ProjectionTraces": 6.0
+      }
+    },
+    {
+      "capture_frame_index": 4777,
+      "elapsed_start_seconds": 39.80957169999999,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 9.4541,
+        "RenderThreadTime": 1.8198,
+        "GameThreadTime": 2.6152,
+        "RHIThreadTime": 1.2564,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.2177,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0051,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0068,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0551,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0707,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0046,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0018,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.0177,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0026,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0117,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.0018,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0006,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0028,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.1376,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0219,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0002,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.006,
+        "ONEPhysicality/GameThread/RegionalDamage": 1.0312,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0034,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.3276,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.5033
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 87.0,
+        "PhysicsCounters/NumDynamicBodies": 0.0,
+        "PhysicsCounters/NumKinematicBodies": 24.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 22.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 0.0,
+        "PhysicsCounters/NumIslandGroups": 0.0,
+        "PhysicsCounters/NumContacts": 0.0,
+        "PhysicsCounters/NumJoints": 0.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 0.0,
+        "PhysicsCounters/NumActiveConstraints": 0.0,
+        "PhysicsCounters/NumRestoredConstraints": 0.0,
+        "PhysicsCounters/NumManifoldPoints": 0.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 0.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 0.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 0.0,
+        "PhysicsCounters/NumBroadPhasePairs": 0.0,
+        "PhysicsCounters/NumMidPhases": 0.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 1.0,
+        "ONEPhysicality/RigidBodies": 16.0,
+        "ONEPhysicality/Awake": 16.0,
+        "ONEPhysicality/Wounds": 2.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 4837,
+      "elapsed_start_seconds": 40.3097854,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.7671,
+        "RenderThreadTime": 1.8534,
+        "GameThreadTime": 2.1262,
+        "RHIThreadTime": 1.2811,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.5711,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0069,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0043,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0684,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0833,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0601,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0702,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.1647,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0104,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0121,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0014,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0178,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.1259,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0008,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0071,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.4587,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0376,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0001,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0077,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0282,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0282,
+        "Chaos/AllWorkers/ApplyConstraints": 0.033,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.007,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0113,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 101.0,
+        "PhysicsCounters/NumDynamicBodies": 16.0,
+        "PhysicsCounters/NumKinematicBodies": 22.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 36.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 1.0,
+        "PhysicsCounters/NumIslandGroups": 1.0,
+        "PhysicsCounters/NumContacts": 15.0,
+        "PhysicsCounters/NumJoints": 14.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 15.0,
+        "PhysicsCounters/NumActiveConstraints": 3.0,
+        "PhysicsCounters/NumRestoredConstraints": 0.0,
+        "PhysicsCounters/NumManifoldPoints": 23.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 3.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 0.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 17.0,
+        "PhysicsCounters/NumBroadPhasePairs": 114.0,
+        "PhysicsCounters/NumMidPhases": 47.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 1.0,
+        "ONEPhysicality/RigidBodies": 16.0,
+        "ONEPhysicality/Awake": 16.0,
+        "ONEPhysicality/Wounds": 2.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 6.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 4.0
+      }
+    },
+    {
+      "capture_frame_index": 4940,
+      "elapsed_start_seconds": 41.16827360000002,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.7255,
+        "RenderThreadTime": 1.9952,
+        "GameThreadTime": 2.1491,
+        "RHIThreadTime": 1.5017,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.7136,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0074,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0041,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0856,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.1018,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0672,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0995,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.2126,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0145,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0053,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0021,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0266,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.1641,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0008,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0106,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.5771,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0466,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0001,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0065,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0729,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0918,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0187,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 49.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 2.0,
+        "PhysicsCounters/NumContacts": 45.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 45.0,
+        "PhysicsCounters/NumActiveConstraints": 22.0,
+        "PhysicsCounters/NumRestoredConstraints": 10.0,
+        "PhysicsCounters/NumManifoldPoints": 96.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 28.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 30.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 34.0,
+        "PhysicsCounters/NumBroadPhasePairs": 221.0,
+        "PhysicsCounters/NumMidPhases": 93.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 32.0,
+        "ONEPhysicality/Wounds": 4.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 4852,
+      "elapsed_start_seconds": 40.43479950000001,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6937,
+        "RenderThreadTime": 1.7206,
+        "GameThreadTime": 2.0324,
+        "RHIThreadTime": 1.298,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.6078,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0089,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0052,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0699,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0891,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0654,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0927,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.194,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0091,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0089,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.001,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0197,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.1338,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.001,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0084,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.4995,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0302,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0053,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0312,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0381,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0095,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 101.0,
+        "PhysicsCounters/NumDynamicBodies": 16.0,
+        "PhysicsCounters/NumKinematicBodies": 22.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 36.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 1.0,
+        "PhysicsCounters/NumIslandGroups": 1.0,
+        "PhysicsCounters/NumContacts": 18.0,
+        "PhysicsCounters/NumJoints": 14.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 18.0,
+        "PhysicsCounters/NumActiveConstraints": 2.0,
+        "PhysicsCounters/NumRestoredConstraints": 2.0,
+        "PhysicsCounters/NumManifoldPoints": 33.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 3.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 5.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 17.0,
+        "PhysicsCounters/NumBroadPhasePairs": 113.0,
+        "PhysicsCounters/NumMidPhases": 48.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 1.0,
+        "ONEPhysicality/RigidBodies": 16.0,
+        "ONEPhysicality/Awake": 16.0,
+        "ONEPhysicality/Wounds": 2.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 5026,
+      "elapsed_start_seconds": 41.88512870000003,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.678,
+        "RenderThreadTime": 1.9107,
+        "GameThreadTime": 2.3068,
+        "RHIThreadTime": 1.4413,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.7886,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0083,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0045,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0846,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.1013,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0556,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.1081,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.2268,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0212,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.007,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0025,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0007,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0342,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.1901,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0008,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0114,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.6445,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0457,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0069,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0781,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0993,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0262,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 49.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 2.0,
+        "PhysicsCounters/NumContacts": 60.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 60.0,
+        "PhysicsCounters/NumActiveConstraints": 29.0,
+        "PhysicsCounters/NumRestoredConstraints": 14.0,
+        "PhysicsCounters/NumManifoldPoints": 128.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 43.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 42.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 34.0,
+        "PhysicsCounters/NumBroadPhasePairs": 206.0,
+        "PhysicsCounters/NumMidPhases": 89.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 32.0,
+        "ONEPhysicality/Wounds": 4.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 4733,
+      "elapsed_start_seconds": 39.4430156,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6721,
+        "RenderThreadTime": 1.9269,
+        "GameThreadTime": 1.8098,
+        "RHIThreadTime": 1.3775,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.2719,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0044,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.005,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0005,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0619,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0761,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0049,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0026,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.0235,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0031,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.003,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0005,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0192,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.0027,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.001,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0041,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.1599,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0324,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0038,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 87.0,
+        "PhysicsCounters/NumDynamicBodies": 0.0,
+        "PhysicsCounters/NumKinematicBodies": 24.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 22.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 0.0,
+        "PhysicsCounters/NumIslandGroups": 0.0,
+        "PhysicsCounters/NumContacts": 0.0,
+        "PhysicsCounters/NumJoints": 0.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 0.0,
+        "PhysicsCounters/NumActiveConstraints": 0.0,
+        "PhysicsCounters/NumRestoredConstraints": 0.0,
+        "PhysicsCounters/NumManifoldPoints": 0.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 0.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 0.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 0.0,
+        "PhysicsCounters/NumBroadPhasePairs": 0.0,
+        "PhysicsCounters/NumMidPhases": 0.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 2.0,
+        "ONEPhysicality/RigidBodies": 0.0,
+        "ONEPhysicality/Awake": 0.0,
+        "ONEPhysicality/Wounds": 0.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 5200,
+      "elapsed_start_seconds": 43.33502230000003,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6588,
+        "RenderThreadTime": 1.9192,
+        "GameThreadTime": 2.1166,
+        "RHIThreadTime": 1.4373,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.7366,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.009,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0073,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0785,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0985,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0574,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.091,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.1961,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0142,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0053,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0015,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0288,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.2119,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0008,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0109,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.6003,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0401,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0002,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0048,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0782,
+        "Chaos/AllWorkers/ApplyConstraints": 0.1046,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0211,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 48.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 2.0,
+        "PhysicsCounters/NumContacts": 53.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 53.0,
+        "PhysicsCounters/NumActiveConstraints": 29.0,
+        "PhysicsCounters/NumRestoredConstraints": 14.0,
+        "PhysicsCounters/NumManifoldPoints": 120.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 45.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 42.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 33.0,
+        "PhysicsCounters/NumBroadPhasePairs": 192.0,
+        "PhysicsCounters/NumMidPhases": 81.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 31.0,
+        "ONEPhysicality/Wounds": 3.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 4881,
+      "elapsed_start_seconds": 40.67668360000002,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6539,
+        "RenderThreadTime": 1.9123,
+        "GameThreadTime": 2.1043,
+        "RHIThreadTime": 1.5343,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.6651,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0066,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0048,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0849,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.1,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0553,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0843,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.1815,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0096,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0041,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0009,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0221,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.1813,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0007,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0104,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.5441,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0422,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0001,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0064,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0755,
+        "Chaos/AllWorkers/ApplyConstraints": 0.093,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0185,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 49.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 2.0,
+        "PhysicsCounters/NumContacts": 24.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 24.0,
+        "PhysicsCounters/NumActiveConstraints": 10.0,
+        "PhysicsCounters/NumRestoredConstraints": 3.0,
+        "PhysicsCounters/NumManifoldPoints": 44.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 14.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 9.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 34.0,
+        "PhysicsCounters/NumBroadPhasePairs": 157.0,
+        "PhysicsCounters/NumMidPhases": 59.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 32.0,
+        "ONEPhysicality/Wounds": 4.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 4876,
+      "elapsed_start_seconds": 40.63487770000002,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6409,
+        "RenderThreadTime": 1.819,
+        "GameThreadTime": 2.041,
+        "RHIThreadTime": 1.3441,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.6714,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0098,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0047,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0005,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0778,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0963,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0602,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0788,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.181,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0123,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0047,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0008,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0257,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.1763,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0009,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0107,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.5417,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0423,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0068,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0624,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0781,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0173,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 49.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 2.0,
+        "PhysicsCounters/NumContacts": 24.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 24.0,
+        "PhysicsCounters/NumActiveConstraints": 8.0,
+        "PhysicsCounters/NumRestoredConstraints": 3.0,
+        "PhysicsCounters/NumManifoldPoints": 44.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 9.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 9.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 34.0,
+        "PhysicsCounters/NumBroadPhasePairs": 155.0,
+        "PhysicsCounters/NumMidPhases": 58.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 32.0,
+        "ONEPhysicality/Wounds": 4.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 4859,
+      "elapsed_start_seconds": 40.49326410000001,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6187,
+        "RenderThreadTime": 1.6958,
+        "GameThreadTime": 1.9618,
+        "RHIThreadTime": 1.2404,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.5413,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0106,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0059,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0005,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0585,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0787,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0419,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0688,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.143,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0091,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0097,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0021,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0167,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.1365,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0006,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0075,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.436,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0344,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0068,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0336,
+        "Chaos/AllWorkers/ApplyConstraints": 0.046,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0086,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 101.0,
+        "PhysicsCounters/NumDynamicBodies": 16.0,
+        "PhysicsCounters/NumKinematicBodies": 22.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 36.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 2.0,
+        "PhysicsCounters/NumIslandGroups": 1.0,
+        "PhysicsCounters/NumContacts": 15.0,
+        "PhysicsCounters/NumJoints": 14.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 15.0,
+        "PhysicsCounters/NumActiveConstraints": 5.0,
+        "PhysicsCounters/NumRestoredConstraints": 1.0,
+        "PhysicsCounters/NumManifoldPoints": 28.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 5.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 4.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 17.0,
+        "PhysicsCounters/NumBroadPhasePairs": 108.0,
+        "PhysicsCounters/NumMidPhases": 46.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 1.0,
+        "ONEPhysicality/RigidBodies": 16.0,
+        "ONEPhysicality/Awake": 16.0,
+        "ONEPhysicality/Wounds": 2.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 5427,
+      "elapsed_start_seconds": 45.226456000000006,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6124,
+        "RenderThreadTime": 2.0729,
+        "GameThreadTime": 1.6828,
+        "RHIThreadTime": 1.495,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.1736,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0059,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0025,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0285,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0415,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0031,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0019,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.0174,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0116,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0028,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0021,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0146,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.0022,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0007,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0009,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.107,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0199,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0001,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.001,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 0.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 0.0,
+        "PhysicsCounters/NumContacts": 0.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 0.0,
+        "PhysicsCounters/NumActiveConstraints": 0.0,
+        "PhysicsCounters/NumRestoredConstraints": 0.0,
+        "PhysicsCounters/NumManifoldPoints": 0.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 0.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 0.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 0.0,
+        "PhysicsCounters/NumBroadPhasePairs": 0.0,
+        "PhysicsCounters/NumMidPhases": 0.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 0.0,
+        "ONEPhysicality/Wounds": 2.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 4805,
+      "elapsed_start_seconds": 40.04302929999999,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6102,
+        "RenderThreadTime": 1.9,
+        "GameThreadTime": 1.8468,
+        "RHIThreadTime": 1.3552,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.5591,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0074,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0038,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0601,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0747,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0438,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0376,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.1028,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0074,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0036,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0006,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0181,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.2193,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0007,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0076,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.4672,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0287,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0002,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0053,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0291,
+        "Chaos/AllWorkers/ApplyConstraints": 0.1316,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0077,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 101.0,
+        "PhysicsCounters/NumDynamicBodies": 16.0,
+        "PhysicsCounters/NumKinematicBodies": 22.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 36.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 1.0,
+        "PhysicsCounters/NumIslandGroups": 1.0,
+        "PhysicsCounters/NumContacts": 5.0,
+        "PhysicsCounters/NumJoints": 14.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 5.0,
+        "PhysicsCounters/NumActiveConstraints": 2.0,
+        "PhysicsCounters/NumRestoredConstraints": 2.0,
+        "PhysicsCounters/NumManifoldPoints": 16.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 5.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 8.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 17.0,
+        "PhysicsCounters/NumBroadPhasePairs": 57.0,
+        "PhysicsCounters/NumMidPhases": 16.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 1.0,
+        "ONEPhysicality/RigidBodies": 16.0,
+        "ONEPhysicality/Awake": 16.0,
+        "ONEPhysicality/Wounds": 2.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 5568,
+      "elapsed_start_seconds": 46.40112629999999,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6089,
+        "RenderThreadTime": 1.8991,
+        "GameThreadTime": 1.4338,
+        "RHIThreadTime": 1.3139,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.1504,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0063,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0026,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0263,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.039,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0025,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0019,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.0148,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0085,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0025,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0011,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0007,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0123,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0006,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0009,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.0933,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0152,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.001,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 0.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 0.0,
+        "PhysicsCounters/NumContacts": 0.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 0.0,
+        "PhysicsCounters/NumActiveConstraints": 0.0,
+        "PhysicsCounters/NumRestoredConstraints": 0.0,
+        "PhysicsCounters/NumManifoldPoints": 0.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 0.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 0.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 0.0,
+        "PhysicsCounters/NumBroadPhasePairs": 0.0,
+        "PhysicsCounters/NumMidPhases": 0.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 0.0,
+        "ONEPhysicality/Wounds": 2.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 5179,
+      "elapsed_start_seconds": 43.16011330000003,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6068,
+        "RenderThreadTime": 2.0468,
+        "GameThreadTime": 2.1586,
+        "RHIThreadTime": 1.5489,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.6935,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0072,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0051,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0853,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.1024,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0567,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0915,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.1903,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0125,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0048,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0016,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0249,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.1852,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0008,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0102,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.563,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0402,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0071,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0786,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0982,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0228,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 48.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 2.0,
+        "PhysicsCounters/NumContacts": 53.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 53.0,
+        "PhysicsCounters/NumActiveConstraints": 29.0,
+        "PhysicsCounters/NumRestoredConstraints": 14.0,
+        "PhysicsCounters/NumManifoldPoints": 120.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 45.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 42.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 33.0,
+        "PhysicsCounters/NumBroadPhasePairs": 192.0,
+        "PhysicsCounters/NumMidPhases": 81.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 31.0,
+        "ONEPhysicality/Wounds": 4.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 4737,
+      "elapsed_start_seconds": 39.476162499999994,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.6056,
+        "RenderThreadTime": 1.7517,
+        "GameThreadTime": 1.5974,
+        "RHIThreadTime": 1.4926,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.2409,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0043,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0065,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0676,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.083,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0042,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0014,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.0188,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0029,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0024,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0139,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0006,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0031,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.1465,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0282,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0002,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0044,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 87.0,
+        "PhysicsCounters/NumDynamicBodies": 0.0,
+        "PhysicsCounters/NumKinematicBodies": 24.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 22.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 0.0,
+        "PhysicsCounters/NumIslandGroups": 0.0,
+        "PhysicsCounters/NumContacts": 0.0,
+        "PhysicsCounters/NumJoints": 0.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 0.0,
+        "PhysicsCounters/NumActiveConstraints": 0.0,
+        "PhysicsCounters/NumRestoredConstraints": 0.0,
+        "PhysicsCounters/NumManifoldPoints": 0.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 0.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 0.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 0.0,
+        "PhysicsCounters/NumBroadPhasePairs": 0.0,
+        "PhysicsCounters/NumMidPhases": 0.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 2.0,
+        "ONEPhysicality/RigidBodies": 0.0,
+        "ONEPhysicality/Awake": 0.0,
+        "ONEPhysicality/Wounds": 0.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 5746,
+      "elapsed_start_seconds": 47.88452269999996,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.5934,
+        "RenderThreadTime": 1.8379,
+        "GameThreadTime": 1.4467,
+        "RHIThreadTime": 1.2965,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.1656,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0031,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0049,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0005,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0301,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0419,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0038,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0017,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.0166,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.011,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0025,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0019,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.013,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.0019,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0006,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0011,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.1021,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0168,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0008,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0,
+        "Chaos/AllWorkers/ApplyConstraints": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 0.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 0.0,
+        "PhysicsCounters/NumContacts": 0.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 0.0,
+        "PhysicsCounters/NumActiveConstraints": 0.0,
+        "PhysicsCounters/NumRestoredConstraints": 0.0,
+        "PhysicsCounters/NumManifoldPoints": 0.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 0.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 0.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 0.0,
+        "PhysicsCounters/NumBroadPhasePairs": 0.0,
+        "PhysicsCounters/NumMidPhases": 0.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 0.0,
+        "ONEPhysicality/Wounds": 0.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 5182,
+      "elapsed_start_seconds": 43.18500010000003,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.5917,
+        "RenderThreadTime": 1.664,
+        "GameThreadTime": 2.0632,
+        "RHIThreadTime": 1.3506,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.7431,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0089,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0064,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0006,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0985,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.119,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0516,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0911,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.1871,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0119,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0044,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0012,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.022,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.2182,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0011,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0002,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.01,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.6062,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0384,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0001,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0056,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0775,
+        "Chaos/AllWorkers/ApplyConstraints": 0.1076,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0226,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 48.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 2.0,
+        "PhysicsCounters/NumContacts": 53.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 53.0,
+        "PhysicsCounters/NumActiveConstraints": 29.0,
+        "PhysicsCounters/NumRestoredConstraints": 14.0,
+        "PhysicsCounters/NumManifoldPoints": 120.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 45.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 42.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 33.0,
+        "PhysicsCounters/NumBroadPhasePairs": 192.0,
+        "PhysicsCounters/NumMidPhases": 81.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 31.0,
+        "ONEPhysicality/Wounds": 4.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    },
+    {
+      "capture_frame_index": 5184,
+      "elapsed_start_seconds": 43.20167290000003,
+      "event_count": 0,
+      "timings_ms": {
+        "FrameTime": 8.5853,
+        "RenderThreadTime": 1.7531,
+        "GameThreadTime": 2.014,
+        "RHIThreadTime": 1.4207,
+        "PhysicsVerbose/AllWorkers/StepSolver": 0.6707,
+        "PhysicsVerbose/AllWorkers/StepSolver_Integrate": 0.0087,
+        "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": 0.0062,
+        "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": 0.0004,
+        "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": 0.0761,
+        "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": 0.0963,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": 0.0488,
+        "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": 0.0857,
+        "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": 0.1787,
+        "PhysicsVerbose/AllWorkers/CCD": 0.0003,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": 0.0113,
+        "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": 0.0045,
+        "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": 0.0014,
+        "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": 0.0216,
+        "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": 0.1721,
+        "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": 0.0008,
+        "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": 0.0001,
+        "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": 0.0121,
+        "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": 0.5351,
+        "PhysicsVerbose/AllWorkers/StepSolver_PullData": 0.0373,
+        "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": 0.0002,
+        "PhysicsVerbose/GameThread/AcquireSceneWriteLock": 0.0048,
+        "ONEPhysicality/GameThread/RegionalDamage": 0.0,
+        "ONEPhysicality/GameThread/BloodFixedStep": 0.0,
+        "ONEPhysicality/GameThread/StumpCollisionTransfer": 0.0,
+        "ONEPhysicality/GameThread/RagdollInitialize": 0.0,
+        "PhysicsVerbose/AllWorkers/StepSolver_Gather": 0.0725,
+        "Chaos/AllWorkers/ApplyConstraints": 0.1091,
+        "PhysicsVerbose/AllWorkers/StepSolver_Scatter": 0.0198,
+        "ONEPhysicality/GameThread/RagdollRest": 0.0,
+        "ONEPhysicality/GameThread/PartInitialize": 0.0
+      },
+      "native_counters": {
+        "PhysicsCounters/NumDisabledBodies": 0.0,
+        "PhysicsCounters/NumBodies": 114.0,
+        "PhysicsCounters/NumDynamicBodies": 32.0,
+        "PhysicsCounters/NumKinematicBodies": 19.0,
+        "PhysicsCounters/NumStaticBodies": 63.0,
+        "PhysicsCounters/NumMovingBodies": 48.0,
+        "PhysicsCounters/NumGeometryCollectionBodies": 0.0,
+        "PhysicsCounters/NumIslands": 3.0,
+        "PhysicsCounters/NumIslandGroups": 2.0,
+        "PhysicsCounters/NumContacts": 53.0,
+        "PhysicsCounters/NumJoints": 28.0,
+        "PhysicsCounters/NumCharacterGroundConstraints": 0.0,
+        "PhysicsCounters/NumValidConstraints": 53.0,
+        "PhysicsCounters/NumActiveConstraints": 29.0,
+        "PhysicsCounters/NumRestoredConstraints": 14.0,
+        "PhysicsCounters/NumManifoldPoints": 120.0,
+        "PhysicsCounters/NumActiveManifoldPoints": 45.0,
+        "PhysicsCounters/NumRestoredManifoldPoints": 42.0,
+        "PhysicsCounters/NumUpdatedManifoldPoints": 0.0,
+        "PhysicsCounters/NumStaticShapes": 0.0,
+        "PhysicsCounters/NumKinematicShapes": 0.0,
+        "PhysicsCounters/NumDynamicShapes": 33.0,
+        "PhysicsCounters/NumBroadPhasePairs": 192.0,
+        "PhysicsCounters/NumMidPhases": 81.0,
+        "PhysicsCounters/NumPositionIterations": 8.0,
+        "PhysicsCounters/NumVelocityIterations": 2.0,
+        "PhysicsCounters/NumProjectionIterations": 1.0,
+        "ONEPhysicality/Live": 0.0,
+        "ONEPhysicality/RigidBodies": 32.0,
+        "ONEPhysicality/Awake": 31.0,
+        "ONEPhysicality/Wounds": 4.0,
+        "ONEPhysicality/Phase": 4.0,
+        "ONEPhysicality/Droplets": 0.0,
+        "ONEPhysicality/Pools": 0.0,
+        "ONEPhysicality/ProjectionTraces": 0.0
+      }
+    }
+  ],
+  "warnings": [
+    "Requested enemy count was not supplied in capture/operator metadata."
+  ],
+  "verified_provenance": {
+    "source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+    "mode": "fresh packaged Windows Development",
+    "binding": {
+      "source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+      "fresh_build_verification": {
+        "filename": "FreshBuildVerification_e81e1137ed89.json",
+        "bytes": 61482,
+        "sha256": "cb74855bfeb60b57c1b13a1bdec28d086660e184a427fb84bbdd2ba185d4f84e"
+      },
+      "runtime_files": [
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        },
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 291752448,
+          "sha256": "a87eedc25e8f042b6bebc1e2f8200e3ec0d0e5d59f0c6fac8bdd6ad8522785c6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10718725,
+          "sha256": "8f63887316597bb7c43d4d865744b828d441d5cd527496afa3a7086758a845f9"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 209333184,
+          "sha256": "acb8de9366240b77f7d391971d41c7e794a5908d7f905a3993c774524256996a"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 197036,
+          "sha256": "ffcd400882e08d523390610a2d1266d5dea18c253ad12327da41de0712a02b28"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "exit_code": 0,
+    "failures": 0,
+    "engine_log": {
+      "filename": "engine.log",
+      "bytes": 140957,
+      "sha256": "46dda6f63eb27d34862bb14e6db67c273c02ed5d6474f42916a6284826a29fc6"
+    },
+    "checks_report": {
+      "filename": "checks.txt",
+      "bytes": 19116,
+      "sha256": "bdc490f44248757a15b28f4764a4d6e5a5c1037e37c359fbe3fd5b742a7ea8c9"
+    },
+    "observations": {
+      "filename": "observations.csv",
+      "bytes": 100247,
+      "sha256": "38b56847cc288f40b03bd34c04ca0c6da4e172eba0eabf56c78b414d9677531c"
+    },
+    "observed_phases": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "captured_media_frames": 0
+  },
+  "execution_conditions": {
+    "startup_window_request": "hidden",
+    "foreground_state": "Not independently sampled; startup visibility is not a foreground guarantee.",
+    "audio_video_recording": false,
+    "repeats": 1,
+    "ambient_application_status": "explicitly opted-in existing idle interactive Blender preserved",
+    "ambient_accounting_report": "summary.json"
+  },
+  "known_limitations": [
+    "C03-only eleven-phase physics workload; C02 has no equivalent corpse/wound implementation.",
+    "No media capture. Detailed rest telemetry is intentionally disabled while profiling.",
+    "One repeat. Scene setup and transitions are retained; a phase boundary can share setup work with its neighbor.",
+    "Frozen kinematic colliders remain in the world. Simulated body count alone is not total collision-body count.",
+    "ScreenPercentage lacks an end-of-run readback in this actor; startup/config evidence is not equivalent to that readback."
+  ],
+  "physics_settings_readback": {
+    "substepping": true,
+    "max_substep_seconds": 0.008333333,
+    "max_substeps": 6,
+    "max_physics_delta_seconds": 0.050000001
+  },
+  "numeric_timeline": {
+    "filename": "physicality_full_frames.csv",
+    "selection_encoding": "inclusive original capture_frame_index ranges",
+    "selected_frame_count": 1080,
+    "frame_index_ranges": [
+      [
+        4682,
+        5761
+      ]
+    ],
+    "reproduction": "Read this full numeric CSV and select capture_frame_index values in these inclusive ranges; preserve every selected value unchanged.",
+    "bytes": 5683292,
+    "sha256": "60deecb73f83ce78996cf31658ed7788ddf159a0ba717a1d845e66d87bdd6580"
+  }
+}

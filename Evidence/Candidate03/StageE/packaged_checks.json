@@ -1,0 +1,622 @@
+{
+  "schema": 1,
+  "candidate": "Candidate03",
+  "source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "result": "PACKAGED_THIRTEEN_MODE_CHECKS_PASS",
+  "curated_utc": "2026-09-05T10:38:16.588372+00:00",
+  "expected_modes": [
+    "ONE03MovementCheck",
+    "ONE03WeaponCheck",
+    "ONE03CaseCheck",
+    "ONE03PresentationCheck",
+    "ONE03DamageCheck",
+    "ONE03PhysicalityCheck",
+    "ONECombatCheck",
+    "ONECompare",
+    "ONEPresentation",
+    "ONEValidate",
+    "ONEBenchmark=6",
+    "ONEBenchmark=12",
+    "ONEBenchmark=18"
+  ],
+  "mode_count": 13,
+  "all_expected_modes_passed": true,
+  "mode_results": [
+    {
+      "mode": "ONE03MovementCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_MOVEMENT_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 58,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONE03MovementCheck.log",
+        "bytes": 98881,
+        "sha256": "17c1584d688c61109a05d9e2665a8b9bb0afb6af27f2ced2ec5f65e4710d8cdd"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONE03WeaponCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_WEAPON_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 85,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": 85,
+      "log": {
+        "name": "ONE03WeaponCheck.log",
+        "bytes": 111942,
+        "sha256": "8512cd04665bc0d3053e0767f78f26228f585e27b0b72a5185d3352e5544f2c9"
+      },
+      "diagnostics": {
+        "warning_entries": 26,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 2,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 24,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONE03CaseCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_CASE_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 49,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": 49,
+      "log": {
+        "name": "ONE03CaseCheck.log",
+        "bytes": 97635,
+        "sha256": "214073daf9b7de4e441b9af74317bc5730abbe859dbe6fd096ef4d30b2b71acb"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONE03PresentationCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_PRESENTATION_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 121,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONE03PresentationCheck.log",
+        "bytes": 110507,
+        "sha256": "bf447fee7e1f6e019521a9f2910c6c89fb0070268a2302f7adb09904e56372ae"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONE03DamageCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_DAMAGE_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 42,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": 42,
+      "log": {
+        "name": "ONE03DamageCheck.log",
+        "bytes": 96564,
+        "sha256": "8ac2e062f7e961aba4a9ec65a04abe96167ea70cda3e1ebb2b87905bcb872f30"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONE03PhysicalityCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_PHYSICALITY_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 245,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": 245,
+      "log": {
+        "name": "ONE03PhysicalityCheck.log",
+        "bytes": 128485,
+        "sha256": "f5dc1f93efcc2ab2944f0705e45fa4fcb09bc1b3ce2fd6370248d6c736426ccf"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONECombatCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE_COMBAT_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 40,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONECombatCheck.log",
+        "bytes": 100525,
+        "sha256": "f6520640569abb4086be0a6dfa511a0e2a743da1df04c7b77e1e4ad3e88a24e2"
+      },
+      "diagnostics": {
+        "warning_entries": 26,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 2,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 24,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONECompare",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE_COMBAT_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 3,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONECompare.log",
+        "bytes": 90768,
+        "sha256": "6e328c42a62ecb0779b99ff7ac43025679330ff6635f739df325cc9b622f5e9b"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONEPresentation",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE_PRESENTATION_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 33,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONEPresentation.log",
+        "bytes": 94502,
+        "sha256": "4b1e8187f643594cbe224ed959d5be3646fc0199b68dfaf9ae43321ab56a2f0e"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONEValidate",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE_VALIDATION_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 35,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONEValidate.log",
+        "bytes": 99537,
+        "sha256": "10161a30979291725e09836b110a19bf6a56e2f735570843cc1bc5318c7972ac"
+      },
+      "diagnostics": {
+        "warning_entries": 26,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 2,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 24,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONEBenchmark=6",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE_VALIDATION_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 1,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONEBenchmark_6.log",
+        "bytes": 89805,
+        "sha256": "dcb900fa95fda9f94667f797d105d72426dcee9213ba4bf32937f890ffcc9e40"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONEBenchmark=12",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE_VALIDATION_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 1,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONEBenchmark_12.log",
+        "bytes": 89813,
+        "sha256": "08a257e1c308f5d3e9bc71bb78256192f67220db97f71f4f76c44d4e1ffc85c0"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONEBenchmark=18",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE_VALIDATION_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 1,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONEBenchmark_18.log",
+        "bytes": 89813,
+        "sha256": "8d538948b5ed24acf6027ce35cda94ec2d10948bd164f9784b3c95f6e5bd1742"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    }
+  ],
+  "total_actual_pass_assertion_lines": 714,
+  "total_actual_fail_assertion_lines": 0,
+  "diagnostic_totals": {
+    "warning_entries": 208,
+    "error_entries": 0,
+    "fatal_entries": 0,
+    "fatal_assertion_or_ensure_signatures": 0
+  },
+  "runtime_binding": {
+    "fresh_build_report": "fresh_build.json",
+    "exact_source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+    "all_six_required_files_match": true,
+    "files": [
+      {
+        "path": "ProjectONE.exe",
+        "bytes": 164864,
+        "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+        "bytes": 291752448,
+        "sha256": "a87eedc25e8f042b6bebc1e2f8200e3ec0d0e5d59f0c6fac8bdd6ad8522785c6"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+        "bytes": 10718725,
+        "sha256": "8f63887316597bb7c43d4d865744b828d441d5cd527496afa3a7086758a845f9"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+        "bytes": 209333184,
+        "sha256": "acb8de9366240b77f7d391971d41c7e794a5908d7f905a3993c774524256996a"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+        "bytes": 197036,
+        "sha256": "ffcd400882e08d523390610a2d1266d5dea18c253ad12327da41de0712a02b28"
+      },
+      {
+        "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+        "bytes": 25646504,
+        "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+      }
+    ],
+    "method": "Current package file sizes and SHA256 hashes verified against the exact-source fresh build record after all mode logs completed."
+  },
+  "evidence_origin": {
+    "summary_name": "summary.json",
+    "summary_sha256": "03b166226e7b7d6f1e8c27706132de39ba39548818641e9d8c5c07db4df320b8",
+    "summary_bytes": 2060,
+    "fresh_build_record_sha256": "cb74855bfeb60b57c1b13a1bdec28d086660e184a427fb84bbdd2ba185d4f84e",
+    "raw_log_publication": false,
+    "local_run_paths_and_object_ids_omitted": true
+  },
+  "counting_method": "Counts actual LogTemp Display PASS/FAIL assertion lines from each mode-specific family. Completion checks fields are cross-checked where present. Repeated assertions in timed trials remain separate logged assertions; these totals are not distinct test-case counts.",
+  "limitations": [
+    "Packaged numerical runtime checks are separate from native unit tests, final performance profiling, chronological image review and direct manual controls.",
+    "ONECompare and ONEPresentation are legacy scripted modes; completion does not constitute perceptual audio audition or visual approval.",
+    "Legacy benchmark modes take a screenshot and are not the separate final no-capture performance profile.",
+    "Warnings are retained by category and safe numeric code; passing numerical assertions does not erase their diagnostic significance.",
+    "Runtime hashes establish the exact package observed at curation, not continuous cryptographic measurement of every process during execution.",
+    "This report does not verify the final ZIP, published release, or user acceptance."
+  ]
+}

@@ -1,0 +1,7 @@
+# Final packaged physicality motion review
+
+Source `e81e1137ed891570c73c8c278fc2c8cc2250bd04`. The final capture passed 249 checks with 0 failures and saved 3,069 frames. This review inspected 430 dense frame presentations, 36 sparse context frames and 8 native 1600×900 rechecks (446 distinct source frames). Exact windows and hashes are in [the review record](physicality_motion_review.json).
+
+Both anatomical arm paths show separation, continued use of the remaining arm and collapse without the missing part returning. Head separation is clear. The leg-loss subject collapses, although overlap obscures much of its detached leg and contact. The six falls develop different orientations and bent limbs, with a close upper cluster and lower bodies resting against one another. No gross explosion, stretching or bind-pose reset appeared in these reviewed windows.
+
+The pile is largely stable during phase 5 +5.0–6.25 seconds. Some upper bodies retain bent/kneeling shapes, and hidden contacts and small adjustments remain provisional. This review does not certify every frame or all contact aesthetics. The separate rest review covers the later hit/resume and late interval. The final check reports 32 awake bodies / 96 peak and 3 frozen corpses; no per-body late velocity telemetry was recorded. Automated anatomy, continuity and collision checks remain separate from what the images directly reveal.

@@ -1,0 +1,721 @@
+{
+  "status": "MEASURED",
+  "source_sha256": "27f214b280534fdc4664d53eada5a4ea77ef7e00f430ba31a95998cab3dbe8b1",
+  "source_file_bytes": 4030508,
+  "format": {
+    "encoding": "integer PCM",
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "bits_per_sample": 16,
+    "frame_count": 1007616,
+    "duration_seconds": 20.992
+  },
+  "overall": {
+    "duration_seconds": 20.992,
+    "frame_count": 1007616,
+    "channel_sample_count": 2015232,
+    "sample_peak_normalized": 0.2020874023,
+    "sample_peak_dbfs": -13.889215,
+    "rms_normalized": 0.0090656583,
+    "rms_dbfs": -40.852013,
+    "crest_factor_db": 26.962798,
+    "sample_peak_headroom_db": 13.889215,
+    "full_scale_sample_count": 0,
+    "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+    "nonzero_sample_count": 1107576,
+    "nonzero_sample_percent": 54.960223,
+    "exact_zero_frame_count": 453828,
+    "longest_exact_zero_seconds": 2.12666667,
+    "silent_frame_count_at_threshold": 619960,
+    "silent_frame_percent_at_threshold": 61.527407,
+    "longest_silence_seconds_at_threshold": 2.12666667,
+    "channels": [
+      {
+        "channel_index": 0,
+        "sample_peak_dbfs": -13.889215,
+        "rms_dbfs": -40.852013,
+        "dc_normalized": -4.708e-07,
+        "absolute_dc_dbfs": -126.542527,
+        "full_scale_sample_count": 0,
+        "nonzero_sample_count": 553788
+      },
+      {
+        "channel_index": 1,
+        "sample_peak_dbfs": -13.889215,
+        "rms_dbfs": -40.852013,
+        "dc_normalized": -4.708e-07,
+        "absolute_dc_dbfs": -126.542527,
+        "full_scale_sample_count": 0,
+        "nonzero_sample_count": 553788
+      }
+    ]
+  },
+  "phases": [
+    {
+      "name": "carbine",
+      "start_seconds": 2.0,
+      "end_seconds": 5.0,
+      "coverage": "complete",
+      "available_start_seconds": 2.0,
+      "available_end_seconds": 5.0,
+      "requested_duration_seconds": 3.0,
+      "covered_duration_seconds": 3.0,
+      "covered_fraction": 1.0,
+      "metrics": {
+        "duration_seconds": 3.0,
+        "frame_count": 144000,
+        "channel_sample_count": 288000,
+        "sample_peak_normalized": 0.1454772949,
+        "sample_peak_dbfs": -16.744096,
+        "rms_normalized": 0.0121731864,
+        "rms_dbfs": -38.291915,
+        "crest_factor_db": 21.547819,
+        "sample_peak_headroom_db": 16.744096,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 245792,
+        "nonzero_sample_percent": 85.344444,
+        "exact_zero_frame_count": 21104,
+        "longest_exact_zero_seconds": 0.12666667,
+        "silent_frame_count_at_threshold": 77700,
+        "silent_frame_percent_at_threshold": 53.958333,
+        "longest_silence_seconds_at_threshold": 0.18802083,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.744096,
+            "rms_dbfs": -38.291915,
+            "dc_normalized": -6.284e-07,
+            "absolute_dc_dbfs": -124.035755,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 122896
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.744096,
+            "rms_dbfs": -38.291915,
+            "dc_normalized": -6.284e-07,
+            "absolute_dc_dbfs": -124.035755,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 122896
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "name": "shotgun",
+      "start_seconds": 9.0,
+      "end_seconds": 13.0,
+      "coverage": "complete",
+      "available_start_seconds": 9.0,
+      "available_end_seconds": 13.0,
+      "requested_duration_seconds": 4.0,
+      "covered_duration_seconds": 4.0,
+      "covered_fraction": 1.0,
+      "metrics": {
+        "duration_seconds": 4.0,
+        "frame_count": 192000,
+        "channel_sample_count": 384000,
+        "sample_peak_normalized": 0.191619873,
+        "sample_peak_dbfs": -14.351189,
+        "rms_normalized": 0.0121300554,
+        "rms_dbfs": -38.322744,
+        "crest_factor_db": 23.971555,
+        "sample_peak_headroom_db": 14.351189,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 359144,
+        "nonzero_sample_percent": 93.527083,
+        "exact_zero_frame_count": 12428,
+        "longest_exact_zero_seconds": 0.12277083,
+        "silent_frame_count_at_threshold": 49982,
+        "silent_frame_percent_at_threshold": 26.032292,
+        "longest_silence_seconds_at_threshold": 0.17708333,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -14.351189,
+            "rms_dbfs": -38.322744,
+            "dc_normalized": -1.8818e-06,
+            "absolute_dc_dbfs": -114.508723,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 179572
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -14.351189,
+            "rms_dbfs": -38.322744,
+            "dc_normalized": -1.8818e-06,
+            "absolute_dc_dbfs": -114.508723,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 179572
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    }
+  ],
+  "phase_comparison": {
+    "phase_windows_fully_covered": true,
+    "shotgun_minus_carbine_rms_db": -0.030829,
+    "shotgun_minus_carbine_sample_peak_db": 2.392907,
+    "interpretation_limit": "These compare recorded mix windows, including firing cadence, distance, other events and silence. They are not isolated weapon loudness or perceived quality measurements."
+  },
+  "energy_events": [
+    {
+      "start_seconds": 2.12,
+      "end_seconds": 2.16,
+      "peak_window_start_seconds": 2.13,
+      "peak_window_rms_dbfs": -29.243232,
+      "sample_peak_dbfs": -17.463666,
+      "active_window_count": 4,
+      "duration_seconds": 0.04
+    },
+    {
+      "start_seconds": 2.29,
+      "end_seconds": 2.33,
+      "peak_window_start_seconds": 2.3,
+      "peak_window_rms_dbfs": -28.37774,
+      "sample_peak_dbfs": -17.059509,
+      "active_window_count": 4,
+      "duration_seconds": 0.04
+    },
+    {
+      "start_seconds": 2.44,
+      "end_seconds": 2.55,
+      "peak_window_start_seconds": 2.45,
+      "peak_window_rms_dbfs": -27.703787,
+      "sample_peak_dbfs": -16.744096,
+      "active_window_count": 8,
+      "duration_seconds": 0.11
+    },
+    {
+      "start_seconds": 2.78,
+      "end_seconds": 2.89,
+      "peak_window_start_seconds": 2.79,
+      "peak_window_rms_dbfs": -28.970333,
+      "sample_peak_dbfs": -18.851567,
+      "active_window_count": 8,
+      "duration_seconds": 0.11
+    },
+    {
+      "start_seconds": 3.0,
+      "end_seconds": 3.03,
+      "peak_window_start_seconds": 3.01,
+      "peak_window_rms_dbfs": -29.653565,
+      "sample_peak_dbfs": -17.979488,
+      "active_window_count": 3,
+      "duration_seconds": 0.03
+    },
+    {
+      "start_seconds": 3.3,
+      "end_seconds": 3.33,
+      "peak_window_start_seconds": 3.3,
+      "peak_window_rms_dbfs": -28.199528,
+      "sample_peak_dbfs": -18.510007,
+      "active_window_count": 3,
+      "duration_seconds": 0.03
+    },
+    {
+      "start_seconds": 3.45,
+      "end_seconds": 3.55,
+      "peak_window_start_seconds": 3.45,
+      "peak_window_rms_dbfs": -28.33993,
+      "sample_peak_dbfs": -17.185117,
+      "active_window_count": 6,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 3.69,
+      "end_seconds": 3.71,
+      "peak_window_start_seconds": 3.69,
+      "peak_window_rms_dbfs": -28.852824,
+      "sample_peak_dbfs": -17.975288,
+      "active_window_count": 2,
+      "duration_seconds": 0.02
+    },
+    {
+      "start_seconds": 3.84,
+      "end_seconds": 3.87,
+      "peak_window_start_seconds": 3.84,
+      "peak_window_rms_dbfs": -28.200621,
+      "sample_peak_dbfs": -18.505542,
+      "active_window_count": 3,
+      "duration_seconds": 0.03
+    },
+    {
+      "start_seconds": 4.01,
+      "end_seconds": 4.04,
+      "peak_window_start_seconds": 4.01,
+      "peak_window_rms_dbfs": -30.022582,
+      "sample_peak_dbfs": -17.447845,
+      "active_window_count": 3,
+      "duration_seconds": 0.03
+    },
+    {
+      "start_seconds": 4.2,
+      "end_seconds": 4.23,
+      "peak_window_start_seconds": 4.2,
+      "peak_window_rms_dbfs": -30.662985,
+      "sample_peak_dbfs": -18.713327,
+      "active_window_count": 3,
+      "duration_seconds": 0.03
+    },
+    {
+      "start_seconds": 4.37,
+      "end_seconds": 4.4,
+      "peak_window_start_seconds": 4.37,
+      "peak_window_rms_dbfs": -29.841817,
+      "sample_peak_dbfs": -19.044125,
+      "active_window_count": 3,
+      "duration_seconds": 0.03
+    },
+    {
+      "start_seconds": 4.52,
+      "end_seconds": 4.55,
+      "peak_window_start_seconds": 4.52,
+      "peak_window_rms_dbfs": -29.65112,
+      "sample_peak_dbfs": -18.608813,
+      "active_window_count": 3,
+      "duration_seconds": 0.03
+    },
+    {
+      "start_seconds": 4.69,
+      "end_seconds": 4.72,
+      "peak_window_start_seconds": 4.69,
+      "peak_window_rms_dbfs": -29.414212,
+      "sample_peak_dbfs": -18.503311,
+      "active_window_count": 3,
+      "duration_seconds": 0.03
+    },
+    {
+      "start_seconds": 4.84,
+      "end_seconds": 4.87,
+      "peak_window_start_seconds": 4.84,
+      "peak_window_rms_dbfs": -29.564728,
+      "sample_peak_dbfs": -19.046499,
+      "active_window_count": 3,
+      "duration_seconds": 0.03
+    },
+    {
+      "start_seconds": 5.56,
+      "end_seconds": 5.57,
+      "peak_window_start_seconds": 5.56,
+      "peak_window_rms_dbfs": -35.645994,
+      "sample_peak_dbfs": -26.043958,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 6.37,
+      "end_seconds": 6.38,
+      "peak_window_start_seconds": 6.37,
+      "peak_window_rms_dbfs": -35.310433,
+      "sample_peak_dbfs": -24.27538,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 6.95,
+      "end_seconds": 6.96,
+      "peak_window_start_seconds": 6.95,
+      "peak_window_rms_dbfs": -34.73076,
+      "sample_peak_dbfs": -23.968637,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 9.02,
+      "end_seconds": 9.04,
+      "peak_window_start_seconds": 9.03,
+      "peak_window_rms_dbfs": -35.132757,
+      "sample_peak_dbfs": -25.1219,
+      "active_window_count": 2,
+      "duration_seconds": 0.02
+    },
+    {
+      "start_seconds": 9.12,
+      "end_seconds": 9.23,
+      "peak_window_start_seconds": 9.13,
+      "peak_window_rms_dbfs": -25.791618,
+      "sample_peak_dbfs": -14.756113,
+      "active_window_count": 11,
+      "duration_seconds": 0.11
+    },
+    {
+      "start_seconds": 9.36,
+      "end_seconds": 9.37,
+      "peak_window_start_seconds": 9.36,
+      "peak_window_rms_dbfs": -34.411083,
+      "sample_peak_dbfs": -24.406457,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 9.76,
+      "end_seconds": 9.85,
+      "peak_window_start_seconds": 9.76,
+      "peak_window_rms_dbfs": -34.143849,
+      "sample_peak_dbfs": -23.346797,
+      "active_window_count": 5,
+      "duration_seconds": 0.09
+    },
+    {
+      "start_seconds": 9.93,
+      "end_seconds": 10.06,
+      "peak_window_start_seconds": 9.94,
+      "peak_window_rms_dbfs": -27.700246,
+      "sample_peak_dbfs": -15.162597,
+      "active_window_count": 9,
+      "duration_seconds": 0.13
+    },
+    {
+      "start_seconds": 10.47,
+      "end_seconds": 10.53,
+      "peak_window_start_seconds": 10.47,
+      "peak_window_rms_dbfs": -34.267582,
+      "sample_peak_dbfs": -23.444767,
+      "active_window_count": 2,
+      "duration_seconds": 0.06
+    },
+    {
+      "start_seconds": 10.76,
+      "end_seconds": 10.87,
+      "peak_window_start_seconds": 10.77,
+      "peak_window_rms_dbfs": -26.321921,
+      "sample_peak_dbfs": -14.351189,
+      "active_window_count": 10,
+      "duration_seconds": 0.11
+    },
+    {
+      "start_seconds": 11.26,
+      "end_seconds": 11.32,
+      "peak_window_start_seconds": 11.26,
+      "peak_window_rms_dbfs": -34.144641,
+      "sample_peak_dbfs": -23.346797,
+      "active_window_count": 3,
+      "duration_seconds": 0.06
+    },
+    {
+      "start_seconds": 11.43,
+      "end_seconds": 11.51,
+      "peak_window_start_seconds": 11.44,
+      "peak_window_rms_dbfs": -27.695253,
+      "sample_peak_dbfs": -14.620933,
+      "active_window_count": 8,
+      "duration_seconds": 0.08
+    },
+    {
+      "start_seconds": 11.67,
+      "end_seconds": 11.68,
+      "peak_window_start_seconds": 11.67,
+      "peak_window_rms_dbfs": -34.595251,
+      "sample_peak_dbfs": -24.674699,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 12.07,
+      "end_seconds": 12.13,
+      "peak_window_start_seconds": 12.07,
+      "peak_window_rms_dbfs": -34.267323,
+      "sample_peak_dbfs": -23.444767,
+      "active_window_count": 2,
+      "duration_seconds": 0.06
+    },
+    {
+      "start_seconds": 12.26,
+      "end_seconds": 12.38,
+      "peak_window_start_seconds": 12.27,
+      "peak_window_rms_dbfs": -26.689689,
+      "sample_peak_dbfs": -14.939197,
+      "active_window_count": 10,
+      "duration_seconds": 0.12
+    },
+    {
+      "start_seconds": 12.48,
+      "end_seconds": 12.49,
+      "peak_window_start_seconds": 12.48,
+      "peak_window_rms_dbfs": -34.636453,
+      "sample_peak_dbfs": -24.602354,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 12.9,
+      "end_seconds": 12.94,
+      "peak_window_start_seconds": 12.93,
+      "peak_window_rms_dbfs": -34.274858,
+      "sample_peak_dbfs": -22.87656,
+      "active_window_count": 3,
+      "duration_seconds": 0.04
+    },
+    {
+      "start_seconds": 14.14,
+      "end_seconds": 14.15,
+      "peak_window_start_seconds": 14.14,
+      "peak_window_rms_dbfs": -35.219366,
+      "sample_peak_dbfs": -26.248341,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 14.93,
+      "end_seconds": 14.94,
+      "peak_window_start_seconds": 14.93,
+      "peak_window_rms_dbfs": -37.381324,
+      "sample_peak_dbfs": -26.248341,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 15.81,
+      "end_seconds": 15.82,
+      "peak_window_start_seconds": 15.81,
+      "peak_window_rms_dbfs": -35.33173,
+      "sample_peak_dbfs": -26.248341,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 16.75,
+      "end_seconds": 16.76,
+      "peak_window_start_seconds": 16.75,
+      "peak_window_rms_dbfs": -35.313325,
+      "sample_peak_dbfs": -26.248341,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 17.0,
+      "end_seconds": 17.08,
+      "peak_window_start_seconds": 17.0,
+      "peak_window_rms_dbfs": -26.444994,
+      "sample_peak_dbfs": -15.067437,
+      "active_window_count": 8,
+      "duration_seconds": 0.08
+    },
+    {
+      "start_seconds": 17.24,
+      "end_seconds": 17.25,
+      "peak_window_start_seconds": 17.24,
+      "peak_window_rms_dbfs": -35.168274,
+      "sample_peak_dbfs": -24.674699,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 17.68,
+      "end_seconds": 17.72,
+      "peak_window_start_seconds": 17.68,
+      "peak_window_rms_dbfs": -34.465801,
+      "sample_peak_dbfs": -22.87656,
+      "active_window_count": 3,
+      "duration_seconds": 0.04
+    },
+    {
+      "start_seconds": 17.81,
+      "end_seconds": 17.9,
+      "peak_window_start_seconds": 17.81,
+      "peak_window_rms_dbfs": -26.517898,
+      "sample_peak_dbfs": -13.889215,
+      "active_window_count": 9,
+      "duration_seconds": 0.09
+    },
+    {
+      "start_seconds": 18.03,
+      "end_seconds": 18.04,
+      "peak_window_start_seconds": 18.03,
+      "peak_window_rms_dbfs": -35.777174,
+      "sample_peak_dbfs": -24.602354,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 18.45,
+      "end_seconds": 18.49,
+      "peak_window_start_seconds": 18.45,
+      "peak_window_rms_dbfs": -33.933483,
+      "sample_peak_dbfs": -22.87656,
+      "active_window_count": 3,
+      "duration_seconds": 0.04
+    },
+    {
+      "start_seconds": 18.62,
+      "end_seconds": 18.64,
+      "peak_window_start_seconds": 18.62,
+      "peak_window_rms_dbfs": -36.181473,
+      "sample_peak_dbfs": -25.948798,
+      "active_window_count": 2,
+      "duration_seconds": 0.02
+    },
+    {
+      "start_seconds": 18.72,
+      "end_seconds": 18.85,
+      "peak_window_start_seconds": 18.73,
+      "peak_window_rms_dbfs": -26.310561,
+      "sample_peak_dbfs": -14.943638,
+      "active_window_count": 10,
+      "duration_seconds": 0.13
+    },
+    {
+      "start_seconds": 19.28,
+      "end_seconds": 19.3,
+      "peak_window_start_seconds": 19.28,
+      "peak_window_rms_dbfs": -32.242408,
+      "sample_peak_dbfs": -21.51603,
+      "active_window_count": 2,
+      "duration_seconds": 0.02
+    },
+    {
+      "start_seconds": 19.51,
+      "end_seconds": 19.64,
+      "peak_window_start_seconds": 19.51,
+      "peak_window_rms_dbfs": -25.149244,
+      "sample_peak_dbfs": -15.552429,
+      "active_window_count": 12,
+      "duration_seconds": 0.13
+    },
+    {
+      "start_seconds": 20.03,
+      "end_seconds": 20.09,
+      "peak_window_start_seconds": 20.03,
+      "peak_window_rms_dbfs": -33.711563,
+      "sample_peak_dbfs": -23.346797,
+      "active_window_count": 3,
+      "duration_seconds": 0.06
+    },
+    {
+      "start_seconds": 20.22,
+      "end_seconds": 20.3,
+      "peak_window_start_seconds": 20.22,
+      "peak_window_rms_dbfs": -27.076397,
+      "sample_peak_dbfs": -14.167774,
+      "active_window_count": 8,
+      "duration_seconds": 0.08
+    },
+    {
+      "start_seconds": 20.44,
+      "end_seconds": 20.45,
+      "peak_window_start_seconds": 20.44,
+      "peak_window_rms_dbfs": -35.070827,
+      "sample_peak_dbfs": -24.602354,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 20.82,
+      "end_seconds": 20.83,
+      "peak_window_start_seconds": 20.82,
+      "peak_window_rms_dbfs": -34.09562,
+      "sample_peak_dbfs": -25.003206,
+      "active_window_count": 1,
+      "duration_seconds": 0.01
+    },
+    {
+      "start_seconds": 20.9,
+      "end_seconds": 20.92,
+      "peak_window_start_seconds": 20.91,
+      "peak_window_rms_dbfs": -35.266419,
+      "sample_peak_dbfs": -23.417224,
+      "active_window_count": 2,
+      "duration_seconds": 0.02
+    }
+  ],
+  "energy_event_count": 51,
+  "envelope": {
+    "window_columns": [
+      "start_seconds",
+      "end_seconds",
+      "rms_dbfs_all_channels",
+      "maximum_sample_peak_dbfs"
+    ],
+    "actual_window_frames": 480,
+    "actual_window_ms": 10.0
+  },
+  "warnings": [],
+  "measurement_limits": [
+    "No perceptual audition was performed; available audio-input tooling reported unsupported input.",
+    "Sample peaks are not oversampled true peaks, LUFS, or a guarantee against intersample clipping.",
+    "Full-scale sample counts use signed PCM endpoint values; near-full-scale counts use -0.1 dBFS.",
+    "Silence uses the maximum absolute channel sample per frame at the configured threshold; exact-zero counts are separate.",
+    "Energy events group RMS-threshold windows with the configured merge gap; they are not verified shot or animation event counts.",
+    "Phase labels are supplied capture annotations; no automatic identification of weapon type or event synchrony is claimed.",
+    "Null dBFS means exactly zero measured amplitude, mathematically negative infinity."
+  ],
+  "generated_utc": "2026-09-05T10:35:29.882459+00:00",
+  "source": "Packaged/Candidate03/Windows/ProjectONE/Saved/Candidate02/Comparison/gameplay_master.wav",
+  "command_parameters": {
+    "script": "Scripts/audit_gameplay_audio.py",
+    "source": "Packaged/Candidate03/Windows/ProjectONE/Saved/Candidate02/Comparison/gameplay_master.wav",
+    "output": "Saved/PublicationVerification/e81e1137ed89/PackagedComparisonAudioFull.json",
+    "phases": [
+      {
+        "name": "carbine",
+        "start_seconds": 2.0,
+        "end_seconds": 5.0
+      },
+      {
+        "name": "shotgun",
+        "start_seconds": 9.0,
+        "end_seconds": 13.0
+      }
+    ],
+    "window_ms": 10,
+    "silence_threshold_dbfs": -60,
+    "event_threshold_dbfs": -38,
+    "event_merge_gap_ms": 50,
+    "require_phase_coverage": true,
+    "require_audible_phases": true
+  },
+  "required_checks": {
+    "phase_coverage_passed": true,
+    "audible_phases_passed": true,
+    "uncovered_phases": [],
+    "phases_without_samples_above_silence_threshold": []
+  },
+  "built_source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "capture_kind": "fresh packaged legacy comparison regression",
+  "perceptual_audition": "unavailable; energy and waveform metrics do not establish timbre or mix quality",
+  "curation": {
+    "omitted_regenerable_10ms_windows": 2100,
+    "raw_report_kept_private": true,
+    "raw_report_sha256": "586913083fb844f63fce1fe8a7a2a0281a2a9d07607ed28928337f0937a28609",
+    "analysis_script_sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d",
+    "auditor_exit_code": 0,
+    "scope": "Offline analysis of completed ONECompare recording using the exact neutral source checkout. No video encoding or game process was started. This is not a performance capture or a complete thirteen-mode suite verdict."
+  },
+  "capture_only_audio_override": "The comparison runner supplies process-only Audio.UnfocusedVolumeMultiplier=1.0; normal game configuration remains unchanged."
+}

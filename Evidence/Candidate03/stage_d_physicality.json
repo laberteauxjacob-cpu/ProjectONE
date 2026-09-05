@@ -1,0 +1,148 @@
+{
+  "candidate": "Candidate03",
+  "capture_kind": "packaged",
+  "capture_mode": "generic",
+  "provenance_basis": "Runtime kind and source identity supplied by operator; encoding does not establish packaged validation or visual/audio approval.",
+  "source_revision": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "source_state": "exact-commit",
+  "source": "Actual gameplay JPEG screenshot callbacks plus Unreal master-output WAV",
+  "frames": 3068,
+  "dimensions": [
+    1600,
+    900
+  ],
+  "capture_span_seconds": 117.041198,
+  "actual_capture_fps": 26.204448112364673,
+  "first_frame_audio_seconds": 0.024755,
+  "last_frame_audio_seconds": 117.065953,
+  "audio_duration_seconds": 117.07733333333333,
+  "final_frame_hold_seconds": 0.011380333333335102,
+  "maximum_frame_hold_seconds": 0.06660700000000475,
+  "source_audio": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "sample_width_bytes": 2,
+    "sample_frames": 5619712
+  },
+  "frames_csv_sha256": "0d764a94b9d78afe48764e8cf7daea775abbdeafa4c19b7c6f76b5c13a0bb71d",
+  "source_wav_sha256": "dff2df583528673cad85d85ced019008ed4d89696359df51a0f3146ea512d6e6",
+  "ordered_frame_identity_sha256": "6496903a2d17d408abe2a299abdb73645c1607acdfcac929093435fee15eaa88",
+  "frame_identity_method": "SHA256 of UTF-8 JSON lines [relative filename, original audio_seconds string, JPEG SHA256] in CSV order",
+  "video_output_fps": 30,
+  "frame_treatment": "Captured images held according to callback timestamps; first image held from audio time zero. CFR output duplicates or drops captured frames on the 30fps grid; no generated pixels, motion interpolation or retiming to hide stalls.",
+  "audio_treatment": "AAC transcode of the supplied engine WAV at original duration; this assembler does not replace, pad, stretch or synthesize audio. The source gameplay may itself use provisional synthesized sound assets.",
+  "audio_review": "Encoding does not establish perceptual audition or audible-phase coverage; run the separate gameplay-audio audit.",
+  "observed_phase_order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "chapters": [
+    {
+      "phase": 0,
+      "title": "Minor moving wound / finite trail",
+      "start_seconds": 0,
+      "end_seconds": 7.038759
+    },
+    {
+      "phase": 1,
+      "title": "Severe torso wound / physical collapse / growing pool",
+      "start_seconds": 7.038759,
+      "end_seconds": 19.059165
+    },
+    {
+      "phase": 2,
+      "title": "Anatomical left arm / remaining right arm / collapse",
+      "start_seconds": 19.059165,
+      "end_seconds": 29.067563
+    },
+    {
+      "phase": 3,
+      "title": "Anatomical right arm / remaining left arm / collapse",
+      "start_seconds": 29.067563,
+      "end_seconds": 39.061891
+    },
+    {
+      "phase": 4,
+      "title": "Head and left leg / fatal loss / physical parts",
+      "start_seconds": 39.061891,
+      "end_seconds": 48.079819
+    },
+    {
+      "phase": 5,
+      "title": "Six moving deaths / physical corpse contact",
+      "start_seconds": 48.079819,
+      "end_seconds": 61.108643
+    },
+    {
+      "phase": 6,
+      "title": "Corner crowd / close pursuit and attacks",
+      "start_seconds": 61.108643,
+      "end_seconds": 72.107193
+    },
+    {
+      "phase": 7,
+      "title": "Rack side passage / crowd contact",
+      "start_seconds": 72.107193,
+      "end_seconds": 83.111861
+    },
+    {
+      "phase": 8,
+      "title": "Bench end / crowd contact",
+      "start_seconds": 83.111861,
+      "end_seconds": 94.120192
+    },
+    {
+      "phase": 9,
+      "title": "Sustained mixed crowd / normal equipped weapon",
+      "start_seconds": 94.120192,
+      "end_seconds": 114.132982
+    },
+    {
+      "phase": 10,
+      "title": "Encounter cleanup / no reappearing blood",
+      "start_seconds": 114.132982,
+      "end_seconds": 117.07733333333333
+    }
+  ],
+  "chapter_timing": "First observed frame of each contiguous phase, not an exact engine operation boundary.",
+  "encoded": true,
+  "encoder_exit_code": 0,
+  "output_sha256": "efcbcf9946977a1124b0f23ec87da18061a070ec1488b4426f29740ece7549a0",
+  "output_bytes": 28413320,
+  "chapter_metadata_remux": {
+    "method": "FFmpeg stream-copy remux with explicit per-chapter title metadata; no AV re-encoding",
+    "original_encoded_sha256": "5c9d9fe4ba1ae26670b30888fbc3148b23161b297bb4b18f09261edd91e9edb1",
+    "encoded_video_audio_packet_hashes_unchanged": true,
+    "av_stream_sha256": [
+      "0,v,SHA256=2617e5ebf51cbddca1d48274b3bf0ba3c34437b64a2c9c0f1327275fbe0a37b0",
+      "1,a,SHA256=1a38a045355bc82808ac3d2b5d952fe8757489a33fdba96279ed2efa129ceb1e"
+    ],
+    "chapter_count": 11,
+    "all_chapter_titles_verified": true,
+    "maximum_chapter_time_rounding_seconds": 0.000437000000001575,
+    "missing_qt_chapter_track_warning": false,
+    "full_av_decode_exit_code": 0,
+    "container_duration_seconds_rounded_to_10ms": 117.08,
+    "decoded_audio_peak_dbfs_rounded": -13.4,
+    "decoded_audio_mean_dbfs_rounded": -46.6,
+    "audio_audition_performed": false,
+    "original_encoded_file_preserved_privately": true
+  },
+  "capture_input_selection": {
+    "original_frames": 3069,
+    "assembled_frames": 3068,
+    "excluded_final_frame": "frame_03068.jpg",
+    "reason": "Final callback occurs25.595667ms after the complete original PCM WAV endpoint; all11phases retained.",
+    "original_capture_preserved": true,
+    "full_provenance": "StageE/capture_assembly.json"
+  }
+}

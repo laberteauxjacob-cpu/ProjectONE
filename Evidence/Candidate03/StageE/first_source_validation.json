@@ -1,0 +1,655 @@
+{
+  "schema": 1,
+  "candidate": "Candidate03",
+  "source_commit": "6c7a00c325eb3f4b43b42f186e1d04c2e07fee8f",
+  "result": "FIRST_SOURCE_PACKAGED_SUITE_FAILED_INCOMPLETE",
+  "recorded_utc": "2026-09-05T10:18:49.595466+00:00",
+  "historical_scope": "First-source S1 package validation. Earlier successful build/native/privacy checks remain historical facts; this suite did not complete or pass. Final new-source package validation must be recorded separately.",
+  "mode_counts": {
+    "expected": 13,
+    "passed": 9,
+    "failed": 1,
+    "not_run": 3
+  },
+  "mode_results": [
+    {
+      "mode": "ONE03MovementCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_MOVEMENT_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 58,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONE03MovementCheck.log",
+        "bytes": 102251,
+        "sha256": "7cdc6b643257e888bfd2fae711b89c86aa2b22601e86190158bd69ec801e50bf"
+      },
+      "diagnostics": {
+        "warning_entries": 14,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogAudioMixer",
+            "classification": "xaudio2_critical_callback",
+            "entries": 1,
+            "note": "XAudio2 reported an OnCriticalError callback as a Warning. The numerical gameplay suite does not establish audio device health or perceptual sound quality."
+          },
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {
+          "0x88880001": 1
+        },
+        "audio_errors_followed_by_default_device_swap_and_restart": 1,
+        "audio_recovery_note": "Audio-device error followed by successful default-device swap/restart in the same run. This is log evidence, not a source-fix claim or master-WAV audition.",
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONE03WeaponCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_WEAPON_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 85,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": 85,
+      "log": {
+        "name": "ONE03WeaponCheck.log",
+        "bytes": 111942,
+        "sha256": "484fa780b900de2bdadfde6d02301befbf2a1bbdcc72f07fadb4e213e74bf43a"
+      },
+      "diagnostics": {
+        "warning_entries": 26,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 2,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 24,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONE03CaseCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_CASE_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 49,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": 49,
+      "log": {
+        "name": "ONE03CaseCheck.log",
+        "bytes": 97635,
+        "sha256": "eba06d53114738426eaae5ec1efb28427095cfd23ae5d614575dd591c46ac741"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONE03PresentationCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_PRESENTATION_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 121,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONE03PresentationCheck.log",
+        "bytes": 110507,
+        "sha256": "fd5ca6e909b69b854d76fc8876fdfa4dfa1f05b1b76a1f0c3e7e9527a5532751"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONE03DamageCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_DAMAGE_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 42,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": 42,
+      "log": {
+        "name": "ONE03DamageCheck.log",
+        "bytes": 96323,
+        "sha256": "8313598b716189a42028d2f71ba8b8d428605afad44851a87261b948ba30a679"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONE03PhysicalityCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE03_PHYSICALITY_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 245,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": 245,
+      "log": {
+        "name": "ONE03PhysicalityCheck.log",
+        "bytes": 129661,
+        "sha256": "08681c01d3b65a6db7528b665e1e331248885face7c4d56abb49b2c86454eaae"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONECombatCheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE_COMBAT_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 40,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONECombatCheck.log",
+        "bytes": 100525,
+        "sha256": "2f4bf587db83fe32d0f06e83274a78c3f952eccdb705c55bfe90f545737a63de"
+      },
+      "diagnostics": {
+        "warning_entries": 26,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 2,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 24,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONECompare",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE_COMBAT_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 3,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONECompare.log",
+        "bytes": 91008,
+        "sha256": "b1300b5b73401740b0192c257d77eff6eab075a1dbecea06aac12e4647ebb7f3"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONEPresentation",
+      "status": "PASS",
+      "exit_code": 0,
+      "completion_marker": "ONE_PRESENTATION_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "actual_pass_assertion_lines": 33,
+      "actual_fail_assertion_lines": 0,
+      "completion_assertion_count": null,
+      "log": {
+        "name": "ONEPresentation.log",
+        "bytes": 94502,
+        "sha256": "81d0f21df895d455a9b7172fc6365f9ad73674dbe2eed76ad63c845eaf5e52c5"
+      },
+      "diagnostics": {
+        "warning_entries": 13,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "fatal_assertion_or_ensure_signatures": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 1,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 12,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ],
+        "xaudio2_critical_callback_codes": {},
+        "audio_errors_followed_by_default_device_swap_and_restart": 0,
+        "audio_recovery_note": null,
+        "socket_warnings_on_frame_zero_before_first_map_complete": 12,
+        "initialization_note": "The counted frame-zero socket warnings preceded the first LoadMap completion; this records initialization timing without publishing object identifiers."
+      }
+    },
+    {
+      "mode": "ONEValidate",
+      "status": "FAIL",
+      "exit_code": null,
+      "exit_code_note": "The incomplete runner summary does not retain an exit-code row for this mode. Failure is established by the assertion and own completion marker, not an inferred process exit.",
+      "completion_marker": "ONE_VALIDATION_COMPLETE",
+      "own_completion_marker_count": 1,
+      "completion_failures": 1,
+      "actual_pass_assertion_lines": 33,
+      "actual_fail_assertion_lines": 1,
+      "failed_assertions": [
+        "One-arm infected moves and continues pursuing"
+      ],
+      "log": {
+        "name": "ONEValidate.log",
+        "bytes": 98843,
+        "sha256": "229957d9d69f0fa48db232eebbb05ad68ef0d0cb1764adfdcc5dee54e8de7d67"
+      },
+      "diagnostics": {
+        "warning_entries": 26,
+        "error_entries": 0,
+        "fatal_entries": 0,
+        "warning_categories": [
+          {
+            "engine_category": "LogCrowdFollowing",
+            "classification": "crowd_manager_missing_recast",
+            "entries": 2,
+            "note": "UCrowdManager creation reported no RecastNavMesh instance. This warning is retained; its timing alone is not a navigation diagnosis."
+          },
+          {
+            "engine_category": "LogSkinnedMeshComp",
+            "classification": "socket_lookup_without_mesh",
+            "entries": 24,
+            "note": "A socket was queried while the component had no skeletal mesh. No per-actor identifier is published."
+          }
+        ]
+      }
+    },
+    {
+      "mode": "ONEBenchmark=6",
+      "status": "NOT_RUN",
+      "exit_code": null,
+      "actual_pass_assertion_lines": null,
+      "actual_fail_assertion_lines": null,
+      "reason": "Sequential runner stopped at ONEValidate failure; no mode log or completed summary row exists."
+    },
+    {
+      "mode": "ONEBenchmark=12",
+      "status": "NOT_RUN",
+      "exit_code": null,
+      "actual_pass_assertion_lines": null,
+      "actual_fail_assertion_lines": null,
+      "reason": "Sequential runner stopped at ONEValidate failure; no mode log or completed summary row exists."
+    },
+    {
+      "mode": "ONEBenchmark=18",
+      "status": "NOT_RUN",
+      "exit_code": null,
+      "actual_pass_assertion_lines": null,
+      "actual_fail_assertion_lines": null,
+      "reason": "Sequential runner stopped at ONEValidate failure; no mode log or completed summary row exists."
+    }
+  ],
+  "observed_assertion_totals": {
+    "pass_lines": 709,
+    "fail_lines": 1,
+    "counting_note": "Actual logged assertion lines across ten attempted modes; not distinct test-case counts. No invented assertion count for unrun benchmarks."
+  },
+  "evidence_origin": {
+    "summary_name": "summary.json",
+    "summary_sha256": "2777707fc7b9f63e85320380dd995ce9ad006ef1eb68d56187e0cbdb7f98779a",
+    "summary_bytes": 1462,
+    "summary_records_nine_passes_only": true,
+    "fresh_build_record": "FreshBuildVerification_6c7a00c325eb.json",
+    "fresh_build_record_sha256": "4dd5dc16a66a7234145259d879b3d728e0999ee1155e37e965ae5b472a70bd6b",
+    "raw_logs_published": false,
+    "local_root_and_object_identifiers_omitted": true
+  },
+  "first_build_binding": {
+    "source_commit": "6c7a00c325eb3f4b43b42f186e1d04c2e07fee8f",
+    "fresh_build_and_native_tests_succeeded": true,
+    "required_runtime_files_recorded_by_first_build": [
+      {
+        "path": "ProjectONE.exe",
+        "bytes": 164864,
+        "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+        "bytes": 291751936,
+        "sha256": "d78a3713d8c98f7bfdd92faecf6fd0648e301e0653db3645a66f32516a8bbee8"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+        "bytes": 10718725,
+        "sha256": "9959ce8817e5060b7490041524125606e2d45300782ad57603e6dfe851b4a132"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+        "bytes": 209322944,
+        "sha256": "eb155e67acd2d83cc402f3f52140557a3172d300353ab49b4f4d0c2830b340f1"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+        "bytes": 197036,
+        "sha256": "28ebf1d288cca9b3151afe7206dfa231c337c0e855cee0c52aa825d67cca1cfd"
+      },
+      {
+        "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+        "bytes": 25646504,
+        "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+      }
+    ],
+    "scope": "Runtime hashes are retained from the first-source fresh build report; this historical curation does not rehash a package directory that may be replaced for the next source."
+  },
+  "followup_diagnostics": [
+    {
+      "kind": "local editor-game rendered diagnostic",
+      "provenance": "Local pre-fixture-correction editor source with telemetry additions; not an exact packaged S1 build and not evidence of packaged trajectory coordinates.",
+      "log": {
+        "name": "ValidationPursuitRenderedProbe.log",
+        "bytes": 127522,
+        "sha256": "84fdc0af483b6c7afd76685f6e37f3bc5fd5d6bae837316db301dc2ca51ef242"
+      },
+      "observations": [
+        {
+          "stage": 2,
+          "net_displacement_from_spawn_cm": 88.565,
+          "distance_to_current_target_cm": 131.435,
+          "initial_target_distance_cm": 220.0,
+          "alive": true
+        },
+        {
+          "stage": 7,
+          "net_displacement_from_spawn_cm": 35.786,
+          "distance_to_current_target_cm": 59.12,
+          "initial_target_distance_cm": 220.0,
+          "alive": true
+        }
+      ],
+      "old_pursuit_assertion_failed": true,
+      "completed_failure_counts": [
+        1
+      ]
+    },
+    {
+      "kind": "local editor-game null-RHI diagnostic",
+      "provenance": "Local pre-fixture-correction editor source with telemetry additions; not an exact packaged S1 build and not evidence of packaged trajectory coordinates.",
+      "log": {
+        "name": "ValidationPursuitProbe.log",
+        "bytes": 116301,
+        "sha256": "b5408a3faede9d37d0e556a51fba1e091654d3042431fd20c4603e248203850a"
+      },
+      "observations": [
+        {
+          "stage": 2,
+          "net_displacement_from_spawn_cm": 88.565,
+          "distance_to_current_target_cm": 131.435,
+          "initial_target_distance_cm": 220.0,
+          "alive": true
+        },
+        {
+          "stage": 7,
+          "net_displacement_from_spawn_cm": 78.544,
+          "distance_to_current_target_cm": 79.252,
+          "initial_target_distance_cm": 220.0,
+          "alive": true
+        }
+      ],
+      "old_pursuit_assertion_failed": false,
+      "completed_failure_counts": [
+        0
+      ]
+    }
+  ],
+  "fixture_correction": {
+    "status": "LOCAL_RENDERED_FIXTURE_VERIFIED_PENDING_FINAL_NEW_SOURCE_PACKAGE_RERUN",
+    "source": "Source/ProjectONE/ONEValidation.cpp",
+    "source_sha256_at_review": "5569baba0b5fbeb6fda50e2c1fcbe4ed46bea9d0f8d0779195dba45cf1430c47",
+    "scope": "Validation assertion timing and conditions; no claim of a changed pursuit implementation.",
+    "old_condition": "At stage 7, require displacement from original spawn >40cm and distance to current target < initial distance +50cm.",
+    "early_stage_2_condition": "Require a living infected with anatomical right arm absent and left arm present, displacement from spawn >40cm, and distance to stationary target < initial distance -40cm.",
+    "later_stage_7_condition": "Require the same living/arm state and distance to the current moving target < initial distance +50cm (270cm for the recorded 220cm initial fixture).",
+    "rationale": "The rendered diagnostic showed early approach, then a near-target endpoint with only 35.786cm displacement from the original spawn. Net displacement at a later time does not measure total travel or prove a lack of earlier movement. The null-RHI endpoint differed. Separate early approach and later pursuit checks retain those two intended assertions.",
+    "verification_limit": "The second local rendered controlled-aim retest passed 35 assertions, with explicit living/right-arm-absent/left-arm-present values at both pursuit observations. This does not replace the failed S1 packaged result or establish the upcoming S2 package suite result.",
+    "additional_controlled_aim": "During stages <8, aim at pawn position +(0,1500,30); clear aim override from stage8. Both pursuit labels include alive/right/left state."
+  },
+  "limitations": [
+    "The first packaged failure has no trajectory telemetry; the listed distances come only from explicitly separate local diagnostics.",
+    "The rendered diagnostic was inspected through log observations here; this note does not add a visual or manual-play review.",
+    "The three legacy benchmark modes were not run in this first sequence and supply no performance result.",
+    "Nine successful modes do not make the thirteen-mode suite pass.",
+    "Raw logs and host paths remain local; per-log SHA256 and byte counts identify the source records.",
+    "First-source build and audit reports must be preserved when later final reports replace their primary filenames."
+  ],
+  "subsequent_fixture_development": [
+    {
+      "iteration": "split early-approach and later-pursuit assertions, before controlled aim",
+      "provenance": "Local rendered editor-game diagnostic after compiling the first fixture correction; not the original S1 package or final new-source package.",
+      "log": {
+        "name": "ValidationFixtureRendered.log",
+        "bytes": 127210,
+        "sha256": "b7057d43916472fc9eb56abf7400a3c3ce6f20ff9087aea3b6d6d76808c65b54"
+      },
+      "early_approach": "PASS; travel 88.565cm, target distance 131.435cm, initial distance 220.000cm.",
+      "later_pursuit": "FAIL; reported target distance 240.004cm was below the 270.000cm limit, so the combined assertion failed another guard.",
+      "completion_failures": 1,
+      "state_telemetry_limit": "This interim label did not record alive/right-arm/left-arm values. It cannot establish which survival/arm-state guard failed.",
+      "separate_image_review_note": "A separate review of the run's 05_combat screenshot reported an additional corpse. That observation is not used here to identify the specific failed guard or establish a shot trajectory.",
+      "input_control_issue": "The scripted firing direction still depended on the uncontrolled desktop cursor.",
+      "next_fixture_adjustment": "The validation driver now calls SetAimOverride toward pawn position plus (0,1500,30) during stages below 8, perpendicular to its +X movement/pursuit arrangement, and clears the override from stage 8. Assertion labels now include alive/right/left values.",
+      "scope": "Validation driver changes only; no gameplay behavior change or source-exact packaged result claimed.",
+      "verification_status": "SECOND_FIXTURE_CORRECTION_PENDING_RENDERED_AND_FINAL_NEW_SOURCE_PACKAGE_RERUN"
+    },
+    {
+      "iteration": "controlled-aim fixture, second local rendered retest",
+      "provenance": "Local rendered editor-game run of the corrected fixture before the fresh S2 public-source package build. This result is not a packaged thirteen-mode pass.",
+      "subsequently_committed_source": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+      "completion_utc": "2026-09-05T10:20:43.122Z",
+      "log": {
+        "name": "ValidationFixtureRendered2.log",
+        "bytes": 127257,
+        "sha256": "2d602615ffb37a405dffb3b2bca6735aee9fa6ac913b2360cd9f9e37ffb08fc6"
+      },
+      "actual_pass_assertion_lines": 35,
+      "actual_fail_assertion_lines": 0,
+      "own_completion_marker_count": 1,
+      "completion_failures": 0,
+      "early_approach": {
+        "travel_cm": 88.565,
+        "target_distance_cm": 131.435,
+        "initial_distance_cm": 220.0,
+        "alive": true,
+        "anatomical_right_arm_present": false,
+        "anatomical_left_arm_present": true
+      },
+      "later_pursuit": {
+        "target_distance_cm": 58.504,
+        "limit_cm": 270.0,
+        "alive": true,
+        "anatomical_right_arm_present": false,
+        "anatomical_left_arm_present": true
+      },
+      "verification_status": "LOCAL_RENDERED_FIXTURE_PASS_FINAL_FRESH_PACKAGE_PENDING",
+      "scope": "Only the validation fixture changed between S1 and subsequently committed S2; no changed pursuit runtime is claimed."
+    }
+  ],
+  "later_independent_verification": {
+    "source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+    "result": "PACKAGED_THIRTEEN_MODE_CHECKS_PASS",
+    "report": "packaged_checks.json",
+    "report_sha256": "b41295396d76b15dc13a1c66ff1360eb9f9df87c44fc9e2be623256b4697baa8",
+    "curated_utc": "2026-09-05T10:38:16.588372+00:00",
+    "mode_count": 13,
+    "actual_pass_assertion_lines": 714,
+    "actual_fail_assertion_lines": 0,
+    "all_six_runtime_hashes_match_exact_source_build": true,
+    "one_validate_pass_assertion_lines": 35,
+    "diagnostic_warning_entries": 208,
+    "diagnostic_error_entries": 0,
+    "diagnostic_fatal_entries": 0,
+    "scope": "Later independent fresh S2 packaged suite resolves the earlier pending final-rerun gate. The S1 package remains a recorded failed/incomplete suite; earlier local diagnostic and fixture-development results are unchanged. This is not final performance, image review, audio audition or manual approval."
+  }
+}

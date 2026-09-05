@@ -1,0 +1,1680 @@
+{
+  "schema": 2,
+  "remote": "https://github.com/laberteauxjacob-cpu/ProjectONE",
+  "branch": "codex/candidate03",
+  "source_commit": "e81e1137ed891570c73c8c278fc2c8cc2250bd04",
+  "fresh_clone_root": "<fresh-root>",
+  "started_utc": "2026-09-05T10:22:29.431019+00:00",
+  "prior_verified_checkout_commit": "6c7a00c325eb3f4b43b42f186e1d04c2e07fee8f",
+  "checkout_method": "Public remote clone in a neutral build path, clean before fetch and build; no local object alternates.",
+  "commands": [
+    {
+      "command": "git fetch origin codex/candidate03",
+      "exit_code": 0,
+      "elapsed_seconds": 0.703
+    },
+    {
+      "command": "git merge-base --is-ancestor <source-commit> origin/codex/candidate03",
+      "exit_code": 0,
+      "elapsed_seconds": 0.031
+    },
+    {
+      "command": "git merge --ff-only <source-commit>",
+      "exit_code": 0,
+      "elapsed_seconds": 0.391
+    },
+    {
+      "command": "git lfs pull",
+      "exit_code": 0,
+      "elapsed_seconds": 0.422
+    },
+    {
+      "command": "git lfs fsck",
+      "exit_code": 0,
+      "elapsed_seconds": 0.562
+    }
+  ],
+  "checks": {
+    "tracked_file_count": 569,
+    "lfs_file_count": 291,
+    "lfs_total_bytes": 165265929,
+    "lfs_hashes_and_sizes_match": true,
+    "clean_worktree_before_build": true,
+    "private_original_history_absent": true,
+    "tracked_source_unchanged_after_build": true,
+    "native_prerequisite_installers_staged": true,
+    "native_prerequisite_installer_bytes_match_engine": true,
+    "required_runtime_bytes_bound_to_source_commit": true,
+    "tracked_source_unchanged_after_verification": true
+  },
+  "lfs_files": [
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineBolt.wav",
+      "bytes": 25004,
+      "sha256": "f55fa4324c308e7fa72123987d34693f78f16a40055df3c8deb65f997355daa2"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineEmpty.wav",
+      "bytes": 9644,
+      "sha256": "c70ef143a8a55cc75ece37c5ed9ef8a843accd7096718c52f79649d30c7ac217"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineMagIn.wav",
+      "bytes": 22124,
+      "sha256": "3519848326c3eeba708d27f1a96840320e81dfa4ca9a1bea2d93b3d26eeb3d24"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineMagOut.wav",
+      "bytes": 26924,
+      "sha256": "5004c875d26492c30c97c43ba727c65b7cadc4830c97ef26416f68ec30f37c4d"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineShot_01.wav",
+      "bytes": 41324,
+      "sha256": "3d4f4886b52135a445cf7bdd7bd7f8cc44f3b50d8fcdc18f7ff88cbe32915cb8"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineShot_02.wav",
+      "bytes": 41324,
+      "sha256": "a54ebca21820d57833df40686e8779abde433ada46230471e0ac528d8ed030b9"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineShot_03.wav",
+      "bytes": 41324,
+      "sha256": "9d428928a67ba016f0878fb52672171dfaaa9c4f9f4ce226420eb8cb88d6dca3"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ConcreteImpact_01.wav",
+      "bytes": 23084,
+      "sha256": "183a4a62b9269e71387b1b70c126ce134c2b7558024f78794124d63d3214075c"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ConcreteImpact_02.wav",
+      "bytes": 23084,
+      "sha256": "6b23dec35acb0f9bb57e0f74be8b79a9eab39b6fe18f7a5ea5140fc7d4f61d62"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_FleshImpact_01.wav",
+      "bytes": 22124,
+      "sha256": "d3f7e10634d8cf242823784ac35e16da67561204b3b6fbe2973769c2afd4fb6b"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_FleshImpact_02.wav",
+      "bytes": 22124,
+      "sha256": "c77cd9ffb6bed778c54981be83605d90292f3cacbcb61c8d224354fac84009a1"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_FleshImpact_03.wav",
+      "bytes": 22124,
+      "sha256": "09270c0a93a27469d0633a1f11e256293171b192ac3679546d7ad5193aab1aa5"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_MetalImpact_01.wav",
+      "bytes": 31724,
+      "sha256": "bc3c8fa6b528fca4316d8187407843b1c3374a9106235c0a04bdbc3e0ce6f3dc"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_MetalImpact_02.wav",
+      "bytes": 31724,
+      "sha256": "cf9026871bbe8be003b3aeb1ff1f34a80f25632bf3ed7314991c1dd6394afbf8"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunEmpty.wav",
+      "bytes": 12524,
+      "sha256": "eb4d3def5e592116375ea931731cdc99fbe5d6ce3b59a8be5e9961122276abb4"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunPumpBack.wav",
+      "bytes": 22124,
+      "sha256": "2025aa96f0ab6c7562a6f9ade474d4e0ccaa0b83ed7130e540144463bbe6ebde"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunPumpForward.wav",
+      "bytes": 24044,
+      "sha256": "ceee07efe51f6aa66514465562e2f45ddb3e2b29de7f9e74a818957828187cbf"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunPumpLock.wav",
+      "bytes": 16364,
+      "sha256": "51c434dff188227665ba2d8a7a29f221d920b50a5c39f016ae7e445fd5794730"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunReloadEnd.wav",
+      "bytes": 22124,
+      "sha256": "a92ae290d3c31d1a6c383bfd7b3d9b2069ce1fbb4a832ff7be780ad9c2861be9"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunReloadStart.wav",
+      "bytes": 22124,
+      "sha256": "ec50c2fd879eed2b9b673a3dfd063d06a97b9e117d473a1e4c6aa91aaae279ff"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunShellInsert.wav",
+      "bytes": 18284,
+      "sha256": "bed1f8c151730bbbb06bda37f25b3c009050540f4c5deab3e4288ad27357acd4"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunShot_01.wav",
+      "bytes": 71084,
+      "sha256": "cffafdaa288ae707d021f929ebffc3e2f95aded2a428aaab912330cc6b60e719"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunShot_02.wav",
+      "bytes": 71084,
+      "sha256": "f4171fdf5a452fc53b88321d391436393e35a6aa39fffb8e8100dad14a77cedc"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunShot_03.wav",
+      "bytes": 71084,
+      "sha256": "5c289be41b3bcbd4f84a2e6830c01df5e41b907bc9e6e53ba314f60d47f22269"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_WeaponEquip.wav",
+      "bytes": 19244,
+      "sha256": "534e0c0b3299c1e17dea566f5db2b834657f51a6d462b5413b34390906b1708b"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_01.wav",
+      "bytes": 40364,
+      "sha256": "28cb1d48227077c66ccaa70a6d625655412eaa28c27439439251ecb33f93ee97"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_02.wav",
+      "bytes": 40364,
+      "sha256": "88c0eae677879af37310badc56ca51f70c14ccd5fc5936d6205e221c0698b848"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_03.wav",
+      "bytes": 40364,
+      "sha256": "6aee85f2ea02ae251c2503fcc10d0bb963584c34f76a10aaa52c72c1cab32df0"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_04.wav",
+      "bytes": 40364,
+      "sha256": "1af417b206f496ea500f65dcebabdb1116e0b3ff6c0b8130f64b4c9ccacc9fc0"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_05.wav",
+      "bytes": 40364,
+      "sha256": "a0e12c54719af07d2f0d35f57865cf0ff2ceae83b76d3abbe1cffd1ca92fbf49"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_06.wav",
+      "bytes": 40364,
+      "sha256": "7495eccd8a0407aef46c2cf0881537ad2ae264f987bc0ec4630207e0e72c3755"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_01.wav",
+      "bytes": 63404,
+      "sha256": "33c8e3427ea6a8761a87fd1e5e98c4652d03c2e982a8d819be9950839fc30e2e"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_02.wav",
+      "bytes": 63404,
+      "sha256": "d96cf2d98dacd4a1ca3eabd9a877f0aaf40885d1be1fd4346f5e4ef3f4989aef"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_03.wav",
+      "bytes": 63404,
+      "sha256": "26668778f72348586fdbfc3004a04a15d6a3261a224e70a81244898a22749981"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_04.wav",
+      "bytes": 63404,
+      "sha256": "6b59392f219253529fce1bbc990074826767af75b44a4f46898802c97962cfb2"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_05.wav",
+      "bytes": 63404,
+      "sha256": "4a6ac009514ae3d3276c48a545b5b4aebd1c17b0e95f9212399c2f473d51547f"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_06.wav",
+      "bytes": 63404,
+      "sha256": "2faef9e81d1e88f8ad8bfa6c038d99fd173833a215a949f3ff8c2e81b3ea61f4"
+    },
+    {
+      "path": "ArtSource/Audio/S_CarbineShot.wav",
+      "bytes": 54728,
+      "sha256": "67010e1168d61ef2fd41e49259cb92f70aebb5a9cdd5f6d0647593c79e35cda3"
+    },
+    {
+      "path": "ArtSource/Audio/S_Empty.wav",
+      "bytes": 14156,
+      "sha256": "5b14b51ff58c9b7dd4d779e843ed8c95e50f4f546ac44baf6cf363473219d669"
+    },
+    {
+      "path": "ArtSource/Audio/S_Impact.wav",
+      "bytes": 21212,
+      "sha256": "ca817c60bb2be448edcdbc518bd12e99bb33c9b7f8400df05cb1d6ad872ea0db"
+    },
+    {
+      "path": "ArtSource/Audio/S_Reload.wav",
+      "bytes": 158804,
+      "sha256": "d32e527c9413dbd88b083772e498d580e914f52d71685d6d818dc66e7a0641a9"
+    },
+    {
+      "path": "ArtSource/Characters/Candidate03/InfectedModular.blend",
+      "bytes": 1608145,
+      "sha256": "4fcade0002dc6ffddf5c5fb94cc25435b55fe67c105c212276ff95c3fd145080"
+    },
+    {
+      "path": "ArtSource/Characters/Candidate03/ResponseLocomotion.blend",
+      "bytes": 1818171,
+      "sha256": "e1132015862fc7404075c2555b75bff9302a7b1393fe36499fc40cec9a412b2e"
+    },
+    {
+      "path": "ArtSource/Characters/CharacterWorkshop.blend",
+      "bytes": 1805535,
+      "sha256": "dce4534c51f49adbbcd80e74057b3feff404b8a0e280b146544df87190bdcdbc"
+    },
+    {
+      "path": "ArtSource/Characters/Infected.blend",
+      "bytes": 1796214,
+      "sha256": "c0ac3512615b3bd59e119a2f38efeaea06fa8d76df67d3c7353ee0cf0831e149"
+    },
+    {
+      "path": "ArtSource/Characters/Response.blend",
+      "bytes": 930724,
+      "sha256": "8a36af1ef2f44e78ebe01f408a2f7a14ab4e17937e947e13b03e32ad0facd924"
+    },
+    {
+      "path": "ArtSource/Environment/ProjectONE_IndustrialKit.blend",
+      "bytes": 2011036,
+      "sha256": "c2b596526a8c8333825d6acd973b8da7632c26d73955cc18a493325726cf7d45"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Attack.fbx",
+      "bytes": 197500,
+      "sha256": "dbd2261c4aaa9c89b746b3f69ebba0216e2a46bf5d34fe790b4065069f8546eb"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_AttackOneArm.fbx",
+      "bytes": 197500,
+      "sha256": "3eb9f97a99e3620affb68836fb25ade813bc5dfee0f7c793e91b38f106d918ed"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Death.fbx",
+      "bytes": 197180,
+      "sha256": "38c0bc2848a6a22e0bb21090268bbebbc387fa24bfce4b46b32ff2f0b764122d"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_HeavyHit.fbx",
+      "bytes": 208268,
+      "sha256": "90d6518b8acccaeb6493c483d127907d4ef1c740633110e4fe7f77b8f0340df3"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Hit.fbx",
+      "bytes": 164044,
+      "sha256": "0718dd43ec1a7c3aa0bd664b3ec8934c85c3e28b6cb84a88f7bd48b644953714"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Idle.fbx",
+      "bytes": 254364,
+      "sha256": "8cd7cefd3c6dd06c800f8eafdbfde0b4c36ef9f833797ab6145ceef56cdadd57"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Run.fbx",
+      "bytes": 185228,
+      "sha256": "872cbefd4a54c6e09d1cacf35be85b6599a8ed28241495953bd6d334b0ff9800"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Walk.fbx",
+      "bytes": 205372,
+      "sha256": "f7d3506c86f8a48b50c481ae0cb1343a7a13a12128991a133f9fc0106bc96033"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Back.fbx",
+      "bytes": 173116,
+      "sha256": "2ac20e52fb238ad638b8ce1adc809023af307ea81aa459656042a7f28a549a07"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_CarbineReload.fbx",
+      "bytes": 369228,
+      "sha256": "99995b66d34289ea6c7bf35a9861066436e80f143db77358917d14e74b4ac72c"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Equip.fbx",
+      "bytes": 185276,
+      "sha256": "eb19a5ea372efe93f7125a5f1bbd03065c1782dc7f2c76a977187d4e1363a35e"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Fire.fbx",
+      "bytes": 149740,
+      "sha256": "c946236458e01c76b9e2bb5eec45f461ee4e0c567077ec5641419bc34abc6b15"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Idle.fbx",
+      "bytes": 247180,
+      "sha256": "9c11c2f600209b6d3614f1779a86a73623e70cf572b54192c209aa2bdbd58030"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Reload.fbx",
+      "bytes": 222156,
+      "sha256": "da2eeacf8b724183f3dd1466263ed264840d774592871972833258f69949dec8"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Run.fbx",
+      "bytes": 171132,
+      "sha256": "f06882d1abae9922bdc2d6921ceeeec2ddd624a18adfbc01af8dc2b41d020721"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunFire.fbx",
+      "bytes": 180076,
+      "sha256": "8c45a2387980b182f27ddd989db8a9682e3189f43cc584786eea381c5f03cc88"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunPump.fbx",
+      "bytes": 205788,
+      "sha256": "f33632cf70c20b1d8e2fd07116f939c48e9c20e3e4cf58683400a78105e8084e"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunReady.fbx",
+      "bytes": 401948,
+      "sha256": "bb5276c89185be4853720e209db2e421eafa93d6f19a13efc41f151ed98defb7"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunReloadEnd.fbx",
+      "bytes": 181404,
+      "sha256": "74b10ed11181c968bd9bdd5da126bd63bf6602f34b082a5a1e5757c85a63718c"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunReloadShell.fbx",
+      "bytes": 242972,
+      "sha256": "9732c372b5c755e32fb28a2551944ffe95cfb2750628cd0c62515220a2ce1e1a"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunReloadStart.fbx",
+      "bytes": 185372,
+      "sha256": "1a03ea70365acd4b3d4cf1af6f5e27d96dfb91d2c3457aaca99f8cdf134092db"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_StrafeL.fbx",
+      "bytes": 173116,
+      "sha256": "4764a3bef58d61b15c4035750079a6283ef9246c37121523f7b38920574ffb9c"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_StrafeR.fbx",
+      "bytes": 173116,
+      "sha256": "0544377805e01f094e2ad90b3c3d4b278e8d9b1468d046f04b9cba800739f3db"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Walk.fbx",
+      "bytes": 173116,
+      "sha256": "36937e7a8001fb28e6ca5f560e27b2e961f840cfb8b61a9985367842512f3dac"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Infected_C03_AttackRight.fbx",
+      "bytes": 268524,
+      "sha256": "0ba3f9b16761606a177545fea9c0fb3aaeda022d382904cb1fbe378aa7a0c91f"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_B.fbx",
+      "bytes": 216892,
+      "sha256": "460c3ab516f364f9ba2372f3df724ea33c691236f0ac0e5b84a0deaff41ef8ec"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_BL.fbx",
+      "bytes": 218092,
+      "sha256": "bdf021a81d1c88128853378e0d366c669819a603f279cb928dccb3b4e228c13d"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_BR.fbx",
+      "bytes": 218076,
+      "sha256": "1e3127c39f486ca18ae553385cb7e9f789b2ce7ec7d4cbaed93e299136abdf53"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_F.fbx",
+      "bytes": 216892,
+      "sha256": "02c668631ac720d49ac14034915ede7349958fc69a6577ef2a76c72f2a212c09"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_FL.fbx",
+      "bytes": 218092,
+      "sha256": "911565631664dc90f0a7c7e420084afafc7395713c7bfd137288ba121efe5d04"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_FR.fbx",
+      "bytes": 218060,
+      "sha256": "32af9bd7b3094bfd7c25ff1e03072106af3d9bdb352cd5e5daf6502c1cfbc877"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_L.fbx",
+      "bytes": 218172,
+      "sha256": "52397d5374c708b9f4387653dc78c41271bf4f3262a724cb1047e0bfa3593df7"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_R.fbx",
+      "bytes": 218108,
+      "sha256": "abe631f655688a67856fac2dbfc98374053bc45cc4abf500f38dd222181b8074"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Turn_L.fbx",
+      "bytes": 216812,
+      "sha256": "752dfafc966ee7a4dcc0db3a0668e056226f72b9262c468c1ac64b5b3ddb256c"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Turn_R.fbx",
+      "bytes": 216812,
+      "sha256": "d26361dc52b9751d87808b877fa9e43a8745aa824ae2d58aeaf762e0717490e7"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_B.fbx",
+      "bytes": 229772,
+      "sha256": "a1b0505aa531566cff580d8f30b8448cd76670123cff45943c446c01e95e08d5"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_BL.fbx",
+      "bytes": 231260,
+      "sha256": "d1fa010d77050c284564395d1e5db7dfb75db4b9bb4967890fbbd80230ce8e81"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_BR.fbx",
+      "bytes": 231244,
+      "sha256": "1123065b7d86ddf09551dec0ac9c74c790b1b6ee0f2fc687de4a086421344400"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_F.fbx",
+      "bytes": 229852,
+      "sha256": "9b4020e99b1d3d9051a5899548a9a8e089696b9691ec765333294a343457bfcb"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_FL.fbx",
+      "bytes": 231164,
+      "sha256": "a2293d3e08cb1c465b4a914e4c0264429379d9bb2ec60699947a8fdeb267b953"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_FR.fbx",
+      "bytes": 231196,
+      "sha256": "a3a0281dd2f5b48eedfe416b83290febc10a10fb4c6bff806d9aab8c31792175"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_L.fbx",
+      "bytes": 231484,
+      "sha256": "c54ac559ee678d78c2d76012fb59fbd1493b855960b673ad38a71816b630ce8b"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_R.fbx",
+      "bytes": 231404,
+      "sha256": "2f66f022c26253abff342e5bed5ed8e26c4f2352ef1fa8f2b1e917e28f11f0e4"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/SK_Infected_ArmLeft.fbx",
+      "bytes": 184428,
+      "sha256": "5c8a4dd744bb75f459af72cf0bc74b235bd61f7368c5655784d38b92e49fdda9"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/SK_Infected_ArmRight.fbx",
+      "bytes": 176076,
+      "sha256": "f2f29e98d66b5bf3e19948d8ec5a598139d3c0cfd60c04c3c16f1eb4c4b256d3"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/SK_Infected_Core.fbx",
+      "bytes": 323068,
+      "sha256": "080b3592ca4ac80155e5870750cb2598d9bf3b58cf6b234993d74292dfcded3d"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/SK_Infected_Head.fbx",
+      "bytes": 270060,
+      "sha256": "1017cd48c850f5c6db014e275b45b40ab78ffa317bb1b40663dbd24d08715a21"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/SK_Infected_LegLeft.fbx",
+      "bytes": 178476,
+      "sha256": "95844cbbee92216ca964757da3dca7616a925fd1a26711ab4afcc2a81a0d33c9"
+    },
+    {
+      "path": "ArtSource/Exports/SK_Infected.fbx",
+      "bytes": 516364,
+      "sha256": "d505fac162b1517a60c232ac615c107792dffae72d9341d17abb8e469e621ebd"
+    },
+    {
+      "path": "ArtSource/Exports/SK_Infected_ArmL.fbx",
+      "bytes": 174428,
+      "sha256": "4e950a21b3d8a7e3b715728f892e5d8003b393488abf47df0fb123879c660afc"
+    },
+    {
+      "path": "ArtSource/Exports/SK_Infected_Head.fbx",
+      "bytes": 255004,
+      "sha256": "7107a1e0f0f4b805367863e9c1f61e45d2d4b1ea97da4741f344bd1bad80dd04"
+    },
+    {
+      "path": "ArtSource/Exports/SK_Response.fbx",
+      "bytes": 985084,
+      "sha256": "821bf82f767259515cd59b1a061487019bdcfbffab7568e44e837b2881fbc9c0"
+    },
+    {
+      "path": "ArtSource/Exports/SM_Carbine.fbx",
+      "bytes": 160204,
+      "sha256": "b78b0ac19aac056f0d5429cd7f9643cbb0fe204d4edc747b72859222c3bd1e37"
+    },
+    {
+      "path": "ArtSource/Exports/SM_Carbine_C02Body.fbx",
+      "bytes": 112476,
+      "sha256": "11fc63b7eb1ff11eae90a8a4da8b71446e3bb9ccacc35d8a6921b54ffa010e9c"
+    },
+    {
+      "path": "ArtSource/Exports/SM_Carbine_Magazine.fbx",
+      "bytes": 24908,
+      "sha256": "d7efdf65975de7e3720ef3cc966eea08aa8f2babf335ede43bc892797e1d3796"
+    },
+    {
+      "path": "ArtSource/Exports/SM_ContainmentSign.fbx",
+      "bytes": 710588,
+      "sha256": "295a5657251683a04a037e0955396601dc56d73ca337af6a8ba093b92e3848ac"
+    },
+    {
+      "path": "ArtSource/Exports/SM_CutawayBarrier.fbx",
+      "bytes": 27660,
+      "sha256": "5b24b408cb4eb09c5736bfc23ea4e680a5a9e3cbc885574f4fd7056dd51e77be"
+    },
+    {
+      "path": "ArtSource/Exports/SM_FloorModule.fbx",
+      "bytes": 21916,
+      "sha256": "5c4ea391496b49679042f0503b67e064671506f2a4924e962265bbe45b9d3c61"
+    },
+    {
+      "path": "ArtSource/Exports/SM_FloorWayfinding.fbx",
+      "bytes": 622620,
+      "sha256": "4560b8a657ab4cdc97696109e6d59f4e78db0969007c3ae37cea214fe86816e1"
+    },
+    {
+      "path": "ArtSource/Exports/SM_Infected_ArmL.fbx",
+      "bytes": 132044,
+      "sha256": "8b24ea9567f120c89d6cdb9daf82fb148fd6b3fa1a23d9462e766f852819d2f3"
+    },
+    {
+      "path": "ArtSource/Exports/SM_Infected_Head.fbx",
+      "bytes": 204652,
+      "sha256": "1fbfbfc16cfc28df1b91ae57cea1bd337f30035c3d5d194d626b876c644bc8e3"
+    },
+    {
+      "path": "ArtSource/Exports/SM_LabConsole.fbx",
+      "bytes": 94348,
+      "sha256": "0b04c82fb9e7b93c59cba68f1e493a6c89ce6734957aa4a95ad776beef0d3715"
+    },
+    {
+      "path": "ArtSource/Exports/SM_PowerRack.fbx",
+      "bytes": 303676,
+      "sha256": "e993ddfc076972f1a3d73a7874ebff4b5e8cdfe6db6e2c2237e764e760260b97"
+    },
+    {
+      "path": "ArtSource/Exports/SM_PressureDoor.fbx",
+      "bytes": 257564,
+      "sha256": "e8ee2e3b63dc99cefbe75aea88c09806ea5986258f0fe831b0371fcf95604801"
+    },
+    {
+      "path": "ArtSource/Exports/SM_PressureVessel.fbx",
+      "bytes": 212268,
+      "sha256": "b5a765e6bbbe77bfebf04e55adf16a94aa61a5081b838b93947813bf11591e98"
+    },
+    {
+      "path": "ArtSource/Exports/SM_PumpShotgun.fbx",
+      "bytes": 216892,
+      "sha256": "2850986d75f81816d6a28d8f02797f2f2fa40d250d5d74c0bdfd17934e78bb88"
+    },
+    {
+      "path": "ArtSource/Exports/SM_PumpShotgun_ForeEnd.fbx",
+      "bytes": 50556,
+      "sha256": "f48836a2562e0fd91da77c6b577f93a2a87a17fa6475b1f9d4441c9915162175"
+    },
+    {
+      "path": "ArtSource/Exports/SM_ResearchBench.fbx",
+      "bytes": 49452,
+      "sha256": "f8c4701f20b4a988e7f3e8cb747c5f93f579cc1e4912430fce28080bd993d289"
+    },
+    {
+      "path": "ArtSource/Exports/SM_ServiceHatch.fbx",
+      "bytes": 40444,
+      "sha256": "c127c344f793417039d7b38d974ba20d9ba2548599ccd0124ebd8b3787b2aed2"
+    },
+    {
+      "path": "ArtSource/Exports/SM_ShotgunShell.fbx",
+      "bytes": 45340,
+      "sha256": "dca2ac6285b9750cb62e45318f28bf31f3e58dbcad4e6581d275e3f82800e85d"
+    },
+    {
+      "path": "ArtSource/Exports/SM_WallBay.fbx",
+      "bytes": 77724,
+      "sha256": "df6159788cbfaecd096c3616b67bec6bdf825a7497d2406b3e58c2bde690ff0f"
+    },
+    {
+      "path": "ArtSource/Exports/SM_WallLight.fbx",
+      "bytes": 24876,
+      "sha256": "967f134bea367ab2581858b868728a4d9ef69078e1a9c3fe46d6468620375dbf"
+    },
+    {
+      "path": "ArtSource/Weapons/Candidate02/InfectedHeavyReaction.blend",
+      "bytes": 1925140,
+      "sha256": "f2031f50f7c3f91ba2287433b774ae5259647d31cf8df91dfdcce324f1e341e8"
+    },
+    {
+      "path": "ArtSource/Weapons/Candidate02/ResponseWeaponActions.blend",
+      "bytes": 1659853,
+      "sha256": "eb60d8b0152b5814ff95261ce706ee7b57619ec83d11586fe7764b5c74e1ebca"
+    },
+    {
+      "path": "ArtSource/Weapons/Candidate03/RifleBrass_C03.blend",
+      "bytes": 91449,
+      "sha256": "3baac09c753ec3275227c092442be0453095acf9c59da03f97384c2eee6025c7"
+    },
+    {
+      "path": "ArtSource/Weapons/Candidate03/SM_RifleBrass_C03.fbx",
+      "bytes": 22812,
+      "sha256": "8f393dd4bc04ea5fab1999ed3387509ee408b069d59661135aa0f5084f4a7e4d"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Attack.uasset",
+      "bytes": 95127,
+      "sha256": "606f277ccdd6bd3f236b2b3ab986bfbc79e7c59391c8241c6a84a76b4e0777b0"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_AttackOneArm.uasset",
+      "bytes": 93179,
+      "sha256": "3416ec6885b402904abc14e81d7a041d480e1d0e80eba3624ed6cde56a8ffe62"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Death.uasset",
+      "bytes": 123377,
+      "sha256": "7d331edc5f09fddd6d532a1cf72a91876b224dce4cc2a3a5827ba01a6a35219f"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_HeavyHit.uasset",
+      "bytes": 47462,
+      "sha256": "e09a20e70770098e487184f7b65fe3967c50e588d95b4eda8aac9d00001de134"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Hit.uasset",
+      "bytes": 54021,
+      "sha256": "117ef24ffbefeda48188246b7dc1715d46965b1a75855830c57a57f8b3903d9e"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Idle.uasset",
+      "bytes": 200459,
+      "sha256": "67341b5abe31cc562327dee05d5aaa4884261d17abbf490f67e6b7ce672d5ed4"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Run.uasset",
+      "bytes": 94245,
+      "sha256": "65df0661bb2aa3a5b337c964d8f0cb9f80abc3eec262b6c01e3520522ea541f7"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Walk.uasset",
+      "bytes": 141483,
+      "sha256": "eab72b1372ee608f37f8dfa2f97addfbba43c6a7c770cb78fa8fedcbaa8e095f"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Back.uasset",
+      "bytes": 71819,
+      "sha256": "2faed5bf54a853b393ffc91205d52a87c615c9472925f7557073b10a00ad6cba"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_B.uasset",
+      "bytes": 63108,
+      "sha256": "5d1c4709c03b68e1d18bd48fd2d5026a55a2705c7de94b62fdf39809fa00767d"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_BL.uasset",
+      "bytes": 67146,
+      "sha256": "16dfb2a9755c964d1f30e27c34416cb6b4e8780311bc341741a8e4556976faf0"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_BR.uasset",
+      "bytes": 67146,
+      "sha256": "a9344f633e5f9cf7bc5eb48c3e913893c38087d901b4360b09e1a72f1f16f48b"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_F.uasset",
+      "bytes": 63108,
+      "sha256": "3987834481f8fb4d9f56e1682f429121bfb05a7d91406b68b5eed0a765ee4c12"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_FL.uasset",
+      "bytes": 67146,
+      "sha256": "8a003c9431ffa232dca86311b9e540ef75884eac078569a3167bc23cc312a0c3"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_FR.uasset",
+      "bytes": 67146,
+      "sha256": "72a7d5b90a83465fd57672e0fda60c1504e33e4f14eceac0b104641525877ff3"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_L.uasset",
+      "bytes": 67140,
+      "sha256": "d4655b5d2e3edfbe1fc4bfe3bb2a651e059d876d997453618e9b935962bfe38e"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_R.uasset",
+      "bytes": 67140,
+      "sha256": "95202383a9e6662b1f6bd2fc82c108ac954fbbf86e5c451ce670674cfb0a6a0f"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Turn_L.uasset",
+      "bytes": 65930,
+      "sha256": "60a2d780ecee753fca20a8b38e8a585bf66ec5b9bbb9cdd8cb6628a1193f5f6f"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Turn_R.uasset",
+      "bytes": 65930,
+      "sha256": "409d6928181eba8cec9a2b5087de9bd4500d87b10f9ff854525adcc75e3ab962"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_B.uasset",
+      "bytes": 68554,
+      "sha256": "b7ce60bbb4563cabfced6460a35fa4e0d699625eb4e7577d8b6d57d433ddcba3"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_BL.uasset",
+      "bytes": 73232,
+      "sha256": "8e8d8f8fa50bf2be6f5b6b6f2d9de2c2f5e50b28dce9732130ca47abd5f5cbe3"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_BR.uasset",
+      "bytes": 73232,
+      "sha256": "ee8e715cffcb0f991c36efd2cbcdb17c7551839b519c9e8ae6e83e76245f4b0c"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_F.uasset",
+      "bytes": 68554,
+      "sha256": "c604da96b34731ef76f801b7e0c22dd9a88419eaed39b5abec0005e003124586"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_FL.uasset",
+      "bytes": 73232,
+      "sha256": "09a92c38a3382842d900dfecc0a8cb43d9ec0c6fa3121b71165ab9925b23f339"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_FR.uasset",
+      "bytes": 73232,
+      "sha256": "c65733458498dc4b411cafc1a341aac5b5b67edc1e8aa7ecb1ba103d03a93881"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_L.uasset",
+      "bytes": 73226,
+      "sha256": "e5af704cb5824d8e1f892773e5d56d5fa7abe0ac9fab5c293f63d7ed1edd5c9f"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_R.uasset",
+      "bytes": 73226,
+      "sha256": "58c8d1f0ca4a615338050fbbb9201a61ad011db3d03c73a65e7eca55752c017e"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_CarbineReload.uasset",
+      "bytes": 116615,
+      "sha256": "d6a875864e099e58f6c07cedb6788cf19ba3fca2516b616f500f5e30ef38bf98"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Equip.uasset",
+      "bytes": 41812,
+      "sha256": "33c018139a56d45ed9c5530550357b977db6b283f89d052e40fe2f6039a3d9f9"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Fire.uasset",
+      "bytes": 39624,
+      "sha256": "fe0b1de95f865b29d5b1a5c1ab6324ef68503b91bb399854f69fc5a7de8d76b4"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Idle.uasset",
+      "bytes": 168427,
+      "sha256": "1cca9e00cde8de07cfa4f282df553c81b2bad8c044d501d3947581080ffe1aae"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Reload.uasset",
+      "bytes": 120823,
+      "sha256": "60c591517f238eba66f979e9c9c339aa95d409fa35e0ec12dbcde734002e0859"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Run.uasset",
+      "bytes": 65509,
+      "sha256": "61f61cb1f3a18f1999a8ef710207d64001b1184acc616a51164ca211e18e73e5"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunFire.uasset",
+      "bytes": 36920,
+      "sha256": "619667885b958d2a12df4cd2c74b9b956cbe15d44ae68fc7ec15b36bc5d11b12"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunPump.uasset",
+      "bytes": 45240,
+      "sha256": "6e89737e164ac7df7ee6d44b9bd4ee69c1ebff8a57c6d529db0e2c9ff03aa227"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunReady.uasset",
+      "bytes": 105953,
+      "sha256": "c8089f7f939625c744b86d449e90a46c5b3c997317379783ac0fae026594539e"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunReloadEnd.uasset",
+      "bytes": 45750,
+      "sha256": "a1d7ca04584d24549b7e13827a878330f79e50fa6488a3384653cdd58f153d75"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunReloadShell.uasset",
+      "bytes": 55074,
+      "sha256": "56ef24a9ddd75e168deb465acc244313f42122af021b782b558e78857a62a360"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunReloadStart.uasset",
+      "bytes": 47298,
+      "sha256": "0925d2ad1f137af06651cfe3b225487993a377080fe6b06bbe740ff342b9fb29"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_StrafeL.uasset",
+      "bytes": 71837,
+      "sha256": "995ba36be94a5af4097efe67777c7d5eb57343f683c6dc0ace019c2e31f4ed92"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_StrafeR.uasset",
+      "bytes": 71837,
+      "sha256": "b98ba38318778208e7e792ff5a78622dd20600726ec81b3f69a70389d72799c2"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Walk.uasset",
+      "bytes": 71819,
+      "sha256": "7ac719dc30e784e0ef86c3d8b3f57286a1d05f68102a6c59da9b77234807aa6e"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate03/A_Infected_C03_AttackRight.uasset",
+      "bytes": 242300,
+      "sha256": "b2822fe9dcbc0002eb95ab913be512109bc295c83f8128812940b8f9fc0798cd"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_Carbine.uasset",
+      "bytes": 207885,
+      "sha256": "8c2450f29d096bb408ebc0d0674aa35f03b84cfd2f0771079e229fa964e3021a"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_ContainmentSign.uasset",
+      "bytes": 718313,
+      "sha256": "574bae35fd0f41febf5ff0c0ccfc936ce7078437764a534e591cd09d839a9089"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_CutawayBarrier.uasset",
+      "bytes": 31032,
+      "sha256": "6355b668721b6d0f4889a861b45b4a6694d82a078c748d33292bc668ed1b59f5"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_FloorModule.uasset",
+      "bytes": 23392,
+      "sha256": "367f2017fefed00b7a59a263a4d0eb36a1aeae4d690f2edb461298b68f0da815"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_FloorWayfinding.uasset",
+      "bytes": 627207,
+      "sha256": "4c31aa2e7e3f8cc843f56e9fc3020fd51d33c2acfe8a1852d73c1290e8eafdc4"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_LabConsole.uasset",
+      "bytes": 112381,
+      "sha256": "f4624f317b88f0e636725d64a6d12ef86912dfa49ca3368f7e2a7d582505de25"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_PowerRack.uasset",
+      "bytes": 318554,
+      "sha256": "05eac642be9ecd6727d1dd224cf14b54b099c8ec80819afabe77498126130f83"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_PressureDoor.uasset",
+      "bytes": 276076,
+      "sha256": "5269f7a682dcb9253ae5646cfc646d48448f5165c8cad454ef18ba74a89dc0bf"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_PressureVessel.uasset",
+      "bytes": 255916,
+      "sha256": "0a65ddf1b74db1063ba2bd5e3c73a0210e27b0350e731c14ca821eb44601b36f"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_ResearchBench.uasset",
+      "bytes": 62868,
+      "sha256": "e4cdabbd17126a4676aa5aeaff76b0b01e32906115f26bb1f659508a081087dd"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_ServiceHatch.uasset",
+      "bytes": 62977,
+      "sha256": "316fbeb1a6a4d6c2250a6364184a92a145e3ef543050720bf895685a3b772aed"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_WallBay.uasset",
+      "bytes": 101822,
+      "sha256": "ff87c993b1d5e546af720b03761c043126753069a2ed6d008a131cc44c4c8274"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_WallLight.uasset",
+      "bytes": 40508,
+      "sha256": "3ab6056b08ca65923181ef46de7fa85bfa6e65fb9fb3bcb0efb6966c48101f20"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_Carbine_C02Body.uasset",
+      "bytes": 139686,
+      "sha256": "b3527f4f442832f63408d8fd69b063a2da30338bbeada792cefe3cc6b69bd143"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_Carbine_Magazine.uasset",
+      "bytes": 19694,
+      "sha256": "95ed900988942d152e8e2ef0f193bc96ae05a0a0a1b154b2fd4d6bd1c6ac6cb2"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_PumpShotgun.uasset",
+      "bytes": 255535,
+      "sha256": "971aae789705e4f2da05a6129dcf011212cf20e085eeb6d9f1469f754a77f102"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_PumpShotgun_ForeEnd.uasset",
+      "bytes": 59704,
+      "sha256": "6b90b7f6bb40fdd87b05d42dd2e9ea04fd1bb9b86d8d7fa9809f16fd4d9676a2"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_RifleBrass_C03.uasset",
+      "bytes": 22507,
+      "sha256": "41ff13cbe73fffb0a43b2375b577dea6627c7269e57309338d4721f969f5f846"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_ShotgunShell.uasset",
+      "bytes": 58322,
+      "sha256": "aaf0b7f739f84eb30b7ba6b72136c896103710291171a7e8af82bee13b21e17a"
+    },
+    {
+      "path": "Content/ONE/Audio/S_CarbineShot.uasset",
+      "bytes": 21258,
+      "sha256": "9faab6c0b50b7edc78d2504890f7f7b7d2bb3ea1f5435986e22e72edfcd14111"
+    },
+    {
+      "path": "Content/ONE/Audio/S_Empty.uasset",
+      "bytes": 7208,
+      "sha256": "63350e2389ef2b24d6ab38da3e9cd803c77b5d18a8fce02706e2ecb0155bf807"
+    },
+    {
+      "path": "Content/ONE/Audio/S_Impact.uasset",
+      "bytes": 13246,
+      "sha256": "67832602d3bcc841bc34a67e0eb9fbd9c8df8630ce1d4434ff029b3d2230dec0"
+    },
+    {
+      "path": "Content/ONE/Audio/S_Reload.uasset",
+      "bytes": 39801,
+      "sha256": "536ddb7b52df76ecf6c60581cbc2d1ea5dddcdf4cfb98f5ea00f6c3958d529df"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_01.uasset",
+      "bytes": 17079,
+      "sha256": "76862ec431fcfcc29252a9c3251023093c46b73770b2dbbbe3709d4963e88bfb"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_02.uasset",
+      "bytes": 17136,
+      "sha256": "abd35867d0217d90d2d423eab6cfe5159e1f8299e54bbb10c92189134c4b7df0"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_03.uasset",
+      "bytes": 17957,
+      "sha256": "cf330042b8d08b0214b416575c3bef1e539e96144bc815520999286b9b6bf756"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_04.uasset",
+      "bytes": 16469,
+      "sha256": "c47fe6aac1c58338fbf02cb9126d7041bdb1aeff4636eb7d9abbc0718a434d49"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_05.uasset",
+      "bytes": 17480,
+      "sha256": "21846d5f382193ea8626f66ce713c75f21eaa06676270a084c26229847063532"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_06.uasset",
+      "bytes": 17212,
+      "sha256": "38770f2e8dd937cc54d96955690f89772dc64b8990b6699d621b20fdff5e9d4d"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_01.uasset",
+      "bytes": 35693,
+      "sha256": "72dd6af57f5b5f2afc82379754c60cc6765d5fd23ce7f481ff4efb6025ddbaea"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_02.uasset",
+      "bytes": 32966,
+      "sha256": "ae6cfeaccea04ebd8478d40598c7d05fc11918d980fb4085f8f17bd1418ed510"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_03.uasset",
+      "bytes": 36792,
+      "sha256": "47675aa5b5a1e38a12cd640966772df15ea2e75ff015a465818ba67ab1d13338"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_04.uasset",
+      "bytes": 33626,
+      "sha256": "b1a26c1520a728af048429d2fc92b28a09b6925a329521a5fdda031a3b598566"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_05.uasset",
+      "bytes": 35355,
+      "sha256": "05e2a795182b701a240524abe9655a60fd0deb8e7c64738b4e96f3231955e5d4"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_06.uasset",
+      "bytes": 33558,
+      "sha256": "e2cb912d65818461b82efb2cb5359313b47fea7b5bc5e1682894c0a2b40367f9"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineBolt.uasset",
+      "bytes": 14796,
+      "sha256": "51b988c56265ed9975276c19a27443ed383a0089a11779d722bbd9d61ff7aaef"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineEmpty.uasset",
+      "bytes": 7508,
+      "sha256": "bf64fca413fd6ace4d1417a71f704d098c49a9305b39d8f825ba35213b5f76fa"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineMagIn.uasset",
+      "bytes": 10222,
+      "sha256": "751db31816b8ce220b322fdcbdc9544de2958f156d5e0ac875f5397dbec1e3c3"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineMagOut.uasset",
+      "bytes": 16370,
+      "sha256": "36150a2f45a0d14574cde4b22cf116664014bd4f0cb2ee681f1f1fd7abf2ab0f"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineShot_01.uasset",
+      "bytes": 15264,
+      "sha256": "76bccd15400ea49f7edef1df920f26013efa4b714ab7bd5763642684cb794ca7"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineShot_02.uasset",
+      "bytes": 15395,
+      "sha256": "682fa2671fef8ae1760810264cb40d290dd299d31f0b70acc151d440af9ea529"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineShot_03.uasset",
+      "bytes": 15082,
+      "sha256": "bebb850bcb8a51429735d82cf43930b70c472a4c0492f8f539929f002c306830"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ConcreteImpact_01.uasset",
+      "bytes": 15770,
+      "sha256": "57a7736a3ff663eeadf4ac9688425f05c8799023db3aecea2b8147726b7a9503"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ConcreteImpact_02.uasset",
+      "bytes": 15596,
+      "sha256": "9a9797080b714602cf219cf3241bafd4c6c01f1cb6657ed6f3762d641535a135"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_FleshImpact_01.uasset",
+      "bytes": 11431,
+      "sha256": "54dc974afda0269eef6c8a15603fdb6bfb80abf965e8fd9238ba0f6d720eed99"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_FleshImpact_02.uasset",
+      "bytes": 11768,
+      "sha256": "f2f64655c6c57c92979750cb30066278857bf58dc3447cd06e2baf3b7a290e01"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_FleshImpact_03.uasset",
+      "bytes": 11689,
+      "sha256": "4262e7f7a34154cf450a5611c31b9bfbb977051ac5a932cc4d87ef5f2f5ddc42"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_MetalImpact_01.uasset",
+      "bytes": 8731,
+      "sha256": "95a2ff0b88c1f25b94ce1422a060a90ad4ca0eba32050ba25c69b812ef88d2d1"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_MetalImpact_02.uasset",
+      "bytes": 8523,
+      "sha256": "c5524242318a5a8241af783c4cbad1557c670e5e8e84ab919209271501cf4039"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunEmpty.uasset",
+      "bytes": 8542,
+      "sha256": "cdfc5615abd31dd0e861ea1f71ce41a4c2c53d32fa973371a1d6cdf2b93c8c81"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunPumpBack.uasset",
+      "bytes": 20556,
+      "sha256": "b317a5336d02b899aefb50d68e7d49d5c5e04c43938b2ec091d3150678a526a0"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunPumpForward.uasset",
+      "bytes": 21773,
+      "sha256": "281d7698a8e9738f817ccba7bce74aa9f56ce8c5da0d16f4b5a2e639e0187317"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunPumpLock.uasset",
+      "bytes": 9190,
+      "sha256": "ee19922e1fae176bb14e8ec0d6d9ef0c3d8a8c3a6f0556bdc3cb3e1d1960c2ad"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunReloadEnd.uasset",
+      "bytes": 15920,
+      "sha256": "8d3b9ca735e22eebf29391a3979f2517f118eed4dae9a4fc5558a6546aa35c3f"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunReloadStart.uasset",
+      "bytes": 17025,
+      "sha256": "7b4d270964fcde0ce254ae138b5a79eb61e3a9440bda13b839d5aabce34ec9bf"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunShellInsert.uasset",
+      "bytes": 12439,
+      "sha256": "d7a92a2fb522ecce057e325aa30998a723f0a0324af4acb2d2b60937a9ce7f4c"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunShot_01.uasset",
+      "bytes": 28141,
+      "sha256": "1a54ef9ef5234e25188b9c23feba174b6dd8beffb4563b4829e5fa41a1e8d9ba"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunShot_02.uasset",
+      "bytes": 28566,
+      "sha256": "9789d943d0a89d99f14855b83d5985bf49f9bdc16bd0e3488a22beac4bc19b37"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunShot_03.uasset",
+      "bytes": 27923,
+      "sha256": "23bad11f892939e483526564f2c94a99ce202ed1a24ade3ea7e26fa692702cdd"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_WeaponEquip.uasset",
+      "bytes": 14608,
+      "sha256": "594db575bcf5f8c98a3a38050d526fe9b7bebecaa2659f35d79d310eb975fa86"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PA_Infected_ArmLeft_C03.uasset",
+      "bytes": 9518,
+      "sha256": "5beb3ee14fb6c512d7f63d13c9cab2d462b61c60c352edd33873f2d7621fdd41"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PA_Infected_ArmRight_C03.uasset",
+      "bytes": 9522,
+      "sha256": "7692f6e7bf0e17e64bd5cae26227d0c08f665a1ad39401eb18a225a0c9187cae"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PA_Infected_C03.uasset",
+      "bytes": 38688,
+      "sha256": "72e55f19e37ce1113ec0d7b66170a33b569bb6d6c3a2175a9dbf626375548530"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PA_Infected_Head_C03.uasset",
+      "bytes": 4681,
+      "sha256": "c01a73f03c914e833d3931c88d958fb537ca7fccdef0c939faa9b2b12a19e25c"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PA_Infected_LegLeft_C03.uasset",
+      "bytes": 9604,
+      "sha256": "abff4cecb75fa2ce5221d52857858415e61c772f2626f5436b889e2ebb712736"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PM_Infected_C03.uasset",
+      "bytes": 1196,
+      "sha256": "135cc982d5a3da3cba59d156b574a400dcf0ab4fb0dde65058a4922f62586983"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/SK_Infected_ArmLeft.uasset",
+      "bytes": 643704,
+      "sha256": "c83d3f8601b98688e45a577cd87d13f5b78e3f1e29b1aa0f46e6f43ab3846179"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/SK_Infected_ArmRight.uasset",
+      "bytes": 683276,
+      "sha256": "05889e3ae95bf5d8833128feb962663d01964367b49b18f18e4b53945341b16a"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/SK_Infected_Core.uasset",
+      "bytes": 1575848,
+      "sha256": "c1e030a90f7b0b113360d1dba5d17963a41aa61892be183faf38f50a8e27aad9"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/SK_Infected_Head.uasset",
+      "bytes": 1645342,
+      "sha256": "d66621509d50167c48850a9891b544c8bb5d98886ef03cada309df47a44be443"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/SK_Infected_LegLeft.uasset",
+      "bytes": 620323,
+      "sha256": "4f4dfffcd2a6631f7c5c9c5461eb89f942cc9d43a3f6563f4195037ea30cfed0"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Infected.uasset",
+      "bytes": 2290037,
+      "sha256": "20df9210096d9172f5655510a334d5cfc7dce0710f340731d444e67e92acf997"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Infected_ArmL.uasset",
+      "bytes": 643103,
+      "sha256": "2f9ff37604f0e68ab3bac7feecf81ebb0f3b3d71345e9af30da3a24f31f4782a"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Infected_Head.uasset",
+      "bytes": 1636631,
+      "sha256": "bc44f01022c50b9db88dcd8faf541961db1dc4731667b077d584e2ce0d105f54"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Infected_Skeleton.uasset",
+      "bytes": 6208,
+      "sha256": "530259ac1d97b0cff0d4485d20507bfc03e535125c2e3ab70d849f56f027760e"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Response.uasset",
+      "bytes": 5306899,
+      "sha256": "d750c1d6e8d3e3359742d1bba517cb79e7c20fd732ea933a1014bda7edebf382"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Response_Skeleton.uasset",
+      "bytes": 6208,
+      "sha256": "97b77043f17ffcd0f7f6e16de8cb6fecc331925b335ebd8714dfdcdfebea34f6"
+    },
+    {
+      "path": "Content/ONE/Characters/SM_Infected_ArmL.uasset",
+      "bytes": 150408,
+      "sha256": "991e45838fd398f42a9e3f25160fec379d09bded3e0892a2a4221baee2f3b516"
+    },
+    {
+      "path": "Content/ONE/Characters/SM_Infected_Head.uasset",
+      "bytes": 267997,
+      "sha256": "b7e2c37bc8690fb8b7081832f3ee37bf530e35145692962dfe4b53cd505e2673"
+    },
+    {
+      "path": "Content/ONE/Maps/Containment.umap",
+      "bytes": 187395,
+      "sha256": "7bf62ea5902bc24788e07dd08cc234c640c18f60c50e43718206bca961b8f1d8"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Amber.uasset",
+      "bytes": 7604,
+      "sha256": "9372f9c377ee5ebe3fa14cf1a20908fd4839c16d6f7a9c9b40c6e2a7d6738889"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Blood.uasset",
+      "bytes": 6709,
+      "sha256": "586360241048114090215383e29e363d35c835524908c49d0a93a9c5f9cfb798"
+    },
+    {
+      "path": "Content/ONE/Materials/M_BloodFlesh.uasset",
+      "bytes": 7600,
+      "sha256": "9dbb5e2055e8e10153c0c22b628b14770e8dfe0241653eb0fa3df9ddeb201010"
+    },
+    {
+      "path": "Content/ONE/Materials/M_BloodPool_C03.uasset",
+      "bytes": 8744,
+      "sha256": "513a500297b7d2290124af440657353795c2f7c03152dd12497f11276bdbe69c"
+    },
+    {
+      "path": "Content/ONE/Materials/M_BootRubber.uasset",
+      "bytes": 7600,
+      "sha256": "24b71619f1c7c54a87ade9b9c23b138218e35aef17b9426d1133f32ac5b8d56f"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Brass.uasset",
+      "bytes": 6034,
+      "sha256": "697afebd223a74ed8efab519600418d8a23fd1d70b6086dc1e9a446a6a04fe0e"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Ceramic.uasset",
+      "bytes": 7614,
+      "sha256": "f86d71b34f3b45304535d16231868e8f4375389cc9ba339b24c1d406639ccb72"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Concrete.uasset",
+      "bytes": 7590,
+      "sha256": "081e1f468e44d4e9d1352e95d1a31cb6d159c637dfbc7ea2582db44e8e0a7b86"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Copper.uasset",
+      "bytes": 7609,
+      "sha256": "0fbc21a2edbb5c0e2ee452debfe929e0915d58be9075c9b6b3c443aeb1d6e00d"
+    },
+    {
+      "path": "Content/ONE/Materials/M_DriedBlood.uasset",
+      "bytes": 7600,
+      "sha256": "cbf7339f7231f51c7858f85d73a237e589718c2a56c697aa66518a4d2465a422"
+    },
+    {
+      "path": "Content/ONE/Materials/M_ExposedBone.uasset",
+      "bytes": 7605,
+      "sha256": "aacf686c69a2237d97bf55c2479a03e8f29d5e7a66eed7867329e8ba710f3573"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Eye.uasset",
+      "bytes": 7565,
+      "sha256": "c5fe8059c2c87642ff293f3419493f3ee56f221e91cda5cce594219f4bcdd5a7"
+    },
+    {
+      "path": "Content/ONE/Materials/M_EyeDark.uasset",
+      "bytes": 7585,
+      "sha256": "52bdc84f7d7914fb878614c8a75b9c31be18164f6c49c2a70a4758b27c333c36"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Floor.uasset",
+      "bytes": 7575,
+      "sha256": "9803b9aa7e640023e1013d949583ee5d7e892f39e8cef32dfd085217380eea2c"
+    },
+    {
+      "path": "Content/ONE/Materials/M_FloorEdge.uasset",
+      "bytes": 7624,
+      "sha256": "4b0b8e6fa6370b4f048c295e0f917963f3f47a114808ff709486397cee7c7213"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Gore.uasset",
+      "bytes": 7570,
+      "sha256": "18fa550ae75541bb65b4fafa3e905322cc110e379e9b5012a1ca6af510efe636"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Graphite.uasset",
+      "bytes": 7619,
+      "sha256": "a30c4bbe370fef9f792e10d24caab47b57f7ef8dcb191ee51d9fb3467c7ea408"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Hair.uasset",
+      "bytes": 7570,
+      "sha256": "77a85742aebb45860980fa644933e5b94b74e9f6b7ab31f3bc2803a3bce6f561"
+    },
+    {
+      "path": "Content/ONE/Materials/M_IDBadge.uasset",
+      "bytes": 7585,
+      "sha256": "6c6ade8d95fc3e773d9f9cdd2e3af3f5bb66fa91eb9cc74a75efd36d01ea5571"
+    },
+    {
+      "path": "Content/ONE/Materials/M_InfectedSkin.uasset",
+      "bytes": 7610,
+      "sha256": "c58b7b05ae6cad6800fb05a21b30c0d707cb1b1455744085ad38e637694813d8"
+    },
+    {
+      "path": "Content/ONE/Materials/M_LightAmber.uasset",
+      "bytes": 8333,
+      "sha256": "c1e78fe0d25c1c0f3c39215a68f99e9e454dc64e7beca6bf0ac87a0e9c751cd4"
+    },
+    {
+      "path": "Content/ONE/Materials/M_LightCool.uasset",
+      "bytes": 8328,
+      "sha256": "f5a26ac63627da6bc49526262a0238e5bd5a9e582f1d0fc24a320c5d03077633"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Marking.uasset",
+      "bytes": 7585,
+      "sha256": "70a0128280abb719627e3e9af921cd73cb0cdb798a043b8413379b1831bb5a76"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Muzzle.uasset",
+      "bytes": 5075,
+      "sha256": "cd46c461298a2bd1d08a3ea7f5bc8bbe4f892d513a2a3b504c1d67880727a83e"
+    },
+    {
+      "path": "Content/ONE/Materials/M_MuzzleFlash_C03.uasset",
+      "bytes": 8272,
+      "sha256": "75c300e9650596758fa390ffc9f0305c962153621b0de2fde4fa6fb9957c5595"
+    },
+    {
+      "path": "Content/ONE/Materials/M_OrangeFabric.uasset",
+      "bytes": 7610,
+      "sha256": "895825fb2797f1cecd9b4dced68b1bbe1c059310af20c0a415e99ca61979c915"
+    },
+    {
+      "path": "Content/ONE/Materials/M_PaleMetal.uasset",
+      "bytes": 7624,
+      "sha256": "735652a229d8bbbd5f1f75f6ffdca31a6ade2a4aa806a07aaefba0281deb88c1"
+    },
+    {
+      "path": "Content/ONE/Materials/M_ReflectiveTape.uasset",
+      "bytes": 7649,
+      "sha256": "6eafd4c1ebe62a0b6ad008300b95e5c5c698c9acdbae114c6b87c418c25ae9f4"
+    },
+    {
+      "path": "Content/ONE/Materials/M_ResponseAccent.uasset",
+      "bytes": 7620,
+      "sha256": "68d8530d9724433325c26be51aa75931e9b2d9ee6f44a4f296e0ed9b122ed6de"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Rubber.uasset",
+      "bytes": 7580,
+      "sha256": "7890e549695a05162f39d5a200e94cd2453bc876c9d9e8e639abca615b87fb0f"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Screen.uasset",
+      "bytes": 7609,
+      "sha256": "44bf2fdf2b5c1fbf7c01152a36e59f2deb4bfe044f77450e14cf32cba2d41445"
+    },
+    {
+      "path": "Content/ONE/Materials/M_ShellHull.uasset",
+      "bytes": 6025,
+      "sha256": "154f7a99b427f2f74b71a4c9509f83c6aa56781559cace9c136d41d68b3e0619"
+    },
+    {
+      "path": "Content/ONE/Materials/M_ShotgunPolymer.uasset",
+      "bytes": 6050,
+      "sha256": "f7ad480095c0fd55378e271d69f2a6b382a9d8250a15fc383687e84f10bc06c4"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Skin.uasset",
+      "bytes": 7570,
+      "sha256": "d626baf0888c6a74608690cccf26a58de595642cebc4878833f54c38880b1412"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Steel.uasset",
+      "bytes": 7604,
+      "sha256": "4a9200c262d3f271aea399c2928daf91f8b4e068b077607ff182f60e8c6b6623"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Teal.uasset",
+      "bytes": 7599,
+      "sha256": "5a14297957753da413e59cb62a3afe0796f565772de7c4591876800699a11cba"
+    },
+    {
+      "path": "Content/ONE/Materials/M_UniformSlate.uasset",
+      "bytes": 7610,
+      "sha256": "106e64eb9199775708153e1189fcac8251f47bf3a1d21a92caf516bd24ac428f"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Visor.uasset",
+      "bytes": 7604,
+      "sha256": "06cea66305f749ba202f480e062bfddd10cf84a7f97c747358ac282eed863a05"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Webbing.uasset",
+      "bytes": 7585,
+      "sha256": "099849705b79aac1653f7e65fa7d12bbac95d1f1d8ec175843d3ceb48f39a57d"
+    },
+    {
+      "path": "Content/ONE/Textures/T_BloodMask.uasset",
+      "bytes": 8203,
+      "sha256": "24f4371f396355832a35d64d04c3e529c1cee544257cf9e99b84c302c6745f90"
+    },
+    {
+      "path": "Evidence/Candidate02/WeaponComparison.mp4",
+      "bytes": 4474421,
+      "sha256": "1117a7bea0c7afc692ac43815fa712fbf7515716370bddfa7815839a02d3d4d9"
+    },
+    {
+      "path": "Evidence/Candidate03/stage_b_directions.mp4",
+      "bytes": 29283189,
+      "sha256": "76e592a9392da96669c579fad81605cee0879c75d60ada7c3b13c0d31d022fd1"
+    },
+    {
+      "path": "Evidence/Candidate03/stage_b_turns.mp4",
+      "bytes": 14396973,
+      "sha256": "9118b68f15e855a07acbc190a21a4293e75fd6edc4f9ecb4808aa8ff7eb138c3"
+    },
+    {
+      "path": "Evidence/Candidate03/stage_c_presentation.mp4",
+      "bytes": 22267968,
+      "sha256": "2ee64aa977f8ea52b8c087b4421a5aefe5b2f51714c8a72437e0909ed868781c"
+    },
+    {
+      "path": "Evidence/ScriptedGameplay.gif",
+      "bytes": 40047939,
+      "sha256": "c59478d8c579a0f262d3c4151d5d8c7a06422aca7a6eac13df92e75a1d40b044"
+    }
+  ],
+  "build_steps": [
+    {
+      "target": "editor",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Build.ps1 -EngineRoot <verified-UE-5.7.2-root>",
+      "started_utc": "2026-09-05T10:22:47.406546+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-05T10:23:01.594385+00:00",
+      "elapsed_seconds": 14.188
+    },
+    {
+      "target": "game",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Build.ps1 -Game -EngineRoot <verified-UE-5.7.2-root>",
+      "started_utc": "2026-09-05T10:23:01.596526+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-05T10:23:21.372420+00:00",
+      "elapsed_seconds": 19.766
+    },
+    {
+      "target": "package",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Package.ps1 -Candidate Candidate03 -EngineRoot <verified-UE-5.7.2-root>",
+      "started_utc": "2026-09-05T10:23:21.374451+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-05T10:23:42.112005+00:00",
+      "elapsed_seconds": 20.734
+    },
+    {
+      "target": "native_tests",
+      "command": "UnrealEditor-Cmd <fresh-root>/ProjectONE.uproject -unattended -nop4 -nosplash -nullrhi -ExecCmds=\"Automation RunTests ProjectONE.Combat\" -TestExit=\"Automation Test Queue Empty\" -ReportOutputPath=<local-report-dir>",
+      "started_utc": "2026-09-05T10:23:42.792410+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-05T10:23:55.835113+00:00",
+      "elapsed_seconds": 13.047
+    }
+  ],
+  "limitations": [
+    "This verifies rebuilding from published source on the validation host, not a clean Windows installation without development prerequisites.",
+    "Runtime functional validation of this fresh package is recorded separately.",
+    "Raw build logs remain local and are excluded from publication.",
+    "The five native tests ran in UnrealEditor-Cmd with null RHI; they are not the packaged thirteen-mode runtime suite or a rendered visual review."
+  ],
+  "prerequisites": [
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.arm64.exe",
+      "bytes": 11733072,
+      "sha256": "0423f7d1c765afea32a414eb156478d694924ea948ac21a4565a4fb1025b258f"
+    }
+  ],
+  "built_runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 291752448,
+      "sha256": "a87eedc25e8f042b6bebc1e2f8200e3ec0d0e5d59f0c6fac8bdd6ad8522785c6"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10718725,
+      "sha256": "8f63887316597bb7c43d4d865744b828d441d5cd527496afa3a7086758a845f9"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 209333184,
+      "sha256": "acb8de9366240b77f7d391971d41c7e794a5908d7f905a3993c774524256996a"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 197036,
+      "sha256": "ffcd400882e08d523390610a2d1266d5dea18c253ad12327da41de0712a02b28"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "toolchain": {
+    "engine_version": "5.7.2",
+    "engine_changelist": 49658320,
+    "platform": "Win64",
+    "configuration": "Development",
+    "visual_studio": "2026",
+    "msvc_toolchain_reported_version": "14.50.35725",
+    "windows_sdk": "10.0.26100.0",
+    "compiler_details_source": "Successful compiler build log; local installation paths omitted."
+  },
+  "native_tests": {
+    "tests": [
+      {
+        "testDisplayName": "AnatomicalSidesAndCorpseTransactions",
+        "fullTestPath": "ProjectONE.Combat.AnatomicalSidesAndCorpseTransactions",
+        "state": "Success",
+        "duration": 0.009588498622179031,
+        "warning_count": 1,
+        "reported_outcome_including_warnings": "SucceededWithWarnings"
+      },
+      {
+        "testDisplayName": "DamageAndDeathAreMonotonic",
+        "fullTestPath": "ProjectONE.Combat.DamageAndDeathAreMonotonic",
+        "state": "Success",
+        "duration": 0.008140798658132553,
+        "warning_count": 0,
+        "reported_outcome_including_warnings": "Success"
+      },
+      {
+        "testDisplayName": "RegionalPelletsKeepSpatialData",
+        "fullTestPath": "ProjectONE.Combat.RegionalPelletsKeepSpatialData",
+        "state": "Success",
+        "duration": 0.00823180004954338,
+        "warning_count": 0,
+        "reported_outcome_including_warnings": "Success"
+      },
+      {
+        "testDisplayName": "RegionalTraumaBoundaries",
+        "fullTestPath": "ProjectONE.Combat.RegionalTraumaBoundaries",
+        "state": "Success",
+        "duration": 0.01002500206232071,
+        "warning_count": 3,
+        "reported_outcome_including_warnings": "SucceededWithWarnings"
+      },
+      {
+        "testDisplayName": "WeaponPacketsAreIdempotent",
+        "fullTestPath": "ProjectONE.Combat.WeaponPacketsAreIdempotent",
+        "state": "Success",
+        "duration": 0.009703699499368668,
+        "warning_count": 1,
+        "reported_outcome_including_warnings": "SucceededWithWarnings"
+      }
+    ],
+    "succeeded": 2,
+    "succeededWithWarnings": 3,
+    "failed": 0,
+    "notRun": 0,
+    "inProcess": 0,
+    "totalDuration": 0.04568979889154434,
+    "warning_summary": {
+      "warning_entries": 5,
+      "message": "LogSpawn: UWorld::DestroyActor: World has no context!",
+      "context": "Isolated UWorld test fixture destruction/actor teardown. The source fixture creates a test Game world and calls DestroyWorld(false) in its destructor.",
+      "source": "Source/ProjectONE/ONETests.cpp",
+      "source_lines": [
+        9,
+        15,
+        17
+      ],
+      "interpretation": "Individual native states and separate succeeded/succeededWithWarnings counters are preserved. This is not described as a warning-free run."
+    }
+  },
+  "result": "BUILD_AND_NATIVE_TESTS_PASS",
+  "ended_utc": "2026-09-05T10:23:55.873901+00:00",
+  "checkout_detail": "The previously verified neutral public checkout was clean, fetched codex/candidate03 from the public origin, and advanced by fast-forward to the exact source commit. This was not a new empty clone for this run; no local object alternates were used.",
+  "verification_scope": "Public-source checkout and hydrated LFS verification; Editor and Win64 Development game compilation; package production; five native automation tests. Packaged runtime suites, performance, manual review and final archive publication are separate gates.",
+  "lfs_inventory_scope": "All 291 tracked LFS files at the built source commit, including original authoring assets, Unreal Content and retained evidence; paths are repository-relative.",
+  "evidence_origin": {
+    "build_record": "FreshBuildVerification_e81e1137ed89.json",
+    "build_record_sha256": "cb74855bfeb60b57c1b13a1bdec28d086660e184a427fb84bbdd2ba185d4f84e",
+    "native_report": "<local-native-test-report>/index.json",
+    "native_report_sha256": "b56638d51470272a2a1f816b3fee3331fd5be015254a977554b58382bce07ddd",
+    "curation": "Local root and log paths replaced by portable symbols. Actual source/runtime/LFS hashes, timestamps and results retained."
+  },
+  "release_audit": {
+    "report": "release_audit.json",
+    "result": "PASS",
+    "scope": "Read-only runtime inventory/privacy audit; final archive and packaged runtime validation are separate."
+  }
+}
