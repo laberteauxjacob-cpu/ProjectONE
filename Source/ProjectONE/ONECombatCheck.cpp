@@ -12,6 +12,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/PointLightComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "AudioMixerBlueprintLibrary.h"
@@ -247,9 +248,31 @@ void AONECombatCheck::Tick(float Dt)
         W->SelectWeapon(1); W->RefillAllAmmo(); Next(22);
     } break;
     case 22: if (T>.6f) {
-        W->SelectWeapon(1); Player->SetActorLocation(FVector(-350,-160,98)); Next(23);
+        W->SelectWeapon(1);
+        // The previous synthetic fixture hugged the west bench. Record its
+        // collision/nav state, then use the marked, open firing lane instead.
+        const FVector LegacyFixture(-350,-160,98);
+        const UCapsuleComponent* Capsule=Player->GetCapsuleComponent();
+        const FCollisionShape Shape=FCollisionShape::MakeCapsule(Capsule->GetScaledCapsuleRadius(),Capsule->GetScaledCapsuleHalfHeight());
+        FCollisionQueryParams Params(SCENE_QUERY_STAT(CombatFixture),false,Player.Get());
+        const bool LegacyBlocked=GetWorld()->OverlapBlockingTestByChannel(LegacyFixture,FQuat::Identity,ECC_Pawn,Shape,Params);
+        UNavigationSystemV1* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
+        FNavLocation LegacyFloor;
+        const bool LegacyProjected=Nav && Nav->ProjectPointToNavigation(LegacyFixture-FVector(0,0,Capsule->GetScaledCapsuleHalfHeight()),LegacyFloor,FVector(80,80,45));
+        UE_LOG(LogTemp,Display,TEXT("ONE_COMBAT_FIXTURE legacy=%s capsule_blocked=%d floor_projected=%d nav=%s"),*LegacyFixture.ToCompactString(),LegacyBlocked,LegacyProjected,LegacyProjected?*LegacyFloor.Location.ToCompactString():TEXT("none"));
+        Player->SetActorLocation(FVector(-250,300,98));
+        Player->GetCharacterMovement()->StopMovementImmediately();
+        Next(23);
     } break;
     case 23: if (T>.7f) {
+        UNavigationSystemV1* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
+        FNavLocation Floor;
+        const bool OnNav=Nav && Nav->ProjectPointToNavigation(Player->GetNavAgentLocation(),Floor,FVector(35,35,35));
+        UNavigationPath* LanePath=OnNav ? UNavigationSystemV1::FindPathToLocationSynchronously(this,Floor.Location,Floor.Location+FVector(220,0,0),Player.Get()) : nullptr;
+        const UCapsuleComponent* Capsule=Player->GetCapsuleComponent();
+        FCollisionQueryParams Params(SCENE_QUERY_STAT(CombatFixture),false,Player.Get());
+        const bool Blocked=GetWorld()->OverlapBlockingTestByChannel(Player->GetActorLocation(),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeCapsule(Capsule->GetScaledCapsuleRadius(),Capsule->GetScaledCapsuleHalfHeight()),Params);
+        Check(OnNav && !Blocked && LanePath && LanePath->IsValid() && !LanePath->IsPartial() && FMath::Abs(Floor.Location.Z-Player->GetNavAgentLocation().Z)<20.f,TEXT("Pellet fixture occupies unobstructed floor with a complete route along the firing lane"));
         Target=GM->SpawnSandboxEnemyAt(Player->GetActorLocation()+FVector(220,0,0));
         Check(Target!=nullptr,TEXT("Sandbox spawns enemy into authoritative encounter registry"));
         if (Target) { Target->SetActorTickEnabled(false); Target->GetCharacterMovement()->StopMovementImmediately(); }
