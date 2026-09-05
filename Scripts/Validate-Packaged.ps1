@@ -1,10 +1,10 @@
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
-$gameExe = Join-Path $projectRoot 'Packaged\Candidate01\Windows\ProjectONE.exe'
+$gameExe = Join-Path $projectRoot 'Packaged\Candidate02\Windows\ProjectONE.exe'
 if (!(Test-Path -LiteralPath $gameExe)) { throw 'Run Package.ps1 first.' }
 # Preserve previous captures without mixing their timestamps into the new sequence.
 $archiveRoot = Join-Path $projectRoot ('Saved\PreviousPackagedRun_' + (Get-Date -Format 'yyyyMMdd_HHmmss'))
-foreach ($folder in @('Presentation', 'Validation')) {
+foreach ($folder in @('Presentation', 'Validation', 'Candidate02')) {
     $source = [IO.Path]::GetFullPath((Join-Path (Split-Path -Parent $gameExe) "ProjectONE\Saved\$folder"))
     $destination = [IO.Path]::GetFullPath((Join-Path $archiveRoot $folder))
     if (!$source.StartsWith($projectRoot + '\') -or !$destination.StartsWith($projectRoot + '\')) { throw 'Capture archive escaped project root.' }
@@ -14,13 +14,13 @@ foreach ($folder in @('Presentation', 'Validation')) {
     }
 }
 # Run separately: capture writes affect frame timing, so benchmarks never record a sequence.
-foreach ($mode in @('ONEPresentation', 'ONEValidate', 'ONEBenchmark=6', 'ONEBenchmark=12', 'ONEBenchmark=18')) {
+foreach ($mode in @('ONECombatCheck', 'ONECompare', 'ONEPresentation', 'ONEValidate', 'ONEBenchmark=6', 'ONEBenchmark=12', 'ONEBenchmark=18')) {
     $label = $mode.Replace('=', '_')
     $log = Join-Path $projectRoot "Saved\Logs\Packaged_$label.log"
     $arguments = @("-$mode", '-windowed', '-ResX=1600', '-ResY=900', '-unattended', '-nosplash', "-abslog=`"$log`"")
     $process = Start-Process -FilePath $gameExe -WorkingDirectory (Split-Path -Parent $gameExe) -ArgumentList $arguments -WindowStyle Normal -PassThru
     if (!$process.WaitForExit(150000)) { throw "$mode exceeded 150 seconds; inspect the game and log." }
     $content = Get-Content -LiteralPath $log -Raw
-    if ($content -notmatch 'ONE_(VALIDATION|PRESENTATION)_COMPLETE failures=0') { throw "$mode did not report successful completion: $log" }
+    if ($content -notmatch 'ONE_(VALIDATION|PRESENTATION|COMBAT)_COMPLETE failures=0') { throw "$mode did not report successful completion: $log" }
     Write-Output "$mode PASS ($log)"
 }

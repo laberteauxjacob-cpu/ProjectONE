@@ -28,9 +28,9 @@ void AONEHUD::DrawHUD()
     const FLinearColor Teal(.34f,.86f,.79f), Dim(.47f,.59f,.61f), Amber(.98f,.64f,.24f);
     Panel(M,M,276*K,86*K);
     Label("PROJECT ONE", M+17*K,M+12*K,1.25f*K);
-    Label("B-07 / CONTAINMENT HALL", M+17*K,M+45*K,.72f*K,Dim);
+    Label("B-07 / CANDIDATE 02", M+17*K,M+45*K,.72f*K,Dim);
     Panel(W-M-236*K,M,236*K,86*K);
-    Label(FString::Printf(TEXT("ROUND  %02d"),FMath::Max(1,GM->GetRound())),W-M-218*K,M+12*K,1.10f*K,Amber);
+    Label(GM->IsSandbox()?TEXT("DEVELOPER SANDBOX"):FString::Printf(TEXT("ROUND  %02d"),FMath::Max(1,GM->GetRound())),W-M-218*K,M+12*K,1.10f*K,Amber);
     Label(FString::Printf(TEXT("%d REMAINING    /    %06d PTS"),GM->GetRemaining(),GM->GetPoints()),W-M-218*K,M+46*K,.65f*K);
     Panel(M,H-M-102*K,276*K,102*K);
     Label("RESPONSE / VITAL SIGNS",M+17*K,H-M-90*K,.68f*K,Dim);
@@ -39,16 +39,23 @@ void AONEHUD::DrawHUD()
     DrawRect(Health>.3f?Teal:FLinearColor(.91f,.24f,.14f),M+17*K,H-M-57*K,188*K*Health,7*K);
     Label(FString::Printf(TEXT("%03d"),FMath::CeilToInt(P->GetHealth())),M+217*K,H-M-68*K,.85f*K);
     Label("WASD MOVE   SHIFT RUN",M+17*K,H-M-31*K,.62f*K,Dim);
-    Label("ESC PAUSE",M+17*K,H-M-14*K,.62f*K,Dim);
+    Label("ESC PAUSE   F1 SANDBOX",M+17*K,H-M-14*K,.62f*K,Dim);
     if (const UONEWeaponComponent* Weapon = P->GetWeaponComponent())
     {
-        Panel(W-M-276*K,H-M-102*K,276*K,102*K);
-        const float X = W-M-259*K;
-        Label("AR-01 / RESPONSE CARBINE",X,H-M-90*K,.68f*K,Dim);
-        Label(FString::Printf(TEXT("%02d"),Weapon->GetAmmo()),X,H-M-64*K,1.65f*K,Weapon->GetAmmo()?FLinearColor::White:Amber);
-        Label(FString::Printf(TEXT("/ %03d"),Weapon->GetReserveAmmo()),X+67*K,H-M-47*K,.9f*K,Dim);
-        Label(Weapon->IsReloading()?TEXT("RELOADING"):(Weapon->GetTimeSinceEmpty()<.45f?TEXT("EMPTY / PRESS R"):TEXT("LMB FIRE   R RELOAD")),X,H-M-24*K,.63f*K,Weapon->IsReloading()||Weapon->GetAmmo()==0?Amber:Dim);
-        if (Weapon->IsReloading()) DrawRect(Amber,X,H-M-7*K,240*K*Weapon->GetReloadProgress(),2*K);
+        Panel(W-M-304*K,H-M-140*K,304*K,140*K);
+        const float X = W-M-287*K;
+        Label(Weapon->GetWeaponName().ToString(),X,H-M-128*K,.68f*K,Dim);
+        Label(FString::Printf(TEXT("%02d"),Weapon->GetAmmo()),X,H-M-102*K,1.65f*K,Weapon->GetAmmo()?FLinearColor::White:Amber);
+        Label(FString::Printf(TEXT("/ %03d"),Weapon->GetReserveAmmo()),X+67*K,H-M-85*K,.9f*K,Dim);
+        FString Operation=TEXT("READY");
+        if (Weapon->IsReloading()) Operation=Weapon->GetDefinition().bShellReload?TEXT("RELOADING / FIRE TO INTERRUPT"):TEXT("RELOADING");
+        else if (Weapon->GetOperation()==EONEWeaponOperation::Equip) Operation=TEXT("EQUIPPING");
+        else if (Weapon->NeedsPump(Weapon->GetEquippedIndex())) Operation=TEXT("PUMP ACTION");
+        else if (Weapon->GetTimeSinceEmpty()<.45f) Operation=TEXT("EMPTY / PRESS R");
+        Label(Operation,X,H-M-62*K,.63f*K,Weapon->IsBusy()||Weapon->GetAmmo()==0?Amber:Dim);
+        if (Weapon->IsBusy()) DrawRect(Amber,X,H-M-43*K,270*K*Weapon->GetOperationProgress(),2*K);
+        Label("LMB FIRE   R RELOAD   TAB CYCLE",X,H-M-35*K,.63f*K,Dim);
+        Label(FString::Printf(TEXT("%s1 AR %02d/%03d    %s2 SG %d/%02d"),Weapon->GetEquippedIndex()==0?TEXT(">"):TEXT(" "),Weapon->GetAmmoForWeapon(0),Weapon->GetReserveAmmoForWeapon(0),Weapon->GetEquippedIndex()==1?TEXT(">"):TEXT(" "),Weapon->GetAmmoForWeapon(1),Weapon->GetReserveAmmoForWeapon(1)),X,H-M-17*K,.63f*K,Teal);
         if (Weapon->GetTimeSinceHit()<.18f)
         {
             float MX,MY;
@@ -65,6 +72,13 @@ void AONEHUD::DrawHUD()
         const FLinearColor Damage(.72f,.12f,.055f,.72f);
         DrawRect(Damage,0,0,W,3); DrawRect(Damage,0,H-3,W,3);
         DrawRect(Damage,0,0,3,H); DrawRect(Damage,W-3,0,3,H);
+    }
+    if (GM->IsSandbox())
+    {
+        Panel(W*.5f-272*K,M,544*K,82*K);
+        Label("SANDBOX  /  F1 RETURN TO ROUNDS",W*.5f-255*K,M+9*K,.76f*K,Teal);
+        Label("F2 +1 INFECTED   F3 +6   F4 REFILL BOTH",W*.5f-255*K,M+33*K,.7f*K);
+        Label("F5 RESET ENCOUNTER   F6 CLEAR GORE   1 / 2 EQUIP",W*.5f-255*K,M+56*K,.7f*K,Dim);
     }
     if (GM->IsIntermission() && !GM->IsGameOver())
     {

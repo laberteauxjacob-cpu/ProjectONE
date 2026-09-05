@@ -14,4 +14,10 @@ private:
     void TogglePause();
     void Restart();
     void QuitFromPause();
+    void ToggleSandbox();
+    void SpawnOne();
+    void SpawnSix();
+    void Refill();
+    void ResetSandbox();
+    void ClearGore();
 };

@@ -55,6 +55,7 @@ public:
     void Shot(const FVector& Start,const FVector& End);
     void Detach(USkeletalMeshComponent* Part,USkeletalMeshComponent* PoseSource,FName Bone,const FVector& Direction);
     void RegisterCorpse(AActor* Corpse);
+    void ClearPresentation();
     int32 GetDecalCount() const;
     int32 GetPieceCount() const;
     int32 GetCorpseCount() const;

@@ -15,6 +15,12 @@ public:
     void NotifyZombieKilled(AONEZombie* Zombie, int32 Reward = 100);
     void PlayerDied();
     UFUNCTION(BlueprintCallable) void RestartScene();
+    void ToggleSandbox();
+    void SpawnSandboxEnemies(int32 Count);
+    AONEZombie* SpawnSandboxEnemyAt(const FVector& Location);
+    void RefillSandboxAmmo();
+    void ClearSandboxPresentation();
+    bool IsSandbox() const { return bSandbox; }
     int32 GetRound() const { return Round; }
     int32 GetPoints() const { return Points; }
     int32 GetRemaining() const { return Alive.Num() + ToSpawn; }
@@ -33,5 +39,6 @@ private:
     TArray<FVector> SpawnLocations;
     int32 Round = 0, Points = 0, Kills = 0, ToSpawn = 0;
     bool bGameOver = false, bIntermission = true;
+    bool bSandbox = false;
     float Countdown = 5.f, SpawnClock = 0.f;
 };

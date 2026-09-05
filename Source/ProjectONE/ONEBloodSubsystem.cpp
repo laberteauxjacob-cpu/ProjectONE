@@ -176,6 +176,16 @@ void UONEBloodSubsystem::Detach(USkeletalMeshComponent* Part,USkeletalMeshCompon
     { G->Initialize(Part,PoseSource,Bone,Direction); Pieces.Add(G); BoundActors(Pieces,18); }
 }
 void UONEBloodSubsystem::RegisterCorpse(AActor* Corpse) { Corpses.Add(Corpse); BoundActors(Corpses,14); }
+void UONEBloodSubsystem::ClearPresentation()
+{
+    for (auto* Collection : {&Effects,&Pieces,&Corpses})
+    {
+        for (const auto& Actor : *Collection) if (Actor.IsValid()) Actor->Destroy();
+        Collection->Reset();
+    }
+    for (const auto& Decal : Decals) if (Decal.IsValid()) Decal->DestroyComponent();
+    Decals.Reset();
+}
 int32 UONEBloodSubsystem::GetDecalCount() const { return Decals.FilterByPredicate([](const auto& C){return C.IsValid();}).Num(); }
 int32 UONEBloodSubsystem::GetPieceCount() const { return Pieces.FilterByPredicate([](const auto& C){return C.IsValid();}).Num(); }
 int32 UONEBloodSubsystem::GetCorpseCount() const { return Corpses.FilterByPredicate([](const auto& C){return C.IsValid();}).Num(); }
