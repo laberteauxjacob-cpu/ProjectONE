@@ -10,9 +10,9 @@
 
 struct FONEAnimProxy : FAnimInstanceProxy
 {
-    FAnimNode_SequenceEvaluator_Standalone Idle,Walk,Run,Back,Left,Right,Action,Death;
+    FAnimNode_SequenceEvaluator_Standalone Idle,Walk,Run,Back,Left,Right,Ready,Action,Death;
     FAnimNode_TwoWayBlend ForwardBack,LeftRight,Directions,Running,Locomotion,FullAction,Final;
-    FAnimNode_LayeredBoneBlend UpperBody;
+    FAnimNode_LayeredBoneBlend ReadyUpperBody,UpperBody;
     float Phase=0,IdleClock=0,SmoothedSpeed=0,SmoothedX=1,SmoothedY=0;
     FONEAnimProxy(UAnimInstance* Instance):FAnimInstanceProxy(Instance)
     {
@@ -21,7 +21,13 @@ struct FONEAnimProxy : FAnimInstanceProxy
         Directions.A.SetLinkNode(&ForwardBack); Directions.B.SetLinkNode(&LeftRight);
         Running.A.SetLinkNode(&Directions); Running.B.SetLinkNode(&Run);
         Locomotion.A.SetLinkNode(&Idle); Locomotion.B.SetLinkNode(&Running);
-        UpperBody.BasePose.SetLinkNode(&Locomotion);
+        ReadyUpperBody.BasePose.SetLinkNode(&Locomotion);
+        ReadyUpperBody.AddPose();
+        ReadyUpperBody.BlendPoses[0].SetLinkNode(&Ready);
+        FBranchFilter ReadyBranch; ReadyBranch.BoneName=TEXT("spine_01"); ReadyBranch.BlendDepth=2;
+        ReadyUpperBody.LayerSetup[0].BranchFilters.Add(ReadyBranch);
+        ReadyUpperBody.bMeshSpaceRotationBlend=true;
+        UpperBody.BasePose.SetLinkNode(&ReadyUpperBody);
         UpperBody.AddPose();
         UpperBody.BlendPoses[0].SetLinkNode(&Action);
         FBranchFilter Branch; Branch.BoneName=TEXT("spine_01"); Branch.BlendDepth=2;
@@ -85,11 +91,15 @@ struct FONEAnimProxy : FAnimInstanceProxy
         Running.Alpha=RunWeight;
         Locomotion.Alpha=FMath::Clamp(SmoothedSpeed/40.f,0.f,1.f);
         float ActionWeight=0,DeathWeight=0;
+        Sample(Ready,Anim->FindClip(TEXT("Idle")),IdleClock);
+        ReadyUpperBody.BlendWeights[0]=P ? 1.f : 0.f;
         if (P && P->GetWeaponComponent())
         {
             auto* W=P->GetWeaponComponent();
-            if (W->IsReloading()) { Sample(Action,Anim->FindClip(TEXT("Reload")),W->GetReloadElapsed(),false); ActionWeight=1; }
-            else { Sample(Action,Anim->FindClip(TEXT("Fire")),W->GetTimeSinceShot(),false); ActionWeight=W->GetTimeSinceShot()<.2f ? 1.f : 0.f; }
+            Sample(Ready,W->GetReadyAnimation(),IdleClock);
+            float ActionTime=0;
+            if (UAnimSequence* ActionClip=W->GetActionAnimation(ActionTime)) { Sample(Action,ActionClip,ActionTime,false); ActionWeight=1; }
+            else if (!Action.GetSequence()) Sample(Action,Anim->FindClip(TEXT("Idle")),0);
         }
         if (Z)
         {
@@ -99,7 +109,7 @@ struct FONEAnimProxy : FAnimInstanceProxy
                     Sample(Action,Anim->FindClip(Z->HasLeftArm() ? TEXT("Attack") : TEXT("AttackOneArm")),Z->GetStateElapsed(),false);
                     ActionWeight=1; break;
                 case EONEZombieState::Hit:
-                    Sample(Action,Anim->FindClip(TEXT("Hit")),Z->GetStateElapsed(),false);
+                    Sample(Action,Anim->FindClip(Z->IsHeavyReaction() ? TEXT("HeavyHit") : TEXT("Hit")),Z->GetStateElapsed(),false);
                     ActionWeight=1; break;
                 case EONEZombieState::Dead:
                     Sample(Death,Anim->FindClip(TEXT("Death")),Z->GetStateElapsed(),false);
@@ -122,12 +132,12 @@ void UONEAnimInstance::NativeInitializeAnimation()
     Super::NativeInitializeAnimation();
     Clips.Reset();
     const FString Prefix=Cast<AONEZombie>(TryGetPawnOwner()) ? TEXT("A_Infected_") : TEXT("A_Response_");
-    const TArray<FString> Names={TEXT("Idle"),TEXT("Walk"),TEXT("Run"),TEXT("Back"),TEXT("StrafeL"),TEXT("StrafeR"),TEXT("Fire"),TEXT("Reload"),TEXT("Attack"),TEXT("AttackOneArm"),TEXT("Hit"),TEXT("Death")};
+    const TArray<FString> Names={TEXT("Idle"),TEXT("Walk"),TEXT("Run"),TEXT("Back"),TEXT("StrafeL"),TEXT("StrafeR"),TEXT("Fire"),TEXT("Reload"),TEXT("Attack"),TEXT("AttackOneArm"),TEXT("Hit"),TEXT("HeavyHit"),TEXT("Death")};
     const bool bInfected=Cast<AONEZombie>(TryGetPawnOwner())!=nullptr;
     for (const FString& Name:Names)
     {
         if (bInfected && (Name==TEXT("Back")||Name.StartsWith(TEXT("Strafe"))||Name==TEXT("Fire")||Name==TEXT("Reload"))) continue;
-        if (!bInfected && (Name.StartsWith(TEXT("Attack"))||Name==TEXT("Hit")||Name==TEXT("Death"))) continue;
+        if (!bInfected && (Name.StartsWith(TEXT("Attack"))||Name==TEXT("Hit")||Name==TEXT("HeavyHit")||Name==TEXT("Death"))) continue;
         const FString Asset=Prefix+Name;
         if (auto* Clip=LoadObject<UAnimSequence>(nullptr,*(TEXT("/Game/ONE/Animations/")+Asset+TEXT(".")+Asset))) Clips.Add(FName(*Name),Clip);
     }

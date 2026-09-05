@@ -8,6 +8,7 @@ class USpringArmComponent;
 class UCameraComponent;
 class UStaticMeshComponent;
 class UPointLightComponent;
+struct FONEWeaponDefinition;
 
 UCLASS()
 class PROJECTONE_API AONEPlayer : public ACharacter
@@ -27,6 +28,8 @@ public:
     FVector GetAimPoint() const { return AimPoint; }
     FVector GetMuzzleLocation() const;
     void FlashMuzzle();
+    void ClearWeaponEffects();
+    void ApplyWeaponPresentation(const FONEWeaponDefinition& Definition);
     void ReleaseHeldInputs();
     void SetSprintHeld(bool Held) { bSprint=Held; }
     void SetAimOverride(bool Enabled,const FVector& Position) { bAimOverride=Enabled; OverrideAimPoint=Position; }
@@ -37,6 +40,10 @@ public:
     UPROPERTY(VisibleAnywhere) TObjectPtr<UONEHealthComponent> Health;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UONEWeaponComponent> Weapon;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Gun;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> ForeEnd;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> LoadingShell;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> SeatedMagazine;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> HeldMagazine;
     UPROPERTY(VisibleAnywhere) TObjectPtr<USpringArmComponent> CameraArm;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Camera;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> MuzzleLight;
@@ -46,6 +53,7 @@ private:
     void MoveRight(float Value);
     void StartFire(); void StopFire(); void Reload();
     void StartSprint(); void StopSprint();
+    void SelectCarbine(); void SelectShotgun(); void CycleWeapon();
     bool bSprint = false;
     bool bAimOverride = false;
     FVector OverrideAimPoint=FVector::ZeroVector;

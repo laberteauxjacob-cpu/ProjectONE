@@ -146,7 +146,7 @@ void AONEZombie::Tick(float Dt)
     const float Distance=FVector::Dist2D(GetActorLocation(),Target->GetActorLocation());
     if (State==EONEZombieState::Hit)
     {
-        if (GetStateElapsed()>=.4f) ChangeState(EONEZombieState::Pursue);
+        if (GetStateElapsed()>=(bHeavyReaction ? .52f : .4f)) ChangeState(EONEZombieState::Pursue);
         else return;
     }
     if (State==EONEZombieState::Attack)
@@ -182,35 +182,66 @@ void AONEZombie::Tick(float Dt)
 }
 void AONEZombie::ReceiveBullet(const FHitResult& Hit,const FVector& Direction,float Damage)
 {
-    if (IsDead()) return;
-    const bool bHeadHit=Hit.GetComponent()==HeadRegion || Hit.BoneName==TEXT("head");
-    const bool bArmHit=Hit.GetComponent()==ArmRegion || Hit.GetComponent()==UpperArmRegion || Hit.BoneName.ToString().EndsWith(TEXT("arm_l"));
-    if ((bHeadHit&&bHeadSevered)||(bArmHit&&bArmSevered)) return;
-    if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->Impact(Hit.ImpactPoint,Direction,false);
-    if (bHeadHit)
+    // Preserve the Candidate01 single-carbine-hit entry point for gameplay probes.
+    FONEWeaponDamagePacket Packet; Packet.Direction=Direction; Packet.Position=Hit.ImpactPoint; Packet.Pellets=1;
+    switch (GetHitRegion(Hit))
     {
-        Sever(true,Direction);
-        Health->ApplyDamage(Health->MaxHealth);
-        Die(Direction); return;
+        case EONEHitRegion::Head: Packet.HeadDamage=Damage; Packet.HeadTrauma=FMath::Max(HeadSeverThreshold,Damage*2.f); break;
+        case EONEHitRegion::Arm: Packet.ArmDamage=Damage; Packet.ArmTrauma=Damage; break;
+        case EONEHitRegion::Body: Packet.BodyDamage=Damage; break;
+        default: return;
     }
-    if (bArmHit)
+    ReceiveWeaponDamage(Packet);
+}
+EONEHitRegion AONEZombie::GetHitRegion(const FHitResult& Hit) const
+{
+    if (IsDead()) return EONEHitRegion::Invalid;
+    const bool HeadHit=Hit.GetComponent()==HeadRegion || Hit.BoneName==TEXT("head");
+    const bool ArmHit=Hit.GetComponent()==ArmRegion || Hit.GetComponent()==UpperArmRegion || Hit.BoneName==TEXT("upperarm_l") || Hit.BoneName==TEXT("lowerarm_l") || Hit.BoneName==TEXT("hand_l");
+    if (HeadHit) return bHeadSevered ? EONEHitRegion::Invalid : EONEHitRegion::Head;
+    if (ArmHit) return bArmSevered ? EONEHitRegion::Invalid : EONEHitRegion::Arm;
+    return EONEHitRegion::Body;
+}
+bool AONEZombie::ReceiveWeaponDamage(const FONEWeaponDamagePacket& Packet)
+{
+    if (IsDead() || (Packet.ShotId!=0 && RecentShotIds.Contains(Packet.ShotId))) return false;
+    const float Body=FMath::Max(0.f,Packet.BodyDamage);
+    const float Head=bHeadSevered ? 0.f : FMath::Max(0.f,Packet.HeadDamage);
+    const float Arm=bArmSevered ? 0.f : FMath::Max(0.f,Packet.ArmDamage);
+    if (Body+Head+Arm<=0.f) return false;
+    if (Packet.ShotId!=0)
     {
-        ArmDamage+=Damage;
-        Health->ApplyDamage(Damage*.4f);
-        if (ArmDamage>=50.f) Sever(false,Direction);
+        if (RecentShotIds.Num()>=32) RecentShotIds.RemoveAt(0);
+        RecentShotIds.Add(Packet.ShotId);
     }
-    else Health->ApplyDamage(Damage);
-    if (Health->IsDead()) { Die(Direction); return; }
+    ++DamageTransactions;
+    HeadTrauma+=bHeadSevered ? 0.f : FMath::Max(0.f,Packet.HeadTrauma);
+    ArmDamage+=bArmSevered ? 0.f : FMath::Max(0.f,Packet.ArmTrauma);
+    const bool HeadLoss=!bHeadSevered && Head>0 && HeadTrauma>=HeadSeverThreshold;
+    const bool ArmLoss=!HeadLoss && !bArmSevered && Arm>0 && ArmDamage>=ArmSeverThreshold;
+    // One discharge produces at most one detachment and one impact spray per victim.
+    if (HeadLoss) { Sever(true,Packet.Direction); Health->ApplyDamage(Health->MaxHealth); }
+    else
+    {
+        Health->ApplyDamage(Body+Head+Arm*.4f);
+        if (ArmLoss) Sever(false,Packet.Direction);
+    }
+    if (!HeadLoss && !ArmLoss)
+        if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->Impact(Packet.Position,Packet.Direction,false);
+    if (Health->IsDead()) { Die(Packet.Direction); return true; }
     const float Now=GetWorld()->GetTimeSeconds();
     if (Now-LastReaction>=HitReactCooldown)
     {
+        bHeavyReaction=Body+Head+Arm>=Packet.HeavyStaggerThreshold;
         LastReaction=Now; StopPursuit(); ChangeState(EONEZombieState::Hit);
-        NextAttack=Now+.4f;
+        NextAttack=Now+(bHeavyReaction ? .52f : .4f);
     }
+    return true;
 }
 void AONEZombie::Sever(bool bHead,const FVector& Direction)
 {
     if ((bHead&&bHeadSevered)||(!bHead&&bArmSevered)) return;
+    ++SeverCount;
     USkeletalMeshComponent* Part=bHead ? HeadMesh.Get() : ArmMesh.Get();
     const FName Bone=bHead ? FName(TEXT("head")) : FName(TEXT("upperarm_l"));
     if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>())
