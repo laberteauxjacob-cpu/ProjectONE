@@ -18,6 +18,9 @@ foreach ($mode in @('ONECombatCheck', 'ONECompare', 'ONEPresentation', 'ONEValid
     $label = $mode.Replace('=', '_')
     $log = Join-Path $projectRoot "Saved\Logs\Packaged_$label.log"
     $arguments = @("-$mode", '-windowed', '-ResX=1600', '-ResY=900', '-unattended', '-nosplash', "-abslog=`"$log`"")
+    # Keep the recorded master mix audible when capture runs without window focus.
+    # This process-only override does not change normal gameplay audio behavior.
+    if ($mode -eq 'ONECompare') { $arguments += '-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0' }
     $process = Start-Process -FilePath $gameExe -WorkingDirectory (Split-Path -Parent $gameExe) -ArgumentList $arguments -WindowStyle Normal -PassThru
     if (!$process.WaitForExit(150000)) { throw "$mode exceeded 150 seconds; inspect the game and log." }
     $content = Get-Content -LiteralPath $log -Raw

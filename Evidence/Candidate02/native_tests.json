@@ -1,0 +1,31 @@
+{
+  "method": "Native Unreal automation, actual ProjectONE.Combat tests in scoped test worlds; geometric/presentation checks are separate packaged runs",
+  "tests": [
+    {
+      "name": "ProjectONE.Combat.DamageAndDeathAreMonotonic",
+      "state": "Success",
+      "duration_seconds": 0.008029401302337646
+    },
+    {
+      "name": "ProjectONE.Combat.RegionalTraumaBoundaries",
+      "state": "Success",
+      "duration_seconds": 0.01097629964351654
+    },
+    {
+      "name": "ProjectONE.Combat.WeaponPacketsAreIdempotent",
+      "state": "Success",
+      "duration_seconds": 0.009403802454471588
+    }
+  ],
+  "passed": 3,
+  "failed": 0,
+  "hardware": {
+    "gPU": "NVIDIA GeForce RTX 3090",
+    "cPUModel": "AMD Ryzen 9 5950X 16-Core Processor            ",
+    "rAMInGB": 64,
+    "oSVersion": "Windows 11 (25H2) [10.0.26200.9168] "
+  },
+  "warning_scope": "Temporary native test actors query sockets before skeletal asset setup; actual geometry is validated in packaged runtime checks.",
+  "source_revision": "0637288d32b6fbebc67ef93d4f03e439ff38bb67",
+  "passed_with_warnings": 2
+}

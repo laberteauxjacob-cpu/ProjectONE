@@ -1,0 +1,51 @@
+Project ONE actual in-engine validation
+GPU: NVIDIA GeForce RTX 3090
+Resolution: X=1600 Y=900
+Failures: 0
+
+PASS | Player skeletal mesh loaded
+PASS | Player reusable skeleton contains >20 bones
+PASS | Player native skeletal animation graph active
+PASS | New carbine loaded
+PASS | Player imported scale plausible 120-260cm height
+PASS | Infected modular meshes loaded
+PASS | Two arm hits sever left arm while infected survives
+PASS | Detached arm begins at current evaluated shoulder transform
+PASS | Repeated removed-arm damage ignored
+PASS | Repeated severing does not create duplicate pieces
+PASS | Removed arm rendering and hit detection disabled
+PASS | Head removal causes immediate death
+PASS | Repeated head damage does not mutate dead health
+PASS | Lethal torso hit preserves an intact corpse
+PASS | Held trigger exhausts magazine at cadence
+PASS | Empty trigger produces distinct feedback state
+PASS | Reload starts from empty magazine
+PASS | Reload conserves total ammunition
+PASS | Reload completion exits reload state
+PASS | One-arm infected moves and continues pursuing
+PASS | Duplicate kill notifications do not award points
+PASS | Round completion reaches zero remaining
+PASS | Round two starts after intermission
+PASS | Hit interrupts a pending attack
+PASS | Interrupted attack did not deliver delayed damage
+PASS | Dead attacker did not deliver delayed damage
+PASS | Persistent ground blood remains bounded at 90 decals
+PASS | Detached pieces and corpses remain within explicit caps
+PASS | Expired corpses cleaned after 30 seconds
+PASS | Expired detached pieces cleaned after 30 seconds
+PASS | Reload in progress immediately before lethal attack
+PASS | Player death enters game-over state
+PASS | Player death cancels reload
+PASS | Restart loads a living player and resets round/score state
+sg.ViewDistanceQuality=2
+sg.AntiAliasingQuality=2
+sg.ShadowQuality=2
+sg.PostProcessQuality=2
+sg.TextureQuality=2
+sg.EffectsQuality=2
+r.ScreenPercentage=100
+r.AntiAliasingMethod=1
+r.DynamicGlobalIlluminationMethod=0
+r.ReflectionMethod=0
+r.VSync=0
+t.MaxFPS=120

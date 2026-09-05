@@ -1,62 +1,142 @@
 # Current state — Candidate02
 
-Candidate02 continues the accepted Candidate01 containment arena with two carried weapons and an explicit developer sandbox. Review branch: `codex/candidate02`. The `candidate01` tag and retained Candidate01 Windows package provide rollback points.
+Candidate02 is the original Project ONE containment arena with two carried
+weapons and a developer sandbox. It retains the accepted player, infected
+archetype, room, rounds, points, blood and severing foundation. Project Zero
+content remains excluded.
 
-**Release record is pending final verification.** Packaged gameplay source revision, final published revision, candidate tag, and download URL must be filled from the completed build and remote checks. They are not established by this development snapshot. See the [Candidate02 pass report](Passes/Candidate02.md); [Candidate02 evidence](../Evidence/Candidate02/) is the planned destination for final checks and genuine gameplay captures. Those links may be populated later in this pass.
+The public Candidate01 baseline is
+`02c590a75141b48564715d130018f0cbe9a8a092`. Public release references are `main`
+for latest, `codex/candidate02` for review and the `candidate02` version tag.
+The original Candidate01 history bundle, local rollback tag and package remain
+preserved separately. Packaged source revision:
+**`0637288d32b6fbebc67ef93d4f03e439ff38bb67`**.
+The [pass report](Passes/Candidate02.md) owns the final archive checksum, size and
+verification record.
+The final repository commit adds documentation, evidence and
+release/validation/capture tooling; `Source`, `Config` and `Content` remain
+identical to that packaged revision.
+Required source and assets are published through Git LFS, with ordinary upload
+and fetch verified. No broad license or paid settings were enabled;
+account-specific LFS quota and budget were unavailable under current authentication.
 
-## Implemented systems
+## Implemented behavior
 
-| Weapon | Loaded / initial reserve | Firing | Reload |
+| Weapon | Ammunition | Fire | Reload |
 | --- | --- | --- | --- |
-| AR-01 carbine | 24 / 192 | Automatic; 0.16-second cadence; 32 base damage | 2.10 seconds; magazine ammunition transfers at 1.20 seconds |
-| SG-01 pump shotgun | 6 / 36 | One shot per press; eight 15-damage pellets; 0.22-second recoil followed by 0.56-second pump | 0.35-second opening, 0.90 seconds per shell with insertion at 0.60, then 0.32-second closure |
+| AR-01 carbine | 24 loaded / 192 initial reserve | Automatic, 0.16-second cadence, 32 base damage | 2.10 seconds; magazine out 0.40, ammunition transfer 1.20, bolt 1.74 |
+| SG-01 pump shotgun | 6 loaded / 36 initial reserve | One discharge per press; eight 15-damage pellets, 4-degree spread; 0.22-second recoil plus 0.56-second pump | 0.35-second opening, 0.90 seconds per shell with transfer at 0.60, 0.32-second closure |
 
-Definitions expose damage, spread, cadence, capacity, reserves, range falloff, operation timing, animation/audio references, and trauma tuning. Shotgun spread is 4 degrees; damage is full through 5 m and falls to 20% at 14 m. Carbine range is 28 m, with falloff after 14 m. Later rounds resupply both carried slots: 48 carbine rounds and eight shotgun shells, capped at 270 and 60 reserve respectively.
+Shotgun damage is full through 5 m and falls to 20% at 14 m. Carbine range is
+28 m with falloff after 14 m. Definitions expose capacities, reserves, cadence,
+falloff, trauma tuning, operations and animation/audio references. Later rounds
+add 48 reserve carbine rounds and eight shotgun shells, capped at 270 and 60.
 
-Switching takes 0.36 seconds and changes the visible weapon at 0.18. Each slot retains ammunition and any unfinished pump obligation. Switching cancels unfinished reload events, held fire, audio, and muzzle effects. Ammunition already inserted stays earned. A spent shotgun case can eject only once even if pumping is interrupted. A short fire tap interrupts shell loading, closes the reload, and fires one earned shell when ready. Pause clears queued fire and freezes the operation clock; death cancels operations. Developer refill cancels operations and restores both weapons to ready. Restart reconstructs the encounter and both weapons.
+Both slots retain ammunition and pending pump obligations when switched. Equip
+takes 0.36 seconds with the visible swap at 0.18. Canceling a reload retains only
+earned ammunition. A short fire tap interrupts shell loading through its closing
+pose; an interrupted pump ejects its spent case only once. Pause freezes operation
+time and clears queued fire. Death cancels operations; refill resets both weapons
+to ready; restart reconstructs the player, encounter and ammunition.
 
-The native animation graph retains directional lower-body locomotion while weapon ready, fire, reload, pump, and equip clips affect the upper body. The shotgun fore-end, held loading shell, seated/held carbine magazine, mechanical sounds, and ammo transfers follow operation events. Shot variants, empty clicks, handling sounds, and flesh/concrete/metal impacts use original Project ONE audio.
+The native animation graph layers ready, fire, pump, reload and equip clips over
+directional leg locomotion. A separate moving fore-end, held shell and seated/held
+carbine magazine follow the authored actions. Five new static meshes, nine clips
+and 25 original synthesized event sounds retain editable sources alongside the
+accepted rigs and meshes. No broad character or environment redraw was performed.
 
-There is one infected archetype with navigation, timed right-arm attacks, cooldown-limited hit reactions, and a heavier reaction for substantial nonlethal blasts. Head trauma reaches a lethal sever threshold at 32; removable-arm trauma reaches 50, with arm hits applying 40% health damage. Arm loss can survive and uses the remaining-arm attack. Pellet traces aggregate into one transaction per victim per discharge; duplicate IDs and corpse hits are rejected. A blast can detach at most one part per victim, with lethal head loss taking priority. Intact deaths remain possible. Registered kills award 100 points once.
+Pellets aggregate into one damage transaction per victim/discharge; duplicate
+packets and corpse hits cannot duplicate damage, severing or points. A blast can
+detach at most one part per victim, with lethal head loss taking priority.
+Surviving arm loss retains the remaining-arm attack. Significant nonlethal blasts
+can trigger a cooldown-limited heavier reaction. Registered kills award 100 points
+once. Blood, bodies, detached parts and spent cases remain bounded; detached
+meshes preserve the evaluated pose and do not block movement.
 
-Blood, corpses, detached parts, and ejected cases are bounded and expire. Detached meshes preserve the animated pose and have no blocking collision. The HUD reads both slots, the equipped weapon, operation progress, health, encounter counts, points, and hit/kill feedback directly from gameplay state.
+The HUD reads health, both weapon slots, ammunition, operation progress, encounter
+counts, score and hit/kill feedback from gameplay state. Normal rounds remain
+available. Sandbox disables automatic waves, keeps the same combat/registration
+systems, caps living infected at 18 and adds 0/2/5/10 m references to the arena.
+Sandbox spawning now tries up to 17 bounded nearby positions on the player's
+floor and requires a complete navigation route plus capsule clearance before
+acceptance. It does not relocate the actor after those checks.
 
-## Actual controls
+## Controls
 
 | Input | Action |
 | --- | --- |
 | WASD / mouse | Move / aim independently |
 | Left Shift | Run; reload limits movement to walking speed |
-| Left mouse / R | Fire / reload when available |
+| Left mouse / R | Fire / reload |
 | 1 / 2 | Select carbine / shotgun |
-| Tab or either mouse-wheel direction | Cycle the two carried weapons |
-| Escape | Pause/resume |
+| Tab / either mouse-wheel direction | Cycle carried weapons |
+| Escape | Pause / resume |
 | Enter / Q | Restart / quit while paused or after death |
-| F1 | Toggle developer sandbox; reloads the encounter |
-| F2 / F3 | In sandbox, spawn one / up to six registered infected |
-| F4 | In sandbox, refill and ready both weapons |
-| F5 | Reset sandbox encounter, player, score, and ammunition |
-| F6 | In sandbox, clear blood, corpses, detached parts, and spent cases; living infected remain |
+| F1 | Toggle sandbox and reset the encounter |
+| F2 / F3 | In sandbox: spawn one / up to six registered infected |
+| F4 / F5 / F6 | In sandbox: refill both weapons / reset encounter / clear remains and blood |
 
-Normal rounds remain available. Sandbox disables automatic waves, retains the same combat and scoring systems, caps living infected at 18, and draws 0/2/5/10 m lane references in the existing arena. Existing obstacles provide pursuit and corner tests.
+## Verification and open limits
 
-## Verification status at this development snapshot
+The separate verified public clone was cleanly fast-forwarded to `0637288`;
+editor/game/package builds passed, with 202 hydrated LFS files totaling
+78,275,144 bytes and unchanged tracked source on the existing validation host.
+All 78 imported source hashes match. The retained native test report passed three
+tests. All seven final packaged modes passed: 39 weapon checks, retained-system,
+presentation and comparison checks, plus performance runs with 6/12/18 live
+infected. Mean frame times were 8.385/8.387/8.388 ms, all median/p95 8.334 ms
+at 1600×900 on an RTX 3090 under a 120 FPS cap. These
+capped measurements do not establish uncapped headroom or lower-end performance.
 
-| Area | Recorded status |
-| --- | --- |
-| UE 5.7.2 editor build | Passed before the final round-resupply edit; rebuild required for that edit |
-| Native automation | Three `ProjectONE.Combat` tests passed: monotonic health/death, packet idempotence, and regional trauma boundaries |
-| Candidate02 asset import | Passed; new meshes, clips, and event audio imported |
-| Runtime integration and Candidate01 regression checks | Underway; final results belong in the pass report |
-| Normal-camera motion inspection and gameplay audio audition | Pending final review; event dispatch alone does not establish sound quality |
-| Candidate02 packaging, packaged checks, and performance | Underway; no final result claimed here |
-| Remote publication, LFS retrieval, fresh-checkout build, prerelease download | Pending final verified references |
+[Direct manual input review](../Evidence/Candidate02/manual_playtest.md) found
+two sandbox-spawned infected stranded on rack
+navigation islands. The corrected source adds the bounded route/clearance search
+above and a regression using the F2/F3/F3 sequence with 13 enemies and an
+eight-second approach. All 13 accepted enemies had complete routes, stayed on
+the floor and approached in the final packaged regression. Direct manual F2
+follow-up also confirmed a floor spawn reaching and attacking the player. That
+review found inherited F2/F5 debug commands changing render modes; final input
+configuration removes five conflicting F1–F5 bindings. Final F1–F6 manual review:
+**passed on `0637288d32b6fbebc67ef93d4f03e439ff38bb67`**. Normal lighting remained
+intact, floor spawns approached, and weapon fire/reload/pause/switch,
+refill/reset and quit checks passed in that short review. Exact cleanup counts
+remain covered by automation. This was not a sustained human playthrough or
+clean-machine installation test.
 
-## Review map and limits
+The final [extracted-archive startup check](../Evidence/Candidate02/release_smoke.json)
+verified all manifest hashes/sizes and rendered the arena and ordinary round.
+A Windows firewall prompt then limited that smoke test; no security-prompt action
+was taken. Full controls had already passed on the identical adopted package.
 
-- [Weapon definitions](../Source/ProjectONE/ONEWeaponTypes.h) and [operation/damage dispatch](../Source/ProjectONE/ONEWeaponComponent.cpp) own the two slots, event clock, sounds, traces, and bounded cases. [Player](../Source/ProjectONE/ONEPlayer.cpp) binds input and attachments; [animation](../Source/ProjectONE/ONEAnimInstance.cpp) blends the authored clips.
-- [Infected](../Source/ProjectONE/ONEZombie.cpp) owns regional damage, reaction/attack state, and severing. [Game mode](../Source/ProjectONE/ONEGameMode.cpp) owns authoritative live registration, score, rounds, and sandbox reset. [Blood subsystem](../Source/ProjectONE/ONEBloodSubsystem.cpp) owns presentation limits and cleanup.
-- [Candidate02 asset inventory](../ArtSource/Weapons/Candidate02/inventory.json) and [asset notes](../ArtSource/Weapons/Candidate02/README.md) map imported binaries to editable sources and event timings. [Provenance](Provenance.md) and the existing [character](CharacterPipeline.md) and [environment](EnvironmentPipeline.md) records explain the retained pipeline. Project Zero content remains excluded.
-- Weapon audio is locally authored synthesis, not a commercial recording pack. Convincing realism and final mix acceptance remain provisional until gameplay audition. Final visual acceptance, grip/contact assessment, and performance are separate from build/unit-test success.
-- The existing imported rig reflects source Y: anatomical bone names retain source labels, and strafe assignment compensates at runtime. This pass retains the existing faces, garments, arena, authored death animation, and blood presentation; it does not claim a complete character or effects redesign.
-- Future work is proposed only: a focused pass based on the user's Candidate02 combat, animation, and audio feedback. No further weapons, enemy archetypes, perks, or full-map expansion are implemented or scheduled by this record.
+The final comparison video contains 470 genuine captured frames at 22.38638 FPS
+with 20.97066667 seconds of engine audio. Its 13-frame visual review found coherent
+pump hand/fore-end positions and changing leg poses, while small shells and dark
+magazine surfaces limit contact readability. Those stationary reload samples do
+not establish moving-reload quality. Stills, automated pose measurements and
+direct manual play are separate evidence types; none substitutes for the others.
+
+Audio measurements show complete, non-silent weapon phases, −13.019964 dBFS sample
+peak, −37.584901 dBFS RMS and zero full-scale samples. An earlier silent background
+capture was rejected; the accepted recording uses a process-only background
+unmute override without changing packaged configuration. Perceptual audition was
+unavailable. The sounds are original local synthesis; realistic timbre and mix acceptance remain provisional. The accepted
+characters are still visually simplified, and the inherited source-Y reflection
+and anatomical labels remain consistently handled by runtime bindings. No final
+art or audio approval is claimed. The visual review records the final `0637288`
+build and its exact inspected timestamps; it is not evidence about every frame.
+
+## Continue from here
+
+The [pass report](Passes/Candidate02.md) links the evidence, toolchain and release
+record. [Weapon definitions](../Source/ProjectONE/ONEWeaponTypes.h),
+[operation/damage dispatch](../Source/ProjectONE/ONEWeaponComponent.cpp),
+[animation blending](../Source/ProjectONE/ONEAnimInstance.cpp) and
+[game mode](../Source/ProjectONE/ONEGameMode.cpp) are the principal implementation
+entry points. The [asset inventory](../ArtSource/Weapons/Candidate02/README.md),
+[provenance](Provenance.md), [character pipeline](CharacterPipeline.md) and
+[environment pipeline](EnvironmentPipeline.md) preserve authoring context.
+
+The next focused recommendation is human listening
+and gameplay-camera weapon-feedback review, especially reload prop readability.
+Further weapons, enemy types, progression and map expansion are not implemented
+or scheduled by this record.

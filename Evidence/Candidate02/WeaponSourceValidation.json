@@ -1,0 +1,324 @@
+{
+  "animation_roundtrip": {
+    "A_Response_ShotgunReady": {
+      "duration": 2.4,
+      "fps": 100,
+      "bones": 21,
+      "max_world_head_error_cm": 4.8628039489677285e-05
+    },
+    "A_Response_ShotgunFire": {
+      "duration": 0.22,
+      "fps": 100,
+      "bones": 21,
+      "max_world_head_error_cm": 4.8553169484549924e-05
+    },
+    "A_Response_ShotgunPump": {
+      "duration": 0.56,
+      "fps": 100,
+      "bones": 21,
+      "max_world_head_error_cm": 4.8628039489677285e-05
+    },
+    "A_Response_ShotgunReloadStart": {
+      "duration": 0.35,
+      "fps": 100,
+      "bones": 21,
+      "max_world_head_error_cm": 5.863352260185012e-05
+    },
+    "A_Response_ShotgunReloadShell": {
+      "duration": 0.9,
+      "fps": 100,
+      "bones": 21,
+      "max_world_head_error_cm": 5.557761582594478e-05
+    },
+    "A_Response_ShotgunReloadEnd": {
+      "duration": 0.32,
+      "fps": 100,
+      "bones": 21,
+      "max_world_head_error_cm": 6.908875138964208e-05
+    },
+    "A_Response_Equip": {
+      "duration": 0.36,
+      "fps": 100,
+      "bones": 21,
+      "max_world_head_error_cm": 5.175605539834655e-05
+    },
+    "A_Response_CarbineReload": {
+      "duration": 2.1,
+      "fps": 100,
+      "bones": 21,
+      "max_world_head_error_cm": 5.1270528198948815e-05
+    },
+    "A_Infected_HeavyHit": {
+      "duration": 0.52,
+      "fps": 100,
+      "bones": 21,
+      "max_world_head_error_cm": 4.648612063199593e-05
+    }
+  },
+  "source_constraints": {
+    "maximum_pump_wrist_error_cm": 1.9735529028487087e-05,
+    "shell_center_at_059s": [
+      29.211477279663086,
+      8.01406478881836,
+      128.34982299804688
+    ],
+    "shell_visible_at_059s": true,
+    "magazine_distance_to_seat_at_119s_cm": 0.17708043083710748
+  },
+  "static_meshes": {
+    "SM_PumpShotgun": {
+      "bounds_min_cm": [
+        -41.42499923706055,
+        -4.050003528594971,
+        -7.9794769287109375
+      ],
+      "bounds_max_cm": [
+        64.5,
+        4.049996852874756,
+        20.200000762939453
+      ],
+      "vertices": 5504,
+      "polygons": 5284,
+      "materials": [
+        "M_Graphite",
+        "M_Steel",
+        "M_Rubber",
+        "M_PaleMetal",
+        "M_ShotgunPolymer",
+        "M_Amber"
+      ]
+    },
+    "SM_PumpShotgun_ForeEnd": {
+      "bounds_min_cm": [
+        9.300000190734863,
+        -4.389998912811279,
+        2.4499998092651367
+      ],
+      "bounds_max_cm": [
+        26.700000762939453,
+        4.390002250671387,
+        9.199999809265137
+      ],
+      "vertices": 1152,
+      "polygons": 1176,
+      "materials": [
+        "M_ShotgunPolymer",
+        "M_Graphite"
+      ]
+    },
+    "SM_ShotgunShell": {
+      "bounds_min_cm": [
+        -3.075000047683716,
+        -1.100000262260437,
+        -1.100000023841858
+      ],
+      "bounds_max_cm": [
+        3.0,
+        1.0999997854232788,
+        1.100000023841858
+      ],
+      "vertices": 800,
+      "polygons": 708,
+      "materials": [
+        "M_ShellHull",
+        "M_Brass",
+        "M_Steel"
+      ]
+    },
+    "SM_Carbine_C02Body": {
+      "bounds_min_cm": [
+        -39.89999771118164,
+        -3.9999966621398926,
+        -8.268881797790527
+      ],
+      "bounds_max_cm": [
+        59.39999771118164,
+        4.850000381469727,
+        27.049999237060547
+      ],
+      "vertices": 4360,
+      "polygons": 4154,
+      "materials": [
+        "M_Graphite",
+        "M_Steel",
+        "M_Teal",
+        "M_Rubber",
+        "M_Screen"
+      ]
+    },
+    "SM_Carbine_Magazine": {
+      "bounds_min_cm": [
+        8.349803924560547,
+        -2.349999189376831,
+        -11.206950187683105
+      ],
+      "bounds_max_cm": [
+        18.650196075439453,
+        2.800001382827759,
+        7.2069501876831055
+      ],
+      "vertices": 224,
+      "polygons": 216,
+      "materials": [
+        "M_Graphite",
+        "M_Steel",
+        "M_Teal",
+        "M_Rubber",
+        "M_Screen"
+      ]
+    }
+  },
+  "audio": {
+    "S_CarbineShot_01": {
+      "duration": 0.43,
+      "peak_dbfs": -3.0003622493859567,
+      "rms_dbfs": -24.387821744197147,
+      "clipped_samples": 0
+    },
+    "S_ShotgunShot_01": {
+      "duration": 0.74,
+      "peak_dbfs": -3.0003622493859567,
+      "rms_dbfs": -24.398085840431705,
+      "clipped_samples": 0
+    },
+    "S_CarbineShot_02": {
+      "duration": 0.43,
+      "peak_dbfs": -3.0003622493859567,
+      "rms_dbfs": -23.833412331508033,
+      "clipped_samples": 0
+    },
+    "S_ShotgunShot_02": {
+      "duration": 0.74,
+      "peak_dbfs": -3.0003622493859567,
+      "rms_dbfs": -23.638312688743998,
+      "clipped_samples": 0
+    },
+    "S_CarbineShot_03": {
+      "duration": 0.43,
+      "peak_dbfs": -3.0003622493859567,
+      "rms_dbfs": -24.598283981967263,
+      "clipped_samples": 0
+    },
+    "S_ShotgunShot_03": {
+      "duration": 0.74,
+      "peak_dbfs": -3.0003622493859567,
+      "rms_dbfs": -24.99706439233474,
+      "clipped_samples": 0
+    },
+    "S_ShotgunPumpBack": {
+      "duration": 0.23,
+      "peak_dbfs": -10.500445529489088,
+      "rms_dbfs": -28.59159949409586,
+      "clipped_samples": 0
+    },
+    "S_ShotgunPumpForward": {
+      "duration": 0.25,
+      "peak_dbfs": -11.000260703669154,
+      "rms_dbfs": -27.109592196131388,
+      "clipped_samples": 0
+    },
+    "S_ShotgunPumpLock": {
+      "duration": 0.17,
+      "peak_dbfs": -10.000126940172311,
+      "rms_dbfs": -29.65743408131573,
+      "clipped_samples": 0
+    },
+    "S_ShotgunShellInsert": {
+      "duration": 0.19,
+      "peak_dbfs": -12.999812245955065,
+      "rms_dbfs": -30.02103832810752,
+      "clipped_samples": 0
+    },
+    "S_ShotgunReloadStart": {
+      "duration": 0.23,
+      "peak_dbfs": -17.00113169360012,
+      "rms_dbfs": -29.580749816362413,
+      "clipped_samples": 0
+    },
+    "S_ShotgunReloadEnd": {
+      "duration": 0.23,
+      "peak_dbfs": -16.000632247293233,
+      "rms_dbfs": -32.78584899541737,
+      "clipped_samples": 0
+    },
+    "S_CarbineMagOut": {
+      "duration": 0.28,
+      "peak_dbfs": -11.999946665424783,
+      "rms_dbfs": -31.972578099952965,
+      "clipped_samples": 0
+    },
+    "S_CarbineMagIn": {
+      "duration": 0.23,
+      "peak_dbfs": -10.500445529489088,
+      "rms_dbfs": -31.12631963437529,
+      "clipped_samples": 0
+    },
+    "S_CarbineBolt": {
+      "duration": 0.26,
+      "peak_dbfs": -11.000260703669154,
+      "rms_dbfs": -30.825338470476666,
+      "clipped_samples": 0
+    },
+    "S_WeaponEquip": {
+      "duration": 0.2,
+      "peak_dbfs": -16.000632247293233,
+      "rms_dbfs": -31.54168042653387,
+      "clipped_samples": 0
+    },
+    "S_CarbineEmpty": {
+      "duration": 0.1,
+      "peak_dbfs": -15.000098337391357,
+      "rms_dbfs": -31.62310980866231,
+      "clipped_samples": 0
+    },
+    "S_ShotgunEmpty": {
+      "duration": 0.13,
+      "peak_dbfs": -14.500480351372145,
+      "rms_dbfs": -32.782433572629344,
+      "clipped_samples": 0
+    },
+    "S_FleshImpact_01": {
+      "duration": 0.23,
+      "peak_dbfs": -11.000260703669154,
+      "rms_dbfs": -30.582704388195495,
+      "clipped_samples": 0
+    },
+    "S_FleshImpact_02": {
+      "duration": 0.23,
+      "peak_dbfs": -11.000260703669154,
+      "rms_dbfs": -29.62002879661015,
+      "clipped_samples": 0
+    },
+    "S_FleshImpact_03": {
+      "duration": 0.23,
+      "peak_dbfs": -11.000260703669154,
+      "rms_dbfs": -29.194918117642658,
+      "clipped_samples": 0
+    },
+    "S_ConcreteImpact_01": {
+      "duration": 0.24,
+      "peak_dbfs": -12.999812245955065,
+      "rms_dbfs": -29.23510181616473,
+      "clipped_samples": 0
+    },
+    "S_MetalImpact_01": {
+      "duration": 0.33,
+      "peak_dbfs": -12.999812245955065,
+      "rms_dbfs": -34.53751006225848,
+      "clipped_samples": 0
+    },
+    "S_ConcreteImpact_02": {
+      "duration": 0.24,
+      "peak_dbfs": -12.999812245955065,
+      "rms_dbfs": -29.95335909195115,
+      "clipped_samples": 0
+    },
+    "S_MetalImpact_02": {
+      "duration": 0.33,
+      "peak_dbfs": -12.999812245955065,
+      "rms_dbfs": -35.47538191887097,
+      "clipped_samples": 0
+    }
+  },
+  "status": "PASS"
+}

@@ -23,6 +23,8 @@ times = [float(r['audio_seconds']) for r in rows]
 audio = args.input/'gameplay_master.wav'
 with wave.open(str(audio)) as wav:
     duration = wav.getnframes()/wav.getframerate()
+if duration < times[-1]-.15 or duration > times[-1]+.5:
+    raise SystemExit('Audio and captured frame timelines disagree; recapture without omitted silent buffers.')
 concat = args.input/'frames.ffconcat'
 lines = ['ffconcat version 1.0']
 for i, row in enumerate(rows):

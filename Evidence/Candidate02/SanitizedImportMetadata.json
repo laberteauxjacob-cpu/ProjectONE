@@ -1,0 +1,525 @@
+{
+  "status": "PASS",
+  "count": 12,
+  "method": "UAssetImportData.scripted_add_filename only; no asset reimport or mesh/animation/material setters",
+  "invariant_scope": "Material bindings, mesh bounds, static triangle counts, animation durations/tracks and five sampled poses; FBX semantic identity established by preceding sanitation audit",
+  "assets": [
+    {
+      "source": "ArtSource/Exports/A_Infected_Attack.fbx",
+      "asset": "/Game/ONE/Animations/A_Infected_Attack",
+      "old_md5": "75ddc63b76f98570d2a8240dcc39ff16",
+      "new_md5": "2c1816acca7c847087de5eb1d3c5dfa7",
+      "relative_import_path": "../../../ArtSource/Exports/A_Infected_Attack.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "AnimSequence",
+        "duration": 1.0,
+        "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+        "tracks": [
+          "rig_infected",
+          "root",
+          "pelvis",
+          "spine_01",
+          "spine_02",
+          "neck",
+          "head",
+          "upperarm_l",
+          "lowerarm_l",
+          "hand_l",
+          "upperarm_r",
+          "lowerarm_r",
+          "hand_r",
+          "weapon_r",
+          "thigh_l",
+          "calf_l",
+          "foot_l",
+          "toe_l",
+          "thigh_r",
+          "calf_r",
+          "foot_r",
+          "toe_r"
+        ],
+        "sampled_pose_sha256": "278ff3002e5a57146e597486bedf6f18a59525247be095265a93800194eee38e"
+      }
+    },
+    {
+      "source": "ArtSource/Exports/A_Infected_AttackOneArm.fbx",
+      "asset": "/Game/ONE/Animations/A_Infected_AttackOneArm",
+      "old_md5": "9e9b591f607a86e4109bcf90c208ccb1",
+      "new_md5": "ed472e39437ffe3f5e5a2760a9f39d35",
+      "relative_import_path": "../../../ArtSource/Exports/A_Infected_AttackOneArm.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "AnimSequence",
+        "duration": 1.0,
+        "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+        "tracks": [
+          "rig_infected",
+          "root",
+          "pelvis",
+          "spine_01",
+          "spine_02",
+          "neck",
+          "head",
+          "upperarm_l",
+          "lowerarm_l",
+          "hand_l",
+          "upperarm_r",
+          "lowerarm_r",
+          "hand_r",
+          "weapon_r",
+          "thigh_l",
+          "calf_l",
+          "foot_l",
+          "toe_l",
+          "thigh_r",
+          "calf_r",
+          "foot_r",
+          "toe_r"
+        ],
+        "sampled_pose_sha256": "8a203b3becc1e65b44b6cb812db811f93dc57bc51c48dd8bb68c7c2bb0a32d35"
+      }
+    },
+    {
+      "source": "ArtSource/Exports/A_Infected_Death.fbx",
+      "asset": "/Game/ONE/Animations/A_Infected_Death",
+      "old_md5": "bcd214c00fa131df01c13142ae5567da",
+      "new_md5": "2b6c5990b4f2896a59fda3399ce26eef",
+      "relative_import_path": "../../../ArtSource/Exports/A_Infected_Death.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "AnimSequence",
+        "duration": 1.2000000476837158,
+        "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+        "tracks": [
+          "rig_infected",
+          "root",
+          "pelvis",
+          "spine_01",
+          "spine_02",
+          "neck",
+          "head",
+          "upperarm_l",
+          "lowerarm_l",
+          "hand_l",
+          "upperarm_r",
+          "lowerarm_r",
+          "hand_r",
+          "weapon_r",
+          "thigh_l",
+          "calf_l",
+          "foot_l",
+          "toe_l",
+          "thigh_r",
+          "calf_r",
+          "foot_r",
+          "toe_r"
+        ],
+        "sampled_pose_sha256": "52ac86c0d3ffab23d3c81d82b7f5d82cdce4bf8b562c73c712b83fb0564c8adf"
+      }
+    },
+    {
+      "source": "ArtSource/Exports/A_Infected_Hit.fbx",
+      "asset": "/Game/ONE/Animations/A_Infected_Hit",
+      "old_md5": "3ea44566f170d157cb27e562254efa95",
+      "new_md5": "3084c2fa207249573eb432f406f23e49",
+      "relative_import_path": "../../../ArtSource/Exports/A_Infected_Hit.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "AnimSequence",
+        "duration": 0.4000000059604645,
+        "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+        "tracks": [
+          "rig_infected",
+          "root",
+          "pelvis",
+          "spine_01",
+          "spine_02",
+          "neck",
+          "head",
+          "upperarm_l",
+          "lowerarm_l",
+          "hand_l",
+          "upperarm_r",
+          "lowerarm_r",
+          "hand_r",
+          "weapon_r",
+          "thigh_l",
+          "calf_l",
+          "foot_l",
+          "toe_l",
+          "thigh_r",
+          "calf_r",
+          "foot_r",
+          "toe_r"
+        ],
+        "sampled_pose_sha256": "2f32a6681d9e0d6ae6e04381377043d21e94c49e1e2633a31d58f35ba5a5cbdf"
+      }
+    },
+    {
+      "source": "ArtSource/Exports/A_Infected_Idle.fbx",
+      "asset": "/Game/ONE/Animations/A_Infected_Idle",
+      "old_md5": "40000328b8800a3686649efe419659e0",
+      "new_md5": "f23779c7b19da56c1e28a8fd0beceec7",
+      "relative_import_path": "../../../ArtSource/Exports/A_Infected_Idle.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "AnimSequence",
+        "duration": 3.0,
+        "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+        "tracks": [
+          "rig_infected",
+          "root",
+          "pelvis",
+          "spine_01",
+          "spine_02",
+          "neck",
+          "head",
+          "upperarm_l",
+          "lowerarm_l",
+          "hand_l",
+          "upperarm_r",
+          "lowerarm_r",
+          "hand_r",
+          "weapon_r",
+          "thigh_l",
+          "calf_l",
+          "foot_l",
+          "toe_l",
+          "thigh_r",
+          "calf_r",
+          "foot_r",
+          "toe_r"
+        ],
+        "sampled_pose_sha256": "29b13085ed63968bb839e38ede64c3def359bb09023560e32c9955c5c72d6736"
+      }
+    },
+    {
+      "source": "ArtSource/Exports/A_Infected_Run.fbx",
+      "asset": "/Game/ONE/Animations/A_Infected_Run",
+      "old_md5": "73a9b3d7a0efc87dc4d2faa002cc3e10",
+      "new_md5": "24a8ae56901ce86cd5285540047fe170",
+      "relative_import_path": "../../../ArtSource/Exports/A_Infected_Run.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "AnimSequence",
+        "duration": 0.800000011920929,
+        "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+        "tracks": [
+          "rig_infected",
+          "root",
+          "pelvis",
+          "spine_01",
+          "spine_02",
+          "neck",
+          "head",
+          "upperarm_l",
+          "lowerarm_l",
+          "hand_l",
+          "upperarm_r",
+          "lowerarm_r",
+          "hand_r",
+          "weapon_r",
+          "thigh_l",
+          "calf_l",
+          "foot_l",
+          "toe_l",
+          "thigh_r",
+          "calf_r",
+          "foot_r",
+          "toe_r"
+        ],
+        "sampled_pose_sha256": "b4c5ac850f878c6c2efdd2614c6c98d94a52c3765876f65983b84e75f533a888"
+      }
+    },
+    {
+      "source": "ArtSource/Exports/A_Infected_Walk.fbx",
+      "asset": "/Game/ONE/Animations/A_Infected_Walk",
+      "old_md5": "9d5ba14c061abdbb131005cb39205b05",
+      "new_md5": "c7b60ea223f21911ba61614ff0adb4c5",
+      "relative_import_path": "../../../ArtSource/Exports/A_Infected_Walk.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "AnimSequence",
+        "duration": 1.399999976158142,
+        "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+        "tracks": [
+          "rig_infected",
+          "root",
+          "pelvis",
+          "spine_01",
+          "spine_02",
+          "neck",
+          "head",
+          "upperarm_l",
+          "lowerarm_l",
+          "hand_l",
+          "upperarm_r",
+          "lowerarm_r",
+          "hand_r",
+          "weapon_r",
+          "thigh_l",
+          "calf_l",
+          "foot_l",
+          "toe_l",
+          "thigh_r",
+          "calf_r",
+          "foot_r",
+          "toe_r"
+        ],
+        "sampled_pose_sha256": "d0cff5a0be46cc39934b8a7248ba586bb348011f3a2e0bd316e052b21ba3d3e7"
+      }
+    },
+    {
+      "source": "ArtSource/Exports/SK_Infected_ArmL.fbx",
+      "asset": "/Game/ONE/Characters/SK_Infected_ArmL",
+      "old_md5": "4c5bbe28f08a0df9009298139adf88bf",
+      "new_md5": "dba2e8bbc7db187c14f57a54a4380651",
+      "relative_import_path": "../../../ArtSource/Exports/SK_Infected_ArmL.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "SkeletalMesh",
+        "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+        "bounds_origin": [
+          3.7600769996643066,
+          22.19969654083252,
+          110.3150749206543
+        ],
+        "bounds_extent": [
+          9.981165409088135,
+          8.854750633239746,
+          32.02750015258789
+        ],
+        "radius": 34.69569191880246,
+        "materials": [
+          [
+            "M_OrangeFabric",
+            "/Game/ONE/Materials/M_OrangeFabric.M_OrangeFabric"
+          ],
+          [
+            "M_InfectedSkin",
+            "/Game/ONE/Materials/M_InfectedSkin.M_InfectedSkin"
+          ],
+          [
+            "M_Gore",
+            "/Game/ONE/Materials/M_Gore.M_Gore"
+          ],
+          [
+            "M_ExposedBone",
+            "/Game/ONE/Materials/M_ExposedBone.M_ExposedBone"
+          ]
+        ]
+      }
+    },
+    {
+      "source": "ArtSource/Exports/SK_Infected_Head.fbx",
+      "asset": "/Game/ONE/Characters/SK_Infected_Head",
+      "old_md5": "f82950e6c6873d0918247aa60e764ebc",
+      "new_md5": "e4c0146c24faaa604284094246d1f2e7",
+      "relative_import_path": "../../../ArtSource/Exports/SK_Infected_Head.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "SkeletalMesh",
+        "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+        "bounds_origin": [
+          0.4618091583251953,
+          -4.76837158203125e-07,
+          168.68221282958984
+        ],
+        "bounds_extent": [
+          8.981803894042969,
+          8.900000095367432,
+          10.937232971191406
+        ],
+        "radius": 16.718428991825224,
+        "materials": [
+          [
+            "M_InfectedSkin",
+            "/Game/ONE/Materials/M_InfectedSkin.M_InfectedSkin"
+          ],
+          [
+            "M_DriedBlood",
+            "/Game/ONE/Materials/M_DriedBlood.M_DriedBlood"
+          ],
+          [
+            "M_Eye",
+            "/Game/ONE/Materials/M_Eye.M_Eye"
+          ],
+          [
+            "M_EyeDark",
+            "/Game/ONE/Materials/M_EyeDark.M_EyeDark"
+          ],
+          [
+            "M_Hair",
+            "/Game/ONE/Materials/M_Hair.M_Hair"
+          ],
+          [
+            "M_ExposedBone",
+            "/Game/ONE/Materials/M_ExposedBone.M_ExposedBone"
+          ],
+          [
+            "M_Gore",
+            "/Game/ONE/Materials/M_Gore.M_Gore"
+          ]
+        ]
+      }
+    },
+    {
+      "source": "ArtSource/Exports/SK_Infected.fbx",
+      "asset": "/Game/ONE/Characters/SK_Infected",
+      "old_md5": "a60e64ec589a6dfe6dd437d5ccc8806a",
+      "new_md5": "d73b491c067e27bab0ca59ea08216be2",
+      "relative_import_path": "../../../ArtSource/Exports/SK_Infected.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "SkeletalMesh",
+        "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+        "bounds_origin": [
+          2.9807209968566895,
+          -2.907686233520508,
+          79.32500153779984
+        ],
+        "bounds_extent": [
+          15.619279384613037,
+          28.17552947998047,
+          78.72500151395798
+        ],
+        "radius": 85.06143787489447,
+        "materials": [
+          [
+            "M_OrangeFabric",
+            "/Game/ONE/Materials/M_OrangeFabric.M_OrangeFabric"
+          ],
+          [
+            "M_InfectedSkin",
+            "/Game/ONE/Materials/M_InfectedSkin.M_InfectedSkin"
+          ],
+          [
+            "M_Gore",
+            "/Game/ONE/Materials/M_Gore.M_Gore"
+          ],
+          [
+            "M_ExposedBone",
+            "/Game/ONE/Materials/M_ExposedBone.M_ExposedBone"
+          ],
+          [
+            "M_Webbing",
+            "/Game/ONE/Materials/M_Webbing.M_Webbing"
+          ],
+          [
+            "M_IDBadge",
+            "/Game/ONE/Materials/M_IDBadge.M_IDBadge"
+          ],
+          [
+            "M_ReflectiveTape",
+            "/Game/ONE/Materials/M_ReflectiveTape.M_ReflectiveTape"
+          ],
+          [
+            "M_DriedBlood",
+            "/Game/ONE/Materials/M_DriedBlood.M_DriedBlood"
+          ],
+          [
+            "M_Ceramic",
+            "/Game/ONE/Materials/M_Ceramic.M_Ceramic"
+          ],
+          [
+            "M_BootRubber",
+            "/Game/ONE/Materials/M_BootRubber.M_BootRubber"
+          ]
+        ]
+      }
+    },
+    {
+      "source": "ArtSource/Exports/SM_Infected_ArmL.fbx",
+      "asset": "/Game/ONE/Characters/SM_Infected_ArmL",
+      "old_md5": "51c6b264f7e3a6f813c241ddced009ea",
+      "new_md5": "a387a3d6c21e87bcae0332439995989e",
+      "relative_import_path": "../../../ArtSource/Exports/SM_Infected_ArmL.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "StaticMesh",
+        "bounds_min": [
+          -7.383634567260742,
+          -67.55842590332031,
+          -6.8921074867248535
+        ],
+        "bounds_max": [
+          7.578300476074219,
+          -4.75002384185791,
+          12.00534725189209
+        ],
+        "triangles": 4532,
+        "materials": [
+          [
+            "M_OrangeFabric",
+            "/Game/ONE/Materials/M_OrangeFabric.M_OrangeFabric"
+          ],
+          [
+            "M_InfectedSkin",
+            "/Game/ONE/Materials/M_InfectedSkin.M_InfectedSkin"
+          ],
+          [
+            "M_Gore",
+            "/Game/ONE/Materials/M_Gore.M_Gore"
+          ],
+          [
+            "M_ExposedBone",
+            "/Game/ONE/Materials/M_ExposedBone.M_ExposedBone"
+          ]
+        ]
+      }
+    },
+    {
+      "source": "ArtSource/Exports/SM_Infected_Head.fbx",
+      "asset": "/Game/ONE/Characters/SM_Infected_Head",
+      "old_md5": "717077e0e133c6aceb218618e8383a05",
+      "new_md5": "f8d78361e8f0719f9b198abed7f3c2a8",
+      "relative_import_path": "../../../ArtSource/Exports/SM_Infected_Head.fbx",
+      "art_invariants_unchanged": true,
+      "invariants": {
+        "class": "StaticMesh",
+        "bounds_min": [
+          -8.450000762939453,
+          -22.550003051757812,
+          -8.90000057220459
+        ],
+        "bounds_max": [
+          9.373848915100098,
+          -0.8000026941299438,
+          8.899999618530273
+        ],
+        "triangles": 8768,
+        "materials": [
+          [
+            "M_InfectedSkin",
+            "/Game/ONE/Materials/M_InfectedSkin.M_InfectedSkin"
+          ],
+          [
+            "M_DriedBlood",
+            "/Game/ONE/Materials/M_DriedBlood.M_DriedBlood"
+          ],
+          [
+            "M_Eye",
+            "/Game/ONE/Materials/M_Eye.M_Eye"
+          ],
+          [
+            "M_EyeDark",
+            "/Game/ONE/Materials/M_EyeDark.M_EyeDark"
+          ],
+          [
+            "M_Hair",
+            "/Game/ONE/Materials/M_Hair.M_Hair"
+          ],
+          [
+            "M_ExposedBone",
+            "/Game/ONE/Materials/M_ExposedBone.M_ExposedBone"
+          ],
+          [
+            "M_Gore",
+            "/Game/ONE/Materials/M_Gore.M_Gore"
+          ]
+        ]
+      }
+    }
+  ]
+}

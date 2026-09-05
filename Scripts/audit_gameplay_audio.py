@@ -5,7 +5,9 @@ Python 3 standard library only. Example from the project checkout:
 
 Phase ranges use seconds in the recorded WAV, not game/world time. Override with
 --phase name:start:end (repeatable). Missing requested coverage is reported and
-can make the process fail with --require-phase-coverage. Source/output paths are
+can make the process fail with --require-phase-coverage. --require-audible-phases
+also fails if any requested phase has no samples above the configured silence
+threshold; this is an energy check, not a perceptual-quality verdict. Source/output paths are
 stored relative to the checkout; no machine or account paths enter the report.
 """
 from pathlib import Path
@@ -218,6 +220,8 @@ def main():
     parser.add_argument('--event-threshold-dbfs', type=float, default=-38)
     parser.add_argument('--event-merge-gap-ms', type=float, default=50)
     parser.add_argument('--require-phase-coverage', action='store_true')
+    parser.add_argument('--require-audible-phases', action='store_true',
+        help='Fail if any requested phase has no samples above --silence-threshold-dbfs.')
     args = parser.parse_args()
     if not 0 < args.window_ms <= 1000 or not 0 <= args.event_merge_gap_ms <= 1000:
         parser.error('Window must be (0,1000] ms and merge gap [0,1000] ms.')
@@ -235,15 +239,29 @@ def main():
         command_parameters={'script': 'Scripts/audit_gameplay_audio.py', 'source': source_relative, 'output': output_relative,
             'phases': phases, 'window_ms': args.window_ms, 'silence_threshold_dbfs': args.silence_threshold_dbfs,
             'event_threshold_dbfs': args.event_threshold_dbfs, 'event_merge_gap_ms': args.event_merge_gap_ms,
-            'require_phase_coverage': args.require_phase_coverage})
+            'require_phase_coverage': args.require_phase_coverage,
+            'require_audible_phases': args.require_audible_phases})
+    uncovered = [phase['name'] for phase in report['phases'] if phase['coverage'] != 'complete']
+    inaudible = [phase['name'] for phase in report['phases']
+        if not phase['metrics'] or phase['metrics']['silent_frame_count_at_threshold'] == phase['metrics']['frame_count']]
+    report['required_checks'] = {
+        'phase_coverage_passed': not uncovered if args.require_phase_coverage else None,
+        'audible_phases_passed': not inaudible if args.require_audible_phases else None,
+        'uncovered_phases': uncovered,
+        'phases_without_samples_above_silence_threshold': inaudible}
+    if args.require_audible_phases and inaudible:
+        report['warnings'].append('Required phases contain no samples above the configured silence threshold: '+', '.join(inaudible)+'.')
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2, allow_nan=False)+'\n', encoding='utf-8')
     print(json.dumps({'report': output_relative, 'duration_seconds': report['format']['duration_seconds'],
         'sample_peak_dbfs': report['overall']['sample_peak_dbfs'], 'rms_dbfs': report['overall']['rms_dbfs'],
         'full_scale_sample_count': report['overall']['full_scale_sample_count'],
-        'phase_coverage': {phase['name']: phase['coverage'] for phase in report['phases']}, 'warnings': report['warnings']}))
-    if args.require_phase_coverage and any(phase['coverage'] != 'complete' for phase in report['phases']):
+        'phase_coverage': {phase['name']: phase['coverage'] for phase in report['phases']},
+        'required_checks': report['required_checks'], 'warnings': report['warnings']}))
+    if args.require_phase_coverage and uncovered:
         return 2
+    if args.require_audible_phases and inaudible:
+        return 3
     return 0
 
 

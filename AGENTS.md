@@ -12,3 +12,4 @@
 - Preserve previous public candidate tags. Use the default branch for the latest technically verified candidate when repository rules allow; otherwise identify the published branch/PR precisely.
 - Report repository URL, exact review commit/tag/compare links, package source revision, release/checksum, fresh-clone verification and any local-only work. Documentation/evidence commits can follow the built source commit; do not require a commit to contain its own hash.
 - Technical verification is separate from user approval of visual direction. Stop after the requested pass and give one focused recommendation.
+- Build public playable releases from a fresh checkout in a neutral build path, inspect embedded compiler diagnostics for personal paths, include the Windows prerequisites and required runtime notices, and keep private logs/debug symbols out of release archives.

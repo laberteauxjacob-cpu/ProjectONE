@@ -1,0 +1,45 @@
+Candidate02 actual runtime integration checks
+No weapon or damage mocks. Normal gameplay camera.
+
+PASS | Sandbox uses two real carried weapons with automatic waves disabled
+PASS | Both weapons begin with distinct loaded capacities
+PASS | Round reward resupplies each carried weapon by its own configured amount
+PASS | Carbine held trigger fires repeatedly
+PASS | Equip replaces the visible weapon mesh
+PASS | Unequipped carbine reload cannot commit after pre-insertion cancellation
+PASS | Shotgun discharge consumes exactly one shell and creates pump obligation
+PASS | Holstering preserves shotgun ammunition and pending pump
+PASS | Re-equipping finishes interrupted pump before accepting another shot
+PASS | Interrupted pump ejects its spent shell exactly once
+PASS | Shell reload canceled before insertion grants no shell
+PASS | Switch after insertion preserves exactly the earned shell
+PASS | Switch clears held firing without a ghost shotgun discharge
+PASS | Switch leaves no stale muzzle flash
+PASS | Six independent shotgun cycles empty only its own magazine
+PASS | Empty shotgun triggers distinct empty feedback
+PASS | Reload from empty grants one shell at insertion event
+PASS | Short reload-interrupt tap first enters closing pose without an early shot
+PASS | Fire interrupts shell reload through closing pose and spends only its earned shell
+PASS | Pause freezes reload clock and ammunition
+PASS | Unpaused magazine insertion conserves total ammunition
+PASS | Pellet fixture occupies unobstructed floor with a complete route along the firing lane
+PASS | Sandbox spawns enemy into authoritative encounter registry
+PASS | Actual eight-pellet discharge creates one damage transaction per victim
+PASS | Repeated discharge ID cannot repeat damage, severing, effects or points
+PASS | Pellet burst cannot create multiple severed parts or death awards
+PASS | Registered pellet victim awards exactly one hundred points if killed
+PASS | Sandbox clear removes blood, parts and bodies through bounded runtime subsystem
+PASS | Viewport key flush clears a semi-auto tap queued behind the pump
+PASS | Death cancels shotgun reload and enters game over
+PASS | Death prevents stale shell commit and clears firing effects
+PASS | Restart restores live sandbox and resets score
+PASS | Restart restores both weapons, reserves, operation and pump states
+PASS | Sandbox spawn regression starts at actual default player entry
+PASS | Default F2/F3/F3 requests create thirteen distinct registered enemies despite occupied candidates
+PASS | Every default-control spawn has a complete non-partial path to the player
+PASS | Default-control spawns remain on the player's floor rather than the bench top
+PASS | All thirteen default-control enemies leave their spawn positions and approach the player within eight seconds
+PASS | Pursuing crowd remains on floor during protected observation; none remains stranded on a prop
+
+Failures: 0
+Actual captured frames: 0

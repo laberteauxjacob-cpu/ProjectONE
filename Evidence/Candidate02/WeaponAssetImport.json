@@ -1,0 +1,307 @@
+{
+  "candidate": "02",
+  "static_meshes": {
+    "SM_PumpShotgun": {
+      "asset": "/Game/ONE/Art/Weapons/SM_PumpShotgun.SM_PumpShotgun",
+      "material_slots": [
+        "M_Graphite",
+        "M_Steel",
+        "M_Rubber",
+        "M_PaleMetal",
+        "M_ShotgunPolymer",
+        "M_Amber"
+      ],
+      "bounds_min": [
+        -41.42499923706055,
+        -4.049996852874756,
+        -7.9794769287109375
+      ],
+      "bounds_max": [
+        64.5,
+        4.050003528594971,
+        20.200000762939453
+      ]
+    },
+    "SM_PumpShotgun_ForeEnd": {
+      "asset": "/Game/ONE/Art/Weapons/SM_PumpShotgun_ForeEnd.SM_PumpShotgun_ForeEnd",
+      "material_slots": [
+        "M_ShotgunPolymer",
+        "M_Graphite"
+      ],
+      "bounds_min": [
+        9.300000190734863,
+        -4.390002250671387,
+        2.4499998092651367
+      ],
+      "bounds_max": [
+        26.700000762939453,
+        4.389998912811279,
+        9.199999809265137
+      ]
+    },
+    "SM_ShotgunShell": {
+      "asset": "/Game/ONE/Art/Weapons/SM_ShotgunShell.SM_ShotgunShell",
+      "material_slots": [
+        "M_ShellHull",
+        "M_Brass",
+        "M_Steel"
+      ],
+      "bounds_min": [
+        -3.075000047683716,
+        -1.0999997854232788,
+        -1.100000023841858
+      ],
+      "bounds_max": [
+        3.0,
+        1.100000262260437,
+        1.100000023841858
+      ]
+    },
+    "SM_Carbine_C02Body": {
+      "asset": "/Game/ONE/Art/Weapons/SM_Carbine_C02Body.SM_Carbine_C02Body",
+      "material_slots": [
+        "M_Graphite",
+        "M_Steel",
+        "M_Teal",
+        "M_Rubber",
+        "M_Screen"
+      ],
+      "bounds_min": [
+        -39.89999771118164,
+        -4.850000381469727,
+        -8.268881797790527
+      ],
+      "bounds_max": [
+        59.39999771118164,
+        3.9999966621398926,
+        27.049999237060547
+      ]
+    },
+    "SM_Carbine_Magazine": {
+      "asset": "/Game/ONE/Art/Weapons/SM_Carbine_Magazine.SM_Carbine_Magazine",
+      "material_slots": [
+        "M_Graphite",
+        "M_Steel"
+      ],
+      "bounds_min": [
+        8.349803924560547,
+        -2.800001382827759,
+        -11.206950187683105
+      ],
+      "bounds_max": [
+        18.650196075439453,
+        2.349999189376831,
+        7.2069501876831055
+      ]
+    }
+  },
+  "animations": {
+    "A_Response_ShotgunReady": {
+      "asset": "/Game/ONE/Animations/A_Response_ShotgunReady.A_Response_ShotgunReady",
+      "duration": 2.4000000953674316,
+      "expected_duration": 2.4,
+      "skeleton": "/Game/ONE/Characters/SK_Response_Skeleton.SK_Response_Skeleton"
+    },
+    "A_Response_ShotgunFire": {
+      "asset": "/Game/ONE/Animations/A_Response_ShotgunFire.A_Response_ShotgunFire",
+      "duration": 0.2199999988079071,
+      "expected_duration": 0.22,
+      "skeleton": "/Game/ONE/Characters/SK_Response_Skeleton.SK_Response_Skeleton"
+    },
+    "A_Response_ShotgunPump": {
+      "asset": "/Game/ONE/Animations/A_Response_ShotgunPump.A_Response_ShotgunPump",
+      "duration": 0.5600000023841858,
+      "expected_duration": 0.56,
+      "skeleton": "/Game/ONE/Characters/SK_Response_Skeleton.SK_Response_Skeleton"
+    },
+    "A_Response_ShotgunReloadStart": {
+      "asset": "/Game/ONE/Animations/A_Response_ShotgunReloadStart.A_Response_ShotgunReloadStart",
+      "duration": 0.3499999940395355,
+      "expected_duration": 0.35,
+      "skeleton": "/Game/ONE/Characters/SK_Response_Skeleton.SK_Response_Skeleton"
+    },
+    "A_Response_ShotgunReloadShell": {
+      "asset": "/Game/ONE/Animations/A_Response_ShotgunReloadShell.A_Response_ShotgunReloadShell",
+      "duration": 0.8999999761581421,
+      "expected_duration": 0.9,
+      "skeleton": "/Game/ONE/Characters/SK_Response_Skeleton.SK_Response_Skeleton"
+    },
+    "A_Response_ShotgunReloadEnd": {
+      "asset": "/Game/ONE/Animations/A_Response_ShotgunReloadEnd.A_Response_ShotgunReloadEnd",
+      "duration": 0.3199999928474426,
+      "expected_duration": 0.32,
+      "skeleton": "/Game/ONE/Characters/SK_Response_Skeleton.SK_Response_Skeleton"
+    },
+    "A_Response_Equip": {
+      "asset": "/Game/ONE/Animations/A_Response_Equip.A_Response_Equip",
+      "duration": 0.36000001430511475,
+      "expected_duration": 0.36,
+      "skeleton": "/Game/ONE/Characters/SK_Response_Skeleton.SK_Response_Skeleton"
+    },
+    "A_Response_CarbineReload": {
+      "asset": "/Game/ONE/Animations/A_Response_CarbineReload.A_Response_CarbineReload",
+      "duration": 2.0999999046325684,
+      "expected_duration": 2.1,
+      "skeleton": "/Game/ONE/Characters/SK_Response_Skeleton.SK_Response_Skeleton"
+    },
+    "A_Infected_HeavyHit": {
+      "asset": "/Game/ONE/Animations/A_Infected_HeavyHit.A_Infected_HeavyHit",
+      "duration": 0.5199999809265137,
+      "expected_duration": 0.52,
+      "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton"
+    }
+  },
+  "audio": {
+    "S_CarbineShot_01": {
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineShot_01.S_CarbineShot_01",
+      "source_duration": 0.43,
+      "source_peak_dbfs": -3.0,
+      "source_rms_dbfs": -24.387555673811434
+    },
+    "S_ShotgunShot_01": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunShot_01.S_ShotgunShot_01",
+      "source_duration": 0.74,
+      "source_peak_dbfs": -3.0,
+      "source_rms_dbfs": -24.397816830995147
+    },
+    "S_CarbineShot_02": {
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineShot_02.S_CarbineShot_02",
+      "source_duration": 0.43,
+      "source_peak_dbfs": -3.0,
+      "source_rms_dbfs": -23.833143650830266
+    },
+    "S_ShotgunShot_02": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunShot_02.S_ShotgunShot_02",
+      "source_duration": 0.74,
+      "source_peak_dbfs": -3.0,
+      "source_rms_dbfs": -23.63804669524477
+    },
+    "S_CarbineShot_03": {
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineShot_03.S_CarbineShot_03",
+      "source_duration": 0.43,
+      "source_peak_dbfs": -3.0,
+      "source_rms_dbfs": -24.598023245158423
+    },
+    "S_ShotgunShot_03": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunShot_03.S_ShotgunShot_03",
+      "source_duration": 0.74,
+      "source_peak_dbfs": -3.0,
+      "source_rms_dbfs": -24.99679907390679
+    },
+    "S_ShotgunPumpBack": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunPumpBack.S_ShotgunPumpBack",
+      "source_duration": 0.23,
+      "source_peak_dbfs": -10.5,
+      "source_rms_dbfs": -28.59133025089918
+    },
+    "S_ShotgunPumpForward": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunPumpForward.S_ShotgunPumpForward",
+      "source_duration": 0.25,
+      "source_peak_dbfs": -11.0,
+      "source_rms_dbfs": -27.10931356864173
+    },
+    "S_ShotgunPumpLock": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunPumpLock.S_ShotgunPumpLock",
+      "source_duration": 0.17,
+      "source_peak_dbfs": -10.0,
+      "source_rms_dbfs": -29.657173175970122
+    },
+    "S_ShotgunShellInsert": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunShellInsert.S_ShotgunShellInsert",
+      "source_duration": 0.19,
+      "source_peak_dbfs": -13.0,
+      "source_rms_dbfs": -30.020734745768696
+    },
+    "S_ShotgunReloadStart": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunReloadStart.S_ShotgunReloadStart",
+      "source_duration": 0.23,
+      "source_peak_dbfs": -17.0,
+      "source_rms_dbfs": -29.580495791865946
+    },
+    "S_ShotgunReloadEnd": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunReloadEnd.S_ShotgunReloadEnd",
+      "source_duration": 0.23,
+      "source_peak_dbfs": -16.0,
+      "source_rms_dbfs": -32.78559235601325
+    },
+    "S_CarbineMagOut": {
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineMagOut.S_CarbineMagOut",
+      "source_duration": 0.28,
+      "source_peak_dbfs": -12.0,
+      "source_rms_dbfs": -31.97234023961967
+    },
+    "S_CarbineMagIn": {
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineMagIn.S_CarbineMagIn",
+      "source_duration": 0.23,
+      "source_peak_dbfs": -10.5,
+      "source_rms_dbfs": -31.126092806738654
+    },
+    "S_CarbineBolt": {
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineBolt.S_CarbineBolt",
+      "source_duration": 0.26,
+      "source_peak_dbfs": -11.0,
+      "source_rms_dbfs": -30.825096997594848
+    },
+    "S_WeaponEquip": {
+      "asset": "/Game/ONE/Audio/Weapons/S_WeaponEquip.S_WeaponEquip",
+      "source_duration": 0.2,
+      "source_peak_dbfs": -16.0,
+      "source_rms_dbfs": -31.541450051953635
+    },
+    "S_CarbineEmpty": {
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineEmpty.S_CarbineEmpty",
+      "source_duration": 0.1,
+      "source_peak_dbfs": -15.0,
+      "source_rms_dbfs": -31.62284052978385
+    },
+    "S_ShotgunEmpty": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunEmpty.S_ShotgunEmpty",
+      "source_duration": 0.13,
+      "source_peak_dbfs": -14.5,
+      "source_rms_dbfs": -32.78214400133554
+    },
+    "S_FleshImpact_01": {
+      "asset": "/Game/ONE/Audio/Weapons/S_FleshImpact_01.S_FleshImpact_01",
+      "source_duration": 0.23,
+      "source_peak_dbfs": -11.0,
+      "source_rms_dbfs": -30.58246553421824
+    },
+    "S_FleshImpact_02": {
+      "asset": "/Game/ONE/Audio/Weapons/S_FleshImpact_02.S_FleshImpact_02",
+      "source_duration": 0.23,
+      "source_peak_dbfs": -11.0,
+      "source_rms_dbfs": -29.619749283060944
+    },
+    "S_FleshImpact_03": {
+      "asset": "/Game/ONE/Audio/Weapons/S_FleshImpact_03.S_FleshImpact_03",
+      "source_duration": 0.23,
+      "source_peak_dbfs": -11.0,
+      "source_rms_dbfs": -29.194664878146224
+    },
+    "S_ConcreteImpact_01": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ConcreteImpact_01.S_ConcreteImpact_01",
+      "source_duration": 0.24,
+      "source_peak_dbfs": -13.0,
+      "source_rms_dbfs": -29.234811311034825
+    },
+    "S_MetalImpact_01": {
+      "asset": "/Game/ONE/Audio/Weapons/S_MetalImpact_01.S_MetalImpact_01",
+      "source_duration": 0.33,
+      "source_peak_dbfs": -13.0,
+      "source_rms_dbfs": -34.53721525827275
+    },
+    "S_ConcreteImpact_02": {
+      "asset": "/Game/ONE/Audio/Weapons/S_ConcreteImpact_02.S_ConcreteImpact_02",
+      "source_duration": 0.24,
+      "source_peak_dbfs": -13.0,
+      "source_rms_dbfs": -29.95312099591221
+    },
+    "S_MetalImpact_02": {
+      "asset": "/Game/ONE/Audio/Weapons/S_MetalImpact_02.S_MetalImpact_02",
+      "source_duration": 0.33,
+      "source_peak_dbfs": -13.0,
+      "source_rms_dbfs": -35.47516586889104
+    }
+  },
+  "status": "PASS"
+}

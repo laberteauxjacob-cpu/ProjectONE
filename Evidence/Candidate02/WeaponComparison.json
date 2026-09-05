@@ -1,0 +1,60 @@
+{
+  "source": "Actual packaged gameplay screenshot callback plus Unreal master-submix WAV",
+  "frames": 470,
+  "capture_span_seconds": 20.950238,
+  "actual_capture_fps": 22.38638052703745,
+  "first_frame_audio_seconds": 0.019485,
+  "audio_duration_seconds": 20.970666666666666,
+  "video_output_fps": 30,
+  "frame_treatment": "Timestamped captured frames held as needed; no AI generation or motion interpolation",
+  "audio_review": "Engine output captured; perceptual audition not established by encoding",
+  "package_source_revision": "0637288d32b6fbebc67ef93d4f03e439ff38bb67",
+  "selected_gameplay_frames": [
+    {
+      "published_file": "carbine_combat.jpg",
+      "file": "frame_00065.jpg",
+      "audio_seconds": "2.897963",
+      "world_seconds": "4.884109",
+      "phase": "1",
+      "weapon": "0",
+      "ammo": "18",
+      "reserve": "192",
+      "operation": "2"
+    },
+    {
+      "published_file": "shotgun_pump.jpg",
+      "file": "frame_00228.jpg",
+      "audio_seconds": "10.163805",
+      "world_seconds": "12.150370",
+      "phase": "4",
+      "weapon": "1",
+      "ammo": "4",
+      "reserve": "36",
+      "operation": "3"
+    },
+    {
+      "published_file": "shotgun_reload.jpg",
+      "file": "frame_00331.jpg",
+      "audio_seconds": "14.778164",
+      "world_seconds": "16.764141",
+      "phase": "5",
+      "weapon": "1",
+      "ammo": "2",
+      "reserve": "35",
+      "operation": "6"
+    },
+    {
+      "published_file": "shotgun_combat.jpg",
+      "file": "frame_00394.jpg",
+      "audio_seconds": "17.608480",
+      "world_seconds": "19.594217",
+      "phase": "6",
+      "weapon": "1",
+      "ammo": "4",
+      "reserve": "32",
+      "operation": "3"
+    }
+  ],
+  "capture_process_audio_override": "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+  "rejected_recording": "An earlier same-build background capture was entirely silent and was rejected. The published capture records normal engine output with background muting disabled for this process only."
+}

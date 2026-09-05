@@ -1,0 +1,296 @@
+{
+  "schema": 1,
+  "result": "PASS",
+  "archive_integrity_and_privacy_clearance": true,
+  "verified_utc": "2026-09-05T06:35:02.346948+00:00",
+  "archive": "ProjectONE-Candidate02-Windows.zip",
+  "archive_bytes": 397321284,
+  "archive_sha256": "0cb433a407c46e511c9fc831d516dfbfa68e660bad8c505a3786f04f5e54e7a3",
+  "source_revision": "0637288d32b6fbebc67ef93d4f03e439ff38bb67",
+  "archive_entries": 1217,
+  "decompressed_bytes": 662283004,
+  "all_entry_crc_verified": true,
+  "manifest_sizes_and_sha256_verified": true,
+  "runtime_files_verified": 45,
+  "all_runtime_files_byte_identical_to_fresh_build": true,
+  "main_executable_sha256": "53966e40e59f9a0ca99ddabc6beec0199ee8ffda807abeb9d9187709617c0350",
+  "bootstrap_executable_sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+  "both_native_prerequisite_installers_present": true,
+  "duplicate_entries": false,
+  "unsafe_entry_paths": false,
+  "forbidden_private_debug_source_files": false,
+  "mutation_performed": false,
+  "notice_catalog": {
+    "retained_entries": 1169,
+    "retained_notices_byte_identical_to_installed_engine_catalog": true,
+    "excluded_unused_component_notices": [
+      "Logitech G SDK License Agreement.pdf",
+      "MarketplacePlugins/EOSOnlineSubsystem_EpicOnlineServicesSDK_License.pdf",
+      "NvidiaGameworks_License.docx",
+      "UnrealStudio/DatasmithCADImporter_ThirdPartySoftwareNotices.pdf",
+      "UnrealStudio/DatasmithImporter_ThirdPartySoftwareNotices.pdf",
+      "VisualC++RedistributableforVisualStudio2010_LICENSE.pdf"
+    ],
+    "exclusions_match_manifest": true,
+    "legal_notice_bodies_edited": false,
+    "retained_nontext_metadata_documents_checked": 9,
+    "unrelated_author_path_or_account_label_documents_removed": true,
+    "catalog_description": "Unmodified license, copyright, agreement, README and TPS notice documents. Some cover optional components; no Unreal Engine implementation source files or editor tools are present."
+  },
+  "privacy_scan": {
+    "all_payloads_covered_by_hash_verified_scan": true,
+    "unchanged_previously_scanned_payloads": 1211,
+    "new_or_changed_payloads_scanned": [
+      "DistributionNotice.md",
+      "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "PLAY.txt",
+      "build_manifest.json"
+    ],
+    "credential_tokens_detected": false,
+    "own_personal_roots_detected": false,
+    "unclassified_findings": [],
+    "changed_payload_known_literal_dispositions": {},
+    "method": "Each ZIP entry was decompressed and CRC/SHA256 verified. Identical payload hashes reuse the prior complete entry-byte scan; all changed payloads were rescanned. Prior PDF stream/metadata and nested Word-document checks cover the unchanged retained notice documents.",
+    "known_upstream_nonprivate_examples": [
+      "Fixed engine networking literals",
+      "Comment-only GPU viewer placeholder path",
+      "AJA documentation network example",
+      "Engine driver-cache diagnostic placeholder path"
+    ],
+    "false_positive_disposition": "The password-shaped binary match is absent in both ASCII and UTF16 byte sequences; removing null bytes had joined independent constants."
+  },
+  "runtime_files": [
+    {
+      "path": "Engine/Binaries/ThirdParty/DbgHelp/dbghelp.dll",
+      "bytes": 2232712,
+      "sha256": "c61402133c5a961be61cf8fc651cca42be2232f502549d239150b855fab173d2"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/MsQuic/v220/win64/msquic.dll",
+      "bytes": 2547104,
+      "sha256": "f71b5f857abe1509756947a4f4863f293e583ea6050583e6942843694d8d9938"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/NVIDIA/NVaftermath/Win64/GFSDK_Aftermath_Lib.x64.dll",
+      "bytes": 5442616,
+      "sha256": "99e10fd351e3154fd7f0b819c8ad39b16ee01223a61c1994bd24bcdb82972430"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Ogg/Win64/VS2015/libogg_64.dll",
+      "bytes": 59856,
+      "sha256": "77bfe5db8b9b2227dd25a02de2947a7cce3afd7e520cde3cc019b5b568e3c925"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vorbis/Win64/VS2015/libvorbis_64.dll",
+      "bytes": 1724880,
+      "sha256": "b67768dd12b0895833f306f5ae12d28964830e00f2b431135425f5b24077915d"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vorbis/Win64/VS2015/libvorbisfile_64.dll",
+      "bytes": 48592,
+      "sha256": "b8610a446acbe9e553cff7290cf9b0f3e190800ad4c08d9eea90c06aa382f680"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_api_dump.dll",
+      "bytes": 11001096,
+      "sha256": "377cefcb66f5f018d55641083c32404de5658a1e86d484b92f57f25b74c54ff9"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_api_dump.json",
+      "bytes": 12828,
+      "sha256": "281669fdf39baf7e49e0507387645997451187be2f7d444b0c169ef078004e46"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_crash_diagnostic.dll",
+      "bytes": 2029320,
+      "sha256": "c6586cbec5d6de0daed5d2452914d099b8e63c86bf0970df6dca38c7c3129590"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_crash_diagnostic.json",
+      "bytes": 9527,
+      "sha256": "3601109840469aea0b9008512157e043c89500705cb346270fb019d7ed6f724e"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_gfxreconstruct.dll",
+      "bytes": 5603072,
+      "sha256": "e519bb52d80c40fba7dc474331d39ecf66aacf7486bc9019e46c60941711f399"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_gfxreconstruct.json",
+      "bytes": 27234,
+      "sha256": "a6c78d253715f260a0fe7c8e1b0ce3e153aa8a802a2ba89b0dd46561e686b636"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_profiles.dll",
+      "bytes": 1776392,
+      "sha256": "92701f48cc945f4d30602aead362dc9f77729a0a9efbcceb378a8f61877d0277"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_profiles.json",
+      "bytes": 70320,
+      "sha256": "8c9d6e4bf6d38c2cf223b598aaf86a08242a1a07d62b24236cca3e64e0daf91c"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_shader_object.dll",
+      "bytes": 371464,
+      "sha256": "8f037a67ffa89af0fca90d91393e7854265bb515de7bffbe01513ed514a4fdf2"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_shader_object.json",
+      "bytes": 4455,
+      "sha256": "98b9a12a5723665abab2eadfcab700a5785172adad22e5ca1364ab466268185f"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_synchronization2.dll",
+      "bytes": 341768,
+      "sha256": "8707201541cec52165828c92b494022567ae97d42245bf272a656f6965dbfd5e"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_synchronization2.json",
+      "bytes": 1910,
+      "sha256": "80a014d0b4337ea6ab05b8295fe6d1ba7f4cc0cf6bfe918873a0d30960973696"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_validation.dll",
+      "bytes": 17958152,
+      "sha256": "c6bdf73e611635a22b00981ebfb3117a05b3384b4a1d9e115d5fdc7fdc85db8f"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_validation.json",
+      "bytes": 82965,
+      "sha256": "be1722a7a84efca54cd0bd1625f37016b556dd696586620f81ff5fa1c155a198"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64/WinPixEventRuntime.dll",
+      "bytes": 69080,
+      "sha256": "283c554d3b72142041bb5680739b39b96b58162c6b7a9e968dc2a76235150da1"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Windows/XAudio2_9/x64/xaudio2_9redist.dll",
+      "bytes": 858176,
+      "sha256": "bbd9bec2356aa0b03ca6b02d6fb107e63ff2d5975f4217c5b79fba14c5b913df"
+    },
+    {
+      "path": "Engine/Config/StagedBuild_ProjectONE.ini",
+      "bytes": 3,
+      "sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    },
+    {
+      "path": "Engine/Content/Renderer/TessellationTable.bin",
+      "bytes": 259568,
+      "sha256": "edc4f3b628a139c5e185bbaeca661c95c1f427368d3b92892c5cff36c56dd941"
+    },
+    {
+      "path": "Engine/Content/Slate/Cursor/invisible.cur",
+      "bytes": 326,
+      "sha256": "fef3980fa567e9c45d5d8dcaa432a2c1a3f3bb17fe67d7ab198164f56c142aa1"
+    },
+    {
+      "path": "Engine/Content/SlateDebug/Fonts/LastResort.tps",
+      "bytes": 930,
+      "sha256": "0f775fa99d05e21d43d2d06d55982b23dcdccdb512a9a5a07aff674f212c41b8"
+    },
+    {
+      "path": "Engine/Content/SlateDebug/Fonts/LastResort.ttf",
+      "bytes": 5395052,
+      "sha256": "fff0f8de0b868b964950fe97c9b60f893e9bc85a4f90b3629c5693db058b97b9"
+    },
+    {
+      "path": "Engine/Extras/GPUDumpViewer/GPUDumpViewer.html",
+      "bytes": 187194,
+      "sha256": "15966544a010b56930a7389b5e9cbeee7a9ae545d132906e983ac954a839df67"
+    },
+    {
+      "path": "Engine/Extras/GPUDumpViewer/OpenGPUDumpViewer.bat",
+      "bytes": 879,
+      "sha256": "e8f7ef9c88697041bd87902b76e52558979ca866c7450b1da108a94a027f441b"
+    },
+    {
+      "path": "Engine/Extras/GPUDumpViewer/OpenGPUDumpViewer.sh",
+      "bytes": 2165,
+      "sha256": "1b222b5d5aad6dd9b5b9f0a1c72d38635149540f2c7a368600ec76c1d304390a"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.arm64.exe",
+      "bytes": 11733072,
+      "sha256": "0423f7d1c765afea32a414eb156478d694924ea948ac21a4565a4fb1025b258f"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    },
+    {
+      "path": "Engine/Plugins/NNE/NNERuntimeORT/Binaries/ThirdParty/Onnxruntime/Win64/onnxruntime.dll",
+      "bytes": 14692896,
+      "sha256": "8ba79c4cb4809413348fca0d5f4d1b7a2d529d8b32de0f9ca514c6f2488b4223"
+    },
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/D3D12/x64/D3D12Core.dll",
+      "bytes": 4544032,
+      "sha256": "ecfc9f71a15739d69a246fcc7b737789392793496a073c0ffc6d3127c3183e56"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/D3D12/x64/d3d12SDKLayers.dll",
+      "bytes": 5104656,
+      "sha256": "4dee11053a4082c5c9e3d6fba9b9c49e076dda28679601792a81f57a09dac614"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/DML/x64/DirectML.dll",
+      "bytes": 18537992,
+      "sha256": "30a8a708b05eafe25e6a4d1e66554c92d5e63da6a5d8faa3fae1e39226c10b49"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 291411968,
+      "sha256": "53966e40e59f9a0ca99ddabc6beec0199ee8ffda807abeb9d9187709617c0350"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/tbb12.dll",
+      "bytes": 331728,
+      "sha256": "0278433e085de109e2be36b4e0027116c53bf46a83d82d08b6c95ba2a5e98eb3"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/tbbmalloc.dll",
+      "bytes": 117712,
+      "sha256": "58535cfe511f13e074d460f146123880cac25268560527ad5e248cbce897adc9"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10716673,
+      "sha256": "2c4b08b53082b2fc9b3f3b7e744bf07f7d7017763b4106fcf985af972ec77bdb"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 208679920,
+      "sha256": "771487592fb1366d584dbd3d713d04e9215142dc4ba2d321c86fceb9f782e6fb"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 190471,
+      "sha256": "bdba214b4872653187e5a7aa04bee06c27c79f19aa45b2031d5c846297e60017"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/global.ucas",
+      "bytes": 2638432,
+      "sha256": "22c618cef09cdbd7d487508f3dfce23168da8a80ca2d6a8735c09de5309786a3"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/global.utoc",
+      "bytes": 686,
+      "sha256": "b277bdab828b5b827790f3ad55a830351f5072a86e9217932c62e22c52804451"
+    }
+  ],
+  "scope_limitations": [
+    "Heuristic scan is not a guarantee against every possible secret.",
+    "Cooked runtime containers may compress internal data; their source assets are also covered by the publication audit.",
+    "Runtime functional checks and legal sufficiency are recorded separately."
+  ]
+}
