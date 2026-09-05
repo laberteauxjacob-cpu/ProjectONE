@@ -146,7 +146,7 @@ for name, definition in animations.items():
     if abs(duration-definition['duration']) > .006:
         raise RuntimeError('Authored timing changed at import: '+name+' '+str(duration))
     REPORT['animations'][name] = {'asset': sequence.get_path_name(), 'duration': duration,
-        'expected_duration': definition['duration'], 'skeleton': sequence.skeleton.get_path_name()}
+        'expected_duration': definition['duration'], 'skeleton': sequence.get_editor_property('skeleton').get_path_name()}
 
 for name, definition in INVENTORY['audio'].items():
     assets = import_file(ROOT/definition['source'], '/Game/ONE/Audio/Weapons', factory=u.SoundFactory())
