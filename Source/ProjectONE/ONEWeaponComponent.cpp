@@ -191,6 +191,7 @@ void UONEWeaponComponent::RefreshEquippedPresentation()
 void UONEWeaponComponent::PlayMechanical(USoundBase* S)
 {
     if (!S) return;
+    OperationAudio.RemoveAll([](const auto& C){return !C.IsValid() || !C->IsPlaying();});
     if (auto* P=Cast<AONEPlayer>(GetOwner())) if (auto* Audio=UGameplayStatics::SpawnSoundAttached(S,P->Gun,NAME_None,FVector::ZeroVector,EAttachLocation::KeepRelativeOffset,true,.55f))
     { Audio->bIsUISound=false; OperationAudio.Add(Audio); }
 }

@@ -18,7 +18,7 @@ public:
     void CancelReload();
     void CancelAllOperations();
     bool SelectWeapon(int32 Index);
-    void CycleWeapon() { SelectWeapon((EquippedIndex+1)%2); }
+    void CycleWeapon() { SelectWeapon(((PendingIndex>=0 ? PendingIndex : EquippedIndex)+1)%2); }
     void RefillAllAmmo();
     void ClearEjectedCases();
     void RefreshEquippedPresentation();
