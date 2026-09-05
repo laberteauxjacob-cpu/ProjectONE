@@ -40,6 +40,7 @@ struct FONEWeaponDefinition
     UPROPERTY(EditAnywhere,meta=(ClampMin="1")) int32 Capacity=24;
     UPROPERTY(EditAnywhere,meta=(ClampMin="0")) int32 InitialReserve=192;
     UPROPERTY(EditAnywhere,meta=(ClampMin="0")) int32 ReserveLimit=270;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0")) int32 RoundReserveReward=48;
     UPROPERTY(EditAnywhere,meta=(ClampMin="1",ClampMax="16")) int32 Pellets=1;
     UPROPERTY(EditAnywhere,meta=(ClampMin="0")) float Damage=32.f;
     UPROPERTY(EditAnywhere,meta=(ClampMin="0.04")) float FireInterval=.16f;

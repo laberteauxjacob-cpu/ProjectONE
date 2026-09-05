@@ -46,6 +46,7 @@ public:
     float GetTimeSinceHit() const;
     bool WasLastHitKill() const { return bLastHitKill; }
     void AddReserveAmmo(int32 Count);
+    void GrantRoundAmmo();
     int32 GetTotalShotsFired() const { return ShotsFired; }
     int32 GetShellInsertCount() const { return ShellsInserted; }
     int32 GetMagazineCommitCount() const { return MagazinesCommitted; }

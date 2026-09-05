@@ -52,6 +52,7 @@ UONEWeaponComponent::UONEWeaponComponent()
     Shotgun.Id=TEXT("SG01"); Shotgun.DisplayName=FText::FromString(TEXT("SG-01 PUMP SHOTGUN"));
     Shotgun.bAutomatic=false; Shotgun.bShellReload=true; Shotgun.bPumpAction=true;
     Shotgun.Capacity=6; Shotgun.InitialReserve=36; Shotgun.ReserveLimit=60;
+    Shotgun.RoundReserveReward=8;
     Shotgun.Pellets=8; Shotgun.Damage=15.f; Shotgun.FireInterval=.78f; Shotgun.SpreadDegrees=4.f;
     Shotgun.Range=1400.f; Shotgun.FalloffStart=500.f; Shotgun.MinimumDamageFraction=.2f;
     Shotgun.HeadTraumaScale=1.f; Shotgun.HeavyStaggerThreshold=70.f;
@@ -137,7 +138,7 @@ void UONEWeaponComponent::SetTrigger(bool Held)
     }
     bTrigger=Held;
     // A semi-auto press is one buffered command: releasing the button during the
-    // closing pose must not erase it. Pause and focus changes explicitly clear it.
+    // closing pose must not erase it. Explicit input cancellation clears it.
     if (!Held && GetDefinition().bAutomatic) bPendingShot=false;
 }
 void UONEWeaponComponent::BeginReload()
@@ -184,6 +185,11 @@ void UONEWeaponComponent::RefillAllAmmo()
 }
 void UONEWeaponComponent::AddReserveAmmo(int32 Count)
 { if (Carried.IsValidIndex(EquippedIndex)) Carried[EquippedIndex].Reserve=FMath::Clamp(GetReserveAmmo()+Count,0,GetDefinition().ReserveLimit); }
+void UONEWeaponComponent::GrantRoundAmmo()
+{
+    for (int32 I=0;I<Carried.Num();++I)
+        Carried[I].Reserve=FMath::Clamp(Carried[I].Reserve+FMath::Max(0,WeaponDefinitions[I].RoundReserveReward),0,WeaponDefinitions[I].ReserveLimit);
+}
 void UONEWeaponComponent::RefreshEquippedPresentation()
 {
     const auto& D=GetDefinition(); MagazineSize=D.Capacity; FireInterval=D.FireInterval; Damage=D.Damage; Range=D.Range;
