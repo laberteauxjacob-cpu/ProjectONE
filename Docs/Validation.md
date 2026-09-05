@@ -1,3 +1,10 @@
+# Validation records
+
+Current Candidate05 behavior and verification are recorded in
+[Candidate05](Passes/Candidate05.md) and its [evidence index](../Evidence/Candidate05/README.md).
+Committed magazine reloads and non-buffered firing replace the older policy;
+historical validation below applies only to the preserved Candidate01 build.
+
 # Candidate 01 validation — 4 September 2026
 
 Final gameplay source revision: `984bd90`. This report concerns the original Project ONE candidate, not Project Zero. The earlier exposure, inverted-map and capture-route probes under `Saved` are superseded. Use `Evidence/Packaged` for final standalone evidence.

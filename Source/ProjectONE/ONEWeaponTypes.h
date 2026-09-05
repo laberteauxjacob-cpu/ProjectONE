@@ -17,6 +17,15 @@ UENUM(BlueprintType)
 enum class EONEWeaponEvent : uint8 { Sound, MagazineOut, MagazineCommit, ShellCommit, ShellEject, WeaponSwap, PumpLock };
 UENUM(BlueprintType)
 enum class EONEHitRegion : uint8 { Body, Head, ArmLeft, ArmRight, LegLeft, LegRight, Invalid };
+UENUM(BlueprintType)
+enum class EONEWeaponHitOutcome : uint8 { Rejected, LiveHit, NewKill, CorpseHit };
+UENUM(BlueprintType)
+enum class EONEWeaponInputResult : uint8
+{
+    None, AcceptedShot, AcceptedShellClose, DryFire,
+    Unusable, Dead, Paused, Handoff, ReleaseRequired, Reloading,
+    Pumping, Equipping, Cooldown, EmptyWithReserve, DryFireRateLimited
+};
 USTRUCT(BlueprintType)
 struct FONEWeaponTimedEvent
 {
@@ -51,7 +60,7 @@ struct FONEWeaponDefinition
     UPROPERTY(EditAnywhere,meta=(ClampMin="0")) int32 RoundReserveReward=48;
     UPROPERTY(EditAnywhere,meta=(ClampMin="1",ClampMax="16")) int32 Pellets=1;
     UPROPERTY(EditAnywhere,meta=(ClampMin="0")) float Damage=32.f;
-    UPROPERTY(EditAnywhere,meta=(ClampMin="0.04")) float FireInterval=.16f;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0.04")) float FireInterval=.10f;
     UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="15")) float SpreadDegrees=.35f;
     UPROPERTY(EditAnywhere) float Range=2800.f;
     UPROPERTY(EditAnywhere) float FalloffStart=1400.f;
@@ -89,6 +98,7 @@ struct FONEWeaponDefinition
     UPROPERTY(EditAnywhere) TSoftObjectPtr<UStaticMesh> MagazineMesh;
     UPROPERTY(EditAnywhere) TSoftObjectPtr<UAnimSequence> ReadyAnimation;
     UPROPERTY(EditAnywhere) TArray<TSoftObjectPtr<USoundBase>> ShotSounds;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="2")) float ShotVolume=.62f;
     UPROPERTY(EditAnywhere) TSoftObjectPtr<USoundBase> EmptySound;
     UPROPERTY(EditAnywhere) TArray<TSoftObjectPtr<USoundBase>> FleshSounds;
     UPROPERTY(EditAnywhere) TArray<TSoftObjectPtr<USoundBase>> ConcreteSounds;

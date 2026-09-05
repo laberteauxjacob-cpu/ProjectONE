@@ -149,6 +149,7 @@ void UONE04MachinePresentation::SetPreview(const FONEWeaponDefinition* Definitio
     if (!bConfigured || PreviewParts.Num()!=4) return;
     const bool HadPreview=bPreviewValid;const FTransform Previous=GetPreviewWorldTransform();
     ExpectedPreviewParts=0;bPreviewValid=false;PreviewAura=FLinearColor::Transparent;
+    PreviewFamily=Definition ? Definition->Family : EONEWeaponFamily::Invalid;
     TArray<UStaticMesh*> Meshes;
     if (Definition)
     {

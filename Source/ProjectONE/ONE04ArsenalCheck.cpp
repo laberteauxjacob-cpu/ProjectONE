@@ -219,13 +219,13 @@ void AONE04ArsenalCheck::Tick(float Dt)
             DropTime=Event?Event->Time:.28f; Pulse(EKeys::R); Next(10);
         }
     } break;
-    case 10: if (W->IsReloading() && W->GetOperationElapsed()>=DropTime*.45f) { Key(EKeys::LeftShift,IE_Pressed); Next(11); } break;
-    case 11: if (T>.1f)
+    case 10: if (W->IsReloading() && W->GetOperationElapsed()>=DropTime*.45f)
+    { Key(EKeys::LeftShift,IE_Pressed); if (Variant==0) Key(EKeys::W,IE_Pressed); Next(11); } break;
+    case 11: if (T>.04f)
     {
-        Check(!W->IsReloading() && W->ShouldShowSeatedMagazine() && W->GetMagazineDropCount()==Drops && W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve,TEXT("Sprint before removal leaves original magazine seated with no drop or transfer"));
-        Key(EKeys::LeftShift,IE_Released); if (Variant==0) Key(EKeys::W,IE_Pressed); Next(12);
+        Check(W->IsMagazineReloadCommitted() && W->ShouldShowSeatedMagazine() && W->GetMagazineDropCount()==Drops && W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve,TEXT("Sprint before removal preserves committed reload and seated magazine before its real event"));
+        Next(13);
     } break;
-    case 12: if (T>.22f) { Pulse(EKeys::R); Next(13); } break;
     case 13: if (W->GetMagazineDropCount()>Drops)
     {
         Dropped=W->GetLastDroppedMagazine(); DropAt=Now;
@@ -242,24 +242,24 @@ void AONE04ArsenalCheck::Tick(float Dt)
     } break;
     case 14: if (T>.12f)
     {
-        Check(!W->IsReloading() && !W->ShouldShowSeatedMagazine() && !W->CanFire() && W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve,TEXT("Sprint after drop preserves unearned ammunition and absent magazine without firing bypass"));
+        Check(W->IsMagazineReloadCommitted() && !W->ShouldShowSeatedMagazine() && !W->CanFire() && W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve,TEXT("Sprint after drop preserves committed reload, unearned ammunition and absent magazine"));
         if (Dropped.IsValid()) Check(Dropped->GetVelocity().Z<Dropped->GetInitialVelocity().Z-50.f,TEXT("Released magazine follows world gravity independently of current gun pose"));
         Key(EKeys::LeftShift,IE_Released); Shots=W->GetTotalShotsFired(); Pulse(EKeys::LeftMouseButton); Next(15);
     } break;
     case 15: if (T>.3f)
     {
-        Check(!W->IsReloading() && W->GetTotalShotsFired()==Shots && !W->CanAutoReload(),TEXT("Loaded canceled reload stays canceled on sprint release/fire; explicit R is required to replace missing magazine"));
+        Check(W->IsMagazineReloadCommitted() && W->GetTotalShotsFired()==Shots && !W->HasAcceptedFramePress(),TEXT("Fire during magazine reload is rejected immediately without interrupting or banking a discharge"));
         Pulse(EKeys::R); Next(16);
     } break;
     case 16: if (W->IsReloading() && W->GetOperationElapsed()>DropTime+.08f)
     {
-        Check(W->GetMagazineDropCount()==Drops+1 && W->GetAmmo()==Ammo,TEXT("Restarted reload cannot drop the already-released magazine again")); Next(17);
+        Check(W->GetMagazineDropCount()==Drops+1 && W->GetAmmo()==Ammo,TEXT("Repeated R leaves committed clock advancing and cannot duplicate the old magazine drop")); Next(17);
     } break;
     case 17: if (W->ShouldShowHeldMagazine())
     { Check(!W->ShouldShowSeatedMagazine() && W->GetAmmo()==Ammo,TEXT("Fresh held replacement appears distinctly before actual ammo commit")); Next(18); } break;
     case 18: if (!W->IsBusy() && T>.25f)
     {
-        Check(W->GetAmmo()==W->GetDefinition().Capacity && W->GetReserveAmmo()==Reserve-1 && W->ShouldShowSeatedMagazine() && W->GetMagazineDropCount()==Drops+1 && W->GetTotalShotsFired()==Shots,TEXT("Real insertion fills exactly missing round, restores magazine and clears canceled queued fire without repeat drop"));
+        Check(W->GetAmmo()==W->GetDefinition().Capacity && W->GetReserveAmmo()==Reserve-1 && W->ShouldShowSeatedMagazine() && W->GetMagazineDropCount()==Drops+1 && W->GetTotalShotsFired()==Shots,TEXT("Committed insertion fills exactly missing round and restores magazine without repeated drop or deferred fire"));
         Check(Dropped.IsValid() && Dropped->IsSettled() && Dropped->GetBounceCount()>0,TEXT("Old magazine bounces and settles on real supporting collision"));
         if (Dropped.IsValid()) RestPosition=Dropped->GetActorLocation(); Next(19);
     } break;
@@ -276,10 +276,14 @@ void AONE04ArsenalCheck::Tick(float Dt)
     { Key(EKeys::LeftShift,IE_Pressed); Next(26); } break;
     case 26: if (T>.1f)
     {
-        Check(!W->IsReloading() && W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve && W->GetMagazineDropCount()==Drops,TEXT("Pump shotgun cancellation before shell commit never emits detachable magazine or earns shell"));
-        Key(EKeys::LeftShift,IE_Released); Next(27);
+        Check(W->IsReloading() && W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve && W->GetMagazineDropCount()==Drops,TEXT("Sprint preserves shotgun loading before its genuine shell commit without a magazine actor"));
+        Key(EKeys::LeftShift,IE_Released); Pulse(EKeys::LeftMouseButton); Next(27);
     } break;
-    case 27: if (T>.2f) { Pulse(EKeys::R); Next(28); } break;
+    case 27: if (T>.4f && !W->IsBusy())
+    {
+        Check(W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve && W->GetTotalShotsFired()==Shots+1,TEXT("Loaded shell interrupt closes without earning a shell or banking the interrupt click"));
+        Pulse(EKeys::R); Next(28);
+    } break;
     case 28: if (!W->IsBusy() && T>1.8f)
     {
         Check(W->GetAmmo()==W->GetDefinition().Capacity && W->GetReserveAmmo()==Reserve-1 && W->GetShellInsertCount()==Inserts+1 && W->GetMagazineDropCount()==Drops && W->GetEjectionCount()==Ejections+1,TEXT("Shotgun resumes genuine one-shell transfer with unchanged exact pump ejection and no magazine actor")); CompleteVariant();

@@ -7,6 +7,7 @@ class AONEZombie;
 class AONEPlayer;
 enum class EONEWeaponFamily : uint8;
 class ULightComponent;
+class UONEAmbientAudioComponent;
 UCLASS()
 class PROJECTONE_API AONEGameMode : public AGameModeBase
 {
@@ -45,6 +46,9 @@ public:
     bool IsGameOver() const { return bGameOver; }
     bool IsIntermission() const { return bIntermission; }
     float GetCountdown() const { return Countdown; }
+    float GetSurvivalSeconds() const { return SurvivalSeconds; }
+    UONEAmbientAudioComponent* GetAmbientAudio() const { return AmbientAudio; }
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UONEAmbientAudioComponent> AmbientAudio;
     UPROPERTY(EditAnywhere, Category="Rounds") float IntermissionSeconds = 7.f;
     UPROPERTY(EditAnywhere, Category="Rounds") float SpawnInterval = 1.3f;
     UPROPERTY(EditAnywhere, Category="Rounds") int32 MaximumActive = 18;
@@ -60,6 +64,7 @@ private:
     bool bDimLighting = false;
     TMap<TWeakObjectPtr<ULightComponent>,float> SandboxLightIntensities;
     float Countdown = 5.f, SpawnClock = 0.f;
+    float SurvivalSeconds=0.f;
     uint64 NextMachineReceipt=0;
     TMap<uint64,int32> MachineReceipts;
     int32 SandboxGrantedPoints=0;

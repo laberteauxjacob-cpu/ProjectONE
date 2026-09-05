@@ -33,6 +33,7 @@ public:
     EONEMachineState GetState() const { return State; }
     float GetStateElapsed() const { return StateElapsed; }
     EONEWeaponFamily GetRewardFamily() const { return RewardFamily; }
+    bool IsOwnedBy(const AONEPlayer* Player) const;
     const FONEWeaponReservation& GetReservation() const { return Reservation; }
     uint64 GetPaymentReceipt() const { return PaymentReceipt; }
     int32 GetAcceptedCount() const { return AcceptedCount; }

@@ -3,6 +3,8 @@
 #include "ONEZombie.h"
 #include "ONEPlayerController.h"
 #include "ONEHUD.h"
+#include "ONEAmbientAudioComponent.h"
+#include "ONEZombieAudioComponent.h"
 #include "ONEWeaponComponent.h"
 #include "ONEProgressionMachine.h"
 #include "ONEInteractionComponent.h"
@@ -20,6 +22,11 @@
 #include "ONE04ProgressionCheck.h"
 #include "ONE04ArsenalCheck.h"
 #include "ONE04PresentationCheck.h"
+#include "ONE05AimCheck.h"
+#include "ONE05WeaponCheck.h"
+#include "ONE05PresentationCheck.h"
+#include "ONE05MotionCheck.h"
+#include "ONE05UICheck.h"
 #include "Misc/CommandLine.h"
 #include "Kismet/GameplayStatics.h"
 #include "NavigationSystem.h"
@@ -42,6 +49,7 @@ AONEGameMode::AONEGameMode()
     HUDClass = AONEHUD::StaticClass();
     ZombieClass = AONEZombie::StaticClass();
     ForcedBoxReward=EONEWeaponFamily::Invalid;
+    AmbientAudio=CreateDefaultSubobject<UONEAmbientAudioComponent>(TEXT("FacilityAudio"));
 }
 void AONEGameMode::BeginPlay()
 {
@@ -53,7 +61,8 @@ void AONEGameMode::BeginPlay()
     const bool bDamageCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03DamageCheck"));
     const bool bPhysicalityCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityProfile"));
     const bool bCandidate04=FString(FCommandLine::Get()).Contains(TEXT("ONE04"));
-    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck || bCandidate04;
+    const bool bCandidate05=FString(FCommandLine::Get()).Contains(TEXT("ONE05"));
+    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck || bCandidate04 || bCandidate05;
     if (bSandbox) { bIntermission=false; Countdown=0; }
     // Authored material categories drive concrete versus metal impact audio.
     for (TActorIterator<AStaticMeshActor> It(GetWorld());It;++It)
@@ -96,6 +105,12 @@ void AONEGameMode::BeginPlay()
     if (bPhysicalityCheck) GetWorld()->SpawnActor<AONE03PhysicalityCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE04ProgressionCheck"))) GetWorld()->SpawnActor<AONE04ProgressionCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE04ArsenalCheck"))) GetWorld()->SpawnActor<AONE04ArsenalCheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE05AimCheck"))) GetWorld()->SpawnActor<AONE05AimCheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE05WeaponCheck"))) GetWorld()->SpawnActor<AONE05WeaponCheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE05UICheck"))) GetWorld()->SpawnActor<AONE05UICheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE05MotionCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE05MotionCapture"))) GetWorld()->SpawnActor<AONE05MotionCheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE05PresentationCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE05Profile")) ||
+        FString(FCommandLine::Get()).Contains(TEXT("ONE05ManualCapture="))) GetWorld()->SpawnActor<AONE05PresentationCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE04PresentationCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE04Profile")) ||
         FString(FCommandLine::Get()).Contains(TEXT("ONE04ManualCapture="))) GetWorld()->SpawnActor<AONE04PresentationCheck>();
 }
@@ -133,6 +148,7 @@ void AONEGameMode::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
     if (bGameOver) return;
+    SurvivalSeconds+=DeltaSeconds;
     if (bSandbox)
     {
         for (auto It=Alive.CreateIterator();It;++It) if (!It->IsValid()) It.RemoveCurrent();
@@ -177,12 +193,18 @@ void AONEGameMode::PlayerDied()
 {
     if (bGameOver) return;
     bGameOver = true;
+    if (AmbientAudio) AmbientAudio->Shutdown();
+    for (TActorIterator<AONEZombie> It(GetWorld());It;++It)
+        if (auto* Audio=It->FindComponentByClass<UONEZombieAudioComponent>()) Audio->Shutdown();
+    if (auto* PC=Cast<AONEPlayerController>(UGameplayStatics::GetPlayerController(this,0))) PC->GuardGameplayInput();
     for (TActorIterator<AONEProgressionMachine> It(GetWorld());It;++It) It->InvalidateRun();
     if (auto* P=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0))) P->GetWeaponComponent()->InvalidateMachineTransactions();
     UE_LOG(LogTemp, Display, TEXT("ONE_GAME_OVER round=%d kills=%d points=%d"), Round, Kills, Points);
 }
 void AONEGameMode::RestartScene()
 {
+    if (AmbientAudio) AmbientAudio->Shutdown();
+    if (auto* PC=Cast<AONEPlayerController>(UGameplayStatics::GetPlayerController(this,0))) PC->GuardGameplayInput();
     for (TActorIterator<AONEProgressionMachine> It(GetWorld());It;++It) It->InvalidateRun();
     if (auto* P=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0)))
     { P->GetInteractionComponent()->Cancel(true); P->GetWeaponComponent()->InvalidateMachineTransactions(); }

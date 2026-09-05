@@ -15,16 +15,47 @@
 #include "BoneControllers/AnimNode_TwoBoneIK.h"
 #include "BoneControllers/AnimNode_ModifyBone.h"
 
+// Blend the foot target in position space before solving. Blending IK joint
+// rotations after the solve does not preserve an intended clearance trajectory.
+struct FONEPivotLegNode : FAnimNode_TwoBoneIK
+{
+    FVector CapturedFoot=FVector::ZeroVector;
+    FVector CapturedPole=FVector::ZeroVector;
+    FVector ComponentUp=FVector::UpVector;
+    float SupportWeight=0.f;
+
+    virtual void EvaluateSkeletalControl_AnyThread(FComponentSpacePoseContext& Output,
+        TArray<FBoneTransform>& OutBoneTransforms) override
+    {
+        const FBoneContainer& Bones=Output.Pose.GetPose().GetBoneContainer();
+        const FVector AuthoredFoot=Output.Pose.GetComponentSpaceTransform(IKBone.GetCompactPoseIndex(Bones)).GetLocation();
+        const FVector Knee=Output.Pose.GetComponentSpaceTransform(CachedLowerLimbIndex).GetLocation();
+        const FVector Hip=Output.Pose.GetComponentSpaceTransform(CachedUpperLimbIndex).GetLocation();
+        const FVector Axis=(AuthoredFoot-Hip).GetSafeNormal();
+        const FVector Bend=Knee-(Hip+Axis*FVector::DotProduct(Knee-Hip,Axis));
+        const FVector AuthoredPole=Bend.IsNearlyZero() ? CapturedPole : Knee+Bend.GetSafeNormal()*30.f;
+        const float Weight=FMath::Clamp(SupportWeight,0.f,1.f);
+        const float Release=1.f-Weight;
+        const float Clearance=Release>0.f && Release<1.f ? 6.f*FMath::Sin(PI*Release) : 0.f;
+        EffectorLocation=FMath::Lerp(AuthoredFoot,CapturedFoot,Weight)+ComponentUp*Clearance;
+        JointTargetLocation=FMath::Lerp(AuthoredPole,CapturedPole,Weight);
+        FAnimNode_TwoBoneIK::EvaluateSkeletalControl_AnyThread(Output,OutBoneTransforms);
+    }
+};
+
 struct FONEAnimProxy : FAnimInstanceProxy
 {
     FAnimNode_SequenceEvaluator_Standalone Idle,WalkA,WalkB,RunA,RunB,Turn,Ready,Action;
     FAnimNode_PoseSnapshot DeathPose;
+    FAnimNode_ConvertLocalToComponentSpace ReactionComponent;
+    FAnimNode_ConvertComponentToLocalSpace ReactionLocal;
+    FAnimNode_ModifyBone ReactionSpine,ReactionHead;
     FAnimNode_TwoWayBlend WalkDirection,RunDirection,Running,Locomotion,Turning,FullAction,Final;
     FAnimNode_RotateRootBone Facing;
     FAnimNode_ConvertLocalToComponentSpace PivotComponent;
     FAnimNode_ConvertComponentToLocalSpace PivotLocal;
     FAnimNode_ModifyBone PivotPelvis,PivotFootRotation[2];
-    FAnimNode_TwoBoneIK PivotLeg[2];
+    FONEPivotLegNode PivotLeg[2];
     FAnimNode_LayeredBoneBlend ReadyUpperBody,UpperBody;
     float Phase=0,IdleClock=0,SmoothedSpeed=0,DirectionYaw=0;
     FONEAnimProxy(UAnimInstance* Instance):FAnimInstanceProxy(Instance)
@@ -40,7 +71,7 @@ struct FONEAnimProxy : FAnimInstanceProxy
         PivotPelvis.BoneToModify.BoneName=TEXT("pelvis");
         PivotPelvis.TranslationMode=BMM_Additive;
         PivotPelvis.TranslationSpace=BCS_ComponentSpace;
-        PivotPelvis.Translation=FVector(0,0,-5.f);
+        PivotPelvis.Translation=FVector(0,0,-1.5f);
         for (int32 I=0;I<2;++I)
         {
             const FName Foot=I==0 ? TEXT("foot_l") : TEXT("foot_r");
@@ -70,7 +101,15 @@ struct FONEAnimProxy : FAnimInstanceProxy
         UpperBody.bMeshSpaceRotationBlend=true;
         FullAction.A.SetLinkNode(&UpperBody); FullAction.B.SetLinkNode(&Action);
         DeathPose.Mode=ESnapshotSourceMode::SnapshotPin;
-        Final.A.SetLinkNode(&FullAction); Final.B.SetLinkNode(&DeathPose);
+        ReactionComponent.LocalPose.SetLinkNode(&FullAction);
+        ReactionSpine.ComponentPose.SetLinkNode(&ReactionComponent);
+        ReactionHead.ComponentPose.SetLinkNode(&ReactionSpine);
+        ReactionSpine.BoneToModify.BoneName=TEXT("spine_01");
+        ReactionHead.BoneToModify.BoneName=TEXT("neck");
+        for (auto* Node:{&ReactionSpine,&ReactionHead})
+        { Node->RotationMode=BMM_Additive; Node->RotationSpace=BCS_ComponentSpace; Node->SetAlpha(0.f); }
+        ReactionLocal.ComponentPose.SetLinkNode(&ReactionHead);
+        Final.A.SetLinkNode(&ReactionLocal); Final.B.SetLinkNode(&DeathPose);
     }
     virtual FAnimNode_Base* GetCustomRootNode() override { return &Final; }
     static void Sample(FAnimNode_SequenceEvaluator_Standalone& Node,UAnimSequence* Clip,float Time,bool Loop=true)
@@ -112,6 +151,11 @@ struct FONEAnimProxy : FAnimInstanceProxy
         const float RunWeight=FMath::Clamp((SmoothedSpeed-WalkSpeed)/FMath::Max(1.f,RunSpeed-WalkSpeed),0.f,1.f);
         UAnimSequence* WalkClip=Anim->FindClip(TEXT("Walk"));
         UAnimSequence* RunClip=Anim->FindClip(TEXT("Run"));
+        if (Z)
+        {
+            if (auto* Clip=Anim->FindClip(TEXT("C05_Walk"))) WalkClip=Clip;
+            if (auto* Clip=Anim->FindClip(TEXT("C05_Run"))) RunClip=Clip;
+        }
         UAnimSequence* WalkSecond=WalkClip;
         UAnimSequence* RunSecond=RunClip;
         float DirectionBlend=0.f,StrideProjection=1.f;
@@ -124,6 +168,7 @@ struct FONEAnimProxy : FAnimInstanceProxy
             auto DirectionClip=[&](const TCHAR* Gait,int32 Index,UAnimSequence* Fallback)
             {
                 UAnimSequence* Clip=Anim->FindClip(FName(*FString::Printf(TEXT("C03_%s_%s"),Gait,Directions[Index])));
+                if (auto* Current=Anim->FindClip(FName(*FString::Printf(TEXT("C05_%s_%s"),Gait,Directions[Index])))) return Current;
                 return Clip ? Clip : Fallback;
             };
             WalkClip=DirectionClip(TEXT("Walk"),A,WalkClip);
@@ -154,6 +199,7 @@ struct FONEAnimProxy : FAnimInstanceProxy
         Locomotion.Alpha=FMath::Clamp(SmoothedSpeed/60.f,0.f,1.f);
         const bool bTurn=P && P->IsTurningInPlace();
         UAnimSequence* TurnClip=P ? Anim->FindClip(P->GetTurnDirection()>0 ? TEXT("C03_Turn_R") : TEXT("C03_Turn_L")) : nullptr;
+        if (P) if (auto* Current=Anim->FindClip(P->GetTurnDirection()>0 ? TEXT("C05_Turn_R") : TEXT("C05_Turn_L"))) TurnClip=Current;
         Sample(Turn,TurnClip ? TurnClip : Anim->FindClip(TEXT("Idle")),P ? P->GetTurnAnimationTime() : 0.f,false);
         Turning.Alpha=FMath::FInterpTo(Turning.Alpha,bTurn ? 1.f : 0.f,Dt,25.f);
         Facing.Yaw=P ? FMath::FindDeltaAngleDegrees(Pawn->GetActorRotation().Yaw,FacingYaw) : 0.f;
@@ -167,14 +213,16 @@ struct FONEAnimProxy : FAnimInstanceProxy
         for (int32 I=0;I<2;++I)
         {
             const float Weight=P ? P->GetPivotFootWeight(I) : 0.f;
-            PivotLeg[I].SetAlpha(Weight);
+            PivotLeg[I].SupportWeight=Weight;
+            PivotLeg[I].SetAlpha(Weight>0.f ? 1.f : 0.f);
             PivotFootRotation[I].SetAlpha(Weight);
             PivotWeight=FMath::Max(PivotWeight,Weight);
             if (P && Weight>0.f)
             {
                 const FTransform Foot=P->GetPivotFootWorld(I).GetRelativeTransform(MeshWorld);
-                PivotLeg[I].EffectorLocation=Foot.GetLocation();
-                PivotLeg[I].JointTargetLocation=MeshWorld.InverseTransformPosition(P->GetPivotKneeWorld(I));
+                PivotLeg[I].CapturedFoot=Foot.GetLocation();
+                PivotLeg[I].CapturedPole=MeshWorld.InverseTransformPosition(P->GetPivotKneeWorld(I));
+                PivotLeg[I].ComponentUp=MeshWorld.InverseTransformVectorNoScale(FVector::UpVector);
                 PivotFootRotation[I].Rotation=Foot.Rotator();
             }
         }
@@ -197,9 +245,13 @@ struct FONEAnimProxy : FAnimInstanceProxy
             switch (Z->GetCombatState())
             {
                 case EONEZombieState::Attack:
-                    Sample(Action,Anim->FindClip(Z->HasLeftArm() && Z->HasRightArm() ? TEXT("Attack") :
-                        Z->HasLeftArm() ? TEXT("AttackOneArm") : TEXT("C03_AttackRight")),Z->GetStateElapsed(),false);
-                    ActionWeight=1; break;
+                {
+                    UAnimSequence* Attack=Anim->FindClip(Z->GetAttackClipKey());
+                    if (!Attack) Attack=Anim->FindClip(Z->HasLeftArm() && Z->HasRightArm() ? TEXT("Attack") :
+                        Z->HasLeftArm() ? TEXT("AttackOneArm") : TEXT("C03_AttackRight"));
+                    const float Time=Z->GetStateElapsed()*(Attack ? Attack->GetPlayLength() : 1.f)/FMath::Max(.01f,Z->GetCurrentAttackDuration());
+                    Sample(Action,Attack,Time,false); ActionWeight=1; break;
+                }
                 case EONEZombieState::Hit:
                     Sample(Action,Anim->FindClip(Z->IsHeavyReaction() ? TEXT("HeavyHit") : TEXT("Hit")),Z->GetStateElapsed(),false);
                     ActionWeight=1; break;
@@ -209,6 +261,15 @@ struct FONEAnimProxy : FAnimInstanceProxy
         }
         UpperBody.BlendWeights[0]=FMath::FInterpTo(UpperBody.BlendWeights[0],Z ? 0.f : ActionWeight,Dt,24.f);
         FullAction.Alpha=FMath::FInterpTo(FullAction.Alpha,Z ? ActionWeight : 0.f,Dt,24.f);
+        const float ReactionAge=Z ? Z->GetMinorReactionAge() : P ? P->GetDamageReactionAge() : BIG_NUMBER;
+        const float Window=Z ? .22f : .28f;
+        const float Pulse=ReactionAge>=0.f && ReactionAge<Window ? FMath::Sin(PI*ReactionAge/Window)*FMath::Exp(-5.f*ReactionAge) : 0.f;
+        const FVector WorldDirection=Z ? Z->GetMinorReactionDirection() : P ? P->GetDamageReactionDirection() : FVector::ZeroVector;
+        const FVector ReactionDirection=MeshWorld.InverseTransformVectorNoScale(WorldDirection).GetSafeNormal2D();
+        const float Strength=Z ? Z->GetMinorReactionStrength()*(Z->GetCombatState()==EONEZombieState::Attack ? .65f : 1.f) : 1.f;
+        ReactionSpine.Rotation=FRotator(-ReactionDirection.X*(Z ? 5.f : 2.2f),0.f,ReactionDirection.Y*(Z ? 5.f : 2.2f));
+        ReactionHead.Rotation=FRotator(ReactionDirection.X*3.f,ReactionDirection.Y*2.f,0.f);
+        ReactionSpine.SetAlpha(Pulse*Strength); ReactionHead.SetAlpha(Z ? Pulse*Strength : 0.f);
         Final.Alpha=0.f;
     }
 };
@@ -233,6 +294,20 @@ void UONEAnimInstance::NativeInitializeAnimation()
         if (!bInfected && (Name.StartsWith(TEXT("Attack"))||Name==TEXT("Hit")||Name==TEXT("HeavyHit")||Name==TEXT("Death"))) continue;
         const FString Asset=Prefix+Name;
         if (auto* Clip=LoadObject<UAnimSequence>(nullptr,*(TEXT("/Game/ONE/Animations/")+Asset+TEXT(".")+Asset))) Clips.Add(FName(*Name),Clip);
+    }
+    TArray<FString> CurrentNames;
+    if (bInfected) CurrentNames={TEXT("Walk"),TEXT("Run"),TEXT("SwipeLeft"),TEXT("SwipeRight"),TEXT("RakeLeft"),TEXT("RakeRight"),TEXT("TwoHand")};
+    else
+    {
+        for (const TCHAR* Gait:{TEXT("Walk"),TEXT("Run")})
+            for (const TCHAR* Direction:{TEXT("F"),TEXT("FR"),TEXT("R"),TEXT("BR"),TEXT("B"),TEXT("BL"),TEXT("L"),TEXT("FL")})
+                CurrentNames.Add(FString::Printf(TEXT("%s_%s"),Gait,Direction));
+        CurrentNames.Add(TEXT("Turn_L")); CurrentNames.Add(TEXT("Turn_R"));
+    }
+    for (const FString& Name:CurrentNames)
+    {
+        const FString Key=TEXT("C05_")+Name,Asset=Prefix+Key;
+        if (auto* Clip=LoadObject<UAnimSequence>(nullptr,*(TEXT("/Game/ONE/Animations/Candidate05/")+Asset+TEXT(".")+Asset))) Clips.Add(FName(*Key),Clip);
     }
     if (bInfected)
         if (auto* Clip=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/ONE/Animations/Candidate03/A_Infected_C03_AttackRight.A_Infected_C03_AttackRight")))

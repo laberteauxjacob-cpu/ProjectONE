@@ -51,6 +51,7 @@ void UONEWeaponComponent::GiveTestLoadout()
 }
 void UONEWeaponComponent::SetHandoffLocked(bool bLocked)
 {
+    if (bLocked && IsMagazineReloadCommitted()) return;
     if (bHandoffLocked==bLocked) return;
     if (bLocked) { if (IsReloading()) CancelReload(); CancelAllOperations(); }
     bHandoffLocked=bLocked; ++InventoryRevision;
@@ -67,7 +68,7 @@ bool UONEWeaponComponent::ReserveEquippedForUpgrade(FONEWeaponReservation& Out)
 {
     Out=FONEWeaponReservation();
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || ActiveReservation.IsValid() || !HasUsableWeapon()) return false;
+    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || ActiveReservation.IsValid() || !HasUsableWeapon() || !CanChangeInventory()) return false;
     const auto* D=GetDefinitionForWeapon(EquippedIndex); if (!D || D->bUpgraded || !GetCatalogDefinition(D->Family,true)) return false;
     if (IsReloading()) CancelReload();
     CancelAllOperations();
@@ -93,7 +94,7 @@ bool UONEWeaponComponent::MarkUpgradeReady(const FONEWeaponReservation& Token)
 bool UONEWeaponComponent::CollectUpgrade(const FONEWeaponReservation& Token)
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !MatchesReservation(Token) || Carried[Token.Slot].Status!=EONEWeaponSlotStatus::ReadyToCollect) return false;
+    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !CanChangeInventory() || !MatchesReservation(Token) || Carried[Token.Slot].Status!=EONEWeaponSlotStatus::ReadyToCollect) return false;
     if (!GetCatalogDefinition(Carried[Token.Slot].Family,true)) return false;
     if (IsReloading()) CancelReload(); CancelAllOperations();
     const int32 Slot=Token.Slot;
@@ -132,7 +133,7 @@ bool UONEWeaponComponent::IsFamilyRollEligible(EONEWeaponFamily Family) const
 FONEWeaponAcquisitionPlan UONEWeaponComponent::BuildAcquisitionPlan(EONEWeaponFamily Family) const
 {
     FONEWeaponAcquisitionPlan Plan; Plan.Family=Family; Plan.RunId=RunId; Plan.Revision=InventoryRevision;
-    if (bHandoffLocked || !IsFamilyRollEligible(Family)) return Plan;
+    if (bHandoffLocked || !CanChangeInventory() || !IsFamilyRollEligible(Family)) return Plan;
     for (int32 I=0;I<Carried.Num();++I) if (IsSlotAvailable(I) && Carried[I].Family==Family)
     {
         Plan.Slot=I; Plan.ExpectedInstanceId=Carried[I].InstanceId; const auto& D=*GetDefinitionForWeapon(I);

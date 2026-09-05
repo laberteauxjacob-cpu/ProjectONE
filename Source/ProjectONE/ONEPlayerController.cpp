@@ -1,6 +1,7 @@
 #include "ONEPlayerController.h"
 #include "ONEGameMode.h"
 #include "ONEPlayer.h"
+#include "ONEHUD.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Components/InputComponent.h"
@@ -13,13 +14,13 @@
 AONEPlayerController::AONEPlayerController()
 {
     bShowMouseCursor = true;
-    DefaultMouseCursor = EMouseCursor::Crosshairs;
+    DefaultMouseCursor = EMouseCursor::Default;
 }
 void AONEPlayerController::BeginPlay()
 {
     Super::BeginPlay();
     bTraceInput=FParse::Param(FCommandLine::Get(),TEXT("ONE03InputTrace"));
-    CurrentMouseCursor=EMouseCursor::Crosshairs;
+    RefreshPointerStyle();
     FInputModeGameAndUI Mode;
     Mode.SetHideCursorDuringCapture(false);
     Mode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
@@ -38,6 +39,35 @@ void AONEPlayerController::OnUnPossess()
 }
 bool AONEPlayerController::InputKey(const FInputKeyEventArgs& Params)
 {
+    AONEHUD* HUD=Cast<AONEHUD>(GetHUD());
+    if (Params.Key==EKeys::LeftMouseButton)
+    {
+        if (Params.Event==IE_Pressed) bRawLeftHeld=true;
+        else if (Params.Event==IE_Released) bRawLeftHeld=false;
+        if (HUD && HUD->IsPointerUIActive())
+        {
+            float X=0,Y=0; GetMousePosition(X,Y);
+            if (Params.Event==IE_Pressed)
+            { bSuppressPointerUntilRelease=true; HUD->HandlePointerPressed(FVector2D(X,Y)); }
+            else if (Params.Event==IE_Released)
+            { bSuppressPointerUntilRelease=false; HUD->HandlePointerReleased(FVector2D(X,Y)); }
+            // Menu/tray clicks never enter PlayerInput's firing action mapping.
+            return true;
+        }
+        if (bSuppressPointerUntilRelease)
+        {
+            if (Params.Event==IE_Released) bSuppressPointerUntilRelease=false;
+            return true;
+        }
+        if (Params.Event==IE_Repeat) return true;
+    }
+    if (HUD && HUD->IsPointerUIActive())
+    {
+        const bool GameplayKey=Params.Key==EKeys::W || Params.Key==EKeys::A || Params.Key==EKeys::S || Params.Key==EKeys::D ||
+            Params.Key==EKeys::LeftShift || Params.Key==EKeys::R || Params.Key==EKeys::F || Params.Key==EKeys::One ||
+            Params.Key==EKeys::Two || Params.Key==EKeys::Tab || Params.Key==EKeys::MouseScrollUp || Params.Key==EKeys::MouseScrollDown;
+        if (GameplayKey) return true;
+    }
     const bool bHandled=Super::InputKey(Params);
     if (bTraceInput && Params.Event!=IE_Axis)
     {
@@ -70,6 +100,59 @@ void AONEPlayerController::SetupInputComponent()
     InputComponent->BindKey(EKeys::X, IE_Pressed, this, &AONEPlayerController::ForceCarbine);
     InputComponent->BindKey(EKeys::C, IE_Pressed, this, &AONEPlayerController::ForceShotgun);
     InputComponent->BindKey(EKeys::V, IE_Pressed, this, &AONEPlayerController::RandomBox);
+    InputComponent->BindKey(EKeys::H, IE_Pressed, this, &AONEPlayerController::ToggleTools).bExecuteWhenPaused=true;
+}
+void AONEPlayerController::PlayerTick(float DeltaTime)
+{
+    Super::PlayerTick(DeltaTime);
+    RefreshPointerStyle();
+}
+void AONEPlayerController::RefreshPointerStyle()
+{
+    const AONEHUD* HUD=Cast<AONEHUD>(GetHUD());
+    const AONEGameMode* GM=GetWorld() ? GetWorld()->GetAuthGameMode<AONEGameMode>() : nullptr;
+    const bool Pointer=(HUD && HUD->IsPointerUIActive()) || IsPaused() || (GM && GM->IsGameOver());
+    // Canvas draws the gameplay reticle; the system pointer is reserved for UI.
+    bShowMouseCursor=Pointer;
+    CurrentMouseCursor=EMouseCursor::Default;
+}
+void AONEPlayerController::GuardGameplayInput()
+{
+    bSuppressPointerUntilRelease=bRawLeftHeld;
+    FlushPressedKeys();
+}
+void AONEPlayerController::ToggleTools()
+{
+    if (auto* HUD=Cast<AONEHUD>(GetHUD()))
+    { GuardGameplayInput(); HUD->ToggleTools(); RefreshPointerStyle(); }
+}
+void AONEPlayerController::ExecuteUIAction(EONEUIAction Action)
+{
+    GuardGameplayInput();
+    switch (Action)
+    {
+        case EONEUIAction::Resume:
+            if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>();GM && !GM->IsGameOver())
+            { if (auto* HUD=Cast<AONEHUD>(GetHUD())) HUD->CloseTools(); SetPause(false); }
+            break;
+        case EONEUIAction::Restart: Restart(); break;
+        case EONEUIAction::Quit: QuitFromPause(); break;
+        case EONEUIAction::ToggleSandbox: ToggleSandbox(); break;
+        case EONEUIAction::SpawnOne: SpawnOne(); break;
+        case EONEUIAction::SpawnSix: SpawnSix(); break;
+        case EONEUIAction::Refill: Refill(); break;
+        case EONEUIAction::GrantPoints: GrantPoints(); break;
+        case EONEUIAction::ResetSandbox: ResetSandbox(); break;
+        case EONEUIAction::ClearGore: ClearGore(); break;
+        case EONEUIAction::ToggleLighting: ToggleLighting(); break;
+        case EONEUIAction::ForcePistol: ForcePistol(); break;
+        case EONEUIAction::ForceCarbine: ForceCarbine(); break;
+        case EONEUIAction::ForceShotgun: ForceShotgun(); break;
+        case EONEUIAction::RandomBox: RandomBox(); break;
+        case EONEUIAction::CloseTools: if (auto* HUD=Cast<AONEHUD>(GetHUD())) HUD->CloseTools(); break;
+        default: break;
+    }
+    RefreshPointerStyle();
 }
 void AONEPlayerController::FlushPressedKeys()
 {
@@ -81,8 +164,10 @@ void AONEPlayerController::TogglePause()
 {
     if (const AONEGameMode* GM = GetWorld()->GetAuthGameMode<AONEGameMode>(); GM && !GM->IsGameOver())
     {
-        if (AONEPlayer* P=Cast<AONEPlayer>(GetPawn())) P->ReleaseHeldInputs();
+        GuardGameplayInput();
+        if (auto* HUD=Cast<AONEHUD>(GetHUD())) HUD->CloseTools();
         SetPause(!IsPaused());
+        RefreshPointerStyle();
     }
 }
 void AONEPlayerController::Restart()

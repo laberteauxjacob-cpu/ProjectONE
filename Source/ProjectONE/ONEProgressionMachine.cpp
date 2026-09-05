@@ -66,6 +66,7 @@ bool AONEProgressionMachine::CanDeposit(AONEPlayer* P,FString& Reason) const
     if (!CanContact(P)) { Reason=TEXT("Move to the center of the intake tray"); return false; }
     if (!W || !W->HasUsableWeapon()) { Reason=TEXT("Equip an available base weapon"); return false; }
     if (W->IsHandoffLocked()) { Reason=TEXT("Finish the weapon handoff"); return false; }
+    if (W->IsMagazineReloadCommitted()) { Reason=TEXT("Finish reloading, then hold F to deposit"); return false; }
     if (W->GetDefinition().bUpgraded) { Reason=TEXT("Already upgraded - one tier per weapon"); return false; }
     const auto* S=W->GetSlotState(W->GetEquippedIndex());
     if (W->GetOperation()!=EONEWeaponOperation::Ready || S->bNeedsPump || !S->bMagazinePresent)
@@ -135,14 +136,17 @@ FONEInteractionOffer AONEProgressionMachine::BuildOffer(AONEPlayer* P) const
                 case EONEWeaponAcquisitionKind::AlreadyFull: O.Detail=FString::Printf(TEXT("%s ammo FULL - collect consumes reward; no extra ammo"),Current?*Current->DisplayName.ToString():*Name); break;
                 default: O.Detail=TEXT("Reward waiting - its family is reserved at Pack-a-Punch"); break;
             }
+            if (W->IsMagazineReloadCommitted())
+            { O.bEnabled=false; O.Detail=TEXT("Finish reloading, then hold F to collect"); }
         }
         else
         {
             O.Action=EONEInteractionAction::CollectUpgrade;
-            O.bEnabled=!W->IsHandoffLocked() && CanContact(P);
+            O.bEnabled=!W->IsHandoffLocked() && !W->IsMagazineReloadCommitted() && CanContact(P);
             const auto* D=W->GetCatalogDefinition(RewardFamily,true);
             O.Detail=FString::Printf(TEXT("Take %s - returns to slot %d, fully supplied"),D?*D->DisplayName.ToString():TEXT("upgraded weapon"),Reservation.Slot+1);
             if (!CanContact(P)) O.Detail=TEXT("Weapon ready - move to the center of the output tray");
+            else if (W->IsMagazineReloadCommitted()) O.Detail=TEXT("Finish reloading, then hold F to collect");
         }
     }
     else if (State==EONEMachineState::Active)
@@ -207,6 +211,10 @@ bool AONEProgressionMachine::IsCurrentOwner() const
 {
     const auto* P=Customer.Get();
     return !bInvalidated && P && !P->IsDead() && P->GetWeaponComponent()->GetRunId()==OwnerRunId;
+}
+bool AONEProgressionMachine::IsOwnedBy(const AONEPlayer* Player) const
+{
+    return IsCurrentOwner() && Customer.Get()==Player;
 }
 void AONEProgressionMachine::AcceptUpgrade()
 {

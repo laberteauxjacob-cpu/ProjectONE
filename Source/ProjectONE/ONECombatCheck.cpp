@@ -174,10 +174,16 @@ void AONECombatCheck::Tick(float Dt)
         Check(Ammo<24 && Ammo>0,TEXT("Carbine held trigger fires repeatedly"));
         W->BeginReload(); Next(2);
     } break;
-    case 2: if (T>.6f) { W->SelectWeapon(1); Next(3); } break;
+    case 2: if (T>.6f) {
+        Check(!W->SelectWeapon(1) && W->GetPendingWeaponIndex()==INDEX_NONE && W->IsMagazineReloadCommitted(),TEXT("Magazine reload rejects switching without queuing an equip")); Next(200);
+    } break;
+    case 200: if (!W->IsBusy()) {
+        Check(W->GetEquippedIndex()==0 && W->GetAmmo()==24 && W->GetReserveAmmo()==Reserve-(24-Ammo),TEXT("Attempted switch leaves real magazine insertion committed in its original slot"));
+        Check(W->SelectWeapon(1),TEXT("A fresh switch after reload completion is accepted")); Next(3);
+    } break;
     case 3: if (T>2.3f) {
         Check(W->GetEquippedIndex()==1 && Player->Gun->GetStaticMesh() && Player->Gun->GetStaticMesh()==W->GetDefinition().Mesh.Get(),TEXT("Equip replaces the visible weapon with its current catalog mesh"));
-        Check(W->GetAmmoForWeapon(0)==Ammo && W->GetReserveAmmoForWeapon(0)==Reserve,TEXT("Unequipped carbine reload cannot commit after pre-insertion cancellation"));
+        Check(W->GetAmmoForWeapon(0)==24 && W->GetReserveAmmoForWeapon(0)==Reserve-(24-Ammo),TEXT("Holstered carbine retains exactly the completed magazine transfer"));
         Ejections=W->GetEjectionCount(); W->SetTrigger(true); Next(4);
     } break;
     case 4: if (T>.1f) {
@@ -233,7 +239,11 @@ void AONECombatCheck::Tick(float Dt)
     } break;
     case 16: if (T>1.3f) {
         W->SetTrigger(false);
-        Check(W->GetTotalShotsFired()==Shots+1 && W->GetAmmo()==0 && W->GetReserveAmmo()==Reserve-1,TEXT("Fire interrupts shell reload through closing pose and spends only its earned shell"));
+        Check(W->GetTotalShotsFired()==Shots && W->GetAmmo()==1 && W->GetReserveAmmo()==Reserve-1 && W->CanFire(),TEXT("Shell interrupt completes its closing pose without deferring the original tap"));
+        W->SetTrigger(true); W->SetTrigger(false); Next(160);
+    } break;
+    case 160: if (T>.1f) {
+        Check(W->GetTotalShotsFired()==Shots+1 && W->GetAmmo()==0,TEXT("Fresh eligible press after shell return spends only its earned shell"));
         W->SelectWeapon(0); Next(17);
     } break;
     case 17: if (T>.6f) { W->SetTrigger(true); Next(18); } break;
@@ -306,12 +316,14 @@ void AONECombatCheck::Tick(float Dt)
     } break;
     case 260: if (T>.1f) {
         W->SetTrigger(false); Shots=W->GetTotalShotsFired();
+        const int32 Rejected=W->GetRejectedTriggerPressCount();
         W->SetTrigger(true); W->SetTrigger(false);
+        Check(W->GetRejectedTriggerPressCount()==Rejected+1 && !W->HasAcceptedFramePress() && !W->IsAutomaticBurstActive(),TEXT("Pump-busy tap is rejected immediately with no deferred press"));
         if (auto* Controller=Cast<AONEPlayerController>(Player->GetController())) Controller->FlushPressedKeys();
         Next(261);
     } break;
     case 261: if (T>1.1f) {
-        Check(W->GetTotalShotsFired()==Shots,TEXT("Viewport key flush clears a semi-auto tap queued behind the pump"));
+        Check(W->GetTotalShotsFired()==Shots,TEXT("Pump completion and viewport flush cannot resurrect the rejected tap"));
         Next(26);
     } break;
     case 26: if (T>1.1f) { W->SetTrigger(false); W->BeginReload(); Next(30); } break;

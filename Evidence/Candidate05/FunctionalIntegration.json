@@ -1,0 +1,1409 @@
+{
+  "schema": 1,
+  "candidate": "Candidate05",
+  "status": "PREPUBLIC_INTEGRATION_CHECKPOINT",
+  "scope": "Completed local development integration only. Records come from evolving Candidate05 working-tree builds; no packaged-source SHA, fresh-package identity, release approval or final-state equivalence is claimed.",
+  "source_binding": "Raw-record SHA-256 values identify the reviewed results. They do not bind an uncommitted source tree or later pivot changes to a published executable.",
+  "completion_policy": "An exit code of zero alone is not a passing result. Assertion counts, failure counts and each run completion marker were checked together.",
+  "completed_checks": [
+    {
+      "id": "native_17",
+      "kind": "Local editor native automation under NullRHI; native means compiled C++ tests, not native OS input.",
+      "result": "PASS_WITH_WARNINGS",
+      "tests": 17,
+      "succeeded_without_warnings": 14,
+      "succeeded_with_warnings": 3,
+      "warning_count": 5,
+      "failed": 0,
+      "not_run": 0,
+      "in_process": 0,
+      "observed_process_exit_code": 0,
+      "engine_requested_exit_code": 0,
+      "process_exit_evidence": "Coordinator observed exit 0; engine log requests status 0 after its 17-test queue completes.",
+      "engine_completion_marker": "Automation Test Queue Empty 17 tests performed.",
+      "scope": [
+        "Aim arithmetic and obstruction segments",
+        "Attack families, cancellation, bounded step and limb masks",
+        "Live/new-kill/corpse outcome and minor-reaction continuity",
+        "Regional packet idempotence, anatomy and trauma",
+        "Owned inventory, reservations, acquisition and restart",
+        "Automatic phase/hitch helper and six-variant catalog cadence/audio references"
+      ],
+      "warning_scope": "Five World-has-no-context teardown warnings across three existing combat fixtures remain reported; the earlier fatal world-context fixture failure is separately preserved below.",
+      "test_results": [
+        {
+          "name": "ProjectONE.Aim.CloseCursorFullCircle",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Aim.RegionConvergenceAndObstructionSegments",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Candidate05.Attacks.BoundedStepAndLimbMasks",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Candidate05.Attacks.ThreeFamiliesOneContact",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Candidate05.Attacks.WallHeadingLimbAndDeathCancel",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Candidate05.Feedback.LiveKillCorpseAndMinorContinuity",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Combat.AnatomicalSidesAndCorpseTransactions",
+          "state": "Success",
+          "warnings": 1,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Combat.DamageAndDeathAreMonotonic",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Combat.RegionalPelletsKeepSpatialData",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Combat.RegionalTraumaBoundaries",
+          "state": "Success",
+          "warnings": 3,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Combat.WeaponPacketsAreIdempotent",
+          "state": "Success",
+          "warnings": 1,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Inventory.AcquisitionPlansAndUpgradeRefill",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Inventory.ExactInstanceReservationAndRollback",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Inventory.ResetRejectsOldMachineCallbacks",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Inventory.SixIndependentVariantsAndTiming",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Weapons.Candidate05.AutomaticPhaseAndHitch",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Weapons.Candidate05.CatalogCadenceAndUpgradeBanks",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        }
+      ],
+      "records": [
+        "record_01",
+        "record_02"
+      ]
+    },
+    {
+      "id": "weapon_30",
+      "kind": "Local headless functional engine fixture",
+      "result": "PASS",
+      "requested_frame_cap": 30,
+      "checks": 191,
+      "failures": 0,
+      "variants": 6,
+      "assertions_record": "record_03",
+      "engine_completion_marker": "ONE05_WEAPON_COMPLETE failures=0 checks=191 rate=30",
+      "engine_requested_exit_code": 0,
+      "observed_process_exit_code": 0,
+      "process_exit_evidence": "Coordinator observed process exit 0; the complete engine log independently requests exit status 0.",
+      "log_record": "record_04",
+      "scope": "Actual catalog, component fire/reload requests, ammunition and mechanical events, valid/invalid press timing, committed magazine reload, deliberate hitch, controller key flush, pause, death and OpenLevel restart. Machine waits are bypassed only for declared variant setup.",
+      "timing_analysis": "Evidence/Candidate05/WeaponTiming.md",
+      "limit": "Input enters the production weapon component directly except controller flush; not OS held-input, rendered latency, audible quality or performance evidence."
+    },
+    {
+      "id": "weapon_60",
+      "kind": "Local headless functional engine fixture",
+      "result": "PASS",
+      "requested_frame_cap": 60,
+      "checks": 191,
+      "failures": 0,
+      "variants": 6,
+      "assertions_record": "record_05",
+      "engine_completion_marker": "ONE05_WEAPON_COMPLETE failures=0 checks=191 rate=60",
+      "engine_requested_exit_code": 0,
+      "observed_process_exit_code": 0,
+      "process_exit_evidence": "Coordinator observed process exit 0; the complete engine log independently requests exit status 0.",
+      "log_record": "record_06",
+      "scope": "Actual catalog, component fire/reload requests, ammunition and mechanical events, valid/invalid press timing, committed magazine reload, deliberate hitch, controller key flush, pause, death and OpenLevel restart. Machine waits are bypassed only for declared variant setup.",
+      "timing_analysis": "Evidence/Candidate05/WeaponTiming.md",
+      "limit": "Input enters the production weapon component directly except controller flush; not OS held-input, rendered latency, audible quality or performance evidence."
+    },
+    {
+      "id": "weapon_120",
+      "kind": "Local headless functional engine fixture",
+      "result": "PASS",
+      "requested_frame_cap": 120,
+      "checks": 191,
+      "failures": 0,
+      "variants": 6,
+      "assertions_record": "record_07",
+      "engine_completion_marker": "ONE05_WEAPON_COMPLETE failures=0 checks=191 rate=120",
+      "engine_requested_exit_code": 0,
+      "observed_process_exit_code": 0,
+      "process_exit_evidence": "Coordinator observed process exit 0; the complete engine log independently requests exit status 0.",
+      "log_record": "record_08",
+      "scope": "Actual catalog, component fire/reload requests, ammunition and mechanical events, valid/invalid press timing, committed magazine reload, deliberate hitch, controller key flush, pause, death and OpenLevel restart. Machine waits are bypassed only for declared variant setup.",
+      "timing_analysis": "Evidence/Candidate05/WeaponTiming.md",
+      "limit": "Input enters the production weapon component directly except controller flush; not OS held-input, rendered latency, audible quality or performance evidence."
+    },
+    {
+      "id": "aim_eight_headings",
+      "kind": "Historical headless scene-collision fixture; superseded for normal-height aim validation",
+      "result": "PASS",
+      "checks": 1988,
+      "failures": 0,
+      "scene_rows": 384,
+      "variants": [
+        "M1911",
+        "Last Word",
+        "M4A1",
+        "Overcurrent",
+        "Remington 870",
+        "Gravebreaker"
+      ],
+      "headings_degrees": [
+        0,
+        45,
+        90,
+        135,
+        180,
+        225,
+        270,
+        315
+      ],
+      "cases_per_variant_per_heading": [
+        "Cursor at shoulder origin",
+        "Cursor eight centimeters forward",
+        "Cursor just beyond evaluated muzzle",
+        "Real regional query target sixty centimeters away",
+        "Real regional query target four hundred fifty centimeters away",
+        "World-static cover ahead of muzzle",
+        "Shoulder-to-muzzle obstruction",
+        "Rapid intended-direction reversal"
+      ],
+      "coverage": "The recorded six variants x eight headings x eight cases passed 1,988 assertions over 384 discharges for this declared fixture. Finite direction, evaluated-pose dispatch, target damage and cover checks passed within that setup. The result does not establish reliable aim against ordinary standing-height infected or validate the later convergence/contact-prefix changes.",
+      "fixtures": "Fixed player origin; stationary high-health targets with elevated sever thresholds. The former MakeTarget implementation also raised the target BodyRegion center to the player shoulder height, concealing the normal vertical separation between a standing torso and the evaluated muzzle. Ray-cover boxes ignored the Pawn channel; aim overrides and refill were used between trials.",
+      "records": [
+        "record_09",
+        "record_10"
+      ],
+      "engine_completion_marker": "ONE05_AIM_COMPLETE failures=0 checks=1988",
+      "engine_requested_exit_code": 0,
+      "observed_process_exit_code": 0,
+      "process_exit_evidence": "Coordinator observed process exit 0; the complete engine log independently requests exit status 0.",
+      "log_record": "record_11",
+      "interpretation_status": "SUPERSEDED_ELEVATED_TARGET_FIXTURE",
+      "superseding_work": "Real-standing-height scene tests are underway after exact forward convergence, same-bone picked-primitive midpoint selection and bounded per-pellet contact prefixes were implemented. No result from those tests is claimed here."
+    },
+    {
+      "id": "legacy_progression",
+      "kind": "Local headless regression fixture rerun for Candidate05",
+      "result": "PASS",
+      "checks": 72,
+      "failures": 0,
+      "scope": "Real frame-spaced controller interaction holds, machine timers, points, reservation/unarmed state, other-slot box acquisition, duplicate refill, cancellation, destruction rollback and actual level restart. Safe approach teleports and sandbox point setup are declared fixtures.",
+      "historical_output_path_note": "The retained actor writes to its original candidate folder; the Candidate05 engine log identifies this rerun. These are not imported historical pass claims.",
+      "assertions_record": "record_12",
+      "engine_completion_marker": "ONE04_PROGRESSION_COMPLETE failures=0 checks=72",
+      "engine_requested_exit_code": 0,
+      "observed_process_exit_code": 0,
+      "process_exit_evidence": "Coordinator observed process exit 0; the complete engine log independently requests exit status 0.",
+      "log_record": "record_13"
+    },
+    {
+      "id": "legacy_arsenal",
+      "kind": "Local headless regression fixture rerun for Candidate05",
+      "result": "PASS",
+      "checks": 150,
+      "failures": 0,
+      "scope": "Six actual variants, reload commitment, operation/event timing and dropped-magazine lifecycle; Last Word limited second-victim damage, cover and range. Isolated floor, frozen high-health torso-query targets and setup through inventory APIs. Already-emitted magazine lifespans are extended only for the cap fixture; genuine expiry is tested separately.",
+      "historical_output_path_note": "The retained actor writes to its original candidate folder; the Candidate05 engine log identifies this rerun. These are not imported historical pass claims.",
+      "assertions_record": "record_14",
+      "engine_completion_marker": "ONE04_ARSENAL_COMPLETE failures=0 checks=150",
+      "engine_requested_exit_code": 0,
+      "observed_process_exit_code": 0,
+      "process_exit_evidence": "Coordinator observed process exit 0; the complete engine log independently requests exit status 0.",
+      "log_record": "record_15"
+    },
+    {
+      "id": "legacy_weapon",
+      "kind": "Local headless regression fixture rerun for Candidate05",
+      "result": "PASS",
+      "checks": 87,
+      "failures": 0,
+      "scope": "Legacy real capacities, controller bindings, ammo transfers, automatic reload, pump/ejection, pause/death/restart and sprint displacement, updated to Candidate05 committed magazine reload and non-buffered input. Explicit two-weapon legacy loadout is a fixture, not fresh startup.",
+      "historical_output_path_note": "The retained actor writes to its original candidate folder; the Candidate05 engine log identifies this rerun. These are not imported historical pass claims.",
+      "assertions_record": "record_16",
+      "engine_completion_marker": "ONE03_WEAPON_COMPLETE failures=0 checks=87",
+      "engine_requested_exit_code": 0,
+      "observed_process_exit_code": 0,
+      "process_exit_evidence": "Coordinator observed process exit 0; the complete engine log independently requests exit status 0.",
+      "log_record": "record_17"
+    },
+    {
+      "id": "native_real_height_aim_17",
+      "kind": "Local editor native C++ automation under NullRHI; not native OS input",
+      "result": "PASS_WITH_WARNINGS",
+      "tests": 17,
+      "succeeded_without_warnings": 14,
+      "succeeded_with_warnings": 3,
+      "warning_count": 5,
+      "failed": 0,
+      "not_run": 0,
+      "in_process": 0,
+      "reported_duration_seconds": 0.28443729877471924,
+      "engine_requested_exit_code": 0,
+      "engine_completion_marker": "Automation Test Queue Empty 17 tests performed.",
+      "warning_scope": "Five World-has-no-context teardown warnings across three existing combat fixtures; eight new Candidate05 tests have no warnings.",
+      "test_results": [
+        {
+          "name": "ProjectONE.Aim.CloseCursorFullCircle",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Aim.RegionConvergenceAndObstructionSegments",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Candidate05.Attacks.BoundedStepAndLimbMasks",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Candidate05.Attacks.ThreeFamiliesOneContact",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Candidate05.Attacks.WallHeadingLimbAndDeathCancel",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Candidate05.Feedback.LiveKillCorpseAndMinorContinuity",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Combat.AnatomicalSidesAndCorpseTransactions",
+          "state": "Success",
+          "warnings": 1,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Combat.DamageAndDeathAreMonotonic",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Combat.RegionalPelletsKeepSpatialData",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Combat.RegionalTraumaBoundaries",
+          "state": "Success",
+          "warnings": 3,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Combat.WeaponPacketsAreIdempotent",
+          "state": "Success",
+          "warnings": 1,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Inventory.AcquisitionPlansAndUpgradeRefill",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Inventory.ExactInstanceReservationAndRollback",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Inventory.ResetRejectsOldMachineCallbacks",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Inventory.SixIndependentVariantsAndTiming",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Weapons.Candidate05.AutomaticPhaseAndHitch",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        },
+        {
+          "name": "ProjectONE.Weapons.Candidate05.CatalogCadenceAndUpgradeBanks",
+          "state": "Success",
+          "warnings": 0,
+          "errors": 0
+        }
+      ],
+      "records": [
+        "record_26",
+        "record_27"
+      ],
+      "source_scope": "Latest local working-tree native rerun after real-height aim changes; no committed package binding."
+    },
+    {
+      "id": "aim_20260905_214312",
+      "kind": "Headless scene-collision fixture with explicit world-point override",
+      "result": "PASS",
+      "checks": 2612,
+      "passed": 2612,
+      "failures": 0,
+      "scene_rows": 480,
+      "actual_discharge_rows": 480,
+      "variants": [
+        "M1911",
+        "Last Word",
+        "M4A1",
+        "Overcurrent",
+        "Remington 870",
+        "Gravebreaker"
+      ],
+      "headings_degrees": [
+        0,
+        45,
+        90,
+        135,
+        180,
+        225,
+        270,
+        315
+      ],
+      "cases_per_variant_per_heading": [
+        "Cursor at shoulder origin",
+        "Cursor eight centimeters forward",
+        "Cursor just beyond evaluated muzzle",
+        "Ordinary standing-height regional target sixty centimeters away",
+        "Ordinary standing-height regional target four hundred fifty centimeters away",
+        "World-static cover ahead of muzzle",
+        "Shoulder-to-muzzle obstruction",
+        "Rapid intended-direction reversal",
+        "Isolated low contact-prefix cover with target beyond barrel",
+        "Ordinary standing-height target near forward barrel edge"
+      ],
+      "aim_mode": "explicit world-point override",
+      "engine_completion_marker": "ONE05_AIM_COMPLETE failures=0 checks=2612",
+      "engine_requested_exit_code": 0,
+      "records": [
+        "record_34",
+        "record_35",
+        "record_36"
+      ],
+      "source_scope": "Evolving Candidate05 working-tree build; no packaged-source SHA or later-build equivalence.",
+      "time_mode": {
+        "fixed_simulation_step_seconds": 0.016666666666666666,
+        "launch_flags": [
+          "-UseFixedTimeStep",
+          "-FPS=60",
+          "-ExecCmds=\"t.MaxFPS 0\""
+        ],
+        "interpretation": "Simulation advances in fixed 1/60-second steps with no wall-clock cap; this is collision evidence, not 60-fps performance, cadence, latency or native-input evidence."
+      },
+      "fixtures": "Fixed player origin in the real arena; stationary high-health targets retain ordinary standing height. Elevated sever thresholds, frozen target movement/animation and per-trial ammo refill are explicit setup. Cover boxes ignore Pawn collision; low cover is deliberately positioned along actual contact direction. Projected mode calls production viewport mouse picking; world mode uses an explicit point override.",
+      "coverage": "Six variants by eight headings by ten cases with one production-controller discharge per trial. Records prove finite rays, current evaluated-pose muzzle dispatch, target damage and cover behavior within this declared setup.",
+      "additional_world_mode_assertions": 48,
+      "mode_difference": "World override additionally asserts all contact pellets stop at isolated low cover while the physical muzzle clears it. Projected cursor may select a different anatomical region; its cover assertion proves no target damage without requiring that same pellet diagnostic.",
+      "limitations": [
+        "No live target pursuit, arbitrary natural target pose, native cursor experience, weapon cadence, frame pacing or audible review is established.",
+        "This does not convert the earlier elevated-target pass into ordinary-height evidence; it is an independent corrected fixture."
+      ]
+    },
+    {
+      "id": "aim_20260905_214516",
+      "kind": "Rendered offscreen scene-collision fixture with actual projected cursor",
+      "result": "PASS",
+      "checks": 2564,
+      "passed": 2564,
+      "failures": 0,
+      "scene_rows": 480,
+      "actual_discharge_rows": 480,
+      "variants": [
+        "M1911",
+        "Last Word",
+        "M4A1",
+        "Overcurrent",
+        "Remington 870",
+        "Gravebreaker"
+      ],
+      "headings_degrees": [
+        0,
+        45,
+        90,
+        135,
+        180,
+        225,
+        270,
+        315
+      ],
+      "cases_per_variant_per_heading": [
+        "Cursor at shoulder origin",
+        "Cursor eight centimeters forward",
+        "Cursor just beyond evaluated muzzle",
+        "Ordinary standing-height regional target sixty centimeters away",
+        "Ordinary standing-height regional target four hundred fifty centimeters away",
+        "World-static cover ahead of muzzle",
+        "Shoulder-to-muzzle obstruction",
+        "Rapid intended-direction reversal",
+        "Isolated low contact-prefix cover with target beyond barrel",
+        "Ordinary standing-height target near forward barrel edge"
+      ],
+      "aim_mode": "actual projected viewport cursor through production mouse picking; no aim override",
+      "engine_completion_marker": "ONE05_AIM_COMPLETE failures=0 checks=2564",
+      "engine_requested_exit_code": 0,
+      "records": [
+        "record_37",
+        "record_38",
+        "record_39"
+      ],
+      "source_scope": "Evolving Candidate05 working-tree build; no packaged-source SHA or later-build equivalence.",
+      "time_mode": {
+        "fixed_simulation_step_seconds": 0.016666666666666666,
+        "launch_flags": [
+          "-UseFixedTimeStep",
+          "-FPS=60",
+          "-ExecCmds=\"t.MaxFPS 0\""
+        ],
+        "interpretation": "Simulation advances in fixed 1/60-second steps with no wall-clock cap; this is collision evidence, not 60-fps performance, cadence, latency or native-input evidence."
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 900,
+        "render_offscreen": true,
+        "native_os_input": false
+      },
+      "fixtures": "Fixed player origin in the real arena; stationary high-health targets retain ordinary standing height. Elevated sever thresholds, frozen target movement/animation and per-trial ammo refill are explicit setup. Cover boxes ignore Pawn collision; low cover is deliberately positioned along actual contact direction. Projected mode calls production viewport mouse picking; world mode uses an explicit point override.",
+      "coverage": "Six variants by eight headings by ten cases with one production-controller discharge per trial. Records prove finite rays, current evaluated-pose muzzle dispatch, target damage and cover behavior within this declared setup.",
+      "additional_world_mode_assertions": 0,
+      "mode_difference": "World override additionally asserts all contact pellets stop at isolated low cover while the physical muzzle clears it. Projected cursor may select a different anatomical region; its cover assertion proves no target damage without requiring that same pellet diagnostic.",
+      "limitations": [
+        "No live target pursuit, arbitrary natural target pose, native cursor experience, weapon cadence, frame pacing or audible review is established.",
+        "This does not convert the earlier elevated-target pass into ordinary-height evidence; it is an independent corrected fixture."
+      ]
+    },
+    {
+      "id": "motion_20260905_213347_2085B276",
+      "kind": "Actual offscreen normal-game-camera capture with scripted production controller inputs",
+      "result": "PASS",
+      "checks": 80,
+      "passed": 80,
+      "failures": 0,
+      "recorded_viewport_frames": 1208,
+      "headless_cursor_fallback_calls": 0,
+      "engine_requested_exit_code": 0,
+      "engine_completion_marker": "ONE05_MOTION_COMPLETE complete=1 failures=0 checks=80 frames=1208",
+      "records": [
+        "record_45",
+        "record_46",
+        "record_47",
+        "record_48",
+        "record_49"
+      ],
+      "source_scope": "Editor-game working tree at this capture; no packaged-source binding.",
+      "scope": "Sixteen walk/sprint directional phases through controller WASD/Shift, continuous and rapid turns, three explicitly selected attack-family fixtures, live minor reaction and a real pistol live/kill/corpse sequence. Separate setup stages reset health/ammo; attacks use TryStartAttack; corpse shot follows actual controller retreat to approximately261cm.",
+      "visual_review": "Evidence/Candidate05/VisualReview.md",
+      "limitations": "Not native OS held-input, continuous perceptual playback, audio audition or final package evidence. The corpse hit does not prove point-blank low-corpse accuracy."
+    },
+    {
+      "id": "ui_1280x720_round_fixed",
+      "kind": "Actual offscreen rendered UI with production Controller InputKey and SetMouseLocation at drawn HUD button rectangles",
+      "result": "PASS",
+      "viewport": [
+        1280,
+        720
+      ],
+      "checks": 49,
+      "passed": 49,
+      "failures": 0,
+      "non_assertion_button_target_records": 5,
+      "quit_requested_via_button": true,
+      "engine_requested_exit_code": 0,
+      "engine_completion_marker": "ONE05_UI_COMPLETE failures=0 checks=49 width=1280 height=720",
+      "records": [
+        "record_50",
+        "record_51"
+      ],
+      "fixture_scope": "Frame-separated production controller presses/releases at read-back button rectangles; explicit sandbox grant/spend setup, safe mystery-box approach teleport, fatal ReceiveAttack death fixture and real restart/quit button flow.",
+      "limits": "Automation coverage at this resolution, not native OS input or a claim that every glyph/frame was visually inspected. Independent1600x900 still inspection is recorded in Evidence/Candidate05/VisualReview.md.",
+      "source_scope": "Local Candidate05 working-tree UI build, no package equivalence asserted."
+    },
+    {
+      "id": "ui_1600x900_round_fixed",
+      "kind": "Actual offscreen rendered UI with production Controller InputKey and SetMouseLocation at drawn HUD button rectangles",
+      "result": "PASS",
+      "viewport": [
+        1600,
+        900
+      ],
+      "checks": 49,
+      "passed": 49,
+      "failures": 0,
+      "non_assertion_button_target_records": 5,
+      "quit_requested_via_button": true,
+      "engine_requested_exit_code": 0,
+      "engine_completion_marker": "ONE05_UI_COMPLETE failures=0 checks=49 width=1600 height=900",
+      "records": [
+        "record_52",
+        "record_53"
+      ],
+      "fixture_scope": "Frame-separated production controller presses/releases at read-back button rectangles; explicit sandbox grant/spend setup, safe mystery-box approach teleport, fatal ReceiveAttack death fixture and real restart/quit button flow.",
+      "limits": "Automation coverage at this resolution, not native OS input or a claim that every glyph/frame was visually inspected. Independent1600x900 still inspection is recorded in Evidence/Candidate05/VisualReview.md.",
+      "source_scope": "Local Candidate05 working-tree UI build, no package equivalence asserted."
+    },
+    {
+      "id": "ui_1920x1080_round_fixed",
+      "kind": "Actual offscreen rendered UI with production Controller InputKey and SetMouseLocation at drawn HUD button rectangles",
+      "result": "PASS",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "checks": 49,
+      "passed": 49,
+      "failures": 0,
+      "non_assertion_button_target_records": 5,
+      "quit_requested_via_button": true,
+      "engine_requested_exit_code": 0,
+      "engine_completion_marker": "ONE05_UI_COMPLETE failures=0 checks=49 width=1920 height=1080",
+      "records": [
+        "record_54",
+        "record_55"
+      ],
+      "fixture_scope": "Frame-separated production controller presses/releases at read-back button rectangles; explicit sandbox grant/spend setup, safe mystery-box approach teleport, fatal ReceiveAttack death fixture and real restart/quit button flow.",
+      "limits": "Automation coverage at this resolution, not native OS input or a claim that every glyph/frame was visually inspected. Independent1600x900 still inspection is recorded in Evidence/Candidate05/VisualReview.md.",
+      "source_scope": "Local Candidate05 working-tree UI build, no package equivalence asserted."
+    },
+    {
+      "id": "ui_2560x1080_round_fixed",
+      "kind": "Actual offscreen rendered UI with production Controller InputKey and SetMouseLocation at drawn HUD button rectangles",
+      "result": "PASS",
+      "viewport": [
+        2560,
+        1080
+      ],
+      "checks": 49,
+      "passed": 49,
+      "failures": 0,
+      "non_assertion_button_target_records": 5,
+      "quit_requested_via_button": true,
+      "engine_requested_exit_code": 0,
+      "engine_completion_marker": "ONE05_UI_COMPLETE failures=0 checks=49 width=2560 height=1080",
+      "records": [
+        "record_56",
+        "record_57"
+      ],
+      "fixture_scope": "Frame-separated production controller presses/releases at read-back button rectangles; explicit sandbox grant/spend setup, safe mystery-box approach teleport, fatal ReceiveAttack death fixture and real restart/quit button flow.",
+      "limits": "Automation coverage at this resolution, not native OS input or a claim that every glyph/frame was visually inspected. Independent1600x900 still inspection is recorded in Evidence/Candidate05/VisualReview.md.",
+      "source_scope": "Local Candidate05 working-tree UI build, no package equivalence asserted."
+    }
+  ],
+  "asset_validation": {
+    "result": "PASS",
+    "kind": "Read-only local editor commandlet reference/source-identity/property audit",
+    "verified_counts": {
+      "animations": 25,
+      "textures": 9,
+      "audio": 48,
+      "catalog": 6,
+      "materials": 1
+    },
+    "imported_sources_checked": 82,
+    "observed_process_exit_code": 0,
+    "commandlet_result": 0,
+    "reported_errors": 0,
+    "reported_warnings": 0,
+    "records": [
+      "record_18",
+      "record_19"
+    ],
+    "scope": "25 animations, nine UI textures and 48 sounds with serialized source identity; six native catalog definitions and the aura material. This is point-in-time import/reference evidence, not appearance, audible mix or current-source rebuild proof."
+  },
+  "preserved_initial_failures": [
+    {
+      "id": "initial_native_world_context_crash",
+      "result": "CRASH_INCOMPLETE",
+      "engine_requested_exit_code": 3,
+      "completed_tests_before_crash": 3,
+      "finding": "The initial native attack-family fixture requested a world context with an invalid context object and hit an engine assertion. The run did not complete the test queue.",
+      "resolution_evidence": "The corrected fixture subsequently completed all 17 native tests in native_17; five older teardown warnings remain separately disclosed.",
+      "records": [
+        "record_20"
+      ]
+    },
+    {
+      "id": "initial_motion",
+      "result": "FAIL",
+      "checks": 80,
+      "passed": 78,
+      "failures": 2,
+      "observed_process_exit_code": 0,
+      "engine_requested_exit_code": 0,
+      "engine_completion_marker": "ONE05_MOTION_COMPLETE complete=1 failures=2 checks=80 frames=0",
+      "recorded_viewport_frames": 0,
+      "headless_cursor_fallback_calls": 3254,
+      "failed_assertions": [
+        "Turn phase17 has evaluated lift on both feet 2.117/1.150 cm; not a planting assertion",
+        "Later real corpse trace stayed cosmetic and did not repeat kill feedback"
+      ],
+      "observations": [
+        "The rapid-turn fixture measured foot lift of 2.117 and 1.150 cm and failed its both-feet lift check. This is not a foot-planting assessment.",
+        "The final target sequence recorded three LiveHit shots and one NewKill; ten subsequent shots recorded Rejected, not CorpseHit. The attempted corpse trace did not establish accepted corpse contact. Target health stayed zero and its death-audio count stayed one.",
+        "The non-capture mode reports zero viewport frames. Its conditional capture assertion is not evidence of rendered motion."
+      ],
+      "resolution_status": "Latest pivot/turn and corpse-aim fixture corrections await rerun and chronological rendered/audio review at this checkpoint.",
+      "records": [
+        "record_21",
+        "record_22",
+        "record_23"
+      ]
+    },
+    {
+      "id": "initial_asset_reader",
+      "result": "FAIL",
+      "failure_count": 82,
+      "failure_reason": "expected_one_serialized_import_info_array",
+      "commandlet_main_return_code": -1,
+      "finding": "The initial verifier assumed one serialized import-info array. These packages contain matching copies in the asset-registry tag and AssetImportData export. The revised reader checks all length-prefixed FString copies for agreement and validates the source path and MD5.",
+      "resolution_evidence": "The subsequent read-only asset_validation passed all 82 imported-source identities plus six catalog rows and the material. The initial failed report is preserved.",
+      "records": [
+        "record_24",
+        "record_25"
+      ]
+    },
+    {
+      "id": "aim_20260905_214004",
+      "kind": "Rendered offscreen scene-collision fixture with actual projected cursor",
+      "result": "FAIL",
+      "checks": 2564,
+      "passed": 2512,
+      "failures": 52,
+      "scene_rows": 480,
+      "actual_discharge_rows": 480,
+      "variants": [
+        "M1911",
+        "Last Word",
+        "M4A1",
+        "Overcurrent",
+        "Remington 870",
+        "Gravebreaker"
+      ],
+      "headings_degrees": [
+        0,
+        45,
+        90,
+        135,
+        180,
+        225,
+        270,
+        315
+      ],
+      "cases_per_variant_per_heading": [
+        "Cursor at shoulder origin",
+        "Cursor eight centimeters forward",
+        "Cursor just beyond evaluated muzzle",
+        "Ordinary standing-height regional target sixty centimeters away",
+        "Ordinary standing-height regional target four hundred fifty centimeters away",
+        "World-static cover ahead of muzzle",
+        "Shoulder-to-muzzle obstruction",
+        "Rapid intended-direction reversal",
+        "Isolated low contact-prefix cover with target beyond barrel",
+        "Ordinary standing-height target near forward barrel edge"
+      ],
+      "aim_mode": "actual projected viewport cursor through production mouse picking; no aim override",
+      "engine_completion_marker": "ONE05_AIM_COMPLETE failures=52 checks=2564",
+      "engine_requested_exit_code": 0,
+      "records": [
+        "record_28",
+        "record_29",
+        "record_30"
+      ],
+      "source_scope": "Evolving Candidate05 working-tree build; no packaged-source SHA or later-build equivalence.",
+      "time_mode": {
+        "requested_frame_cap": 60,
+        "launch_flags": [
+          "-ExecCmds=\"t.MaxFPS 60\""
+        ],
+        "interpretation": "Earlier rendered fixture attempt; not the corrected fixed-timestep run."
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 900,
+        "render_offscreen": true,
+        "native_os_input": false
+      },
+      "failed_assertion_categories": [
+        {
+          "label": "Evaluated shot remains finite and agrees with character-centred cursor intent",
+          "count": 4
+        },
+        {
+          "label": "World cover prevents target damage including shoulder-to-muzzle obstruction",
+          "count": 48
+        }
+      ],
+      "interpretation": "Preserved fixture failure, not asserted here as a production source/game defect. The projected requested-vector expectation and isolated low-cover setup were corrected against the actual picked intent and contact direction before later reruns.",
+      "later_independent_results": [
+        "aim_20260905_214312",
+        "aim_20260905_214516"
+      ]
+    },
+    {
+      "id": "aim_20260905_214149",
+      "kind": "Headless scene-collision fixture with explicit world-point override",
+      "result": "FAIL",
+      "checks": 2612,
+      "passed": 2516,
+      "failures": 96,
+      "scene_rows": 480,
+      "actual_discharge_rows": 480,
+      "variants": [
+        "M1911",
+        "Last Word",
+        "M4A1",
+        "Overcurrent",
+        "Remington 870",
+        "Gravebreaker"
+      ],
+      "headings_degrees": [
+        0,
+        45,
+        90,
+        135,
+        180,
+        225,
+        270,
+        315
+      ],
+      "cases_per_variant_per_heading": [
+        "Cursor at shoulder origin",
+        "Cursor eight centimeters forward",
+        "Cursor just beyond evaluated muzzle",
+        "Ordinary standing-height regional target sixty centimeters away",
+        "Ordinary standing-height regional target four hundred fifty centimeters away",
+        "World-static cover ahead of muzzle",
+        "Shoulder-to-muzzle obstruction",
+        "Rapid intended-direction reversal",
+        "Isolated low contact-prefix cover with target beyond barrel",
+        "Ordinary standing-height target near forward barrel edge"
+      ],
+      "aim_mode": "explicit world-point override",
+      "engine_completion_marker": "ONE05_AIM_COMPLETE failures=96 checks=2612",
+      "engine_requested_exit_code": 0,
+      "records": [
+        "record_31",
+        "record_32",
+        "record_33"
+      ],
+      "source_scope": "Evolving Candidate05 working-tree build; no packaged-source SHA or later-build equivalence.",
+      "time_mode": {
+        "fixed_simulation_step_seconds": 0.016666666666666666,
+        "launch_flags": [
+          "-UseFixedTimeStep",
+          "-FPS=60",
+          "-ExecCmds=\"t.MaxFPS 0\""
+        ],
+        "interpretation": "Simulation advances in fixed 1/60-second steps with no wall-clock cap; this is collision evidence, not 60-fps performance, cadence, latency or native-input evidence."
+      },
+      "failed_assertion_categories": [
+        {
+          "label": "World cover prevents target damage including shoulder-to-muzzle obstruction",
+          "count": 48
+        },
+        {
+          "label": "Low cover stops every contact pellet while the physical muzzle clears it; no backward tracer",
+          "count": 48
+        }
+      ],
+      "interpretation": "Preserved isolated low-cover fixture failure, not asserted here as a production source/game defect. The later fixture places a small cover on the actual contact direction and keeps its target beyond the physical barrel to isolate prefix obstruction.",
+      "later_independent_results": [
+        "aim_20260905_214312",
+        "aim_20260905_214516"
+      ]
+    },
+    {
+      "id": "motion_20260905_212158_E62246F9",
+      "kind": "Actual offscreen normal-game-camera capture with scripted production controller inputs",
+      "result": "FAIL",
+      "checks": 80,
+      "passed": 75,
+      "failures": 5,
+      "recorded_viewport_frames": 1340,
+      "headless_cursor_fallback_calls": 0,
+      "engine_requested_exit_code": 0,
+      "engine_completion_marker": "ONE05_MOTION_COMPLETE complete=1 failures=5 checks=80 frames=1340",
+      "records": [
+        "record_40",
+        "record_41",
+        "record_42",
+        "record_43",
+        "record_44"
+      ],
+      "source_scope": "Editor-game working tree at this capture; no packaged-source binding.",
+      "failed_assertions": [
+        "Turn phase17 has evaluated lift on both feet 4.051/1.755 cm; not a planting assertion",
+        "Real trace transitioned one living target to one new kill",
+        "Later real corpse trace stayed cosmetic and did not repeat kill feedback",
+        "Death issued one cue and stopped living audio scheduling",
+        "Target fixture completed while player remained alive"
+      ],
+      "resolution_status": "Later positional-target pivot IK, production real-height aim changes and a declared retreat fixture passed independently in motion_20260905_213347_2085B276; this failed attempt is preserved."
+    }
+  ],
+  "limits_and_pending": [
+    "The prior_checkpoint_limits_and_pending list and older entry-level pending text describe the earlier snapshot. Independent appended aim, motion and UI results resolve the specifically identified local rerun gaps, not every later gate.",
+    "Both corrected480-discharge aim runs use fixed1/60 simulation steps with t.MaxFPS0. They establish declared scene-collision behavior, not wall-clock cadence, native input or performance.",
+    "Latest successful motion and bounded visual inspection are separately recorded; image/pose review does not certify naturalism, exact palm contact, zero slide, all weapon gait poses or audible quality.",
+    "No native OS held-input approval, audio audition or user visual approval follows from these results. Weapon cadence remains separately documented in Evidence/Candidate05/WeaponTiming.md.",
+    "Fresh committed-source build, exact packaged-source binding, packaged suite, archive/privacy/LFS verification and publication remain independent gates.",
+    "Raw reports/logs remain local; only portable paths, report hashes and curated facts are included here."
+  ],
+  "records": [
+    {
+      "id": "record_01",
+      "path": "Saved/Candidate05/NativeTests-fixture-fix/index.json",
+      "kind": "native_automation_report",
+      "bytes": 9582,
+      "sha256": "9405fd892f5c907234b1cf127b7b7e6ed574ac6f95a8bf35305f1c32a2661e84",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_02",
+      "path": "Saved/Candidate05/Build/NativeTests-fixture-fix.log",
+      "kind": "complete_engine_log",
+      "bytes": 128398,
+      "sha256": "cd943416be3588e4287d32bd127c30dcca4d13c0c053f142734f18e7cc03cc5d",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_03",
+      "path": "Saved/Candidate05/Weapon30/checks.json",
+      "kind": "functional_assertions",
+      "bytes": 37629,
+      "sha256": "92cceea2b63cd22c41dd61d004e320a2258cb52b5198e0f08a03e2fe6b19cd08",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_04",
+      "path": "Saved/Candidate05/Build/Weapon30-functional-initial.log",
+      "kind": "complete_engine_log",
+      "bytes": 136846,
+      "sha256": "2ac8ef82f44959febe7dc5f2cf5166f595fef442759eb21fb503f22e15bc46f6",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_05",
+      "path": "Saved/Candidate05/Weapon60/checks.json",
+      "kind": "functional_assertions",
+      "bytes": 37630,
+      "sha256": "64925a1185b52a20dfff333625003b04d6b4dd7dc6354a1a4cc1da8b4a2c04a7",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_06",
+      "path": "Saved/Candidate05/Build/Weapon60-functional-initial.log",
+      "kind": "complete_engine_log",
+      "bytes": 137256,
+      "sha256": "b5a0b447fce23a0904081f4f47f0f524e7baa917a41b14cc84f00a63d26d476c",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_07",
+      "path": "Saved/Candidate05/Weapon120/checks.json",
+      "kind": "functional_assertions",
+      "bytes": 37626,
+      "sha256": "53eeb3310e25a90757f8564478242b5bf1d3bc90bdce7f44d2176e0d5c6bf440",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_08",
+      "path": "Saved/Candidate05/Build/Weapon120-functional-initial.log",
+      "kind": "complete_engine_log",
+      "bytes": 136557,
+      "sha256": "70066ce58935001a57462fd0b8333b9abc115205272fc20e59adf662129f901f",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_09",
+      "path": "Saved/Candidate05/AimCheck/20260905_211128/checks.txt",
+      "kind": "functional_assertions",
+      "bytes": 206924,
+      "sha256": "f4c80b3a979904ec264a5b4caf222a2164edc775221aa24a2361189bfea83d65",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_10",
+      "path": "Saved/Candidate05/AimCheck/20260905_211128/rays.csv",
+      "kind": "actual_scene_discharge_rows",
+      "bytes": 38428,
+      "sha256": "71ba1c77b63065ee4bb44efcd45e868e5ca5346f8adf43c3325ca2218f132eff",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_11",
+      "path": "Saved/Candidate05/Build/Aim-functional-eight-headings.log",
+      "kind": "complete_engine_log",
+      "bytes": 406374,
+      "sha256": "e265a223c213f6f02ef7310576f55e5e2d2d4d119ab63249c18343d2be034cf1",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_12",
+      "path": "Saved/Candidate04/Progression/checks.json",
+      "kind": "functional_assertions",
+      "bytes": 12584,
+      "sha256": "53f5f53dfbfe554e7df5120bdb75c92968278696acbe93d0f5d1b087d005b2f0",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_13",
+      "path": "Saved/Candidate05/Build/ONE04ProgressionCheck-functional-initial.log",
+      "kind": "complete_engine_log",
+      "bytes": 127012,
+      "sha256": "3b4826c5e344595932c9d237cb958f651c03930d8470539a3fec334a9cfe34b1",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_14",
+      "path": "Saved/Candidate04/Arsenal/checks.json",
+      "kind": "functional_assertions",
+      "bytes": 29830,
+      "sha256": "cd426bb9627e61edbca85661fbf549be8aee62db4da4218d66a8589c630137aa",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_15",
+      "path": "Saved/Candidate05/Build/ONE04ArsenalCheck-functional-initial.log",
+      "kind": "complete_engine_log",
+      "bytes": 123849,
+      "sha256": "8916dc770db3100ee2cbc7913ac02a58014270bf7538828fffe5a7a284227414",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_16",
+      "path": "Saved/Candidate03/Weapons/checks.txt",
+      "kind": "functional_assertions",
+      "bytes": 6976,
+      "sha256": "0785cc12f79a132ad65e36fabc55dfc1f6bc0984c1bdabca08699cd1661a0494",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_17",
+      "path": "Saved/Candidate05/Build/ONE03WeaponCheck-functional-initial.log",
+      "kind": "complete_engine_log",
+      "bytes": 127382,
+      "sha256": "4e6882b8619d5139142c80ab5e2f5bbe8ab9fe5b9288a0ce4af6e364d2a85128",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_18",
+      "path": "Saved/Candidate05/AssetVerification.json",
+      "kind": "asset_verification_report",
+      "bytes": 67215,
+      "sha256": "e6b07ba19db523e4fffc713f9183b8ccc961b62f4ae597fa57cd3746c62baaa4",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_19",
+      "path": "Saved/Candidate05/Build/Asset-verification-reader-fixed.log",
+      "kind": "complete_engine_log",
+      "bytes": 102210,
+      "sha256": "644cba179a96d1252e0ab8d4016d1c736b9c7d4baf880bf5b95391e6223ba9b6",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_20",
+      "path": "Saved/Candidate05/Build/NativeTests-initial.log",
+      "kind": "complete_initial_crash_log",
+      "bytes": 114221,
+      "sha256": "20ca35935fc0c942ad4a0a68d31ebcae701798f34aeadadbd647a39049d4fd23",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_21",
+      "path": "Saved/Candidate05/MotionCheck/20260905_211215_9D6ADD15/checks.txt",
+      "kind": "initial_motion_assertions",
+      "bytes": 7894,
+      "sha256": "68141867660874cdd94a9dc367c6a2935e0772dc624bf5be7b9c1d8fa4156b80",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_22",
+      "path": "Saved/Candidate05/MotionCheck/20260905_211215_9D6ADD15/poses.csv",
+      "kind": "evaluated_pose_and_shot_timeline",
+      "bytes": 1057252,
+      "sha256": "6db38ff0e1ee1058909bedace88785ad70f69588ec7b725e5b87f47e5e470031",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_23",
+      "path": "Saved/Candidate05/Build/Motion-functional-initial.log",
+      "kind": "complete_engine_log",
+      "bytes": 117622,
+      "sha256": "465bd7f288b3d55c3f71ff9ff4ff0853237428802e46b859a2c0c6f0df99932a",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_24",
+      "path": "Saved/Candidate05/AssetVerification-initial.json",
+      "kind": "initial_asset_verifier_report",
+      "bytes": 27884,
+      "sha256": "0d13848a7072efe5c60afea1220a9184f23cd5d4fdc490ebdde8b865c2a0bb5d",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_25",
+      "path": "Saved/Candidate05/Build/Asset-verification.log",
+      "kind": "complete_initial_commandlet_log",
+      "bytes": 118793,
+      "sha256": "2437cdba04aa961369770d798bca07ab6a8c3f7e023069b04e4ef3d2813693f6",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_26",
+      "path": "Saved/Candidate05/NativeTests-real-height-aim/index.json",
+      "kind": "native_automation_report",
+      "bytes": 9594,
+      "sha256": "edf8b67b2901bb6ad9238e6637068cc264d9d1b4bd372f036693bb2a3c0a14a8",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_27",
+      "path": "Saved/Candidate05/Build/Native-real-height-aim.log",
+      "kind": "complete_engine_log",
+      "bytes": 129116,
+      "sha256": "9deebe6faae5a8cb40f59c0061e016255e990e33e323ce866b70e8af6e28656f",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_28",
+      "path": "Saved/Candidate05/AimCheck/20260905_214004/checks.txt",
+      "kind": "functional_assertions",
+      "bytes": 269107,
+      "sha256": "060044b92e9e1e9aad2dfc6af03c131a91443e38c2c2d4647f811ee16685d447",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_29",
+      "path": "Saved/Candidate05/AimCheck/20260905_214004/rays.csv",
+      "kind": "actual_scene_discharge_rows",
+      "bytes": 48101,
+      "sha256": "8d54d8baa76d6fd3cf3b2002afb54c310d4664291a3ab949c81a906c5c9af166",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_30",
+      "path": "Saved/Candidate05/Build/Aim-real-height-projected.log",
+      "kind": "complete_engine_log",
+      "bytes": 512092,
+      "sha256": "60a3e5ee1a417294f4e65c13079727456c80e1eaf3fd7b46b823e5ffa33bdd27",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_31",
+      "path": "Saved/Candidate05/AimCheck/20260905_214149/checks.txt",
+      "kind": "functional_assertions",
+      "bytes": 275323,
+      "sha256": "87f47c297e40f76fb65870e51b4d4aab3d169b11374488bd9025bbd5970bd328",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_32",
+      "path": "Saved/Candidate05/AimCheck/20260905_214149/rays.csv",
+      "kind": "actual_scene_discharge_rows",
+      "bytes": 77620,
+      "sha256": "7049b5cf478f85847b1ba1b311fe056db8940b8242ce32ac91a6a1b060f2d269",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_33",
+      "path": "Saved/Candidate05/Build/Aim-real-height-fixed-step.log",
+      "kind": "complete_engine_log",
+      "bytes": 510363,
+      "sha256": "ebd9b091d070c838f68aecb14375ebd2b32d980cddef5e39d624b8411702f936",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_34",
+      "path": "Saved/Candidate05/AimCheck/20260905_214312/checks.txt",
+      "kind": "functional_assertions",
+      "bytes": 275322,
+      "sha256": "5b2bb1671e7eabda00c59cb1d8e25a10097158ec77f4cf8909f64484f38da7a5",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_35",
+      "path": "Saved/Candidate05/AimCheck/20260905_214312/rays.csv",
+      "kind": "actual_scene_discharge_rows",
+      "bytes": 77692,
+      "sha256": "f066e3282f315c0abfecdd138a7fbc9cda132265a71090439f805b298a0674f1",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_36",
+      "path": "Saved/Candidate05/Build/Aim-isolated-prefix-fixed-step.log",
+      "kind": "complete_engine_log",
+      "bytes": 510368,
+      "sha256": "be9c947d4f1a9cd6ce531974dff05c80ed2ddd7990b39c17c667e5280870248b",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_37",
+      "path": "Saved/Candidate05/AimCheck/20260905_214516/checks.txt",
+      "kind": "functional_assertions",
+      "bytes": 269189,
+      "sha256": "f52a4ae9c8e6dcbf7504bec5d0de8b8510896ac4918fa05382af991496585e94",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_38",
+      "path": "Saved/Candidate05/AimCheck/20260905_214516/rays.csv",
+      "kind": "actual_scene_discharge_rows",
+      "bytes": 77896,
+      "sha256": "8f04979428dbcd3fa8749eea6f02e36543e177899b5946d1e587a98a66cb9220",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_39",
+      "path": "Saved/Candidate05/Build/Aim-projected-isolated-prefix-fixed-step.log",
+      "kind": "complete_engine_log",
+      "bytes": 511812,
+      "sha256": "3d5fb9ed5a8f3706249161a947eb373c5a6fcb1abbf128f8f14b069d0e4ac91c",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_40",
+      "path": "Saved/Candidate05/MotionCapture/20260905_212158_E62246F9/checks.txt",
+      "kind": "functional_assertions",
+      "bytes": 8118,
+      "sha256": "a0504c91d43350a35fb6ef98a39b53b178cbcc639e2aefdfb588e75652adc40b",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_41",
+      "path": "Saved/Candidate05/MotionCapture/20260905_212158_E62246F9/poses.csv",
+      "kind": "evaluated_pose_and_shot_timeline",
+      "bytes": 1108439,
+      "sha256": "fed6acb379f5dca4fd76ab8203505115c7283ef8989fc57b08c2fe6ea5466885",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_42",
+      "path": "Saved/Candidate05/MotionCapture/20260905_212158_E62246F9/frames.csv",
+      "kind": "actual_viewport_frame_manifest",
+      "bytes": 73877,
+      "sha256": "5a86efaf27d336b0c2605fb4170664d95e21d14fcd5a25d6a31c7475afb2afe6",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_43",
+      "path": "Saved/Candidate05/MotionCapture/20260905_212158_E62246F9/chapters.csv",
+      "kind": "actual_phase_manifest",
+      "bytes": 1457,
+      "sha256": "b73bde7bfb877fb05f0376e5e2a005d5316eb0454515b2e7522ed9d1a0c47349",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_44",
+      "path": "Saved/Candidate05/Build/Motion-offscreen-capture-fixed.log",
+      "kind": "complete_engine_log",
+      "bytes": 134114,
+      "sha256": "4089277bf8df96f87c55a217fde503d2ae42a3917eaff1d36ab60abce4af2ac2",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_45",
+      "path": "Saved/Candidate05/MotionCapture/20260905_213347_2085B276/checks.txt",
+      "kind": "functional_assertions",
+      "bytes": 8118,
+      "sha256": "62cdd8acd12593eb83e8d05f70c303ff08fc37073481fcf78549bb5641adce1b",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_46",
+      "path": "Saved/Candidate05/MotionCapture/20260905_213347_2085B276/poses.csv",
+      "kind": "evaluated_pose_and_shot_timeline",
+      "bytes": 1000385,
+      "sha256": "084eeaa0d4209fd673da5ff41d6d2b2ce87dcc1246acb58624a803ce6159ddf4",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_47",
+      "path": "Saved/Candidate05/MotionCapture/20260905_213347_2085B276/frames.csv",
+      "kind": "actual_viewport_frame_manifest",
+      "bytes": 66489,
+      "sha256": "9aa796387fefd38e738260b621d41d3c0755d6250e6795c4afc1d9de28bb7dbf",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_48",
+      "path": "Saved/Candidate05/MotionCapture/20260905_213347_2085B276/chapters.csv",
+      "kind": "actual_phase_manifest",
+      "bytes": 1457,
+      "sha256": "91b60b1e98bd9909f66658adc9d48e95e6cf0c6355a5cb9b0b1b3f609b30e411",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_49",
+      "path": "Saved/Candidate05/Build/Motion-real-height-aim.log",
+      "kind": "complete_engine_log",
+      "bytes": 134133,
+      "sha256": "0a0aaa1347a2af40767582a93c6018158d2fa3b49bcbf42f4de8d810747955b0",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_50",
+      "path": "Saved/Candidate05/UI1280x720/checks.json",
+      "kind": "rendered_ui_assertions",
+      "bytes": 11551,
+      "sha256": "cde10f6aec264c553915114d673b586a5c2ef04f8f222eccb0fc653346122a19",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_51",
+      "path": "Saved/Candidate05/Build/UI1280-offscreen-round-fixed.log",
+      "kind": "complete_engine_log",
+      "bytes": 131622,
+      "sha256": "1cf5f811fdc9f09750326e8dca3b34d0b321ebfbaa95613593eaa1e8513c8b80",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_52",
+      "path": "Saved/Candidate05/UI1600x900/checks.json",
+      "kind": "rendered_ui_assertions",
+      "bytes": 11161,
+      "sha256": "cdbcaf7377d462bedf5f39bcca60919cfbfa789ccc974c746ff59267b7c391d4",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_53",
+      "path": "Saved/Candidate05/Build/UI1600-offscreen-round-fixed.log",
+      "kind": "complete_engine_log",
+      "bytes": 131940,
+      "sha256": "10f20566f5c6e226c5cb46ee1e4894ede2fb74bfcabaf7c15d75f9cf9ff7055e",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_54",
+      "path": "Saved/Candidate05/UI1920x1080/checks.json",
+      "kind": "rendered_ui_assertions",
+      "bytes": 11593,
+      "sha256": "f90c17dd1013a0e19f50ea1b1dda275e79f44b962d384e42790ad384550f0730",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_55",
+      "path": "Saved/Candidate05/Build/UI1920-offscreen-round-fixed.log",
+      "kind": "complete_engine_log",
+      "bytes": 131943,
+      "sha256": "9c4530d5656326a18e2fb3b32c743900f308d73a8ab5fba0193e30e2ce9675f2",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_56",
+      "path": "Saved/Candidate05/UI2560x1080/checks.json",
+      "kind": "rendered_ui_assertions",
+      "bytes": 11564,
+      "sha256": "530634d2168eb3f898261dbd74956459ad89b6e918566f1d9ab6b4811f3cec00",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    },
+    {
+      "id": "record_57",
+      "path": "Saved/Candidate05/Build/UI2560-offscreen-round-fixed.log",
+      "kind": "complete_engine_log",
+      "bytes": 131825,
+      "sha256": "19a5b22868acf95184a336835f1a86b66356ed6da229a168089f86b587977870",
+      "availability": "Retained local raw record; not copied into this public checkpoint."
+    }
+  ],
+  "prior_checkpoint_limits_and_pending": [
+    "The historical 1,988-check aim pass used a raised torso fixture and is superseded for normal-standing-height aim coverage. Corrected scene tests are underway; no new result is claimed.",
+    "No native OS held-input test, user interaction approval, visual approval, audio audition or performance conclusion follows from these headless/automation results.",
+    "The weapon timing analysis is separately documented in Evidence/Candidate05/WeaponTiming.md; this checkpoint does not duplicate its cadence and scheduling tables.",
+    "Latest pivot/turn correction verification, final motion/presentation recordings and their visual/audio review remain pending.",
+    "Fresh published-source build, exact package binding, packaged suite, archive/privacy/LFS verification and release publication remain separate pending gates.",
+    "Raw logs may contain local environment details and are not copied into this public JSON. Portable paths and hashes identify selected retained records."
+  ],
+  "latest_append": {
+    "description": "Real-height world and projected aim reruns, native17 rerun, successful rendered motion, four UI sizes and preserved intervening fixture failures.",
+    "supersession_links": {
+      "aim_eight_headings": [
+        "aim_20260905_214312",
+        "aim_20260905_214516"
+      ],
+      "initial_motion": [
+        "motion_20260905_213347_2085B276"
+      ]
+    },
+    "source_scope": "Evolving Candidate05 working tree based on preserved Candidate04; no packaged S revision claimed.",
+    "historical_integrity": "All existing completed_checks, preserved_initial_failures and records are retained unchanged; their earlier pending statements are time-scoped to that original checkpoint."
+  }
+}

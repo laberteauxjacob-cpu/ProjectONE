@@ -14,6 +14,11 @@
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
 #include "CoreGlobals.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
+#include "ONE05Audio.h"
+#include "ONEAim.h"
+#include "ONEWeaponTiming.h"
 
 namespace
 {
@@ -114,56 +119,110 @@ float UONEWeaponComponent::GetReloadProgress() const { return IsReloading() ? Ge
 bool UONEWeaponComponent::CanFire() const
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
+    const double Due=bAutomaticBurst ? NextAutomaticShotTime : double(LastShot)+ONEWeaponTiming::Interval(GetDefinition().FireInterval);
     return HasUsableWeapon() && !bHandoffLocked && Carried[EquippedIndex].bMagazinePresent && P && !P->IsDead() && !UGameplayStatics::IsGamePaused(this) && GetAmmo()>0 && !NeedsPump(EquippedIndex) &&
-        (Operation==EONEWeaponOperation::Ready || (GetDefinition().bAutomatic && Operation==EONEWeaponOperation::Fire)) && GetTimeSinceShot()>=GetDefinition().FireInterval;
+        (Operation==EONEWeaponOperation::Ready || (GetDefinition().bAutomatic && Operation==EONEWeaponOperation::Fire)) && ONEWeaponTiming::IsDue(GetWorld()->GetTimeSeconds(),Due);
+}
+void UONEWeaponComponent::TraceInput(const TCHAR* Event) const
+{
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE05WeaponTrace")))
+        UE_LOG(LogTemp,Display,TEXT("ONE05_TRIGGER %s frame=%llu time=%.6f result=%d operation=%d held=%d burst=%d accepted=%d rejected=%d shots=%d dry=%d"),
+            Event,GFrameCounter,GetWorld()?GetWorld()->GetTimeSeconds():0.f,int32(LastInputResult),int32(Operation),bTrigger,bAutomaticBurst,
+            AcceptedTriggerPresses,RejectedTriggerPresses,ShotsFired,DryFires);
+}
+void UONEWeaponComponent::RejectTrigger(EONEWeaponInputResult Reason)
+{ LastInputResult=Reason; ++RejectedTriggerPresses; TraceInput(TEXT("REJECT")); }
+void UONEWeaponComponent::DisarmFiring()
+{
+    bAcceptedFramePress=false; bAutomaticBurst=false;
+    bRequireTriggerRelease|=bTrigger;
+}
+void UONEWeaponComponent::ClearHeldInput()
+{
+    DisarmFiring(); bTrigger=false;
+    TraceInput(TEXT("CLEAR"));
 }
 void UONEWeaponComponent::SetTrigger(bool Held)
 {
-    const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (Held && (!HasUsableWeapon() || bHandoffLocked || !P || P->IsDead() || UGameplayStatics::IsGamePaused(this))) return;
-    if (Held && !bTrigger)
+    if (!Held)
     {
-        bPendingShot=true;
-        // A per-shell reload may be interrupted; an already inserted shell remains earned.
-        if (GetDefinition().bShellReload && IsReloading() && Operation!=EONEWeaponOperation::ShellEnd)
-        { AdvanceOperationEvents(); StartOperation(EONEWeaponOperation::ShellEnd); }
+        if (bTrigger) ++TriggerReleases;
+        bTrigger=false; bAutomaticBurst=false; bRequireTriggerRelease=false;
+        // Preserve only an already eligible tap until the next post-pose
+        // dispatch. A late input after that stage gets exactly the next stage;
+        // no input waits through cooldown, pump, reload or another busy state.
+        if (AcceptedDispatchFrame<GFrameCounter) bAcceptedFramePress=false;
+        TraceInput(TEXT("RELEASE")); return;
     }
-    bTrigger=Held;
-    // A semi-auto press is one buffered command: releasing the button during the
-    // closing pose must not erase it. Explicit input cancellation clears it.
-    if (!Held && GetDefinition().bAutomatic) bPendingShot=false;
+    if (bTrigger) return; // Keyboard repeat is not a new trigger edge.
+    bTrigger=true;
+    const auto* P=Cast<AONEPlayer>(GetOwner());
+    if (bRequireTriggerRelease) { RejectTrigger(EONEWeaponInputResult::ReleaseRequired); return; }
+    if (!P || P->IsDead()) { RejectTrigger(EONEWeaponInputResult::Dead); return; }
+    if (UGameplayStatics::IsGamePaused(this)) { RejectTrigger(EONEWeaponInputResult::Paused); return; }
+    if (!HasUsableWeapon()) { RejectTrigger(EONEWeaponInputResult::Unusable); return; }
+    if (bHandoffLocked) { RejectTrigger(EONEWeaponInputResult::Handoff); return; }
+    if (GetDefinition().bShellReload && (Operation==EONEWeaponOperation::ShellStart || Operation==EONEWeaponOperation::ShellInsert))
+    {
+        AdvanceOperationEvents();
+        if (GetAmmo()>0 && !NeedsPump(EquippedIndex))
+        {
+            // The authored support hand must return before a shot is safe.
+            // Stop loading now, but do not bank this press across that return.
+            StartOperation(EONEWeaponOperation::ShellEnd);
+            ++ShellInterrupts; ++AcceptedTriggerPresses;
+            LastInputResult=EONEWeaponInputResult::AcceptedShellClose; TraceInput(TEXT("CLOSE_SHELL_RELOAD")); return;
+        }
+        RejectTrigger(EONEWeaponInputResult::Reloading); return;
+    }
+    if (IsReloading()) { RejectTrigger(EONEWeaponInputResult::Reloading); return; }
+    if (NeedsPump(EquippedIndex) || Operation==EONEWeaponOperation::Pump) { RejectTrigger(EONEWeaponInputResult::Pumping); return; }
+    if (Operation==EONEWeaponOperation::Equip) { RejectTrigger(EONEWeaponInputResult::Equipping); return; }
+    if (GetAmmo()==0)
+    {
+        if (Operation!=EONEWeaponOperation::Ready) { RejectTrigger(EONEWeaponInputResult::Cooldown); return; }
+        if (GetReserveAmmo()>0) { RejectTrigger(EONEWeaponInputResult::EmptyWithReserve); return; }
+        if (GetTimeSinceEmpty()<=.35f) { RejectTrigger(EONEWeaponInputResult::DryFireRateLimited); return; }
+        LastEmpty=GetWorld()->GetTimeSeconds(); ++DryFires;
+        LastInputResult=EONEWeaponInputResult::DryFire;
+        PlayMechanical(GetDefinition().EmptySound.Get()); TraceInput(TEXT("DRY")); return;
+    }
+    if (!CanFire()) { RejectTrigger(EONEWeaponInputResult::Cooldown); return; }
+    bAcceptedFramePress=true; AcceptedPressFrame=GFrameCounter; AcceptedPressInstance=Carried[EquippedIndex].InstanceId;
+    AcceptedDispatchFrame=GFrameCounter+(LastWeaponTickFrame==GFrameCounter ? 1 : 0);
+    bAutomaticBurst=GetDefinition().bAutomatic;
+    NextAutomaticShotTime=GetWorld()->GetTimeSeconds();
+    ++AcceptedTriggerPresses; LastInputResult=EONEWeaponInputResult::AcceptedShot; TraceInput(TEXT("ACCEPT"));
 }
 void UONEWeaponComponent::BeginReload()
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    // Held sprint has priority over both R and automatic reload, even while still.
-    // Ignored R presses are not queued to fight the player's escape on later ticks.
-    if (!HasUsableWeapon() || bHandoffLocked || !P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || P->IsSprintRequested() ||
+    if (!HasUsableWeapon() || bHandoffLocked || !P || P->IsDead() || UGameplayStatics::IsGamePaused(this) ||
         (Operation!=EONEWeaponOperation::Ready && Operation!=EONEWeaponOperation::Fire) ||
         NeedsPump(EquippedIndex) || (GetAmmo()>=GetDefinition().Capacity && Carried[EquippedIndex].bMagazinePresent) || (GetReserveAmmo()<=0 && Carried[EquippedIndex].bMagazinePresent)) return;
-    bPendingShot=false; bReloadStartedEmpty=GetAmmo()==0;
+    bReloadStartedEmpty=GetAmmo()==0;
     StartOperation(GetDefinition().bShellReload ? EONEWeaponOperation::ShellStart : EONEWeaponOperation::MagazineReload);
 }
 void UONEWeaponComponent::CancelReload()
 {
-    if (!IsReloading()) return;
+    // Magazine reloads are committed gameplay actions. Only lifecycle cleanup
+    // through CancelAllOperations can invalidate them after they start.
+    if (!IsReloading() || IsMagazineReloadCommitted()) return;
     // Input can arrive before this component's tick. Honor transfers whose event
     // time has already elapsed, then invalidate all later events atomically.
     if (!UGameplayStatics::IsGamePaused(this)) AdvanceOperationEvents();
     StopOperationAudio(); Operation=EONEWeaponOperation::Ready; ++OperationSerial; NextEvent=0;
-    bPendingShot=false;
+    DisarmFiring();
     if (auto* P=Cast<AONEPlayer>(GetOwner())) P->ClearReloadPresentation();
 }
 void UONEWeaponComponent::InterruptReloadForSprint()
 {
-    const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !IsReloading()) return;
-    CancelReload(); ++SprintReloadInterrupts;
+    // Read-compatible with historical probes; sprint no longer cancels reload.
 }
 bool UONEWeaponComponent::CanAutoReload() const
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    return HasUsableWeapon() && !bHandoffLocked && P && !P->IsDead() && !UGameplayStatics::IsGamePaused(this) && !P->IsSprintRequested() &&
+    return HasUsableWeapon() && !bHandoffLocked && P && !P->IsDead() && !UGameplayStatics::IsGamePaused(this) &&
         Operation==EONEWeaponOperation::Ready && !NeedsPump(EquippedIndex) && GetAmmo()==0 && GetReserveAmmo()>0;
 }
 void UONEWeaponComponent::StopOperationAudio()
@@ -176,13 +235,13 @@ void UONEWeaponComponent::CancelAllOperations()
     StopOperationAudio();
     for (auto& A:ShotAudio) if (A.IsValid()) A->Stop();
     ShotAudio.Reset();
-    bTrigger=false; bPendingShot=false; PendingIndex=-1; Operation=EONEWeaponOperation::Ready; NextEvent=0; ++OperationSerial;
+    ClearHeldInput(); PendingIndex=-1; Operation=EONEWeaponOperation::Ready; NextEvent=0; ++OperationSerial;
     if (auto* P=Cast<AONEPlayer>(GetOwner())) P->ClearWeaponEffects();
 }
 bool UONEWeaponComponent::SelectWeapon(int32 I)
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (bHandoffLocked || !P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !IsSlotAvailable(I) || (I==EquippedIndex && PendingIndex<0)) return false;
+    if (!CanChangeInventory() || bHandoffLocked || !P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !IsSlotAvailable(I) || (I==EquippedIndex && PendingIndex<0)) return false;
     if (IsReloading()) CancelReload();
     CancelAllOperations();
     if (I==EquippedIndex) { if (NeedsPump(I)) StartOperation(EONEWeaponOperation::Pump); return true; }
@@ -190,7 +249,7 @@ bool UONEWeaponComponent::SelectWeapon(int32 I)
 }
 void UONEWeaponComponent::RefillAllAmmo()
 {
-    if (bHandoffLocked) return;
+    if (bHandoffLocked || IsMagazineReloadCommitted()) return;
     CancelAllOperations();
     for (int32 I=0;I<Carried.Num();++I) RefillSlot(I,false);
     LastShot=-100; LastEmpty=-100; RefreshEquippedPresentation();
@@ -212,11 +271,12 @@ void UONEWeaponComponent::PlayMechanical(USoundBase* S)
 {
     if (!S) return;
     OperationAudio.RemoveAll([](const auto& C){return !C.IsValid() || !C->IsPlaying();});
-    if (auto* P=Cast<AONEPlayer>(GetOwner())) if (auto* Audio=UGameplayStatics::SpawnSoundAttached(S,P->Gun,NAME_None,FVector::ZeroVector,EAttachLocation::KeepRelativeOffset,true,.55f))
+    if (auto* P=Cast<AONEPlayer>(GetOwner())) if (auto* Audio=UGameplayStatics::SpawnSoundAttached(S,P->Gun,NAME_None,FVector::ZeroVector,EAttachLocation::KeepRelativeOffset,true,.55f*ONE05Audio::GetWeaponGain()))
     { Audio->bIsUISound=false; OperationAudio.Add(Audio); }
 }
 void UONEWeaponComponent::StartOperation(EONEWeaponOperation Next,int32 I)
 {
+    if (Next!=EONEWeaponOperation::Ready && Next!=EONEWeaponOperation::Fire) DisarmFiring();
     StopOperationAudio(); Operation=Next; OperationIndex=I<0 ? EquippedIndex : I;
     OperationStart=GetWorld()->GetTimeSeconds(); NextEvent=0; ++OperationSerial;
     if (const auto* O=FindOperation(OperationIndex,Operation))
@@ -323,22 +383,28 @@ void UONEWeaponComponent::AdvanceOperationEvents()
 void UONEWeaponComponent::TickComponent(float Dt,ELevelTick Tick,FActorComponentTickFunction* ThisTick)
 {
     Super::TickComponent(Dt,Tick,ThisTick);
-    const auto* P=Cast<AONEPlayer>(GetOwner()); if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || (bHandoffLocked && Operation!=EONEWeaponOperation::Equip)) return;
+    LastWeaponTickFrame=GFrameCounter;
+    const auto* P=Cast<AONEPlayer>(GetOwner());
+    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || (bHandoffLocked && Operation!=EONEWeaponOperation::Equip))
+    { DisarmFiring(); return; }
     if (Operation!=EONEWeaponOperation::Ready)
     {
         const int32 Serial=OperationSerial;
         AdvanceOperationEvents();
         if (Serial==OperationSerial && GetOperationElapsed()>=GetOperationDuration()) FinishOperation();
     }
-    if (!HasUsableWeapon() || bHandoffLocked) return;
+    if (!HasUsableWeapon() || bHandoffLocked) { DisarmFiring(); return; }
     if (Operation==EONEWeaponOperation::Ready && NeedsPump(EquippedIndex)) StartOperation(EONEWeaponOperation::Pump);
     // Pump/equip/fire completion comes first. Only the empty equipped weapon may
     // reload automatically; a held trigger is never required to enter this path.
     if (CanAutoReload()) { BeginReload(); if (IsReloading()) ++AutomaticReloads; }
-    const bool WantsShot=GetDefinition().bAutomatic ? bTrigger : bPendingShot;
-    if (WantsShot && CanFire()) { Fire(); bPendingShot=false; }
-    else if (WantsShot && Operation==EONEWeaponOperation::Ready && GetAmmo()<=0 && GetTimeSinceEmpty()>.35f)
-    { LastEmpty=GetWorld()->GetTimeSeconds(); PlayMechanical(GetDefinition().EmptySound.Get()); bPendingShot=false; }
+    if (bAcceptedFramePress)
+    {
+        const bool Valid=AcceptedDispatchFrame==GFrameCounter && AcceptedPressInstance==Carried[EquippedIndex].InstanceId && CanFire();
+        bAcceptedFramePress=false;
+        if (Valid) Fire(); else DisarmFiring();
+    }
+    else if (bAutomaticBurst && bTrigger && GetDefinition().bAutomatic && CanFire()) Fire(true);
 }
 UAnimSequence* UONEWeaponComponent::GetReadyAnimation() const { return GetDefinition().ReadyAnimation.Get(); }
 UAnimSequence* UONEWeaponComponent::GetActionAnimation(float& Time) const
@@ -384,12 +450,15 @@ float UONEWeaponComponent::FindEventTime(EONEWeaponEvent Type,float Fallback) co
 void UONEWeaponComponent::ClearEjectedCases()
 { for (auto& C:Cases) if (C.IsValid()) C->Destroy(); Cases.Reset(); for (auto& M:Magazines) if (M.IsValid()) M->Destroy(); Magazines.Reset(); }
 
-void UONEWeaponComponent::Fire()
+void UONEWeaponComponent::Fire(bool bContinuingBurst)
 {
     auto* P=Cast<AONEPlayer>(GetOwner()); if (!P || !CanFire()) return;
     const auto& D=GetDefinition(); auto& State=Carried[EquippedIndex];
     --State.Ammo; State.bNeedsPump=D.bPumpAction; State.bCaseEjected=false;
     LastShot=GetWorld()->GetTimeSeconds(); LastShotId=++NextDischargeId; ++ShotsFired;
+    // Carry only fractional tick phase in a healthy established burst. Missing
+    // an entire interval resets the schedule; no shot debt survives a hitch.
+    NextAutomaticShotTime=ONEWeaponTiming::AfterDischarge(NextAutomaticShotTime,LastShot,D.FireInterval,bContinuingBurst);
     State.PendingCaseShotId=LastShotId;
     P->Gun->UpdateComponentToWorld();
     LastShotMuzzle=P->GetMuzzleLocation(); LastShotFrame=GFrameCounter;
@@ -397,13 +466,25 @@ void UONEWeaponComponent::Fire()
     LastShotPoseRevision=P->GetMesh()->GetBoneTransformRevisionNumber();
     StartOperation(EONEWeaponOperation::Fire); P->FlashMuzzle();
     const FVector Start=LastShotMuzzle;
+    ShotAudio.RemoveAll([](const auto& C){return !C.IsValid() || !C->IsPlaying();});
+    while (ShotAudio.Num()>=FMath::Clamp(MaximumShotVoices,1,16))
+    { if (ShotAudio[0].IsValid()) ShotAudio[0]->Stop(); ShotAudio.RemoveAt(0); }
     if (auto* S=ChooseShotSound(EquippedIndex))
-        if (auto* A=UGameplayStatics::SpawnSoundAttached(S,P->Gun,NAME_None,FVector::ZeroVector,EAttachLocation::KeepRelativeOffset,true,D.bPumpAction ? .82f : .62f,1.f))
-        { A->bIsUISound=false; ShotAudio.RemoveAll([](const auto& C){return !C.IsValid() || !C->IsPlaying();}); ShotAudio.Add(A); }
-    FVector Direction=(P->GetAimPoint()-Start).GetSafeNormal(); if (Direction.IsNearlyZero()) Direction=P->GetActorForwardVector();
+        if (auto* A=UGameplayStatics::SpawnSoundAttached(S,P->Gun,NAME_None,FVector::ZeroVector,EAttachLocation::KeepRelativeOffset,true,D.ShotVolume*ONE05Audio::GetWeaponGain(),1.f))
+        { A->bIsUISound=false; ShotAudio.Add(A); }
+    const FVector Direction=P->GetShotDirection(Start);
+    LastShotDirection=Direction; LastShotForwardTracers=0; LastShotContactPellets=0;
     FCollisionQueryParams Params(SCENE_QUERY_STAT(ONEWeapon),false,P);
-    FHitResult Obstruction; const FVector Shoulder=P->GetActorLocation()+FVector(0,0,42);
+    FHitResult Obstruction; const FVector Shoulder=P->GetAimOrigin();
     const bool bObstructed=GetWorld()->LineTraceSingleByChannel(Obstruction,Shoulder,Start,ECC_Visibility,Params);
+    bLastShotMuzzleObstructed=bObstructed;
+    // Contact fire covers only the space before the actual barrel plane. It
+    // follows selected region height and uses world collision, never a radius
+    // search. The physical shoulder-to-barrel obstruction remains authoritative.
+    const FVector Intent=P->GetIntendedAimDirection();
+    const FVector ContactDirection=ONEAim::ResolveShotDirection(Shoulder,P->GetAimPoint(),Intent,Shoulder,
+        P->AimConvergenceAhead,P->AimMaximumPitch);
+    const double BarrelDepth=FVector::DotProduct(Start-Shoulder,Intent);
     TMap<AONEZombie*,FONEWeaponDamagePacket> Victims;
     TArray<FHitResult> SurfaceHits;
     auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>();
@@ -412,6 +493,14 @@ void UONEWeaponComponent::Fire()
     {
         const FVector Ray=FMath::VRandCone(Direction,FMath::DegreesToRadians(D.SpreadDegrees));
         FHitResult Hit=Obstruction;
+        const FVector ContactRay=FQuat::FindBetweenNormals(Direction,ContactDirection).RotateVector(Ray).GetSafeNormal();
+        const double ContactForward=FVector::DotProduct(ContactRay,Intent);
+        bool bContact=false;
+        if (!bObstructed && BarrelDepth>.1 && ContactForward>.5)
+            bContact=GetWorld()->LineTraceSingleByChannel(Hit,Shoulder,Shoulder+ContactRay*(BarrelDepth/ContactForward),ECC_Visibility,Params);
+        const bool bPrefixHit=bObstructed || bContact;
+        if (bContact) ++LastShotContactPellets;
+        const FVector ImpactRay=bContact ? ContactRay : Ray;
         FVector TraceStart=Start,TraceEnd=Start+Ray*D.Range,LastEnd=TraceEnd;
         FCollisionQueryParams PelletParams=Params;
         // The single extra victim is bounded independently of the pellet count.
@@ -419,7 +508,7 @@ void UONEWeaponComponent::Fire()
         const int32 Extra=FMath::Clamp(D.AdditionalVictims,0,1);
         for (int32 Depth=0;Depth<=Extra;++Depth)
         {
-            const bool bHit=(Depth==0 && bObstructed) || GetWorld()->LineTraceSingleByChannel(Hit,TraceStart,TraceEnd,ECC_Visibility,PelletParams);
+            const bool bHit=(Depth==0 && bPrefixHit) || GetWorld()->LineTraceSingleByChannel(Hit,TraceStart,TraceEnd,ECC_Visibility,PelletParams);
             LastEnd=bHit ? Hit.ImpactPoint : TraceEnd;
             if (!bHit) break;
             if (auto* Z=Cast<AONEZombie>(Hit.GetActor()))
@@ -432,8 +521,8 @@ void UONEWeaponComponent::Fire()
                 if (Region==EONEHitRegion::Head) TraumaScale=D.HeadTraumaScale;
                 else if (Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight) TraumaScale=D.ArmTraumaScale;
                 else if (Region==EONEHitRegion::LegLeft || Region==EONEHitRegion::LegRight) TraumaScale=D.LegTraumaScale;
-                Packet.Get(Region).AddPellet(HitDamage,HitDamage*TraumaScale,LastEnd,Ray,Hit.ImpactNormal,RegionalImpactBone(Z,Region,Hit));
-                if (Depth>=Extra || bObstructed) break;
+                Packet.Get(Region).AddPellet(HitDamage,HitDamage*TraumaScale,LastEnd,ImpactRay,Hit.ImpactNormal,RegionalImpactBone(Z,Region,Hit));
+                if (Depth>=Extra || bPrefixHit) break;
                 PelletParams.AddIgnoredActor(Z);
                 TraceStart=LastEnd+Ray*.05f;
                 if (FVector::DotProduct(TraceEnd-TraceStart,Ray)<=0.f) break;
@@ -444,20 +533,34 @@ void UONEWeaponComponent::Fire()
                 break; // World cover always stops penetration; range endpoint never extends.
             }
         }
-        if (Blood && (D.Pellets==1 || I<3)) Blood->Shot(Start,LastEnd,D.TraceColor);
+        // A shoulder-to-muzzle hit still damages the close actor or blocks cover.
+        // It must not draw a world-space tracer backwards from the barrel.
+        if (Blood && (D.Pellets==1 || I<3) && ONEAim::IsForwardSegment(Start,LastEnd,P->GetIntendedAimDirection()))
+        { Blood->Shot(Start,LastEnd,D.TraceColor); ++LastShotForwardTracers; }
     }
-    bLastHitKill=false; LastShotVictimCount=0;
+    LastShotVictimCount=0; LastShotLiveHits=0; LastShotNewKills=0; LastShotCorpseHits=0; LastShotRejected=0;
+    LastShotOutcome=EONEWeaponHitOutcome::Rejected;
     int32 FleshVoices=0;
     for (auto& Pair:Victims)
     {
         auto& Packet=Pair.Value; Packet.Finalize();
-        if (Pair.Key->ReceiveWeaponDamage(Packet))
+        const EONEWeaponHitOutcome Outcome=Pair.Key->ReceiveWeaponDamageOutcome(Packet);
+        if (Outcome!=EONEWeaponHitOutcome::Rejected)
         {
-            ++LastShotVictimCount; LastHit=GetWorld()->GetTimeSeconds(); bLastHitKill|=Pair.Key->IsDead();
+            ++LastShotVictimCount;
+            if (Outcome==EONEWeaponHitOutcome::NewKill) ++LastShotNewKills;
+            else if (Outcome==EONEWeaponHitOutcome::LiveHit) ++LastShotLiveHits;
+            else if (Outcome==EONEWeaponHitOutcome::CorpseHit) ++LastShotCorpseHits;
             if (FleshVoices<2) if (auto* S=Choose(D.FleshSounds))
-            { UGameplayStatics::PlaySoundAtLocation(this,S,Packet.GetImpactPosition(),.55f); ++FleshVoices; }
+            { UGameplayStatics::PlaySoundAtLocation(this,S,Packet.GetImpactPosition(),.72f*ONE05Audio::GetWeaponGain()); ++FleshVoices; }
         }
+        else ++LastShotRejected;
     }
+    LastShotOutcome=LastShotNewKills>0 ? EONEWeaponHitOutcome::NewKill : LastShotLiveHits>0 ? EONEWeaponHitOutcome::LiveHit :
+        LastShotCorpseHits>0 ? EONEWeaponHitOutcome::CorpseHit : EONEWeaponHitOutcome::Rejected;
+    if (LastShotNewKills+LastShotLiveHits>0)
+    { LastHit=GetWorld()->GetTimeSeconds(); bLastHitKill=LastShotNewKills>0; }
+    TraceInput(TEXT("DISCHARGE"));
     for (const auto& Hit:SurfaceHits)
     {
         const bool Metal=(Hit.GetActor() && Hit.GetActor()->ActorHasTag(TEXT("Metal"))) || (Hit.GetComponent() && Hit.GetComponent()->ComponentHasTag(TEXT("Metal")));

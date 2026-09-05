@@ -9,6 +9,7 @@ class UONEHealthComponent;
 class USphereComponent;
 class UCapsuleComponent;
 class AONEPlayer;
+class UONEZombieAudioComponent;
 
 UENUM(BlueprintType)
 enum class EONEZombieState : uint8 { Pursue, Attack, Hit, Dead };
@@ -27,6 +28,19 @@ public:
     // True means an accepted live transaction OR a cosmetic corpse transaction.
     // Corpse transactions never modify health, score or the live damage counter.
     bool ReceiveWeaponDamage(const FONEWeaponDamagePacket& Packet);
+    EONEWeaponHitOutcome ReceiveWeaponDamageOutcome(const FONEWeaponDamagePacket& Packet);
+    // The same entry point is used by pursuit and deterministic attack probes.
+    bool TryStartAttack(AONEPlayer* Victim,int32 PreferredFamily=INDEX_NONE);
+    FName GetAttackClipKey() const;
+    int32 GetAttackFamily() const { return AttackFamily; }
+    float GetCurrentAttackContactTime() const;
+    float GetCurrentAttackDuration() const;
+    bool IsAttackContactConsumed() const { return bContactDelivered; }
+    int32 GetAttackContactAttemptCount() const { return AttackContactAttempts; }
+    int32 GetAttackDamageDispatchCount() const { return AttackDamageDispatches; }
+    float GetMinorReactionAge() const;
+    FVector GetMinorReactionDirection() const { return MinorReactionDirection; }
+    float GetMinorReactionStrength() const { return MinorReactionStrength; }
     bool IsHeavyReaction() const { return bHeavyReaction; }
     int32 GetDamageTransactionCount() const { return DamageTransactions; }
     int32 GetSeverCount() const { return SeverCount; }
@@ -59,10 +73,12 @@ public:
     UPROPERTY(EditAnywhere, Category="Infected") float AttackContactTime=.48f;
     UPROPERTY(EditAnywhere, Category="Infected") float AttackDuration=1.f;
     UPROPERTY(EditAnywhere, Category="Infected") float HitReactCooldown=1.1f;
+    UPROPERTY(EditAnywhere, Category="Infected") float MinorReactionInterval=.13f;
     UPROPERTY(EditAnywhere, Category="Infected") float HeadSeverThreshold=32.f;
     UPROPERTY(EditAnywhere, Category="Infected") float ArmSeverThreshold=50.f;
     UPROPERTY(EditAnywhere, Category="Infected") float LegSeverThreshold=70.f;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UONEHealthComponent> Health;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UONEZombieAudioComponent> ZombieAudio;
     UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> HeadMesh;
     UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> ArmLeftMesh;
     UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> ArmRightMesh;
@@ -89,12 +105,19 @@ private:
     FName ResolveRegionBone(EONEHitRegion Region,FName Requested) const;
     void GetCutWorld(EONEHitRegion Region,FVector& Point,FVector& Normal) const;
     void StopPursuit();
+    bool RequiredAttackArmsPresent() const;
+    void TickAttack(float Dt);
     void ObserveRest();
     UPROPERTY() TObjectPtr<AONEPlayer> Target;
     EONEZombieState State=EONEZombieState::Pursue;
     float StateStart=0,LastReaction=-100,NextAttack=0,NextPath=0;
     float RegionalTrauma[FONEWeaponDamagePacket::RegionCount]={};
     bool bHeavyReaction=false;
+    int32 AttackFamily=0,AttackSerial=0,AttackContactAttempts=0,AttackDamageDispatches=0;
+    uint8 RequiredAttackArms=0;
+    FVector AttackHeading=FVector::ForwardVector,AttackStartPosition=FVector::ZeroVector;
+    float MinorReactionStart=-100.f,MinorReactionStrength=0.f;
+    FVector MinorReactionDirection=FVector::ForwardVector;
     int32 DamageTransactions=0,CorpseTransactions=0,SeverCount=0;
     TArray<uint64> RecentShotIds;
     bool bHeadSevered=false,bLeftArmSevered=false,bRightArmSevered=false,bLeftLegSevered=false,bContactDelivered=false;

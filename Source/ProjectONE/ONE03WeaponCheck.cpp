@@ -48,7 +48,7 @@ AONE03WeaponCheck::AONE03WeaponCheck()
 void AONE03WeaponCheck::BeginPlay()
 {
     Super::BeginPlay(); StartReal=StageReal=FPlatformTime::Seconds(); StageStart=GetWorld()->GetTimeSeconds();
-    Report=TEXT("Candidate03 Stage B: actual player/weapon integration\nReal capacities, shot dispatch, operation clocks and ammo transfers. No mocked weapon or ammo setter.\nInitial binding fixture injects frame-spaced UE input events through PlayerController::InputKey; this proves production binding dispatch, not native OS keyboard delivery.\n");
+    Report=TEXT("Legacy weapon integration updated for Candidate05 committed magazine reload and non-buffered input.\nReal capacities, shot dispatch, operation clocks and ammo transfers. No mocked weapon or ammo setter.\nInitial binding fixture injects frame-spaced UE input events through PlayerController::InputKey; this proves production binding dispatch, not native OS keyboard delivery.\n");
     if (bRestartPending)
     {
         Stage=99; Report=Weapon03RestartReport; Failures=Weapon03RestartFailures; Checks=RestartChecks; bRestartPending=false;
@@ -68,6 +68,7 @@ void AONE03WeaponCheck::Next(int32 NextStage)
 void AONE03WeaponCheck::Prepare(int32 Slot)
 {
     Player->ReleaseHeldInputs();
+    Player->GetWeaponComponent()->SetTrigger(false);
     Player->GetCharacterMovement()->StopMovementImmediately();
     Player->SetActorLocation(FVector(-250,300,98));
     Player->GetWeaponComponent()->RefillAllAmmo();
@@ -137,7 +138,7 @@ void AONE03WeaponCheck::Tick(float Dt)
     } break;
     case 105: if (T>.08f)
     {
-        Check(PC && PC->IsInputKeyDown(EKeys::LeftShift) && Player->IsSprintRequested() && !W->IsReloading() && W->GetSprintReloadInterruptCount()==Interrupts+1,TEXT("Controller-routed LeftShift dispatches Run and immediately interrupts reload"));
+        Check(PC && PC->IsInputKeyDown(EKeys::LeftShift) && Player->IsSprintRequested() && W->IsMagazineReloadCommitted() && W->GetSprintReloadInterruptCount()==Interrupts,TEXT("Controller-routed LeftShift starts sprint while the magazine reload remains committed"));
         Check(W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve,TEXT("Production Shift binding preserves pre-transfer ammunition"));
         InterruptOrigin=Player->GetActorLocation(); RouteKey(EKeys::W,IE_Pressed); Next(106);
     } break;
@@ -148,10 +149,10 @@ void AONE03WeaponCheck::Tick(float Dt)
         Check(Player->GetVelocity().Size2D()>Player->RunSpeed-8.f && Travel.Y<-75.f && FMath::Abs(Travel.X)<10.f,TEXT("Production W axis and Run action produce real sprint displacement in the mapped direction"));
         RouteKey(EKeys::W,IE_Released); RouteKey(EKeys::LeftShift,IE_Released); Next(107);
     } break;
-    case 107: if (T>.25f)
+    case 107: if (T>.25f && !W->IsBusy())
     {
         Check(PC && !PC->IsInputKeyDown(EKeys::W) && !PC->IsInputKeyDown(EKeys::LeftShift) && !Player->IsSprintRequested() && Player->GetVelocity().Size2D()<10.f,TEXT("Production release events clear movement and sprint without lingering held input"));
-        Check(!W->IsReloading() && W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve,TEXT("Controller-routed interrupted reload cannot resume a stale transfer after key release"));
+        Check(W->GetAmmo()==Ammo+1 && W->GetReserveAmmo()==Reserve-1 && W->ShouldShowSeatedMagazine(),TEXT("Controller-routed reload completes its one earned transfer despite sprint and key release"));
         Prepare(0); Next(1);
     } break;
     case 1: if (!W->IsBusy() && W->GetEquippedIndex()==0)
@@ -219,19 +220,20 @@ void AONE03WeaponCheck::Tick(float Dt)
             Player->SetSprintHeld(true);
             const int32 Earned=C.bTransferred ? 1 : 0;
             const int32 ActualTransfers=C.Slot==0 ? W->GetMagazineCommitCount() : W->GetShellInsertCount();
-            Check(!W->IsReloading() && W->GetSprintReloadInterruptCount()==Interrupts+1,FString::Printf(TEXT("Shift immediately cancels %s at %.3f seconds"),C.Label,At));
+            Check(W->IsReloading() && W->GetSprintReloadInterruptCount()==Interrupts,FString::Printf(TEXT("Shift preserves %s at %.3f seconds"),C.Label,At));
             Check(W->GetAmmo()==Ammo+Earned && W->GetReserveAmmo()==Reserve-Earned && ActualTransfers==Transfers+Earned,FString::Printf(TEXT("%s preserves exactly completed transfers"),C.Label));
-            Check(!Player->LoadingShell->IsVisible() && !Player->HeldMagazine->IsVisible(),TEXT("Sprint interruption immediately removes obsolete held reload props"));
-            Ammo=W->GetAmmo(); Reserve=W->GetReserveAmmo(); Next(14);
+            Check(W->GetOperation()==C.Operation && FMath::IsNearlyEqual(W->GetOperationElapsed(),At,.01f),TEXT("Sprint leaves the authored reload operation and event clock intact"));
+            Next(14);
         }
     } break;
     case 14:
-        W->BeginReload(); // Repeated R while Shift is held must never win precedence.
+        W->BeginReload(); // Repeated R must not restart the committed event clock.
         if (T<.3f) Player->AddMovementInput(FVector(1,0,0));
-        if (T>.9f)
+        if (T>.9f && !W->IsBusy())
         {
-            Check(Player->IsSprintRequested() && FMath::IsNearlyEqual(Player->GetCharacterMovement()->MaxWalkSpeed,Player->RunSpeed,.1f) && FVector::Dist2D(Player->GetActorLocation(),InterruptOrigin)>30,TEXT("Reload interruption permits actual sprint displacement immediately"));
-            Check(!W->IsReloading() && W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve && W->GetAutomaticReloadCount()==Automatic && W->GetEjectionCount()==Ejections,TEXT("Held Shift defeats repeated R without delayed transfers, auto reload or extra ejection"));
+            Check(Player->IsSprintRequested() && FMath::IsNearlyEqual(Player->GetCharacterMovement()->MaxWalkSpeed,Player->RunSpeed,.1f) && FVector::Dist2D(Player->GetActorLocation(),InterruptOrigin)>30,TEXT("Actual sprint displacement remains available while reload completes"));
+            const int32 ActualTransfers=ReloadCases[CaseIndex].Slot==0 ? W->GetMagazineCommitCount() : W->GetShellInsertCount();
+            Check(W->GetAmmo()==Ammo+1 && W->GetReserveAmmo()==Reserve-1 && ActualTransfers==Transfers+1 && W->GetAutomaticReloadCount()==Automatic && W->GetEjectionCount()==Ejections,TEXT("Held Shift and repeated R finish exactly one transfer without restart or extra ejection"));
             ++CaseIndex;
             if (CaseIndex<static_cast<int32>(UE_ARRAY_COUNT(ReloadCases))) { Prepare(ReloadCases[CaseIndex].Slot); Next(10); }
             else { Prepare(0); Next(30); }
@@ -242,29 +244,39 @@ void AONE03WeaponCheck::Tick(float Dt)
         Player->SetSprintHeld(true); W->SetTrigger(true); Next(31);
     } break;
     case 31:
-        if (W->GetAmmo()==0) W->ClearHeldInput();
-        if (W->GetAmmo()==0 && !W->IsBusy()) Next(32);
+        if (W->GetAmmo()==0) W->SetTrigger(false);
+        if (W->GetAutomaticReloadCount()>Automatic) Next(32);
         break;
     case 32:
         W->BeginReload();
         if (T>.8f)
         {
-            Check(Player->IsSprintRequested() && W->GetAmmo()==0 && W->GetReserveAmmo()==Reserve && !W->IsReloading() && !W->CanAutoReload() && W->GetAutomaticReloadCount()==Automatic,TEXT("Empty equipped rifle defers automatic and manual reload while stationary Shift remains held"));
-            Player->SetSprintHeld(false); Check(W->CanAutoReload(),TEXT("Releasing Shift makes the empty equipped rifle immediately eligible")); Next(33);
+            Check(Player->IsSprintRequested() && W->GetAmmo()==0 && W->GetReserveAmmo()==Reserve && W->IsMagazineReloadCommitted() && W->GetAutomaticReloadCount()==Automatic+1,TEXT("Empty equipped rifle automatically reloads while stationary Shift remains held"));
+            Player->SetSprintHeld(false); Check(W->IsMagazineReloadCommitted(),TEXT("Releasing Shift leaves the same committed automatic reload active")); Next(33);
         } break;
-    case 33: if (W->IsReloading() && W->GetOperationElapsed()>.5f)
+    case 33: if (W->IsReloading() && W->GetOperationElapsed()>.95f)
     {
-        Check(W->GetAutomaticReloadCount()==Automatic+1 && W->GetTotalShotsFired()==Shots+24,TEXT("Sprint release starts one automatic reload without stale held firing"));
-        Player->SetSprintHeld(true); W->SelectWeapon(1); Player->SetSprintHeld(false); Next(34);
+        Check(W->GetAutomaticReloadCount()==Automatic+1 && W->GetTotalShotsFired()==Shots+24,TEXT("Sprinting empty burst starts only one automatic reload without stale held firing"));
+        Player->SetSprintHeld(true);
+        Check(!W->SelectWeapon(1) && W->GetPendingWeaponIndex()==INDEX_NONE,TEXT("Slot request during committed reload is rejected and not queued"));
+        Player->SetSprintHeld(false); Next(34);
     } break;
-    case 34: if (T>1.7f)
+    case 34: if (T>1.3f && !W->IsBusy())
     {
-        Check(W->GetEquippedIndex()==1 && W->GetAmmo()==6 && W->GetAmmoForWeapon(0)==0 && W->GetReserveAmmoForWeapon(0)==Reserve && W->GetAutomaticReloadCount()==Automatic+1,TEXT("Switching leaves canceled empty rifle holstered without hidden auto reload or stale commit"));
-        W->SelectWeapon(0); Next(35);
+        Check(W->GetEquippedIndex()==0 && W->GetAmmo()==24 && W->GetAmmoForWeapon(1)==6 && W->GetReserveAmmo()==Reserve-24 && W->GetAutomaticReloadCount()==Automatic+1,TEXT("Rejected slot request leaves completed rifle magazine equipped with holstered shotgun unchanged"));
+        Check(W->SelectWeapon(1),TEXT("Fresh slot request after reload completion is accepted")); Next(35);
     } break;
-    case 35: if (W->IsReloading() && W->GetOperationElapsed()>.55f)
+    case 35: if (!W->IsBusy() && W->GetEquippedIndex()==1)
     {
-        Check(W->GetAutomaticReloadCount()==Automatic+2,TEXT("Re-equipping the empty rifle waits for equip then automatically reloads once"));
+        Check(W->GetAmmoForWeapon(0)==24 && W->GetAmmo()==6 && W->GetAutomaticReloadCount()==Automatic+1,TEXT("Fresh equip preserves both completed ammo stores without holstered auto reload"));
+        W->SelectWeapon(0); Next(38);
+    } break;
+    case 38: if (!W->IsBusy() && W->GetEquippedIndex()==0)
+    { Shots=W->GetTotalShotsFired(); W->SetTrigger(false); W->SetTrigger(true); Next(39); } break;
+    case 39: if (W->GetTotalShotsFired()>Shots)
+    { W->SetTrigger(false); W->BeginReload(); Next(40); } break;
+    case 40: if (W->IsReloading() && W->GetOperationElapsed()>.55f)
+    {
         Ammo=W->GetAmmo(); Reserve=W->GetReserveAmmo(); Shots=W->GetTotalShotsFired(); PausedOperation=W->GetOperationElapsed();
         Player->ReleaseHeldInputs(); UGameplayStatics::SetGamePaused(this,true); Next(36);
         W->BeginReload(); W->SetTrigger(true); Player->SetSprintHeld(true);
@@ -277,7 +289,7 @@ void AONE03WeaponCheck::Tick(float Dt)
     } break;
     case 37: if (!W->IsBusy() && W->GetAmmo()==24)
     {
-        Check(W->GetReserveAmmo()==Reserve-24 && W->GetTotalShotsFired()==Shots,TEXT("Resume completes the legitimate reload with no buffered pause shot"));
+        Check(W->GetReserveAmmo()==Reserve-(24-Ammo) && W->GetTotalShotsFired()==Shots && W->ShouldShowSeatedMagazine(),TEXT("Resume completes the legitimate reload with no buffered pause shot"));
         Prepare(1); Next(50);
     } break;
     case 50: if (!W->IsBusy() && W->GetEquippedIndex()==1)

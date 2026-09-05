@@ -272,6 +272,9 @@ void AONE03CaseCheck::Tick(float Dt)
     case 31:
         // This artificial TTL extension isolates eviction. Every emission and
         // reload still uses the real weapon, cadence, ammo and motion code.
+        // Candidate05 discards the old hold when a reload starts. This case
+        // budget fixture deliberately begins a fresh burst once ready again.
+        if (W->CanFire() && !W->IsAutomaticBurstActive()) { W->SetTrigger(false); W->SetTrigger(true); }
         for (TActorIterator<AONEWeaponCase> It(GetWorld());It;++It) if (IsValid(*It) && !ExtendedCaseShots.Contains(It->GetSourceShotId()))
         {
             if (ExtendedCaseShots.IsEmpty()) FirstBudgetCase=*It;

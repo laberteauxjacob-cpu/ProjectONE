@@ -15,11 +15,13 @@ public:
     virtual void BeginPlay() override;
     virtual void TickComponent(float Dt,ELevelTick Tick,FActorComponentTickFunction* ThisTick) override;
     void SetTrigger(bool Held);
-    void ClearHeldInput() { bTrigger=false; bPendingShot=false; }
+    void ClearHeldInput();
     void BeginReload();
     void CancelReload();
     void InterruptReloadForSprint();
     bool CanAutoReload() const;
+    bool IsMagazineReloadCommitted() const { return Operation==EONEWeaponOperation::MagazineReload; }
+    bool CanChangeInventory() const { return !IsMagazineReloadCommitted(); }
     void CancelAllOperations();
     bool SelectWeapon(int32 Index);
     void CycleWeapon();
@@ -66,6 +68,20 @@ public:
     float GetTimeSinceEmpty() const;
     float GetTimeSinceHit() const;
     bool WasLastHitKill() const { return bLastHitKill; }
+    EONEWeaponHitOutcome GetLastShotOutcome() const { return LastShotOutcome; }
+    int32 GetLastShotLiveHitCount() const { return LastShotLiveHits; }
+    int32 GetLastShotNewKillCount() const { return LastShotNewKills; }
+    int32 GetLastShotCorpseHitCount() const { return LastShotCorpseHits; }
+    int32 GetLastShotRejectedCount() const { return LastShotRejected; }
+    int32 GetAcceptedTriggerPressCount() const { return AcceptedTriggerPresses; }
+    int32 GetRejectedTriggerPressCount() const { return RejectedTriggerPresses; }
+    int32 GetTriggerReleaseCount() const { return TriggerReleases; }
+    int32 GetDryFireCount() const { return DryFires; }
+    int32 GetShellInterruptCount() const { return ShellInterrupts; }
+    EONEWeaponInputResult GetLastInputResult() const { return LastInputResult; }
+    uint64 GetLastAcceptedInputFrame() const { return AcceptedPressFrame; }
+    bool IsAutomaticBurstActive() const { return bAutomaticBurst; }
+    bool HasAcceptedFramePress() const { return bAcceptedFramePress; }
     void AddReserveAmmo(int32 Count);
     void GrantRoundAmmo();
     int32 GetTotalShotsFired() const { return ShotsFired; }
@@ -77,6 +93,10 @@ public:
     uint64 GetLastShotId() const { return LastShotId; }
     int32 GetLastShotVictimCount() const { return LastShotVictimCount; }
     FVector GetLastShotMuzzle() const { return LastShotMuzzle; }
+    FVector GetLastShotDirection() const { return LastShotDirection; }
+    int32 GetLastShotForwardTracerCount() const { return LastShotForwardTracers; }
+    int32 GetLastShotContactPelletCount() const { return LastShotContactPellets; }
+    bool WasLastShotMuzzleObstructed() const { return bLastShotMuzzleObstructed; }
     uint32 GetLastShotPoseFrame() const { return LastShotPoseFrame; }
     uint32 GetLastShotPoseRevision() const { return LastShotPoseRevision; }
     uint64 GetLastShotFrame() const { return LastShotFrame; }
@@ -103,16 +123,20 @@ public:
     UPROPERTY(EditAnywhere,EditFixedSize,Category="Weapons") TArray<FONEWeaponDefinition> WeaponDefinitions;
     UPROPERTY(EditAnywhere,Category="Cases",meta=(ClampMin="1",ClampMax="64")) int32 MaximumCases=32;
     UPROPERTY(EditAnywhere,Category="Cases",meta=(ClampMin="1",ClampMax="15")) float CaseLifetime=6.f;
+    UPROPERTY(EditAnywhere,Category="Audio",meta=(ClampMin="1",ClampMax="16")) int32 MaximumShotVoices=8;
     UPROPERTY(EditAnywhere,Category="Magazines",meta=(ClampMin="1",ClampMax="32")) int32 MaximumMagazines=12;
     UPROPERTY(EditAnywhere,Category="Magazines",meta=(ClampMin="1",ClampMax="20")) float MagazineLifetime=8.f;
     // Candidate01 read-compatible mirrors. Edit the corresponding definition instead.
     UPROPERTY(VisibleAnywhere,Category="Current Weapon") int32 MagazineSize=24;
-    UPROPERTY(VisibleAnywhere,Category="Current Weapon") float FireInterval=.16f;
+    UPROPERTY(VisibleAnywhere,Category="Current Weapon") float FireInterval=.10f;
     UPROPERTY(VisibleAnywhere,Category="Current Weapon") float ReloadDuration=2.1f;
     UPROPERTY(VisibleAnywhere,Category="Current Weapon") float Damage=32.f;
     UPROPERTY(VisibleAnywhere,Category="Current Weapon") float Range=2800.f;
 private:
-    void Fire();
+    void Fire(bool bContinuingBurst=false);
+    void DisarmFiring();
+    void RejectTrigger(EONEWeaponInputResult Reason);
+    void TraceInput(const TCHAR* Event) const;
     void EjectCase(int32 Index);
     void DropMagazine(int32 Index);
     bool IsSlotAvailable(int32 Slot) const;
@@ -147,7 +171,15 @@ private:
     uint32 LastShotPoseFrame=0,LastShotPoseRevision=0;
     int32 LastShotSoundIndex=INDEX_NONE;
     int32 LastShotVictimCount=0;
-    FVector LastShotMuzzle=FVector::ZeroVector;
-    bool bTrigger=false,bPendingShot=false,bLastHitKill=false;
+    FVector LastShotMuzzle=FVector::ZeroVector,LastShotDirection=FVector::ForwardVector;
+    bool bTrigger=false,bAcceptedFramePress=false,bAutomaticBurst=false,bRequireTriggerRelease=false,bLastHitKill=false;
+    bool bLastShotMuzzleObstructed=false;
+    uint64 AcceptedPressFrame=0,AcceptedPressInstance=0,AcceptedDispatchFrame=0;
+    uint64 LastWeaponTickFrame=MAX_uint64;
+    double NextAutomaticShotTime=-100.;
+    int32 AcceptedTriggerPresses=0,RejectedTriggerPresses=0,TriggerReleases=0,DryFires=0,ShellInterrupts=0;
+    int32 LastShotLiveHits=0,LastShotNewKills=0,LastShotCorpseHits=0,LastShotRejected=0,LastShotForwardTracers=0,LastShotContactPellets=0;
+    EONEWeaponInputResult LastInputResult=EONEWeaponInputResult::None;
+    EONEWeaponHitOutcome LastShotOutcome=EONEWeaponHitOutcome::Rejected;
     float OperationStart=0,LastShot=-100,LastEmpty=-100,LastHit=-100;
 };

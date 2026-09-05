@@ -1,5 +1,7 @@
 #include "ONEZombie.h"
 #include "ONEHealthComponent.h"
+#include "ONEZombieAudioComponent.h"
+#include "ONE05AttackMotion.h"
 #include "ONEPlayer.h"
 #include "ONEAnimInstance.h"
 #include "ONESnapshotAnimInstance.h"
@@ -60,6 +62,7 @@ AONEZombie::AONEZombie()
     PrimaryActorTick.bCanEverTick=true;
     Tags.Add(TEXT("Infected"));
     Health=CreateDefaultSubobject<UONEHealthComponent>(TEXT("Health"));
+    ZombieAudio=CreateDefaultSubobject<UONEZombieAudioComponent>(TEXT("ZombieAudio"));
     Health->MaxHealth=112;
     GetCapsuleComponent()->InitCapsuleSize(27,88);
     GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Visibility,ECR_Ignore);
@@ -184,6 +187,7 @@ void AONEZombie::BeginPlay()
             Region->SetRelativeLocation(Bind(Region->GetAttachSocketName()).InverseTransformVector(FVector(0,0,-10)));
     }
     GetMesh()->SetAnimInstanceClass(UONEAnimInstance::StaticClass());
+    GetMesh()->AddTickPrerequisiteActor(this);
     Target=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0));
     StateStart=GetWorld()->GetTimeSeconds();
     NextPath=StateStart+FMath::FRandRange(0,.35f);
@@ -191,7 +195,79 @@ void AONEZombie::BeginPlay()
 bool AONEZombie::IsDead() const { return State==EONEZombieState::Dead; }
 float AONEZombie::GetHealth() const { return Health->Health; }
 float AONEZombie::GetStateElapsed() const { return GetWorld()->GetTimeSeconds()-StateStart; }
-void AONEZombie::ChangeState(EONEZombieState Next) { State=Next; StateStart=GetWorld()->GetTimeSeconds(); bContactDelivered=false; }
+void AONEZombie::ChangeState(EONEZombieState Next)
+{
+    State=Next; StateStart=GetWorld()->GetTimeSeconds(); bContactDelivered=false;
+    GetCharacterMovement()->bOrientRotationToMovement=Next==EONEZombieState::Pursue;
+    if (Next!=EONEZombieState::Dead) GetCharacterMovement()->SetAvoidanceEnabled(Next==EONEZombieState::Pursue);
+    if (ZombieAudio) ZombieAudio->SetPursuing(Next==EONEZombieState::Pursue && IsValid(Target) && !Target->IsDead());
+}
+float AONEZombie::GetMinorReactionAge() const { return GetWorld() ? GetWorld()->GetTimeSeconds()-MinorReactionStart : BIG_NUMBER; }
+float AONEZombie::GetCurrentAttackContactTime() const { return ONE05AttackMotion::Profile(AttackFamily).Contact*(AttackContactTime/.48f); }
+float AONEZombie::GetCurrentAttackDuration() const { return ONE05AttackMotion::Profile(AttackFamily).Duration*AttackDuration; }
+bool AONEZombie::RequiredAttackArmsPresent() const { return ONE05AttackMotion::ArmsAvailable(RequiredAttackArms,HasLeftArm(),HasRightArm()); }
+FName AONEZombie::GetAttackClipKey() const
+{
+    if (AttackFamily==2) return TEXT("C05_TwoHand");
+    if (AttackFamily==1) return RequiredAttackArms==1 ? TEXT("C05_RakeLeft") : TEXT("C05_RakeRight");
+    return RequiredAttackArms==1 ? TEXT("C05_SwipeLeft") : TEXT("C05_SwipeRight");
+}
+bool AONEZombie::TryStartAttack(AONEPlayer* Victim,int32 PreferredFamily)
+{
+    if (!IsValid(Victim) || Victim->IsDead() || IsDead() || State!=EONEZombieState::Pursue ||
+        GetWorld()->GetTimeSeconds()<NextAttack || (!HasLeftArm() && !HasRightArm()) ||
+        FVector::DistSquared2D(GetActorLocation(),Victim->GetActorLocation())>FMath::Square(AttackRange)) return false;
+    Target=Victim;
+    const int32 Proposed=PreferredFamily==INDEX_NONE ? AttackSerial%3 : FMath::Clamp(PreferredFamily,0,2);
+    AttackFamily=Proposed==2 && !(HasLeftArm() && HasRightArm()) ? AttackSerial%2 : Proposed;
+    RequiredAttackArms=AttackFamily==2 ? 3 : (HasLeftArm() && (!HasRightArm() || AttackSerial%2==0) ? 1 : 2);
+    ++AttackSerial;
+    AttackHeading=(Victim->GetActorLocation()-GetActorLocation()).GetSafeNormal2D(SMALL_NUMBER,GetActorForwardVector());
+    AttackStartPosition=GetActorLocation();
+    // Release path following, then let CharacterMovement sweep the short authored step.
+    // No target-distance warp and no rotation updates after this commitment.
+    if (auto* AI=Cast<AAIController>(GetController())) AI->StopMovement();
+    GetCharacterMovement()->ConsumeInputVector();
+    GetCharacterMovement()->Velocity=AttackHeading*ONE05AttackMotion::StepSpeed(AttackFamily,0.f);
+    SetActorRotation(AttackHeading.Rotation());
+    ChangeState(EONEZombieState::Attack);
+    if (ZombieAudio) ZombieAudio->NotifyAttack(AttackFamily);
+    return true;
+}
+void AONEZombie::TickAttack(float Dt)
+{
+    const float Age=GetStateElapsed();
+    const auto Profile=ONE05AttackMotion::Profile(AttackFamily);
+    const bool Arms=RequiredAttackArmsPresent();
+    SetActorRotation(AttackHeading.Rotation());
+    const float Travel=FMath::Max(0.f,float(FVector::DotProduct(GetActorLocation()-AttackStartPosition,AttackHeading)));
+    const float Speed=Arms ? FMath::Min(ONE05AttackMotion::StepSpeed(AttackFamily,Age),FMath::Max(0.f,Profile.StepDistance-Travel)/FMath::Max(Dt,.001f)) : 0.f;
+    auto* Movement=GetCharacterMovement();
+    Movement->ConsumeInputVector();
+    Movement->MaxWalkSpeed=Speed;
+    Movement->Velocity=FVector(AttackHeading.X*Speed,AttackHeading.Y*Speed,Movement->Velocity.Z);
+    // Active input avoids applying walking brake deceleration to the authored
+    // speed on the movement tick. The capsule still performs its normal sweep.
+    if (Speed>0.f) Movement->AddInputVector(AttackHeading);
+    if (!bContactDelivered && (!Arms || Age>=GetCurrentAttackContactTime()))
+    {
+        bContactDelivered=true;
+        if (Arms)
+        {
+            ++AttackContactAttempts;
+            FHitResult Cover;
+            FCollisionQueryParams Params(SCENE_QUERY_STAT(InfectedContact),false,this);
+            Params.AddIgnoredActor(Target);
+            const bool Blocked=GetWorld()->SweepSingleByObjectType(Cover,GetActorLocation()+FVector(0,0,20),
+                Target->GetActorLocation()+FVector(0,0,20),FQuat::Identity,FCollisionObjectQueryParams(ECC_WorldStatic),
+                FCollisionShape::MakeSphere(7.f),Params);
+            if (!Blocked && ONE05AttackMotion::ContactGeometry(GetActorLocation(),AttackHeading,Target->GetActorLocation(),AttackRange+8.f))
+            { ++AttackDamageDispatches; Target->ReceiveAttack(AttackDamage,GetActorLocation()); }
+        }
+    }
+    if (Age>=GetCurrentAttackDuration())
+    { Movement->StopMovementImmediately(); ChangeState(EONEZombieState::Pursue); NextAttack=GetWorld()->GetTimeSeconds()+.3f; NextPath=0; }
+}
 void AONEZombie::StopPursuit()
 {
     if (auto* AI=Cast<AAIController>(GetController())) AI->StopMovement();
@@ -202,7 +278,7 @@ void AONEZombie::Tick(float Dt)
     Super::Tick(Dt);
     if (IsDead()) return;
     if (!IsValid(Target)) Target=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0));
-    if (!Target || Target->IsDead()) { StopPursuit(); return; }
+    if (!Target || Target->IsDead()) { StopPursuit(); if (ZombieAudio) ZombieAudio->SetPursuing(false); return; }
     const float Now=GetWorld()->GetTimeSeconds();
     const float Distance=FVector::Dist2D(GetActorLocation(),Target->GetActorLocation());
     if (State==EONEZombieState::Hit)
@@ -210,30 +286,9 @@ void AONEZombie::Tick(float Dt)
         if (GetStateElapsed()>=(bHeavyReaction ? .52f : .4f)) ChangeState(EONEZombieState::Pursue);
         else return;
     }
-    if (State==EONEZombieState::Attack)
-    {
-        // One shared state clock drives both the authored clip and its contact event.
-        // Leaving Attack (including a hit or death) cancels pending contact immediately.
-        if (!bContactDelivered && GetStateElapsed()>=AttackContactTime)
-        {
-            bContactDelivered=true;
-            const FVector ToTarget=(Target->GetActorLocation()-GetActorLocation()).GetSafeNormal2D();
-            FHitResult Cover;
-            FCollisionQueryParams Params(SCENE_QUERY_STAT(InfectedContact),false,this);
-            Params.AddIgnoredActor(Target);
-            const bool bCover=GetWorld()->LineTraceSingleByObjectType(Cover,GetActorLocation()+FVector(0,0,20),Target->GetActorLocation()+FVector(0,0,20),FCollisionObjectQueryParams(ECC_WorldStatic),Params);
-            if ((HasLeftArm() || HasRightArm()) && Distance<=AttackRange+8 && FVector::DotProduct(ToTarget,GetActorForwardVector())>.35f && !bCover) Target->ReceiveAttack(AttackDamage,GetActorLocation());
-        }
-        if (GetStateElapsed()>=AttackDuration) { ChangeState(EONEZombieState::Pursue); NextAttack=Now+.3f; }
-        return;
-    }
-    if (Distance<=AttackRange && Now>=NextAttack)
-    {
-        StopPursuit();
-        FVector Look=Target->GetActorLocation()-GetActorLocation(); Look.Z=0;
-        SetActorRotation(Look.Rotation());
-        ChangeState(EONEZombieState::Attack); return;
-    }
+    if (State==EONEZombieState::Attack) { TickAttack(Dt); return; }
+    if (Distance<=AttackRange && Now>=NextAttack && TryStartAttack(Target)) return;
+    if (ZombieAudio) ZombieAudio->SetPursuing(true);
     GetCharacterMovement()->MaxWalkSpeed=Distance>550 ? ShambleSpeed : PursuitSpeed;
     if (Now>=NextPath)
     {
@@ -310,9 +365,11 @@ EONEHitRegion AONEZombie::GetHitRegion(const FHitResult& Hit) const
     return IsRegionPresent(Region) ? Region : EONEHitRegion::Invalid;
 }
 bool AONEZombie::ReceiveWeaponDamage(const FONEWeaponDamagePacket& Packet)
+{ return ReceiveWeaponDamageOutcome(Packet)!=EONEWeaponHitOutcome::Rejected; }
+EONEWeaponHitOutcome AONEZombie::ReceiveWeaponDamageOutcome(const FONEWeaponDamagePacket& Packet)
 {
     CSV_SCOPED_TIMING_STAT(ONEPhysicality,RegionalDamage);
-    if (Packet.ShotId && RecentShotIds.Contains(Packet.ShotId)) return false;
+    if (Packet.ShotId && RecentShotIds.Contains(Packet.ShotId)) return EONEWeaponHitOutcome::Rejected;
     FONEWeaponRegionDamage Accepted[FONEWeaponDamagePacket::RegionCount];
     bool SeverRegion[FONEWeaponDamagePacket::RegionCount]={};
     float Total=0,HealthDamage=0,Largest=0;
@@ -332,7 +389,7 @@ bool AONEZombie::ReceiveWeaponDamage(const FONEWeaponDamagePacket& Packet)
         HealthDamage+=Out.Damage*((Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight) ? .4f : 1.f);
         if (Out.Damage>Largest) { Largest=Out.Damage; Strongest=I; }
     }
-    if (Total<=0) return false;
+    if (Total<=0) return EONEWeaponHitOutcome::Rejected;
     if (Packet.ShotId)
     {
         if (RecentShotIds.Num()>=32) RecentShotIds.RemoveAt(0);
@@ -371,22 +428,28 @@ bool AONEZombie::ReceiveWeaponDamage(const FONEWeaponDamagePacket& Packet)
             GetMesh()->AddImpulseAtLocation(RegionDamage.Direction*FMath::Clamp(RegionDamage.Damage*4.f,100.f,500.f),
                 GetMesh()->GetSocketLocation(RegionDamage.Bone),RegionDamage.Bone);
     }
-    if (WasDead) return true;
+    if (WasDead) return EONEWeaponHitOutcome::CorpseHit;
     const bool FatalLoss=!HasHead() || !HasLeftLeg() || (!HasLeftArm() && !HasRightArm());
     Health->ApplyDamage(FatalLoss ? FMath::Max(Health->MaxHealth,Health->Health) : HealthDamage);
     if (Health->IsDead())
     {
         Die(Main.Direction,EONEHitRegion(Strongest),Main.Bone,Main.Position,FMath::Clamp(Total*4.f,150.f,550.f));
-        return true;
+        return EONEWeaponHitOutcome::NewKill;
     }
     const float Now=GetWorld()->GetTimeSeconds();
-    if (Now-LastReaction>=HitReactCooldown)
+    const bool Heavy=FMath::IsFinite(Packet.HeavyStaggerThreshold) && Total>=FMath::Max(0.f,Packet.HeavyStaggerThreshold);
+    if (ZombieAudio) ZombieAudio->NotifyHit(Heavy);
+    if (Now-MinorReactionStart>=MinorReactionInterval)
     {
-        bHeavyReaction=FMath::IsFinite(Packet.HeavyStaggerThreshold) && Total>=FMath::Max(0.f,Packet.HeavyStaggerThreshold);
-        LastReaction=Now; StopPursuit(); ChangeState(EONEZombieState::Hit);
-        NextAttack=Now+(bHeavyReaction ? .52f : .4f);
+        MinorReactionStart=Now; MinorReactionDirection=Main.Direction;
+        MinorReactionStrength=FMath::Clamp(Total/32.f,.25f,1.f);
     }
-    return true;
+    if (Heavy && Now-LastReaction>=HitReactCooldown)
+    {
+        bHeavyReaction=true; LastReaction=Now; StopPursuit(); ChangeState(EONEZombieState::Hit);
+        NextAttack=FMath::Max(NextAttack,Now+.52f);
+    }
+    return EONEWeaponHitOutcome::LiveHit;
 }
 void AONEZombie::GetCutWorld(EONEHitRegion Region,FVector& Point,FVector& Normal) const
 {
@@ -457,6 +520,7 @@ void AONEZombie::Sever(EONEHitRegion Region,const FVector& Direction)
 void AONEZombie::Die(const FVector& Direction,EONEHitRegion ImpactRegion,FName ImpactBone,const FVector& ImpactPosition,float Impulse)
 {
     if (IsDead()) return;
+    if (ZombieAudio) ZombieAudio->NotifyDeath();
     const FVector Inherited=GetVelocity();
     if (GetMesh()->GetSkeletalMeshAsset())
         if (auto* Anim=Cast<UONEAnimInstance>(GetMesh()->GetAnimInstance())) GetMesh()->SnapshotPose(Anim->CapturedDeathPose);
@@ -507,6 +571,7 @@ int32 AONEZombie::GetRegionPhysicsBodyCount(EONEHitRegion Region) const
 }
 void AONEZombie::EndPlay(const EEndPlayReason::Type Reason)
 {
+    if (ZombieAudio) ZombieAudio->Shutdown();
     if (GetWorld()) GetWorld()->GetTimerManager().ClearTimer(RestTimer);
     if (GetWorld()) if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->RemoveSourcesForActor(this);
     Super::EndPlay(Reason);

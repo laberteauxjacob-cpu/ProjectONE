@@ -179,3 +179,39 @@ unrecognised private fields. Source and import reports retain portable paths;
 private original metadata, logs and rebuildable output remain under ignored
 `Saved` directories. Project Zero remains excluded. No paid service, new broad
 license or third-party asset pack was introduced.
+
+## Candidate05 presentation and combat sources
+
+Candidate05 retains the accepted arena, character geometry/rigs, six weapon
+definitions and two physical machines. New character work consists of 25 clips
+and two editable Blender motion sources in `ArtSource/Characters/C05`, with
+exports in `ArtSource/Exports/Candidate05`. The source inventory binds every
+export hash, duration, skeleton and authored movement speed. A targeted importer
+adds these clips without replacing the accepted fallback animations or rig.
+
+`ArtSource/UI/Candidate05` contains original glyph and numeral SVG/PNG atlases,
+a panel mask, six weapon images and an editable render studio. Every weapon
+image uses the actual assembled Candidate04 model. No installed typeface was
+copied. The source generator explicitly draws all 95 printable ASCII glyphs.
+Metadata sanitation preserves image pixels and Blender scene data outside the
+recognized metadata fields.
+
+`ArtSource/Audio/Candidate05` contains 48 original mono PCM sound sources:
+facility ambience, infected breathing/pursuit/attack/hit/death, and six variants
+for each upgraded firearm. Each upgrade retains its physical firearm attack
+and adds an independently authored energy layer. Sources, seeds, hashes and
+waveform measurements are inventoried. No external recordings, paid pack or
+Project Zero material was used. Measurement and regeneration are separate from
+perceptual listening and in-engine mix review.
+
+The read-only `Scripts/verify_candidate05_assets.py` checks the six native
+catalog rows and their real references, all 82 new imported source identities,
+durations/settings, skeletons, and the existing aura material. Repeated
+serialized import records must agree, their MD5 must match the original source,
+and relative paths must resolve within this repository. The initial verifier's
+single-record assumption was corrected after the real packages exposed the
+registry-tag and export copies; no imported content was rewritten for that fix.
+
+Held weapon auras and hit/menu animation are native presentation code. Their
+captured appearance and gameplay behavior require the separate Candidate05
+runtime review. No new broad license or paid service was added.

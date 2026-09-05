@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "ONEUITypes.h"
 #include "ONEPlayerController.generated.h"
 UCLASS()
 class PROJECTONE_API AONEPlayerController : public APlayerController
@@ -14,8 +15,14 @@ public:
     virtual void SetupInputComponent() override;
     virtual void FlushPressedKeys() override;
     virtual bool InputKey(const FInputKeyEventArgs& Params) override;
+    virtual void PlayerTick(float DeltaTime) override;
+    void ExecuteUIAction(EONEUIAction Action);
+    void GuardGameplayInput();
 private:
     bool bTraceInput=false;
+    bool bRawLeftHeld=false,bSuppressPointerUntilRelease=false;
+    void ToggleTools();
+    void RefreshPointerStyle();
     void TogglePause();
     void Restart();
     void QuitFromPause();

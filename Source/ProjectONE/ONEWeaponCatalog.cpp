@@ -25,6 +25,7 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
     TArray<FONEWeaponDefinition> WeaponDefinitions;
     FONEWeaponDefinition Carbine;
     Carbine.Id=TEXT("AR01"); Carbine.Family=EONEWeaponFamily::Carbine; Carbine.DisplayName=FText::FromString(TEXT("M4A1"));
+    Carbine.FireInterval=.100f;
     Carbine.Mesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/Candidate04/"),TEXT("SM_M4A1_Body"));
     Carbine.MagazineMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/Candidate04/"),TEXT("SM_M4A1_Magazine"));
     Carbine.Muzzle=FVector(54.5f,0,14);
@@ -37,13 +38,14 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
     Carbine.ConcreteSounds={Sound(TEXT("S_ConcreteImpact_01")),Sound(TEXT("S_ConcreteImpact_02"))};
     Carbine.MetalSounds={Sound(TEXT("S_MetalImpact_01")),Sound(TEXT("S_MetalImpact_02"))};
     AddOperation(Carbine,EONEWeaponOperation::Equip,.36f,TEXT("A_Response_Equip"),{Event(.18f,EONEWeaponEvent::WeaponSwap,TEXT("S_WeaponEquip"))});
-    AddOperation(Carbine,EONEWeaponOperation::Fire,.2f,TEXT("A_Response_Fire"),{Event(0.f,EONEWeaponEvent::ShellEject,nullptr)});
+    AddOperation(Carbine,EONEWeaponOperation::Fire,.100f,TEXT("A_Response_Fire"),{Event(0.f,EONEWeaponEvent::ShellEject,nullptr)});
     AddOperation(Carbine,EONEWeaponOperation::MagazineReload,2.1f,TEXT("Candidate04/A_Response_C04_CarbineReload"),{
         Event(.4f,EONEWeaponEvent::MagazineOut,TEXT("S_CarbineMagOut")),Event(1.2f,EONEWeaponEvent::MagazineCommit,TEXT("S_CarbineMagIn")),Event(1.74f,EONEWeaponEvent::Sound,TEXT("S_CarbineBolt"))});
     WeaponDefinitions.Add(Carbine);
     FONEWeaponDefinition Shotgun=Carbine;
     Shotgun.Id=TEXT("SG01"); Shotgun.Family=EONEWeaponFamily::Shotgun; Shotgun.DisplayName=FText::FromString(TEXT("Remington 870"));
     Shotgun.bAutomatic=false; Shotgun.bShellReload=true; Shotgun.bPumpAction=true;
+    Shotgun.ShotVolume=.82f;
     Shotgun.Capacity=6; Shotgun.InitialReserve=36; Shotgun.ReserveLimit=60;
     Shotgun.RoundReserveReward=8;
     Shotgun.Pellets=8; Shotgun.Damage=15.f; Shotgun.FireInterval=.78f; Shotgun.SpreadDegrees=4.f;
@@ -110,7 +112,7 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
         const TCHAR* MeshPrefix=I==0 ? TEXT("SM_Overcurrent") : I==1 ? TEXT("SM_Gravebreaker") : TEXT("SM_LastWord");
         D.DisplayName=FText::FromString(Name);
         D.AuraColor=I==0 ? FLinearColor(.05f,.85f,1.f) : I==1 ? FLinearColor(1.f,.24f,.035f) : FLinearColor(.60f,.12f,1.f);
-        D.TraceColor=D.AuraColor; D.FlashLightColor=FMath::Lerp(D.AuraColor,FLinearColor::White,.48f);
+        D.TraceColor=D.AuraColor; D.FlashLightColor=FMath::Lerp(D.AuraColor,FLinearColor::White,.12f);
         D.Mesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/Candidate04/"),FString(MeshPrefix)+TEXT("_Body"));
         if (I==1) D.ForeEndMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/Candidate04/"),FString(MeshPrefix)+TEXT("_ForeEnd"));
         else D.MagazineMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/Candidate04/"),FString(MeshPrefix)+TEXT("_Magazine"));
@@ -124,7 +126,7 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
         { O.Duration/=1.15f; for (auto& E:O.Events) E.Time/=1.15f; }
         D.ShotSounds.Reset();
         const TCHAR* SoundPrefix=I==0 ? TEXT("Overcurrent") : I==1 ? TEXT("Gravebreaker") : TEXT("LastWord");
-        for (int32 N=1;N<=6;++N) D.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/Candidate04/"),FString::Printf(TEXT("S_C04_%sShot_%02d"),SoundPrefix,N)));
+        for (int32 N=1;N<=6;++N) D.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Candidate05/"),FString::Printf(TEXT("S_%sShot_%02d"),SoundPrefix,N)));
         WeaponDefinitions.Add(D);
     }
     return WeaponDefinitions;

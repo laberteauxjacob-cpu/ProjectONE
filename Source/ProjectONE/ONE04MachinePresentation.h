@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
+#include "ONEWeaponTypes.h"
 #include "ONE04MachinePresentation.generated.h"
 
 class UStaticMeshComponent;
@@ -42,6 +43,7 @@ public:
     float GetTransferStartErrorCm() const { return TransferStartErrorCm; }
     float GetRetrievalStartErrorCm() const { return RetrievalStartErrorCm; }
     int32 GetCycleCueCount() const { return CycleCueCount; }
+    EONEWeaponFamily GetPreviewFamily() const { return PreviewFamily; }
     virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 private:
     UStaticMeshComponent* MakePart(const TCHAR* Name, const TCHAR* AssetName, const FVector& Location=FVector::ZeroVector);
@@ -81,4 +83,5 @@ private:
     double TransferStartTime=0, RetrievalStartTime=0;
     FTransform TransferStart=FTransform::Identity, RetrievalStart=FTransform::Identity, RetrievalTarget=FTransform::Identity;
     FLinearColor PreviewAura=FLinearColor::Transparent;
+    EONEWeaponFamily PreviewFamily=EONEWeaponFamily::Invalid;
 };

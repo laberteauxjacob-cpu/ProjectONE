@@ -1,0 +1,103 @@
+{
+  "candidate": "05",
+  "status": "PASS",
+  "checkpoint": "During Candidate05 implementation, before final Candidate05 publication. This is not final post-publication preservation verification.",
+  "verified_utc": "2026-09-05T21:15:48.225989+00:00",
+  "method": "Read-only SHA256/size checks of the six preserved Candidate04 payloads; local git rev-parse and explicit public git ls-remote for baseline refs. No asset downloads or ref mutations.",
+  "files": [
+    {
+      "path": "Packaged/Candidate04/Windows/ProjectONE.exe",
+      "expected_bytes": 164864,
+      "actual_bytes": 164864,
+      "expected_sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+      "actual_sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+      "unchanged": true
+    },
+    {
+      "path": "Packaged/Candidate04/Windows/ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "expected_bytes": 292024832,
+      "actual_bytes": 292024832,
+      "expected_sha256": "6da13b06b2428e817a43ad78a5136967313fbccfbab8b509094134544907038e",
+      "actual_sha256": "6da13b06b2428e817a43ad78a5136967313fbccfbab8b509094134544907038e",
+      "unchanged": true
+    },
+    {
+      "path": "Packaged/Candidate04/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "expected_bytes": 10724873,
+      "actual_bytes": 10724873,
+      "expected_sha256": "6c930025402f035da1b11d9e422cbf8a50c1d3c030214ec897ec4164254b7181",
+      "actual_sha256": "6c930025402f035da1b11d9e422cbf8a50c1d3c030214ec897ec4164254b7181",
+      "unchanged": true
+    },
+    {
+      "path": "Packaged/Candidate04/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "expected_bytes": 219283440,
+      "actual_bytes": 219283440,
+      "expected_sha256": "c0bfd0205456d7dae91860c33869eb06fe65c40283093aca68f4acd98383a107",
+      "actual_sha256": "c0bfd0205456d7dae91860c33869eb06fe65c40283093aca68f4acd98383a107",
+      "unchanged": true
+    },
+    {
+      "path": "Packaged/Candidate04/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "expected_bytes": 223633,
+      "actual_bytes": 223633,
+      "expected_sha256": "66ecd5d2e0659baa6c79f6c4f113f2193de698168a053de3a4dedb600e338785",
+      "actual_sha256": "66ecd5d2e0659baa6c79f6c4f113f2193de698168a053de3a4dedb600e338785",
+      "unchanged": true
+    },
+    {
+      "path": "Releases/ProjectONE-Candidate04-Windows.zip",
+      "expected_bytes": 407635789,
+      "actual_bytes": 407635789,
+      "expected_sha256": "1ad1a3258f16fccf12451fff829aa9124321491a457232b88efa871826ba783c",
+      "actual_sha256": "1ad1a3258f16fccf12451fff829aa9124321491a457232b88efa871826ba783c",
+      "unchanged": true
+    }
+  ],
+  "candidate01_through04_tags": [
+    {
+      "tag": "candidate01",
+      "annotated_object": "0a37781dc39461c846dac55f33cac7d3334b3ea0",
+      "peeled_commit": "02c590a75141b48564715d130018f0cbe9a8a092",
+      "matches_baseline_and_public": true
+    },
+    {
+      "tag": "candidate02",
+      "annotated_object": "869c3a139be372804efd6b0bfeb3175528888704",
+      "peeled_commit": "aa4d55d04bf375bbef41362af77eec10d9ea224f",
+      "matches_baseline_and_public": true
+    },
+    {
+      "tag": "candidate03",
+      "annotated_object": "20c1be9b3cf7c659789e731f759f23f4b91ec434",
+      "peeled_commit": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a",
+      "matches_baseline_and_public": true
+    },
+    {
+      "tag": "candidate04",
+      "annotated_object": "7691030eadbe2c6f4bc41f2b9d84f30f774d7c6d",
+      "peeled_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_baseline_and_public": true
+    }
+  ],
+  "public_refs": {
+    "refs/heads/codex/candidate04": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+    "refs/heads/main": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+    "refs/tags/candidate01": "0a37781dc39461c846dac55f33cac7d3334b3ea0",
+    "refs/tags/candidate01^{}": "02c590a75141b48564715d130018f0cbe9a8a092",
+    "refs/tags/candidate02": "869c3a139be372804efd6b0bfeb3175528888704",
+    "refs/tags/candidate02^{}": "aa4d55d04bf375bbef41362af77eec10d9ea224f",
+    "refs/tags/candidate03": "20c1be9b3cf7c659789e731f759f23f4b91ec434",
+    "refs/tags/candidate03^{}": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a",
+    "refs/tags/candidate04": "7691030eadbe2c6f4bc41f2b9d84f30f774d7c6d",
+    "refs/tags/candidate04^{}": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d"
+  },
+  "expected_public_main": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+  "baseline_records_unchanged": true,
+  "baseline_record_sha256": {
+    "preserved_candidate04.json": "e56c9b4e12a861dc8f6292bdb35202558c0c7a7e44b8aff0e91c421afb16e8e2",
+    "public_refs.txt": "ecf1587dc399be6aaeeed0f197d7e9f922e9376232c67f1fc0d682e248a35089"
+  },
+  "working_branch": "codex/candidate05",
+  "local_head_at_check": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d"
+}

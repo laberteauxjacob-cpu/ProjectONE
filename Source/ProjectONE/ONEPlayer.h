@@ -32,6 +32,11 @@ public:
     UONEWeaponComponent* GetWeaponComponent() const { return Weapon; }
     UONEInteractionComponent* GetInteractionComponent() const { return Interaction; }
     FVector GetAimPoint() const { return AimPoint; }
+    FVector GetAimOrigin() const { return GetActorLocation()+FVector(0,0,42); }
+    FVector GetIntendedAimDirection() const { return IntendedAimDirection; }
+    FVector GetShotDirection(const FVector& EvaluatedMuzzle) const;
+    float GetDamageReactionAge() const;
+    FVector GetDamageReactionDirection() const { return DamageReactionDirection; }
     FVector GetMuzzleLocation() const;
     void FlashMuzzle();
     void ClearMuzzleFlash();
@@ -39,6 +44,9 @@ public:
     float GetMuzzleFlashIntensity() const;
     FTransform GetMuzzleFlashTransform() const;
     void ClearWeaponEffects();
+    bool IsHeldAuraVisible() const;
+    float GetHeldAuraLightIntensity() const;
+    FLinearColor GetHeldAuraColor() const { return HeldAuraColor; }
     void ApplyWeaponPresentation(const FONEWeaponDefinition& Definition);
     void ClearEquippedPresentation();
     FTransform GetWeaponWorldTransform() const;
@@ -62,6 +70,9 @@ public:
     void SetAimOverride(bool Enabled,const FVector& Position) { bAimOverride=Enabled; OverrideAimPoint=Position; }
     UPROPERTY(EditAnywhere, Category="Movement") float WalkSpeed = 225.f;
     UPROPERTY(EditAnywhere, Category="Movement") float RunSpeed = 370.f;
+    UPROPERTY(EditAnywhere, Category="Aim") float AimCenterRadius=4.f;
+    UPROPERTY(EditAnywhere, Category="Aim") float AimConvergenceAhead=120.f;
+    UPROPERTY(EditAnywhere, Category="Aim") float AimMaximumPitch=35.f;
     UPROPERTY(EditAnywhere, Category="Animation") float AuthoredWalkSpeed = 225.f;
     UPROPERTY(EditAnywhere, Category="Animation") float AuthoredRunSpeed = 370.f;
     UPROPERTY(EditAnywhere, Category="Animation") float TurnTriggerAngle = 55.f;
@@ -80,6 +91,8 @@ public:
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Camera;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> MuzzleLight;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UProceduralMeshComponent> MuzzleFlashMesh;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UProceduralMeshComponent> HeldAuraMesh;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> HeldAuraLight;
     float LastDamageTime = -100.f;
 private:
     void MoveForward(float Value);
@@ -92,6 +105,9 @@ private:
     void CapturePivotFeet();
     void BuildMuzzleFlash();
     void UpdateMuzzleFlash(float DeltaSeconds);
+    void BuildHeldAura(const FONEWeaponDefinition& Definition);
+    void UpdateHeldAura();
+    FLinearColor HeldAuraColor=FLinearColor::Transparent;
     UPROPERTY(Transient) TObjectPtr<UMaterialInstanceDynamic> MuzzleFlashMaterial;
     UPROPERTY(Transient) TObjectPtr<UAnimSequence> MachineActionClip;
     UPROPERTY(Transient) TMap<FName,TObjectPtr<UAnimSequence>> MachineClips;
@@ -115,6 +131,8 @@ private:
     bool bAimOverride = false;
     FVector OverrideAimPoint=FVector::ZeroVector;
     FVector AimPoint = FVector::ZeroVector;
+    FVector IntendedAimDirection=FVector::ForwardVector;
+    FVector DamageReactionDirection=FVector::ZeroVector;
     float MuzzleTime = 0.f;
     float MuzzleDuration = .045f;
     float MuzzlePeakIntensity = 0.f;

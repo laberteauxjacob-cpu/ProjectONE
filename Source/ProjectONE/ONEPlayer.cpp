@@ -1,4 +1,5 @@
 #include "ONEPlayer.h"
+#include "ONEAim.h"
 #include "ONEHealthComponent.h"
 #include "ONEWeaponComponent.h"
 #include "ONEInteractionComponent.h"
@@ -92,6 +93,18 @@ AONEPlayer::AONEPlayer()
     MuzzleFlashMesh->SetCanEverAffectNavigation(false);
     MuzzleFlashMesh->SetCastShadow(false);
     MuzzleFlashMesh->SetVisibility(false);
+    HeldAuraMesh=CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("HeldUpgradeAura"));
+    HeldAuraMesh->SetupAttachment(Gun);
+    HeldAuraMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+    HeldAuraMesh->SetCanEverAffectNavigation(false);
+    HeldAuraMesh->SetCastShadow(false);
+    HeldAuraMesh->SetVisibility(false);
+    HeldAuraLight=CreateDefaultSubobject<UPointLightComponent>(TEXT("HeldUpgradeLight"));
+    HeldAuraLight->SetupAttachment(Gun);
+    HeldAuraLight->SetCastShadows(false);
+    HeldAuraLight->SetAttenuationRadius(95.f);
+    HeldAuraLight->SetIntensity(0.f);
+    HeldAuraLight->SetVisibility(false);
 }
 void AONEPlayer::BeginPlay()
 {
@@ -128,7 +141,8 @@ void AONEPlayer::BeginPlay()
                 MachineClips.Add(FName(*Key),Clip);
         }
     GetMesh()->SetAnimInstanceClass(UONEAnimInstance::StaticClass());
-    AimPoint = GetActorLocation() + GetActorForwardVector()*500;
+    IntendedAimDirection=GetActorForwardVector().GetSafeNormal2D();
+    AimPoint = GetAimOrigin() + IntendedAimDirection*500;
 }
 void AONEPlayer::SetupPlayerInputComponent(UInputComponent* Input)
 {
@@ -162,7 +176,8 @@ void AONEPlayer::SetSprintHeld(bool Held)
     const bool bStarted=Held && !bSprint;
     bSprint=Held;
     GetCharacterMovement()->MaxWalkSpeed=bSprint ? RunSpeed : WalkSpeed;
-    if (bStarted && Weapon) Weapon->InterruptReloadForSprint();
+    // Candidate05 commits magazine reloads. Sprint changes movement only;
+    // neither manual nor automatic reload waits for the Shift key to release.
     if (bTrace) UE_LOG(LogTemp,Display,TEXT("ONE03_SPRINT_RESULT held=%d started=%d operation=%d interrupts=%d ammo=%d reserve=%d"),
         bSprint,bStarted,Weapon ? int32(Weapon->GetOperation()) : -1,Weapon ? Weapon->GetSprintReloadInterruptCount() : -1,Weapon ? Weapon->GetAmmo() : -1,Weapon ? Weapon->GetReserveAmmo() : -1);
 }
@@ -280,6 +295,7 @@ void AONEPlayer::Tick(float Dt)
     Super::Tick(Dt);
     if (bMachineAction) MachineActionTime+=Dt;
     UpdateMuzzleFlash(Dt);
+    UpdateHeldAura();
     ForeEnd->SetRelativeLocation(FVector(-Weapon->GetDefinition().PumpTravel*Weapon->GetPumpFraction(),0,0));
     Slide->SetRelativeLocation(FVector(-Weapon->GetDefinition().SlideTravel*Weapon->GetSlideFraction(),0,0));
     LoadingShell->SetVisibility(!bSuppressCarried && !IsDead() && Weapon->ShouldShowLoadingShell());
@@ -296,21 +312,41 @@ void AONEPlayer::Tick(float Dt)
         {
             FHitResult Hit;
             FCollisionQueryParams Params(SCENE_QUERY_STAT(MouseAim),false,this);
-            if (GetWorld()->LineTraceSingleByChannel(Hit,Origin,Origin+Direction*10000,ECC_Visibility,Params) && Hit.GetActor() && Hit.GetActor()->ActorHasTag(TEXT("Infected"))) AimPoint = Hit.ImpactPoint;
+            if (GetWorld()->LineTraceSingleByChannel(Hit,Origin,Origin+Direction*10000,ECC_Visibility,Params) && Hit.GetActor() && Hit.GetActor()->ActorHasTag(TEXT("Infected")))
+            {
+                AimPoint=Hit.ImpactPoint;
+                // Pick inside the exact anatomical primitive under the cursor,
+                // along the same camera ray. A camera-facing entry surface is
+                // a grazing aim point from the muzzle's different viewpoint.
+                // Actual shoulder/muzzle traces still decide damage and cover.
+                FHitResult Exit;
+                if (auto* Region=Hit.GetComponent(); Region && Region->LineTraceComponent(Exit,Origin+Direction*10000,Origin,Params) &&
+                    Exit.BoneName==Hit.BoneName &&
+                    FVector::DotProduct(Exit.ImpactPoint-Hit.ImpactPoint,Direction)>0.f)
+                    AimPoint=(Hit.ImpactPoint+Exit.ImpactPoint)*.5f;
+            }
             else
             {
-                float T = (GetActorLocation().Z + 42.f - Origin.Z) / FMath::Min(-.001f,Direction.Z);
-                AimPoint = Origin + Direction*T;
+                if (FMath::Abs(Direction.Z)>.001f)
+                {
+                    const double T=(GetAimOrigin().Z-Origin.Z)/Direction.Z;
+                    if (T>0 && FMath::IsFinite(T)) AimPoint=Origin+Direction*T;
+                }
             }
         }
     }
-    FVector Flat = AimPoint - GetActorLocation(); Flat.Z = 0;
-    if (!Flat.IsNearlyZero())
-    {
-        const float AimYaw=Flat.Rotation().Yaw;
-        UpdateBodyFacing(Dt,AimYaw);
-        SetActorRotation(FRotator(0,AimYaw,0));
-    }
+    IntendedAimDirection=ONEAim::ResolveIntent(GetAimOrigin(),AimPoint,IntendedAimDirection,AimCenterRadius);
+    const float AimYaw=IntendedAimDirection.Rotation().Yaw;
+    UpdateBodyFacing(Dt,AimYaw);
+    SetActorRotation(FRotator(0,AimYaw,0));
+}
+FVector AONEPlayer::GetShotDirection(const FVector& EvaluatedMuzzle) const
+{
+    return ONEAim::ResolveShotDirection(GetAimOrigin(),AimPoint,IntendedAimDirection,EvaluatedMuzzle,AimConvergenceAhead,AimMaximumPitch);
+}
+float AONEPlayer::GetDamageReactionAge() const
+{
+    return GetWorld() ? GetWorld()->GetTimeSeconds()-LastDamageTime : 100.f;
 }
 FVector AONEPlayer::GetMuzzleLocation() const { return Gun->GetComponentTransform().TransformPosition(Weapon->GetDefinition().Muzzle); }
 void AONEPlayer::BuildMuzzleFlash()
@@ -322,7 +358,8 @@ void AONEPlayer::BuildMuzzleFlash()
     const float X[]={0.f,.17f,.46f,1.f};
     const float Radius[]={.12f,.72f,.42f,0.f};
     const FLinearColor Tint=Weapon->GetDefinition().FlashLightColor;
-    FLinearColor Color[]={FMath::Lerp(Tint,FLinearColor::White,.75f),Tint,Tint*.55f,Tint*.25f};
+    const bool Upgraded=Weapon->GetDefinition().bUpgraded;
+    FLinearColor Color[]={FMath::Lerp(Tint,FLinearColor::White,Upgraded?.25f:.75f),Tint,Tint*.55f,Tint*.25f};
     Color[0].A=.88f; Color[1].A=.80f; Color[2].A=.25f; Color[3].A=0;
     constexpr int32 Sides=8;
     for (int32 Ring=0;Ring<4;++Ring) for (int32 Side=0;Side<Sides;++Side)
@@ -346,7 +383,7 @@ void AONEPlayer::BuildMuzzleFlash()
         Vertices.Append({-Across,Across,FVector(.63f,0,0)});
         Normals.Append({FVector::UpVector,FVector::UpVector,FVector::UpVector});
         UV.Append({FVector2D(0,0),FVector2D(0,1),FVector2D(1,.5f)});
-        FLinearColor Core=FMath::Lerp(Tint,FLinearColor::White,.9f),Tip=Tint; Core.A=.9f; Tip.A=0;
+        FLinearColor Core=FMath::Lerp(Tint,FLinearColor::White,Upgraded?.55f:.9f),Tip=Tint; Core.A=.9f; Tip.A=0;
         Colors.Append({Core,Core,Tip});
         Tangents.Append({FProcMeshTangent(1,0,0),FProcMeshTangent(1,0,0),FProcMeshTangent(1,0,0)});
         Indices.Append({Base,Base+1,Base+2});
@@ -390,7 +427,57 @@ void AONEPlayer::ClearMuzzleFlash()
 bool AONEPlayer::IsMuzzleFlashVisible() const { return MuzzleTime>0.f && MuzzleFlashMesh->IsVisible(); }
 float AONEPlayer::GetMuzzleFlashIntensity() const { return MuzzleLight->Intensity; }
 FTransform AONEPlayer::GetMuzzleFlashTransform() const { return MuzzleFlashMesh->GetComponentTransform(); }
-void AONEPlayer::ClearWeaponEffects() { ClearMuzzleFlash(); ForeEnd->SetRelativeLocation(FVector::ZeroVector); LoadingShell->SetVisibility(false); HeldMagazine->SetVisibility(false); }
+void AONEPlayer::ClearWeaponEffects()
+{
+    ClearMuzzleFlash();
+    HeldAuraMesh->SetVisibility(false); HeldAuraLight->SetVisibility(false); HeldAuraLight->SetIntensity(0.f);
+    ForeEnd->SetRelativeLocation(FVector::ZeroVector); LoadingShell->SetVisibility(false); HeldMagazine->SetVisibility(false);
+}
+void AONEPlayer::BuildHeldAura(const FONEWeaponDefinition& D)
+{
+    HeldAuraMesh->ClearAllMeshSections();
+    HeldAuraColor=D.bUpgraded ? D.AuraColor : FLinearColor::Transparent;
+    if (!D.bUpgraded) { UpdateHeldAura(); return; }
+    // Two thin, tapered energy contours hug the upper receiver. They leave the
+    // magazine, grip, slide and pump exposed and use one permanent component.
+    TArray<FVector> V,N; TArray<int32> I; TArray<FVector2D> UV;
+    TArray<FLinearColor> C; TArray<FProcMeshTangent> T;
+    const float End=D.Muzzle.X*(D.Family==EONEWeaponFamily::Pistol?.82f:.53f);
+    const float Start=D.Family==EONEWeaponFamily::Pistol ? -5.f : -10.f;
+    const float Side=D.Family==EONEWeaponFamily::Pistol ? 2.7f : 4.f;
+    for (int32 Rail:{-1,1}) for (int32 Segment=0;Segment<8;++Segment)
+    {
+        const float A=Segment/8.f,B=(Segment+1)/8.f;
+        const float YA=Rail*(Side+FMath::Sin(A*PI)*.7f),YB=Rail*(Side+FMath::Sin(B*PI)*.7f);
+        const float ZA=D.Muzzle.Z+1.4f+FMath::Sin(A*PI)*.6f,ZB=D.Muzzle.Z+1.4f+FMath::Sin(B*PI)*.6f;
+        const FVector PA(FMath::Lerp(Start,End,A),YA,ZA),PB(FMath::Lerp(Start,End,B),YB,ZB);
+        const float WA=.7f*FMath::Sin(A*PI)+.10f,WB=.7f*FMath::Sin(B*PI)+.10f;
+        const int32 Base=V.Num();
+        V.Append({PA-FVector(0,WA,0),PA+FVector(0,WA,0),PB-FVector(0,WB,0),PB+FVector(0,WB,0)});
+        I.Append({Base,Base+2,Base+1,Base+1,Base+2,Base+3});
+        for (int32 K=0;K<4;++K)
+        {
+            N.Add(FVector::UpVector); UV.Add(FVector2D(K<2?A:B,K%2)); T.Add(FProcMeshTangent(1,0,0));
+            FLinearColor Color=D.AuraColor; Color.A=.5f; C.Add(Color);
+        }
+    }
+    HeldAuraMesh->CreateMeshSection_LinearColor(0,V,I,N,UV,C,T,false);
+    if (auto* Material=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/ONE/Materials/M_Tracer_C04.M_Tracer_C04")))
+        HeldAuraMesh->SetMaterial(0,Material);
+    HeldAuraLight->SetRelativeLocation(FVector((Start+End)*.5f,0,D.Muzzle.Z+3.f));
+    HeldAuraLight->SetLightColor(D.AuraColor);
+    UpdateHeldAura();
+}
+void AONEPlayer::UpdateHeldAura()
+{
+    const bool Visible=Weapon && Weapon->HasUsableWeapon() && Weapon->GetDefinition().bUpgraded &&
+        !bSuppressCarried && !bMachineAction && !IsDead() && Gun->IsVisible() && HeldAuraColor.A>0;
+    HeldAuraMesh->SetVisibility(Visible); HeldAuraLight->SetVisibility(Visible);
+    const float Pulse=GetWorld() ? .94f+.06f*FMath::Sin(GetWorld()->GetTimeSeconds()*4.f) : 1.f;
+    HeldAuraLight->SetIntensity(Visible ? 75.f*Pulse : 0.f);
+}
+bool AONEPlayer::IsHeldAuraVisible() const { return HeldAuraMesh->IsVisible(); }
+float AONEPlayer::GetHeldAuraLightIntensity() const { return HeldAuraLight->Intensity; }
 void AONEPlayer::ApplyWeaponPresentation(const FONEWeaponDefinition& Definition)
 {
     Gun->SetStaticMesh(Definition.Mesh.Get());
@@ -412,6 +499,7 @@ void AONEPlayer::ApplyWeaponPresentation(const FONEWeaponDefinition& Definition)
     MuzzleLight->SetAttenuationRadius(Definition.FlashLightRadius);
     MuzzleFlashMesh->SetRelativeLocation(Definition.Muzzle);
     BuildMuzzleFlash();
+    BuildHeldAura(Definition);
 }
 void AONEPlayer::ClearEquippedPresentation()
 {
@@ -456,6 +544,7 @@ void AONEPlayer::ReceiveAttack(float Damage,const FVector& From)
     const float Now = GetWorld()->GetTimeSeconds();
     if (IsDead() || Now-LastDamageTime < .55f) return;
     LastDamageTime = Now;
+    DamageReactionDirection=(GetActorLocation()-From).GetSafeNormal2D();
     Health->ApplyDamage(Damage);
     if (auto* Blood = GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->Impact(GetActorLocation()+FVector(0,0,30),(GetActorLocation()-From).GetSafeNormal(),false);
     if (IsDead())

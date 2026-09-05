@@ -27,3 +27,10 @@ This is a visually simplified original candidate for review. The infected face, 
 Actual runtime inspection of `benchmark_6.png` revealed that a full dark crown of hair read as a severed neck disk from the elevated camera. The targeted head revision removes the crown shell, exposes a pale scarred scalp, retains side stubble and broadens the cranium 7%. `-- --head-only` regenerates source files and exports only the infected head meshes, preserving all animation exports for targeted integration.
 
 The subsequent bounded garment revision adds asymmetric sculpted fabric creases, embeds blood into vertex paint instead of raised patches, replaces spherical elbow pads with faceted protection and distributes zipper weights across the spine. `-- --body-only` exports only the player, infected body and arm meshes. These changes preserve the original skeleton and animation contract.
+
+
+## Candidate05 motion and attack extension
+
+`ArtSource/Characters/C05/README.md` and its inventory document 25 new 100 Hz skeletal clips on the accepted rigs:18 player directional/turn clips, two infected gaits and five left/right/two-hand attack clips across three families. They preserve accepted character surfaces and bind matrices. Source checks report less sustained pelvis compression and exact authored 225/370 cm/s player and 100/195 cm/s infected speeds. C05 uses new asset paths; earlier clips remain historical sources.
+
+The native graph applies short directional live hit reactions additively, preserving movement and attack state for ordinary hits. The infected controller commits attack heading and required limbs, consumes one contact event, checks static cover and caps early step travel. Heavy stagger retains a separate 1.1 s cooldown. New source/native tests and later runtime/visual gates are distinct; generation success is not visual approval. Player damage reaction uses the accepted damage direction and age without taking movement control.

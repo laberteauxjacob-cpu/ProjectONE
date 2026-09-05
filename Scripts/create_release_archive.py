@@ -1,6 +1,6 @@
 """Archive a complete cooked Windows candidate without modifying runtime bytes.
 
-Candidate04 is the default; earlier candidates must be explicit and existing accepted
+Candidate05 is the default; earlier candidates must be explicit and existing accepted
 archives cannot be replaced. Python 3.10+ standard library. A neutral fresh build,
 source-revision verification, binary privacy review and runtime QA are upstream
 requirements: this tool does not perform or claim those checks.
@@ -68,13 +68,13 @@ def inventory(package, catalog):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--candidate', choices=('Candidate02', 'Candidate03', 'Candidate04'), default='Candidate04')
+    p.add_argument('--candidate', choices=('Candidate02', 'Candidate03', 'Candidate04', 'Candidate05'), default='Candidate05')
     p.add_argument('--package', type=pathlib.Path, help='Default: Packaged/<candidate>/Windows')
     p.add_argument('--source-revision', required=True, help='Verified full commit of the actual fresh build')
     p.add_argument('--engine-root', type=pathlib.Path, required=True)
     p.add_argument('--output', type=pathlib.Path, help='Default: Releases/ProjectONE-<candidate>-Windows.zip')
     p.add_argument('--report-ref', help='Public documentation ref; default: lowercase candidate tag')
-    p.add_argument('--replace', action='store_true', help='Explicitly replace Candidate04 output and sidecars only')
+    p.add_argument('--replace', action='store_true', help='Explicitly replace Candidate05 output and sidecars only')
     p.add_argument('--dry-run', action='store_true', help='Validate inventory and report a plan without writing any files')
     a = p.parse_args()
     if not re.fullmatch(r'[0-9a-f]{40}', a.source_revision):
@@ -85,7 +85,7 @@ def main():
     package = (a.package or ROOT/'Packaged'/a.candidate/'Windows').resolve()
     output = (a.output or ROOT/'Releases'/f'ProjectONE-{a.candidate}-Windows.zip').resolve()
     catalog = (a.engine_root/'Engine/Source/ThirdParty/Licenses').resolve()
-    other_candidates = {'candidate01', 'candidate02', 'candidate03', 'candidate04'} - {a.candidate.lower()}
+    other_candidates = {'candidate01', 'candidate02', 'candidate03', 'candidate04', 'candidate05'} - {a.candidate.lower()}
     if any(part.lower() in other_candidates for part in package.parts):
         p.error('Package directory names a different candidate; select it explicitly.')
     if output.name != f'ProjectONE-{a.candidate}-Windows.zip':
@@ -96,10 +96,10 @@ def main():
         p.error('Output must be outside the input package and notice catalog.')
     outputs = (output, output.with_suffix('.sha256'), output.with_suffix('.json'))
     if not a.dry_run and any(path.exists() for path in outputs):
-        if a.candidate != 'Candidate04':
+        if a.candidate != 'Candidate05':
             p.error('Existing earlier release artifacts are preserved; choose a new output directory.')
         if not a.replace:
-            p.error('Candidate04 output exists; use --replace only after checking the intended destination.')
+            p.error('Candidate05 output exists; use --replace only after checking the intended destination.')
     try:
         files = inventory(package, catalog)
     except ValueError as error:
@@ -132,7 +132,7 @@ Enter restart and Q quit while paused or after death.
 F1 sandbox; F2 add one infected; F3 add six; F4 refill; F5 reset;
 F6 clear remains; F7 toggle bright/dim lighting.'''
         limitations = 'This is a candidate build; technical checks do not imply visual or audio approval.'
-    else:
+    elif a.candidate == 'Candidate04':
         controls = '''WASD move; mouse aim; left mouse fire; R reload; Shift sprint/cancel reload.
 M4A1/Overcurrent are automatic; pistol and shotgun fire once per press.
 1/2 select available owned slots; Tab/mouse wheel cycle. Escape pause.
@@ -148,6 +148,23 @@ Z/X/C force next box pistol/M4A1/870; V restores random. Prices stay normal.
 After a loaded pistol/rifle reload is cancelled with its magazine removed,
 press R to insert a replacement before firing.'''
         limitations = 'Technical checks, saved-frame review and engine audio measurement do not establish user visual approval, perceptual listening or sustained native held-key testing.'
+    else:
+        controls = '''WASD move; mouse aim; left mouse fire; R reload; Shift sprint.
+Pistol and shotgun: one eligible shot per press. M4A1/Overcurrent: hold to fire.
+Magazine reloads commit until complete; movement and sprint remain available.
+An eligible empty equipped weapon reloads automatically from reserve.
+A loaded shotgun shell can interrupt shell insertion when the weapon is safe.
+1/2 select owned slots; Tab/mouse wheel cycle. Escape pauses.
+Click Resume/Restart/Quit or Try Again/Quit; Enter restart and Q quit also work.
+Start: M1911 with 7 loaded / 56 reserve; second slot empty.
+Hold F for 0.4 seconds at the focused machine; release before the next action.
+Mystery Box: 950 points, five-second cycle, deliberate nearby collection.
+Pack-a-Punch: 5000 points, nine-second upgrade; one tier; same owned slot.
+H opens the controls/tools tray. F1 toggles sandbox.
+Sandbox: F2 +1 infected; F3 +6; F4 refill; F5 reset; F6 cleanup;
+F7 bright/dim lighting; T grants labelled test points.
+Z/X/C force next box pistol/M4A1/870; V restores random. Prices stay normal.'''
+        limitations = 'Technical checks and recorded evidence are separate from player approval. See the pass report for exactly which motion, audio and native-input reviews were completed.'
     launch = f'''Project ONE — {a.candidate}
 
 Extract this entire folder and run ProjectONE.exe. Keep all subfolders together.
@@ -163,7 +180,7 @@ Full report: https://github.com/laberteauxjacob-cpu/ProjectONE/blob/{report_ref}
 '''
     output.parent.mkdir(parents=True, exist_ok=True)
     prefix = f'ProjectONE-{a.candidate}-Windows/'
-    # Build and CRC-check a new temporary archive before replacing an authorized C04 output.
+    # Build and CRC-check a new temporary archive before replacing an authorized C05 output.
     with tempfile.NamedTemporaryFile(dir=output.parent, suffix='.partial', delete=False) as temporary:
         pending = pathlib.Path(temporary.name)
     try:
