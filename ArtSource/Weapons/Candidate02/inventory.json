@@ -1,0 +1,761 @@
+{
+  "candidate": "02",
+  "provenance": "Original Project ONE authoring; preserves accepted C01 rigs/characters and splits the accepted carbine into body/magazine without changing its surface geometry; no third-party assets",
+  "source": "ArtSource/Weapons/Candidate02/ResponseWeaponActions.blend",
+  "fps": 100,
+  "skeleton": "/Game/ONE/Characters/SK_Response_Skeleton",
+  "static_meshes": [
+    "SM_PumpShotgun",
+    "SM_PumpShotgun_ForeEnd",
+    "SM_ShotgunShell",
+    "SM_Carbine_C02Body",
+    "SM_Carbine_Magazine"
+  ],
+  "materials": {
+    "M_ShotgunPolymer": [
+      [
+        0.11,
+        0.076,
+        0.047,
+        1
+      ],
+      0.86,
+      0
+    ],
+    "M_ShellHull": [
+      [
+        0.39,
+        0.075,
+        0.045,
+        1
+      ],
+      0.65,
+      0
+    ],
+    "M_Brass": [
+      [
+        0.46,
+        0.31,
+        0.095,
+        1
+      ],
+      0.4,
+      0.75
+    ]
+  },
+  "animations": {
+    "A_Response_ShotgunReady": {
+      "duration": 2.4,
+      "use": "ready",
+      "samples": [
+        {
+          "time": 0.0,
+          "wrist": [
+            41.999996185302734,
+            4.999996662139893,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 1.2,
+          "wrist": [
+            41.999996185302734,
+            4.999996662139893,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 2.4,
+          "wrist": [
+            41.999996185302734,
+            4.999996662139893,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        }
+      ]
+    },
+    "A_Response_ShotgunFire": {
+      "duration": 0.22,
+      "use": "fire",
+      "samples": [
+        {
+          "time": 0.0,
+          "wrist": [
+            42.0,
+            5.0,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.11,
+          "wrist": [
+            41.975677490234375,
+            4.999989032745361,
+            138.744384765625
+          ],
+          "weapon_origin": [
+            24.239765167236328,
+            4.999990463256836,
+            132.00367736816406
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.22,
+          "wrist": [
+            42.0,
+            5.0,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        }
+      ]
+    },
+    "A_Response_ShotgunPump": {
+      "duration": 0.56,
+      "use": "pump",
+      "samples": [
+        {
+          "time": 0.0,
+          "wrist": [
+            41.999996185302734,
+            4.999996662139893,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.28,
+          "wrist": [
+            34.99350357055664,
+            4.999996662139893,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.7784992191994737
+        },
+        {
+          "time": 0.56,
+          "wrist": [
+            41.999996185302734,
+            4.999996662139893,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        }
+      ]
+    },
+    "A_Response_ShotgunReloadStart": {
+      "duration": 0.35,
+      "use": "reload_start",
+      "samples": [
+        {
+          "time": 0.0,
+          "wrist": [
+            42.000003814697266,
+            4.999998092651367,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999997615814209,
+            131.0
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.18,
+          "wrist": [
+            38.11239242553711,
+            2.5959904193878174,
+            130.61366271972656
+          ],
+          "weapon_origin": [
+            22.428606033325195,
+            5.870147705078125,
+            128.83526611328125
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.35,
+          "wrist": [
+            33.931427001953125,
+            -1.1541515588760376,
+            127.13892364501953
+          ],
+          "weapon_origin": [
+            20.784183502197266,
+            6.661978244781494,
+            126.8978271484375
+          ],
+          "pump_travel": 0.0
+        }
+      ]
+    },
+    "A_Response_ShotgunReloadShell": {
+      "duration": 0.9,
+      "use": "reload_shell",
+      "samples": [
+        {
+          "time": 0.0,
+          "wrist": [
+            33.931427001953125,
+            -1.1541515588760376,
+            127.13892364501953
+          ],
+          "weapon_origin": [
+            20.784183502197266,
+            6.661978244781494,
+            126.8978271484375
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.45,
+          "wrist": [
+            19.14683723449707,
+            0.9173905253410339,
+            119.88562774658203
+          ],
+          "weapon_origin": [
+            20.784183502197266,
+            6.661978244781494,
+            126.8978271484375
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.9,
+          "wrist": [
+            33.931427001953125,
+            -1.1541515588760376,
+            127.13892364501953
+          ],
+          "weapon_origin": [
+            20.784183502197266,
+            6.661978244781494,
+            126.8978271484375
+          ],
+          "pump_travel": 0.0
+        }
+      ]
+    },
+    "A_Response_ShotgunReloadEnd": {
+      "duration": 0.32,
+      "use": "reload_end",
+      "samples": [
+        {
+          "time": 0.0,
+          "wrist": [
+            33.931427001953125,
+            -1.1541515588760376,
+            127.13892364501953
+          ],
+          "weapon_origin": [
+            20.784183502197266,
+            6.661978244781494,
+            126.8978271484375
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.16,
+          "wrist": [
+            38.28627014160156,
+            2.736801862716675,
+            130.82728576660156
+          ],
+          "weapon_origin": [
+            22.497705459594727,
+            5.834537982940674,
+            128.9232940673828
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.32,
+          "wrist": [
+            42.000003814697266,
+            4.999998092651367,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999997615814209,
+            131.0
+          ],
+          "pump_travel": 0.0
+        }
+      ]
+    },
+    "A_Response_Equip": {
+      "duration": 0.36,
+      "use": "equip",
+      "samples": [
+        {
+          "time": 0.0,
+          "wrist": [
+            42.0,
+            5.0,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.18,
+          "wrist": [
+            34.545616149902344,
+            8.041448593139648,
+            120.60869598388672
+          ],
+          "weapon_origin": [
+            15.733240127563477,
+            6.395574569702148,
+            122.44868469238281
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 0.36,
+          "wrist": [
+            42.0,
+            5.0,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        }
+      ]
+    },
+    "A_Response_CarbineReload": {
+      "duration": 2.1,
+      "use": "carbine_reload",
+      "samples": [
+        {
+          "time": 0.0,
+          "wrist": [
+            42.0,
+            5.0,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 1.05,
+          "wrist": [
+            31.409454345703125,
+            7.1124773025512695,
+            118.68212890625
+          ],
+          "weapon_origin": [
+            22.278018951416016,
+            6.661977767944336,
+            128.88760375976562
+          ],
+          "pump_travel": 0.0
+        },
+        {
+          "time": 2.1,
+          "wrist": [
+            42.0,
+            5.0,
+            137.0
+          ],
+          "weapon_origin": [
+            24.000001907348633,
+            4.999998092651367,
+            131.0
+          ],
+          "pump_travel": 0.0
+        }
+      ]
+    }
+  },
+  "infected_reaction": {
+    "name": "A_Infected_HeavyHit",
+    "duration": 0.52,
+    "source": "ArtSource/Weapons/Candidate02/InfectedHeavyReaction.blend"
+  },
+  "runtime": {
+    "weapon_origin": "Grip-centred, preserve existing weapon_r bind-inverse attachment",
+    "muzzle_ue_cm": [
+      64.5,
+      0,
+      14
+    ],
+    "fore_end_center_ue_cm": [
+      18,
+      0,
+      6
+    ],
+    "fore_end_travel_cm": [
+      -9,
+      0,
+      0
+    ],
+    "pump_curve_seconds": [
+      [
+        0,
+        0
+      ],
+      [
+        0.21,
+        1
+      ],
+      [
+        0.44,
+        0
+      ],
+      [
+        0.56,
+        0
+      ]
+    ],
+    "pump_eject_seconds": 0.18,
+    "eject_origin_ue_cm": [
+      5,
+      -4.5,
+      13.5
+    ],
+    "shell_axis": "Mesh cylinder local +X, mesh origin centre",
+    "shell_insert_seconds": 0.6,
+    "shell_visible_seconds": [
+      0.12,
+      0.6
+    ],
+    "shell_hand_offset_gun_axes": [
+      6,
+      0,
+      2.8
+    ],
+    "carbine_magazine_mesh_center_gun_axes": [
+      13.5,
+      0,
+      -2
+    ],
+    "held_magazine_translation_gun_axes": [
+      -10.5,
+      0,
+      0
+    ],
+    "equip_swap_seconds": 0.18,
+    "carbine_mag_out": 0.4,
+    "carbine_mag_in": 1.2,
+    "carbine_bolt": 1.74
+  },
+  "audio": {
+    "S_CarbineShot_01": {
+      "source": "ArtSource/Audio/Candidate02/S_CarbineShot_01.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineShot_01",
+      "duration": 0.43,
+      "sample_rate": 48000,
+      "peak_dbfs": -3.0,
+      "rms_dbfs": -24.387555673811434,
+      "role": "Carbine short high crack / tight cycling action",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ShotgunShot_01": {
+      "source": "ArtSource/Audio/Candidate02/S_ShotgunShot_01.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunShot_01",
+      "duration": 0.74,
+      "sample_rate": 48000,
+      "peak_dbfs": -3.0,
+      "rms_dbfs": -24.397816830995147,
+      "role": "Shotgun broad low pressure / longer industrial decay",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_CarbineShot_02": {
+      "source": "ArtSource/Audio/Candidate02/S_CarbineShot_02.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineShot_02",
+      "duration": 0.43,
+      "sample_rate": 48000,
+      "peak_dbfs": -3.0,
+      "rms_dbfs": -23.833143650830266,
+      "role": "Carbine short high crack / tight cycling action",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ShotgunShot_02": {
+      "source": "ArtSource/Audio/Candidate02/S_ShotgunShot_02.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunShot_02",
+      "duration": 0.74,
+      "sample_rate": 48000,
+      "peak_dbfs": -3.0,
+      "rms_dbfs": -23.63804669524477,
+      "role": "Shotgun broad low pressure / longer industrial decay",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_CarbineShot_03": {
+      "source": "ArtSource/Audio/Candidate02/S_CarbineShot_03.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineShot_03",
+      "duration": 0.43,
+      "sample_rate": 48000,
+      "peak_dbfs": -3.0,
+      "rms_dbfs": -24.598023245158423,
+      "role": "Carbine short high crack / tight cycling action",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ShotgunShot_03": {
+      "source": "ArtSource/Audio/Candidate02/S_ShotgunShot_03.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunShot_03",
+      "duration": 0.74,
+      "sample_rate": 48000,
+      "peak_dbfs": -3.0,
+      "rms_dbfs": -24.99679907390679,
+      "role": "Shotgun broad low pressure / longer industrial decay",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ShotgunPumpBack": {
+      "source": "ArtSource/Audio/Candidate02/S_ShotgunPumpBack.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunPumpBack",
+      "duration": 0.23,
+      "sample_rate": 48000,
+      "peak_dbfs": -10.5,
+      "rms_dbfs": -28.59133025089918,
+      "role": "Pump unlock and rearward rail scrape; play at pump phase 0",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ShotgunPumpForward": {
+      "source": "ArtSource/Audio/Candidate02/S_ShotgunPumpForward.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunPumpForward",
+      "duration": 0.25,
+      "sample_rate": 48000,
+      "peak_dbfs": -11.0,
+      "rms_dbfs": -27.10931356864173,
+      "role": "Forward slide; play at pump phase .21",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ShotgunPumpLock": {
+      "source": "ArtSource/Audio/Candidate02/S_ShotgunPumpLock.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunPumpLock",
+      "duration": 0.17,
+      "sample_rate": 48000,
+      "peak_dbfs": -10.0,
+      "rms_dbfs": -29.657173175970122,
+      "role": "Pump chamber lock; play at pump phase .44",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ShotgunShellInsert": {
+      "source": "ArtSource/Audio/Candidate02/S_ShotgunShellInsert.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunShellInsert",
+      "duration": 0.19,
+      "sample_rate": 48000,
+      "peak_dbfs": -13.0,
+      "rms_dbfs": -30.020734745768696,
+      "role": "Single earned shell insertion; play at shell phase .60",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ShotgunReloadStart": {
+      "source": "ArtSource/Audio/Candidate02/S_ShotgunReloadStart.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunReloadStart",
+      "duration": 0.23,
+      "sample_rate": 48000,
+      "peak_dbfs": -17.0,
+      "rms_dbfs": -29.580495791865946,
+      "role": "Cloth/receiver handling into shell loading posture",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ShotgunReloadEnd": {
+      "source": "ArtSource/Audio/Candidate02/S_ShotgunReloadEnd.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunReloadEnd",
+      "duration": 0.23,
+      "sample_rate": 48000,
+      "peak_dbfs": -16.0,
+      "rms_dbfs": -32.78559235601325,
+      "role": "Return support hand to fore-end",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_CarbineMagOut": {
+      "source": "ArtSource/Audio/Candidate02/S_CarbineMagOut.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineMagOut",
+      "duration": 0.28,
+      "sample_rate": 48000,
+      "peak_dbfs": -12.0,
+      "rms_dbfs": -31.97234023961967,
+      "role": "Magazine release at reload .40",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_CarbineMagIn": {
+      "source": "ArtSource/Audio/Candidate02/S_CarbineMagIn.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineMagIn",
+      "duration": 0.23,
+      "sample_rate": 48000,
+      "peak_dbfs": -10.5,
+      "rms_dbfs": -31.126092806738654,
+      "role": "Magazine seating at reload 1.20",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_CarbineBolt": {
+      "source": "ArtSource/Audio/Candidate02/S_CarbineBolt.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineBolt",
+      "duration": 0.26,
+      "sample_rate": 48000,
+      "peak_dbfs": -11.0,
+      "rms_dbfs": -30.825096997594848,
+      "role": "Bolt manipulation at reload 1.74",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_WeaponEquip": {
+      "source": "ArtSource/Audio/Candidate02/S_WeaponEquip.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_WeaponEquip",
+      "duration": 0.2,
+      "sample_rate": 48000,
+      "peak_dbfs": -16.0,
+      "rms_dbfs": -31.541450051953635,
+      "role": "Short restrained weapon/strap handling at equip swap",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_CarbineEmpty": {
+      "source": "ArtSource/Audio/Candidate02/S_CarbineEmpty.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_CarbineEmpty",
+      "duration": 0.1,
+      "sample_rate": 48000,
+      "peak_dbfs": -15.0,
+      "rms_dbfs": -31.62284052978385,
+      "role": "Carbine empty mechanical click",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ShotgunEmpty": {
+      "source": "ArtSource/Audio/Candidate02/S_ShotgunEmpty.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ShotgunEmpty",
+      "duration": 0.13,
+      "sample_rate": 48000,
+      "peak_dbfs": -14.5,
+      "rms_dbfs": -32.78214400133554,
+      "role": "Shotgun empty hammer action",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_FleshImpact_01": {
+      "source": "ArtSource/Audio/Candidate02/S_FleshImpact_01.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_FleshImpact_01",
+      "duration": 0.23,
+      "sample_rate": 48000,
+      "peak_dbfs": -11.0,
+      "rms_dbfs": -30.58246553421824,
+      "role": "Short wet/dull tissue impact, kept below gunshots",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_FleshImpact_02": {
+      "source": "ArtSource/Audio/Candidate02/S_FleshImpact_02.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_FleshImpact_02",
+      "duration": 0.23,
+      "sample_rate": 48000,
+      "peak_dbfs": -11.0,
+      "rms_dbfs": -29.619749283060944,
+      "role": "Short wet/dull tissue impact, kept below gunshots",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_FleshImpact_03": {
+      "source": "ArtSource/Audio/Candidate02/S_FleshImpact_03.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_FleshImpact_03",
+      "duration": 0.23,
+      "sample_rate": 48000,
+      "peak_dbfs": -11.0,
+      "rms_dbfs": -29.194664878146224,
+      "role": "Short wet/dull tissue impact, kept below gunshots",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ConcreteImpact_01": {
+      "source": "ArtSource/Audio/Candidate02/S_ConcreteImpact_01.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ConcreteImpact_01",
+      "duration": 0.24,
+      "sample_rate": 48000,
+      "peak_dbfs": -13.0,
+      "rms_dbfs": -29.234811311034825,
+      "role": "Dry mineral impact and granular scatter",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_MetalImpact_01": {
+      "source": "ArtSource/Audio/Candidate02/S_MetalImpact_01.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_MetalImpact_01",
+      "duration": 0.33,
+      "sample_rate": 48000,
+      "peak_dbfs": -13.0,
+      "rms_dbfs": -34.53721525827275,
+      "role": "Short inharmonic metal impact",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_ConcreteImpact_02": {
+      "source": "ArtSource/Audio/Candidate02/S_ConcreteImpact_02.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_ConcreteImpact_02",
+      "duration": 0.24,
+      "sample_rate": 48000,
+      "peak_dbfs": -13.0,
+      "rms_dbfs": -29.95312099591221,
+      "role": "Dry mineral impact and granular scatter",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    },
+    "S_MetalImpact_02": {
+      "source": "ArtSource/Audio/Candidate02/S_MetalImpact_02.wav",
+      "asset": "/Game/ONE/Audio/Weapons/S_MetalImpact_02",
+      "duration": 0.33,
+      "sample_rate": 48000,
+      "peak_dbfs": -13.0,
+      "rms_dbfs": -35.47516586889104,
+      "role": "Short inharmonic metal impact",
+      "provenance": "Original deterministic local synthesis; no recordings or third-party samples"
+    }
+  },
+  "limitations": [
+    "Source PNGs are Blender QA, not gameplay evidence",
+    "Original synthesized sound-design candidates require gameplay audition; no claim of recorded-real-weapon fidelity",
+    "Existing mirrored anatomical bone labels preserved intentionally"
+  ]
+}
