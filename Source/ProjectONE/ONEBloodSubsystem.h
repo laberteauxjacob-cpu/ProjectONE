@@ -19,7 +19,7 @@ public:
     AONEBloodEffect();
     virtual void Tick(float Dt) override;
     void InitSpray(const FVector& Direction,UMaterialInterface* Material,bool bSever);
-    void InitShot(const FVector& End,UMaterialInterface* Material);
+    void InitShot(const FVector& End,UMaterialInterface* Material,const FLinearColor& Color);
     void InitManagedDrops(UMaterialInterface* Material);
     void UpdateManagedDrops(const TArray<FVector>& Points,const TArray<FVector>& Motion);
 private:
@@ -29,6 +29,7 @@ private:
     float Age=0;
     bool bShot=false,bManaged=false;
     FVector ShotEnd;
+    FLinearColor ShotColor=FLinearColor::White;
 };
 
 UCLASS()
@@ -87,7 +88,7 @@ public:
     virtual void Deinitialize() override;
     void Impact(const FVector& Position,const FVector& Direction,bool bSever);
     void Pool(const FVector& Position,float Size);
-    void Shot(const FVector& Start,const FVector& End);
+    void Shot(const FVector& Start,const FVector& End,FLinearColor Color=FLinearColor(1.f,.75f,.3f));
     AONEGorePiece* Detach(USkeletalMeshComponent* Part,USkeletalMeshComponent* PoseSource,FName Bone,const FVector& Direction);
     void AddWound(USkeletalMeshComponent* Source,EONEHitRegion Region,FName Bone,const FVector& Position,const FVector& Normal,float Volume,bool bHeavyBleed=false);
     void RemoveSourcesForActor(AActor* Actor);

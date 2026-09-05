@@ -339,6 +339,9 @@ void AONE03WeaponCheck::Tick(float Dt)
     case 99: if (T>.8f)
     {
         Check(!Player->IsDead() && GM->IsSandbox() && GM->GetPoints()==0,TEXT("Real level restart restores live sandbox and score"));
+        // C04 starter inventory is deliberately different. This historical
+        // rifle/shotgun scenario installs its declared fixture after restart.
+        W->GiveTestLoadout();
         Check(W->GetEquippedIndex()==0 && W->GetAmmoForWeapon(0)==24 && W->GetReserveAmmoForWeapon(0)==192 && W->GetAmmoForWeapon(1)==6 && W->GetReserveAmmoForWeapon(1)==36 && !W->NeedsPump(1),TEXT("Restart restores both carried ammo stores and clears pump obligation"));
         Check(W->GetTotalShotsFired()==0 && W->GetAutomaticReloadCount()==0 && !W->IsBusy() && !Player->IsSprintRequested(),TEXT("Restart has no stale operation, automatic reload, trigger or sprint input")); Finish();
     } break;

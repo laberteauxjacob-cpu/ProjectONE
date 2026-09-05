@@ -1,4 +1,4 @@
-param([string]$EngineRoot = $env:UE_ROOT, [ValidateSet('Candidate03')][string]$Candidate = 'Candidate03')
+param([string]$EngineRoot = $env:UE_ROOT, [ValidateSet('Candidate03','Candidate04')][string]$Candidate = 'Candidate04')
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 . "$PSScriptRoot\Engine.ps1"

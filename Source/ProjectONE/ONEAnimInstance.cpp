@@ -185,9 +185,11 @@ struct FONEAnimProxy : FAnimInstanceProxy
         if (P && P->GetWeaponComponent())
         {
             auto* W=P->GetWeaponComponent();
-            Sample(Ready,W->GetReadyAnimation(),IdleClock);
+            Sample(Ready,W->HasUsableWeapon() ? W->GetReadyAnimation() : Anim->FindClip(TEXT("C04_UnarmedReady")),IdleClock);
             float ActionTime=0;
-            if (UAnimSequence* ActionClip=W->GetActionAnimation(ActionTime)) { Sample(Action,ActionClip,ActionTime,false); ActionWeight=1; }
+            UAnimSequence* ActionClip=P->GetMachineActionAnimation(ActionTime);
+            if (!ActionClip) ActionClip=W->GetActionAnimation(ActionTime);
+            if (ActionClip) { Sample(Action,ActionClip,ActionTime,false); ActionWeight=1; }
             else if (!Action.GetSequence()) Sample(Action,Anim->FindClip(TEXT("Idle")),0);
         }
         if (Z)
@@ -235,6 +237,9 @@ void UONEAnimInstance::NativeInitializeAnimation()
     if (bInfected)
         if (auto* Clip=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/ONE/Animations/Candidate03/A_Infected_C03_AttackRight.A_Infected_C03_AttackRight")))
             Clips.Add(TEXT("C03_AttackRight"),Clip);
+    if (!bInfected)
+        if (auto* Clip=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/ONE/Animations/Candidate04/A_Response_C04_UnarmedReady.A_Response_C04_UnarmedReady")))
+            Clips.Add(TEXT("C04_UnarmedReady"),Clip);
 }
 UAnimSequence* UONEAnimInstance::FindClip(FName Key) const { const auto* Clip=Clips.Find(Key); return Clip ? Clip->Get() : nullptr; }
 FAnimInstanceProxy* UONEAnimInstance::CreateAnimInstanceProxy() { return new FONEAnimProxy(this); }

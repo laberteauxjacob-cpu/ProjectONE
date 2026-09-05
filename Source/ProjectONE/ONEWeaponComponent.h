@@ -5,6 +5,7 @@
 #include "ONEWeaponComponent.generated.h"
 class UAudioComponent;
 class AONEWeaponCase;
+class AONEWeaponMagazine;
 UCLASS(ClassGroup=(ONE), meta=(BlueprintSpawnableComponent))
 class PROJECTONE_API UONEWeaponComponent : public UActorComponent
 {
@@ -21,7 +22,25 @@ public:
     bool CanAutoReload() const;
     void CancelAllOperations();
     bool SelectWeapon(int32 Index);
-    void CycleWeapon() { SelectWeapon(((PendingIndex>=0 ? PendingIndex : EquippedIndex)+1)%2); }
+    void CycleWeapon();
+    bool HasUsableWeapon() const;
+    const FONECarriedWeaponState* GetSlotState(int32 Slot) const;
+    uint64 GetInventoryRevision() const { return InventoryRevision; }
+    uint64 GetRunId() const { return RunId; }
+    const FONEWeaponDefinition* GetCatalogDefinition(EONEWeaponFamily Family,bool bUpgraded=false) const;
+    int32 GetCatalogCount() const { return WeaponDefinitions.Num(); }
+    void SetHandoffLocked(bool bLocked);
+    bool IsHandoffLocked() const { return bHandoffLocked; }
+    bool ReserveEquippedForUpgrade(FONEWeaponReservation& Out);
+    bool MarkUpgradeReady(const FONEWeaponReservation& Token);
+    bool CollectUpgrade(const FONEWeaponReservation& Token);
+    bool RollbackUpgrade(const FONEWeaponReservation& Token);
+    void InvalidateMachineTransactions();
+    void ResetStarterLoadout();
+    void GiveTestLoadout();
+    bool IsFamilyRollEligible(EONEWeaponFamily Family) const;
+    FONEWeaponAcquisitionPlan BuildAcquisitionPlan(EONEWeaponFamily Family) const;
+    bool ApplyAcquisitionPlan(const FONEWeaponAcquisitionPlan& Plan);
     void RefillAllAmmo();
     void ClearEjectedCases();
     void RefreshEquippedPresentation();
@@ -31,7 +50,7 @@ public:
     int32 GetReserveAmmoForWeapon(int32 Index) const;
     int32 GetEquippedIndex() const { return EquippedIndex; }
     int32 GetPendingWeaponIndex() const { return PendingIndex; }
-    int32 GetWeaponCount() const { return WeaponDefinitions.Num(); }
+    int32 GetWeaponCount() const { return 2; }
     FText GetWeaponName() const;
     bool IsReloading() const;
     bool IsBusy() const { return Operation!=EONEWeaponOperation::Ready; }
@@ -56,6 +75,7 @@ public:
     int32 GetAutomaticReloadCount() const { return AutomaticReloads; }
     int32 GetSprintReloadInterruptCount() const { return SprintReloadInterrupts; }
     uint64 GetLastShotId() const { return LastShotId; }
+    int32 GetLastShotVictimCount() const { return LastShotVictimCount; }
     FVector GetLastShotMuzzle() const { return LastShotMuzzle; }
     uint32 GetLastShotPoseFrame() const { return LastShotPoseFrame; }
     uint32 GetLastShotPoseRevision() const { return LastShotPoseRevision; }
@@ -72,12 +92,19 @@ public:
     UAnimSequence* GetReadyAnimation() const;
     UAnimSequence* GetActionAnimation(float& Time) const;
     float GetPumpFraction() const;
+    float GetSlideFraction() const;
+    bool DidReloadStartEmpty() const { return bReloadStartedEmpty; }
     bool ShouldShowLoadingShell() const;
     bool ShouldShowSeatedMagazine() const;
     bool ShouldShowHeldMagazine() const;
+    int32 GetMagazineDropCount() const { return MagazinesDropped; }
+    int32 GetLiveMagazineCount() const;
+    AONEWeaponMagazine* GetLastDroppedMagazine() const;
     UPROPERTY(EditAnywhere,EditFixedSize,Category="Weapons") TArray<FONEWeaponDefinition> WeaponDefinitions;
     UPROPERTY(EditAnywhere,Category="Cases",meta=(ClampMin="1",ClampMax="64")) int32 MaximumCases=32;
     UPROPERTY(EditAnywhere,Category="Cases",meta=(ClampMin="1",ClampMax="15")) float CaseLifetime=6.f;
+    UPROPERTY(EditAnywhere,Category="Magazines",meta=(ClampMin="1",ClampMax="32")) int32 MaximumMagazines=12;
+    UPROPERTY(EditAnywhere,Category="Magazines",meta=(ClampMin="1",ClampMax="20")) float MagazineLifetime=8.f;
     // Candidate01 read-compatible mirrors. Edit the corresponding definition instead.
     UPROPERTY(VisibleAnywhere,Category="Current Weapon") int32 MagazineSize=24;
     UPROPERTY(VisibleAnywhere,Category="Current Weapon") float FireInterval=.16f;
@@ -87,6 +114,12 @@ public:
 private:
     void Fire();
     void EjectCase(int32 Index);
+    void DropMagazine(int32 Index);
+    bool IsSlotAvailable(int32 Slot) const;
+    bool MatchesReservation(const FONEWeaponReservation& Token) const;
+    void RefillSlot(int32 Slot,bool bMaximumReserve);
+    void InstallWeapon(int32 Slot,EONEWeaponFamily Family,bool bUpgraded=false);
+    void ChooseAvailableAfterRemoval();
     USoundBase* ChooseShotSound(int32 Index);
     void StartOperation(EONEWeaponOperation Next,int32 DefinitionIndex=-1);
     void FinishOperation();
@@ -100,14 +133,20 @@ private:
     UPROPERTY(Transient) TArray<TObjectPtr<UObject>> LoadedAssets;
     TArray<TWeakObjectPtr<UAudioComponent>> OperationAudio,ShotAudio;
     TArray<TWeakObjectPtr<AONEWeaponCase>> Cases;
+    TArray<TWeakObjectPtr<AONEWeaponMagazine>> Magazines;
+    FONEWeaponReservation ActiveReservation;
+    uint64 RunId=0,InventoryRevision=0;
+    bool bHandoffLocked=false,bReloadStartedEmpty=false;
     EONEWeaponOperation Operation=EONEWeaponOperation::Ready;
     int32 EquippedIndex=0,PendingIndex=-1,OperationIndex=0,NextEvent=0,OperationSerial=0;
     int32 ShotsFired=0,ShellsInserted=0,MagazinesCommitted=0,CasesEjected=0;
     int32 AutomaticReloads=0,SprintReloadInterrupts=0;
+    int32 MagazinesDropped=0;
     uint64 LastShotId=0;
     uint64 LastShotFrame=0;
     uint32 LastShotPoseFrame=0,LastShotPoseRevision=0;
     int32 LastShotSoundIndex=INDEX_NONE;
+    int32 LastShotVictimCount=0;
     FVector LastShotMuzzle=FVector::ZeroVector;
     bool bTrigger=false,bPendingShot=false,bLastHitKill=false;
     float OperationStart=0,LastShot=-100,LastEmpty=-100,LastHit=-100;

@@ -4,6 +4,8 @@
 #include "ONEPlayerController.h"
 #include "ONEHUD.h"
 #include "ONEWeaponComponent.h"
+#include "ONEProgressionMachine.h"
+#include "ONEInteractionComponent.h"
 #include "ONEBloodSubsystem.h"
 #include "DrawDebugHelpers.h"
 #include "ONEValidation.h"
@@ -15,6 +17,9 @@
 #include "ONE03CaseCheck.h"
 #include "ONE03DamageCheck.h"
 #include "ONE03PhysicalityCheck.h"
+#include "ONE04ProgressionCheck.h"
+#include "ONE04ArsenalCheck.h"
+#include "ONE04PresentationCheck.h"
 #include "Misc/CommandLine.h"
 #include "Kismet/GameplayStatics.h"
 #include "NavigationSystem.h"
@@ -27,6 +32,7 @@
 #include "Components/LightComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "EngineUtils.h"
+#include "TimerManager.h"
 
 AONEGameMode::AONEGameMode()
 {
@@ -35,6 +41,7 @@ AONEGameMode::AONEGameMode()
     PlayerControllerClass = AONEPlayerController::StaticClass();
     HUDClass = AONEHUD::StaticClass();
     ZombieClass = AONEZombie::StaticClass();
+    ForcedBoxReward=EONEWeaponFamily::Invalid;
 }
 void AONEGameMode::BeginPlay()
 {
@@ -45,7 +52,8 @@ void AONEGameMode::BeginPlay()
     const bool bCaseCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03CaseCheck"));
     const bool bDamageCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03DamageCheck"));
     const bool bPhysicalityCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityProfile"));
-    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck;
+    const bool bCandidate04=FString(FCommandLine::Get()).Contains(TEXT("ONE04"));
+    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck || bCandidate04;
     if (bSandbox) { bIntermission=false; Countdown=0; }
     // Authored material categories drive concrete versus metal impact audio.
     for (TActorIterator<AStaticMeshActor> It(GetWorld());It;++It)
@@ -58,6 +66,24 @@ void AONEGameMode::BeginPlay()
     for (TActorIterator<ATargetPoint> It(GetWorld()); It; ++It)
         if (It->ActorHasTag("ONE_Spawn")) SpawnLocations.Add(It->GetActorLocation());
     if (SpawnLocations.IsEmpty()) SpawnLocations = { FVector(-950,-700,100), FVector(950,-700,100), FVector(-950,650,100), FVector(950,650,100) };
+    const bool bLegacyLoadout=bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck ||
+        FParse::Param(FCommandLine::Get(),TEXT("ONEValidate")) || FString(FCommandLine::Get()).Contains(TEXT("ONEBenchmark=")) ||
+        FParse::Param(FCommandLine::Get(),TEXT("ONEPresentation")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare"));
+    if (bLegacyLoadout)
+    {
+        // World BeginPlay order may run the mode before the pawn's component
+        // initializes its ordinary starter. Install the explicit legacy fixture
+        // after those initializers, before the probes' warm-up expires.
+        GetWorldTimerManager().SetTimerForNextTick(FTimerDelegate::CreateWeakLambda(this,[this]()
+        {
+            if (auto* P=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0)))
+            {
+                auto* W=P->GetWeaponComponent(); W->GiveTestLoadout();
+                UE_LOG(LogTemp,Display,TEXT("ONE_LEGACY_LOADOUT family=%d selected=%d ammo=%d/%d begun=%d"),
+                    int32(W->GetDefinition().Family),W->GetEquippedIndex(),W->GetAmmoForWeapon(0),W->GetAmmoForWeapon(1),P->HasActorBegunPlay());
+            }
+        }));
+    }
     if (FParse::Param(FCommandLine::Get(),TEXT("ONEValidate")) || FString(FCommandLine::Get()).Contains(TEXT("ONEBenchmark=")))
         GetWorld()->SpawnActor<AONEValidation>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONEPresentation"))) GetWorld()->SpawnActor<AONEPresentationCheck>();
@@ -68,6 +94,10 @@ void AONEGameMode::BeginPlay()
     if (bCaseCheck) GetWorld()->SpawnActor<AONE03CaseCheck>();
     if (bDamageCheck) GetWorld()->SpawnActor<AONE03DamageCheck>();
     if (bPhysicalityCheck) GetWorld()->SpawnActor<AONE03PhysicalityCheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE04ProgressionCheck"))) GetWorld()->SpawnActor<AONE04ProgressionCheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE04ArsenalCheck"))) GetWorld()->SpawnActor<AONE04ArsenalCheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE04PresentationCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE04Profile")) ||
+        FString(FCommandLine::Get()).Contains(TEXT("ONE04ManualCapture="))) GetWorld()->SpawnActor<AONE04PresentationCheck>();
 }
 void AONEGameMode::StartRound()
 {
@@ -147,10 +177,15 @@ void AONEGameMode::PlayerDied()
 {
     if (bGameOver) return;
     bGameOver = true;
+    for (TActorIterator<AONEProgressionMachine> It(GetWorld());It;++It) It->InvalidateRun();
+    if (auto* P=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0))) P->GetWeaponComponent()->InvalidateMachineTransactions();
     UE_LOG(LogTemp, Display, TEXT("ONE_GAME_OVER round=%d kills=%d points=%d"), Round, Kills, Points);
 }
 void AONEGameMode::RestartScene()
 {
+    for (TActorIterator<AONEProgressionMachine> It(GetWorld());It;++It) It->InvalidateRun();
+    if (auto* P=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0)))
+    { P->GetInteractionComponent()->Cancel(true); P->GetWeaponComponent()->InvalidateMachineTransactions(); }
     UGameplayStatics::SetGamePaused(this, false);
     UGameplayStatics::OpenLevel(this, FName(*UGameplayStatics::GetCurrentLevelName(this, true)),true,bSandbox?TEXT("ONESandbox=1"):TEXT(""));
 }
@@ -216,6 +251,49 @@ void AONEGameMode::ClearSandboxPresentation()
     if (!bSandbox) return;
     if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->ClearPresentation();
     if (auto* Player=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0))) Player->GetWeaponComponent()->ClearEjectedCases();
+}
+bool AONEGameMode::TrySpendPoints(int32 Cost,uint64 Receipt)
+{
+    if (bGameOver || Cost<=0 || Receipt==0 || Receipt>NextMachineReceipt || MachineReceipts.Contains(Receipt) || Points<Cost) return false;
+    MachineReceipts.Add(Receipt,Cost); Points-=Cost; return true;
+}
+bool AONEGameMode::RefundPointsOnce(uint64 Receipt)
+{
+    int32* Paid=MachineReceipts.Find(Receipt);
+    if (bGameOver || !Paid || *Paid<=0) return false;
+    Points=int32(FMath::Min<int64>(MAX_int32,int64(Points)+*Paid)); *Paid=0; return true;
+}
+void AONEGameMode::CancelUnacceptedMachineActions(AONEPlayer* P)
+{
+    for (TActorIterator<AONEProgressionMachine> It(GetWorld());It;++It) It->CancelUnacceptedAction(P);
+}
+void AONEGameMode::GrantSandboxPoints()
+{
+    if (!bSandbox || bGameOver) return;
+    const int32 Added=FMath::Min(10000,MAX_int32-Points);
+    Points+=Added; SandboxGrantedPoints=int32(FMath::Min<int64>(MAX_int32,int64(SandboxGrantedPoints)+Added));
+    UE_LOG(LogTemp,Display,TEXT("ONE04_DEV_POINTS added=%d total=%d"),Added,Points);
+}
+void AONEGameMode::SetForcedBoxReward(EONEWeaponFamily Family)
+{
+    if (!bSandbox || bGameOver) return;
+    ForcedBoxReward=Family;
+    UE_LOG(LogTemp,Display,TEXT("ONE04_DEV_NEXT_BOX family=%d"),int32(Family));
+}
+EONEWeaponFamily AONEGameMode::ConsumeForcedBoxReward()
+{
+    const EONEWeaponFamily F=bSandbox ? ForcedBoxReward : EONEWeaponFamily::Invalid;
+    ForcedBoxReward=EONEWeaponFamily::Invalid; return F;
+}
+FString AONEGameMode::GetForcedBoxRewardLabel() const
+{
+    switch (ForcedBoxReward)
+    {
+        case EONEWeaponFamily::Pistol: return TEXT("M1911");
+        case EONEWeaponFamily::Carbine: return TEXT("M4A1");
+        case EONEWeaponFamily::Shotgun: return TEXT("Remington 870");
+        default: return TEXT("RANDOM");
+    }
 }
 void AONEGameMode::SetSandboxDimLighting(bool Dim)
 {

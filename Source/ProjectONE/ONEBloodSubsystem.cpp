@@ -35,9 +35,9 @@ void AONEBloodEffect::InitSpray(const FVector& Direction,UMaterialInterface* Mat
     }
     SetLifeSpan(.52f); BuildGeometry();
 }
-void AONEBloodEffect::InitShot(const FVector& End,UMaterialInterface* Material)
+void AONEBloodEffect::InitShot(const FVector& End,UMaterialInterface* Material,const FLinearColor& Color)
 {
-    bShot=true; ShotEnd=End-GetActorLocation(); Mesh->SetMaterial(0,Material);
+    bShot=true; ShotEnd=End-GetActorLocation(); ShotColor=Color; Mesh->SetMaterial(0,Material);
     SetLifeSpan(.045f); BuildGeometry();
 }
 void AONEBloodEffect::BuildGeometry()
@@ -65,6 +65,7 @@ void AONEBloodEffect::BuildGeometry()
     if (bShot)
     {
         Ribbon(FVector::ZeroVector,ShotEnd,.55f);
+        Colors.Init(ShotColor,V.Num());
     }
     else
     {
@@ -155,7 +156,7 @@ void UONEBloodSubsystem::LoadMaterials()
     if (!BloodMaterial) BloodMaterial=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/ONE/Materials/M_Blood.M_Blood"));
     if (!PoolMaterial) PoolMaterial=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/ONE/Materials/M_BloodPool_C03.M_BloodPool_C03"));
     if (!FleshMaterial) FleshMaterial=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/ONE/Materials/M_BloodFlesh.M_BloodFlesh"));
-    if (!MuzzleMaterial) MuzzleMaterial=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/ONE/Materials/M_Muzzle.M_Muzzle"));
+    if (!MuzzleMaterial) MuzzleMaterial=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/ONE/Materials/M_Tracer_C04.M_Tracer_C04"));
 }
 void UONEBloodSubsystem::BoundActors(TArray<TWeakObjectPtr<AActor>>& Actors,int32 Max)
 {
@@ -171,11 +172,11 @@ void UONEBloodSubsystem::Impact(const FVector& Position,const FVector& Direction
     // The impact spray is brief. Continuing fluid belongs to the weak wound
     // scheduler, which projects each deposited drop and grows compatible pools.
 }
-void UONEBloodSubsystem::Shot(const FVector& Start,const FVector& End)
+void UONEBloodSubsystem::Shot(const FVector& Start,const FVector& End,FLinearColor Color)
 {
     LoadMaterials();
     if (auto* E=GetWorld()->SpawnActor<AONEBloodEffect>(Start,FRotator::ZeroRotator))
-    { E->InitShot(End,MuzzleMaterial); Effects.Add(E); BoundActors(Effects,32); }
+    { E->InitShot(End,MuzzleMaterial,Color); Effects.Add(E); BoundActors(Effects,32); }
 }
 void UONEBloodSubsystem::Pool(const FVector& Position,float Size)
 {

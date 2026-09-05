@@ -9,6 +9,8 @@ class PROJECTONE_API AONEPlayerController : public APlayerController
 public:
     AONEPlayerController();
     virtual void BeginPlay() override;
+    virtual void OnPossess(APawn* InPawn) override;
+    virtual void OnUnPossess() override;
     virtual void SetupInputComponent() override;
     virtual void FlushPressedKeys() override;
     virtual bool InputKey(const FInputKeyEventArgs& Params) override;
@@ -24,4 +26,9 @@ private:
     void ResetSandbox();
     void ClearGore();
     void ToggleLighting();
+    void GrantPoints();
+    void ForcePistol();
+    void ForceCarbine();
+    void ForceShotgun();
+    void RandomBox();
 };

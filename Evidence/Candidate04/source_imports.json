@@ -1,0 +1,3730 @@
+{
+  "schema_version": 1,
+  "candidate": "04",
+  "curated_at_utc": "2026-09-05T12:34:21.499112+00:00",
+  "result": "PASS_FOR_RECORDED_SOURCE_IMPORT_AND_OFFLINE_FILE_CHECKS",
+  "provenance": {
+    "scope": "Recorded coordinated-editor imports and source validation, followed by offline checks of the current working-tree files. No Unreal process was launched by this curator.",
+    "source_revision": null,
+    "revision_note": "Working-tree source/import evidence; this does not assert an exact committed source, a fresh build, or a packaged release.",
+    "input_records": {
+      "weapon_import": {
+        "file": "Saved/Candidate04/WeaponAssetImport.json",
+        "bytes": 21184,
+        "sha256": "c98a312e14a59e3201a3080b1ae45ab4fd1be41f0a5eade96f3c91d8f83d10d0",
+        "md5": "60da9e5dba7163f9470d088a4af4f719"
+      },
+      "machine_import": {
+        "file": "Saved/Candidate04/MachineImport.json",
+        "bytes": 14319,
+        "sha256": "005466b8fee92eefc3b9f50ccae26758b995b7d97e997371fcd1541a3616395b",
+        "md5": "dfe3d8376a00bd026a91484f0ec3e73e"
+      },
+      "effect_import": {
+        "file": "Saved/Candidate04/EffectMaterialImport.json",
+        "bytes": 146,
+        "sha256": "8ebd3d4d6e5ecfd5b4197f3e65636f798f005fd3e08b923e09959bd302b1f369",
+        "md5": "79ac37cfcf7661ef0d3d4671db56c0b8"
+      },
+      "placement": {
+        "file": "Saved/Candidate04/MachinePlacement.json",
+        "bytes": 772,
+        "sha256": "186287bc2b2926e955eb7b0088a96b244a1191213481172402c762e3f7d918d9",
+        "md5": "bba0b7b208912f6f7ef88d590a320158"
+      },
+      "weapon_inventory": {
+        "file": "ArtSource/Weapons/Candidate04/inventory.json",
+        "bytes": 55824,
+        "sha256": "74da748b26390eebdcfaf33bd6df971ea21e46c3c4f7f978b642f170a654757b",
+        "md5": "ec2fcb42e88012a03ed0b09d458a33f4"
+      },
+      "weapon_source_validation": {
+        "file": "ArtSource/Weapons/Candidate04/source_validation.json",
+        "bytes": 11677,
+        "sha256": "32e45f02c56c9e2b2a47f35c6857072fe50ead313d30fd3b8e53d08a0fa4c45b",
+        "md5": "b732a8298e2c27a8cb6fa933e4d73b59"
+      },
+      "machine_inventory": {
+        "file": "ArtSource/Machines/Candidate04/inventory.json",
+        "bytes": 16277,
+        "sha256": "b0b2edd8bb1e370ca56ec383eb30a91e2c24ce3bcc978b8db9a2db0937a17512",
+        "md5": "7686b3349a11a41ed07c414fa8eb40ad"
+      },
+      "machine_source_validation": {
+        "file": "Saved/Candidate04/MachineSourceValidation.json",
+        "bytes": 8867,
+        "sha256": "1f02d3c87ba55ff3947f2dc98897ac8adf1255eef5dccbf2d5f252f8c425ef66",
+        "md5": "c96e0199332d8cd9851d33d8474f9a26"
+      },
+      "machine_audio_inventory": {
+        "file": "ArtSource/Machines/Candidate04/Audio/manifest.json",
+        "bytes": 10122,
+        "sha256": "8fa75b550b0aa6c1e23071954369c9ffeb042126d1135b0aa2a5189da9f89f8e",
+        "md5": "80684f82033a2f8643a6293bc4528106"
+      }
+    },
+    "authoring_and_import_scripts_current_snapshot": [
+      {
+        "file": "Scripts/create_candidate04_weapon_assets.py",
+        "bytes": 41327,
+        "sha256": "ab0570e609397f5a643f7ba411967a1530da20c19d3e6bafd189c53220dbab1f",
+        "md5": "65786553c608aa5477e713aef2a51ee8"
+      },
+      {
+        "file": "Scripts/import_candidate04_weapon_assets.py",
+        "bytes": 8318,
+        "sha256": "390b85c52551fc82f133c7e8ad0d36fa63b42f18ebdae0ef1d54e2dd3edabb17",
+        "md5": "65606c147eacb9ab6e1227f580c36b7e"
+      },
+      {
+        "file": "Scripts/create_candidate04_machine_assets.py",
+        "bytes": 23657,
+        "sha256": "5871fc98294b31f1b8ec1c7da75d7c987328dc1a6ae086ca5dd6901a27912edb",
+        "md5": "31a7d793a4d2568bb739079b4a580d6b"
+      },
+      {
+        "file": "Scripts/create_candidate04_machine_audio.py",
+        "bytes": 7684,
+        "sha256": "ef991bfafd538f1f0d52c5cbbcbf236ae0b25cab8c71b5172951f8f208de739b",
+        "md5": "339e59c0794b6da1b31b4a484db1ecd6"
+      },
+      {
+        "file": "Scripts/audit_candidate04_machine_sources.py",
+        "bytes": 3526,
+        "sha256": "49eaeb1eafa191c277590485a3a6a0193a06803a17b5b14c2f57a1bd4dffdd2a",
+        "md5": "3d0478a7fb0dbedc5f63ca8413c194d3"
+      },
+      {
+        "file": "Scripts/import_candidate04_machine_assets.py",
+        "bytes": 7938,
+        "sha256": "49e4c0e28fa92bb4018902ecf7beb05525a7d26eba15fab053889ba36fbffeb6",
+        "md5": "e95523b900de06a5409aba8579a1728a"
+      },
+      {
+        "file": "Scripts/import_candidate04_effect_materials.py",
+        "bytes": 1918,
+        "sha256": "e020e22f82ed2ff3400101e90737d9758f5ddb73324e4115cce3edbfea8b66f6",
+        "md5": "5983afd7185bab209f8a5dc3e7e2ee27"
+      },
+      {
+        "file": "Scripts/place_candidate04_machines.py",
+        "bytes": 3021,
+        "sha256": "3510e49b97f3ec8b20306a929f2a892fc8cae305d01580ae415939a5c1850849",
+        "md5": "49596d9d7ea0c0912a5ca5e15fef918f"
+      }
+    ]
+  },
+  "source_counts": {
+    "weapon_families": 3,
+    "weapon_assemblies_including_three_upgrades": 6,
+    "weapon_static_parts_including_case": 15,
+    "weapon_upper_body_clips": 12,
+    "weapon_editable_blend_sources": 2,
+    "weapon_materials": 14,
+    "machine_assemblies": 2,
+    "machine_static_parts": 11,
+    "machine_editable_blend_sources": 1,
+    "machine_materials": 13,
+    "machine_authored_audio_events": 16,
+    "effect_materials": 1,
+    "weapon_triangle_count_all_exported_parts": 128220,
+    "machine_triangle_count_all_exported_parts": 151480
+  },
+  "source_authorship": {
+    "weapon_inventory_attestation": "Original Project ONE geometry and authored rig actions. C04 refines Project ONE grip/fore-end interfaces; no third-party asset, texture, animation or recording input.",
+    "machine_inventory_attestation": "Original procedural Project ONE machine geometry; no third-party asset inputs.",
+    "machine_audio_inventory_attestation": "Original deterministic synthesis, no external samples or assets.",
+    "weapon_assemblies": {
+      "M1911": [
+        "SM_M1911_Body",
+        "SM_M1911_Slide",
+        "SM_M1911_Magazine"
+      ],
+      "M4A1": [
+        "SM_M4A1_Body",
+        "SM_M4A1_Magazine"
+      ],
+      "Remington870": [
+        "SM_Remington870_Body",
+        "SM_Remington870_ForeEnd"
+      ],
+      "LastWord": [
+        "SM_LastWord_Body",
+        "SM_LastWord_Slide",
+        "SM_LastWord_Magazine"
+      ],
+      "Overcurrent": [
+        "SM_Overcurrent_Body",
+        "SM_Overcurrent_Magazine"
+      ],
+      "Gravebreaker": [
+        "SM_Gravebreaker_Body",
+        "SM_Gravebreaker_ForeEnd"
+      ]
+    },
+    "editable_sources": [
+      "ArtSource/Weapons/Candidate04/WeaponWorkshop.blend",
+      "ArtSource/Weapons/Candidate04/ResponseWeaponActions.blend",
+      "ArtSource/Machines/Candidate04/ProjectONE_Machines_C04.blend"
+    ],
+    "coordinate_convention": "Centimetres, +X barrel, +Z up. Every assembled static part shares the grip origin. Legacy FBX import reflects source Y; offsets below are already UE coordinates.",
+    "weapon_meshes_have_no_texture_dependencies": true
+  },
+  "source_validation": {
+    "weapon_source_status": "BLENDER_SOURCE_CHECKS_PASS",
+    "source_inventory_status_at_authoring": "BLENDER_AUTHORED_NOT_YET_UNREAL_IMPORTED",
+    "historical_status_note": "The inventory retains its pre-import authoring status. The later WeaponAssetImport record separately reports successful import of all 15 static parts and 12 clips; the earlier status has not been relabeled.",
+    "authored_bones": 21,
+    "expected_imported_runtime_bones": 22,
+    "action_frame_samples": 1344,
+    "all_sampled_action_matrices_finite": true,
+    "maximum_sampled_lower_body_basis_delta": 0.0,
+    "actions": {
+      "A_Response_C04_PistolReady": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 241
+      },
+      "A_Response_C04_PistolFire": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 19
+      },
+      "A_Response_C04_PistolReload": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 181
+      },
+      "A_Response_C04_PistolEquip": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 37
+      },
+      "A_Response_C04_CarbineReload": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 211
+      },
+      "A_Response_C04_UnarmedReady": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 241
+      },
+      "A_Response_C04_PistolHandoff": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 73
+      },
+      "A_Response_C04_PistolRetrieve": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 65
+      },
+      "A_Response_C04_CarbineHandoff": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 73
+      },
+      "A_Response_C04_CarbineRetrieve": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 65
+      },
+      "A_Response_C04_ShotgunHandoff": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 73
+      },
+      "A_Response_C04_ShotgunRetrieve": {
+        "finite_sampled_matrices": true,
+        "lower_body_max_basis_delta": 0.0,
+        "samples": 65
+      }
+    },
+    "magazine_seat_errors_in_blender": {
+      "Pistol": {
+        "seconds": 1.1,
+        "translation_cm": 7.993247325058084e-06,
+        "rotation_degrees": 0.0
+      },
+      "Carbine": {
+        "seconds": 1.2,
+        "translation_cm": 4.76837158203125e-06,
+        "rotation_degrees": 0.0
+      }
+    },
+    "metadata_validation_recorded": {
+      "checked_source_files": 33,
+      "blender_sources_reopened": 2,
+      "known_private_metadata_fields_removed": true,
+      "art_data_changes": false,
+      "scope": "Metadata sanitizer compares FBX semantic properties, PNG non-text chunks and Blender bytes outside verified metadata fields; no runtime import claim"
+    },
+    "machine_source_status": "PASS",
+    "machine_source_scope": "Blender FBX roundtrip dimensions/pivots, triangle counts, material slots, vertex colors and source assembly keyframe poses. Unreal/runtime appearance and sounds are separate checks.",
+    "machine_roundtrip_meshes": [
+      {
+        "mesh": "SM_C04_BoxBody",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxBody.fbx",
+        "source_sha256": "8a7813cdd70506f8e531de011fdf9579599e838854899a53fcbeb5b5df0fbe7f",
+        "triangle_count": 35428,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -59.20000457763672,
+            -100.70999908447266,
+            0.0
+          ],
+          "max": [
+            59.75000762939453,
+            100.70999145507812,
+            101.0
+          ]
+        },
+        "max_bounds_error_cm": 7.62939453125e-06,
+        "vertex_color_entries": 72478,
+        "result": "PASS"
+      },
+      {
+        "mesh": "SM_C04_BoxLid",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLid.fbx",
+        "source_sha256": "709397c1d19d6a0ad7eb7daba972c65a66c39e9e6559ea2fb49c864657d4c850",
+        "triangle_count": 9512,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -5.500006198883057,
+            -93.0,
+            -4.5
+          ],
+          "max": [
+            103.00000762939453,
+            93.00000762939453,
+            16.5
+          ]
+        },
+        "max_bounds_error_cm": 7.62939453125e-06,
+        "vertex_color_entries": 19676,
+        "result": "PASS"
+      },
+      {
+        "mesh": "SM_C04_BoxLock",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLock.fbx",
+        "source_sha256": "eb5fc5c9600329e24bb9c1948a7037ca2c125dbb50fea362e3277eb563354c50",
+        "triangle_count": 528,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -3.500000476837158,
+            -7.999999523162842,
+            -12.0
+          ],
+          "max": [
+            7.500000476837158,
+            8.0,
+            12.0
+          ]
+        },
+        "max_bounds_error_cm": 4.76837158203125e-07,
+        "vertex_color_entries": 1040,
+        "result": "PASS"
+      },
+      {
+        "mesh": "SM_C04_BoxRotor",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxRotor.fbx",
+        "source_sha256": "e3f0beb6ac337c3e2e42ce34af3f510386ea76963111c5b1a2a6bfc69884c61c",
+        "triangle_count": 3640,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -28.0,
+            -28.0,
+            -3.0
+          ],
+          "max": [
+            28.0,
+            28.0,
+            8.649999618530273
+          ]
+        },
+        "max_bounds_error_cm": 0.0,
+        "vertex_color_entries": 7152,
+        "result": "PASS"
+      },
+      {
+        "mesh": "SM_C04_UpgradeBody",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeBody.fbx",
+        "source_sha256": "44d08df7d8c13d51640094f84ee029871789d53088a281a547885335243c4d07",
+        "triangle_count": 96972,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -73.50000762939453,
+            -109.0999984741211,
+            0.0
+          ],
+          "max": [
+            125.00000762939453,
+            109.10000610351562,
+            220.0
+          ]
+        },
+        "max_bounds_error_cm": 7.62939453125e-06,
+        "vertex_color_entries": 199458,
+        "result": "PASS"
+      },
+      {
+        "mesh": "SM_C04_UpgradeCradle",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeCradle.fbx",
+        "source_sha256": "97ad9b1b33a1c69ff0c20d2951b47b1c89f10dfc9d11d8b213816840a9eb1e50",
+        "triangle_count": 756,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -18.0000057220459,
+            -61.5,
+            -7.5
+          ],
+          "max": [
+            18.0000057220459,
+            61.5,
+            4.5
+          ]
+        },
+        "max_bounds_error_cm": 5.7220458984375e-06,
+        "vertex_color_entries": 1512,
+        "result": "PASS"
+      },
+      {
+        "mesh": "SM_C04_UpgradeClamp",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeClamp.fbx",
+        "source_sha256": "3389315e181836f99936cb6ab30d84445fc3bd9eaaf8483a5f99ffcba688c298",
+        "triangle_count": 620,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -18.5,
+            -6.500000476837158,
+            -3.5
+          ],
+          "max": [
+            6.500000476837158,
+            6.500000476837158,
+            20.5
+          ]
+        },
+        "max_bounds_error_cm": 4.76837158203125e-07,
+        "vertex_color_entries": 1216,
+        "result": "PASS"
+      },
+      {
+        "mesh": "SM_C04_UpgradeRing",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeRing.fbx",
+        "source_sha256": "67777aceeba5562ec1cd0490cf0ff6dbccc1ddcb40e0a782eed6cb3ed6ababf2",
+        "triangle_count": 3000,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -51.0,
+            -7.000004291534424,
+            -51.0
+          ],
+          "max": [
+            51.0,
+            7.000004291534424,
+            51.0
+          ]
+        },
+        "max_bounds_error_cm": 3.814697265625e-06,
+        "vertex_color_entries": 6000,
+        "result": "PASS"
+      },
+      {
+        "mesh": "SM_C04_UpgradeShield",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeShield.fbx",
+        "source_sha256": "8d479040ff803dcec8328d40a9ce2321483fd460c1c0c6b04bcce0f579990b10",
+        "triangle_count": 648,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -3.00000262260437,
+            -33.5,
+            -40.5
+          ],
+          "max": [
+            7.000001907348633,
+            33.5,
+            40.5
+          ]
+        },
+        "max_bounds_error_cm": 2.6226043701171875e-06,
+        "vertex_color_entries": 1296,
+        "result": "PASS"
+      },
+      {
+        "mesh": "SM_C04_HydraulicSleeve",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicSleeve.fbx",
+        "source_sha256": "b10a36f1a7b6b5aa9d5096c140dea7a3fa47e676daca36dea8a36a17a9b90bca",
+        "triangle_count": 188,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -2.0,
+            -2.0,
+            -0.5
+          ],
+          "max": [
+            2.0,
+            2.0,
+            0.5
+          ]
+        },
+        "max_bounds_error_cm": 0.0,
+        "vertex_color_entries": 352,
+        "result": "PASS"
+      },
+      {
+        "mesh": "SM_C04_HydraulicRod",
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicRod.fbx",
+        "source_sha256": "ab2c7cf3fdb5a1161b3f7de0dea9b26ba9ff7170101d3a0f9546ef61e20173da",
+        "triangle_count": 188,
+        "roundtrip_bounds_cm": {
+          "min": [
+            -1.100000023841858,
+            -1.100000023841858,
+            -0.5
+          ],
+          "max": [
+            1.100000023841858,
+            1.100000023841858,
+            0.5
+          ]
+        },
+        "max_bounds_error_cm": 0.0,
+        "vertex_color_entries": 352,
+        "result": "PASS"
+      }
+    ],
+    "machine_source_animation_samples": [
+      {
+        "frame": 1,
+        "lid_pitch_source_degrees": 0.0,
+        "cradle_source_location_cm": [
+          94.0,
+          0.0,
+          107.0
+        ]
+      },
+      {
+        "frame": 12,
+        "lid_pitch_source_degrees": 0.0,
+        "cradle_source_location_cm": [
+          70.81033325195312,
+          0.0,
+          110.27935028076172
+        ]
+      },
+      {
+        "frame": 25,
+        "lid_pitch_source_degrees": 0.0,
+        "cradle_source_location_cm": [
+          18.189666748046875,
+          0.0,
+          117.72065734863281
+        ]
+      },
+      {
+        "frame": 36,
+        "lid_pitch_source_degrees": -32.912000761042215,
+        "cradle_source_location_cm": [
+          -5.0,
+          0.0,
+          121.0
+        ]
+      },
+      {
+        "frame": 55,
+        "lid_pitch_source_degrees": -108.0000030053738,
+        "cradle_source_location_cm": [
+          -5.0,
+          0.0,
+          121.0
+        ]
+      },
+      {
+        "frame": 75,
+        "lid_pitch_source_degrees": -108.0000030053738,
+        "cradle_source_location_cm": [
+          -5.0,
+          0.0,
+          121.0
+        ]
+      },
+      {
+        "frame": 180,
+        "lid_pitch_source_degrees": -108.0000030053738,
+        "cradle_source_location_cm": [
+          -5.0,
+          0.0,
+          121.0
+        ]
+      },
+      {
+        "frame": 215,
+        "lid_pitch_source_degrees": 0.0,
+        "cradle_source_location_cm": [
+          -5.0,
+          0.0,
+          121.0
+        ]
+      },
+      {
+        "frame": 231,
+        "lid_pitch_source_degrees": 0.0,
+        "cradle_source_location_cm": [
+          -5.0,
+          0.0,
+          121.0
+        ]
+      },
+      {
+        "frame": 270,
+        "lid_pitch_source_degrees": 0.0,
+        "cradle_source_location_cm": [
+          94.0,
+          0.0,
+          107.0
+        ]
+      }
+    ],
+    "visual_scope_note": "Finite transforms, unchanged sampled lower-body bases, dimensions, pivots, and source magazine-seat calculations are numerical/source checks. They do not certify in-game hand contact, motion quality, model readability, or machine appearance."
+  },
+  "import_validation_recorded": {
+    "weapons": {
+      "candidate": "04",
+      "scope": "Only inventory-listed original weapon assets and upper-body clips",
+      "materials": {
+        "M_C04_BluedSteel": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_BluedSteel.uasset",
+          "base_color": [
+            0.055,
+            0.069,
+            0.08,
+            1
+          ],
+          "roughness": 0.43,
+          "metallic": 0.78,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_Parkerized": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_Parkerized.uasset",
+          "base_color": [
+            0.1,
+            0.115,
+            0.12,
+            1
+          ],
+          "roughness": 0.69,
+          "metallic": 0.58,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_EdgeSteel": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_EdgeSteel.uasset",
+          "base_color": [
+            0.27,
+            0.3,
+            0.31,
+            1
+          ],
+          "roughness": 0.42,
+          "metallic": 0.78,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_Polymer": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_Polymer.uasset",
+          "base_color": [
+            0.025,
+            0.03,
+            0.033,
+            1
+          ],
+          "roughness": 0.88,
+          "metallic": 0.0,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_Walnut": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_Walnut.uasset",
+          "base_color": [
+            0.22,
+            0.095,
+            0.042,
+            1
+          ],
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_Bore": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_Bore.uasset",
+          "base_color": [
+            0.008,
+            0.012,
+            0.014,
+            1
+          ],
+          "roughness": 0.94,
+          "metallic": 0.0,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_Brass": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_Brass.uasset",
+          "base_color": [
+            0.48,
+            0.32,
+            0.1,
+            1
+          ],
+          "roughness": 0.38,
+          "metallic": 0.78,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_Ivory": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_Ivory.uasset",
+          "base_color": [
+            0.66,
+            0.69,
+            0.59,
+            1
+          ],
+          "roughness": 0.66,
+          "metallic": 0.1,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_VioletArmor": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_VioletArmor.uasset",
+          "base_color": [
+            0.085,
+            0.034,
+            0.13,
+            1
+          ],
+          "roughness": 0.43,
+          "metallic": 0.7,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_CyanArmor": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_CyanArmor.uasset",
+          "base_color": [
+            0.025,
+            0.115,
+            0.13,
+            1
+          ],
+          "roughness": 0.47,
+          "metallic": 0.68,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_EmberArmor": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_EmberArmor.uasset",
+          "base_color": [
+            0.15,
+            0.063,
+            0.024,
+            1
+          ],
+          "roughness": 0.52,
+          "metallic": 0.7,
+          "emissive_gain": 0,
+          "external_textures": []
+        },
+        "M_C04_VioletEnergy": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_VioletEnergy.uasset",
+          "base_color": [
+            0.43,
+            0.09,
+            1,
+            1
+          ],
+          "roughness": 0.36,
+          "metallic": 0.25,
+          "emissive_gain": 4.0,
+          "external_textures": []
+        },
+        "M_C04_CyanEnergy": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_CyanEnergy.uasset",
+          "base_color": [
+            0.025,
+            0.72,
+            1,
+            1
+          ],
+          "roughness": 0.36,
+          "metallic": 0.25,
+          "emissive_gain": 3.5,
+          "external_textures": []
+        },
+        "M_C04_EmberEnergy": {
+          "asset": "Content/ONE/Materials/Candidate04/M_C04_EmberEnergy.uasset",
+          "base_color": [
+            1,
+            0.24,
+            0.025,
+            1
+          ],
+          "roughness": 0.36,
+          "metallic": 0.25,
+          "emissive_gain": 3.8,
+          "external_textures": []
+        }
+      },
+      "static_meshes": {
+        "SM_M1911_Body": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Body.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_M1911_Body.fbx",
+          "source_md5": "a53e53e00131c9569ce58ba0c44e5a00",
+          "bounds_ue_cm": [
+            [
+              -5.657402515411377,
+              -1.8925001621246338,
+              -7.795243740081787
+            ],
+            [
+              16.5,
+              1.8925000429153442,
+              6.199999809265137
+            ]
+          ],
+          "source_bounds_error_cm": 1.1920928955078125e-07,
+          "material_slots": [
+            "M_C04_BluedSteel",
+            "M_C04_Parkerized",
+            "M_C04_EdgeSteel",
+            "M_C04_Walnut",
+            "M_C04_Bore"
+          ]
+        },
+        "SM_M1911_Slide": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Slide.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_M1911_Slide.fbx",
+          "source_md5": "ddf864b1e6675939c8653ba035033c52",
+          "bounds_ue_cm": [
+            [
+              -4.699999809265137,
+              -1.4399999380111694,
+              3.799999952316284
+            ],
+            [
+              16.149999618530273,
+              1.440000295639038,
+              8.055000305175781
+            ]
+          ],
+          "source_bounds_error_cm": 3.5762786865234375e-07,
+          "material_slots": [
+            "M_C04_BluedSteel",
+            "M_C04_Bore",
+            "M_C04_EdgeSteel",
+            "M_C04_Parkerized"
+          ]
+        },
+        "SM_M1911_Magazine": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Magazine.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_M1911_Magazine.fbx",
+          "source_md5": "7eb0997e9797524ba15cb453925b5b5b",
+          "bounds_ue_cm": [
+            [
+              -2.674649715423584,
+              -1.0000001192092896,
+              -8.24545955657959
+            ],
+            [
+              3.5784037113189697,
+              1.000000238418579,
+              1.7770047187805176
+            ]
+          ],
+          "source_bounds_error_cm": 2.384185791015625e-07,
+          "material_slots": [
+            "M_C04_EdgeSteel",
+            "M_C04_BluedSteel",
+            "M_C04_Bore"
+          ]
+        },
+        "SM_M4A1_Body": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_M4A1_Body.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_M4A1_Body.fbx",
+          "source_md5": "d0a24a3809d29674aaa8dc6c3e5d5b22",
+          "bounds_ue_cm": [
+            [
+              -34.57999801635742,
+              -5.09999942779541,
+              -8.411423683166504
+            ],
+            [
+              54.5,
+              4.059998512268066,
+              23.774999618530273
+            ]
+          ],
+          "source_bounds_error_cm": 1.430511474609375e-06,
+          "material_slots": [
+            "M_C04_Parkerized",
+            "M_C04_Polymer",
+            "M_C04_EdgeSteel",
+            "M_C04_Bore",
+            "M_C04_BluedSteel"
+          ]
+        },
+        "SM_M4A1_Magazine": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_M4A1_Magazine.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_M4A1_Magazine.fbx",
+          "source_md5": "b28720bc1e102d5b215afbc847a1f384",
+          "bounds_ue_cm": [
+            [
+              9.605384826660156,
+              -2.523536205291748,
+              -15.342574119567871
+            ],
+            [
+              19.430397033691406,
+              2.5211849212646484,
+              6.990414619445801
+            ]
+          ],
+          "source_bounds_error_cm": 1.430511474609375e-06,
+          "material_slots": [
+            "M_C04_Parkerized",
+            "M_C04_Polymer",
+            "M_C04_EdgeSteel"
+          ]
+        },
+        "SM_Remington870_Body": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_Remington870_Body.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_Remington870_Body.fbx",
+          "source_md5": "ca9825c1a2e473e6e0541ddc3af952e7",
+          "bounds_ue_cm": [
+            [
+              -41.98999786376953,
+              -3.7499964237213135,
+              -1.5511422157287598
+            ],
+            [
+              64.5,
+              3.7500035762786865,
+              17.200000762939453
+            ]
+          ],
+          "source_bounds_error_cm": 3.5762786865234375e-06,
+          "material_slots": [
+            "M_C04_BluedSteel",
+            "M_C04_Parkerized",
+            "M_C04_EdgeSteel",
+            "M_C04_Bore",
+            "M_C04_Walnut",
+            "M_C04_Polymer",
+            "M_C04_Ivory"
+          ]
+        },
+        "SM_Remington870_ForeEnd": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_Remington870_ForeEnd.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_Remington870_ForeEnd.fbx",
+          "source_md5": "5f7ead55dd8bb28fc6bdde9827e147be",
+          "bounds_ue_cm": [
+            [
+              -0.9999999403953552,
+              -3.9700019359588623,
+              2.119999885559082
+            ],
+            [
+              26.600000381469727,
+              3.969998836517334,
+              9.880001068115234
+            ]
+          ],
+          "source_bounds_error_cm": 1.9073486328125e-06,
+          "material_slots": [
+            "M_C04_Walnut",
+            "M_C04_BluedSteel",
+            "M_C04_Polymer",
+            "M_C04_EdgeSteel"
+          ]
+        },
+        "SM_LastWord_Body": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_LastWord_Body.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_LastWord_Body.fbx",
+          "source_md5": "24df447831ec2ac42bbb6b3a3205a597",
+          "bounds_ue_cm": [
+            [
+              -5.657402515411377,
+              -1.8925001621246338,
+              -7.795243740081787
+            ],
+            [
+              16.5,
+              1.8925000429153442,
+              6.199999809265137
+            ]
+          ],
+          "source_bounds_error_cm": 1.1920928955078125e-07,
+          "material_slots": [
+            "M_C04_VioletArmor",
+            "M_C04_Parkerized",
+            "M_C04_EdgeSteel",
+            "M_C04_Polymer",
+            "M_C04_BluedSteel",
+            "M_C04_Bore",
+            "M_C04_VioletEnergy"
+          ]
+        },
+        "SM_LastWord_Slide": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_LastWord_Slide.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_LastWord_Slide.fbx",
+          "source_md5": "01241f5a7cd39ce62f54bc6c3b2240c8",
+          "bounds_ue_cm": [
+            [
+              -4.699999809265137,
+              -1.4999998807907104,
+              3.799999952316284
+            ],
+            [
+              16.149999618530273,
+              1.500000238418579,
+              8.055000305175781
+            ]
+          ],
+          "source_bounds_error_cm": 2.384185791015625e-07,
+          "material_slots": [
+            "M_C04_VioletArmor",
+            "M_C04_Bore",
+            "M_C04_EdgeSteel",
+            "M_C04_Parkerized",
+            "M_C04_VioletEnergy"
+          ]
+        },
+        "SM_LastWord_Magazine": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_LastWord_Magazine.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_LastWord_Magazine.fbx",
+          "source_md5": "dca417a5d0d2c848804967ed73d3e908",
+          "bounds_ue_cm": [
+            [
+              -2.674649715423584,
+              -1.0000001192092896,
+              -8.24545955657959
+            ],
+            [
+              3.5784037113189697,
+              1.0800000429153442,
+              1.7770047187805176
+            ]
+          ],
+          "source_bounds_error_cm": 1.1920928955078125e-07,
+          "material_slots": [
+            "M_C04_EdgeSteel",
+            "M_C04_VioletArmor",
+            "M_C04_Bore",
+            "M_C04_VioletEnergy"
+          ]
+        },
+        "SM_Overcurrent_Body": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_Overcurrent_Body.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_Overcurrent_Body.fbx",
+          "source_md5": "ae31dad9b41d0d22d9ea698c90b58119",
+          "bounds_ue_cm": [
+            [
+              -34.57999801635742,
+              -5.09999942779541,
+              -8.411423683166504
+            ],
+            [
+              54.5,
+              4.059998512268066,
+              23.774999618530273
+            ]
+          ],
+          "source_bounds_error_cm": 1.430511474609375e-06,
+          "material_slots": [
+            "M_C04_CyanArmor",
+            "M_C04_Polymer",
+            "M_C04_Parkerized",
+            "M_C04_EdgeSteel",
+            "M_C04_Bore",
+            "M_C04_BluedSteel",
+            "M_C04_CyanEnergy"
+          ]
+        },
+        "SM_Overcurrent_Magazine": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_Overcurrent_Magazine.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_Overcurrent_Magazine.fbx",
+          "source_md5": "827d36987e1a5fbcac2e9b643095b829",
+          "bounds_ue_cm": [
+            [
+              9.605384826660156,
+              -2.540001392364502,
+              -15.342574119567871
+            ],
+            [
+              19.430397033691406,
+              2.539998769760132,
+              6.990414619445801
+            ]
+          ],
+          "source_bounds_error_cm": 1.430511474609375e-06,
+          "material_slots": [
+            "M_C04_CyanArmor",
+            "M_C04_Polymer",
+            "M_C04_EdgeSteel",
+            "M_C04_CyanEnergy"
+          ]
+        },
+        "SM_Gravebreaker_Body": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_Gravebreaker_Body.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_Gravebreaker_Body.fbx",
+          "source_md5": "67f2b4716670581701b4e11e6f32e444",
+          "bounds_ue_cm": [
+            [
+              -41.98999786376953,
+              -3.7499964237213135,
+              -1.5511422157287598
+            ],
+            [
+              64.5,
+              3.7500035762786865,
+              17.200000762939453
+            ]
+          ],
+          "source_bounds_error_cm": 3.5762786865234375e-06,
+          "material_slots": [
+            "M_C04_EmberArmor",
+            "M_C04_Parkerized",
+            "M_C04_BluedSteel",
+            "M_C04_EdgeSteel",
+            "M_C04_Bore",
+            "M_C04_Polymer",
+            "M_C04_Ivory",
+            "M_C04_EmberEnergy"
+          ]
+        },
+        "SM_Gravebreaker_ForeEnd": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_Gravebreaker_ForeEnd.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_Gravebreaker_ForeEnd.fbx",
+          "source_md5": "78f73a9a66f4296aa14503f19c08fae8",
+          "bounds_ue_cm": [
+            [
+              -0.9999999403953552,
+              -4.0800018310546875,
+              2.119999885559082
+            ],
+            [
+              26.600000381469727,
+              4.07999849319458,
+              9.880001068115234
+            ]
+          ],
+          "source_bounds_error_cm": 1.9073486328125e-06,
+          "material_slots": [
+            "M_C04_Polymer",
+            "M_C04_EmberArmor",
+            "M_C04_EmberEnergy",
+            "M_C04_EdgeSteel"
+          ]
+        },
+        "SM_M1911_Case": {
+          "asset": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Case.uasset",
+          "source": "ArtSource/Exports/Candidate04/SM_M1911_Case.fbx",
+          "source_md5": "36bd7d709348682236cd10fe82353d88",
+          "bounds_ue_cm": [
+            [
+              -1.2705000638961792,
+              -0.6099998950958252,
+              -0.6100000143051147
+            ],
+            [
+              1.149999976158142,
+              0.6100001335144043,
+              0.6100000143051147
+            ]
+          ],
+          "source_bounds_error_cm": 1.1920928955078125e-07,
+          "material_slots": [
+            "M_C04_Brass",
+            "M_C04_EdgeSteel"
+          ]
+        }
+      },
+      "animations": {
+        "A_Response_C04_PistolReady": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolReady.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReady.fbx",
+          "source_md5": "b004a643c8145bb4daf274e4f28488c1",
+          "duration": 2.4000000953674316,
+          "expected_duration": 2.4,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_PistolFire": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolFire.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolFire.fbx",
+          "source_md5": "bdda426cccb902434ecc16b43a822ad2",
+          "duration": 0.18000000715255737,
+          "expected_duration": 0.18,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_PistolReload": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolReload.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReload.fbx",
+          "source_md5": "79bc0c04eebb98ea91c0a032b8a8342f",
+          "duration": 1.7999999523162842,
+          "expected_duration": 1.8,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_PistolEquip": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolEquip.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolEquip.fbx",
+          "source_md5": "c691d2920048e1ed1a32e21fae3bf5e4",
+          "duration": 0.36000001430511475,
+          "expected_duration": 0.36,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_CarbineReload": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_CarbineReload.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineReload.fbx",
+          "source_md5": "2ece676ebd871da2e8bdd50b5297155a",
+          "duration": 2.0999999046325684,
+          "expected_duration": 2.1,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_UnarmedReady": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_UnarmedReady.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_UnarmedReady.fbx",
+          "source_md5": "31a5bb356d5b9718f95f745be3960c4d",
+          "duration": 2.4000000953674316,
+          "expected_duration": 2.4,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_PistolHandoff": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolHandoff.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolHandoff.fbx",
+          "source_md5": "fbe61957a45c92f37c1aa204232aa5b9",
+          "duration": 0.7200000286102295,
+          "expected_duration": 0.72,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_PistolRetrieve": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolRetrieve.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolRetrieve.fbx",
+          "source_md5": "71864362d8c4f009e40f1edbed184e0d",
+          "duration": 0.6399999856948853,
+          "expected_duration": 0.64,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_CarbineHandoff": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_CarbineHandoff.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineHandoff.fbx",
+          "source_md5": "1301b32105d2ec12126159fd3c2eff74",
+          "duration": 0.7200000286102295,
+          "expected_duration": 0.72,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_CarbineRetrieve": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_CarbineRetrieve.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineRetrieve.fbx",
+          "source_md5": "e5839d67dade7c1f478e140326da1594",
+          "duration": 0.6399999856948853,
+          "expected_duration": 0.64,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_ShotgunHandoff": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_ShotgunHandoff.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunHandoff.fbx",
+          "source_md5": "62713a64de3227f525cb0b0bdf5dc5fc",
+          "duration": 0.7200000286102295,
+          "expected_duration": 0.72,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        },
+        "A_Response_C04_ShotgunRetrieve": {
+          "asset": "Content/ONE/Animations/Candidate04/A_Response_C04_ShotgunRetrieve.uasset",
+          "source": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunRetrieve.fbx",
+          "source_md5": "2c28934c637ec0e5ae867eaeffaa2b7b",
+          "duration": 0.6399999856948853,
+          "expected_duration": 0.64,
+          "skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset"
+        }
+      },
+      "status": "PASS",
+      "counts": {
+        "static_meshes": 15,
+        "animations": 12,
+        "materials": 14
+      }
+    },
+    "machines": {
+      "candidate": "04",
+      "scope": "New original machine presentation only",
+      "materials": {
+        "M_C04_Carbon": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Carbon.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        },
+        "M_C04_Armor": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Armor.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        },
+        "M_C04_Ceramic": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Ceramic.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        },
+        "M_C04_Teal": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Teal.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        },
+        "M_C04_Steel": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Steel.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        },
+        "M_C04_Edge": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Edge.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        },
+        "M_C04_Copper": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Copper.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        },
+        "M_C04_Rubber": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Rubber.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        },
+        "M_C04_Amber": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Amber.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        },
+        "M_C04_Stencil": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Stencil.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        },
+        "M_C04_Lamp": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Lamp.uasset",
+          "vertex_color": true,
+          "parameterized_emission": true
+        },
+        "M_C04_Violet": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Violet.uasset",
+          "vertex_color": true,
+          "parameterized_emission": true
+        },
+        "M_C04_Screen": {
+          "asset": "Content/ONE/Materials/Machines/Candidate04/M_C04_Screen.uasset",
+          "vertex_color": true,
+          "parameterized_emission": false
+        }
+      },
+      "meshes": {
+        "SM_C04_BoxBody": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_BoxBody.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxBody.fbx",
+          "source_sha256": "8a7813cdd70506f8e531de011fdf9579599e838854899a53fcbeb5b5df0fbe7f",
+          "bounds_cm": {
+            "min": [
+              -59.20000457763672,
+              -100.70999145507812,
+              0.0
+            ],
+            "max": [
+              59.75000762939453,
+              100.70999908447266,
+              101.0
+            ]
+          },
+          "max_bounds_error_cm": 7.62939453125e-06,
+          "import_auto_collision": false
+        },
+        "SM_C04_BoxLid": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_BoxLid.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLid.fbx",
+          "source_sha256": "709397c1d19d6a0ad7eb7daba972c65a66c39e9e6559ea2fb49c864657d4c850",
+          "bounds_cm": {
+            "min": [
+              -5.500006198883057,
+              -93.00000762939453,
+              -4.5
+            ],
+            "max": [
+              103.00000762939453,
+              93.0,
+              16.5
+            ]
+          },
+          "max_bounds_error_cm": 7.62939453125e-06,
+          "import_auto_collision": false
+        },
+        "SM_C04_BoxLock": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_BoxLock.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLock.fbx",
+          "source_sha256": "eb5fc5c9600329e24bb9c1948a7037ca2c125dbb50fea362e3277eb563354c50",
+          "bounds_cm": {
+            "min": [
+              -3.500000476837158,
+              -8.0,
+              -12.0
+            ],
+            "max": [
+              7.500000476837158,
+              7.999999523162842,
+              12.0
+            ]
+          },
+          "max_bounds_error_cm": 4.76837158203125e-07,
+          "import_auto_collision": false
+        },
+        "SM_C04_BoxRotor": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_BoxRotor.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxRotor.fbx",
+          "source_sha256": "e3f0beb6ac337c3e2e42ce34af3f510386ea76963111c5b1a2a6bfc69884c61c",
+          "bounds_cm": {
+            "min": [
+              -28.0,
+              -28.0,
+              -3.0
+            ],
+            "max": [
+              28.0,
+              28.0,
+              8.649999618530273
+            ]
+          },
+          "max_bounds_error_cm": 0.0,
+          "import_auto_collision": false
+        },
+        "SM_C04_UpgradeBody": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeBody.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeBody.fbx",
+          "source_sha256": "44d08df7d8c13d51640094f84ee029871789d53088a281a547885335243c4d07",
+          "bounds_cm": {
+            "min": [
+              -73.50000762939453,
+              -109.10000610351562,
+              0.0
+            ],
+            "max": [
+              125.00000762939453,
+              109.0999984741211,
+              220.0
+            ]
+          },
+          "max_bounds_error_cm": 7.62939453125e-06,
+          "import_auto_collision": false
+        },
+        "SM_C04_UpgradeCradle": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeCradle.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeCradle.fbx",
+          "source_sha256": "97ad9b1b33a1c69ff0c20d2951b47b1c89f10dfc9d11d8b213816840a9eb1e50",
+          "bounds_cm": {
+            "min": [
+              -18.0000057220459,
+              -61.5,
+              -7.5
+            ],
+            "max": [
+              18.0000057220459,
+              61.5,
+              4.5
+            ]
+          },
+          "max_bounds_error_cm": 5.7220458984375e-06,
+          "import_auto_collision": false
+        },
+        "SM_C04_UpgradeClamp": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeClamp.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeClamp.fbx",
+          "source_sha256": "3389315e181836f99936cb6ab30d84445fc3bd9eaaf8483a5f99ffcba688c298",
+          "bounds_cm": {
+            "min": [
+              -18.5,
+              -6.500000476837158,
+              -3.5
+            ],
+            "max": [
+              6.500000476837158,
+              6.500000476837158,
+              20.5
+            ]
+          },
+          "max_bounds_error_cm": 4.76837158203125e-07,
+          "import_auto_collision": false
+        },
+        "SM_C04_UpgradeRing": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeRing.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeRing.fbx",
+          "source_sha256": "67777aceeba5562ec1cd0490cf0ff6dbccc1ddcb40e0a782eed6cb3ed6ababf2",
+          "bounds_cm": {
+            "min": [
+              -51.0,
+              -7.000004291534424,
+              -51.0
+            ],
+            "max": [
+              51.0,
+              7.000004291534424,
+              51.0
+            ]
+          },
+          "max_bounds_error_cm": 3.814697265625e-06,
+          "import_auto_collision": false
+        },
+        "SM_C04_UpgradeShield": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeShield.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeShield.fbx",
+          "source_sha256": "8d479040ff803dcec8328d40a9ce2321483fd460c1c0c6b04bcce0f579990b10",
+          "bounds_cm": {
+            "min": [
+              -3.00000262260437,
+              -33.5,
+              -40.5
+            ],
+            "max": [
+              7.000001907348633,
+              33.5,
+              40.5
+            ]
+          },
+          "max_bounds_error_cm": 2.6226043701171875e-06,
+          "import_auto_collision": false
+        },
+        "SM_C04_HydraulicSleeve": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_HydraulicSleeve.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicSleeve.fbx",
+          "source_sha256": "b10a36f1a7b6b5aa9d5096c140dea7a3fa47e676daca36dea8a36a17a9b90bca",
+          "bounds_cm": {
+            "min": [
+              -2.0,
+              -2.0,
+              -0.5
+            ],
+            "max": [
+              2.0,
+              2.0,
+              0.5
+            ]
+          },
+          "max_bounds_error_cm": 0.0,
+          "import_auto_collision": false
+        },
+        "SM_C04_HydraulicRod": {
+          "asset": "Content/ONE/Machines/Candidate04/SM_C04_HydraulicRod.uasset",
+          "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicRod.fbx",
+          "source_sha256": "ab2c7cf3fdb5a1161b3f7de0dea9b26ba9ff7170101d3a0f9546ef61e20173da",
+          "bounds_cm": {
+            "min": [
+              -1.100000023841858,
+              -1.100000023841858,
+              -0.5
+            ],
+            "max": [
+              1.100000023841858,
+              1.100000023841858,
+              0.5
+            ]
+          },
+          "max_bounds_error_cm": 0.0,
+          "import_auto_collision": false
+        }
+      },
+      "audio": {
+        "S_C04_BoxIdle": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxIdle.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxIdle.wav",
+          "source_sha256": "2f1f1c7d01fcd18b6f58804df9d76238a56688c1b1302fa64b20e968117317ba",
+          "seconds": 3.0,
+          "looping": true
+        },
+        "S_C04_BoxActivate": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxActivate.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxActivate.wav",
+          "source_sha256": "09b397024b5631678d7ff251f2e608f6bf573181ec81b491fad715e4bf2c8775",
+          "seconds": 0.9399999976158142,
+          "looping": false
+        },
+        "S_C04_BoxCycle01": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCycle01.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle01.wav",
+          "source_sha256": "d80730e5225c5a2a7e3c0538b6d28043a251712d4f99c5b8aab1a42e9885cbaa",
+          "seconds": 0.17000000178813934,
+          "looping": false
+        },
+        "S_C04_BoxCycle02": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCycle02.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle02.wav",
+          "source_sha256": "847f1f507cfcede6dd4cb4201624fdc7b5c21b8ad10bb99061917c52a14f0440",
+          "seconds": 0.17000000178813934,
+          "looping": false
+        },
+        "S_C04_BoxCycle03": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCycle03.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle03.wav",
+          "source_sha256": "b7e981aeccb1d000e7569fcf8d9fd6889166c7cfded5124777e9654ad32c4da4",
+          "seconds": 0.17000000178813934,
+          "looping": false
+        },
+        "S_C04_BoxReveal": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxReveal.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxReveal.wav",
+          "source_sha256": "138dda7c641789ac26387fab8de627c41664ae4e1f39d348b76cd45bb8684fa6",
+          "seconds": 1.3600000143051147,
+          "looping": false
+        },
+        "S_C04_BoxCollect": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCollect.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCollect.wav",
+          "source_sha256": "2da08740a836303c5102e58f973eeee4198483084b72e2c2598e9e063ee0c124",
+          "seconds": 0.49000000953674316,
+          "looping": false
+        },
+        "S_C04_BoxClose": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxClose.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxClose.wav",
+          "source_sha256": "a90f68290de1763384010d743c6c492058bfcdb9a975ddf2fd259dd96f863789",
+          "seconds": 0.699999988079071,
+          "looping": false
+        },
+        "S_C04_UpgradeIdle": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeIdle.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeIdle.wav",
+          "source_sha256": "b8cfc94887885ff9438eaf048f21c4470ad8f672357ddc64a389a87352eafb76",
+          "seconds": 2.0,
+          "looping": true
+        },
+        "S_C04_UpgradeIntake": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeIntake.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeIntake.wav",
+          "source_sha256": "360d588a614b8fbc2af58a7f87ffdd48f418db5b0597d41748ff6937ae113d9c",
+          "seconds": 1.100000023841858,
+          "looping": false
+        },
+        "S_C04_UpgradeActivate": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeActivate.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeActivate.wav",
+          "source_sha256": "a71ccbadb02aa0817a9e333e5eef641196e6329f2ccb54637e837d10d74210bf",
+          "seconds": 0.4399999976158142,
+          "looping": false
+        },
+        "S_C04_UpgradeProcess": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeProcess.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeProcess.wav",
+          "source_sha256": "889b78935e6a2dc2401e45111d4a92de5633225566ee26cc279ebab17b96dbfb",
+          "seconds": 3.0,
+          "looping": true
+        },
+        "S_C04_UpgradeOutput": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeOutput.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeOutput.wav",
+          "source_sha256": "3abb001c23265854f1c8a9fa4028cd001ed01180c0cc8db4dcc722db2ccece19",
+          "seconds": 1.2400000095367432,
+          "looping": false
+        },
+        "S_C04_UpgradeComplete": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeComplete.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeComplete.wav",
+          "source_sha256": "24f4ba1a6e0a80cc129b926f4807f42d209eeae7bafbac792f5841d64570fcf3",
+          "seconds": 1.4800000190734863,
+          "looping": false
+        },
+        "S_C04_UpgradeCollect": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeCollect.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeCollect.wav",
+          "source_sha256": "163c9d79493771c0cde9e6d0734a5c11147abd5bb5d507bbca780e97553edb5f",
+          "seconds": 0.5199999809265137,
+          "looping": false
+        },
+        "S_C04_UpgradeClose": {
+          "asset": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeClose.uasset",
+          "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeClose.wav",
+          "source_sha256": "f7826bd6f2ea7ba0cdc19bdd1af2b758a37db5b28da6e330d3f47cbca63242af",
+          "seconds": 0.7599999904632568,
+          "looping": false
+        }
+      },
+      "result": "PASS"
+    },
+    "effects": {
+      "status": "PASS",
+      "asset": "Content/ONE/Materials/M_Tracer_C04.uasset",
+      "gain": 4,
+      "depth_test": true,
+      "graph_connections_checked": 4
+    },
+    "weapon_maximum_bounds_error_cm": 3.5762786865234375e-06,
+    "weapon_maximum_clip_duration_error_seconds": 9.536743172944284e-08,
+    "weapon_clip_skeleton": "Content/ONE/Characters/SK_Response_Skeleton.uasset",
+    "machine_maximum_bounds_error_cm": 7.62939453125e-06,
+    "source_hash_semantics": "Import reports hash the authored input bytes. These are not hashes of imported package bytes or an independent current Unreal AssetImportData readback."
+  },
+  "placement_validation_recorded": {
+    "status": "PASS",
+    "preserved_existing_actors": 96,
+    "navigation_saved_after_build": true,
+    "machines": [
+      {
+        "class": "ONEMysteryBox",
+        "ground_root_cm": [
+          -650,
+          -530,
+          2
+        ],
+        "actor_center_cm": [
+          -647.0,
+          -530.0,
+          54.0
+        ],
+        "yaw": 0,
+        "collision_half_extent_cm": [
+          65.0,
+          102.0,
+          52.0
+        ]
+      },
+      {
+        "class": "ONEUpgradeMachine",
+        "ground_root_cm": [
+          650,
+          -530,
+          2
+        ],
+        "actor_center_cm": [
+          624.0,
+          -530.0,
+          112.0
+        ],
+        "yaw": 180,
+        "collision_half_extent_cm": [
+          100.0,
+          110.0,
+          110.0
+        ]
+      }
+    ],
+    "map": "Content/ONE/Maps/Containment.umap",
+    "verification_method": "The full-editor placement script compared all 96 existing non-machine actor identities and nine numeric transform components before/after placement; each transform difference had to remain below 0.0001. It added two blocking machine actors, waited for navigation build completion, then saved the map.",
+    "scope_limit": "Actor identity/transform preservation is not bytewise preservation of all serialized actor/component properties. Navigation-build completion is not a claim that every gameplay route has been visually or physically traversed.",
+    "current_map_file_snapshot": {
+      "file": "Content/ONE/Maps/Containment.umap",
+      "bytes": 196792,
+      "sha256": "f728a7fe545c1f34ca6b122c7669037ac05b4e15458b62137384e21ba0031d4f",
+      "md5": "049d2115347085d26c7863d5c4b3f2da"
+    }
+  },
+  "offline_verification": {
+    "result": "PASS",
+    "hash_comparison_count": 126,
+    "unique_authored_files_compared": 61,
+    "recorded_size_comparison_count": 49,
+    "hash_mismatches": [],
+    "missing_referenced_files": [],
+    "hash_comparisons": [
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M1911_Body.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "a53e53e00131c9569ce58ba0c44e5a00",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_M1911_Body",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M1911_Slide.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "ddf864b1e6675939c8653ba035033c52",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_M1911_Slide",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M1911_Magazine.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "7eb0997e9797524ba15cb453925b5b5b",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_M1911_Magazine",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M4A1_Body.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "d0a24a3809d29674aaa8dc6c3e5d5b22",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_M4A1_Body",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M4A1_Magazine.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "b28720bc1e102d5b215afbc847a1f384",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_M4A1_Magazine",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Remington870_Body.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "ca9825c1a2e473e6e0541ddc3af952e7",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_Remington870_Body",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Remington870_ForeEnd.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "5f7ead55dd8bb28fc6bdde9827e147be",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_Remington870_ForeEnd",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_LastWord_Body.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "24df447831ec2ac42bbb6b3a3205a597",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_LastWord_Body",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_LastWord_Slide.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "01241f5a7cd39ce62f54bc6c3b2240c8",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_LastWord_Slide",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_LastWord_Magazine.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "dca417a5d0d2c848804967ed73d3e908",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_LastWord_Magazine",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Overcurrent_Body.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "ae31dad9b41d0d22d9ea698c90b58119",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_Overcurrent_Body",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Overcurrent_Magazine.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "827d36987e1a5fbcac2e9b643095b829",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_Overcurrent_Magazine",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Gravebreaker_Body.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "67f2b4716670581701b4e11e6f32e444",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_Gravebreaker_Body",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Gravebreaker_ForeEnd.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "78f73a9a66f4296aa14503f19c08fae8",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_Gravebreaker_ForeEnd",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M1911_Case.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "36bd7d709348682236cd10fe82353d88",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#static_meshes/SM_M1911_Case",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReady.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "b004a643c8145bb4daf274e4f28488c1",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_PistolReady",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolFire.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "bdda426cccb902434ecc16b43a822ad2",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_PistolFire",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReload.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "79bc0c04eebb98ea91c0a032b8a8342f",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_PistolReload",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolEquip.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "c691d2920048e1ed1a32e21fae3bf5e4",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_PistolEquip",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineReload.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "2ece676ebd871da2e8bdd50b5297155a",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_CarbineReload",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_UnarmedReady.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "31a5bb356d5b9718f95f745be3960c4d",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_UnarmedReady",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolHandoff.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "fbe61957a45c92f37c1aa204232aa5b9",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_PistolHandoff",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolRetrieve.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "71864362d8c4f009e40f1edbed184e0d",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_PistolRetrieve",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineHandoff.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "1301b32105d2ec12126159fd3c2eff74",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_CarbineHandoff",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineRetrieve.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "e5839d67dade7c1f478e140326da1594",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_CarbineRetrieve",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunHandoff.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "62713a64de3227f525cb0b0bdf5dc5fc",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_ShotgunHandoff",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunRetrieve.fbx",
+        "algorithm": "md5",
+        "recorded_hash": "2c28934c637ec0e5ae867eaeffaa2b7b",
+        "record": "Saved/Candidate04/WeaponAssetImport.json#animations/A_Response_C04_ShotgunRetrieve",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxBody.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "8a7813cdd70506f8e531de011fdf9579599e838854899a53fcbeb5b5df0fbe7f",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_BoxBody",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLid.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "709397c1d19d6a0ad7eb7daba972c65a66c39e9e6559ea2fb49c864657d4c850",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_BoxLid",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLock.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "eb5fc5c9600329e24bb9c1948a7037ca2c125dbb50fea362e3277eb563354c50",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_BoxLock",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxRotor.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "e3f0beb6ac337c3e2e42ce34af3f510386ea76963111c5b1a2a6bfc69884c61c",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_BoxRotor",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeBody.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "44d08df7d8c13d51640094f84ee029871789d53088a281a547885335243c4d07",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_UpgradeBody",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeCradle.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "97ad9b1b33a1c69ff0c20d2951b47b1c89f10dfc9d11d8b213816840a9eb1e50",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_UpgradeCradle",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeClamp.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "3389315e181836f99936cb6ab30d84445fc3bd9eaaf8483a5f99ffcba688c298",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_UpgradeClamp",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeRing.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "67777aceeba5562ec1cd0490cf0ff6dbccc1ddcb40e0a782eed6cb3ed6ababf2",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_UpgradeRing",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeShield.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "8d479040ff803dcec8328d40a9ce2321483fd460c1c0c6b04bcce0f579990b10",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_UpgradeShield",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicSleeve.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "b10a36f1a7b6b5aa9d5096c140dea7a3fa47e676daca36dea8a36a17a9b90bca",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_HydraulicSleeve",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicRod.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "ab2c7cf3fdb5a1161b3f7de0dea9b26ba9ff7170101d3a0f9546ef61e20173da",
+        "record": "Saved/Candidate04/MachineImport.json#meshes/SM_C04_HydraulicRod",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxIdle.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "2f1f1c7d01fcd18b6f58804df9d76238a56688c1b1302fa64b20e968117317ba",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_BoxIdle",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxActivate.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "09b397024b5631678d7ff251f2e608f6bf573181ec81b491fad715e4bf2c8775",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_BoxActivate",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle01.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "d80730e5225c5a2a7e3c0538b6d28043a251712d4f99c5b8aab1a42e9885cbaa",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_BoxCycle01",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle02.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "847f1f507cfcede6dd4cb4201624fdc7b5c21b8ad10bb99061917c52a14f0440",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_BoxCycle02",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle03.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "b7e981aeccb1d000e7569fcf8d9fd6889166c7cfded5124777e9654ad32c4da4",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_BoxCycle03",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxReveal.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "138dda7c641789ac26387fab8de627c41664ae4e1f39d348b76cd45bb8684fa6",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_BoxReveal",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCollect.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "2da08740a836303c5102e58f973eeee4198483084b72e2c2598e9e063ee0c124",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_BoxCollect",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxClose.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "a90f68290de1763384010d743c6c492058bfcdb9a975ddf2fd259dd96f863789",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_BoxClose",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeIdle.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "b8cfc94887885ff9438eaf048f21c4470ad8f672357ddc64a389a87352eafb76",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_UpgradeIdle",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeIntake.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "360d588a614b8fbc2af58a7f87ffdd48f418db5b0597d41748ff6937ae113d9c",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_UpgradeIntake",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeActivate.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "a71ccbadb02aa0817a9e333e5eef641196e6329f2ccb54637e837d10d74210bf",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_UpgradeActivate",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeProcess.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "889b78935e6a2dc2401e45111d4a92de5633225566ee26cc279ebab17b96dbfb",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_UpgradeProcess",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeOutput.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "3abb001c23265854f1c8a9fa4028cd001ed01180c0cc8db4dcc722db2ccece19",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_UpgradeOutput",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeComplete.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "24f4ba1a6e0a80cc129b926f4807f42d209eeae7bafbac792f5841d64570fcf3",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_UpgradeComplete",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeCollect.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "163c9d79493771c0cde9e6d0734a5c11147abd5bb5d507bbca780e97553edb5f",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_UpgradeCollect",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeClose.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "f7826bd6f2ea7ba0cdc19bdd1af2b758a37db5b28da6e330d3f47cbca63242af",
+        "record": "Saved/Candidate04/MachineImport.json#audio/S_C04_UpgradeClose",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineHandoff.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "9ffb494ae57ae6852391ac58e5b061acb6bacaea9161b0409f327cfb1c3d1b47",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineReload.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "ed731225b6475505d4f49895b061b474d3ca497d347deebbf02932e583319b7d",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineRetrieve.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "8a5bea3e52a78449b79f68b7cbc70fabfd2005fb57f960a9b283ba6cf7ff9fd5",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolEquip.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "f637142233f388ec27368931619a3dc63b90b004cf27941a271f59739af5910a",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolFire.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "871df29ef47452f7b887d133c972b3e4fa983952a221f0f5ca77b7deca966cbf",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolHandoff.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "48b51603f8f7071e710cc20984d77625ede478c0490e7900445060ba36f6ab3a",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReady.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "d003746ba1eb06cd9ae0e381ac22b4bc047daf53bc7087a92bff7515f8592bbc",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReload.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "317441d13d92da7465d06fa02b30986228a2f98a777702e05a5b2b6965d88530",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_PistolRetrieve.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "40280d75af3d0241ca3045ee738f5fb154f684609c5b4c3eb47e318058b4ee02",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunHandoff.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "c328a139f4808ad6e84781c51da6554a35b36c6076b3c4d9cc9d471d01fc64e7",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunRetrieve.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "861fc81490e99becee93bc2901a1f6dcadfc115daf8fb3b93818311ac472a3f8",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/A_Response_C04_UnarmedReady.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "afe76c4e202c1f7b8459f3124515a694dd0ec63e60a44dcd0285679c289c13b6",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Gravebreaker_Body.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "4faa9dcb3cfabe4e7f31213c2b8679f6abe068d208459218063298622caa830b",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Gravebreaker_ForeEnd.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "99d4aafbba588c90a1a1dab18391fa221aaed3a8f3138e0867117741d794d508",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_LastWord_Body.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "25e52544d8ea0fd86e21568bf38bf3f83445515821270de86a96e3c311d77c59",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_LastWord_Magazine.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "c7be747be73f0d9747825a468ffc143a4469fe3332f7774b79822bc440cf07f2",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_LastWord_Slide.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "b73532d755cc9fc88f45fd1a6030b81f4116a0a57673d5877e9946ef70abd974",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M1911_Body.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "00f10209c0f5b9426d83251b841118f02091ca766f4d8c4e9999f7636e95f355",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M1911_Case.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "38eaf799aa8cc39f86a3b3a3b255cba0233292ca8a5d777260406b2817e82a82",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M1911_Magazine.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "e9f9ce5484743b909d5bb79a214f281dd3c4828d619e9928965ecc5a8291d239",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M1911_Slide.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "886370651edf17fc83195dc5b16b8ecafb3bec861e1bf049389fabae4f438e13",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M4A1_Body.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "69d1ae550f55b84d9614a6a87c77abf7c3dc33957d0f322b434cc29a70abb58c",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_M4A1_Magazine.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "98860b55e8b8ae17e14bb1467701b6ccbed8d31e8f4e6322484b63724aceda7a",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Overcurrent_Body.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "1fafa2ab0f15d629ac134e8ede52a8c8d5086dd308472e6a15551e9413e2c9f2",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Overcurrent_Magazine.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "d6eb749b5112d4b1baf7182322e2528dc43c8ae24c2f83e096a1242ba69bbbeb",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Remington870_Body.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "95c3c88de537c8a013677b2fc7be5295a686ea4cfd8f7e6b5beea99315080307",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Exports/Candidate04/SM_Remington870_ForeEnd.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "4b2c84a102fe912caad754795729711d24b2a6b1c887218b4bd370f4fdb3764d",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Weapons/Candidate04/ResponseWeaponActions.blend",
+        "algorithm": "sha256",
+        "recorded_hash": "c56f884b654986b9ef3db752c4a1665cd8d6415f164f8dfa2e274ec609113968",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Weapons/Candidate04/WeaponWorkshop.blend",
+        "algorithm": "sha256",
+        "recorded_hash": "608eba3425876ae48e89b4d99c1f18adf083eed32ad4b2524097e2006a6f75be",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Weapons/Candidate04/Blender_CarbineHandoff.png",
+        "algorithm": "sha256",
+        "recorded_hash": "ed6243c6e6b312669052bfa72bc9c28a9f966c4ae6d84ecd106ac9a5a1c9772a",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Weapons/Candidate04/Blender_PistolMagazineSeat.png",
+        "algorithm": "sha256",
+        "recorded_hash": "8f77220cc63aa37ac2fc927624c6333e4f24434a475963842bbc3696d782b389",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Weapons/Candidate04/Blender_PistolReady.png",
+        "algorithm": "sha256",
+        "recorded_hash": "a52069290adab991d77f06eb9e5f94715e9051b765f9ee994a1aa3b855862ca3",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Weapons/Candidate04/Blender_WeaponCatalogue.png",
+        "algorithm": "sha256",
+        "recorded_hash": "d99365c37610c451d83c955db09636e6b2b9197bb9a1680eb52349f3e91fa60a",
+        "record": "ArtSource/Weapons/Candidate04/source_validation.json#frozen_sanitized_sources",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/ProjectONE_Machines_C04.blend",
+        "algorithm": "sha256",
+        "recorded_hash": "9abae3fa3151c1f964ed4f1df7839d707c2cb44b97ef641e066fd8167d72e908",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#source_blend",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxBody.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "8a7813cdd70506f8e531de011fdf9579599e838854899a53fcbeb5b5df0fbe7f",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_BoxBody",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLid.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "709397c1d19d6a0ad7eb7daba972c65a66c39e9e6559ea2fb49c864657d4c850",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_BoxLid",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLock.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "eb5fc5c9600329e24bb9c1948a7037ca2c125dbb50fea362e3277eb563354c50",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_BoxLock",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxRotor.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "e3f0beb6ac337c3e2e42ce34af3f510386ea76963111c5b1a2a6bfc69884c61c",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_BoxRotor",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeBody.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "44d08df7d8c13d51640094f84ee029871789d53088a281a547885335243c4d07",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_UpgradeBody",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeCradle.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "97ad9b1b33a1c69ff0c20d2951b47b1c89f10dfc9d11d8b213816840a9eb1e50",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_UpgradeCradle",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeClamp.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "3389315e181836f99936cb6ab30d84445fc3bd9eaaf8483a5f99ffcba688c298",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_UpgradeClamp",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeRing.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "67777aceeba5562ec1cd0490cf0ff6dbccc1ddcb40e0a782eed6cb3ed6ababf2",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_UpgradeRing",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeShield.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "8d479040ff803dcec8328d40a9ce2321483fd460c1c0c6b04bcce0f579990b10",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_UpgradeShield",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicSleeve.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "b10a36f1a7b6b5aa9d5096c140dea7a3fa47e676daca36dea8a36a17a9b90bca",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_HydraulicSleeve",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicRod.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "ab2c7cf3fdb5a1161b3f7de0dea9b26ba9ff7170101d3a0f9546ef61e20173da",
+        "record": "Saved/Candidate04/MachineSourceValidation.json#meshes/SM_C04_HydraulicRod",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxBody.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "8a7813cdd70506f8e531de011fdf9579599e838854899a53fcbeb5b5df0fbe7f",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_BoxBody",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLid.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "709397c1d19d6a0ad7eb7daba972c65a66c39e9e6559ea2fb49c864657d4c850",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_BoxLid",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLock.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "eb5fc5c9600329e24bb9c1948a7037ca2c125dbb50fea362e3277eb563354c50",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_BoxLock",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxRotor.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "e3f0beb6ac337c3e2e42ce34af3f510386ea76963111c5b1a2a6bfc69884c61c",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_BoxRotor",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeBody.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "44d08df7d8c13d51640094f84ee029871789d53088a281a547885335243c4d07",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_UpgradeBody",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeCradle.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "97ad9b1b33a1c69ff0c20d2951b47b1c89f10dfc9d11d8b213816840a9eb1e50",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_UpgradeCradle",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeClamp.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "3389315e181836f99936cb6ab30d84445fc3bd9eaaf8483a5f99ffcba688c298",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_UpgradeClamp",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeRing.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "67777aceeba5562ec1cd0490cf0ff6dbccc1ddcb40e0a782eed6cb3ed6ababf2",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_UpgradeRing",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeShield.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "8d479040ff803dcec8328d40a9ce2321483fd460c1c0c6b04bcce0f579990b10",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_UpgradeShield",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicSleeve.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "b10a36f1a7b6b5aa9d5096c140dea7a3fa47e676daca36dea8a36a17a9b90bca",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_HydraulicSleeve",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicRod.fbx",
+        "algorithm": "sha256",
+        "recorded_hash": "ab2c7cf3fdb5a1161b3f7de0dea9b26ba9ff7170101d3a0f9546ef61e20173da",
+        "record": "ArtSource/Machines/Candidate04/inventory.json#static_meshes/SM_C04_HydraulicRod",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxIdle.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "2f1f1c7d01fcd18b6f58804df9d76238a56688c1b1302fa64b20e968117317ba",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_BoxIdle",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxActivate.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "09b397024b5631678d7ff251f2e608f6bf573181ec81b491fad715e4bf2c8775",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_BoxActivate",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle01.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "d80730e5225c5a2a7e3c0538b6d28043a251712d4f99c5b8aab1a42e9885cbaa",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_BoxCycle01",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle02.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "847f1f507cfcede6dd4cb4201624fdc7b5c21b8ad10bb99061917c52a14f0440",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_BoxCycle02",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle03.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "b7e981aeccb1d000e7569fcf8d9fd6889166c7cfded5124777e9654ad32c4da4",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_BoxCycle03",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxReveal.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "138dda7c641789ac26387fab8de627c41664ae4e1f39d348b76cd45bb8684fa6",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_BoxReveal",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCollect.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "2da08740a836303c5102e58f973eeee4198483084b72e2c2598e9e063ee0c124",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_BoxCollect",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxClose.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "a90f68290de1763384010d743c6c492058bfcdb9a975ddf2fd259dd96f863789",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_BoxClose",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeIdle.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "b8cfc94887885ff9438eaf048f21c4470ad8f672357ddc64a389a87352eafb76",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_UpgradeIdle",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeIntake.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "360d588a614b8fbc2af58a7f87ffdd48f418db5b0597d41748ff6937ae113d9c",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_UpgradeIntake",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeActivate.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "a71ccbadb02aa0817a9e333e5eef641196e6329f2ccb54637e837d10d74210bf",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_UpgradeActivate",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeProcess.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "889b78935e6a2dc2401e45111d4a92de5633225566ee26cc279ebab17b96dbfb",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_UpgradeProcess",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeOutput.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "3abb001c23265854f1c8a9fa4028cd001ed01180c0cc8db4dcc722db2ccece19",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_UpgradeOutput",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeComplete.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "24f4ba1a6e0a80cc129b926f4807f42d209eeae7bafbac792f5841d64570fcf3",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_UpgradeComplete",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeCollect.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "163c9d79493771c0cde9e6d0734a5c11147abd5bb5d507bbca780e97553edb5f",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_UpgradeCollect",
+        "matches_current_file": true
+      },
+      {
+        "source": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeClose.wav",
+        "algorithm": "sha256",
+        "recorded_hash": "f7826bd6f2ea7ba0cdc19bdd1af2b758a37db5b28da6e330d3f47cbca63242af",
+        "record": "ArtSource/Machines/Candidate04/Audio/manifest.json#events/S_C04_UpgradeClose",
+        "matches_current_file": true
+      }
+    ],
+    "current_authored_files": [
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineHandoff.fbx",
+        "bytes": 228860,
+        "sha256": "9ffb494ae57ae6852391ac58e5b061acb6bacaea9161b0409f327cfb1c3d1b47",
+        "md5": "1301b32105d2ec12126159fd3c2eff74"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineReload.fbx",
+        "bytes": 368684,
+        "sha256": "ed731225b6475505d4f49895b061b474d3ca497d347deebbf02932e583319b7d",
+        "md5": "2ece676ebd871da2e8bdd50b5297155a"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineRetrieve.fbx",
+        "bytes": 217708,
+        "sha256": "8a5bea3e52a78449b79f68b7cbc70fabfd2005fb57f960a9b283ba6cf7ff9fd5",
+        "md5": "e5839d67dade7c1f478e140326da1594"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolEquip.fbx",
+        "bytes": 185436,
+        "sha256": "f637142233f388ec27368931619a3dc63b90b004cf27941a271f59739af5910a",
+        "md5": "c691d2920048e1ed1a32e21fae3bf5e4"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolFire.fbx",
+        "bytes": 172364,
+        "sha256": "871df29ef47452f7b887d133c972b3e4fa983952a221f0f5ca77b7deca966cbf",
+        "md5": "bdda426cccb902434ecc16b43a822ad2"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolHandoff.fbx",
+        "bytes": 229020,
+        "sha256": "48b51603f8f7071e710cc20984d77625ede478c0490e7900445060ba36f6ab3a",
+        "md5": "fbe61957a45c92f37c1aa204232aa5b9"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReady.fbx",
+        "bytes": 402972,
+        "sha256": "d003746ba1eb06cd9ae0e381ac22b4bc047daf53bc7087a92bff7515f8592bbc",
+        "md5": "b004a643c8145bb4daf274e4f28488c1"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReload.fbx",
+        "bytes": 340028,
+        "sha256": "317441d13d92da7465d06fa02b30986228a2f98a777702e05a5b2b6965d88530",
+        "md5": "79bc0c04eebb98ea91c0a032b8a8342f"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolRetrieve.fbx",
+        "bytes": 217820,
+        "sha256": "40280d75af3d0241ca3045ee738f5fb154f684609c5b4c3eb47e318058b4ee02",
+        "md5": "71864362d8c4f009e40f1edbed184e0d"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunHandoff.fbx",
+        "bytes": 228860,
+        "sha256": "c328a139f4808ad6e84781c51da6554a35b36c6076b3c4d9cc9d471d01fc64e7",
+        "md5": "62713a64de3227f525cb0b0bdf5dc5fc"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunRetrieve.fbx",
+        "bytes": 217708,
+        "sha256": "861fc81490e99becee93bc2901a1f6dcadfc115daf8fb3b93818311ac472a3f8",
+        "md5": "2c28934c637ec0e5ae867eaeffaa2b7b"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/A_Response_C04_UnarmedReady.fbx",
+        "bytes": 382700,
+        "sha256": "afe76c4e202c1f7b8459f3124515a694dd0ec63e60a44dcd0285679c289c13b6",
+        "md5": "31a5bb356d5b9718f95f745be3960c4d"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_Gravebreaker_Body.fbx",
+        "bytes": 314268,
+        "sha256": "4faa9dcb3cfabe4e7f31213c2b8679f6abe068d208459218063298622caa830b",
+        "md5": "67f2b4716670581701b4e11e6f32e444"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_Gravebreaker_ForeEnd.fbx",
+        "bytes": 144460,
+        "sha256": "99d4aafbba588c90a1a1dab18391fa221aaed3a8f3138e0867117741d794d508",
+        "md5": "78f73a9a66f4296aa14503f19c08fae8"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_LastWord_Body.fbx",
+        "bytes": 311148,
+        "sha256": "25e52544d8ea0fd86e21568bf38bf3f83445515821270de86a96e3c311d77c59",
+        "md5": "24df447831ec2ac42bbb6b3a3205a597"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_LastWord_Magazine.fbx",
+        "bytes": 72396,
+        "sha256": "c7be747be73f0d9747825a468ffc143a4469fe3332f7774b79822bc440cf07f2",
+        "md5": "dca417a5d0d2c848804967ed73d3e908"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_LastWord_Slide.fbx",
+        "bytes": 156572,
+        "sha256": "b73532d755cc9fc88f45fd1a6030b81f4116a0a57673d5877e9946ef70abd974",
+        "md5": "01241f5a7cd39ce62f54bc6c3b2240c8"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_M1911_Body.fbx",
+        "bytes": 274700,
+        "sha256": "00f10209c0f5b9426d83251b841118f02091ca766f4d8c4e9999f7636e95f355",
+        "md5": "a53e53e00131c9569ce58ba0c44e5a00"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_M1911_Case.fbx",
+        "bytes": 47628,
+        "sha256": "38eaf799aa8cc39f86a3b3a3b255cba0233292ca8a5d777260406b2817e82a82",
+        "md5": "36bd7d709348682236cd10fe82353d88"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_M1911_Magazine.fbx",
+        "bytes": 66620,
+        "sha256": "e9f9ce5484743b909d5bb79a214f281dd3c4828d619e9928965ecc5a8291d239",
+        "md5": "7eb0997e9797524ba15cb453925b5b5b"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_M1911_Slide.fbx",
+        "bytes": 118796,
+        "sha256": "886370651edf17fc83195dc5b16b8ecafb3bec861e1bf049389fabae4f438e13",
+        "md5": "ddf864b1e6675939c8653ba035033c52"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_M4A1_Body.fbx",
+        "bytes": 491612,
+        "sha256": "69d1ae550f55b84d9614a6a87c77abf7c3dc33957d0f322b434cc29a70abb58c",
+        "md5": "d0a24a3809d29674aaa8dc6c3e5d5b22"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_M4A1_Magazine.fbx",
+        "bytes": 145260,
+        "sha256": "98860b55e8b8ae17e14bb1467701b6ccbed8d31e8f4e6322484b63724aceda7a",
+        "md5": "b28720bc1e102d5b215afbc847a1f384"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_Overcurrent_Body.fbx",
+        "bytes": 532140,
+        "sha256": "1fafa2ab0f15d629ac134e8ede52a8c8d5086dd308472e6a15551e9413e2c9f2",
+        "md5": "ae31dad9b41d0d22d9ea698c90b58119"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_Overcurrent_Magazine.fbx",
+        "bytes": 155052,
+        "sha256": "d6eb749b5112d4b1baf7182322e2528dc43c8ae24c2f83e096a1242ba69bbbeb",
+        "md5": "827d36987e1a5fbcac2e9b643095b829"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_Remington870_Body.fbx",
+        "bytes": 270972,
+        "sha256": "95c3c88de537c8a013677b2fc7be5295a686ea4cfd8f7e6b5beea99315080307",
+        "md5": "ca9825c1a2e473e6e0541ddc3af952e7"
+      },
+      {
+        "file": "ArtSource/Exports/Candidate04/SM_Remington870_ForeEnd.fbx",
+        "bytes": 135404,
+        "sha256": "4b2c84a102fe912caad754795729711d24b2a6b1c887218b4bd370f4fdb3764d",
+        "md5": "5f7ead55dd8bb28fc6bdde9827e147be"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxActivate.wav",
+        "bytes": 90284,
+        "sha256": "09b397024b5631678d7ff251f2e608f6bf573181ec81b491fad715e4bf2c8775",
+        "md5": "41f369ee0078a0873ebe0a54ebf58a8b"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxClose.wav",
+        "bytes": 67244,
+        "sha256": "a90f68290de1763384010d743c6c492058bfcdb9a975ddf2fd259dd96f863789",
+        "md5": "2bec1ab35e7aa1d2c60f820d244bb4e5"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCollect.wav",
+        "bytes": 47084,
+        "sha256": "2da08740a836303c5102e58f973eeee4198483084b72e2c2598e9e063ee0c124",
+        "md5": "6e67e8d72155acfe1bcf4b98bfcbb84c"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle01.wav",
+        "bytes": 16364,
+        "sha256": "d80730e5225c5a2a7e3c0538b6d28043a251712d4f99c5b8aab1a42e9885cbaa",
+        "md5": "3f59a29df6f0de47c138d7a023155fc2"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle02.wav",
+        "bytes": 16364,
+        "sha256": "847f1f507cfcede6dd4cb4201624fdc7b5c21b8ad10bb99061917c52a14f0440",
+        "md5": "4a4ae1562608df8f4748427e85ce7b7e"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle03.wav",
+        "bytes": 16364,
+        "sha256": "b7e981aeccb1d000e7569fcf8d9fd6889166c7cfded5124777e9654ad32c4da4",
+        "md5": "2f87b0f3410130d4bc85acd936181e26"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxIdle.wav",
+        "bytes": 288044,
+        "sha256": "2f1f1c7d01fcd18b6f58804df9d76238a56688c1b1302fa64b20e968117317ba",
+        "md5": "eac6db51a319afb8ce7758cef96f34c7"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxReveal.wav",
+        "bytes": 130604,
+        "sha256": "138dda7c641789ac26387fab8de627c41664ae4e1f39d348b76cd45bb8684fa6",
+        "md5": "214d7c0c8f275f8c93e5b6887717872a"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeActivate.wav",
+        "bytes": 42284,
+        "sha256": "a71ccbadb02aa0817a9e333e5eef641196e6329f2ccb54637e837d10d74210bf",
+        "md5": "1f5a5e66c50a3cc5f16190e8455e9e1b"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeClose.wav",
+        "bytes": 73004,
+        "sha256": "f7826bd6f2ea7ba0cdc19bdd1af2b758a37db5b28da6e330d3f47cbca63242af",
+        "md5": "0aabf3dd66e797b4d9314132766172ae"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeCollect.wav",
+        "bytes": 49964,
+        "sha256": "163c9d79493771c0cde9e6d0734a5c11147abd5bb5d507bbca780e97553edb5f",
+        "md5": "e94a676f980f69527ee311fa2f27cc5b"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeComplete.wav",
+        "bytes": 142124,
+        "sha256": "24f4ba1a6e0a80cc129b926f4807f42d209eeae7bafbac792f5841d64570fcf3",
+        "md5": "a2c4402d26b27ace1fdbea028d90a81b"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeIdle.wav",
+        "bytes": 192044,
+        "sha256": "b8cfc94887885ff9438eaf048f21c4470ad8f672357ddc64a389a87352eafb76",
+        "md5": "21c77152c736c667058bf555cda4379f"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeIntake.wav",
+        "bytes": 105644,
+        "sha256": "360d588a614b8fbc2af58a7f87ffdd48f418db5b0597d41748ff6937ae113d9c",
+        "md5": "a91674839a613eddfbe6c27b134ca681"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeOutput.wav",
+        "bytes": 119084,
+        "sha256": "3abb001c23265854f1c8a9fa4028cd001ed01180c0cc8db4dcc722db2ccece19",
+        "md5": "7223f575a8bf8be5332d095e0f72d060"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeProcess.wav",
+        "bytes": 288044,
+        "sha256": "889b78935e6a2dc2401e45111d4a92de5633225566ee26cc279ebab17b96dbfb",
+        "md5": "47f10fd6a81aae9d23d39db0f716795b"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxBody.fbx",
+        "bytes": 804108,
+        "sha256": "8a7813cdd70506f8e531de011fdf9579599e838854899a53fcbeb5b5df0fbe7f",
+        "md5": "f0989abeb7b766d18ebe38e27450be39"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLid.fbx",
+        "bytes": 237660,
+        "sha256": "709397c1d19d6a0ad7eb7daba972c65a66c39e9e6559ea2fb49c864657d4c850",
+        "md5": "33f39c9030dc9b422705ac6235ebf032"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLock.fbx",
+        "bytes": 31260,
+        "sha256": "eb5fc5c9600329e24bb9c1948a7037ca2c125dbb50fea362e3277eb563354c50",
+        "md5": "c7f60e603d489ba7c7b0280e5ceaac7c"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxRotor.fbx",
+        "bytes": 94764,
+        "sha256": "e3f0beb6ac337c3e2e42ce34af3f510386ea76963111c5b1a2a6bfc69884c61c",
+        "md5": "5dd851c62b34f8d1c9affbabeb050cfb"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicRod.fbx",
+        "bytes": 19484,
+        "sha256": "ab2c7cf3fdb5a1161b3f7de0dea9b26ba9ff7170101d3a0f9546ef61e20173da",
+        "md5": "15300cca8417725c9a96db6cd1f5e77b"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicSleeve.fbx",
+        "bytes": 19500,
+        "sha256": "b10a36f1a7b6b5aa9d5096c140dea7a3fa47e676daca36dea8a36a17a9b90bca",
+        "md5": "49127c2abc773896b48c9822a16f07bf"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeBody.fbx",
+        "bytes": 2143436,
+        "sha256": "44d08df7d8c13d51640094f84ee029871789d53088a281a547885335243c4d07",
+        "md5": "ca3d06f7e8a564dcc10e2e9b193aa498"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeClamp.fbx",
+        "bytes": 33980,
+        "sha256": "3389315e181836f99936cb6ab30d84445fc3bd9eaaf8483a5f99ffcba688c298",
+        "md5": "a3d90a437ffe639be12c5e502287e197"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeCradle.fbx",
+        "bytes": 34508,
+        "sha256": "97ad9b1b33a1c69ff0c20d2951b47b1c89f10dfc9d11d8b213816840a9eb1e50",
+        "md5": "be93525ae5ff63cf6ed182cae5582498"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeRing.fbx",
+        "bytes": 83084,
+        "sha256": "67777aceeba5562ec1cd0490cf0ff6dbccc1ddcb40e0a782eed6cb3ed6ababf2",
+        "md5": "395d025672a302119a7ae55b27cdab53"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeShield.fbx",
+        "bytes": 32300,
+        "sha256": "8d479040ff803dcec8328d40a9ce2321483fd460c1c0c6b04bcce0f579990b10",
+        "md5": "13bedbdf7364f2fd53baf439820e3ac9"
+      },
+      {
+        "file": "ArtSource/Machines/Candidate04/ProjectONE_Machines_C04.blend",
+        "bytes": 2598853,
+        "sha256": "9abae3fa3151c1f964ed4f1df7839d707c2cb44b97ef641e066fd8167d72e908",
+        "md5": "2f2703b28e950d9209cb7fada1b9f0f9"
+      },
+      {
+        "file": "ArtSource/Weapons/Candidate04/Blender_CarbineHandoff.png",
+        "bytes": 1244681,
+        "sha256": "ed6243c6e6b312669052bfa72bc9c28a9f966c4ae6d84ecd106ac9a5a1c9772a",
+        "md5": "b840fe5337529b0ce2cb55bc5e4efee3"
+      },
+      {
+        "file": "ArtSource/Weapons/Candidate04/Blender_PistolMagazineSeat.png",
+        "bytes": 1236575,
+        "sha256": "8f77220cc63aa37ac2fc927624c6333e4f24434a475963842bbc3696d782b389",
+        "md5": "92c0595a3540df114b82bafa43dd9ed1"
+      },
+      {
+        "file": "ArtSource/Weapons/Candidate04/Blender_PistolReady.png",
+        "bytes": 1238410,
+        "sha256": "a52069290adab991d77f06eb9e5f94715e9051b765f9ee994a1aa3b855862ca3",
+        "md5": "47068945e0a68d220d8bec04d89558a4"
+      },
+      {
+        "file": "ArtSource/Weapons/Candidate04/Blender_WeaponCatalogue.png",
+        "bytes": 1912433,
+        "sha256": "d99365c37610c451d83c955db09636e6b2b9197bb9a1680eb52349f3e91fa60a",
+        "md5": "f4f2a06875b875835196c8cebb97f21f"
+      },
+      {
+        "file": "ArtSource/Weapons/Candidate04/ResponseWeaponActions.blend",
+        "bytes": 3080030,
+        "sha256": "c56f884b654986b9ef3db752c4a1665cd8d6415f164f8dfa2e274ec609113968",
+        "md5": "af3b2d4f09543e66a52ece6e650a660b"
+      },
+      {
+        "file": "ArtSource/Weapons/Candidate04/WeaponWorkshop.blend",
+        "bytes": 1651750,
+        "sha256": "608eba3425876ae48e89b4d99c1f18adf083eed32ad4b2524097e2006a6f75be",
+        "md5": "43bde0bd07af8996e1d1967b0f5a7301"
+      }
+    ],
+    "current_imported_package_count": 82,
+    "current_imported_packages": [
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_M1911_Body",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Body.uasset",
+        "bytes": 274924,
+        "sha256": "f8113ff639b714fa655a23761f05ca10f0c9f9816df14a3d13b14fb248b9a172",
+        "md5": "458ac7621e904fb457494c9c64bdd78a"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_M1911_Slide",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Slide.uasset",
+        "bytes": 119992,
+        "sha256": "f9574960457aa31ed636a9d6142b9e042015a6e8abe63f4da2b3e8c426916d89",
+        "md5": "c08d666fd2a304dcb73f95bc3bcca7cd"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_M1911_Magazine",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Magazine.uasset",
+        "bytes": 70648,
+        "sha256": "b4e70e64d2aa168f7744a839643ce90e823dbeaa70c38f621ae6950ceffc73ec",
+        "md5": "d927fdb825ededd43907bb91601aa2f7"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_M4A1_Body",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_M4A1_Body.uasset",
+        "bytes": 446130,
+        "sha256": "dc234d808ecd86c5707bb7384946edcb60dfcdd1f238823cf350381ed21ab462",
+        "md5": "1f8ca388eafa2dfd331792d89b89f9fb"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_M4A1_Magazine",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_M4A1_Magazine.uasset",
+        "bytes": 152013,
+        "sha256": "1e03c3179d9c01178b29f1f5d23e64be3a8c41dc4fa998655e9865cf271a6bbb",
+        "md5": "50148673ef45aff35972e5fab9bbbcc4"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_Remington870_Body",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_Remington870_Body.uasset",
+        "bytes": 303537,
+        "sha256": "d01039bf5ac928d8a996146b58877d7464a821fe17486e51cb9708f96dbefe03",
+        "md5": "310fa020b4eb57be1b64463223ebb5f3"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_Remington870_ForeEnd",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_Remington870_ForeEnd.uasset",
+        "bytes": 151459,
+        "sha256": "dde373fc9416f1a73179524946753a4c66a3f51afabdc0f4b21b101e06110373",
+        "md5": "7bcf4fa9d89a672accda422ec67ef6b6"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_LastWord_Body",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_LastWord_Body.uasset",
+        "bytes": 288574,
+        "sha256": "bb0a4cb759501b38d6b72de4909e61a8103618176369b707f78db006e118c0c8",
+        "md5": "5ccc86e6f68577c66fe31c00faa0fd1a"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_LastWord_Slide",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_LastWord_Slide.uasset",
+        "bytes": 154970,
+        "sha256": "9959ac54b9a7f9dd7bcc31470e29069bcbc92eed6ae75cc813d1729721945069",
+        "md5": "c0c40aa61a29e5a126e1ad073da2e3f8"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_LastWord_Magazine",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_LastWord_Magazine.uasset",
+        "bytes": 76514,
+        "sha256": "346e4b65bb66683e2772e95a89677f7575d72a7233a2b340b1e3cd7cc96e195a",
+        "md5": "f9eb724b697e583c68502ecf36844f06"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_Overcurrent_Body",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_Overcurrent_Body.uasset",
+        "bytes": 520200,
+        "sha256": "62c07df11dc626c76a430f7e8c329e9242b5fc6db7665a67e68d518e3ea52df0",
+        "md5": "417693600bb94d5f086b71f0f5bc0ef9"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_Overcurrent_Magazine",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_Overcurrent_Magazine.uasset",
+        "bytes": 137548,
+        "sha256": "4001254ceed3a8ca4ddb4118c3a06063bab21201c3197dca807ea9e4dc180cb1",
+        "md5": "872b2b260b729ddf2fc7e41b387dc421"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_Gravebreaker_Body",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_Gravebreaker_Body.uasset",
+        "bytes": 280511,
+        "sha256": "da64ed8fe7c51f01e965fa82da3ef05114ebc5e3f1863e1dc4a83e7efebd44da",
+        "md5": "0acbd2f0577fb00cc693451b4bacc598"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_Gravebreaker_ForeEnd",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_Gravebreaker_ForeEnd.uasset",
+        "bytes": 173994,
+        "sha256": "e87327d8ad408fcb8583ae48a7cd04a1e76fd47d92c9fa5e25d504b984908494",
+        "md5": "7bd91f8e008eefa2a47bde7d012a49d7"
+      },
+      {
+        "family": "weapons",
+        "kind": "static_meshes",
+        "name": "SM_M1911_Case",
+        "file": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Case.uasset",
+        "bytes": 49854,
+        "sha256": "d75b5423e47a96e5bcf35b88b0f27862c9599a4d95ff7c322cd232dcb79b941d",
+        "md5": "c930a50faac49a31a242d2e6001ca4d1"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_PistolReady",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolReady.uasset",
+        "bytes": 167804,
+        "sha256": "5ef46fa4c4fe287bb606d70bebda1931708d44eb0e7a46a27ec976f70e49847b",
+        "md5": "28a54e9f7943d3ec5c94b4633589aded"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_PistolFire",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolFire.uasset",
+        "bytes": 39923,
+        "sha256": "5b1c187efd7b730b29bf08e489980d68491bc0eaab547fd703d0b45bc4fd4b29",
+        "md5": "4ea5f6dde2dda81a09ca127bebaae4e9"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_PistolReload",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolReload.uasset",
+        "bytes": 133250,
+        "sha256": "3159c47cac8f4512ab52f5b03fcbbaa8369cc5287663be5bdd9b0e00c310f59f",
+        "md5": "c3a0bf0cc0f45c6c870a998d1f231dc2"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_PistolEquip",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolEquip.uasset",
+        "bytes": 50297,
+        "sha256": "475733adc4f5c04080abe72d638ca91b4df1ac1ca85643b736fe8659f77d6966",
+        "md5": "30706b9bc4e0d164783089e8f11dc648"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_CarbineReload",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_CarbineReload.uasset",
+        "bytes": 150536,
+        "sha256": "c623f4a7bf7cb3aef6d7984fd05da660d0237a995db6ed88832681bf20dc662c",
+        "md5": "5285e9d6629029410e4b13eaa7738501"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_UnarmedReady",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_UnarmedReady.uasset",
+        "bytes": 28994,
+        "sha256": "9bad55150f303255458fa03216d811224ad81cc07ffcc7e5e88c0ece296fa228",
+        "md5": "dfdac1a695f24e8cf5fbbc7ab91b25d2"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_PistolHandoff",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolHandoff.uasset",
+        "bytes": 71045,
+        "sha256": "fef3aa9a4314642640aaf7bb8ed3cc989384da07aca714c746c9be3518e27595",
+        "md5": "374ae16500460000f24a8fa5cadebfad"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_PistolRetrieve",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolRetrieve.uasset",
+        "bytes": 66443,
+        "sha256": "2bd47bdf5ee97928558d0318c416755fd46ea68ed6cf6bb00e13ef16b44bc6a9",
+        "md5": "c629cf3f258854c896203f64dae137c6"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_CarbineHandoff",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_CarbineHandoff.uasset",
+        "bytes": 71051,
+        "sha256": "f84a45bc7136d101185522fafbee6606cd69d002b70b9373b62bbd8b2c715fd1",
+        "md5": "5dc580a53a827cda9a7efae97fb1f158"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_CarbineRetrieve",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_CarbineRetrieve.uasset",
+        "bytes": 66449,
+        "sha256": "86e7249b26d10451c204f31cf67564f80ee78810d084de26b8c9ac10f65830bd",
+        "md5": "30baa919c2137bae0659bdb1c31c9bc4"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_ShotgunHandoff",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_ShotgunHandoff.uasset",
+        "bytes": 71051,
+        "sha256": "f5329bf36264f50113eb246843e96226e48bc190145265c7da00d67094d09948",
+        "md5": "b0afc6e56d8e853ddfbbe4c29f4ecc38"
+      },
+      {
+        "family": "weapons",
+        "kind": "animations",
+        "name": "A_Response_C04_ShotgunRetrieve",
+        "file": "Content/ONE/Animations/Candidate04/A_Response_C04_ShotgunRetrieve.uasset",
+        "bytes": 66449,
+        "sha256": "360c50174cdf69fe2ad7142eed5c53d2d61fa7abdeb5a04cd7b47151e2857fe8",
+        "md5": "4015a43f27f87d5f25e089a67d1eb3f8"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_BluedSteel",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_BluedSteel.uasset",
+        "bytes": 6706,
+        "sha256": "3d6b32a4957c645dea28231e3b46aabaa2b02a0dfe187d96098d350fa9ed3949",
+        "md5": "a7258dd59d04d5fca091742e042dbd04"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_Parkerized",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_Parkerized.uasset",
+        "bytes": 6706,
+        "sha256": "34fbf8cede317da5ec1f8640954a95559462138e42802208d6b8682363b98061",
+        "md5": "e561cadc8f37cf72dab377c5023fc145"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_EdgeSteel",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_EdgeSteel.uasset",
+        "bytes": 6701,
+        "sha256": "5a067d39900781b1e82f072f8b0be7457f892f88fd646c138c7db6f75c48f9ea",
+        "md5": "403564f667bbeca445cbe9805ad62efc"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_Polymer",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_Polymer.uasset",
+        "bytes": 6662,
+        "sha256": "6b25a8d8fc7040106d7d3ff1367673f327b9d4048fcd2137bd7cdcc6a2ea184e",
+        "md5": "7e6573f62f8e89381e3ce35eed1ac2c4"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_Walnut",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_Walnut.uasset",
+        "bytes": 6657,
+        "sha256": "560888ae2ec47325588c413e31b3fbf876af79bdb8b5bd144df1dc0d0b51ace0",
+        "md5": "c129d6f3179ed392ac9b043197d3e4b0"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_Bore",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_Bore.uasset",
+        "bytes": 6647,
+        "sha256": "31df7382b080a0b3e8e848607ae12dcc8a23e5514e9ee24274b2b96545dabdf0",
+        "md5": "2f587f1431a69b6811a67ac4ba8a8167"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_Brass",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_Brass.uasset",
+        "bytes": 6681,
+        "sha256": "1cbd9ac59655c72d4c7813e219cedd92c434cbcbea722ea5253316d1f7c16f22",
+        "md5": "1c82bd61b0076270bb919f3dd346f84b"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_Ivory",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_Ivory.uasset",
+        "bytes": 6681,
+        "sha256": "58e8514d111506db76674d48779ade6fce74f69acf420a247ef02ee0c218f739",
+        "md5": "14d227ba20f87c7ac20cbe20813282df"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_VioletArmor",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_VioletArmor.uasset",
+        "bytes": 6711,
+        "sha256": "ae78f08c2d1482762e9197e9c7b724c610eca25aaef26f4b68adba24bf5643f1",
+        "md5": "0783a1d9024175a4fa47f6f7bdc03430"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_CyanArmor",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_CyanArmor.uasset",
+        "bytes": 6701,
+        "sha256": "16229e4088e4970feae81784a76c3c93c530ed7e15e726415b5be6a78f85b270",
+        "md5": "e705b4c8dd6d3ac282ab6309e13e2d43"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_EmberArmor",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_EmberArmor.uasset",
+        "bytes": 6706,
+        "sha256": "140647caeed244818b359040b54f59c5f05592bbc12540c0beac919989d793c4",
+        "md5": "c9b747d8eca301a7d57fd5b0b07c6fd0"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_VioletEnergy",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_VioletEnergy.uasset",
+        "bytes": 8031,
+        "sha256": "5fc7c9be789fe9f8dc080a9d0eb9c4015fc3c88723ab97cf0b6415251747c5ae",
+        "md5": "e6318826ab43ce3ebe297c46d0fb6335"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_CyanEnergy",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_CyanEnergy.uasset",
+        "bytes": 8021,
+        "sha256": "39e2a74823754333c3032eb54f37b30438ee8a82b18f6cf8945f0fb2014f6c7b",
+        "md5": "c74acffbbc0de38b0436e352305a4c90"
+      },
+      {
+        "family": "weapons",
+        "kind": "materials",
+        "name": "M_C04_EmberEnergy",
+        "file": "Content/ONE/Materials/Candidate04/M_C04_EmberEnergy.uasset",
+        "bytes": 8026,
+        "sha256": "bfa0fa2b4c19005a3a30a164d59d9b2e061a09f922540988b08224682a47dda7",
+        "md5": "0fe98dee4eeb62288ef5f8a6ea58c450"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_BoxBody",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_BoxBody.uasset",
+        "bytes": 681518,
+        "sha256": "f2672fe3d6e994c3540b1260c8e7efd07977ddab3b3ff4b67b6feff4124b0820",
+        "md5": "38fc9819ea29372676ad7aae5e6f23d9"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_BoxLid",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_BoxLid.uasset",
+        "bytes": 198530,
+        "sha256": "ebb07ff96ec12db09316754f67b39de7a084a820f0aec3cd5b0ceccb53d18d49",
+        "md5": "e01ac72de38f06adb957da6c37ec3d9f"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_BoxLock",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_BoxLock.uasset",
+        "bytes": 30484,
+        "sha256": "bb572645d700d8bfa68a646aee9d4f608ac36d08416aeeb9ce1e6fea9f643de9",
+        "md5": "16b5947e4c10d9b07fc476bba4c4afd6"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_BoxRotor",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_BoxRotor.uasset",
+        "bytes": 104766,
+        "sha256": "d5646d6516548a798be7be3faf96c84a7ce1b42ea922a27ba9151c47150b2015",
+        "md5": "c73729ca081e270ba60b452aa3d1c316"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_UpgradeBody",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeBody.uasset",
+        "bytes": 1626099,
+        "sha256": "c38f54bf85b6bed51474638447808cfad8bf38041e02fe465da471948a631f79",
+        "md5": "e0b0006054662ea39a0b2136effa42d2"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_UpgradeCradle",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeCradle.uasset",
+        "bytes": 33229,
+        "sha256": "7e6d29081ca5c575164448d9b2ead5890bacfa12cc99e5a75fbb79a587457e0c",
+        "md5": "bb0556c4de37c7f70be1862eb24a7142"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_UpgradeClamp",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeClamp.uasset",
+        "bytes": 33688,
+        "sha256": "224e655cff102a4b56ed982dbc37f2cf5697a3b2d8ca9882da1441a8becf6dea",
+        "md5": "67295851f9dcd8fbb4695f7393e0cd3a"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_UpgradeRing",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeRing.uasset",
+        "bytes": 89052,
+        "sha256": "d9ab6ff8a8c478ffad9077093d015576cd5d1d1bcb8eb3816dc284b6f77ecbdb",
+        "md5": "d002643aae26f37bfb2cce4985498066"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_UpgradeShield",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeShield.uasset",
+        "bytes": 29781,
+        "sha256": "c04cde6725d44758298f5d97446fbd662552c7ec935db9009a0eb1df6b963ff0",
+        "md5": "e19f41111b9614674b7c2393239889fb"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_HydraulicSleeve",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_HydraulicSleeve.uasset",
+        "bytes": 16853,
+        "sha256": "01e6c59da11714ce577477865ecc42787e21df3c1c91ea9a63ab9c36c497ad3e",
+        "md5": "e017273f30364c62db6b2ce291ada83f"
+      },
+      {
+        "family": "machines",
+        "kind": "meshes",
+        "name": "SM_C04_HydraulicRod",
+        "file": "Content/ONE/Machines/Candidate04/SM_C04_HydraulicRod.uasset",
+        "bytes": 16671,
+        "sha256": "21b50833f185d661e0c7acf504974081237811ef312df38b1af691a710960443",
+        "md5": "cf1338f129a8491bfa7a9fb1f668d71a"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Carbon",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Carbon.uasset",
+        "bytes": 6704,
+        "sha256": "6af90557b863da306e7dd4c73d98098e735b03c603b9b64099ae635c62b9c6bf",
+        "md5": "b40e4a899d66a52e1a1341441c48604c"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Armor",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Armor.uasset",
+        "bytes": 6699,
+        "sha256": "d9c81857bf26cb7a106d1d5940d7312d050d4bbb40d3e98041b4e48833fb2f36",
+        "md5": "c7e254a23c9e25d962889960eadbe090"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Ceramic",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Ceramic.uasset",
+        "bytes": 6709,
+        "sha256": "223a1aac4f6c57610119dba0d71949aa97cb1e01d6fff8f7cd7f2215476eec89",
+        "md5": "11051c0fbdbb2bb5875200f789fa58b8"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Teal",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Teal.uasset",
+        "bytes": 6694,
+        "sha256": "163e81a4e4445526b23c40fc05da0557778899125d5b6e8673748e8f2e970411",
+        "md5": "f0f5fe5f64eaa054bdc005bce9363adf"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Steel",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Steel.uasset",
+        "bytes": 6699,
+        "sha256": "b6bfe9cb1e246e2ce0edaa36c80ae1d4af75ac6910713ada77fb8e8459c7235b",
+        "md5": "6af0a6bc79f9c62db40d2ec8863ac038"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Edge",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Edge.uasset",
+        "bytes": 6694,
+        "sha256": "12786bca4e3b72b82fac83a5ffcd955aeddd054f8b9debef5bc2639f020b47a3",
+        "md5": "c290fdbd396de769096959624a3baefb"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Copper",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Copper.uasset",
+        "bytes": 6704,
+        "sha256": "00fc20eba9dff214784dbdfc7014d48e6a60e8c44f20ec4196405a783df81414",
+        "md5": "719deeb807848deeca07a12f4e832e0a"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Rubber",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Rubber.uasset",
+        "bytes": 6675,
+        "sha256": "47bb7ed19bc1e476cc029c444deba349920d224e4b359e41f825caf280d60070",
+        "md5": "84ec887233489958a00118071ba17027"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Amber",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Amber.uasset",
+        "bytes": 6699,
+        "sha256": "9ea7f4d028e7ed809a5ed7a6436aa56b14299790f6177e784d8494d5e1fe59a8",
+        "md5": "77389e7b8744d03d0ab5001199910b8d"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Stencil",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Stencil.uasset",
+        "bytes": 6680,
+        "sha256": "d0eb4121a2aa0cd90cc48ceca8d2d922cf670d2261147241bb37c99ca5cc7ffe",
+        "md5": "cf85bb5b4ef47f3d50ba6722f438b163"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Lamp",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Lamp.uasset",
+        "bytes": 8567,
+        "sha256": "b8b201f075b7d277e62f9e58b4bd9004a3307f8f9e2b72b3e4f2e58c6f534b9e",
+        "md5": "9d515cbbb38859eadc7f056f8425d807"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Violet",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Violet.uasset",
+        "bytes": 8577,
+        "sha256": "88e6ff4b4abb925ad3073f96398708beb6ad71739096401f10d5f2f7879dae35",
+        "md5": "07c5c6fb87a25803a59892afbab714d0"
+      },
+      {
+        "family": "machines",
+        "kind": "materials",
+        "name": "M_C04_Screen",
+        "file": "Content/ONE/Materials/Machines/Candidate04/M_C04_Screen.uasset",
+        "bytes": 6704,
+        "sha256": "7103be7240d3ca9ee9df4b7ecb780e7883c5d841bc727de71e463db53f328adc",
+        "md5": "98ba46e1726f45218037fa474934f5a2"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_BoxIdle",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxIdle.uasset",
+        "bytes": 40716,
+        "sha256": "fab7598e78ea71531ca402211d4db7afa90c56d5e1957801169ab0ec5d48a645",
+        "md5": "394d0962df9733537dacad67e30d135d"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_BoxActivate",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxActivate.uasset",
+        "bytes": 55782,
+        "sha256": "48563609af8c06f5ed70d385a4890b3af1d8965de41327de239a418dda07baf2",
+        "md5": "ebfb171e9b1686455acbe7578257b570"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_BoxCycle01",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCycle01.uasset",
+        "bytes": 12308,
+        "sha256": "15e63205ae644e705329908d1c262742d0caabd681db66e2fc56e0a59550cb09",
+        "md5": "119063288c4b0cb7e248506ab0d3e2d6"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_BoxCycle02",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCycle02.uasset",
+        "bytes": 12353,
+        "sha256": "84ad103ef1260dc8dae363e75d66182b7ff1623c83a6a2d95819fe1a56196721",
+        "md5": "0bdb7565a229e772c0f220c2dc52dd82"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_BoxCycle03",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCycle03.uasset",
+        "bytes": 12381,
+        "sha256": "283b4c937923839ee3e5d920b9a25959d7a4afeac709e538ffab5a58a39abe89",
+        "md5": "69f33ca31c88234df1368c61a91d2069"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_BoxReveal",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxReveal.uasset",
+        "bytes": 76885,
+        "sha256": "ada8404d8ab43f897185c7e9a381f1183f56a356d2a8f09d2a4aca5f840e7af1",
+        "md5": "34e29c50ce17dcfafae1f637687f71f7"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_BoxCollect",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCollect.uasset",
+        "bytes": 29704,
+        "sha256": "c0558d657219dafd4e726065b65eb89a2dd26be7276d427bc59bbc57f4ce43c4",
+        "md5": "d1e1707ad265c7ab9c1604fa9432ad82"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_BoxClose",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxClose.uasset",
+        "bytes": 45887,
+        "sha256": "9a1a923e6ec31c3880f54398bf3cc125d895f9434f6142760dcd8795fbe5644a",
+        "md5": "e624931f19dc187c8d5c08909f9b18cf"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_UpgradeIdle",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeIdle.uasset",
+        "bytes": 30827,
+        "sha256": "c67cb42113f2f1f1d33e0bdf21f2d12671883d84e6cf4f7fccbbadc8bf538f8a",
+        "md5": "7130041aa4e3fd669d92416b3fb8b99b"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_UpgradeIntake",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeIntake.uasset",
+        "bytes": 72481,
+        "sha256": "74761c11cc7dac50786ad93a6ea11df4a225da56ba883c454eb95d8e5f6e3d20",
+        "md5": "b8baa020907b2d1f731d5e4751acee57"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_UpgradeActivate",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeActivate.uasset",
+        "bytes": 14740,
+        "sha256": "0f26daae910b5d5f96b0a48d669ec036233bd644abbf8518e827fae7a0d186cf",
+        "md5": "734f4f1bffbb948b908da23b018345ca"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_UpgradeProcess",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeProcess.uasset",
+        "bytes": 67122,
+        "sha256": "6044de715c5eaa342723d8e653623ffe1a1cfd91c531c2d53104c9aebdaed173",
+        "md5": "86781bef2d09e8e563f21773951abb22"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_UpgradeOutput",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeOutput.uasset",
+        "bytes": 82125,
+        "sha256": "314448f99ee9c71b116eae17de18a866d733066443fb50da4106e160aaf6072b",
+        "md5": "1befba9e59c0b28cc2fadc79558b0922"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_UpgradeComplete",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeComplete.uasset",
+        "bytes": 66065,
+        "sha256": "fd5760784feeb26dd9473283813ad66026c2794e15fe85281355accb24eb7a16",
+        "md5": "cb780ca94cdb7823eb3842faf88bb6a6"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_UpgradeCollect",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeCollect.uasset",
+        "bytes": 30203,
+        "sha256": "a2f4b3177460a9c2409996bf8eca1294521a750037518ad1c2039771844cd3e7",
+        "md5": "95831aa44362ad956276237674e949ce"
+      },
+      {
+        "family": "machines",
+        "kind": "audio",
+        "name": "S_C04_UpgradeClose",
+        "file": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeClose.uasset",
+        "bytes": 49916,
+        "sha256": "b08792fee9e5fc92251d431a03f4c910725e00620fe102c8da3f143defbff7af",
+        "md5": "56d7c72750d61fa2cddddfec4b263407"
+      },
+      {
+        "family": "effects",
+        "kind": "materials",
+        "name": "M_Tracer_C04",
+        "file": "Content/ONE/Materials/M_Tracer_C04.uasset",
+        "bytes": 6267,
+        "sha256": "2855ef96aba6a58edac2a9c4a6bab746de2d1c21e2741bf82f17fb1098fa887e",
+        "md5": "f2d6a10dde73b817c6288f2ee87b8796"
+      }
+    ],
+    "package_hash_scope": "The 82 imported package hashes and map hash are a current offline file snapshot. The original import/placement reports supplied no imported-package/map hashes for historical comparison; existence/current hashes do not independently revalidate current Unreal object internals."
+  },
+  "separate_review_scopes": {
+    "visual_review": "Not approved by this report. Actual gameplay-frame review is separate, including native-scale hand/shell readability and machine highlight/HUD limitations.",
+    "audio_review": "Machine audio import duration/format/loop settings are separate from perceptual audition. No timbre or mix approval is asserted; perceptual audition remains unavailable.",
+    "runtime_and_release": "Functional tests, manual input, performance, fresh builds and packaging are separate gates, not inferred from import PASS."
+  }
+}

@@ -1,0 +1,735 @@
+{
+  "candidate": "04",
+  "units": "centimetres",
+  "authoring": "Original procedural Project ONE machine geometry; no third-party asset inputs.",
+  "coordinates": {
+    "ue_forward": "+X toward operator",
+    "ue_width": "+Y",
+    "up": "+Z",
+    "fbx_import": {
+      "axis_forward": "-Y",
+      "axis_up": "Z",
+      "convert_scene": true,
+      "force_front_x_axis": false
+    },
+    "all_preview_weapons_scale": 1
+  },
+  "source": "ArtSource/Machines/Candidate04/ProjectONE_Machines_C04.blend",
+  "static_meshes": {
+    "SM_C04_BoxBody": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxBody.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_BoxBody",
+      "family": "box",
+      "motion": "fixed",
+      "ue_origin_cm": [
+        0,
+        0,
+        0
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -59.20000076293945,
+          -100.70999908447266,
+          0.0
+        ],
+        "max": [
+          59.75,
+          100.70999145507812,
+          101.0
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -59.20000076293945,
+          -100.70999145507812,
+          0.0
+        ],
+        "max": [
+          59.75,
+          100.70999908447266,
+          101.0
+        ]
+      },
+      "vertices": 19938,
+      "triangles": 35428,
+      "materials": [
+        "M_C04_Rubber",
+        "M_C04_Steel",
+        "M_C04_Carbon",
+        "M_C04_Armor",
+        "M_C04_Teal",
+        "M_C04_Edge",
+        "M_C04_Copper",
+        "M_C04_Amber",
+        "M_C04_Violet",
+        "M_C04_Lamp",
+        "M_C04_Stencil"
+      ],
+      "source_sha256": "8a7813cdd70506f8e531de011fdf9579599e838854899a53fcbeb5b5df0fbe7f"
+    },
+    "SM_C04_BoxLid": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLid.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_BoxLid",
+      "family": "box",
+      "motion": "Pitch 0..108 degrees",
+      "ue_origin_cm": [
+        -48,
+        0,
+        96
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -5.5,
+          -93.0,
+          -4.5
+        ],
+        "max": [
+          103.0,
+          93.0,
+          16.5
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -5.5,
+          -93.0,
+          -4.5
+        ],
+        "max": [
+          103.0,
+          93.0,
+          16.5
+        ]
+      },
+      "vertices": 5460,
+      "triangles": 9512,
+      "materials": [
+        "M_C04_Carbon",
+        "M_C04_Armor",
+        "M_C04_Steel",
+        "M_C04_Edge",
+        "M_C04_Amber",
+        "M_C04_Violet",
+        "M_C04_Stencil"
+      ],
+      "source_sha256": "709397c1d19d6a0ad7eb7daba972c65a66c39e9e6559ea2fb49c864657d4c850"
+    },
+    "SM_C04_BoxLock": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLock.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_BoxLock",
+      "family": "box",
+      "motion": "Two instances at X59 Y+/-62 Z89; slide 13cm outwards",
+      "ue_origin_cm": [
+        0,
+        0,
+        0
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -3.5,
+          -8.0,
+          -12.0
+        ],
+        "max": [
+          7.5,
+          8.0,
+          12.0
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -3.5,
+          -8.0,
+          -12.0
+        ],
+        "max": [
+          7.5,
+          8.0,
+          12.0
+        ]
+      },
+      "vertices": 272,
+      "triangles": 528,
+      "materials": [
+        "M_C04_Steel",
+        "M_C04_Copper",
+        "M_C04_Carbon",
+        "M_C04_Lamp"
+      ],
+      "source_sha256": "eb5fc5c9600329e24bb9c1948a7037ca2c125dbb50fea362e3277eb563354c50"
+    },
+    "SM_C04_BoxRotor": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxRotor.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_BoxRotor",
+      "family": "box",
+      "motion": "Instance at(0,0,52), slow Z rotation",
+      "ue_origin_cm": [
+        0,
+        0,
+        0
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -28.0,
+          -28.0,
+          -3.0
+        ],
+        "max": [
+          28.0,
+          28.0,
+          8.649999618530273
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -28.0,
+          -28.0,
+          -3.0
+        ],
+        "max": [
+          28.0,
+          28.0,
+          8.649999618530273
+        ]
+      },
+      "vertices": 1840,
+      "triangles": 3640,
+      "materials": [
+        "M_C04_Carbon",
+        "M_C04_Copper",
+        "M_C04_Violet",
+        "M_C04_Steel",
+        "M_C04_Screen"
+      ],
+      "source_sha256": "e3f0beb6ac337c3e2e42ce34af3f510386ea76963111c5b1a2a6bfc69884c61c"
+    },
+    "SM_C04_UpgradeBody": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeBody.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_UpgradeBody",
+      "family": "upgrade",
+      "motion": "fixed",
+      "ue_origin_cm": [
+        0,
+        0,
+        0
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -73.5,
+          -109.0999984741211,
+          0.0
+        ],
+        "max": [
+          125.0,
+          109.10000610351562,
+          220.0
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -73.5,
+          -109.10000610351562,
+          0.0
+        ],
+        "max": [
+          125.0,
+          109.0999984741211,
+          220.0
+        ]
+      },
+      "vertices": 55074,
+      "triangles": 96972,
+      "materials": [
+        "M_C04_Rubber",
+        "M_C04_Carbon",
+        "M_C04_Ceramic",
+        "M_C04_Copper",
+        "M_C04_Steel",
+        "M_C04_Lamp",
+        "M_C04_Edge",
+        "M_C04_Teal",
+        "M_C04_Stencil",
+        "M_C04_Amber"
+      ],
+      "source_sha256": "44d08df7d8c13d51640094f84ee029871789d53088a281a547885335243c4d07"
+    },
+    "SM_C04_UpgradeCradle": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeCradle.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_UpgradeCradle",
+      "family": "upgrade",
+      "motion": "Translate X94..-5 Z107..121",
+      "ue_origin_cm": [
+        0,
+        0,
+        0
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -18.0,
+          -61.5,
+          -7.5
+        ],
+        "max": [
+          18.0,
+          61.5,
+          4.5
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -18.0,
+          -61.5,
+          -7.5
+        ],
+        "max": [
+          18.0,
+          61.5,
+          4.5
+        ]
+      },
+      "vertices": 392,
+      "triangles": 756,
+      "materials": [
+        "M_C04_Steel",
+        "M_C04_Rubber",
+        "M_C04_Copper",
+        "M_C04_Edge"
+      ],
+      "source_sha256": "97ad9b1b33a1c69ff0c20d2951b47b1c89f10dfc9d11d8b213816840a9eb1e50"
+    },
+    "SM_C04_UpgradeClamp": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeClamp.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_UpgradeClamp",
+      "family": "upgrade",
+      "motion": "Two local X mirrored fingers, move X38..22 relative to cradle",
+      "ue_origin_cm": [
+        0,
+        0,
+        0
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -18.5,
+          -6.5,
+          -3.5
+        ],
+        "max": [
+          6.5,
+          6.5,
+          20.5
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -18.5,
+          -6.5,
+          -3.5
+        ],
+        "max": [
+          6.5,
+          6.5,
+          20.5
+        ]
+      },
+      "vertices": 320,
+      "triangles": 620,
+      "materials": [
+        "M_C04_Carbon",
+        "M_C04_Steel",
+        "M_C04_Copper",
+        "M_C04_Rubber",
+        "M_C04_Edge"
+      ],
+      "source_sha256": "3389315e181836f99936cb6ab30d84445fc3bd9eaaf8483a5f99ffcba688c298"
+    },
+    "SM_C04_UpgradeRing": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeRing.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_UpgradeRing",
+      "family": "upgrade",
+      "motion": "Two chamber Y+/-38 instances rotating slowly around Y",
+      "ue_origin_cm": [
+        0,
+        0,
+        0
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -51.0,
+          -7.000000476837158,
+          -51.0
+        ],
+        "max": [
+          51.0,
+          7.000000476837158,
+          51.0
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -51.0,
+          -7.000000476837158,
+          -51.0
+        ],
+        "max": [
+          51.0,
+          7.000000476837158,
+          51.0
+        ]
+      },
+      "vertices": 1520,
+      "triangles": 3000,
+      "materials": [
+        "M_C04_Carbon",
+        "M_C04_Copper",
+        "M_C04_Lamp",
+        "M_C04_Steel"
+      ],
+      "source_sha256": "67777aceeba5562ec1cd0490cf0ff6dbccc1ddcb40e0a782eed6cb3ed6ababf2"
+    },
+    "SM_C04_UpgradeShield": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeShield.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_UpgradeShield",
+      "family": "upgrade",
+      "motion": "Rear side shields Y+/-74 slide inward22; center remains readable",
+      "ue_origin_cm": [
+        0,
+        0,
+        0
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -3.0,
+          -33.5,
+          -40.5
+        ],
+        "max": [
+          7.0,
+          33.5,
+          40.5
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -3.0,
+          -33.5,
+          -40.5
+        ],
+        "max": [
+          7.0,
+          33.5,
+          40.5
+        ]
+      },
+      "vertices": 336,
+      "triangles": 648,
+      "materials": [
+        "M_C04_Armor",
+        "M_C04_Ceramic",
+        "M_C04_Rubber",
+        "M_C04_Lamp"
+      ],
+      "source_sha256": "8d479040ff803dcec8328d40a9ce2321483fd460c1c0c6b04bcce0f579990b10"
+    },
+    "SM_C04_HydraulicSleeve": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicSleeve.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_HydraulicSleeve",
+      "family": "shared",
+      "motion": "Unit Z length; scale only along Z between physical attachment points",
+      "ue_origin_cm": [
+        0,
+        0,
+        0
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -2.0,
+          -2.0,
+          -0.5
+        ],
+        "max": [
+          2.0,
+          2.0,
+          0.5
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -2.0,
+          -2.0,
+          -0.5
+        ],
+        "max": [
+          2.0,
+          2.0,
+          0.5
+        ]
+      },
+      "vertices": 96,
+      "triangles": 188,
+      "materials": [
+        "M_C04_Carbon"
+      ],
+      "source_sha256": "b10a36f1a7b6b5aa9d5096c140dea7a3fa47e676daca36dea8a36a17a9b90bca"
+    },
+    "SM_C04_HydraulicRod": {
+      "source": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicRod.fbx",
+      "asset": "/Game/ONE/Machines/Candidate04/SM_C04_HydraulicRod",
+      "family": "shared",
+      "motion": "Unit Z length; telescoping physical lid support",
+      "ue_origin_cm": [
+        0,
+        0,
+        0
+      ],
+      "source_bounds_local_cm": {
+        "min": [
+          -1.100000023841858,
+          -1.100000023841858,
+          -0.5
+        ],
+        "max": [
+          1.100000023841858,
+          1.100000023841858,
+          0.5
+        ]
+      },
+      "ue_bounds_local_cm": {
+        "min": [
+          -1.100000023841858,
+          -1.100000023841858,
+          -0.5
+        ],
+        "max": [
+          1.100000023841858,
+          1.100000023841858,
+          0.5
+        ]
+      },
+      "vertices": 96,
+      "triangles": 188,
+      "materials": [
+        "M_C04_Edge"
+      ],
+      "source_sha256": "ab2c7cf3fdb5a1161b3f7de0dea9b26ba9ff7170101d3a0f9546ef61e20173da"
+    }
+  },
+  "materials": {
+    "M_C04_Carbon": {
+      "color": [
+        0.029,
+        0.044,
+        0.055,
+        1
+      ],
+      "roughness": 0.69,
+      "metallic": 0.65
+    },
+    "M_C04_Armor": {
+      "color": [
+        0.058,
+        0.095,
+        0.116,
+        1
+      ],
+      "roughness": 0.65,
+      "metallic": 0.52
+    },
+    "M_C04_Ceramic": {
+      "color": [
+        0.48,
+        0.52,
+        0.48,
+        1
+      ],
+      "roughness": 0.65,
+      "metallic": 0.15
+    },
+    "M_C04_Teal": {
+      "color": [
+        0.025,
+        0.21,
+        0.22,
+        1
+      ],
+      "roughness": 0.57,
+      "metallic": 0.55
+    },
+    "M_C04_Steel": {
+      "color": [
+        0.22,
+        0.27,
+        0.29,
+        1
+      ],
+      "roughness": 0.43,
+      "metallic": 0.86
+    },
+    "M_C04_Edge": {
+      "color": [
+        0.42,
+        0.48,
+        0.5,
+        1
+      ],
+      "roughness": 0.42,
+      "metallic": 0.83
+    },
+    "M_C04_Copper": {
+      "color": [
+        0.42,
+        0.21,
+        0.065,
+        1
+      ],
+      "roughness": 0.51,
+      "metallic": 0.78
+    },
+    "M_C04_Rubber": {
+      "color": [
+        0.014,
+        0.019,
+        0.022,
+        1
+      ],
+      "roughness": 0.92,
+      "metallic": 0
+    },
+    "M_C04_Amber": {
+      "color": [
+        0.87,
+        0.31,
+        0.025,
+        1
+      ],
+      "roughness": 0.65,
+      "metallic": 0.26
+    },
+    "M_C04_Stencil": {
+      "color": [
+        0.67,
+        0.71,
+        0.62,
+        1
+      ],
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    "M_C04_Lamp": {
+      "color": [
+        0.28,
+        0.7,
+        0.85,
+        1
+      ],
+      "roughness": 0.32,
+      "metallic": 0.1,
+      "emission": 3.5
+    },
+    "M_C04_Violet": {
+      "color": [
+        0.43,
+        0.12,
+        0.88,
+        1
+      ],
+      "roughness": 0.32,
+      "metallic": 0.1,
+      "emission": 3.5
+    },
+    "M_C04_Screen": {
+      "color": [
+        0.008,
+        0.027,
+        0.035,
+        1
+      ],
+      "roughness": 0.36,
+      "metallic": 0.25
+    }
+  },
+  "machines": {
+    "box": {
+      "body": "SM_C04_BoxBody",
+      "lid": "SM_C04_BoxLid",
+      "lid_pivot_cm": [
+        -48,
+        0,
+        96
+      ],
+      "lid_open_pitch_degrees": 108,
+      "lock_origins_cm": [
+        [
+          59,
+          -62,
+          89
+        ],
+        [
+          59,
+          62,
+          89
+        ]
+      ],
+      "preview_mount_cm": [
+        0,
+        0,
+        139
+      ],
+      "collision_center_cm": [
+        3,
+        0,
+        52
+      ],
+      "collision_half_extent_cm": [
+        65,
+        102,
+        52
+      ],
+      "suggested_world_cm": [
+        -650,
+        -530,
+        2
+      ],
+      "suggested_yaw": 0
+    },
+    "upgrade": {
+      "body": "SM_C04_UpgradeBody",
+      "intake_mount_cm": [
+        94,
+        0,
+        107
+      ],
+      "processing_mount_cm": [
+        -5,
+        0,
+        121
+      ],
+      "output_mount_cm": [
+        94,
+        0,
+        107
+      ],
+      "preview_yaw_degrees": 90,
+      "preview_centering": "Subtract assembled weapon bounds center.X from machine mount.Y, without scaling.",
+      "active_seconds": 9,
+      "intake_end_seconds": 1.2,
+      "output_start_seconds": 7.7,
+      "collision_center_cm": [
+        26,
+        0,
+        110
+      ],
+      "collision_half_extent_cm": [
+        100,
+        110,
+        110
+      ],
+      "suggested_world_cm": [
+        650,
+        -530,
+        2
+      ],
+      "suggested_yaw": 180
+    }
+  },
+  "render_scope": "Original Blender studio views only; final in-engine material, light, motion and interaction review remains separate."
+}

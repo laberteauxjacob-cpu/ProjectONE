@@ -1,4 +1,6 @@
 #include "ONEWeaponComponent.h"
+#include "ONEWeaponCatalog.h"
+#include "ONEWeaponMagazine.h"
 #include "ONEPlayer.h"
 #include "ONEZombie.h"
 #include "ONEWeaponCase.h"
@@ -16,18 +18,7 @@
 namespace
 {
     uint64 NextDischargeId=0;
-    template<class T> TSoftObjectPtr<T> Asset(const FString& Folder,const FString& Name)
-    { return TSoftObjectPtr<T>(FSoftObjectPath(Folder+Name+TEXT(".")+Name)); }
-    TSoftObjectPtr<USoundBase> Sound(const TCHAR* Name) { return Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/"),Name); }
-    TSoftObjectPtr<UAnimSequence> Clip(const TCHAR* Name) { return Asset<UAnimSequence>(TEXT("/Game/ONE/Animations/"),Name); }
-    void AddOperation(FONEWeaponDefinition& D,EONEWeaponOperation Op,float Duration,const TCHAR* Animation,std::initializer_list<FONEWeaponTimedEvent> Events={})
-    {
-        FONEWeaponOperationDefinition O; O.Operation=Op; O.Duration=Duration; O.Animation=Clip(Animation);
-        for (const auto& E:Events) O.Events.Add(E);
-        D.Operations.Add(O);
-    }
-    FONEWeaponTimedEvent Event(float Time,EONEWeaponEvent Type,const TCHAR* Audio)
-    { FONEWeaponTimedEvent E; E.Time=Time; E.Event=Type; if (Audio) E.Sound=Sound(Audio); return E; }
+    uint64 NextMagazineReleaseId=0;
     USoundBase* Choose(const TArray<TSoftObjectPtr<USoundBase>>& Sounds)
     { return Sounds.IsEmpty() ? nullptr : Sounds[FMath::RandHelper(Sounds.Num())].Get(); }
     FName RegionalImpactBone(const AONEZombie* Zombie,EONEHitRegion Region,const FHitResult& Hit)
@@ -65,56 +56,7 @@ UONEWeaponComponent::UONEWeaponComponent()
 {
     PrimaryComponentTick.bCanEverTick=true;
     PrimaryComponentTick.TickGroup=TG_PostPhysics;
-    FONEWeaponDefinition Carbine;
-    Carbine.Id=TEXT("AR01"); Carbine.DisplayName=FText::FromString(TEXT("5.56 mm Carbine"));
-    Carbine.Mesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_Carbine_C02Body"));
-    Carbine.MagazineMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_Carbine_Magazine"));
-    Carbine.ReadyAnimation=Clip(TEXT("A_Response_Idle"));
-    Carbine.EmptySound=Sound(TEXT("S_CarbineEmpty"));
-    Carbine.EjectedCaseMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_RifleBrass_C03"));
-    Carbine.EjectionPoint=FVector(3.6f,-5.1f,13.7f);
-    for (int32 I=1;I<=6;++I) Carbine.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/Candidate03/"),FString::Printf(TEXT("S_C03_CarbineShot_%02d"),I)));
-    Carbine.FleshSounds={Sound(TEXT("S_FleshImpact_01")),Sound(TEXT("S_FleshImpact_02")),Sound(TEXT("S_FleshImpact_03"))};
-    Carbine.ConcreteSounds={Sound(TEXT("S_ConcreteImpact_01")),Sound(TEXT("S_ConcreteImpact_02"))};
-    Carbine.MetalSounds={Sound(TEXT("S_MetalImpact_01")),Sound(TEXT("S_MetalImpact_02"))};
-    AddOperation(Carbine,EONEWeaponOperation::Equip,.36f,TEXT("A_Response_Equip"),{Event(.18f,EONEWeaponEvent::WeaponSwap,TEXT("S_WeaponEquip"))});
-    AddOperation(Carbine,EONEWeaponOperation::Fire,.2f,TEXT("A_Response_Fire"),{Event(0.f,EONEWeaponEvent::ShellEject,nullptr)});
-    AddOperation(Carbine,EONEWeaponOperation::MagazineReload,2.1f,TEXT("A_Response_CarbineReload"),{
-        Event(.4f,EONEWeaponEvent::MagazineOut,TEXT("S_CarbineMagOut")),Event(1.2f,EONEWeaponEvent::MagazineCommit,TEXT("S_CarbineMagIn")),Event(1.74f,EONEWeaponEvent::Sound,TEXT("S_CarbineBolt"))});
-    WeaponDefinitions.Add(Carbine);
-    FONEWeaponDefinition Shotgun=Carbine;
-    Shotgun.Id=TEXT("SG01"); Shotgun.DisplayName=FText::FromString(TEXT("12-Gauge Pump Shotgun"));
-    Shotgun.bAutomatic=false; Shotgun.bShellReload=true; Shotgun.bPumpAction=true;
-    Shotgun.Capacity=6; Shotgun.InitialReserve=36; Shotgun.ReserveLimit=60;
-    Shotgun.RoundReserveReward=8;
-    Shotgun.Pellets=8; Shotgun.Damage=15.f; Shotgun.FireInterval=.78f; Shotgun.SpreadDegrees=4.f;
-    Shotgun.Range=1400.f; Shotgun.FalloffStart=500.f; Shotgun.MinimumDamageFraction=.2f;
-    Shotgun.HeadTraumaScale=1.f; Shotgun.HeavyStaggerThreshold=70.f;
-    Shotgun.FlashDuration=.065f; Shotgun.FlashIntensity=27000.f;
-    Shotgun.FlashLength=29.f; Shotgun.FlashRadius=6.2f; Shotgun.FlashLightRadius=245.f;
-    Shotgun.FlashLightColor=FLinearColor(1.f,.56f,.20f);
-    Shotgun.Muzzle=FVector(64.5f,0,14);
-    Shotgun.Mesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_PumpShotgun"));
-    Shotgun.ForeEndMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_PumpShotgun_ForeEnd"));
-    Shotgun.ShellMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_ShotgunShell"));
-    Shotgun.EjectedCaseMesh=Shotgun.ShellMesh;
-    Shotgun.EjectionPoint=FVector(5,-4.5,13.5);
-    Shotgun.CaseRadius=1.05f; Shotgun.CaseImpulse=FVector(35,-165,125);
-    Shotgun.MagazineMesh.Reset();
-    Shotgun.ReadyAnimation=Clip(TEXT("A_Response_ShotgunReady"));
-    Shotgun.EmptySound=Sound(TEXT("S_ShotgunEmpty"));
-    Shotgun.ShotSounds.Reset();
-    for (int32 I=1;I<=6;++I) Shotgun.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/Candidate03/"),FString::Printf(TEXT("S_C03_ShotgunShot_%02d"),I)));
-    Shotgun.Operations.Reset();
-    AddOperation(Shotgun,EONEWeaponOperation::Equip,.36f,TEXT("A_Response_Equip"),{Event(.18f,EONEWeaponEvent::WeaponSwap,TEXT("S_WeaponEquip"))});
-    AddOperation(Shotgun,EONEWeaponOperation::Fire,.22f,TEXT("A_Response_ShotgunFire"));
-    AddOperation(Shotgun,EONEWeaponOperation::Pump,.56f,TEXT("A_Response_ShotgunPump"),{
-        Event(0.f,EONEWeaponEvent::Sound,TEXT("S_ShotgunPumpBack")),Event(.18f,EONEWeaponEvent::ShellEject,nullptr),
-        Event(.21f,EONEWeaponEvent::Sound,TEXT("S_ShotgunPumpForward")),Event(.44f,EONEWeaponEvent::PumpLock,TEXT("S_ShotgunPumpLock"))});
-    AddOperation(Shotgun,EONEWeaponOperation::ShellStart,.35f,TEXT("A_Response_ShotgunReloadStart"),{Event(0.f,EONEWeaponEvent::Sound,TEXT("S_ShotgunReloadStart"))});
-    AddOperation(Shotgun,EONEWeaponOperation::ShellInsert,.9f,TEXT("A_Response_ShotgunReloadShell"),{Event(.6f,EONEWeaponEvent::ShellCommit,TEXT("S_ShotgunShellInsert"))});
-    AddOperation(Shotgun,EONEWeaponOperation::ShellEnd,.32f,TEXT("A_Response_ShotgunReloadEnd"),{Event(0.f,EONEWeaponEvent::Sound,TEXT("S_ShotgunReloadEnd"))});
-    WeaponDefinitions.Add(Shotgun);
+    WeaponDefinitions=ONEWeaponCatalog::BuildDefaults();
 }
 
 void UONEWeaponComponent::BeginPlay()
@@ -124,14 +66,13 @@ void UONEWeaponComponent::BeginPlay()
     // parallel evaluation task, before sampling attached muzzle/port transforms.
     if (auto* P=Cast<AONEPlayer>(GetOwner()))
     { AddTickPrerequisiteActor(P); AddTickPrerequisiteComponent(P->GetMesh()); }
-    // This milestone carries exactly two editable rows; no unbounded inventory framework.
-    WeaponDefinitions.SetNum(2); Carried.SetNum(2);
+    // Catalog rows are independent of the exactly two owned inventory slots.
+    Carried.SetNum(2);
     auto Keep=[this](const auto& Ref) { if (UObject* Object=Ref.LoadSynchronous()) LoadedAssets.AddUnique(Object); };
     for (int32 I=0;I<WeaponDefinitions.Num();++I)
     {
         auto& D=WeaponDefinitions[I]; D.Capacity=FMath::Max(1,D.Capacity); D.Pellets=FMath::Clamp(D.Pellets,1,16);
-        Carried[I].Ammo=D.Capacity; Carried[I].Reserve=FMath::Clamp(D.InitialReserve,0,D.ReserveLimit);
-        Keep(D.Mesh); Keep(D.ForeEndMesh); Keep(D.ShellMesh); Keep(D.EjectedCaseMesh); Keep(D.MagazineMesh); Keep(D.ReadyAnimation); Keep(D.EmptySound);
+        Keep(D.Mesh); Keep(D.SlideMesh); Keep(D.ForeEndMesh); Keep(D.ShellMesh); Keep(D.EjectedCaseMesh); Keep(D.MagazineMesh); Keep(D.ReadyAnimation); Keep(D.EmptySound);
         for (const auto& S:D.ShotSounds) Keep(S);
         for (const auto& S:D.FleshSounds) Keep(S);
         for (const auto& S:D.ConcreteSounds) Keep(S);
@@ -143,10 +84,8 @@ void UONEWeaponComponent::BeginPlay()
             for (const auto& E:O.Events) Keep(E.Sound);
         }
     }
-    RefreshEquippedPresentation();
+    ResetStarterLoadout();
 }
-const FONEWeaponDefinition& UONEWeaponComponent::GetDefinition() const { return WeaponDefinitions[EquippedIndex]; }
-const FONEWeaponDefinition* UONEWeaponComponent::GetDefinitionForWeapon(int32 I) const { return WeaponDefinitions.IsValidIndex(I) ? &WeaponDefinitions[I] : nullptr; }
 int32 UONEWeaponComponent::GetAmmoForWeapon(int32 I) const { return Carried.IsValidIndex(I) ? Carried[I].Ammo : 0; }
 int32 UONEWeaponComponent::GetReserveAmmoForWeapon(int32 I) const { return Carried.IsValidIndex(I) ? Carried[I].Reserve : 0; }
 int32 UONEWeaponComponent::GetLastShotSoundIndexForWeapon(int32 I) const { return Carried.IsValidIndex(I) ? Carried[I].LastShotSoundIndex : INDEX_NONE; }
@@ -175,13 +114,13 @@ float UONEWeaponComponent::GetReloadProgress() const { return IsReloading() ? Ge
 bool UONEWeaponComponent::CanFire() const
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    return P && !P->IsDead() && !UGameplayStatics::IsGamePaused(this) && GetAmmo()>0 && !NeedsPump(EquippedIndex) &&
+    return HasUsableWeapon() && !bHandoffLocked && Carried[EquippedIndex].bMagazinePresent && P && !P->IsDead() && !UGameplayStatics::IsGamePaused(this) && GetAmmo()>0 && !NeedsPump(EquippedIndex) &&
         (Operation==EONEWeaponOperation::Ready || (GetDefinition().bAutomatic && Operation==EONEWeaponOperation::Fire)) && GetTimeSinceShot()>=GetDefinition().FireInterval;
 }
 void UONEWeaponComponent::SetTrigger(bool Held)
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (Held && (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this))) return;
+    if (Held && (!HasUsableWeapon() || bHandoffLocked || !P || P->IsDead() || UGameplayStatics::IsGamePaused(this))) return;
     if (Held && !bTrigger)
     {
         bPendingShot=true;
@@ -199,10 +138,10 @@ void UONEWeaponComponent::BeginReload()
     const auto* P=Cast<AONEPlayer>(GetOwner());
     // Held sprint has priority over both R and automatic reload, even while still.
     // Ignored R presses are not queued to fight the player's escape on later ticks.
-    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || P->IsSprintRequested() ||
+    if (!HasUsableWeapon() || bHandoffLocked || !P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || P->IsSprintRequested() ||
         (Operation!=EONEWeaponOperation::Ready && Operation!=EONEWeaponOperation::Fire) ||
-        NeedsPump(EquippedIndex) || GetAmmo()>=GetDefinition().Capacity || GetReserveAmmo()<=0) return;
-    bPendingShot=false;
+        NeedsPump(EquippedIndex) || (GetAmmo()>=GetDefinition().Capacity && Carried[EquippedIndex].bMagazinePresent) || (GetReserveAmmo()<=0 && Carried[EquippedIndex].bMagazinePresent)) return;
+    bPendingShot=false; bReloadStartedEmpty=GetAmmo()==0;
     StartOperation(GetDefinition().bShellReload ? EONEWeaponOperation::ShellStart : EONEWeaponOperation::MagazineReload);
 }
 void UONEWeaponComponent::CancelReload()
@@ -224,7 +163,7 @@ void UONEWeaponComponent::InterruptReloadForSprint()
 bool UONEWeaponComponent::CanAutoReload() const
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    return P && !P->IsDead() && !UGameplayStatics::IsGamePaused(this) && !P->IsSprintRequested() &&
+    return HasUsableWeapon() && !bHandoffLocked && P && !P->IsDead() && !UGameplayStatics::IsGamePaused(this) && !P->IsSprintRequested() &&
         Operation==EONEWeaponOperation::Ready && !NeedsPump(EquippedIndex) && GetAmmo()==0 && GetReserveAmmo()>0;
 }
 void UONEWeaponComponent::StopOperationAudio()
@@ -243,34 +182,31 @@ void UONEWeaponComponent::CancelAllOperations()
 bool UONEWeaponComponent::SelectWeapon(int32 I)
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !Carried.IsValidIndex(I) || (I==EquippedIndex && PendingIndex<0)) return false;
+    if (bHandoffLocked || !P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !IsSlotAvailable(I) || (I==EquippedIndex && PendingIndex<0)) return false;
     if (IsReloading()) CancelReload();
     CancelAllOperations();
     if (I==EquippedIndex) { if (NeedsPump(I)) StartOperation(EONEWeaponOperation::Pump); return true; }
-    PendingIndex=I; StartOperation(EONEWeaponOperation::Equip,I); return true;
+    PendingIndex=I; ++InventoryRevision; StartOperation(EONEWeaponOperation::Equip,I); return true;
 }
 void UONEWeaponComponent::RefillAllAmmo()
 {
+    if (bHandoffLocked) return;
     CancelAllOperations();
-    for (int32 I=0;I<Carried.Num();++I)
-    {
-        Carried[I].Ammo=WeaponDefinitions[I].Capacity; Carried[I].Reserve=FMath::Clamp(WeaponDefinitions[I].InitialReserve,0,WeaponDefinitions[I].ReserveLimit);
-        Carried[I].bNeedsPump=false; Carried[I].bCaseEjected=false; Carried[I].PendingCaseShotId=0;
-    }
+    for (int32 I=0;I<Carried.Num();++I) RefillSlot(I,false);
     LastShot=-100; LastEmpty=-100; RefreshEquippedPresentation();
 }
 void UONEWeaponComponent::AddReserveAmmo(int32 Count)
-{ if (Carried.IsValidIndex(EquippedIndex)) Carried[EquippedIndex].Reserve=FMath::Clamp(GetReserveAmmo()+Count,0,GetDefinition().ReserveLimit); }
+{ if (HasUsableWeapon() && !bHandoffLocked) Carried[EquippedIndex].Reserve=static_cast<int32>(FMath::Clamp(static_cast<int64>(GetReserveAmmo())+Count,static_cast<int64>(0),static_cast<int64>(GetDefinition().ReserveLimit))); }
 void UONEWeaponComponent::GrantRoundAmmo()
 {
-    for (int32 I=0;I<Carried.Num();++I)
-        Carried[I].Reserve=FMath::Clamp(Carried[I].Reserve+FMath::Max(0,WeaponDefinitions[I].RoundReserveReward),0,WeaponDefinitions[I].ReserveLimit);
+    for (int32 I=0;I<Carried.Num();++I) if (IsSlotAvailable(I))
+    { const auto& D=*GetDefinitionForWeapon(I); Carried[I].Reserve=FMath::Clamp(Carried[I].Reserve+FMath::Max(0,D.RoundReserveReward),0,D.ReserveLimit); }
 }
 void UONEWeaponComponent::RefreshEquippedPresentation()
 {
     const auto& D=GetDefinition(); MagazineSize=D.Capacity; FireInterval=D.FireInterval; Damage=D.Damage; Range=D.Range;
     const auto* R=FindOperation(EquippedIndex,D.bShellReload ? EONEWeaponOperation::ShellInsert : EONEWeaponOperation::MagazineReload); ReloadDuration=R ? R->Duration : 0.f;
-    if (auto* P=Cast<AONEPlayer>(GetOwner())) P->ApplyWeaponPresentation(D);
+    if (auto* P=Cast<AONEPlayer>(GetOwner())) { if (HasUsableWeapon()) P->ApplyWeaponPresentation(D); else P->ClearEquippedPresentation(); }
 }
 void UONEWeaponComponent::PlayMechanical(USoundBase* S)
 {
@@ -288,19 +224,22 @@ void UONEWeaponComponent::StartOperation(EONEWeaponOperation Next,int32 I)
 }
 void UONEWeaponComponent::ProcessWeaponEvent(const FONEWeaponTimedEvent& E)
 {
-    if (!Carried.IsValidIndex(OperationIndex)) return;
-    auto& State=Carried[OperationIndex]; const auto& D=WeaponDefinitions[OperationIndex];
+    if (!IsSlotAvailable(OperationIndex) || (bHandoffLocked && Operation!=EONEWeaponOperation::Equip)) return;
+    auto& State=Carried[OperationIndex]; const auto& D=*GetDefinitionForWeapon(OperationIndex);
     switch (E.Event)
     {
+        case EONEWeaponEvent::MagazineOut: DropMagazine(OperationIndex); break;
         case EONEWeaponEvent::MagazineCommit:
         {
             const int32 N=FMath::Min(D.Capacity-State.Ammo,State.Reserve);
-            State.Ammo+=N; State.Reserve-=N; if (N>0) ++MagazinesCommitted; break;
+            State.Ammo+=N; State.Reserve-=N; State.bMagazinePresent=true; if (N>0) ++MagazinesCommitted;
+            if (auto* P=Cast<AONEPlayer>(GetOwner())) P->ClearReloadPresentation();
+            break;
         }
         case EONEWeaponEvent::ShellCommit:
             if (State.Reserve>0 && State.Ammo<D.Capacity) { ++State.Ammo; --State.Reserve; ++ShellsInserted; } break;
         case EONEWeaponEvent::WeaponSwap:
-            if (PendingIndex>=0) { EquippedIndex=PendingIndex; PendingIndex=-1; RefreshEquippedPresentation(); } break;
+            if (PendingIndex>=0) { EquippedIndex=PendingIndex; PendingIndex=-1; ++InventoryRevision; RefreshEquippedPresentation(); } break;
         case EONEWeaponEvent::PumpLock: State.bNeedsPump=false; break;
         case EONEWeaponEvent::ShellEject:
             EjectCase(OperationIndex);
@@ -311,7 +250,8 @@ void UONEWeaponComponent::ProcessWeaponEvent(const FONEWeaponTimedEvent& E)
 }
 void UONEWeaponComponent::EjectCase(int32 I)
 {
-    auto& State=Carried[I]; const auto& D=WeaponDefinitions[I];
+    if (!IsSlotAvailable(I)) return;
+    auto& State=Carried[I]; const auto& D=*GetDefinitionForWeapon(I);
     if (State.bCaseEjected || State.PendingCaseShotId==0) return;
     State.bCaseEjected=true; ++State.EjectionCount; ++CasesEjected;
     if (auto* P=Cast<AONEPlayer>(GetOwner()))
@@ -332,9 +272,32 @@ void UONEWeaponComponent::EjectCase(int32 I)
         }
     }
 }
+void UONEWeaponComponent::DropMagazine(int32 I)
+{
+    if (!IsSlotAvailable(I)) return;
+    auto& State=Carried[I]; const auto& D=*GetDefinitionForWeapon(I);
+    if (!State.bMagazinePresent || D.bShellReload) return;
+    State.bMagazinePresent=false; ++State.MagazineDropCount; ++MagazinesDropped;
+    const uint64 ReleaseId=++NextMagazineReleaseId;
+    if (auto* P=Cast<AONEPlayer>(GetOwner()))
+    {
+        const FTransform Release=P->GetMagazineReleaseTransform();
+        Magazines.RemoveAll([](const auto& M){ return !M.IsValid(); });
+        while (Magazines.Num()>=FMath::Clamp(MaximumMagazines,1,32))
+        { if (Magazines[0].IsValid()) Magazines[0]->Destroy(); Magazines.RemoveAt(0); }
+        FActorSpawnParameters Params; Params.Owner=P;
+        if (auto* M=GetWorld()->SpawnActor<AONEWeaponMagazine>(Release.GetLocation(),Release.Rotator(),Params))
+        { M->Initialize(D.MagazineMesh.Get(),Release,P->GetVelocity(),MagazineLifetime,State.InstanceId,ReleaseId); Magazines.Add(M); }
+        P->ClearReloadPresentation();
+    }
+}
+int32 UONEWeaponComponent::GetLiveMagazineCount() const
+{ int32 N=0; for (const auto& M:Magazines) if (M.IsValid()) ++N; return N; }
+AONEWeaponMagazine* UONEWeaponComponent::GetLastDroppedMagazine() const
+{ for (int32 I=Magazines.Num()-1;I>=0;--I) if (Magazines[I].IsValid()) return Magazines[I].Get(); return nullptr; }
 USoundBase* UONEWeaponComponent::ChooseShotSound(int32 I)
 {
-    const auto& Bank=WeaponDefinitions[I].ShotSounds; auto& State=Carried[I];
+    const auto& Bank=GetDefinitionForWeapon(I)->ShotSounds; auto& State=Carried[I];
     TArray<int32,TInlineAllocator<8>> Valid;
     for (int32 N=0;N<Bank.Num();++N) if (Bank[N].IsValid() && N!=State.LastShotSoundIndex) Valid.Add(N);
     if (Valid.IsEmpty() && Bank.IsValidIndex(State.LastShotSoundIndex) && Bank[State.LastShotSoundIndex].IsValid()) Valid.Add(State.LastShotSoundIndex);
@@ -347,7 +310,7 @@ void UONEWeaponComponent::FinishOperation()
     const EONEWeaponOperation Finished=Operation;
     StopOperationAudio(); Operation=EONEWeaponOperation::Ready; ++OperationSerial;
     if (Finished==EONEWeaponOperation::Equip || Finished==EONEWeaponOperation::Fire)
-    { if (NeedsPump(EquippedIndex)) StartOperation(EONEWeaponOperation::Pump); }
+    { if (!bHandoffLocked && NeedsPump(EquippedIndex)) StartOperation(EONEWeaponOperation::Pump); }
     else if (Finished==EONEWeaponOperation::ShellStart || Finished==EONEWeaponOperation::ShellInsert)
         StartOperation(GetAmmo()<GetDefinition().Capacity && GetReserveAmmo()>0 ? EONEWeaponOperation::ShellInsert : EONEWeaponOperation::ShellEnd);
 }
@@ -360,13 +323,14 @@ void UONEWeaponComponent::AdvanceOperationEvents()
 void UONEWeaponComponent::TickComponent(float Dt,ELevelTick Tick,FActorComponentTickFunction* ThisTick)
 {
     Super::TickComponent(Dt,Tick,ThisTick);
-    const auto* P=Cast<AONEPlayer>(GetOwner()); if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this)) return;
+    const auto* P=Cast<AONEPlayer>(GetOwner()); if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || (bHandoffLocked && Operation!=EONEWeaponOperation::Equip)) return;
     if (Operation!=EONEWeaponOperation::Ready)
     {
         const int32 Serial=OperationSerial;
         AdvanceOperationEvents();
         if (Serial==OperationSerial && GetOperationElapsed()>=GetOperationDuration()) FinishOperation();
     }
+    if (!HasUsableWeapon() || bHandoffLocked) return;
     if (Operation==EONEWeaponOperation::Ready && NeedsPump(EquippedIndex)) StartOperation(EONEWeaponOperation::Pump);
     // Pump/equip/fire completion comes first. Only the empty equipped weapon may
     // reload automatically; a held trigger is never required to enter this path.
@@ -380,7 +344,9 @@ UAnimSequence* UONEWeaponComponent::GetReadyAnimation() const { return GetDefini
 UAnimSequence* UONEWeaponComponent::GetActionAnimation(float& Time) const
 {
     Time=GetOperationElapsed(); const auto* O=FindOperation(OperationIndex,Operation);
-    return Operation==EONEWeaponOperation::Ready || !O ? nullptr : O->Animation.Get();
+    UAnimSequence* Animation=Operation==EONEWeaponOperation::Ready || !O ? nullptr : O->Animation.Get();
+    if (Animation && O->Duration>0.f) Time=FMath::Clamp(Time/O->Duration,0.f,1.f)*Animation->GetPlayLength();
+    return Animation;
 }
 float UONEWeaponComponent::GetPumpFraction() const
 {
@@ -390,12 +356,25 @@ float UONEWeaponComponent::GetPumpFraction() const
     // Match the authored support-hand curve in each rearward/forward segment.
     return Fraction*Fraction*(3.f-2.f*Fraction);
 }
+float UONEWeaponComponent::GetSlideFraction() const
+{
+    if (!HasUsableWeapon() || GetDefinition().Family!=EONEWeaponFamily::Pistol) return 0.f;
+    auto Smooth=[](float Value) { const float X=FMath::Clamp(Value,0.f,1.f); return X*X*(3.f-2.f*X); };
+    if (Operation==EONEWeaponOperation::MagazineReload)
+        return bReloadStartedEmpty ? 1.f-Smooth((GetOperationElapsed()-1.4f)/.06f) : 0.f;
+    if (Operation==EONEWeaponOperation::Fire)
+    {
+        const float T=GetOperationProgress()*.18f;
+        return T<.025f ? Smooth(T/.025f) : 1.f-Smooth((T-.025f)/.045f);
+    }
+    return GetAmmo()==0 ? 1.f : 0.f;
+}
 bool UONEWeaponComponent::ShouldShowLoadingShell() const
 { const float T=GetOperationElapsed(); const float Insert=FindEventTime(EONEWeaponEvent::ShellCommit,.6f); return Operation==EONEWeaponOperation::ShellInsert && T>=Insert*.2f && T<Insert; }
 bool UONEWeaponComponent::ShouldShowSeatedMagazine() const
-{ const float T=GetOperationElapsed(); return Operation!=EONEWeaponOperation::MagazineReload || T<FindEventTime(EONEWeaponEvent::MagazineOut,.4f) || T>=FindEventTime(EONEWeaponEvent::MagazineCommit,1.2f); }
+{ return HasUsableWeapon() && Carried[EquippedIndex].bMagazinePresent; }
 bool UONEWeaponComponent::ShouldShowHeldMagazine() const
-{ return Operation==EONEWeaponOperation::MagazineReload && !ShouldShowSeatedMagazine(); }
+{ return Operation==EONEWeaponOperation::MagazineReload && GetOperationElapsed()>=GetDefinition().MagazineFreshTime && !ShouldShowSeatedMagazine(); }
 float UONEWeaponComponent::FindEventTime(EONEWeaponEvent Type,float Fallback) const
 {
     if (const auto* O=FindOperation(OperationIndex,Operation))
@@ -403,7 +382,7 @@ float UONEWeaponComponent::FindEventTime(EONEWeaponEvent Type,float Fallback) co
     return Fallback;
 }
 void UONEWeaponComponent::ClearEjectedCases()
-{ for (auto& C:Cases) if (C.IsValid()) C->Destroy(); Cases.Reset(); }
+{ for (auto& C:Cases) if (C.IsValid()) C->Destroy(); Cases.Reset(); for (auto& M:Magazines) if (M.IsValid()) M->Destroy(); Magazines.Reset(); }
 
 void UONEWeaponComponent::Fire()
 {
@@ -433,32 +412,48 @@ void UONEWeaponComponent::Fire()
     {
         const FVector Ray=FMath::VRandCone(Direction,FMath::DegreesToRadians(D.SpreadDegrees));
         FHitResult Hit=Obstruction;
-        const bool bHit=bObstructed || GetWorld()->LineTraceSingleByChannel(Hit,Start,Start+Ray*D.Range,ECC_Visibility,Params);
-        const FVector End=bHit ? Hit.ImpactPoint : Start+Ray*D.Range;
-        if (Blood && (D.Pellets==1 || I<3)) Blood->Shot(Start,End);
-        if (!bHit) continue;
-        if (auto* Z=Cast<AONEZombie>(Hit.GetActor()))
+        FVector TraceStart=Start,TraceEnd=Start+Ray*D.Range,LastEnd=TraceEnd;
+        FCollisionQueryParams PelletParams=Params;
+        // The single extra victim is bounded independently of the pellet count.
+        // Ignore the entire previous actor, not just one of its region shapes.
+        const int32 Extra=FMath::Clamp(D.AdditionalVictims,0,1);
+        for (int32 Depth=0;Depth<=Extra;++Depth)
         {
-            const EONEHitRegion Region=Z->GetHitRegion(Hit); if (Region==EONEHitRegion::Invalid) continue;
-            const float Falloff=FMath::Clamp((FVector::Distance(Start,End)-D.FalloffStart)/FMath::Max(1.f,D.Range-D.FalloffStart),0.f,1.f);
-            const float HitDamage=D.Damage*FMath::Lerp(1.f,D.MinimumDamageFraction,Falloff);
-            auto& Packet=Victims.FindOrAdd(Z); Packet.ShotId=LastShotId; Packet.HeavyStaggerThreshold=D.HeavyStaggerThreshold;
-            float TraumaScale=0.f;
-            if (Region==EONEHitRegion::Head) TraumaScale=D.HeadTraumaScale;
-            else if (Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight) TraumaScale=D.ArmTraumaScale;
-            else if (Region==EONEHitRegion::LegLeft || Region==EONEHitRegion::LegRight) TraumaScale=D.LegTraumaScale;
-            Packet.Get(Region).AddPellet(HitDamage,HitDamage*TraumaScale,End,Ray,Hit.ImpactNormal,RegionalImpactBone(Z,Region,Hit));
+            const bool bHit=(Depth==0 && bObstructed) || GetWorld()->LineTraceSingleByChannel(Hit,TraceStart,TraceEnd,ECC_Visibility,PelletParams);
+            LastEnd=bHit ? Hit.ImpactPoint : TraceEnd;
+            if (!bHit) break;
+            if (auto* Z=Cast<AONEZombie>(Hit.GetActor()))
+            {
+                const EONEHitRegion Region=Z->GetHitRegion(Hit); if (Region==EONEHitRegion::Invalid) break;
+                const float Falloff=FMath::Clamp((FVector::Distance(Start,LastEnd)-D.FalloffStart)/FMath::Max(1.f,D.Range-D.FalloffStart),0.f,1.f);
+                const float HitDamage=D.Damage*FMath::Lerp(1.f,D.MinimumDamageFraction,Falloff)*(Depth==0 ? 1.f : FMath::Clamp(D.PenetrationDamageFraction,0.f,1.f));
+                auto& Packet=Victims.FindOrAdd(Z); Packet.ShotId=LastShotId; Packet.HeavyStaggerThreshold=D.HeavyStaggerThreshold;
+                float TraumaScale=0.f;
+                if (Region==EONEHitRegion::Head) TraumaScale=D.HeadTraumaScale;
+                else if (Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight) TraumaScale=D.ArmTraumaScale;
+                else if (Region==EONEHitRegion::LegLeft || Region==EONEHitRegion::LegRight) TraumaScale=D.LegTraumaScale;
+                Packet.Get(Region).AddPellet(HitDamage,HitDamage*TraumaScale,LastEnd,Ray,Hit.ImpactNormal,RegionalImpactBone(Z,Region,Hit));
+                if (Depth>=Extra || bObstructed) break;
+                PelletParams.AddIgnoredActor(Z);
+                TraceStart=LastEnd+Ray*.05f;
+                if (FVector::DotProduct(TraceEnd-TraceStart,Ray)<=0.f) break;
+            }
+            else
+            {
+                if (SurfaceHits.Num()<2 && !SurfaceHits.ContainsByPredicate([&Hit](const auto& Previous){ return Previous.GetComponent()==Hit.GetComponent(); })) SurfaceHits.Add(Hit);
+                break; // World cover always stops penetration; range endpoint never extends.
+            }
         }
-        else if (SurfaceHits.Num()<2 && !SurfaceHits.ContainsByPredicate([&Hit](const auto& Previous){ return Previous.GetComponent()==Hit.GetComponent(); })) SurfaceHits.Add(Hit);
+        if (Blood && (D.Pellets==1 || I<3)) Blood->Shot(Start,LastEnd,D.TraceColor);
     }
-    bLastHitKill=false;
+    bLastHitKill=false; LastShotVictimCount=0;
     int32 FleshVoices=0;
     for (auto& Pair:Victims)
     {
         auto& Packet=Pair.Value; Packet.Finalize();
         if (Pair.Key->ReceiveWeaponDamage(Packet))
         {
-            LastHit=GetWorld()->GetTimeSeconds(); bLastHitKill|=Pair.Key->IsDead();
+            ++LastShotVictimCount; LastHit=GetWorld()->GetTimeSeconds(); bLastHitKill|=Pair.Key->IsDead();
             if (FleshVoices<2) if (auto* S=Choose(D.FleshSounds))
             { UGameplayStatics::PlaySoundAtLocation(this,S,Packet.GetImpactPosition(),.55f); ++FleshVoices; }
         }

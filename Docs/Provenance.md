@@ -146,3 +146,36 @@ movie preserves all 4,970 original frames and the full engine WAV; its ten
 navigation chapters are explicitly derived annotations in a separate assembly
 CSV, while the original observer phase remains unchanged. Numerical audio
 checks do not constitute a perceptual audition.
+
+## Candidate04 weapon progression
+
+The [weapon workshop](../ArtSource/Weapons/Candidate04/README.md) contains
+original M1911, M4A1 and Remington 870 models, with separate magazines, pistol
+slides and shotgun fore-ends. Last Word, Overcurrent and Gravebreaker add
+original violet, cyan and ember treatments. Manufacturer references guide
+recognisable silhouettes; no external model, logo, texture or animation was
+copied. Fifteen static meshes, fourteen materials and twelve upper-body actions
+are listed in the portable source inventory. The accepted character rig,
+Candidate03 locomotion and shotgun shell/pump actions are retained.
+
+The [machine source](../ArtSource/Machines/Candidate04/README.md) contains the
+original hinged containment chest and ringed processor, with eleven meshes,
+thirteen materials and sixteen synthesized machine sounds. Separate native
+collision boxes affect navigation; decorative animated parts do not. The
+targeted placement script preserves all 96 prior actor transforms and rebuilds
+navigation in the existing arena. No new map or enemy archetype is introduced.
+
+The [weapon audio source](../ArtSource/Audio/Candidate04/README.md) adds 28
+original synthesized WAVs. Existing Candidate03 base rifle/shotgun recordings
+remain in use. Every new firing bank has six distinct source profiles; operation
+events remain separate. Audio generation, import and master-output recording
+are distinct from perceptual listening, which has not been established.
+
+Editable Blender and FBX sources retain their geometric and animation data.
+The metadata sanitizer additionally recognises Blender's exact
+`LibraryWeakReference.library_filepath` field and changes an in-repository
+absolute append-origin path to its verified relative equivalent. It rejects
+unrecognised private fields. Source and import reports retain portable paths;
+private original metadata, logs and rebuildable output remain under ignored
+`Saved` directories. Project Zero remains excluded. No paid service, new broad
+license or third-party asset pack was introduced.

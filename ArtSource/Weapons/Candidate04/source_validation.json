@@ -1,0 +1,342 @@
+{
+  "scope": "Saved Blender action source; no UE validation",
+  "actions": {
+    "A_Response_C04_PistolReady": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 241
+    },
+    "A_Response_C04_PistolFire": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 19
+    },
+    "A_Response_C04_PistolReload": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 181
+    },
+    "A_Response_C04_PistolEquip": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 37
+    },
+    "A_Response_C04_CarbineReload": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 211
+    },
+    "A_Response_C04_UnarmedReady": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 241
+    },
+    "A_Response_C04_PistolHandoff": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 73
+    },
+    "A_Response_C04_PistolRetrieve": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 65
+    },
+    "A_Response_C04_CarbineHandoff": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 73
+    },
+    "A_Response_C04_CarbineRetrieve": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 65
+    },
+    "A_Response_C04_ShotgunHandoff": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 73
+    },
+    "A_Response_C04_ShotgunRetrieve": {
+      "finite_sampled_matrices": true,
+      "lower_body_max_basis_delta": 0.0,
+      "samples": 65
+    }
+  },
+  "magazine_seat_errors": {
+    "Pistol": {
+      "seconds": 1.1,
+      "translation_cm": 7.993247325058084e-06,
+      "rotation_degrees": 0.0
+    },
+    "Carbine": {
+      "seconds": 1.2,
+      "translation_cm": 4.76837158203125e-06,
+      "rotation_degrees": 0.0
+    }
+  },
+  "rendered_samples": [
+    {
+      "action": "PistolReady",
+      "frame": 1,
+      "seconds": 0.0,
+      "file": "PistolReady_001.png"
+    },
+    {
+      "action": "PistolFire",
+      "frame": 4,
+      "seconds": 0.03,
+      "file": "PistolFire_004.png"
+    },
+    {
+      "action": "PistolReload",
+      "frame": 29,
+      "seconds": 0.28,
+      "file": "PistolReload_029.png"
+    },
+    {
+      "action": "PistolReload",
+      "frame": 65,
+      "seconds": 0.64,
+      "file": "PistolReload_065.png"
+    },
+    {
+      "action": "PistolReload",
+      "frame": 95,
+      "seconds": 0.94,
+      "file": "PistolReload_095.png"
+    },
+    {
+      "action": "PistolReload",
+      "frame": 110,
+      "seconds": 1.09,
+      "file": "PistolReload_110.png"
+    },
+    {
+      "action": "PistolReload",
+      "frame": 141,
+      "seconds": 1.4,
+      "file": "PistolReload_141.png"
+    },
+    {
+      "action": "PistolHandoff",
+      "frame": 49,
+      "seconds": 0.48,
+      "file": "PistolHandoff_049.png"
+    },
+    {
+      "action": "CarbineHandoff",
+      "frame": 49,
+      "seconds": 0.48,
+      "file": "CarbineHandoff_049.png"
+    },
+    {
+      "action": "ShotgunHandoff",
+      "frame": 49,
+      "seconds": 0.48,
+      "file": "ShotgunHandoff_049.png"
+    },
+    {
+      "action": "PistolRetrieve",
+      "frame": 19,
+      "seconds": 0.18,
+      "file": "PistolRetrieve_019.png"
+    },
+    {
+      "action": "UnarmedReady",
+      "frame": 1,
+      "seconds": 0.0,
+      "file": "UnarmedReady_001.png"
+    }
+  ],
+  "status": "BLENDER_SOURCE_CHECKS_PASS",
+  "rendered_key_pose_review": {
+    "count": 12,
+    "method": "Actual saved Blender renders inspected with view_image; selected event poses, not real-time animation playback",
+    "findings": [
+      "Pistol uses a separate two-handed ready pose and visible rearward slide at recoil/empty reload",
+      "Support hand retrieves a distinct fresh magazine and returns it to the grip",
+      "Pistol and rifle fresh-magazine transforms match the seated gun-origin transform at commit",
+      "Three handoff silhouettes retain each actual assembled weapon",
+      "Unarmed source hides the weapon and lowers both hands"
+    ],
+    "limitations": [
+      "Fixed inherited finger geometry does not newly articulate",
+      "Existing shoulder/clothing deformation remains coarse in the larger reaches",
+      "Runtime handoff/preview transitions and gameplay contact have not been reviewed by this source check"
+    ]
+  },
+  "frozen_sanitized_sources": [
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineHandoff.fbx",
+      "bytes": 228860,
+      "sha256": "9ffb494ae57ae6852391ac58e5b061acb6bacaea9161b0409f327cfb1c3d1b47"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineReload.fbx",
+      "bytes": 368684,
+      "sha256": "ed731225b6475505d4f49895b061b474d3ca497d347deebbf02932e583319b7d"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineRetrieve.fbx",
+      "bytes": 217708,
+      "sha256": "8a5bea3e52a78449b79f68b7cbc70fabfd2005fb57f960a9b283ba6cf7ff9fd5"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolEquip.fbx",
+      "bytes": 185436,
+      "sha256": "f637142233f388ec27368931619a3dc63b90b004cf27941a271f59739af5910a"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolFire.fbx",
+      "bytes": 172364,
+      "sha256": "871df29ef47452f7b887d133c972b3e4fa983952a221f0f5ca77b7deca966cbf"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolHandoff.fbx",
+      "bytes": 229020,
+      "sha256": "48b51603f8f7071e710cc20984d77625ede478c0490e7900445060ba36f6ab3a"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReady.fbx",
+      "bytes": 402972,
+      "sha256": "d003746ba1eb06cd9ae0e381ac22b4bc047daf53bc7087a92bff7515f8592bbc"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReload.fbx",
+      "bytes": 340028,
+      "sha256": "317441d13d92da7465d06fa02b30986228a2f98a777702e05a5b2b6965d88530"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_PistolRetrieve.fbx",
+      "bytes": 217820,
+      "sha256": "40280d75af3d0241ca3045ee738f5fb154f684609c5b4c3eb47e318058b4ee02"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunHandoff.fbx",
+      "bytes": 228860,
+      "sha256": "c328a139f4808ad6e84781c51da6554a35b36c6076b3c4d9cc9d471d01fc64e7"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunRetrieve.fbx",
+      "bytes": 217708,
+      "sha256": "861fc81490e99becee93bc2901a1f6dcadfc115daf8fb3b93818311ac472a3f8"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/A_Response_C04_UnarmedReady.fbx",
+      "bytes": 382700,
+      "sha256": "afe76c4e202c1f7b8459f3124515a694dd0ec63e60a44dcd0285679c289c13b6"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_Gravebreaker_Body.fbx",
+      "bytes": 314268,
+      "sha256": "4faa9dcb3cfabe4e7f31213c2b8679f6abe068d208459218063298622caa830b"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_Gravebreaker_ForeEnd.fbx",
+      "bytes": 144460,
+      "sha256": "99d4aafbba588c90a1a1dab18391fa221aaed3a8f3138e0867117741d794d508"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_LastWord_Body.fbx",
+      "bytes": 311148,
+      "sha256": "25e52544d8ea0fd86e21568bf38bf3f83445515821270de86a96e3c311d77c59"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_LastWord_Magazine.fbx",
+      "bytes": 72396,
+      "sha256": "c7be747be73f0d9747825a468ffc143a4469fe3332f7774b79822bc440cf07f2"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_LastWord_Slide.fbx",
+      "bytes": 156572,
+      "sha256": "b73532d755cc9fc88f45fd1a6030b81f4116a0a57673d5877e9946ef70abd974"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_M1911_Body.fbx",
+      "bytes": 274700,
+      "sha256": "00f10209c0f5b9426d83251b841118f02091ca766f4d8c4e9999f7636e95f355"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_M1911_Case.fbx",
+      "bytes": 47628,
+      "sha256": "38eaf799aa8cc39f86a3b3a3b255cba0233292ca8a5d777260406b2817e82a82"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_M1911_Magazine.fbx",
+      "bytes": 66620,
+      "sha256": "e9f9ce5484743b909d5bb79a214f281dd3c4828d619e9928965ecc5a8291d239"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_M1911_Slide.fbx",
+      "bytes": 118796,
+      "sha256": "886370651edf17fc83195dc5b16b8ecafb3bec861e1bf049389fabae4f438e13"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_M4A1_Body.fbx",
+      "bytes": 491612,
+      "sha256": "69d1ae550f55b84d9614a6a87c77abf7c3dc33957d0f322b434cc29a70abb58c"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_M4A1_Magazine.fbx",
+      "bytes": 145260,
+      "sha256": "98860b55e8b8ae17e14bb1467701b6ccbed8d31e8f4e6322484b63724aceda7a"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_Overcurrent_Body.fbx",
+      "bytes": 532140,
+      "sha256": "1fafa2ab0f15d629ac134e8ede52a8c8d5086dd308472e6a15551e9413e2c9f2"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_Overcurrent_Magazine.fbx",
+      "bytes": 155052,
+      "sha256": "d6eb749b5112d4b1baf7182322e2528dc43c8ae24c2f83e096a1242ba69bbbeb"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_Remington870_Body.fbx",
+      "bytes": 270972,
+      "sha256": "95c3c88de537c8a013677b2fc7be5295a686ea4cfd8f7e6b5beea99315080307"
+    },
+    {
+      "file": "ArtSource/Exports/Candidate04/SM_Remington870_ForeEnd.fbx",
+      "bytes": 135404,
+      "sha256": "4b2c84a102fe912caad754795729711d24b2a6b1c887218b4bd370f4fdb3764d"
+    },
+    {
+      "file": "ArtSource/Weapons/Candidate04/ResponseWeaponActions.blend",
+      "bytes": 3080030,
+      "sha256": "c56f884b654986b9ef3db752c4a1665cd8d6415f164f8dfa2e274ec609113968"
+    },
+    {
+      "file": "ArtSource/Weapons/Candidate04/WeaponWorkshop.blend",
+      "bytes": 1651750,
+      "sha256": "608eba3425876ae48e89b4d99c1f18adf083eed32ad4b2524097e2006a6f75be"
+    },
+    {
+      "file": "ArtSource/Weapons/Candidate04/Blender_CarbineHandoff.png",
+      "bytes": 1244681,
+      "sha256": "ed6243c6e6b312669052bfa72bc9c28a9f966c4ae6d84ecd106ac9a5a1c9772a"
+    },
+    {
+      "file": "ArtSource/Weapons/Candidate04/Blender_PistolMagazineSeat.png",
+      "bytes": 1236575,
+      "sha256": "8f77220cc63aa37ac2fc927624c6333e4f24434a475963842bbc3696d782b389"
+    },
+    {
+      "file": "ArtSource/Weapons/Candidate04/Blender_PistolReady.png",
+      "bytes": 1238410,
+      "sha256": "a52069290adab991d77f06eb9e5f94715e9051b765f9ee994a1aa3b855862ca3"
+    },
+    {
+      "file": "ArtSource/Weapons/Candidate04/Blender_WeaponCatalogue.png",
+      "bytes": 1912433,
+      "sha256": "d99365c37610c451d83c955db09636e6b2b9197bb9a1680eb52349f3e91fa60a"
+    }
+  ],
+  "metadata_validation": {
+    "checked_source_files": 33,
+    "blender_sources_reopened": 2,
+    "known_private_metadata_fields_removed": true,
+    "art_data_changes": false,
+    "scope": "Metadata sanitizer compares FBX semantic properties, PNG non-text chunks and Blender bytes outside verified metadata fields; no runtime import claim"
+  }
+}

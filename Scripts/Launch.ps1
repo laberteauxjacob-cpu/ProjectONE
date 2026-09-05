@@ -1,4 +1,4 @@
-param([ValidateSet('Candidate02','Candidate03')][string]$Candidate = 'Candidate03', [switch]$Sandbox)
+param([ValidateSet('Candidate02','Candidate03','Candidate04')][string]$Candidate = 'Candidate04', [switch]$Sandbox)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $gameExe = Join-Path $projectRoot "Packaged\$Candidate\Windows\ProjectONE.exe"

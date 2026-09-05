@@ -25,6 +25,17 @@ void AONEPlayerController::BeginPlay()
     Mode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
     SetInputMode(Mode);
 }
+void AONEPlayerController::OnPossess(APawn* InPawn)
+{
+    Super::OnPossess(InPawn);
+    // The camera is 14.5m above/behind the pawn. Measure audible machine
+    // proximity at the player while retaining the camera's spatial orientation.
+    if (InPawn) SetAudioListenerAttenuationOverride(InPawn->GetRootComponent(),FVector(0,0,35));
+}
+void AONEPlayerController::OnUnPossess()
+{
+    ClearAudioListenerAttenuationOverride(); Super::OnUnPossess();
+}
 bool AONEPlayerController::InputKey(const FInputKeyEventArgs& Params)
 {
     const bool bHandled=Super::InputKey(Params);
@@ -54,6 +65,11 @@ void AONEPlayerController::SetupInputComponent()
     InputComponent->BindKey(EKeys::F5, IE_Pressed, this, &AONEPlayerController::ResetSandbox).bExecuteWhenPaused=true;
     InputComponent->BindKey(EKeys::F6, IE_Pressed, this, &AONEPlayerController::ClearGore);
     InputComponent->BindKey(EKeys::F7, IE_Pressed, this, &AONEPlayerController::ToggleLighting);
+    InputComponent->BindKey(EKeys::T, IE_Pressed, this, &AONEPlayerController::GrantPoints);
+    InputComponent->BindKey(EKeys::Z, IE_Pressed, this, &AONEPlayerController::ForcePistol);
+    InputComponent->BindKey(EKeys::X, IE_Pressed, this, &AONEPlayerController::ForceCarbine);
+    InputComponent->BindKey(EKeys::C, IE_Pressed, this, &AONEPlayerController::ForceShotgun);
+    InputComponent->BindKey(EKeys::V, IE_Pressed, this, &AONEPlayerController::RandomBox);
 }
 void AONEPlayerController::FlushPressedKeys()
 {
@@ -85,3 +101,8 @@ void AONEPlayerController::Refill() { if (auto* GM=GetWorld()->GetAuthGameMode<A
 void AONEPlayerController::ResetSandbox() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>();GM && GM->IsSandbox()) GM->RestartScene(); }
 void AONEPlayerController::ClearGore() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->ClearSandboxPresentation(); }
 void AONEPlayerController::ToggleLighting() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->ToggleSandboxLighting(); }
+void AONEPlayerController::GrantPoints() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->GrantSandboxPoints(); }
+void AONEPlayerController::ForcePistol() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->SetForcedBoxReward(EONEWeaponFamily::Pistol); }
+void AONEPlayerController::ForceCarbine() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->SetForcedBoxReward(EONEWeaponFamily::Carbine); }
+void AONEPlayerController::ForceShotgun() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->SetForcedBoxReward(EONEWeaponFamily::Shotgun); }
+void AONEPlayerController::RandomBox() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->SetForcedBoxReward(EONEWeaponFamily::Invalid); }

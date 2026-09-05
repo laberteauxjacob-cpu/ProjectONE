@@ -4,6 +4,8 @@
 #include "ONEGameMode.generated.h"
 
 class AONEZombie;
+class AONEPlayer;
+enum class EONEWeaponFamily : uint8;
 class ULightComponent;
 UCLASS()
 class PROJECTONE_API AONEGameMode : public AGameModeBase
@@ -15,6 +17,16 @@ public:
     virtual void Tick(float DeltaSeconds) override;
     void NotifyZombieKilled(AONEZombie* Zombie, int32 Reward = 100);
     void PlayerDied();
+    uint64 NewMachineReceipt() { return ++NextMachineReceipt; }
+    bool TrySpendPoints(int32 Cost,uint64 Receipt);
+    bool RefundPointsOnce(uint64 Receipt);
+    void CancelUnacceptedMachineActions(AONEPlayer* Player);
+    void GrantSandboxPoints();
+    void SetForcedBoxReward(EONEWeaponFamily Family);
+    EONEWeaponFamily GetForcedBoxReward() const { return ForcedBoxReward; }
+    EONEWeaponFamily ConsumeForcedBoxReward();
+    FString GetForcedBoxRewardLabel() const;
+    int32 GetSandboxGrantedPoints() const { return SandboxGrantedPoints; }
     UFUNCTION(BlueprintCallable) void RestartScene();
     void ToggleSandbox();
     void SpawnSandboxEnemies(int32 Count);
@@ -48,4 +60,8 @@ private:
     bool bDimLighting = false;
     TMap<TWeakObjectPtr<ULightComponent>,float> SandboxLightIntensities;
     float Countdown = 5.f, SpawnClock = 0.f;
+    uint64 NextMachineReceipt=0;
+    TMap<uint64,int32> MachineReceipts;
+    int32 SandboxGrantedPoints=0;
+    EONEWeaponFamily ForcedBoxReward;
 };

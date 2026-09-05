@@ -1,6 +1,6 @@
 # Validate an existing package; this script does not build or curate Evidence.
 param(
-    [ValidateSet('Candidate02', 'Candidate03')][string]$Candidate = 'Candidate03',
+    [ValidateSet('Candidate02', 'Candidate03', 'Candidate04')][string]$Candidate = 'Candidate04',
     [string[]]$Modes,
     [ValidateRange(30, 600)][int]$TimeoutSeconds = 240,
     [switch]$ShowWindow,
@@ -11,7 +11,7 @@ $projectRoot = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 $gameExe = Join-Path $projectRoot "Packaged\$Candidate\Windows\ProjectONE.exe"
 $runRoot = Join-Path $projectRoot ("Saved\PackagedValidation\$Candidate\" + (Get-Date -Format 'yyyyMMdd_HHmmss_fff'))
 $suite = [ordered]@{}
-if ($Candidate -eq 'Candidate03') {
+if ($Candidate -in @('Candidate03','Candidate04')) {
     $suite['ONE03MovementCheck'] = 'ONE03_MOVEMENT_COMPLETE'
     $suite['ONE03WeaponCheck'] = 'ONE03_WEAPON_COMPLETE'
     $suite['ONE03CaseCheck'] = 'ONE03_CASE_COMPLETE'
@@ -20,6 +20,10 @@ if ($Candidate -eq 'Candidate03') {
     $suite['ONE03DamageCheck'] = 'ONE03_DAMAGE_COMPLETE'
     $suite['ONE03PhysicalityCheck'] = 'ONE03_PHYSICALITY_COMPLETE'
     $suite['ONE03PhysicalityCapture'] = 'ONE03_PHYSICALITY_COMPLETE'
+}
+if ($Candidate -eq 'Candidate04') {
+    $suite['ONE04ProgressionCheck'] = 'ONE04_PROGRESSION_COMPLETE'
+    $suite['ONE04ArsenalCheck'] = 'ONE04_ARSENAL_COMPLETE'
 }
 $suite['ONECombatCheck'] = 'ONE_COMBAT_COMPLETE'
 $suite['ONECompare'] = 'ONE_COMBAT_COMPLETE'
@@ -61,10 +65,11 @@ function Assert-ProjectPath([string]$Path) {
 }
 New-Item -ItemType Directory -Path (Assert-ProjectPath $runRoot) | Out-Null
 # Move only this selected package's previous runtime output into a unique local
-# backup. Accepted Candidate02 packages and curated Evidence are never selected
-# implicitly by the Candidate03 default.
+# backup. Earlier candidate packages and curated Evidence are never selected
+# implicitly by the Candidate04 default.
 $folders = @('Presentation', 'Validation', 'Candidate02')
-if ($Candidate -eq 'Candidate03') { $folders += 'Candidate03' }
+if ($Candidate -in @('Candidate03','Candidate04')) { $folders += 'Candidate03' }
+if ($Candidate -eq 'Candidate04') { $folders += 'Candidate04' }
 foreach ($folder in $folders) {
     $source = Assert-ProjectPath (Join-Path (Split-Path -Parent $gameExe) "ProjectONE\Saved\$folder")
     $destination = Assert-ProjectPath (Join-Path $runRoot "PreviousRuntimeSaved\$folder")

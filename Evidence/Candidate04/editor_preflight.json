@@ -1,0 +1,64 @@
+{
+  "candidate": "Candidate04",
+  "source_state": "working-tree editor checks before first public C04 source commit",
+  "public_base": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a",
+  "editor_checks": [
+    {
+      "name": "ONE04ProgressionCheck",
+      "passed": 72,
+      "failed": 0
+    },
+    {
+      "name": "ONE04ArsenalCheck",
+      "passed": 148,
+      "failed": 0
+    },
+    {
+      "name": "ONE03WeaponCheck corrected legacy fixture",
+      "passed": 85,
+      "failed": 0
+    }
+  ],
+  "historical_failures": [
+    {
+      "name": "initial native suite",
+      "result": "8 of 9 successful; firing-interval tolerance assertion failed",
+      "correction": "Measured double comparison uses 1e-6-second tolerance; corrected inventory fixture loads the real skeleton before component registration. Targeted 4 of 4 passed with zero warnings."
+    },
+    {
+      "name": "first legacy weapon regression",
+      "checks": 11,
+      "failures": 2,
+      "cause": "GameMode legacy loadout was overwritten by later component starter initialization; wrong capacity then semi-auto stage timeout.",
+      "correction": "Defer explicit legacy fixture to next world tick. Original capacity and firing assertions are unchanged; corrected 85-check run passed."
+    },
+    {
+      "name": "first legacy movement result",
+      "status": "NOT_ACCEPTED_AS_TWO_FAMILY_COVERAGE",
+      "reason": "Initial fixture installed the pistol; movement probe did not assert family. New assertions require correct slot and family before each trial. Final package rerun required."
+    }
+  ],
+  "capture_rehearsals": [
+    {
+      "name": "01",
+      "checks": 58,
+      "failures": 0,
+      "frames": 3791,
+      "game_cap_fps": 120,
+      "kind": "scripted production input editor-game"
+    },
+    {
+      "name": "02",
+      "checks": 58,
+      "failures": 0,
+      "frames": 2890,
+      "game_cap_fps": 30,
+      "engine_audio_seconds": 148.33066667,
+      "audio_signal_phases": 18,
+      "full_scale_samples": 0,
+      "kind": "scripted production input editor-game"
+    }
+  ],
+  "audio_review": "Waveform/phase measurement only; no perceptual audition.",
+  "publication_status": "Final public source/fresh build/package/media/performance/native attempt pending."
+}

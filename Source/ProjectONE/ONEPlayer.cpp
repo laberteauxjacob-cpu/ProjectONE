@@ -1,6 +1,9 @@
 #include "ONEPlayer.h"
 #include "ONEHealthComponent.h"
 #include "ONEWeaponComponent.h"
+#include "ONEInteractionComponent.h"
+#include "ONEProgressionMachine.h"
+#include "Animation/AnimSequence.h"
 #include "ONEAnimInstance.h"
 #include "ONEBloodSubsystem.h"
 #include "ONEGameMode.h"
@@ -26,6 +29,7 @@ AONEPlayer::AONEPlayer()
     PrimaryActorTick.bCanEverTick = true;
     Health = CreateDefaultSubobject<UONEHealthComponent>(TEXT("Health"));
     Weapon = CreateDefaultSubobject<UONEWeaponComponent>(TEXT("Weapon"));
+    Interaction = CreateDefaultSubobject<UONEInteractionComponent>(TEXT("Interaction"));
     GetCapsuleComponent()->InitCapsuleSize(28.f, 90.f);
     GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Ignore);
     GetMesh()->SetRelativeLocation(FVector(0,0,-90));
@@ -47,6 +51,10 @@ AONEPlayer::AONEPlayer()
     ForeEnd->SetupAttachment(Gun);
     ForeEnd->SetCollisionEnabled(ECollisionEnabled::NoCollision);
     ForeEnd->SetCanEverAffectNavigation(false);
+    Slide=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PistolSlide"));
+    Slide->SetupAttachment(Gun);
+    Slide->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+    Slide->SetCanEverAffectNavigation(false);
     LoadingShell=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("LoadingShell"));
     LoadingShell->SetupAttachment(GetMesh(),TEXT("hand_l"));
     LoadingShell->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -106,10 +114,19 @@ void AONEPlayer::BeginPlay()
         LoadingShell->SetRelativeRotation(ShellBind.GetRotation().Inverse());
         LoadingShell->SetRelativeLocation(ShellBind.GetRotation().Inverse().RotateVector(FVector(6,0,2.8f)));
         HeldMagazine->SetRelativeRotation(ShellBind.GetRotation().Inverse());
+        HandReferenceInverse=ShellBind.GetRotation().Inverse();
         HeldMagazine->SetRelativeLocation(ShellBind.GetRotation().Inverse().RotateVector(FVector(-10.5f,0,0)));
     }
     BuildMuzzleFlash();
     Weapon->RefreshEquippedPresentation();
+    for (const TCHAR* Family:{TEXT("Pistol"),TEXT("Carbine"),TEXT("Shotgun")})
+        for (const TCHAR* Action:{TEXT("Handoff"),TEXT("Retrieve")})
+        {
+            const FString Key=FString(Family)+Action;
+            const FString Asset=TEXT("A_Response_C04_")+Key;
+            if (auto* Clip=LoadObject<UAnimSequence>(nullptr,*(TEXT("/Game/ONE/Animations/Candidate04/")+Asset+TEXT(".")+Asset)))
+                MachineClips.Add(FName(*Key),Clip);
+        }
     GetMesh()->SetAnimInstanceClass(UONEAnimInstance::StaticClass());
     AimPoint = GetActorLocation() + GetActorForwardVector()*500;
 }
@@ -126,9 +143,11 @@ void AONEPlayer::SetupPlayerInputComponent(UInputComponent* Input)
     Input->BindAction(TEXT("Weapon1"),IE_Pressed,this,&AONEPlayer::SelectCarbine);
     Input->BindAction(TEXT("Weapon2"),IE_Pressed,this,&AONEPlayer::SelectShotgun);
     Input->BindAction(TEXT("CycleWeapon"),IE_Pressed,this,&AONEPlayer::CycleWeapon);
+    Input->BindAction(TEXT("Interact"),IE_Pressed,this,&AONEPlayer::StartInteract);
+    Input->BindAction(TEXT("Interact"),IE_Released,this,&AONEPlayer::StopInteract);
 }
-void AONEPlayer::MoveForward(float V) { if (!IsDead()) AddMovementInput(FVector(0,-1,0),V); }
-void AONEPlayer::MoveRight(float V) { if (!IsDead()) AddMovementInput(FVector(1,0,0),V); }
+void AONEPlayer::MoveForward(float V) { if (!IsDead() && !bMachineAction) AddMovementInput(FVector(0,-1,0),V); }
+void AONEPlayer::MoveRight(float V) { if (!IsDead() && !bMachineAction) AddMovementInput(FVector(1,0,0),V); }
 void AONEPlayer::StartFire() { if (!IsDead()) Weapon->SetTrigger(true); }
 void AONEPlayer::StopFire() { Weapon->SetTrigger(false); }
 void AONEPlayer::Reload() { if (!IsDead()) Weapon->BeginReload(); }
@@ -139,7 +158,7 @@ void AONEPlayer::SetSprintHeld(bool Held)
     const bool bTrace=FParse::Param(FCommandLine::Get(),TEXT("ONE03InputTrace"));
     if (bTrace) UE_LOG(LogTemp,Display,TEXT("ONE03_SPRINT_REQUEST held=%d previous=%d paused=%d dead=%d operation=%d ammo=%d reserve=%d"),
         Held,bSprint,UGameplayStatics::IsGamePaused(this),IsDead(),Weapon ? int32(Weapon->GetOperation()) : -1,Weapon ? Weapon->GetAmmo() : -1,Weapon ? Weapon->GetReserveAmmo() : -1);
-    if (Held && (IsDead() || UGameplayStatics::IsGamePaused(this))) return;
+    if (Held && (IsDead() || bMachineAction || UGameplayStatics::IsGamePaused(this))) return;
     const bool bStarted=Held && !bSprint;
     bSprint=Held;
     GetCharacterMovement()->MaxWalkSpeed=bSprint ? RunSpeed : WalkSpeed;
@@ -151,12 +170,18 @@ void AONEPlayer::ClearReloadPresentation()
 {
     LoadingShell->SetVisibility(false);
     HeldMagazine->SetVisibility(false);
-    SeatedMagazine->SetVisibility(Weapon && Weapon->GetDefinition().MagazineMesh.IsValid());
+    SeatedMagazine->SetVisibility(!bSuppressCarried && Weapon && Weapon->GetDefinition().MagazineMesh.IsValid() && Weapon->ShouldShowSeatedMagazine());
 }
 void AONEPlayer::SelectCarbine() { Weapon->SelectWeapon(0); }
 void AONEPlayer::SelectShotgun() { Weapon->SelectWeapon(1); }
 void AONEPlayer::CycleWeapon() { Weapon->CycleWeapon(); }
-void AONEPlayer::ReleaseHeldInputs() { SetSprintHeld(false); Weapon->ClearHeldInput(); ClearMuzzleFlash(); }
+void AONEPlayer::StartInteract() { if (!IsDead()) Interaction->Press(); }
+void AONEPlayer::StopInteract() { Interaction->Release(); }
+void AONEPlayer::ReleaseHeldInputs()
+{
+    SetSprintHeld(false); Weapon->ClearHeldInput(); ClearMuzzleFlash(); Interaction->Cancel(true);
+    if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->CancelUnacceptedMachineActions(this);
+}
 float AONEPlayer::GetPivotFootWeight(int32 Foot) const
 {
     // Release each captured support into its authored swing, not a shared
@@ -253,14 +278,17 @@ void AONEPlayer::UpdateBodyFacing(float Dt,float AimYaw)
 void AONEPlayer::Tick(float Dt)
 {
     Super::Tick(Dt);
+    if (bMachineAction) MachineActionTime+=Dt;
     UpdateMuzzleFlash(Dt);
     ForeEnd->SetRelativeLocation(FVector(-Weapon->GetDefinition().PumpTravel*Weapon->GetPumpFraction(),0,0));
-    LoadingShell->SetVisibility(!IsDead() && Weapon->ShouldShowLoadingShell());
-    SeatedMagazine->SetVisibility(Weapon->GetDefinition().MagazineMesh.IsValid() && Weapon->ShouldShowSeatedMagazine());
-    HeldMagazine->SetVisibility(!IsDead() && Weapon->GetDefinition().MagazineMesh.IsValid() && Weapon->ShouldShowHeldMagazine());
+    Slide->SetRelativeLocation(FVector(-Weapon->GetDefinition().SlideTravel*Weapon->GetSlideFraction(),0,0));
+    LoadingShell->SetVisibility(!bSuppressCarried && !IsDead() && Weapon->ShouldShowLoadingShell());
+    SeatedMagazine->SetVisibility(!bSuppressCarried && Weapon->GetDefinition().MagazineMesh.IsValid() && Weapon->ShouldShowSeatedMagazine());
+    HeldMagazine->SetVisibility(!bSuppressCarried && !IsDead() && Weapon->GetDefinition().MagazineMesh.IsValid() && Weapon->ShouldShowHeldMagazine());
     if (IsDead()) return;
     GetCharacterMovement()->MaxWalkSpeed = bSprint ? RunSpeed : WalkSpeed;
-    if (bAimOverride) AimPoint=OverrideAimPoint;
+    if (bMachineAction) AimPoint=MachineFocus;
+    else if (bAimOverride) AimPoint=OverrideAimPoint;
     else if (auto* PC = Cast<APlayerController>(GetController()))
     {
         FVector Origin,Direction;
@@ -293,7 +321,9 @@ void AONEPlayer::BuildMuzzleFlash()
     TArray<FVector2D> UV; TArray<FLinearColor> Colors; TArray<FProcMeshTangent> Tangents;
     const float X[]={0.f,.17f,.46f,1.f};
     const float Radius[]={.12f,.72f,.42f,0.f};
-    const FLinearColor Color[]={FLinearColor(1.f,.92f,.68f,.88f),FLinearColor(1.f,.73f,.26f,.80f),FLinearColor(1.f,.30f,.035f,.25f),FLinearColor(1.f,.11f,.01f,0.f)};
+    const FLinearColor Tint=Weapon->GetDefinition().FlashLightColor;
+    FLinearColor Color[]={FMath::Lerp(Tint,FLinearColor::White,.75f),Tint,Tint*.55f,Tint*.25f};
+    Color[0].A=.88f; Color[1].A=.80f; Color[2].A=.25f; Color[3].A=0;
     constexpr int32 Sides=8;
     for (int32 Ring=0;Ring<4;++Ring) for (int32 Side=0;Side<Sides;++Side)
     {
@@ -316,7 +346,8 @@ void AONEPlayer::BuildMuzzleFlash()
         Vertices.Append({-Across,Across,FVector(.63f,0,0)});
         Normals.Append({FVector::UpVector,FVector::UpVector,FVector::UpVector});
         UV.Append({FVector2D(0,0),FVector2D(0,1),FVector2D(1,.5f)});
-        Colors.Append({FLinearColor(1,1,.85f,.9f),FLinearColor(1,1,.85f,.9f),FLinearColor(1,.58f,.12f,0)});
+        FLinearColor Core=FMath::Lerp(Tint,FLinearColor::White,.9f),Tip=Tint; Core.A=.9f; Tip.A=0;
+        Colors.Append({Core,Core,Tip});
         Tangents.Append({FProcMeshTangent(1,0,0),FProcMeshTangent(1,0,0),FProcMeshTangent(1,0,0)});
         Indices.Append({Base,Base+1,Base+2});
     }
@@ -363,19 +394,59 @@ void AONEPlayer::ClearWeaponEffects() { ClearMuzzleFlash(); ForeEnd->SetRelative
 void AONEPlayer::ApplyWeaponPresentation(const FONEWeaponDefinition& Definition)
 {
     Gun->SetStaticMesh(Definition.Mesh.Get());
+    Gun->SetVisibility(!bSuppressCarried);
+    Slide->SetStaticMesh(Definition.SlideMesh.Get());
+    Slide->SetVisibility(!bSuppressCarried && Definition.SlideMesh.IsValid());
     ForeEnd->SetStaticMesh(Definition.ForeEndMesh.Get());
-    ForeEnd->SetVisibility(Definition.ForeEndMesh.IsValid());
+    ForeEnd->SetVisibility(!bSuppressCarried && Definition.ForeEndMesh.IsValid());
     LoadingShell->SetStaticMesh(Definition.ShellMesh.Get());
     LoadingShell->SetVisibility(false);
     SeatedMagazine->SetStaticMesh(Definition.MagazineMesh.Get());
-    SeatedMagazine->SetVisibility(Definition.MagazineMesh.IsValid());
+    SeatedMagazine->SetVisibility(!bSuppressCarried && Definition.MagazineMesh.IsValid() && Weapon->ShouldShowSeatedMagazine());
     HeldMagazine->SetStaticMesh(Definition.MagazineMesh.Get());
     HeldMagazine->SetVisibility(false);
+    HeldMagazine->SetRelativeLocation(HandReferenceInverse.RotateVector(Definition.MagazineHandOffset));
+    LoadingShell->SetRelativeLocation(HandReferenceInverse.RotateVector(Definition.ShellHandOffset));
     MuzzleLight->SetRelativeLocation(Definition.Muzzle);
     MuzzleLight->SetLightColor(Definition.FlashLightColor);
     MuzzleLight->SetAttenuationRadius(Definition.FlashLightRadius);
     MuzzleFlashMesh->SetRelativeLocation(Definition.Muzzle);
-    ClearMuzzleFlash();
+    BuildMuzzleFlash();
+}
+void AONEPlayer::ClearEquippedPresentation()
+{
+    ClearWeaponEffects();
+    for (auto* Part:{Gun.Get(),ForeEnd.Get(),Slide.Get(),LoadingShell.Get(),SeatedMagazine.Get(),HeldMagazine.Get()})
+    { Part->SetStaticMesh(nullptr); Part->SetVisibility(false); }
+}
+FTransform AONEPlayer::GetWeaponWorldTransform() const { return Gun->GetComponentTransform(); }
+FTransform AONEPlayer::GetMagazineReleaseTransform() const { return SeatedMagazine->GetComponentTransform(); }
+void AONEPlayer::BeginMachineAction(EONEWeaponFamily Family,bool bRetrieving,const FVector& FocusPoint)
+{
+    // Lock first: it settles elapsed reload events before canceling future work.
+    Weapon->SetHandoffLocked(true); Weapon->ClearHeldInput(); SetSprintHeld(false);
+    GetCharacterMovement()->StopMovementImmediately();
+    MachineActionTime=0; bMachineAction=true; MachineFocus=FocusPoint;
+    const TCHAR* Prefix=Family==EONEWeaponFamily::Pistol ? TEXT("Pistol") : Family==EONEWeaponFamily::Shotgun ? TEXT("Shotgun") : TEXT("Carbine");
+    MachineActionClip=MachineClips.FindRef(FName(*(FString(Prefix)+(bRetrieving?TEXT("Retrieve"):TEXT("Handoff")))));
+}
+void AONEPlayer::EndMachineAction()
+{
+    bMachineAction=false; MachineActionClip=nullptr; Weapon->SetHandoffLocked(false); SuppressCarriedPresentation(false);
+}
+UAnimSequence* AONEPlayer::GetMachineActionAnimation(float& Time) const
+{
+    Time=MachineActionTime; return bMachineAction ? MachineActionClip.Get() : nullptr;
+}
+void AONEPlayer::SuppressCarriedPresentation(bool bSuppress)
+{
+    bSuppressCarried=bSuppress;
+    if (bSuppress)
+    {
+        ClearWeaponEffects();
+        for (auto* Part:{Gun.Get(),ForeEnd.Get(),Slide.Get(),LoadingShell.Get(),SeatedMagazine.Get(),HeldMagazine.Get()}) Part->SetVisibility(false);
+    }
+    else Weapon->RefreshEquippedPresentation();
 }
 float AONEPlayer::GetHealth() const { return Health->Health; }
 float AONEPlayer::GetMaxHealth() const { return Health->MaxHealth; }
@@ -389,6 +460,8 @@ void AONEPlayer::ReceiveAttack(float Damage,const FVector& From)
     if (auto* Blood = GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->Impact(GetActorLocation()+FVector(0,0,30),(GetActorLocation()-From).GetSafeNormal(),false);
     if (IsDead())
     {
+        Interaction->Cancel(true);
+        EndMachineAction();
         Weapon->CancelAllOperations();
         GetCharacterMovement()->StopMovementImmediately();
         if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->PlayerDied();

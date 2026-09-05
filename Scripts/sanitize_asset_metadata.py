@@ -126,8 +126,8 @@ def png(path):
     return commit_bytes(path, original, output, {'format':'PNG', 'removed_text_chunks':len(chunks)-len(kept),
                         'all_nontext_chunks_identical':True, 'pixel_IDAT_sha256':sha(after)})
 
-def file_selector_structs(dna):
-    """Find the exact UI directory field in this file's own DNA schema."""
+def portable_path_structs(dna):
+    """Find exact UI/append-provenance path fields in this file's DNA schema."""
     cursor = 0
     def tag(value):
         nonlocal cursor
@@ -144,7 +144,7 @@ def file_selector_structs(dna):
         return values
     tag(b'SDNA'); tag(b'NAME'); names = strings(); tag(b'TYPE'); types = strings()
     tag(b'TLEN'); cursor += 2*len(types); cursor = (cursor+3) & ~3; tag(b'STRC')
-    indices = set()
+    indices = set(); weak_libraries = set()
     for i in range(count()):
         kind, size = struct.unpack_from('<HH', dna, cursor); cursor += 4; fields = []
         for _ in range(size):
@@ -153,7 +153,12 @@ def file_selector_structs(dna):
         if types[kind] == 'FileSelectParams':
             assert fields[:2] == [('char','title[96]'), ('char','dir[1282]')]
             indices.add(i)
-    return indices
+        elif types[kind] == 'LibraryWeakReference':
+            # Blender remembers the origin of an appended local datablock.
+            # This first fixed char field is a path, not a dependency pointer.
+            assert fields[0] == ('char','library_filepath[1024]')
+            weak_libraries.add(i)
+    return indices, weak_libraries
 
 def blend(path):
     original = path.read_bytes()
@@ -186,12 +191,22 @@ def blend(path):
         if block.code == b'DNA1': dna = data[start:start+block.size]
         stream.seek(start+block.size)
         if block.code == b'ENDB': break
-    selectors = file_selector_structs(dna)
+    selectors, weak_libraries = portable_path_structs(dna)
     for block, start in blocks:
         for match in PATH_STRING.finditer(data[start:start+block.size]):
             value = match.group()
             if block.code == b'DATA' and block.sdna_index in selectors and match.start() == 96:
                 replacement = b'//'; field = 'FileSelectParams.dir'
+            elif block.code == b'DATA' and block.sdna_index in weak_libraries and match.start() == 0:
+                import os
+                destination = Path(value.decode('utf-8')).resolve()
+                destination.relative_to(ROOT)
+                if not destination.is_file() or destination.suffix.lower() != '.blend':
+                    raise ValueError('Appended-library source must be an existing authored Blender file inside the repository')
+                relative = os.path.relpath(destination, path.parent).replace('\\', '/')
+                assert (path.parent / relative).resolve() == destination
+                replacement = ('//' + relative).encode('utf-8')
+                field = 'LibraryWeakReference.library_filepath'
             elif block.code == b'SC' and value in renders:
                 replacement = renders[value]; field = 'Scene.render.filepath'
             else: raise ValueError('Unrecognized private .blend field; inspect locally before publishing')

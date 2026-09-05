@@ -158,6 +158,11 @@ void AONE03MovementCheck::Tick(float Dt)
     float T=Elapsed-StageStart;
     if (Stage==0 && T>.55f && !W->IsBusy())
     {
+        const int32 ExpectedSlot=Trial/24;
+        const EONEWeaponFamily ExpectedFamily=ExpectedSlot==0 ? EONEWeaponFamily::Carbine : EONEWeaponFamily::Shotgun;
+        const bool Equipped=W->GetEquippedIndex()==ExpectedSlot && W->GetDefinition().Family==ExpectedFamily;
+        Check(Equipped,FString::Printf(TEXT("Movement trial %d uses requested slot %d and %s family"),Trial,ExpectedSlot+1,ExpectedSlot==0?TEXT("carbine"):TEXT("shotgun")));
+        if (!Equipped) { Finish(); return; }
         if ((Trial%24)/8==2) { W->SetTrigger(true); Stage=10; StageStart=Elapsed; }
         else { Player->SetSprintHeld((Trial%24)/8==1); Stage=1; StageStart=Elapsed; }
     }
@@ -183,7 +188,14 @@ void AONE03MovementCheck::Tick(float Dt)
         }
     }
     else if (Stage==19 && T>.6f && !W->IsBusy())
-    { Stage=Trial<50?20:Trial<52?21:22; StageStart=Elapsed; MovingShots=W->GetTotalShotsFired(); }
+    {
+        const int32 ExpectedSlot=Trial%2;
+        const EONEWeaponFamily ExpectedFamily=ExpectedSlot==0 ? EONEWeaponFamily::Carbine : EONEWeaponFamily::Shotgun;
+        const bool Equipped=W->GetEquippedIndex()==ExpectedSlot && W->GetDefinition().Family==ExpectedFamily;
+        Check(Equipped,FString::Printf(TEXT("Turn/fire trial %d uses requested slot %d and %s family"),Trial,ExpectedSlot+1,ExpectedSlot==0?TEXT("carbine"):TEXT("shotgun")));
+        if (!Equipped) { Finish(); return; }
+        Stage=Trial<50?20:Trial<52?21:22; StageStart=Elapsed; MovingShots=W->GetTotalShotsFired();
+    }
     else if (Stage==20)
     {
         // Continuous full circles, both signs, then reversals. Aim is an ordinary

@@ -176,7 +176,7 @@ void AONECombatCheck::Tick(float Dt)
     } break;
     case 2: if (T>.6f) { W->SelectWeapon(1); Next(3); } break;
     case 3: if (T>2.3f) {
-        Check(W->GetEquippedIndex()==1 && Player->Gun->GetStaticMesh() && Player->Gun->GetStaticMesh()->GetName().Contains(TEXT("PumpShotgun")),TEXT("Equip replaces the visible weapon mesh"));
+        Check(W->GetEquippedIndex()==1 && Player->Gun->GetStaticMesh() && Player->Gun->GetStaticMesh()==W->GetDefinition().Mesh.Get(),TEXT("Equip replaces the visible weapon with its current catalog mesh"));
         Check(W->GetAmmoForWeapon(0)==Ammo && W->GetReserveAmmoForWeapon(0)==Reserve,TEXT("Unequipped carbine reload cannot commit after pre-insertion cancellation"));
         Ejections=W->GetEjectionCount(); W->SetTrigger(true); Next(4);
     } break;

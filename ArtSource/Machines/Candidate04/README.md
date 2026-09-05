@@ -1,0 +1,15 @@
+# Candidate04 original machines
+
+`ProjectONE_Machines_C04.blend` contains the original containment chest and weapon processor, including hinged lid, sliding locks, hydraulic linkage, illuminated internal rotor, intake cradle, opposing clamps, field rings, shields and output tray. No external models, textures or audio samples were used. Meshes use authored vertex color and scalar materials.
+
+Generate with Blender 5.1 in background mode and `Scripts/create_candidate04_machine_assets.py`; validate with `Scripts/audit_candidate04_machine_sources.py`. The latter imports the eleven FBX exports into a separate Blender process and checks centimeter bounds, pivots, triangle counts, material slots, vertex colors and source animation endpoints. The source generator does not require or modify an interactive Blender session. `inventory.json` records the exports and coordinate contract.
+
+Local +X faces the operator, Y spans the width and Z is up. The chest body is approximately 119 × 202 × 101 cm; its separately hinged lid pivots at (-48,0,96) cm and opens 108 degrees in Unreal. The processor body is approximately 199 × 218 × 220 cm. Its intake/output grip mount is (94,0,107) cm and processing mount is (-5,0,121) cm. Actual weapon assemblies retain scale 1 and are centered from their complete mesh bounds, facing across the machine at yaw 90 degrees.
+
+`Scripts/import_candidate04_machine_assets.py` imports eleven visual-only meshes, thirteen materials and sixteen sounds. Use the project Editor Python commandlet with `-AllowCommandletAudio`; it validates imported bounds and saves a local import report. Map actors own explicit navigation/collision boxes independently of the decorative meshes.
+
+`UONE04MachinePresentation` owns visual motion, preview transfer, attached lights and bounded audio components. `AONEProgressionMachine` alone owns payment, inventory and transaction timing. Box animation opens the lock/lid before its five-second model cycle. The processor feeds inward over approximately 0.35–1.2 seconds, processes until 7.7 seconds and returns the actual upgraded assembly by 9 seconds. Hand-to-intake transfer starts at the evaluated gun transform; retrieval follows the moving hand rather than replacing the gun at an unrelated pose.
+
+`Scripts/create_candidate04_machine_audio.py` generates the sixteen original deterministic 48 kHz mono PCM16 WAV files in `Audio`. Run it with `--check` to verify existing PCM and manifest hashes without rewriting them. Three loops cover box idle, processor idle and active processing; state transitions fade/stop them, and owner destruction stops every voice. Box model-cycle cues are emitted only when the displayed model changes. Waveform checks and engine recording do not establish perceptual timbre or mix approval; no auditory approval is claimed.
+
+The metadata sanitizer preserves FBX semantic properties and PNG compressed pixels while making authoring paths portable. Private backups, logs and renderable intermediate output remain under ignored `Saved` directories. Source/round-trip checks are distinct from in-game visual inspection and packaged validation.
