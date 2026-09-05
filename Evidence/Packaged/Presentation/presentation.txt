@@ -1,0 +1,51 @@
+Project ONE scripted in-engine presentation check
+Actual character movement, authored skeletal clips, weapon logic and attack timing.
+Camera is the ordinary gameplay camera. Test-only aim holds +X for locomotion, then tracks the nearest living crowd enemy.
+
+MEASURE | 01_idle mean speed 0.00cm/s; maximum component-space foot displacement 0.00cm; samples 183
+PASS | 01_idle stationary speed settles
+MEASURE | 02_forward_walk mean speed 180.00cm/s; maximum component-space foot displacement 31.21cm; samples 185
+PASS | 02_forward_walk observed movement speed plausible
+PASS | 02_forward_walk authored foot pose changes while moving
+MEASURE | 03_run mean speed 370.00cm/s; maximum component-space foot displacement 48.95cm; samples 124
+PASS | 03_run observed movement speed plausible
+PASS | 03_run authored foot pose changes while moving
+MEASURE | 04_backward mean speed 180.00cm/s; maximum component-space foot displacement 51.97cm; samples 184
+PASS | 04_backward observed movement speed plausible
+PASS | 04_backward authored foot pose changes while moving
+MEASURE | 05_strafe_negative_y mean speed 180.00cm/s; maximum component-space foot displacement 43.73cm; samples 185
+PASS | 05_strafe_negative_y observed movement speed plausible
+PASS | 05_strafe_negative_y authored foot pose changes while moving
+MEASURE | 06_strafe_positive_y mean speed 180.00cm/s; maximum component-space foot displacement 53.51cm; samples 183
+PASS | 06_strafe_positive_y observed movement speed plausible
+PASS | 06_strafe_positive_y authored foot pose changes while moving
+MEASURE | 07_diagonal mean speed 180.00cm/s; maximum component-space foot displacement 47.98cm; samples 24
+PASS | 07_diagonal observed movement speed plausible
+PASS | 07_diagonal authored foot pose changes while moving
+MEASURE | 08_moving_fire mean speed 180.00cm/s; maximum component-space foot displacement 27.83cm; samples 15
+PASS | 08_moving_fire observed movement speed plausible
+PASS | 08_moving_fire authored foot pose changes while moving
+PASS | Moving-fire phase consumes real ammunition
+PASS | Lower-body animation continues during upper-body firing
+MEASURE | 09_moving_reload mean speed 180.00cm/s; maximum component-space foot displacement 36.45cm; samples 16
+PASS | 09_moving_reload observed movement speed plausible
+PASS | 09_moving_reload authored foot pose changes while moving
+PASS | Reload completes while lower-body locomotion continues
+MEASURE | 10_ready mean speed 0.00cm/s; maximum component-space foot displacement 23.73cm; samples 16
+PASS | 10_ready stationary speed settles
+PASS | Real aimed weapon fire damages crowd enemies (3 damaged, 3 killed)
+PASS | Uninterrupted attacker spawned
+PASS | Leader evaluates required modular bone Head
+PASS | Leader evaluates required modular bone lowerarm_l
+PASS | Leader evaluates required modular bone hand_l
+PASS | Uninterrupted authored attack delivers contact damage
+PASS | Modular head moves during authored intact attack (9.66cm)
+PASS | Modular lowerarm_l moves during authored intact attack (9.75cm)
+PASS | Modular hand_l moves during authored intact attack (12.42cm)
+PASS | Attack candidate survives loss of authored arm_l
+MEASURE | surviving-arm attack health before 100.00, after 81.00
+PASS | Surviving one-arm zombie delivers remaining-arm attack damage
+PASS | Timestamped gameplay sequence spans movement and crowd combat
+
+Failures: 0
+Recorded frames: 91; span 12.388s; actual capture rate 7.27fps (target at most 8fps). PNG readback is synchronous and affects timing; this is not a performance benchmark. Actual timestamps are in frames.csv and filenames.

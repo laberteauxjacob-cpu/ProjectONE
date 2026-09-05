@@ -1,0 +1,20 @@
+Project ONE actual in-engine validation
+GPU: NVIDIA GeForce RTX 3090
+Resolution: X=1600 Y=900
+Failures: 0
+
+PASS | Sustained runtime actual alive=12 requested=12
+sg.ViewDistanceQuality=2
+sg.AntiAliasingQuality=2
+sg.ShadowQuality=2
+sg.PostProcessQuality=2
+sg.TextureQuality=2
+sg.EffectsQuality=2
+r.ScreenPercentage=100
+r.AntiAliasingMethod=1
+r.DynamicGlobalIlluminationMethod=0
+r.ReflectionMethod=0
+r.VSync=0
+t.MaxFPS=120
+
+Frame samples: 2385; mean 8.386 ms; median 8.334 ms; p95 8.334 ms; requested benchmark enemies 12

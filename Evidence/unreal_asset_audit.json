@@ -1,0 +1,107 @@
+{
+  "SM_Carbine": {
+    "origin_cm": "<Struct 'Vector' (0x000001D2E8B874C0) {x: 9.750000, y: -0.425002, z: 7.921525}>",
+    "extent_cm": "<Struct 'Vector' (0x000001D2E8B874D8) {x: 49.649998, y: 4.424999, z: 19.128475}>",
+    "materials": [
+      "M_Graphite",
+      "M_Steel",
+      "M_Teal",
+      "M_Rubber",
+      "M_Screen"
+    ]
+  },
+  "SM_FloorModule": {
+    "origin_cm": "<Struct 'Vector' (0x000001D2E8B87080) {x: 0.000000, y: 0.000000, z: -9.375000}>",
+    "extent_cm": "<Struct 'Vector' (0x000001D2E8B87098) {x: 200.000015, y: 200.000015, z: 10.625000}>",
+    "materials": [
+      "M_Concrete",
+      "M_Floor",
+      "M_FloorEdge"
+    ]
+  },
+  "SM_WallBay": {
+    "origin_cm": "<Struct 'Vector' (0x000001D2E8B88340) {x: 0.000000, y: 10.249999, z: 150.000000}>",
+    "extent_cm": "<Struct 'Vector' (0x000001D2E8B88358) {x: 200.000000, y: 25.250016, z: 150.000000}>",
+    "materials": [
+      "M_Concrete",
+      "M_Teal",
+      "M_Steel",
+      "M_Graphite",
+      "M_PaleMetal",
+      "M_Amber"
+    ]
+  },
+  "SM_FloorWayfinding": {
+    "origin_cm": "<Struct 'Vector' (0x000001D2E8B88000) {x: -0.000015, y: 16.320282, z: 2.200000}>",
+    "extent_cm": "<Struct 'Vector' (0x000001D2E8B88018) {x: 319.862869, y: 307.794769, z: 2.410335}>",
+    "materials": [
+      "M_Marking",
+      "M_Amber"
+    ]
+  },
+  "SK_Response": {
+    "skeleton": "SK_Response_Skeleton",
+    "num_bones": 22,
+    "ref_bones": {
+      "root": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.707107, y: 0.000000, z: 0.000000, w: -0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "head": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: -0.707107, y: 0.000000, z: 0.000000, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 157.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "hand_l": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: -0.000000, y: 0.000000, z: 0.707107, w: 0.707107}, translation: {x: 42.000004, y: -5.000010, z: 136.999998}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "hand_r": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: -0.000000, y: 0.000000, z: 0.707107, w: 0.707107}, translation: {x: 24.000018, y: -4.999984, z: 130.999999}, scale3d: {x: 1.000000, y: 1.000000, z: 0.999999}}>",
+      "weapon_r": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: -0.000000, y: -0.000000, z: -0.707107, w: -0.707107}, translation: {x: 24.000022, y: -4.999982, z: 130.999999}, scale3d: {x: 0.999999, y: 1.000000, z: 0.999999}}>"
+    },
+    "bounds": "(<Struct 'Vector' (0x000001D2EBACEE50) {x: 17.330938, y: -3.884220, z: 90.899998}>, <Struct 'Vector' (0x000001D2EBB4B7B0) {x: 35.330938, y: 28.215782, z: 90.299998}>)"
+  },
+  "SK_Infected": {
+    "skeleton": "SK_Infected_Skeleton",
+    "num_bones": 22,
+    "ref_bones": {
+      "root": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.707107, y: 0.000000, z: 0.000000, w: -0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "head": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: -0.707107, y: 0.000000, z: 0.000000, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 157.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "hand_l": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.677286, y: -0.000000, z: 0.203185, w: 0.707107}, translation: {x: 9.000001, y: 27.000008, z: 91.999998}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000001}}>",
+      "hand_r": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.677285, y: 0.000000, z: 0.203186, w: 0.707107}, translation: {x: 9.000003, y: -27.000004, z: 92.000018}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000001}}>",
+      "weapon_r": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.000000, y: -0.000000, z: -0.707107, w: -0.707107}, translation: {x: 23.999989, y: -5.000000, z: 130.999997}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000002}}>"
+    },
+    "bounds": "(<Struct 'Vector' (0x000001D2EBB4B7B0) {x: 2.980721, y: -2.896621, z: 79.325002}>, <Struct 'Vector' (0x000001D2EBB4B8A0) {x: 15.619279, y: 28.164464, z: 78.725002}>)"
+  },
+  "SK_Infected_Head": {
+    "skeleton": "SK_Infected_Skeleton",
+    "num_bones": 22,
+    "ref_bones": {
+      "root": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.707107, y: 0.000000, z: 0.000000, w: -0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "head": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: -0.707107, y: 0.000000, z: 0.000000, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 157.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "hand_l": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.677286, y: -0.000000, z: 0.203185, w: 0.707107}, translation: {x: 9.000001, y: 27.000008, z: 91.999998}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000001}}>",
+      "hand_r": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.677285, y: 0.000000, z: 0.203186, w: 0.707107}, translation: {x: 9.000003, y: -27.000004, z: 92.000018}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000001}}>",
+      "weapon_r": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.000000, y: -0.000000, z: -0.707107, w: -0.707107}, translation: {x: 23.999989, y: -5.000000, z: 130.999997}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000002}}>"
+    },
+    "bounds": "(<Struct 'Vector' (0x000001D2EBB4B8A0) {x: 0.461925, y: -0.000000, z: 168.430000}>, <Struct 'Vector' (0x000001D2EBB4B850) {x: 8.911925, y: 8.900000, z: 10.629997}>)"
+  },
+  "SK_Infected_ArmL": {
+    "skeleton": "SK_Infected_Skeleton",
+    "num_bones": 22,
+    "ref_bones": {
+      "root": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.707107, y: 0.000000, z: 0.000000, w: -0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "head": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: -0.707107, y: 0.000000, z: 0.000000, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 157.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "hand_l": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.677286, y: -0.000000, z: 0.203185, w: 0.707107}, translation: {x: 9.000001, y: 27.000008, z: 91.999998}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000001}}>",
+      "hand_r": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.677285, y: 0.000000, z: 0.203186, w: 0.707107}, translation: {x: 9.000003, y: -27.000004, z: 92.000018}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000001}}>",
+      "weapon_r": "<Struct 'Transform' (0x000001D2EBAEAA00) {rotation: {x: 0.000000, y: -0.000000, z: -0.707107, w: -0.707107}, translation: {x: 23.999989, y: -5.000000, z: 130.999997}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000002}}>"
+    },
+    "bounds": "(<Struct 'Vector' (0x000001D2EBB4B850) {x: 3.716382, y: 22.174266, z: 110.315075}>, <Struct 'Vector' (0x000001D2EBB4B8F0) {x: 10.024861, y: 8.829320, z: 32.027500}>)"
+  },
+  "animations": {
+    "A_Infected_Attack": 1.0,
+    "A_Infected_AttackOneArm": 1.0,
+    "A_Infected_Death": 1.2000000476837158,
+    "A_Infected_Hit": 0.4000000059604645,
+    "A_Infected_Idle": 3.0,
+    "A_Infected_Run": 0.800000011920929,
+    "A_Infected_Walk": 1.399999976158142,
+    "A_Response_Back": 0.6000000238418579,
+    "A_Response_Fire": 0.20000000298023224,
+    "A_Response_Idle": 3.0,
+    "A_Response_Reload": 2.0999999046325684,
+    "A_Response_Run": 0.5,
+    "A_Response_StrafeL": 0.6000000238418579,
+    "A_Response_StrafeR": 0.6000000238418579,
+    "A_Response_Walk": 0.6000000238418579
+  }
+}

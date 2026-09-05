@@ -1,0 +1,700 @@
+{
+  "units": "centimetres",
+  "forward": "+X",
+  "up": "+Z",
+  "fps": 30,
+  "characters": {
+    "Response": {
+      "meshes": {
+        "SK_Response": {
+          "vertices": 17980,
+          "triangles": 35524,
+          "materials": [
+            "M_UniformSlate",
+            "M_Webbing",
+            "M_Skin",
+            "M_Ceramic",
+            "M_ResponseAccent",
+            "M_BootRubber",
+            "M_Hair",
+            "M_Eye",
+            "M_EyeDark",
+            "M_Visor"
+          ]
+        }
+      },
+      "clips": {
+        "Idle": 3.0,
+        "Walk": 0.6,
+        "Run": 0.5,
+        "Back": 0.6,
+        "StrafeL": 0.6,
+        "StrafeR": 0.6,
+        "Fire": 0.2,
+        "Reload": 2.1
+      },
+      "bones": {
+        "root": {
+          "head": [
+            0,
+            0,
+            0
+          ],
+          "tail": [
+            0,
+            0,
+            15
+          ],
+          "parent": null
+        },
+        "pelvis": {
+          "head": [
+            0,
+            0,
+            95
+          ],
+          "tail": [
+            0,
+            0,
+            108
+          ],
+          "parent": "root"
+        },
+        "spine_01": {
+          "head": [
+            0,
+            0,
+            108
+          ],
+          "tail": [
+            0,
+            0,
+            127
+          ],
+          "parent": "pelvis"
+        },
+        "spine_02": {
+          "head": [
+            0,
+            0,
+            127
+          ],
+          "tail": [
+            0,
+            0,
+            148
+          ],
+          "parent": "spine_01"
+        },
+        "neck": {
+          "head": [
+            0,
+            0,
+            148
+          ],
+          "tail": [
+            0,
+            0,
+            157
+          ],
+          "parent": "spine_02"
+        },
+        "head": {
+          "head": [
+            0,
+            0,
+            157
+          ],
+          "tail": [
+            0,
+            0,
+            176
+          ],
+          "parent": "neck"
+        },
+        "thigh_l": {
+          "head": [
+            0,
+            -9,
+            95
+          ],
+          "tail": [
+            1.2,
+            -9,
+            53
+          ],
+          "parent": "pelvis"
+        },
+        "calf_l": {
+          "head": [
+            1.2,
+            -9,
+            53
+          ],
+          "tail": [
+            0,
+            -9,
+            10
+          ],
+          "parent": "thigh_l"
+        },
+        "foot_l": {
+          "head": [
+            0,
+            -9,
+            10
+          ],
+          "tail": [
+            16,
+            -9,
+            7
+          ],
+          "parent": "calf_l"
+        },
+        "toe_l": {
+          "head": [
+            16,
+            -9,
+            7
+          ],
+          "tail": [
+            22,
+            -9,
+            7
+          ],
+          "parent": "foot_l"
+        },
+        "thigh_r": {
+          "head": [
+            0,
+            9,
+            95
+          ],
+          "tail": [
+            1.2,
+            9,
+            53
+          ],
+          "parent": "pelvis"
+        },
+        "calf_r": {
+          "head": [
+            1.2,
+            9,
+            53
+          ],
+          "tail": [
+            0,
+            9,
+            10
+          ],
+          "parent": "thigh_r"
+        },
+        "foot_r": {
+          "head": [
+            0,
+            9,
+            10
+          ],
+          "tail": [
+            16,
+            9,
+            7
+          ],
+          "parent": "calf_r"
+        },
+        "toe_r": {
+          "head": [
+            16,
+            9,
+            7
+          ],
+          "tail": [
+            22,
+            9,
+            7
+          ],
+          "parent": "foot_r"
+        },
+        "upperarm_l": {
+          "head": [
+            0,
+            -18,
+            145
+          ],
+          "tail": [
+            18,
+            -15,
+            120
+          ],
+          "parent": "spine_02"
+        },
+        "lowerarm_l": {
+          "head": [
+            18,
+            -15,
+            120
+          ],
+          "tail": [
+            42,
+            5,
+            137
+          ],
+          "parent": "upperarm_l"
+        },
+        "hand_l": {
+          "head": [
+            42,
+            5,
+            137
+          ],
+          "tail": [
+            50,
+            5,
+            137
+          ],
+          "parent": "lowerarm_l"
+        },
+        "upperarm_r": {
+          "head": [
+            0,
+            18,
+            145
+          ],
+          "tail": [
+            6,
+            25,
+            119
+          ],
+          "parent": "spine_02"
+        },
+        "lowerarm_r": {
+          "head": [
+            6,
+            25,
+            119
+          ],
+          "tail": [
+            24,
+            5,
+            131
+          ],
+          "parent": "upperarm_r"
+        },
+        "hand_r": {
+          "head": [
+            24,
+            5,
+            131
+          ],
+          "tail": [
+            32,
+            5,
+            131
+          ],
+          "parent": "lowerarm_r"
+        },
+        "weapon_r": {
+          "head": [
+            24,
+            5,
+            131
+          ],
+          "tail": [
+            44,
+            5,
+            131
+          ],
+          "parent": "hand_r"
+        }
+      },
+      "detached": {}
+    },
+    "Infected": {
+      "meshes": {
+        "SK_Infected": {
+          "vertices": 8588,
+          "triangles": 16968,
+          "materials": [
+            "M_OrangeFabric",
+            "M_InfectedSkin",
+            "M_Gore",
+            "M_ExposedBone",
+            "M_Webbing",
+            "M_IDBadge",
+            "M_ReflectiveTape",
+            "M_Ceramic",
+            "M_BootRubber"
+          ]
+        },
+        "SK_Infected_Head": {
+          "vertices": 5200,
+          "triangles": 8896,
+          "materials": [
+            "M_InfectedSkin",
+            "M_DriedBlood",
+            "M_Eye",
+            "M_EyeDark",
+            "M_Hair",
+            "M_ExposedBone",
+            "M_Gore"
+          ]
+        },
+        "SK_Infected_ArmL": {
+          "vertices": 2296,
+          "triangles": 4532,
+          "materials": [
+            "M_OrangeFabric",
+            "M_InfectedSkin",
+            "M_Gore",
+            "M_ExposedBone"
+          ]
+        }
+      },
+      "clips": {
+        "Idle": 3.0,
+        "Walk": 1.4,
+        "Run": 0.8,
+        "Attack": 1.0,
+        "AttackOneArm": 1.0,
+        "Hit": 0.4,
+        "Death": 1.2
+      },
+      "bones": {
+        "root": {
+          "head": [
+            0,
+            0,
+            0
+          ],
+          "tail": [
+            0,
+            0,
+            15
+          ],
+          "parent": null
+        },
+        "pelvis": {
+          "head": [
+            0,
+            0,
+            95
+          ],
+          "tail": [
+            0,
+            0,
+            108
+          ],
+          "parent": "root"
+        },
+        "spine_01": {
+          "head": [
+            0,
+            0,
+            108
+          ],
+          "tail": [
+            0,
+            0,
+            127
+          ],
+          "parent": "pelvis"
+        },
+        "spine_02": {
+          "head": [
+            0,
+            0,
+            127
+          ],
+          "tail": [
+            0,
+            0,
+            148
+          ],
+          "parent": "spine_01"
+        },
+        "neck": {
+          "head": [
+            0,
+            0,
+            148
+          ],
+          "tail": [
+            0,
+            0,
+            157
+          ],
+          "parent": "spine_02"
+        },
+        "head": {
+          "head": [
+            0,
+            0,
+            157
+          ],
+          "tail": [
+            0,
+            0,
+            176
+          ],
+          "parent": "neck"
+        },
+        "thigh_l": {
+          "head": [
+            0,
+            -9,
+            95
+          ],
+          "tail": [
+            1.2,
+            -9,
+            53
+          ],
+          "parent": "pelvis"
+        },
+        "calf_l": {
+          "head": [
+            1.2,
+            -9,
+            53
+          ],
+          "tail": [
+            0,
+            -9,
+            10
+          ],
+          "parent": "thigh_l"
+        },
+        "foot_l": {
+          "head": [
+            0,
+            -9,
+            10
+          ],
+          "tail": [
+            16,
+            -9,
+            7
+          ],
+          "parent": "calf_l"
+        },
+        "toe_l": {
+          "head": [
+            16,
+            -9,
+            7
+          ],
+          "tail": [
+            22,
+            -9,
+            7
+          ],
+          "parent": "foot_l"
+        },
+        "thigh_r": {
+          "head": [
+            0,
+            9,
+            95
+          ],
+          "tail": [
+            1.2,
+            9,
+            53
+          ],
+          "parent": "pelvis"
+        },
+        "calf_r": {
+          "head": [
+            1.2,
+            9,
+            53
+          ],
+          "tail": [
+            0,
+            9,
+            10
+          ],
+          "parent": "thigh_r"
+        },
+        "foot_r": {
+          "head": [
+            0,
+            9,
+            10
+          ],
+          "tail": [
+            16,
+            9,
+            7
+          ],
+          "parent": "calf_r"
+        },
+        "toe_r": {
+          "head": [
+            16,
+            9,
+            7
+          ],
+          "tail": [
+            22,
+            9,
+            7
+          ],
+          "parent": "foot_r"
+        },
+        "upperarm_l": {
+          "head": [
+            0,
+            -18,
+            145
+          ],
+          "tail": [
+            4,
+            -26,
+            117
+          ],
+          "parent": "spine_02"
+        },
+        "lowerarm_l": {
+          "head": [
+            4,
+            -26,
+            117
+          ],
+          "tail": [
+            9,
+            -27,
+            92
+          ],
+          "parent": "upperarm_l"
+        },
+        "hand_l": {
+          "head": [
+            9,
+            -27,
+            92
+          ],
+          "tail": [
+            12,
+            -27,
+            82
+          ],
+          "parent": "lowerarm_l"
+        },
+        "upperarm_r": {
+          "head": [
+            0,
+            18,
+            145
+          ],
+          "tail": [
+            4,
+            26,
+            117
+          ],
+          "parent": "spine_02"
+        },
+        "lowerarm_r": {
+          "head": [
+            4,
+            26,
+            117
+          ],
+          "tail": [
+            9,
+            27,
+            92
+          ],
+          "parent": "upperarm_r"
+        },
+        "hand_r": {
+          "head": [
+            9,
+            27,
+            92
+          ],
+          "tail": [
+            12,
+            27,
+            82
+          ],
+          "parent": "lowerarm_r"
+        },
+        "weapon_r": {
+          "head": [
+            24,
+            5,
+            131
+          ],
+          "tail": [
+            44,
+            5,
+            131
+          ],
+          "parent": "hand_r"
+        }
+      },
+      "detached": {
+        "SM_Infected_Head": {
+          "bone": "head",
+          "bone_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              157.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "SM_Infected_ArmL": {
+          "bone": "upperarm_l",
+          "bone_matrix": [
+            [
+              0.9745572805404663,
+              0.13608281314373016,
+              0.17810338735580444,
+              0.0
+            ],
+            [
+              -0.13608157634735107,
+              -0.27216553688049316,
+              0.9525806903839111,
+              -18.0
+            ],
+            [
+              0.17810314893722534,
+              -0.9525794386863708,
+              -0.24672210216522217,
+              145.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      }
+    }
+  }
+}

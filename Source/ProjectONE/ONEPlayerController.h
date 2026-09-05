@@ -1,0 +1,17 @@
+#pragma once
+#include "CoreMinimal.h"
+#include "GameFramework/PlayerController.h"
+#include "ONEPlayerController.generated.h"
+UCLASS()
+class PROJECTONE_API AONEPlayerController : public APlayerController
+{
+    GENERATED_BODY()
+public:
+    AONEPlayerController();
+    virtual void BeginPlay() override;
+    virtual void SetupInputComponent() override;
+private:
+    void TogglePause();
+    void Restart();
+    void QuitFromPause();
+};
