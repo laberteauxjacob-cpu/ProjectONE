@@ -32,5 +32,91 @@ its inventory retain editable keys, stride lengths and directional conventions;
 the FBX files are in `ArtSource/Exports/Candidate03`. The matching import script
 retains the accepted skeleton. Metadata sanitation removed private author paths
 without changing parsed animation/geometry properties. The Candidate03
-[source audit](../Evidence/Candidate03/source_sync.json) matches all 96 current
-source hashes, including the eighteen additions. No external asset was used.
+[source audit](../Evidence/Candidate03/source_sync.json) includes those eighteen
+additions; the Stage B checkpoint verified 96 sources. No external asset was used.
+
+## Candidate03 Stage C sound bank
+
+`Scripts/create_candidate03_audio.py` authors twelve original shot WAVs, six
+per weapon, under `ArtSource/Audio/Candidate03`. Its manifest records independent
+attack, body, mechanical and reflection profiles, deterministic source hashes
+and numerical measurements. This work uses no sample inputs or external service.
+The targeted importer has imported all twelve SoundWaves; the Stage C checkpoint
+verified 109 source/import hashes including the brass mesh below. Existing pump, reload and empty events
+remain separate. Perceptual audition is unavailable; source measurements do not
+approve timbre, audible variation or the final combat mix.
+
+`Scripts/create_candidate03_weapon_presentation.py` authors a 4.5 cm spent
+bottleneck brass case with an open neck and extractor groove. Its Blender source,
+FBX and explicit inventory are in `ArtSource/Weapons/Candidate03`. It reuses the
+accepted brass material; authored heat-color vertices are retained but that
+constant-color material does not display them. The existing shotgun hull is
+reused. A separate original additive flash material is assembled by the targeted
+importer, with tapered procedural geometry in `ONEPlayer::BuildMuzzleFlash`.
+No image, model or texture was downloaded. FBX and Blender metadata were sanitized
+before import, preserving nonmetadata art data.
+
+## Candidate03 Stage D infected and physics
+
+`Scripts/create_candidate03_infected.py` derives five modular meshes from the
+accepted `Infected.blend`, preserving its skeleton, original head and unaffected
+surfaces. `ArtSource/Characters/Candidate03/InfectedModular.blend` remains editable.
+The inventory records anatomical left/source `_r`, right/source `_l`, separation
+planes, caps, weights and the complementary right-arm attack. Source validation
+found zero measured gaps in 168 evaluated limb seams; FBX roundtrip checks passed.
+These source checks are separate from later ragdoll and runtime visual review.
+
+The five meshes and one new attack imported against the existing infected
+skeleton and palette. The [current source audit](../Evidence/Candidate03/source_sync.json)
+verifies all 115 source/import hashes. Metadata sanitation preserved nonmetadata
+FBX data and PNG image data. The supplemental Blender previews document source
+inspection; gameplay evidence uses actual Unreal captures.
+
+`Source/ProjectONE/ONE03PhysicsAssets.cpp` and the small Python entry point
+`Scripts/create_candidate03_physics_assets.py` author original explicit body
+shapes, joint limits and material parameters from the complete accepted reference
+skeleton. Full-body and detached-part assets are generated separately from mesh
+imports. Physics fitting and collision are evaluated in gameplay, not inferred
+from successful asset generation. No external model, animation, texture or sound
+pack was introduced.
+
+## Candidate03 Stage D environment collision repair
+
+The separately generated `M_BloodPool_C03` material reuses the original
+mathematical `T_BloodMask` texture. `Scripts/create_candidate03_pool_material.py`
+resamples its continuous centre for growing corpse pools and verifies the saved
+graph. No external image, generated bitmap, or larger blood budget was added.
+The original complete mask remains in impact and wound presentation.
+
+The original Project ONE facility meshes and visible arena layout were retained.
+The [before audit](../Evidence/Candidate03/StageD/EnvironmentCollisionBefore.json)
+found seven accumulated simple convex hulls on each of eight environment meshes.
+Seven assets contained four obsolete hulls with the earlier 90-degree orientation;
+the square floor contained seven coincident hulls. These were stale collision
+outputs, not newly authored obstacles or replacement art. For example, old wall
+hulls extended roughly 200 cm along local Y while the rendered wall occupied
+approximately -15 to +35.5 cm on that axis.
+
+`Scripts/repair_candidate03_environment_collision.py` clears those outputs and
+creates one fresh NDOP18 hull from each mesh's current geometry. The
+[repair readback](../Evidence/Candidate03/StageD/EnvironmentCollisionRepair.json)
+records one hull per asset, refreshed navigation collision, unchanged render
+bounds within 0.001 cm, and unchanged actor layout. Its stored before/after pair
+is a subsequent one-hull-to-one-hull rerun; the separate before audit preserves
+the original seven-hull defect. No Blender mesh, FBX, material, or visible
+placement was redesigned for this correction.
+
+The full Unreal Editor runs the repair through `-ExecutePythonScript`, waits for
+the navigation build to complete, then saves the existing map. The serialized
+Recast agent radius/height were corrected from 35/144 to 32/185 cm. The
+[navigation comparison](../Evidence/Candidate03/StageD/navigation_comparison.md)
+therefore measures both collision and agent-setting changes: six floor components
+became one, with the original corner, rack and bench targets connected. The
+original importer now replaces previous collision on these same eight assets
+and asserts one fresh NDOP18 hull, preventing accumulation on reimport.
+
+This establishes collision-generation provenance and measured navigation
+connectivity. Headless pursuit checks are separate from rendered corpse contact,
+pool readability and natural movement. Stage D visual gates and final user
+playtest acceptance remain pending; neither asset-generation success nor an
+agent-run check substitutes for the user's playtest.

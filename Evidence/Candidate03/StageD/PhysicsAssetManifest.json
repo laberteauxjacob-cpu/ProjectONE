@@ -1,0 +1,1101 @@
+{
+	"source": "Source/ProjectONE/ONE03PhysicsAssets.cpp",
+	"reference_mesh": "/Game/ONE/Characters/SK_Infected",
+	"anatomy": "Source _r is anatomical LEFT; _l is RIGHT after accepted import reflection.",
+	"assets": [
+		{
+			"asset": "/Game/ONE/Characters/Candidate03/PA_Infected_C03",
+			"bodies": [
+				{
+					"bone": "pelvis",
+					"mass_kg": 12,
+					"shape": "box",
+					"component_center_cm": [
+						0,
+						1.4210854715202004e-14,
+						100.00000000000001
+					],
+					"local_center_cm": [
+						0,
+						-5.0000000000000009,
+						-8.8817841970012523e-16
+					],
+					"local_rotation_degrees": [
+						-90.000000000000014,
+						0,
+						0
+					],
+					"box_dimensions_cm": [
+						22,
+						27,
+						17
+					],
+					"radius_cm": 0,
+					"cylinder_length_cm": 0,
+					"retains_proximal_left_thigh_capsule": true,
+					"proximal_left_thigh_capsule":
+					{
+						"bind_local_center_cm": [
+							0.22800009418171796,
+							7.9799989150865009,
+							-9.0000001812039354
+						],
+						"bind_local_rotation_degrees": [
+							-90.000001300499605,
+							9.1053497031274181e-05,
+							178.36342206033669
+						],
+						"radius_cm": 6.1999998092651367,
+						"cylinder_length_cm": 3.5665111541748047,
+						"runtime": "Disabled while left thigh is intact; enabled and fitted to captured thigh-to-pelvis pose on sever."
+					}
+				},
+				{
+					"bone": "spine_01",
+					"mass_kg": 13,
+					"shape": "box",
+					"component_center_cm": [
+						0,
+						1.7763568394002505e-14,
+						116.00000000000001
+					],
+					"local_center_cm": [
+						0,
+						-8.0000000000000018,
+						-1.7763568394002505e-15
+					],
+					"local_rotation_degrees": [
+						-90.000000000000014,
+						0,
+						-0
+					],
+					"box_dimensions_cm": [
+						22,
+						29,
+						19
+					],
+					"radius_cm": 0,
+					"cylinder_length_cm": 0,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "spine_02",
+					"mass_kg": 12,
+					"shape": "box",
+					"component_center_cm": [
+						0,
+						1.7763568394002505e-14,
+						136
+					],
+					"local_center_cm": [
+						0,
+						-8.9999999999999858,
+						0
+					],
+					"local_rotation_degrees": [
+						-90.000000000000014,
+						0,
+						0
+					],
+					"box_dimensions_cm": [
+						24,
+						33,
+						19
+					],
+					"radius_cm": 0,
+					"cylinder_length_cm": 0,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "head",
+					"mass_kg": 5,
+					"shape": "capsule",
+					"component_center_cm": [
+						0,
+						2.3092638912203256e-14,
+						167.50000000000003
+					],
+					"local_center_cm": [
+						0,
+						-10.500000000000002,
+						-1.7763568394002505e-15
+					],
+					"local_rotation_degrees": [
+						-90.000000000000014,
+						0,
+						0
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 9.5,
+					"cylinder_length_cm": 0.10000000149011612,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "upperarm_l",
+					"mass_kg": 2.4000000953674316,
+					"shape": "capsule",
+					"component_center_cm": [
+						2.2245423147983221,
+						22.449075462149281,
+						129.42823256030127
+					],
+					"local_center_cm": [
+						3.2582313674314328e-07,
+						-16.346948903799074,
+						1.2686066020211456e-06
+					],
+					"local_rotation_degrees": [
+						-89.999990405860302,
+						62.389735647788704,
+						9.6435693875353158e-06
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 5.1999998092651367,
+					"cylinder_length_cm": 12.693901062011719,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "lowerarm_l",
+					"mass_kg": 1.5,
+					"shape": "capsule",
+					"component_center_cm": [
+						6.5489969587600996,
+						26.509804906970459,
+						104.25503090456269
+					],
+					"local_center_cm": [
+						-3.6764285805860199e-07,
+						-13.007339477539077,
+						1.000687048416393e-06
+					],
+					"local_rotation_degrees": [
+						89.999995508244169,
+						11.08768193037489,
+						179.99999751676251
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 4.1999998092651367,
+					"cylinder_length_cm": 14.614679336547852,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "hand_l",
+					"mass_kg": 0.69999998807907104,
+					"shape": "capsule",
+					"component_center_cm": [
+						9.9798267977681121,
+						27.195974651910845,
+						87.100861927935057
+					],
+					"local_center_cm": [
+						-0.39315221346946544,
+						-4.9740731111120029,
+						-0.32253776027157677
+					],
+					"local_rotation_degrees": [
+						93.71716061486589,
+						5.7266358780133206,
+						175.85214154531224
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 3.5999999046325684,
+					"cylinder_length_cm": 2.8000001907348633,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "thigh_l",
+					"mass_kg": 7,
+					"shape": "capsule",
+					"component_center_cm": [
+						0.62142009755037808,
+						8.999999999984194,
+						73.250308527010517
+					],
+					"local_center_cm": [
+						2.0728047599100821e-07,
+						-21.758561909198793,
+						4.655269947306806e-09
+					],
+					"local_rotation_degrees": [
+						89.999999987736516,
+						-1.636576649576913,
+						-179.99999945382856
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 6.8000001907348633,
+					"cylinder_length_cm": 23.917135238647461,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "calf_l",
+					"mass_kg": 4,
+					"shape": "capsule",
+					"component_center_cm": [
+						0.60000073852094371,
+						8.9999995298763853,
+						31.499999156809249
+					],
+					"local_center_cm": [
+						1.2358260914128079e-07,
+						-21.508371353149421,
+						4.7733334440636099e-07
+					],
+					"local_rotation_degrees": [
+						89.999998727945126,
+						1.598627088193336,
+						-179.99999970627806
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 4.9000000953674316,
+					"cylinder_length_cm": 30.216754913330078,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "foot_l",
+					"mass_kg": 1,
+					"shape": "box",
+					"component_center_cm": [
+						7.0000009662906013,
+						8.9999990597833079,
+						5.9999931305778986
+					],
+					"local_center_cm": [
+						-0.48679315726042754,
+						-7.617255876336146,
+						-2.5962284350932916
+					],
+					"local_rotation_degrees": [
+						10.80040169148424,
+						10.435689155749678,
+						-88.020988333772181
+					],
+					"box_dimensions_cm": [
+						26,
+						11,
+						12
+					],
+					"radius_cm": 0,
+					"cylinder_length_cm": 0,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "upperarm_r",
+					"mass_kg": 2.4000000953674316,
+					"shape": "capsule",
+					"component_center_cm": [
+						2.2245391818242224,
+						-22.44906761825473,
+						129.42824873039251
+					],
+					"local_center_cm": [
+						-1.4278605631789158e-08,
+						-16.346932888030988,
+						-2.9310916969568009e-06
+					],
+					"local_rotation_degrees": [
+						-90.000014823959788,
+						-46.129551063859246,
+						1.0636674464021813e-05
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 5.1999998092651367,
+					"cylinder_length_cm": 12.693866729736328,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "lowerarm_r",
+					"mass_kg": 1.5,
+					"shape": "capsule",
+					"component_center_cm": [
+						6.5489953534470944,
+						-26.509795362943255,
+						104.25505715631027
+					],
+					"local_center_cm": [
+						1.9328128399604305e-07,
+						-13.007349058985715,
+						4.9137927680415329e-06
+					],
+					"local_rotation_degrees": [
+						89.999973980968036,
+						-33.707741750973845,
+						-179.99998470917961
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 4.1999998092651367,
+					"cylinder_length_cm": 14.614694595336914,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "hand_r",
+					"mass_kg": 0.69999998807907104,
+					"shape": "capsule",
+					"component_center_cm": [
+						9.9798307865564659,
+						-27.195972475954385,
+						87.100882188297788
+					],
+					"local_center_cm": [
+						-0.50577201481426326,
+						-4.9740730754023916,
+						0.052863016625658385
+					],
+					"local_rotation_degrees": [
+						89.220285828817097,
+						-39.019449788417226,
+						174.68493663286577
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 3.5999999046325684,
+					"cylinder_length_cm": 2.8000001907348633,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "thigh_r",
+					"mass_kg": 7,
+					"shape": "capsule",
+					"component_center_cm": [
+						0.62142009755037186,
+						-9.0000004938759446,
+						73.250308527010517
+					],
+					"local_center_cm": [
+						1.9317594281507385e-07,
+						-21.758561909198793,
+						4.9831395187993621e-07
+					],
+					"local_rotation_degrees": [
+						89.999998687278477,
+						-1.6366677001569869,
+						-179.99999945382524
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 6.8000001907348633,
+					"cylinder_length_cm": 23.917135238647461,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "calf_r",
+					"mass_kg": 4,
+					"shape": "capsule",
+					"component_center_cm": [
+						0.60000079020029184,
+						-8.9999999932864352,
+						31.499999155367028
+					],
+					"local_center_cm": [
+						1.353562453225182e-07,
+						-21.508371353149421,
+						-9.5406369382544653e-07
+					],
+					"local_rotation_degrees": [
+						90.000002542502472,
+						1.5983539336565635,
+						-179.99999956850843
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 4.9000000953674316,
+					"cylinder_length_cm": 30.216754913330078,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "foot_r",
+					"mass_kg": 1,
+					"shape": "box",
+					"component_center_cm": [
+						7.0000010696493096,
+						-8.9999990328679704,
+						5.9999931276934646
+					],
+					"local_center_cm": [
+						-0.48679315726042754,
+						-7.617255876336146,
+						-2.5962284350932916
+					],
+					"local_rotation_degrees": [
+						10.80040169148424,
+						10.435689155749678,
+						-88.020988333772181
+					],
+					"box_dimensions_cm": [
+						26,
+						11,
+						12
+					],
+					"radius_cm": 0,
+					"cylinder_length_cm": 0,
+					"retains_proximal_left_thigh_capsule": false
+				}
+			],
+			"constraints": [
+				{
+					"child": "spine_01",
+					"parent": "pelvis",
+					"anchor_component_cm": [
+						0,
+						1.7763568394002505e-14,
+						108.00000000000001
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						22,
+						20,
+						18
+					]
+				},
+				{
+					"child": "spine_02",
+					"parent": "spine_01",
+					"anchor_component_cm": [
+						0,
+						1.7763568394002505e-14,
+						127.00000000000001
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						22,
+						20,
+						18
+					]
+				},
+				{
+					"child": "head",
+					"parent": "spine_02",
+					"anchor_component_cm": [
+						0,
+						2.3092638912203256e-14,
+						157.00000000000003
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						22,
+						20,
+						18
+					]
+				},
+				{
+					"child": "upperarm_l",
+					"parent": "spine_02",
+					"anchor_component_cm": [
+						0,
+						18.000000000000025,
+						145
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						55,
+						40,
+						35
+					]
+				},
+				{
+					"child": "lowerarm_l",
+					"parent": "upperarm_l",
+					"anchor_component_cm": [
+						4.0000106628754271,
+						26.000004841511828,
+						116.99997708101213
+					],
+					"hinge_center_pitch_degrees": 50,
+					"swing1_swing2_twist_degrees": [
+						12,
+						55,
+						8
+					]
+				},
+				{
+					"child": "hand_l",
+					"parent": "lowerarm_l",
+					"anchor_component_cm": [
+						9.0000006387421791,
+						27.000008341375565,
+						91.999998372577494
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						22,
+						20,
+						18
+					]
+				},
+				{
+					"child": "thigh_l",
+					"parent": "pelvis",
+					"anchor_component_cm": [
+						0,
+						9.000000000000016,
+						95.000000000000014
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						55,
+						40,
+						35
+					]
+				},
+				{
+					"child": "calf_l",
+					"parent": "thigh_l",
+					"anchor_component_cm": [
+						1.2000005107512863,
+						8.9999999999694626,
+						53.000005183040599
+					],
+					"hinge_center_pitch_degrees": -50,
+					"swing1_swing2_twist_degrees": [
+						12,
+						55,
+						8
+					]
+				},
+				{
+					"child": "foot_l",
+					"parent": "calf_l",
+					"anchor_component_cm": [
+						9.6629060108988085e-07,
+						8.9999990597833079,
+						9.9999931305778986
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						22,
+						20,
+						18
+					]
+				},
+				{
+					"child": "upperarm_r",
+					"parent": "spine_02",
+					"anchor_component_cm": [
+						0,
+						-17.999999999999979,
+						145.00000000000003
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						55,
+						40,
+						35
+					]
+				},
+				{
+					"child": "lowerarm_r",
+					"parent": "upperarm_r",
+					"anchor_component_cm": [
+						4.0000045358790794,
+						-25.999989750172862,
+						117.00000961145912
+					],
+					"hinge_center_pitch_degrees": 50,
+					"swing1_swing2_twist_degrees": [
+						12,
+						55,
+						8
+					]
+				},
+				{
+					"child": "hand_r",
+					"parent": "lowerarm_r",
+					"anchor_component_cm": [
+						9.0000034359549588,
+						-27.000004142353564,
+						92.00001831370183
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						22,
+						20,
+						18
+					]
+				},
+				{
+					"child": "thigh_r",
+					"parent": "pelvis",
+					"anchor_component_cm": [
+						0,
+						-8.9999999999999876,
+						95.000000000000014
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						55,
+						40,
+						35
+					]
+				},
+				{
+					"child": "calf_r",
+					"parent": "thigh_r",
+					"anchor_component_cm": [
+						1.2000005107512743,
+						-9.0000009537048999,
+						53.000005183040592
+					],
+					"hinge_center_pitch_degrees": -50,
+					"swing1_swing2_twist_degrees": [
+						12,
+						55,
+						8
+					]
+				},
+				{
+					"child": "foot_r",
+					"parent": "calf_r",
+					"anchor_component_cm": [
+						1.0696493093487192e-06,
+						-8.9999990328679704,
+						9.9999931276934646
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						22,
+						20,
+						18
+					]
+				}
+			]
+		},
+		{
+			"asset": "/Game/ONE/Characters/Candidate03/PA_Infected_Head_C03",
+			"bodies": [
+				{
+					"bone": "head",
+					"mass_kg": 5,
+					"shape": "capsule",
+					"component_center_cm": [
+						0,
+						2.3092638912203256e-14,
+						167.50000000000003
+					],
+					"local_center_cm": [
+						0,
+						-10.500000000000002,
+						-1.7763568394002505e-15
+					],
+					"local_rotation_degrees": [
+						-90.000000000000014,
+						0,
+						0
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 9.5,
+					"cylinder_length_cm": 0.10000000149011612,
+					"retains_proximal_left_thigh_capsule": false
+				}
+			],
+			"constraints": []
+		},
+		{
+			"asset": "/Game/ONE/Characters/Candidate03/PA_Infected_ArmLeft_C03",
+			"bodies": [
+				{
+					"bone": "upperarm_r",
+					"mass_kg": 2.4000000953674316,
+					"shape": "capsule",
+					"component_center_cm": [
+						2.2245391818242224,
+						-22.44906761825473,
+						129.42824873039251
+					],
+					"local_center_cm": [
+						-1.4278605631789158e-08,
+						-16.346932888030988,
+						-2.9310916969568009e-06
+					],
+					"local_rotation_degrees": [
+						-90.000014823959788,
+						-46.129551063859246,
+						1.0636674464021813e-05
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 5.1999998092651367,
+					"cylinder_length_cm": 12.693866729736328,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "lowerarm_r",
+					"mass_kg": 1.5,
+					"shape": "capsule",
+					"component_center_cm": [
+						6.5489953534470944,
+						-26.509795362943255,
+						104.25505715631027
+					],
+					"local_center_cm": [
+						1.9328128399604305e-07,
+						-13.007349058985715,
+						4.9137927680415329e-06
+					],
+					"local_rotation_degrees": [
+						89.999973980968036,
+						-33.707741750973845,
+						-179.99998470917961
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 4.1999998092651367,
+					"cylinder_length_cm": 14.614694595336914,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "hand_r",
+					"mass_kg": 0.69999998807907104,
+					"shape": "capsule",
+					"component_center_cm": [
+						9.9798307865564659,
+						-27.195972475954385,
+						87.100882188297788
+					],
+					"local_center_cm": [
+						-0.50577201481426326,
+						-4.9740730754023916,
+						0.052863016625658385
+					],
+					"local_rotation_degrees": [
+						89.220285828817097,
+						-39.019449788417226,
+						174.68493663286577
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 3.5999999046325684,
+					"cylinder_length_cm": 2.8000001907348633,
+					"retains_proximal_left_thigh_capsule": false
+				}
+			],
+			"constraints": [
+				{
+					"child": "lowerarm_r",
+					"parent": "upperarm_r",
+					"anchor_component_cm": [
+						4.0000045358790794,
+						-25.999989750172862,
+						117.00000961145912
+					],
+					"hinge_center_pitch_degrees": 50,
+					"swing1_swing2_twist_degrees": [
+						12,
+						55,
+						8
+					]
+				},
+				{
+					"child": "hand_r",
+					"parent": "lowerarm_r",
+					"anchor_component_cm": [
+						9.0000034359549588,
+						-27.000004142353564,
+						92.00001831370183
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						22,
+						20,
+						18
+					]
+				}
+			]
+		},
+		{
+			"asset": "/Game/ONE/Characters/Candidate03/PA_Infected_ArmRight_C03",
+			"bodies": [
+				{
+					"bone": "upperarm_l",
+					"mass_kg": 2.4000000953674316,
+					"shape": "capsule",
+					"component_center_cm": [
+						2.2245423147983221,
+						22.449075462149281,
+						129.42823256030127
+					],
+					"local_center_cm": [
+						3.2582313674314328e-07,
+						-16.346948903799074,
+						1.2686066020211456e-06
+					],
+					"local_rotation_degrees": [
+						-89.999990405860302,
+						62.389735647788704,
+						9.6435693875353158e-06
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 5.1999998092651367,
+					"cylinder_length_cm": 12.693901062011719,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "lowerarm_l",
+					"mass_kg": 1.5,
+					"shape": "capsule",
+					"component_center_cm": [
+						6.5489969587600996,
+						26.509804906970459,
+						104.25503090456269
+					],
+					"local_center_cm": [
+						-3.6764285805860199e-07,
+						-13.007339477539077,
+						1.000687048416393e-06
+					],
+					"local_rotation_degrees": [
+						89.999995508244169,
+						11.08768193037489,
+						179.99999751676251
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 4.1999998092651367,
+					"cylinder_length_cm": 14.614679336547852,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "hand_l",
+					"mass_kg": 0.69999998807907104,
+					"shape": "capsule",
+					"component_center_cm": [
+						9.9798267977681121,
+						27.195974651910845,
+						87.100861927935057
+					],
+					"local_center_cm": [
+						-0.39315221346946544,
+						-4.9740731111120029,
+						-0.32253776027157677
+					],
+					"local_rotation_degrees": [
+						93.71716061486589,
+						5.7266358780133206,
+						175.85214154531224
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 3.5999999046325684,
+					"cylinder_length_cm": 2.8000001907348633,
+					"retains_proximal_left_thigh_capsule": false
+				}
+			],
+			"constraints": [
+				{
+					"child": "lowerarm_l",
+					"parent": "upperarm_l",
+					"anchor_component_cm": [
+						4.0000106628754271,
+						26.000004841511828,
+						116.99997708101213
+					],
+					"hinge_center_pitch_degrees": 50,
+					"swing1_swing2_twist_degrees": [
+						12,
+						55,
+						8
+					]
+				},
+				{
+					"child": "hand_l",
+					"parent": "lowerarm_l",
+					"anchor_component_cm": [
+						9.0000006387421791,
+						27.000008341375565,
+						91.999998372577494
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						22,
+						20,
+						18
+					]
+				}
+			]
+		},
+		{
+			"asset": "/Game/ONE/Characters/Candidate03/PA_Infected_LegLeft_C03",
+			"bodies": [
+				{
+					"bone": "thigh_r",
+					"mass_kg": 7,
+					"shape": "capsule",
+					"component_center_cm": [
+						0.80658050738262044,
+						-9.0000006410328748,
+						66.769697740943599
+					],
+					"local_center_cm": [
+						2.507352925895722e-07,
+						-28.241815760094767,
+						6.4679323941163602e-07
+					],
+					"local_rotation_degrees": [
+						89.999998687278477,
+						-1.6366677001569869,
+						-179.99999945382524
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 6.8000001907348633,
+					"cylinder_length_cm": 10.95062255859375,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "calf_r",
+					"mass_kg": 4,
+					"shape": "capsule",
+					"component_center_cm": [
+						0.60000079020029184,
+						-8.9999999932864352,
+						31.499999155367028
+					],
+					"local_center_cm": [
+						1.353562453225182e-07,
+						-21.508371353149421,
+						-9.5406369382544653e-07
+					],
+					"local_rotation_degrees": [
+						90.000002542502472,
+						1.5983539336565635,
+						-179.99999956850843
+					],
+					"box_dimensions_cm": [
+						0,
+						0,
+						0
+					],
+					"radius_cm": 4.9000000953674316,
+					"cylinder_length_cm": 30.216754913330078,
+					"retains_proximal_left_thigh_capsule": false
+				},
+				{
+					"bone": "foot_r",
+					"mass_kg": 1,
+					"shape": "box",
+					"component_center_cm": [
+						7.0000010696493096,
+						-8.9999990328679704,
+						5.9999931276934646
+					],
+					"local_center_cm": [
+						-0.48679315726042754,
+						-7.617255876336146,
+						-2.5962284350932916
+					],
+					"local_rotation_degrees": [
+						10.80040169148424,
+						10.435689155749678,
+						-88.020988333772181
+					],
+					"box_dimensions_cm": [
+						26,
+						11,
+						12
+					],
+					"radius_cm": 0,
+					"cylinder_length_cm": 0,
+					"retains_proximal_left_thigh_capsule": false
+				}
+			],
+			"constraints": [
+				{
+					"child": "calf_r",
+					"parent": "thigh_r",
+					"anchor_component_cm": [
+						1.2000005107512743,
+						-9.0000009537048999,
+						53.000005183040592
+					],
+					"hinge_center_pitch_degrees": -50,
+					"swing1_swing2_twist_degrees": [
+						12,
+						55,
+						8
+					]
+				},
+				{
+					"child": "foot_r",
+					"parent": "calf_r",
+					"anchor_component_cm": [
+						1.0696493093487192e-06,
+						-8.9999990328679704,
+						9.9999931276934646
+					],
+					"hinge_center_pitch_degrees": 0,
+					"swing1_swing2_twist_degrees": [
+						22,
+						20,
+						18
+					]
+				}
+			]
+		}
+	],
+	"status": "GENERATED; runtime fitting and settling require separate gameplay validation"
+}

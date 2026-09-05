@@ -1,0 +1,48 @@
+Candidate03 Stage D regional damage integration
+Registered sandbox actors, actual anatomical collision traces, production packet resolution and authored attack timing. Manual region packets isolate trauma/score boundaries; they do not claim a particular shotgun spread landed those regions. Physical fidelity and rendered wound review are separate.
+
+PASS | Regional check uses isolated production sandbox
+PASS | Regional fixture uses a registered reachable sandbox enemy
+PASS | Leg region 4 has continuous hip-knee-ankle query coverage
+PASS | Actual leg trace region 4 sample 0 hits its own query: UpperLegLeftRegion
+PASS | Actual leg trace region 4 sample 1 hits its own query: UpperLegLeftRegion
+PASS | Actual leg trace region 4 sample 2 hits its own query: LegLeftRegion
+PASS | Leg region 5 has continuous hip-knee-ankle query coverage
+PASS | Actual leg trace region 5 sample 0 hits its own query: UpperLegRightRegion
+PASS | Actual leg trace region 5 sample 1 hits its own query: UpperLegRightRegion
+PASS | Actual leg trace region 5 sample 2 hits its own query: LegRightRegion
+PASS | Opposite leg query segments remain separate in reference pose: 2.000cm
+PASS | Actual trace at source_r resolves anatomical left; hit=UpperArmLeftRegion region=2
+PASS | Actual trace at source_l resolves anatomical right; hit=UpperArmRightRegion region=3
+PASS | Left-arm trauma removes exactly left anatomy, contributes .4 health damage and preserves life
+PASS | Removed left-arm bone cannot fall through into torso damage
+PASS | Duplicate discharge ID blocks added torso damage, severing and scoring
+PASS | Fresh missing-region-only packet is a complete no-op
+PASS | Mixed absent-left and intact-body packet accepts only the valid torso damage
+PASS | Loss of the second arm follows the selected fatal policy
+PASS | Both-arm fatal transition awards exactly one registered kill and100 points
+PASS | Fresh corpse head sever is cosmetic: no health, live transaction or second kill award
+PASS | Corpse discharge replay cannot repeat severing or cosmetic transaction
+PASS | Regional fixture uses a registered reachable sandbox enemy
+PASS | One mixed packet resolves all four eligible regions from the pre-shot mask before one death
+PASS | Four simultaneous severs produce exactly one registered death award
+PASS | Mixed live-to-dead replay preserves all four detachments and one award
+PASS | Regional fixture uses a registered reachable sandbox enemy
+PASS | Right leg is a valid damage region without detaching the supported opposite left leg
+PASS | Left-leg loss alone follows the selected fatal policy and awards one kill
+PASS | Regional fixture uses a registered reachable sandbox enemy
+PASS | Actual remaining right arm completes timed contact after left-arm loss
+PASS | Regional fixture uses a registered reachable sandbox enemy
+PASS | Actual remaining left arm completes timed contact after right-arm loss
+PASS | Regional fixture uses a registered reachable sandbox enemy
+PASS | Late-sever fixture enters genuine intact-leg ragdoll
+PASS | Late sever waits for sustained actual ragdoll rest; speed 0.000cm/s angular 0.000rad/s stable 0.500s
+PASS | Late left-leg detachment creates a fitted three-body physical chain
+PASS | Late detached leg captures the current settled thigh transform rather than the original death pose
+PASS | Retained stump preserves settled thigh-to-pelvis pose after physics update; 0.0000cm 0.0000deg
+PASS | Late corpse transfer removes every distal collider and fits proximal stump collision to the captured pose
+PASS | Late settled-corpse leg loss is one cosmetic transaction without health or duplicate award
+PASS | Late leg transaction replay cannot create another part or cosmetic transaction
+
+Checks: 42
+Failures: 0

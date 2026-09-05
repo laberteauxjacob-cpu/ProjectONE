@@ -218,7 +218,7 @@ void AONEPresentationCheck::Tick(float Dt)
             FHitResult Hit; Hit.BoneName=TEXT("upperarm_l"); Hit.ImpactPoint=Attacker->GetMesh()->GetSocketLocation(Hit.BoneName);
             Attacker->ReceiveBullet(Hit,FVector(1,0,0),32); Attacker->ReceiveBullet(Hit,FVector(1,0,0),32);
         }
-        Check(Attacker && !Attacker->HasLeftArm() && !Attacker->IsDead(),TEXT("Attack candidate survives loss of authored arm_l"));
+        Check(Attacker && !Attacker->HasRightArm() && Attacker->HasLeftArm() && !Attacker->IsDead(),TEXT("Attack candidate survives loss of source_l / anatomical right arm"));
         AttackStage=4;
     }
     if (AttackStage==4 && Attacker && Attacker->GetCombatState()==EONEZombieState::Attack && Attacker->GetStateElapsed()>.49f && Attacker->GetStateElapsed()<.65f)
@@ -226,7 +226,7 @@ void AONEPresentationCheck::Tick(float Dt)
     if (Elapsed>=29 && AttackStage<=5)
     {
         Report+=FString::Printf(TEXT("MEASURE | surviving-arm attack health before %.2f, after %.2f\n"),HealthBefore,Player->GetHealth());
-        Check(Attacker && !Attacker->HasLeftArm() && Player->GetHealth()<HealthBefore,TEXT("Surviving one-arm zombie delivers remaining-arm attack damage"));
+        Check(Attacker && !Attacker->HasRightArm() && Attacker->HasLeftArm() && Player->GetHealth()<HealthBefore,TEXT("Surviving one-arm zombie delivers remaining-arm attack damage"));
         Check(RecordCount>2 && FirstRecord<12.f && LastRecord>23.7f,TEXT("Timestamped gameplay sequence spans movement and crowd combat"));
         AttackStage=6;
     }

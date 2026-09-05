@@ -22,8 +22,11 @@ if ($candidate.static_meshes.Count -ne 5 -or $clips.Count -ne 9 -or $candidate.a
     throw 'Expected 39 accepted sources plus 14 new FBXs and 25 new WAVs'
 }
 $candidate03Count = 0
+$candidate03AudioCount = 0
+$candidate03MeshCount = 0
+$candidate03InfectedCount = 0
 if ($Candidate03) {
-    # Explicit Stage B inventory. Extend deliberately when Stage C/D is accepted.
+    # Explicit inventories for the staged locomotion, weapon and infected assets.
     $locomotion = Get-Content -Raw -LiteralPath (Join-Path $projectRoot 'ArtSource/Characters/Candidate03/inventory.json') | ConvertFrom-Json
     $expectedClips = @('A_Response_C03_Turn_L', 'A_Response_C03_Turn_R')
     foreach ($gait in @('Walk', 'Run')) {
@@ -39,6 +42,37 @@ if ($Candidate03) {
         $sources.Add(@{source="ArtSource/Exports/Candidate03/$name.fbx"; asset="/Game/ONE/Animations/$name"; candidate='03'})
     }
     $candidate03Count = 18
+    $audio = Get-Content -Raw -LiteralPath (Join-Path $projectRoot 'ArtSource/Audio/Candidate03/manifest.json') | ConvertFrom-Json
+    $expectedAudio = @()
+    foreach ($family in @('Carbine','Shotgun')) {
+        foreach ($variant in 1..6) { $expectedAudio += ('S_C03_{0}Shot_{1:00}' -f $family,$variant) }
+    }
+    $actualAudio = @($audio.events.PSObject.Properties.Name)
+    if ($actualAudio.Count -ne 12 -or @(Compare-Object ($expectedAudio | Sort-Object) ($actualAudio | Sort-Object)).Count -ne 0) {
+        throw 'Expected the explicit twelve Candidate03 Stage C shot variants'
+    }
+    foreach ($entry in $audio.events.PSObject.Properties.Value) {
+        $sources.Add(@{source=$entry.source; asset=$entry.asset; candidate='03'})
+    }
+    $candidate03AudioCount = 12
+    $presentation = Get-Content -Raw -LiteralPath (Join-Path $projectRoot 'ArtSource/Weapons/Candidate03/presentation_inventory.json') | ConvertFrom-Json
+    if (@($presentation.static_meshes.PSObject.Properties.Name).Count -ne 1 -or !$presentation.static_meshes.SM_RifleBrass_C03) {
+        throw 'Expected the explicit Candidate03 rifle brass mesh'
+    }
+    foreach ($entry in $presentation.static_meshes.PSObject.Properties.Value) {
+        $sources.Add(@{source=$entry.source; asset=$entry.asset; candidate='03'})
+    }
+    $candidate03MeshCount = 1
+    $infected = Get-Content -Raw -LiteralPath (Join-Path $projectRoot 'ArtSource/Characters/Candidate03/infected_inventory.json') | ConvertFrom-Json
+    $expectedMeshes = @('SK_Infected_Core','SK_Infected_Head','SK_Infected_ArmLeft','SK_Infected_ArmRight','SK_Infected_LegLeft')
+    $actualMeshes = @($infected.meshes.PSObject.Properties.Name)
+    if ($actualMeshes.Count -ne 5 -or @(Compare-Object ($expectedMeshes | Sort-Object) ($actualMeshes | Sort-Object)).Count -ne 0 -or @($infected.clips.PSObject.Properties.Name).Count -ne 1 -or !$infected.clips.A_Infected_C03_AttackRight) {
+        throw 'Expected five explicit modular infected meshes and the complementary right-arm attack'
+    }
+    foreach ($entry in @($infected.meshes.PSObject.Properties.Value) + @($infected.clips.PSObject.Properties.Value)) {
+        $sources.Add(@{source=$entry.source; asset=$entry.asset; candidate='03'})
+    }
+    $candidate03InfectedCount = 6
 }
 if (@($sources.source | Sort-Object -Unique).Count -ne $sources.Count) { throw 'Duplicate source in inventory' }
 foreach ($entry in $sources) {
@@ -78,14 +112,19 @@ $report = [ordered]@{
     all_source_hashes_match = $true
     sources = $records
 }
-if ($Candidate03) { $report['new_candidate03_stage_b_fbx'] = $candidate03Count }
+if ($Candidate03) {
+    $report['new_candidate03_stage_b_fbx'] = $candidate03Count
+    $report['new_candidate03_stage_c_wav'] = $candidate03AudioCount
+    $report['new_candidate03_stage_c_fbx'] = $candidate03MeshCount
+    $report['new_candidate03_stage_d_fbx'] = $candidate03InfectedCount
+}
 $reportPath = Join-Path $projectRoot $OutputRelativePath
 if (-not [IO.Path]::GetFullPath($reportPath).StartsWith([IO.Path]::GetFullPath($projectRoot) + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Audit output must remain inside the project' }
 if ([System.IO.Path]::GetFullPath($reportPath) -eq [System.IO.Path]::GetFullPath((Join-Path $projectRoot 'Evidence/final_source_sync.json'))) { throw 'Candidate01 historical evidence must remain unchanged' }
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $reportPath) | Out-Null
 $report | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $reportPath
 if ($Candidate03) {
-    Write-Output "ONE CANDIDATE03 SOURCE HASHES ALL MATCH: $($records.Count) sources (78 accepted + 18 Stage B FBX)"
+    Write-Output "ONE CANDIDATE03 SOURCE HASHES ALL MATCH: $($records.Count) sources (78 accepted + 18 Stage B FBX + 12 Stage C WAV + 1 Stage C FBX + 6 Stage D FBX)"
 } else {
     Write-Output "ONE CANDIDATE02 SOURCE HASHES ALL MATCH: $($records.Count) sources (39 accepted + 14 FBX + 25 WAV)"
 }

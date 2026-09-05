@@ -6,10 +6,12 @@
 #include "Animation/AnimSequence.h"
 #include "Components/AudioComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Engine/World.h"
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
+#include "CoreGlobals.h"
 
 namespace
 {
@@ -28,23 +30,55 @@ namespace
     { FONEWeaponTimedEvent E; E.Time=Time; E.Event=Type; if (Audio) E.Sound=Sound(Audio); return E; }
     USoundBase* Choose(const TArray<TSoftObjectPtr<USoundBase>>& Sounds)
     { return Sounds.IsEmpty() ? nullptr : Sounds[FMath::RandHelper(Sounds.Num())].Get(); }
+    FName RegionalImpactBone(const AONEZombie* Zombie,EONEHitRegion Region,const FHitResult& Hit)
+    {
+        // Query-only region primitives do not supply a skeletal BoneName. Find
+        // the nearest evaluated bone within that region, never the other limb.
+        if (!Hit.BoneName.IsNone()) return Hit.BoneName;
+        const FName Body[]={TEXT("pelvis"),TEXT("spine_01"),TEXT("spine_02"),TEXT("neck")};
+        const FName Head[]={TEXT("head")};
+        const FName LeftArm[]={TEXT("upperarm_r"),TEXT("lowerarm_r"),TEXT("hand_r")};
+        const FName RightArm[]={TEXT("upperarm_l"),TEXT("lowerarm_l"),TEXT("hand_l")};
+        const FName LeftLeg[]={TEXT("thigh_r"),TEXT("calf_r"),TEXT("foot_r")};
+        const FName RightLeg[]={TEXT("thigh_l"),TEXT("calf_l"),TEXT("foot_l")};
+        const FName* Bones=Body; int32 Count=UE_ARRAY_COUNT(Body);
+        switch (Region)
+        {
+            case EONEHitRegion::Head: Bones=Head; Count=UE_ARRAY_COUNT(Head); break;
+            case EONEHitRegion::ArmLeft: Bones=LeftArm; Count=UE_ARRAY_COUNT(LeftArm); break;
+            case EONEHitRegion::ArmRight: Bones=RightArm; Count=UE_ARRAY_COUNT(RightArm); break;
+            case EONEHitRegion::LegLeft: Bones=LeftLeg; Count=UE_ARRAY_COUNT(LeftLeg); break;
+            case EONEHitRegion::LegRight: Bones=RightLeg; Count=UE_ARRAY_COUNT(RightLeg); break;
+            default: break;
+        }
+        FName Best=Bones[0]; double Distance=TNumericLimits<double>::Max();
+        for (int32 I=0;I<Count;++I)
+        {
+            const double D=FVector::DistSquared(Hit.ImpactPoint,Zombie->GetMesh()->GetSocketLocation(Bones[I]));
+            if (D<Distance) { Distance=D; Best=Bones[I]; }
+        }
+        return Best;
+    }
 }
 
 UONEWeaponComponent::UONEWeaponComponent()
 {
     PrimaryComponentTick.bCanEverTick=true;
+    PrimaryComponentTick.TickGroup=TG_PostPhysics;
     FONEWeaponDefinition Carbine;
     Carbine.Id=TEXT("AR01"); Carbine.DisplayName=FText::FromString(TEXT("5.56 mm Carbine"));
     Carbine.Mesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_Carbine_C02Body"));
     Carbine.MagazineMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_Carbine_Magazine"));
     Carbine.ReadyAnimation=Clip(TEXT("A_Response_Idle"));
     Carbine.EmptySound=Sound(TEXT("S_CarbineEmpty"));
-    Carbine.ShotSounds={Sound(TEXT("S_CarbineShot_01")),Sound(TEXT("S_CarbineShot_02")),Sound(TEXT("S_CarbineShot_03"))};
+    Carbine.EjectedCaseMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_RifleBrass_C03"));
+    Carbine.EjectionPoint=FVector(3.6f,-5.1f,13.7f);
+    for (int32 I=1;I<=6;++I) Carbine.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/Candidate03/"),FString::Printf(TEXT("S_C03_CarbineShot_%02d"),I)));
     Carbine.FleshSounds={Sound(TEXT("S_FleshImpact_01")),Sound(TEXT("S_FleshImpact_02")),Sound(TEXT("S_FleshImpact_03"))};
     Carbine.ConcreteSounds={Sound(TEXT("S_ConcreteImpact_01")),Sound(TEXT("S_ConcreteImpact_02"))};
     Carbine.MetalSounds={Sound(TEXT("S_MetalImpact_01")),Sound(TEXT("S_MetalImpact_02"))};
     AddOperation(Carbine,EONEWeaponOperation::Equip,.36f,TEXT("A_Response_Equip"),{Event(.18f,EONEWeaponEvent::WeaponSwap,TEXT("S_WeaponEquip"))});
-    AddOperation(Carbine,EONEWeaponOperation::Fire,.2f,TEXT("A_Response_Fire"));
+    AddOperation(Carbine,EONEWeaponOperation::Fire,.2f,TEXT("A_Response_Fire"),{Event(0.f,EONEWeaponEvent::ShellEject,nullptr)});
     AddOperation(Carbine,EONEWeaponOperation::MagazineReload,2.1f,TEXT("A_Response_CarbineReload"),{
         Event(.4f,EONEWeaponEvent::MagazineOut,TEXT("S_CarbineMagOut")),Event(1.2f,EONEWeaponEvent::MagazineCommit,TEXT("S_CarbineMagIn")),Event(1.74f,EONEWeaponEvent::Sound,TEXT("S_CarbineBolt"))});
     WeaponDefinitions.Add(Carbine);
@@ -57,14 +91,20 @@ UONEWeaponComponent::UONEWeaponComponent()
     Shotgun.Range=1400.f; Shotgun.FalloffStart=500.f; Shotgun.MinimumDamageFraction=.2f;
     Shotgun.HeadTraumaScale=1.f; Shotgun.HeavyStaggerThreshold=70.f;
     Shotgun.FlashDuration=.065f; Shotgun.FlashIntensity=27000.f;
+    Shotgun.FlashLength=29.f; Shotgun.FlashRadius=6.2f; Shotgun.FlashLightRadius=245.f;
+    Shotgun.FlashLightColor=FLinearColor(1.f,.56f,.20f);
     Shotgun.Muzzle=FVector(64.5f,0,14);
     Shotgun.Mesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_PumpShotgun"));
     Shotgun.ForeEndMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_PumpShotgun_ForeEnd"));
     Shotgun.ShellMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_ShotgunShell"));
+    Shotgun.EjectedCaseMesh=Shotgun.ShellMesh;
+    Shotgun.EjectionPoint=FVector(5,-4.5,13.5);
+    Shotgun.CaseRadius=1.05f; Shotgun.CaseImpulse=FVector(35,-165,125);
     Shotgun.MagazineMesh.Reset();
     Shotgun.ReadyAnimation=Clip(TEXT("A_Response_ShotgunReady"));
     Shotgun.EmptySound=Sound(TEXT("S_ShotgunEmpty"));
-    Shotgun.ShotSounds={Sound(TEXT("S_ShotgunShot_01")),Sound(TEXT("S_ShotgunShot_02")),Sound(TEXT("S_ShotgunShot_03"))};
+    Shotgun.ShotSounds.Reset();
+    for (int32 I=1;I<=6;++I) Shotgun.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/Candidate03/"),FString::Printf(TEXT("S_C03_ShotgunShot_%02d"),I)));
     Shotgun.Operations.Reset();
     AddOperation(Shotgun,EONEWeaponOperation::Equip,.36f,TEXT("A_Response_Equip"),{Event(.18f,EONEWeaponEvent::WeaponSwap,TEXT("S_WeaponEquip"))});
     AddOperation(Shotgun,EONEWeaponOperation::Fire,.22f,TEXT("A_Response_ShotgunFire"));
@@ -80,6 +120,10 @@ UONEWeaponComponent::UONEWeaponComponent()
 void UONEWeaponComponent::BeginPlay()
 {
     Super::BeginPlay();
+    // Wait for this frame's aim and completed skeletal evaluation, including its
+    // parallel evaluation task, before sampling attached muzzle/port transforms.
+    if (auto* P=Cast<AONEPlayer>(GetOwner()))
+    { AddTickPrerequisiteActor(P); AddTickPrerequisiteComponent(P->GetMesh()); }
     // This milestone carries exactly two editable rows; no unbounded inventory framework.
     WeaponDefinitions.SetNum(2); Carried.SetNum(2);
     auto Keep=[this](const auto& Ref) { if (UObject* Object=Ref.LoadSynchronous()) LoadedAssets.AddUnique(Object); };
@@ -87,7 +131,7 @@ void UONEWeaponComponent::BeginPlay()
     {
         auto& D=WeaponDefinitions[I]; D.Capacity=FMath::Max(1,D.Capacity); D.Pellets=FMath::Clamp(D.Pellets,1,16);
         Carried[I].Ammo=D.Capacity; Carried[I].Reserve=FMath::Clamp(D.InitialReserve,0,D.ReserveLimit);
-        Keep(D.Mesh); Keep(D.ForeEndMesh); Keep(D.ShellMesh); Keep(D.MagazineMesh); Keep(D.ReadyAnimation); Keep(D.EmptySound);
+        Keep(D.Mesh); Keep(D.ForeEndMesh); Keep(D.ShellMesh); Keep(D.EjectedCaseMesh); Keep(D.MagazineMesh); Keep(D.ReadyAnimation); Keep(D.EmptySound);
         for (const auto& S:D.ShotSounds) Keep(S);
         for (const auto& S:D.FleshSounds) Keep(S);
         for (const auto& S:D.ConcreteSounds) Keep(S);
@@ -105,6 +149,12 @@ const FONEWeaponDefinition& UONEWeaponComponent::GetDefinition() const { return 
 const FONEWeaponDefinition* UONEWeaponComponent::GetDefinitionForWeapon(int32 I) const { return WeaponDefinitions.IsValidIndex(I) ? &WeaponDefinitions[I] : nullptr; }
 int32 UONEWeaponComponent::GetAmmoForWeapon(int32 I) const { return Carried.IsValidIndex(I) ? Carried[I].Ammo : 0; }
 int32 UONEWeaponComponent::GetReserveAmmoForWeapon(int32 I) const { return Carried.IsValidIndex(I) ? Carried[I].Reserve : 0; }
+int32 UONEWeaponComponent::GetLastShotSoundIndexForWeapon(int32 I) const { return Carried.IsValidIndex(I) ? Carried[I].LastShotSoundIndex : INDEX_NONE; }
+int32 UONEWeaponComponent::GetEjectionCountForWeapon(int32 I) const { return Carried.IsValidIndex(I) ? Carried[I].EjectionCount : 0; }
+int32 UONEWeaponComponent::GetLiveCaseCount() const
+{ int32 Count=0; for (const auto& C:Cases) if (C.IsValid()) ++Count; return Count; }
+AONEWeaponCase* UONEWeaponComponent::GetLastEjectedCase() const
+{ for (int32 I=Cases.Num()-1;I>=0;--I) if (Cases[I].IsValid()) return Cases[I].Get(); return nullptr; }
 bool UONEWeaponComponent::NeedsPump(int32 I) const { return Carried.IsValidIndex(I) && Carried[I].bNeedsPump; }
 FText UONEWeaponComponent::GetWeaponName() const { return GetDefinition().DisplayName; }
 float UONEWeaponComponent::GetTimeSinceShot() const { return GetWorld()->GetTimeSeconds()-LastShot; }
@@ -205,7 +255,7 @@ void UONEWeaponComponent::RefillAllAmmo()
     for (int32 I=0;I<Carried.Num();++I)
     {
         Carried[I].Ammo=WeaponDefinitions[I].Capacity; Carried[I].Reserve=FMath::Clamp(WeaponDefinitions[I].InitialReserve,0,WeaponDefinitions[I].ReserveLimit);
-        Carried[I].bNeedsPump=false; Carried[I].bCaseEjected=false;
+        Carried[I].bNeedsPump=false; Carried[I].bCaseEjected=false; Carried[I].PendingCaseShotId=0;
     }
     LastShot=-100; LastEmpty=-100; RefreshEquippedPresentation();
 }
@@ -253,22 +303,44 @@ void UONEWeaponComponent::ProcessWeaponEvent(const FONEWeaponTimedEvent& E)
             if (PendingIndex>=0) { EquippedIndex=PendingIndex; PendingIndex=-1; RefreshEquippedPresentation(); } break;
         case EONEWeaponEvent::PumpLock: State.bNeedsPump=false; break;
         case EONEWeaponEvent::ShellEject:
-            if (!State.bCaseEjected)
-            {
-                State.bCaseEjected=true; ++CasesEjected;
-                if (auto* P=Cast<AONEPlayer>(GetOwner()))
-                {
-                    Cases.RemoveAll([](const auto& C){ return !C.IsValid(); });
-                    while (Cases.Num()>=16) { if (Cases[0].IsValid()) Cases[0]->Destroy(); Cases.RemoveAt(0); }
-                    const FTransform T=P->Gun->GetComponentTransform();
-                    if (auto* C=GetWorld()->SpawnActor<AONEWeaponCase>(T.TransformPosition(D.EjectionPoint),T.Rotator()))
-                    { C->Initialize(D.ShellMesh.Get(),T.TransformVectorNoScale(FVector(40,-145,115))); Cases.Add(C); }
-                }
-            }
+            EjectCase(OperationIndex);
             break;
         default: break;
     }
     PlayMechanical(E.Sound.Get());
+}
+void UONEWeaponComponent::EjectCase(int32 I)
+{
+    auto& State=Carried[I]; const auto& D=WeaponDefinitions[I];
+    if (State.bCaseEjected || State.PendingCaseShotId==0) return;
+    State.bCaseEjected=true; ++State.EjectionCount; ++CasesEjected;
+    if (auto* P=Cast<AONEPlayer>(GetOwner()))
+    {
+        Cases.RemoveAll([](const auto& C){ return !C.IsValid(); });
+        while (Cases.Num()>=FMath::Clamp(MaximumCases,1,64))
+        { if (Cases[0].IsValid()) Cases[0]->Destroy(); Cases.RemoveAt(0); }
+        P->Gun->UpdateComponentToWorld();
+        const FTransform T=P->Gun->GetComponentTransform();
+        FActorSpawnParameters Params; Params.Owner=P;
+        if (auto* C=GetWorld()->SpawnActor<AONEWeaponCase>(T.TransformPosition(D.EjectionPoint),T.Rotator(),Params))
+        {
+            const FVector Impulse=D.CaseImpulse+FVector(FMath::FRandRange(-18.f,18.f),FMath::FRandRange(-22.f,22.f),FMath::FRandRange(-15.f,20.f));
+            const FVector Spin(FMath::FRandRange(420.f,900.f),FMath::FRandRange(-700.f,700.f),FMath::FRandRange(-550.f,550.f));
+            C->Initialize(D.EjectedCaseMesh.Get(),T.TransformVectorNoScale(Impulse),P->GetVelocity(),Spin,D.CaseRadius,
+                FMath::Clamp(CaseLifetime,1.f,15.f),I,State.PendingCaseShotId);
+            Cases.Add(C);
+        }
+    }
+}
+USoundBase* UONEWeaponComponent::ChooseShotSound(int32 I)
+{
+    const auto& Bank=WeaponDefinitions[I].ShotSounds; auto& State=Carried[I];
+    TArray<int32,TInlineAllocator<8>> Valid;
+    for (int32 N=0;N<Bank.Num();++N) if (Bank[N].IsValid() && N!=State.LastShotSoundIndex) Valid.Add(N);
+    if (Valid.IsEmpty() && Bank.IsValidIndex(State.LastShotSoundIndex) && Bank[State.LastShotSoundIndex].IsValid()) Valid.Add(State.LastShotSoundIndex);
+    LastShotSoundIndex=Valid.IsEmpty() ? INDEX_NONE : Valid[FMath::RandHelper(Valid.Num())];
+    State.LastShotSoundIndex=LastShotSoundIndex;
+    return Bank.IsValidIndex(LastShotSoundIndex) ? Bank[LastShotSoundIndex].Get() : nullptr;
 }
 void UONEWeaponComponent::FinishOperation()
 {
@@ -339,10 +411,15 @@ void UONEWeaponComponent::Fire()
     const auto& D=GetDefinition(); auto& State=Carried[EquippedIndex];
     --State.Ammo; State.bNeedsPump=D.bPumpAction; State.bCaseEjected=false;
     LastShot=GetWorld()->GetTimeSeconds(); LastShotId=++NextDischargeId; ++ShotsFired;
+    State.PendingCaseShotId=LastShotId;
+    P->Gun->UpdateComponentToWorld();
+    LastShotMuzzle=P->GetMuzzleLocation(); LastShotFrame=GFrameCounter;
+    LastShotPoseFrame=P->GetMesh()->GetCurrentBoneTransformFrame();
+    LastShotPoseRevision=P->GetMesh()->GetBoneTransformRevisionNumber();
     StartOperation(EONEWeaponOperation::Fire); P->FlashMuzzle();
-    const FVector Start=P->GetMuzzleLocation();
-    if (auto* S=Choose(D.ShotSounds))
-        if (auto* A=UGameplayStatics::SpawnSoundAttached(S,P->Gun,NAME_None,FVector::ZeroVector,EAttachLocation::KeepRelativeOffset,true,D.bPumpAction ? .82f : .62f,FMath::FRandRange(.98f,1.02f)))
+    const FVector Start=LastShotMuzzle;
+    if (auto* S=ChooseShotSound(EquippedIndex))
+        if (auto* A=UGameplayStatics::SpawnSoundAttached(S,P->Gun,NAME_None,FVector::ZeroVector,EAttachLocation::KeepRelativeOffset,true,D.bPumpAction ? .82f : .62f,1.f))
         { A->bIsUISound=false; ShotAudio.RemoveAll([](const auto& C){return !C.IsValid() || !C->IsPlaying();}); ShotAudio.Add(A); }
     FVector Direction=(P->GetAimPoint()-Start).GetSafeNormal(); if (Direction.IsNearlyZero()) Direction=P->GetActorForwardVector();
     FCollisionQueryParams Params(SCENE_QUERY_STAT(ONEWeapon),false,P);
@@ -365,21 +442,25 @@ void UONEWeaponComponent::Fire()
             const EONEHitRegion Region=Z->GetHitRegion(Hit); if (Region==EONEHitRegion::Invalid) continue;
             const float Falloff=FMath::Clamp((FVector::Distance(Start,End)-D.FalloffStart)/FMath::Max(1.f,D.Range-D.FalloffStart),0.f,1.f);
             const float HitDamage=D.Damage*FMath::Lerp(1.f,D.MinimumDamageFraction,Falloff);
-            auto& Packet=Victims.FindOrAdd(Z); Packet.ShotId=LastShotId; Packet.Direction=Direction; Packet.Position+=End; ++Packet.Pellets; Packet.HeavyStaggerThreshold=D.HeavyStaggerThreshold;
-            if (Region==EONEHitRegion::Head) { Packet.HeadDamage+=HitDamage; Packet.HeadTrauma+=HitDamage*D.HeadTraumaScale; }
-            else if (Region==EONEHitRegion::Arm) { Packet.ArmDamage+=HitDamage; Packet.ArmTrauma+=HitDamage*D.ArmTraumaScale; }
-            else Packet.BodyDamage+=HitDamage;
+            auto& Packet=Victims.FindOrAdd(Z); Packet.ShotId=LastShotId; Packet.HeavyStaggerThreshold=D.HeavyStaggerThreshold;
+            float TraumaScale=0.f;
+            if (Region==EONEHitRegion::Head) TraumaScale=D.HeadTraumaScale;
+            else if (Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight) TraumaScale=D.ArmTraumaScale;
+            else if (Region==EONEHitRegion::LegLeft || Region==EONEHitRegion::LegRight) TraumaScale=D.LegTraumaScale;
+            Packet.Get(Region).AddPellet(HitDamage,HitDamage*TraumaScale,End,Ray,Hit.ImpactNormal,RegionalImpactBone(Z,Region,Hit));
         }
         else if (SurfaceHits.Num()<2 && !SurfaceHits.ContainsByPredicate([&Hit](const auto& Previous){ return Previous.GetComponent()==Hit.GetComponent(); })) SurfaceHits.Add(Hit);
     }
     bLastHitKill=false;
+    int32 FleshVoices=0;
     for (auto& Pair:Victims)
     {
-        auto& Packet=Pair.Value; Packet.Position/=FMath::Max(1,Packet.Pellets);
+        auto& Packet=Pair.Value; Packet.Finalize();
         if (Pair.Key->ReceiveWeaponDamage(Packet))
         {
             LastHit=GetWorld()->GetTimeSeconds(); bLastHitKill|=Pair.Key->IsDead();
-            if (auto* S=Choose(D.FleshSounds)) UGameplayStatics::PlaySoundAtLocation(this,S,Packet.Position,.55f);
+            if (FleshVoices<2) if (auto* S=Choose(D.FleshSounds))
+            { UGameplayStatics::PlaySoundAtLocation(this,S,Packet.GetImpactPosition(),.55f); ++FleshVoices; }
         }
     }
     for (const auto& Hit:SurfaceHits)

@@ -56,6 +56,17 @@ public:
     int32 GetAutomaticReloadCount() const { return AutomaticReloads; }
     int32 GetSprintReloadInterruptCount() const { return SprintReloadInterrupts; }
     uint64 GetLastShotId() const { return LastShotId; }
+    FVector GetLastShotMuzzle() const { return LastShotMuzzle; }
+    uint32 GetLastShotPoseFrame() const { return LastShotPoseFrame; }
+    uint32 GetLastShotPoseRevision() const { return LastShotPoseRevision; }
+    uint64 GetLastShotFrame() const { return LastShotFrame; }
+    int32 GetLastShotSoundIndex() const { return LastShotSoundIndex; }
+    int32 GetLastShotSoundIndexForWeapon(int32 Index) const;
+    int32 GetEjectionCountForWeapon(int32 Index) const;
+    int32 GetLiveCaseCount() const;
+    AONEWeaponCase* GetLastEjectedCase() const;
+    int32 GetMaximumCases() const { return MaximumCases; }
+    float GetCaseLifetime() const { return CaseLifetime; }
     const FONEWeaponDefinition& GetDefinition() const;
     const FONEWeaponDefinition* GetDefinitionForWeapon(int32 Index) const;
     UAnimSequence* GetReadyAnimation() const;
@@ -65,6 +76,8 @@ public:
     bool ShouldShowSeatedMagazine() const;
     bool ShouldShowHeldMagazine() const;
     UPROPERTY(EditAnywhere,EditFixedSize,Category="Weapons") TArray<FONEWeaponDefinition> WeaponDefinitions;
+    UPROPERTY(EditAnywhere,Category="Cases",meta=(ClampMin="1",ClampMax="64")) int32 MaximumCases=32;
+    UPROPERTY(EditAnywhere,Category="Cases",meta=(ClampMin="1",ClampMax="15")) float CaseLifetime=6.f;
     // Candidate01 read-compatible mirrors. Edit the corresponding definition instead.
     UPROPERTY(VisibleAnywhere,Category="Current Weapon") int32 MagazineSize=24;
     UPROPERTY(VisibleAnywhere,Category="Current Weapon") float FireInterval=.16f;
@@ -73,6 +86,8 @@ public:
     UPROPERTY(VisibleAnywhere,Category="Current Weapon") float Range=2800.f;
 private:
     void Fire();
+    void EjectCase(int32 Index);
+    USoundBase* ChooseShotSound(int32 Index);
     void StartOperation(EONEWeaponOperation Next,int32 DefinitionIndex=-1);
     void FinishOperation();
     void AdvanceOperationEvents();
@@ -90,6 +105,10 @@ private:
     int32 ShotsFired=0,ShellsInserted=0,MagazinesCommitted=0,CasesEjected=0;
     int32 AutomaticReloads=0,SprintReloadInterrupts=0;
     uint64 LastShotId=0;
+    uint64 LastShotFrame=0;
+    uint32 LastShotPoseFrame=0,LastShotPoseRevision=0;
+    int32 LastShotSoundIndex=INDEX_NONE;
+    FVector LastShotMuzzle=FVector::ZeroVector;
     bool bTrigger=false,bPendingShot=false,bLastHitKill=false;
     float OperationStart=0,LastShot=-100,LastEmpty=-100,LastHit=-100;
 };

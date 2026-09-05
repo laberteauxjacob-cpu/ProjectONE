@@ -26,7 +26,7 @@
 
 namespace
 {
-    const FVector Directions[]={FVector(1,0,0),FVector(1,1,0),FVector(0,1,0),FVector(-1,1,0),FVector(-1,0,0),FVector(-1,-1,0),FVector(0,-1,0),FVector(1,-1,0)};
+    const FVector Movement03Directions[]={FVector(1,0,0),FVector(1,1,0),FVector(0,1,0),FVector(-1,1,0),FVector(-1,0,0),FVector(-1,-1,0),FVector(0,-1,0),FVector(1,-1,0)};
     const TCHAR* DirectionNames[]={TEXT("FORWARD"),TEXT("FORWARD RIGHT"),TEXT("RIGHT"),TEXT("BACK RIGHT"),TEXT("BACK"),TEXT("BACK LEFT"),TEXT("LEFT"),TEXT("FORWARD LEFT")};
 }
 AONE03MovementCheck::AONE03MovementCheck()
@@ -86,7 +86,7 @@ void AONE03MovementCheck::PrepareTrial()
         Stage=19; return;
     }
     const int32 Weapon=Trial/24,Mode=(Trial%24)/8,Direction=Trial%8;
-    InputDirection=Directions[Direction];
+    InputDirection=Movement03Directions[Direction];
     Player->SetActorLocation(FVector(0,360,98)-InputDirection.GetSafeNormal()*190.f);
     Player->SetAimOverride(true,Player->GetActorLocation()+FVector(10000,0,40));
     W->SelectWeapon(Weapon);
@@ -108,10 +108,12 @@ void AONE03MovementCheck::Capture()
 void AONE03MovementCheck::Screenshot(int32 Width,int32 Height,const TArray<FColor>& Colors)
 {
     if (PendingFrame.IsEmpty() || !Player) return;
+    const double CapturedAt=FPlatformTime::Seconds()-AudioStart;
+    auto* W=Player->GetWeaponComponent();
+    const FString Row=FString::Printf(TEXT("%s,%.6f,%.6f,%d,%d,%d,%d,%d\n"),*PendingFrame,CapturedAt,Elapsed,Trial,W->GetEquippedIndex(),W->GetAmmo(),W->GetReserveAmmo(),int32(W->GetOperation()));
     if (FImageUtils::SaveImageByExtension(*(Folder/PendingFrame),FImageView(Colors.GetData(),Width,Height),85))
     {
-        auto* W=Player->GetWeaponComponent();
-        FrameReport+=FString::Printf(TEXT("%s,%.6f,%.6f,%d,%d,%d,%d,%d\n"),*PendingFrame,FPlatformTime::Seconds()-AudioStart,Elapsed,Trial,W->GetEquippedIndex(),W->GetAmmo(),W->GetReserveAmmo(),int32(W->GetOperation())); ++Frames;
+        FrameReport+=Row; ++Frames;
     }
     PendingFrame.Empty();
 }
@@ -209,7 +211,7 @@ void AONE03MovementCheck::Tick(float Dt)
     else if (Stage==21 || Stage==22)
     {
         const int32 Leg=FMath::FloorToInt(T/1.1f);
-        const FVector Direction=Directions[(Leg%2?4:0)+(Leg/2)%4];
+        const FVector Direction=Movement03Directions[(Leg%2?4:0)+(Leg/2)%4];
         Player->AddMovementInput(Direction.GetSafeNormal());
         Player->SetSprintHeld(Leg>=2);
         const float Angle=Stage==22?T*1.7f:0.f;

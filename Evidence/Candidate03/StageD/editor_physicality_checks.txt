@@ -1,0 +1,255 @@
+Candidate03 Stage D actual physics, wounds and crowd integration
+Controlled registered sandbox fixtures; region packets are explicit test inputs, not claimed player aiming. Mixed crowd phase also uses the production player weapon. Camera/audio capture is opt-in and excluded from performance runs.
+
+Physics settings: substepping=1, max_substep_seconds=0.008333333, max_substeps=6, max_physics_delta_seconds=0.050000001. Optional corpse motion telemetry=1.
+corpse_motion.csv is an opt-in post-physics observation at the existing approximately 10Hz sample cadence. Low motion means all active bodies <=5cm/s and <=0.12rad/s, plus <=2cm/2degrees since the previous sample; a missing/changed body set or gap over0.25s resets the measured duration. First-sample pose steps are -1 (unavailable). This is not a support/contact test or a command to sleep/freeze.
+Production rest guard is separate: minimum2s since disturbance, all bodies <=5cm/s and <=0.35rad/s, each bone within1cm/2degrees of a fixed measured window pose for1.25s, then confirmed static support within3cm. Qualified poses become kinematic with collision retained; ordinary contact does not resume them. Fresh accepted corpse damage/sever resumes the current pose before applying its impulse. Natural sleeping bodies stay simulated. Freeze/resume counts and transform errors are separate; BIG_NUMBER means that transition has not occurred. See ONE_REST_SUPPORTED_FREEZE and ONE_REST_RESUME log entries.
+PASS | MINOR WOUND / MOVING TRAIL | actual registered fixture exists
+PASS | MINOR WOUND / MOVING TRAIL | all presentation owner counts remain bounded
+PASS | MINOR WOUND / MOVING TRAIL | moving wound deposited a finite trail on surfaces
+PASS | MINOR WOUND / MOVING TRAIL | minor leakage expires without infinite replenishment
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0246deg
+PASS | SEVERE TORSO / COLLAPSE / GROWING POOL | actual registered fixture exists
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0243deg
+PASS | SEVERE TORSO / COLLAPSE / GROWING POOL | all presentation owner counts remain bounded
+PASS | SEVERE TORSO / COLLAPSE / GROWING POOL | actual bodies simulated during the sequence
+PASS | SEVERE TORSO / COLLAPSE / GROWING POOL | finite transforms and bounded physical speed 400.23 cm/s
+PASS | SEVERE TORSO / COLLAPSE / GROWING POOL | severe corpse wound deposits more volume than minor wound
+PASS | SEVERE TORSO / COLLAPSE / GROWING POOL | pool grows after its initial stamp 11.00 -> 35.12cm
+PASS | SEVERE TORSO / COLLAPSE / GROWING POOL | severe wound also stops emitting
+PASS | SEVERE TORSO / COLLAPSE / GROWING POOL | actual decal projection extent follows the pool growth state
+PASS | ANATOMICAL LEFT ARM / REMAINING ARM | actual registered fixture exists
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0289deg
+PASS | ANATOMICAL LEFT ARM / REMAINING ARM | all presentation owner counts remain bounded
+PASS | ANATOMICAL LEFT ARM / REMAINING ARM | actual bodies simulated during the sequence
+PASS | ANATOMICAL LEFT ARM / REMAINING ARM | finite transforms and bounded physical speed 426.61 cm/s
+PASS | ANATOMICAL LEFT ARM / REMAINING ARM | severed arm collision remains absent in ragdoll
+PASS | ANATOMICAL LEFT ARM / REMAINING ARM | correct anatomical arm remains absent
+PASS | ANATOMICAL LEFT ARM / REMAINING ARM | a separate physical part was present
+PASS | ANATOMICAL RIGHT ARM / REMAINING ARM | actual registered fixture exists
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0292deg
+PASS | ANATOMICAL RIGHT ARM / REMAINING ARM | supported freeze preserves evaluated bones and retained body transforms: 0.114510cm / 0.031411deg
+PASS | ANATOMICAL RIGHT ARM / REMAINING ARM | established frozen pose retains physics-only collision
+PASS | ANATOMICAL RIGHT ARM / REMAINING ARM | all presentation owner counts remain bounded
+PASS | ANATOMICAL RIGHT ARM / REMAINING ARM | actual bodies simulated during the sequence
+PASS | ANATOMICAL RIGHT ARM / REMAINING ARM | finite transforms and bounded physical speed 421.53 cm/s
+PASS | ANATOMICAL RIGHT ARM / REMAINING ARM | severed arm collision remains absent in ragdoll
+PASS | ANATOMICAL RIGHT ARM / REMAINING ARM | correct anatomical arm remains absent
+PASS | ANATOMICAL RIGHT ARM / REMAINING ARM | a separate physical part was present
+PASS | HEAD AND LEFT LEG / PHYSICAL PARTS | actual registered fixture exists
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0284deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0219deg
+PASS | HEAD AND LEFT LEG / PHYSICAL PARTS | all presentation owner counts remain bounded
+PASS | HEAD AND LEFT LEG / PHYSICAL PARTS | actual bodies simulated during the sequence
+PASS | HEAD AND LEFT LEG / PHYSICAL PARTS | finite transforms and bounded physical speed 487.52 cm/s
+PASS | HEAD AND LEFT LEG / PHYSICAL PARTS | head and selected leg created independent parts
+PASS | HEAD AND LEFT LEG / PHYSICAL PARTS | fatal region loss has no invisible retained collider
+PASS | HEAD AND LEFT LEG / PHYSICAL PARTS | fatal region loss has no invisible retained collider
+PASS | SIX MOVING DEATHS / CORPSE CONTACT | actual registered fixture exists
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0302deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0277deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0234deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0282deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0286deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0297deg
+PASS | Fresh body hit resumes retained frozen bodies before applying corpse impulse
+PASS | Frozen-to-simulated transition preserves bones and collision: 0.000000cm / 0.040387deg
+PASS | Fresh frozen-corpse hit is one corpse transaction with no health or kill award
+PASS | SIX MOVING DEATHS / CORPSE CONTACT | supported freeze preserves evaluated bones and retained body transforms: 0.329305cm / 0.043122deg
+PASS | SIX MOVING DEATHS / CORPSE CONTACT | established frozen pose retains physics-only collision
+PASS | SIX MOVING DEATHS / CORPSE CONTACT | all presentation owner counts remain bounded
+PASS | SIX MOVING DEATHS / CORPSE CONTACT | actual bodies simulated during the sequence
+PASS | SIX MOVING DEATHS / CORPSE CONTACT | finite transforms and bounded physical speed 525.39 cm/s
+PASS | SIX MOVING DEATHS / CORPSE CONTACT | all six bodies reached the floor contact area
+PASS | SIX MOVING DEATHS / CORPSE CONTACT | different settled pelvis orientations 6/6
+PASS | SIX MOVING DEATHS / CORPSE CONTACT | contact-established bodies sleep or preserve supported poses; awake 64 / peak 96; frozen corpses 1
+SIX MOVING DEATHS / CORPSE CONTACT | fresh hit resumed a naturally qualifying frozen corpse during this run
+PASS | CORNER CROWD / PURSUIT | registered safe spawns 18/18
+PASS | CORNER CROWD / PURSUIT | all presentation owner counts remain bounded
+PASS | CORNER CROWD / PURSUIT | individual progress over 100cm 18/18 and real attack contact
+PASS | CORNER CROWD / PURSUIT | close physical crowd: nearest 54.00cm / maximum overlap 0.00cm
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0300deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0276deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0262deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0243deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0281deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0185deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0284deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0292deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0225deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0258deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0236deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0219deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0245deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0294deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0320deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0279deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0306deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0327deg
+PASS | RACK SIDE PASSAGE / CROWD CONTACT | registered safe spawns 18/18
+PASS | RACK SIDE PASSAGE / CROWD CONTACT | all presentation owner counts remain bounded
+PASS | RACK SIDE PASSAGE / CROWD CONTACT | individual progress over 100cm 18/18 and real attack contact
+PASS | RACK SIDE PASSAGE / CROWD CONTACT | close physical crowd: nearest 54.00cm / maximum overlap 0.00cm
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0286deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0186deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0331deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0217deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0286deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0313deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0292deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0312deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0237deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0327deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0299deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0318deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0305deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0242deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0275deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0324deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0330deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0241deg
+PASS | BENCH END / CROWD CONTACT | registered safe spawns 18/18
+PASS | BENCH END / CROWD CONTACT | all presentation owner counts remain bounded
+PASS | BENCH END / CROWD CONTACT | individual progress over 100cm 18/18 and real attack contact
+PASS | BENCH END / CROWD CONTACT | close physical crowd: nearest 54.00cm / maximum overlap 0.00cm
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0290deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0288deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0325deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0179deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0282deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0297deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0255deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0276deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0278deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0246deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0244deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0275deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0267deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0277deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0240deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0307deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0305deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0291deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0289deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0239deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0293deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0297deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0314deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0269deg
+PASS | SUSTAINED MIXED CROWD / LIVE WEAPON | all presentation owner counts remain bounded
+PASS | SUSTAINED MIXED CROWD / LIVE WEAPON | actual bodies simulated during the sequence
+PASS | SUSTAINED MIXED CROWD / LIVE WEAPON | finite transforms and bounded physical speed 472.49 cm/s
+PASS | SUSTAINED MIXED CROWD / LIVE WEAPON | simultaneous living attacks, corpses and wounds for 11.960s
+PASS | SUSTAINED MIXED CROWD / LIVE WEAPON | normal equipped weapon discharged in the mixed encounter
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0277deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0242deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0259deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0260deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0216deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0272deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0308deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0278deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0273deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0269deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0285deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0263deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0186deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0273deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0269deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0277deg
+PASS | Death activates real skeletal physics bodies
+PASS | Physics starts at evaluated animated bones: 0.0000cm / 0.0316deg
+PASS | CLEANUP / NO REAPPEARING BLOOD | all presentation owner counts remain bounded
+PASS | CLEANUP / NO REAPPEARING BLOOD | production cleanup leaves no owned state or later blood respawn
+
+Checks: 244
+Failures: 0
+Captured frames: 3092

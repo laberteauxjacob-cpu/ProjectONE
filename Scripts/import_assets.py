@@ -1,5 +1,9 @@
-"""Run with UnrealEditor-Cmd ProjectONE.uproject -run=pythonscript -script=...
- -unattended -nop4 -nosplash -nullrhi -AllowCommandletAudio .
+"""Run in the full UnrealEditor with ProjectONE.uproject
+ -ExecutePythonScript="<absolute path to this script>" -unattended -nop4 -nosplash.
+StaticMeshEditorSubsystem is required for deterministic environment collision.
+The -run=pythonscript commandlet does not initialize it in this UE5.7 installation.
+For unattended use, a full-editor wrapper can run this script and request editor
+shutdown after successful completion; all repository paths derive from __file__.
 Imports ONLY Project ONE's original exports, creates explicit native materials,
 and preserves original Blender material-slot names. Safe to rerun for iteration.
 """
@@ -160,6 +164,23 @@ def assign_materials(asset):
             name=str(slot.material_slot_name)
             if name in materials: asset.set_material(i,materials[name])
             else: log('UNMAPPED MATERIAL '+name+' on '+asset.get_name())
+        environment_kit={
+            'SM_FloorModule','SM_WallBay','SM_CutawayBarrier','SM_PressureDoor',
+            'SM_PowerRack','SM_PressureVessel','SM_LabConsole','SM_ResearchBench',
+        }
+        if asset.get_path_name().startswith('/Game/ONE/Art/Environment/') and asset.get_name() in environment_kit:
+            # FBX reimport can preserve old, differently oriented hulls. Replace
+            # the kit's collision from its current render geometry on every import.
+            editor=u.get_editor_subsystem(u.StaticMeshEditorSubsystem)
+            if editor is None:
+                raise RuntimeError('StaticMeshEditorSubsystem is unavailable. Run the full UnrealEditor with '
+                                   '-ExecutePythonScript, not UnrealEditor-Cmd -run=pythonscript.')
+            if not editor.remove_collisions(asset):
+                raise RuntimeError('Could not remove previous environment collision: '+asset.get_name())
+            hull=editor.add_simple_collisions(asset,u.ScriptCollisionShapeType.NDOP18)
+            if hull!=0 or editor.get_convex_collision_count(asset)!=1 or editor.get_simple_collision_count(asset)!=0:
+                raise RuntimeError('Expected one fresh NDOP18 environment hull: '+asset.get_name())
+            log('REBUILT COLLISION '+asset.get_name()+' current-render NDOP18 hull=1')
         # Full detail single LOD, sufficient for this small authored kit.
         LIB.save_loaded_asset(asset)
     elif isinstance(asset,u.SkeletalMesh):

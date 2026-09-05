@@ -1,0 +1,193 @@
+{
+  "capture_id": "PhysicalityCaptureRun4",
+  "raw_directory_at_review": "Saved/Candidate03/PhysicalityCapture",
+  "review_date": "2026-09-05",
+  "provenance": "Actual editor-game working-tree capture, locally labelled build15; no exact commit or fresh packaged provenance claimed.",
+  "capture_sha256": {
+    "checks.txt": "e7f30560532b9ecff7034aedd19f3883caa587f80be431a0fcbabbe311cd5369",
+    "frames.csv": "15c6d8604a9167916605db3fa744af9c969701bae544603ff448985b8d1c81a1",
+    "observations.csv": "a8b15dc75bd0cfc2eb46b2f934112a8cd7e2bdfe2eab21809a1fa791d7a4f931",
+    "corpse_motion.csv": "061e975852316be961d0819de1d9495cbfe2d0c038d1d59ffe7eba52dc4124a9"
+  },
+  "automated_checks": 244,
+  "automated_failures": 0,
+  "total_frames": 3092,
+  "inspected_dense_frames": 153,
+  "additional_sparse_context_views": 18,
+  "detail_review": "32 frames already in dense windows viewed again at native pixel scale:00954\u201300961,01376\u201301383,01421\u201301428,01513\u201301520.",
+  "windows": [
+    {
+      "label": "Arm-loss corpse freeze",
+      "first_file": "frame_00943.jpg",
+      "last_file": "frame_00978.jpg",
+      "count": 36,
+      "phase": 3,
+      "audio_seconds": [
+        37.426729,
+        38.789911
+      ],
+      "world_seconds": [
+        42.411655,
+        43.774036
+      ]
+    },
+    {
+      "label": "First six-body fixture freeze",
+      "first_file": "frame_01367.jpg",
+      "last_file": "frame_01394.jpg",
+      "count": 28,
+      "phase": 5,
+      "audio_seconds": [
+        53.892662,
+        54.933794
+      ],
+      "world_seconds": [
+        58.874489,
+        59.917477
+      ]
+    },
+    {
+      "label": "Corpse re-hit/resume",
+      "first_file": "frame_01411.jpg",
+      "last_file": "frame_01448.jpg",
+      "count": 38,
+      "phase": 5,
+      "audio_seconds": [
+        55.595346,
+        56.967009
+      ],
+      "world_seconds": [
+        60.578209,
+        61.950188
+      ]
+    },
+    {
+      "label": "Re-freeze and late pile",
+      "first_file": "frame_01502.jpg",
+      "last_file": "frame_01552.jpg",
+      "count": 51,
+      "phase": 5,
+      "audio_seconds": [
+        58.92458,
+        60.905962
+      ],
+      "world_seconds": [
+        63.90818,
+        65.889366
+      ]
+    }
+  ],
+  "state_changes_first_observed_in_telemetry": [
+    {
+      "seconds": "43.018177",
+      "phase": "3",
+      "corpse": "ONEZombie_3",
+      "frozen": "1",
+      "freeze_events": "1",
+      "resume_events": "0",
+      "frozen_body_count": "13",
+      "freeze_error_cm": 0.11451,
+      "freeze_error_degrees": 0.031411,
+      "resume_error_cm": null,
+      "resume_error_degrees": null
+    },
+    {
+      "seconds": "59.345791",
+      "phase": "5",
+      "corpse": "ONEZombie_7",
+      "frozen": "1",
+      "freeze_events": "1",
+      "resume_events": "0",
+      "frozen_body_count": "16",
+      "freeze_error_cm": 0.328307,
+      "freeze_error_degrees": 0.040387,
+      "resume_error_cm": null,
+      "resume_error_degrees": null
+    },
+    {
+      "seconds": "61.081047",
+      "phase": "5",
+      "corpse": "ONEZombie_7",
+      "frozen": "0",
+      "freeze_events": "1",
+      "resume_events": "1",
+      "frozen_body_count": "0",
+      "freeze_error_cm": 0.328307,
+      "freeze_error_degrees": 0.040387,
+      "resume_error_cm": 0.0,
+      "resume_error_degrees": 0.040387
+    },
+    {
+      "seconds": "64.536911",
+      "phase": "5",
+      "corpse": "ONEZombie_7",
+      "frozen": "1",
+      "freeze_events": "2",
+      "resume_events": "1",
+      "frozen_body_count": "16",
+      "freeze_error_cm": 0.329305,
+      "freeze_error_degrees": 0.043122,
+      "resume_error_cm": 0.0,
+      "resume_error_degrees": 0.040387
+    }
+  ],
+  "state_change_timing_limit": "Approximately10Hz observations, not exact state-transition timestamps. Null error means not yet measured. Screenshot clock is separately recorded.",
+  "late_pile_metrics": [
+    {
+      "corpse": "ONEZombie_10",
+      "samples": 17,
+      "max_linear_cm_s": 0.0,
+      "max_pose_step_cm": 0.0,
+      "max_pose_step_degrees": 0.041041,
+      "last_awake_count": 0,
+      "last_frozen": 0
+    },
+    {
+      "corpse": "ONEZombie_11",
+      "samples": 17,
+      "max_linear_cm_s": 4.961945,
+      "max_pose_step_cm": 0.137084,
+      "max_pose_step_degrees": 3.566772,
+      "last_awake_count": 16,
+      "last_frozen": 0
+    },
+    {
+      "corpse": "ONEZombie_6",
+      "samples": 17,
+      "max_linear_cm_s": 3.354471,
+      "max_pose_step_cm": 0.3167,
+      "max_pose_step_degrees": 9.455333,
+      "last_awake_count": 16,
+      "last_frozen": 0
+    },
+    {
+      "corpse": "ONEZombie_7",
+      "samples": 17,
+      "max_linear_cm_s": 0.797069,
+      "max_pose_step_cm": 0.076295,
+      "max_pose_step_degrees": 0.171949,
+      "last_awake_count": 0,
+      "last_frozen": 1
+    },
+    {
+      "corpse": "ONEZombie_8",
+      "samples": 17,
+      "max_linear_cm_s": 2.523324,
+      "max_pose_step_cm": 0.305575,
+      "max_pose_step_degrees": 5.683326,
+      "last_awake_count": 16,
+      "last_frozen": 0
+    },
+    {
+      "corpse": "ONEZombie_9",
+      "samples": 17,
+      "max_linear_cm_s": 14.218004,
+      "max_pose_step_cm": 2.272174,
+      "max_pose_step_degrees": 25.971107,
+      "last_awake_count": 16,
+      "last_frozen": 0
+    }
+  ],
+  "visual_conclusion": "No obvious pose snap at reviewed freezes or re-hit/resume. Existing physical arrangement retained; missing arm remains absent. Some unfrozen members retain small visible limb movement. Not a claim all bodies settled or that occluded contacts are penetration-free.",
+  "mechanics_limit": "Freezing is not natural solver sleep. Supported frozen poses keep kinematic colliders and do not wake from ordinary contact; accepted hit/sever resumes simulation. This review observes transition presentation, not user approval of that tradeoff."
+}

@@ -8,6 +8,8 @@ class USpringArmComponent;
 class UCameraComponent;
 class UStaticMeshComponent;
 class UPointLightComponent;
+class UProceduralMeshComponent;
+class UMaterialInstanceDynamic;
 struct FONEWeaponDefinition;
 
 UCLASS()
@@ -28,6 +30,10 @@ public:
     FVector GetAimPoint() const { return AimPoint; }
     FVector GetMuzzleLocation() const;
     void FlashMuzzle();
+    void ClearMuzzleFlash();
+    bool IsMuzzleFlashVisible() const;
+    float GetMuzzleFlashIntensity() const;
+    FTransform GetMuzzleFlashTransform() const;
     void ClearWeaponEffects();
     void ApplyWeaponPresentation(const FONEWeaponDefinition& Definition);
     void ReleaseHeldInputs();
@@ -59,6 +65,7 @@ public:
     UPROPERTY(VisibleAnywhere) TObjectPtr<USpringArmComponent> CameraArm;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Camera;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UPointLightComponent> MuzzleLight;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UProceduralMeshComponent> MuzzleFlashMesh;
     float LastDamageTime = -100.f;
 private:
     void MoveForward(float Value);
@@ -68,6 +75,9 @@ private:
     void SelectCarbine(); void SelectShotgun(); void CycleWeapon();
     void UpdateBodyFacing(float DeltaSeconds,float AimYaw);
     void CapturePivotFeet();
+    void BuildMuzzleFlash();
+    void UpdateMuzzleFlash(float DeltaSeconds);
+    UPROPERTY(Transient) TObjectPtr<UMaterialInstanceDynamic> MuzzleFlashMaterial;
     bool bSprint = false;
     bool bFacingInitialized = false;
     bool bTurningInPlace = false;
@@ -85,4 +95,6 @@ private:
     FVector OverrideAimPoint=FVector::ZeroVector;
     FVector AimPoint = FVector::ZeroVector;
     float MuzzleTime = 0.f;
+    float MuzzleDuration = .045f;
+    float MuzzlePeakIntensity = 0.f;
 };

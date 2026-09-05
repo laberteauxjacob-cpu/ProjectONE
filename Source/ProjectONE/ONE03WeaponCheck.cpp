@@ -18,8 +18,8 @@
 namespace
 {
     bool bRestartPending=false;
-    FString RestartReport;
-    int32 RestartFailures=0,RestartChecks=0;
+    FString Weapon03RestartReport;
+    int32 Weapon03RestartFailures=0,RestartChecks=0;
     struct FReloadCase
     {
         int32 Slot;
@@ -51,7 +51,7 @@ void AONE03WeaponCheck::BeginPlay()
     Report=TEXT("Candidate03 Stage B: actual player/weapon integration\nReal capacities, shot dispatch, operation clocks and ammo transfers. No mocked weapon or ammo setter.\nInitial binding fixture injects frame-spaced UE input events through PlayerController::InputKey; this proves production binding dispatch, not native OS keyboard delivery.\n");
     if (bRestartPending)
     {
-        Stage=99; Report=RestartReport; Failures=RestartFailures; Checks=RestartChecks; bRestartPending=false;
+        Stage=99; Report=Weapon03RestartReport; Failures=Weapon03RestartFailures; Checks=RestartChecks; bRestartPending=false;
     }
 }
 void AONE03WeaponCheck::Check(bool Pass,const FString& Label)
@@ -333,7 +333,7 @@ void AONE03WeaponCheck::Tick(float Dt)
     case 90: if (T>1.3f)
     {
         Check(Player->IsDead() && GM->IsGameOver() && !W->IsReloading() && W->GetAmmo()==Ammo && W->GetReserveAmmo()==Reserve && W->GetTotalShotsFired()==Shots && W->GetAutomaticReloadCount()==Automatic,TEXT("Death cancels auto shell loading and all later transfers or firing"));
-        bRestartPending=true; RestartReport=Report; RestartFailures=Failures; RestartChecks=Checks;
+        bRestartPending=true; Weapon03RestartReport=Report; Weapon03RestartFailures=Failures; RestartChecks=Checks;
         GM->RestartScene(); Next(98);
     } break;
     case 99: if (T>.8f)

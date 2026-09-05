@@ -291,10 +291,13 @@ void AONECombatCheck::Tick(float Dt)
         if (Target) {
             const int32 Transactions=Target->GetDamageTransactionCount();
             const int32 Sever=Target->GetSeverCount(); const float Hp=Target->GetHealth(); const int32 Points=GM->GetPoints();
-            FONEWeaponDamagePacket Duplicate; Duplicate.ShotId=W->GetLastShotId(); Duplicate.BodyDamage=120; Duplicate.Pellets=8;
+            FONEWeaponDamagePacket Duplicate; Duplicate.ShotId=W->GetLastShotId();
+            for (int32 I=0;I<8;++I) Duplicate.Get(EONEHitRegion::Body).AddPellet(15,0,Target->GetActorLocation(),FVector::ForwardVector,-FVector::ForwardVector,TEXT("spine_02"));
+            Duplicate.Finalize();
             Target->ReceiveWeaponDamage(Duplicate);
             Check(Target->GetDamageTransactionCount()==Transactions && Target->GetHealth()==Hp && Target->GetSeverCount()==Sever && GM->GetPoints()==Points,TEXT("Repeated discharge ID cannot repeat damage, severing, effects or points"));
-            Check(Sever<=1 && GM->GetPoints()-Count<=100,TEXT("Pellet burst cannot create multiple severed parts or death awards"));
+            const int32 MissingParts=int32(!Target->HasHead())+int32(!Target->HasLeftArm())+int32(!Target->HasRightArm())+int32(!Target->HasLeftLeg());
+            Check(Sever==MissingParts && Sever<=4 && GM->GetPoints()-Count<=100,TEXT("Pellet burst detaches each eligible region at most once and awards one death"));
             Check(GM->GetPoints()-Count==(Target->IsDead()?100:0),TEXT("Registered pellet victim awards exactly one hundred points if killed"));
         }
         GM->ClearSandboxPresentation();

@@ -13,6 +13,9 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/InputComponent.h"
 #include "Components/PointLightComponent.h"
+#include "ProceduralMeshComponent.h"
+#include "Materials/MaterialInstanceDynamic.h"
+#include "Materials/MaterialInterface.h"
 #include "Engine/World.h"
 #include "Engine/SkeletalMesh.h"
 #include "Kismet/GameplayStatics.h"
@@ -75,6 +78,12 @@ AONEPlayer::AONEPlayer()
     MuzzleLight->SetIntensity(0);
     MuzzleLight->SetAttenuationRadius(170);
     MuzzleLight->SetCastShadows(false);
+    MuzzleFlashMesh=CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("AttachedMuzzleFlash"));
+    MuzzleFlashMesh->SetupAttachment(Gun);
+    MuzzleFlashMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+    MuzzleFlashMesh->SetCanEverAffectNavigation(false);
+    MuzzleFlashMesh->SetCastShadow(false);
+    MuzzleFlashMesh->SetVisibility(false);
 }
 void AONEPlayer::BeginPlay()
 {
@@ -99,6 +108,7 @@ void AONEPlayer::BeginPlay()
         HeldMagazine->SetRelativeRotation(ShellBind.GetRotation().Inverse());
         HeldMagazine->SetRelativeLocation(ShellBind.GetRotation().Inverse().RotateVector(FVector(-10.5f,0,0)));
     }
+    BuildMuzzleFlash();
     Weapon->RefreshEquippedPresentation();
     GetMesh()->SetAnimInstanceClass(UONEAnimInstance::StaticClass());
     AimPoint = GetActorLocation() + GetActorForwardVector()*500;
@@ -146,7 +156,7 @@ void AONEPlayer::ClearReloadPresentation()
 void AONEPlayer::SelectCarbine() { Weapon->SelectWeapon(0); }
 void AONEPlayer::SelectShotgun() { Weapon->SelectWeapon(1); }
 void AONEPlayer::CycleWeapon() { Weapon->CycleWeapon(); }
-void AONEPlayer::ReleaseHeldInputs() { SetSprintHeld(false); Weapon->ClearHeldInput(); }
+void AONEPlayer::ReleaseHeldInputs() { SetSprintHeld(false); Weapon->ClearHeldInput(); ClearMuzzleFlash(); }
 float AONEPlayer::GetPivotFootWeight(int32 Foot) const
 {
     // Release each captured support into its authored swing, not a shared
@@ -243,8 +253,7 @@ void AONEPlayer::UpdateBodyFacing(float Dt,float AimYaw)
 void AONEPlayer::Tick(float Dt)
 {
     Super::Tick(Dt);
-    MuzzleTime = FMath::Max(0.f,MuzzleTime-Dt);
-    MuzzleLight->SetIntensity(MuzzleTime > 0 ? Weapon->GetDefinition().FlashIntensity : 0.f);
+    UpdateMuzzleFlash(Dt);
     ForeEnd->SetRelativeLocation(FVector(-Weapon->GetDefinition().PumpTravel*Weapon->GetPumpFraction(),0,0));
     LoadingShell->SetVisibility(!IsDead() && Weapon->ShouldShowLoadingShell());
     SeatedMagazine->SetVisibility(Weapon->GetDefinition().MagazineMesh.IsValid() && Weapon->ShouldShowSeatedMagazine());
@@ -276,8 +285,81 @@ void AONEPlayer::Tick(float Dt)
     }
 }
 FVector AONEPlayer::GetMuzzleLocation() const { return Gun->GetComponentTransform().TransformPosition(Weapon->GetDefinition().Muzzle); }
-void AONEPlayer::FlashMuzzle() { MuzzleTime = Weapon->GetDefinition().FlashDuration; }
-void AONEPlayer::ClearWeaponEffects() { MuzzleTime=0; MuzzleLight->SetIntensity(0); ForeEnd->SetRelativeLocation(FVector::ZeroVector); LoadingShell->SetVisibility(false); HeldMagazine->SetVisibility(false); }
+void AONEPlayer::BuildMuzzleFlash()
+{
+    // Original tapered, lobed volume in muzzle-local +X. Vertex alpha softens
+    // the tips; crossed hot-core surfaces avoid a flat camera-facing rectangle.
+    TArray<FVector> Vertices,Normals; TArray<int32> Indices;
+    TArray<FVector2D> UV; TArray<FLinearColor> Colors; TArray<FProcMeshTangent> Tangents;
+    const float X[]={0.f,.17f,.46f,1.f};
+    const float Radius[]={.12f,.72f,.42f,0.f};
+    const FLinearColor Color[]={FLinearColor(1.f,.92f,.68f,.88f),FLinearColor(1.f,.73f,.26f,.80f),FLinearColor(1.f,.30f,.035f,.25f),FLinearColor(1.f,.11f,.01f,0.f)};
+    constexpr int32 Sides=8;
+    for (int32 Ring=0;Ring<4;++Ring) for (int32 Side=0;Side<Sides;++Side)
+    {
+        const float Angle=Side*2.f*PI/Sides;
+        const float Lobe=Side%2==0 ? 1.f : .43f;
+        const FVector Radial(0,FMath::Cos(Angle),FMath::Sin(Angle));
+        Vertices.Add(FVector(X[Ring],0,0)+Radial*Radius[Ring]*Lobe);
+        Normals.Add(Radial); UV.Add(FVector2D(X[Ring],float(Side)/Sides));
+        Colors.Add(Color[Ring]); Tangents.Add(FProcMeshTangent(1,0,0));
+    }
+    for (int32 Ring=0;Ring<3;++Ring) for (int32 Side=0;Side<Sides;++Side)
+    {
+        const int32 A=Ring*Sides+Side,B=Ring*Sides+(Side+1)%Sides,C=A+Sides,D=B+Sides;
+        Indices.Append({A,C,B,B,C,D});
+    }
+    for (int32 Plane=0;Plane<3;++Plane)
+    {
+        const float Angle=Plane*PI/3.f; const FVector Across(0,FMath::Cos(Angle)*.12f,FMath::Sin(Angle)*.12f);
+        const int32 Base=Vertices.Num();
+        Vertices.Append({-Across,Across,FVector(.63f,0,0)});
+        Normals.Append({FVector::UpVector,FVector::UpVector,FVector::UpVector});
+        UV.Append({FVector2D(0,0),FVector2D(0,1),FVector2D(1,.5f)});
+        Colors.Append({FLinearColor(1,1,.85f,.9f),FLinearColor(1,1,.85f,.9f),FLinearColor(1,.58f,.12f,0)});
+        Tangents.Append({FProcMeshTangent(1,0,0),FProcMeshTangent(1,0,0),FProcMeshTangent(1,0,0)});
+        Indices.Append({Base,Base+1,Base+2});
+    }
+    MuzzleFlashMesh->CreateMeshSection_LinearColor(0,Vertices,Indices,Normals,UV,Colors,Tangents,false);
+    if (auto* Material=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/ONE/Materials/M_MuzzleFlash_C03.M_MuzzleFlash_C03")))
+    {
+        MuzzleFlashMaterial=UMaterialInstanceDynamic::Create(Material,this);
+        MuzzleFlashMesh->SetMaterial(0,MuzzleFlashMaterial);
+    }
+    ClearMuzzleFlash();
+}
+void AONEPlayer::FlashMuzzle()
+{
+    const auto& D=Weapon->GetDefinition();
+    MuzzleDuration=FMath::Max(.01f,D.FlashDuration*FMath::FRandRange(.9f,1.1f));
+    MuzzleTime=MuzzleDuration; MuzzlePeakIntensity=D.FlashIntensity*FMath::FRandRange(.92f,1.08f);
+    MuzzleFlashMesh->SetRelativeRotation(FRotator(0,0,FMath::FRandRange(0.f,360.f)));
+    MuzzleFlashMesh->SetRelativeScale3D(FVector(D.FlashLength*FMath::FRandRange(.88f,1.12f),D.FlashRadius,D.FlashRadius));
+    // Weapon ticks after pose evaluation. Illuminate immediately so the first
+    // rendered flash and its light use the same discharge and muzzle transform.
+    MuzzleFlashMesh->SetVisibility(true);
+    if (MuzzleFlashMaterial) MuzzleFlashMaterial->SetScalarParameterValue(TEXT("FlashAlpha"),1.f);
+    MuzzleLight->SetIntensity(MuzzlePeakIntensity);
+}
+void AONEPlayer::UpdateMuzzleFlash(float Dt)
+{
+    if (MuzzleTime<=0.f) return;
+    MuzzleTime=FMath::Max(0.f,MuzzleTime-Dt);
+    if (MuzzleTime<=0.f) { ClearMuzzleFlash(); return; }
+    const float Remaining=MuzzleTime/FMath::Max(.001f,MuzzleDuration);
+    const float Envelope=Remaining*Remaining;
+    MuzzleLight->SetIntensity(MuzzlePeakIntensity*Envelope);
+    if (MuzzleFlashMaterial) MuzzleFlashMaterial->SetScalarParameterValue(TEXT("FlashAlpha"),Envelope);
+}
+void AONEPlayer::ClearMuzzleFlash()
+{
+    MuzzleTime=0.f; MuzzleLight->SetIntensity(0.f); MuzzleFlashMesh->SetVisibility(false);
+    if (MuzzleFlashMaterial) MuzzleFlashMaterial->SetScalarParameterValue(TEXT("FlashAlpha"),0.f);
+}
+bool AONEPlayer::IsMuzzleFlashVisible() const { return MuzzleTime>0.f && MuzzleFlashMesh->IsVisible(); }
+float AONEPlayer::GetMuzzleFlashIntensity() const { return MuzzleLight->Intensity; }
+FTransform AONEPlayer::GetMuzzleFlashTransform() const { return MuzzleFlashMesh->GetComponentTransform(); }
+void AONEPlayer::ClearWeaponEffects() { ClearMuzzleFlash(); ForeEnd->SetRelativeLocation(FVector::ZeroVector); LoadingShell->SetVisibility(false); HeldMagazine->SetVisibility(false); }
 void AONEPlayer::ApplyWeaponPresentation(const FONEWeaponDefinition& Definition)
 {
     Gun->SetStaticMesh(Definition.Mesh.Get());
@@ -290,6 +372,10 @@ void AONEPlayer::ApplyWeaponPresentation(const FONEWeaponDefinition& Definition)
     HeldMagazine->SetStaticMesh(Definition.MagazineMesh.Get());
     HeldMagazine->SetVisibility(false);
     MuzzleLight->SetRelativeLocation(Definition.Muzzle);
+    MuzzleLight->SetLightColor(Definition.FlashLightColor);
+    MuzzleLight->SetAttenuationRadius(Definition.FlashLightRadius);
+    MuzzleFlashMesh->SetRelativeLocation(Definition.Muzzle);
+    ClearMuzzleFlash();
 }
 float AONEPlayer::GetHealth() const { return Health->Health; }
 float AONEPlayer::GetMaxHealth() const { return Health->MaxHealth; }

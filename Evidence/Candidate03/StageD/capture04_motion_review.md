@@ -1,0 +1,20 @@
+# Capture 4: supported-pose transitions and remaining motion
+
+**The reviewed freeze, re-hit/resume and re-freeze transitions preserve the visible corpse pose without an obvious snap. This is not a claim that all six corpses become completely still.** Capture 4 is an actual editor-game working-tree recording, locally labelled build 15, completed 5 September 2026 at 09:50:47 UTC. It is not tied to an exact source commit or fresh packaged build. The automated report contains 244 checks, zero failures and 3,092 frames. [Capture hashes and exact observations](capture04_motion_review.json) distinguish it from the earlier failed runs.
+
+The reviewer inspected all 153 consecutive source frames below. Two nine-frame sparse context sheets were also viewed. Thirty-two already-counted frames were inspected again as native-pixel crops around the transitions: 00954–00961, 01376–01383, 01421–01428 and 01513–01520. No generated or interpolated imagery was used. Each frame number denotes `frame_NNNNN.jpg`.
+
+| Actual window | Inclusive frames | Audio seconds | Count |
+|---|---|---|---:|
+| Phase 3, right-arm-loss corpse freeze | 00943–00978 | 37.426729–38.789911 | 36 |
+| Phase 5, first freeze | 01367–01394 | 53.892662–54.933794 | 28 |
+| Phase 5, re-hit and resumed simulation | 01411–01448 | 55.595346–56.967009 | 38 |
+| Phase 5, second freeze and late pile | 01502–01552 | 58.924580–60.905962 | 51 |
+
+At the arm-loss freeze, the torso, bent legs and remaining arm retain their arrangement through the surrounding screenshots. The detached arm stays separate and does not reappear on the body. First freeze and second freeze in the six-body fixture likewise have no obvious jump to another pose. At the intervening re-hit, a small visible response and fresh blood begin from the existing arrangement, without a visible bind-pose reset or launch. Consecutive screenshots immediately surrounding the reported transitions were inspected; their capture cadence cannot resolve changes occurring wholly between screenshots.
+
+Separate telemetry records 13 retained bodies for the arm-loss corpse and 16 for the intact target. Measured transition position/angular errors are 0.114510 cm / 0.031411 degrees at the arm-loss freeze, 0.328307 cm / 0.040387 degrees at the first intact freeze, 0 cm / 0.040387 degrees at resume, and 0.329305 cm / 0.043122 degrees at the second freeze. These are engine measurements, not precision inferred from pictures. State changes first appear in sampled telemetry at world seconds 43.018177, 59.345791, 61.081047 and 64.536911 respectively; those roughly 10 Hz sample times are not exact transition timestamps.
+
+The late group has different physical arrangements and visible floor pools. The supported frozen body holds its pose. Small forearm/hand adjustments remain visible among unfrozen members of the upper pile. Matching late telemetry still contains a 14.218004 cm/s peak and a sampled pose change of 2.272174 cm / 25.971107 degrees for one unfrozen corpse. The late state contains 64 awake bodies, 16 naturally sleeping bodies and 16 frozen bodies. Thus the passing automation and improved transition behavior must not be described as all six fully settled or as elimination of every small contact motion. Tight folds and overlapping bodies still obscure some support/contact details. The detached-leg knee and proximal-stump contact limitation from earlier review is unchanged; no new phase-4 claim is made here.
+
+Supported-pose freezing is a deliberate mechanics change, distinct from natural solver sleep. It retains the evaluated physical pose with kinematic colliders; ordinary contact does not wake that frozen pose, while accepted corpse damage/sever resumes simulation before the response. The inspected transition presentation is supported by this run; this report does not constitute user approval of that contact tradeoff, comprehensive sever-after-freeze testing, direct manual playtesting, audio audition, or fresh-package verification. Source and assets were not edited during this review.

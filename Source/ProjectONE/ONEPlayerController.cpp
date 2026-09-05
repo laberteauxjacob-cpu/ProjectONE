@@ -53,6 +53,7 @@ void AONEPlayerController::SetupInputComponent()
     InputComponent->BindKey(EKeys::F4, IE_Pressed, this, &AONEPlayerController::Refill);
     InputComponent->BindKey(EKeys::F5, IE_Pressed, this, &AONEPlayerController::ResetSandbox).bExecuteWhenPaused=true;
     InputComponent->BindKey(EKeys::F6, IE_Pressed, this, &AONEPlayerController::ClearGore);
+    InputComponent->BindKey(EKeys::F7, IE_Pressed, this, &AONEPlayerController::ToggleLighting);
 }
 void AONEPlayerController::FlushPressedKeys()
 {
@@ -83,3 +84,4 @@ void AONEPlayerController::SpawnSix() { if (auto* GM=GetWorld()->GetAuthGameMode
 void AONEPlayerController::Refill() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->RefillSandboxAmmo(); }
 void AONEPlayerController::ResetSandbox() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>();GM && GM->IsSandbox()) GM->RestartScene(); }
 void AONEPlayerController::ClearGore() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->ClearSandboxPresentation(); }
+void AONEPlayerController::ToggleLighting() { if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->ToggleSandboxLighting(); }

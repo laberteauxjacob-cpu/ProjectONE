@@ -22,7 +22,7 @@ from pathlib import Path
 
 
 SPIKES_MS = (16.7, 33.3, 50.0, 100.0)
-PHYSICS_CATEGORIES = {"physics", "physicsverbose", "chaos", "chaosphysicssolver", "chaosphysicstimers"}
+PHYSICS_CATEGORIES = {"physics", "physicsverbose", "chaos", "chaosphysicssolver", "chaosphysicstimers", "onephysicality"}
 SAFE_METADATA = {
     "platform", "config", "buildversion", "engineversion", "enginereleaseversion",
     "os", "cpu", "gpu", "deviceprofile", "systemresolution.resx",
@@ -141,6 +141,11 @@ def is_physics_scope(name: str) -> bool:
     return len(parts) >= 3 and parts[0].lower() in PHYSICS_CATEGORIES
 
 
+def is_project_counter(name: str) -> bool:
+    parts = name.split("/")
+    return len(parts) == 2 and parts[0].lower() == "onephysicality"
+
+
 def parse_interval(text: str) -> tuple[float, float]:
     try:
         start, end = (float(part) for part in text.split(":"))
@@ -180,7 +185,7 @@ def analyze(args: argparse.Namespace) -> tuple[dict, list[dict]]:
         raise ValueError(f"Frame timing column {args.frame_column!r} absent; screenshot manifests are not profiler timings")
     physics = [name for name in header if is_physics_scope(name)]
     for name in args.physics_column:
-        if name not in header or name.upper().startswith(("COUNTS/", "PHYSICSCOUNTERS/")):
+        if name not in header or name.upper().startswith(("COUNTS/", "PHYSICSCOUNTERS/")) or is_project_counter(name):
             raise ValueError("Explicit physics timing column absent or is a call counter")
         if name not in physics:
             physics.append(name)
@@ -188,7 +193,7 @@ def analyze(args: argparse.Namespace) -> tuple[dict, list[dict]]:
         "GameThread", "RenderThread", "RHIThread", "GPUFrameTime",
         "GameThreadTime", "RenderThreadTime", "RHIThreadTime",
     }]
-    counters = [name for name in header if name.lower().startswith("physicscounters/") or (
+    counters = [name for name in header if name.lower().startswith("physicscounters/") or is_project_counter(name) or (
         name.upper().startswith("COUNTS/") and any(p.lower() in PHYSICS_CATEGORIES for p in name.split("/")))]
     metric_names = list(dict.fromkeys([args.frame_column] + threads + physics))
     for name in metric_names + counters:
@@ -221,7 +226,7 @@ def analyze(args: argparse.Namespace) -> tuple[dict, list[dict]]:
     counter_metrics = {}
     for name in counters:
         values = [row["native_counters"][name] for row in selected]
-        counter_metrics[name] = {"unit": "scope_calls" if name.upper().startswith("COUNTS/") else "native_counter_not_time",
+        counter_metrics[name] = {"unit": "scope_calls" if name.upper().startswith("COUNTS/") else "project_counter_not_time" if is_project_counter(name) else "native_counter_not_time",
                                  "samples": len(values), "mean": statistics.fmean(values),
                                  "max": max(values), "last": values[-1]}
     operator = {key: value for key, value in {

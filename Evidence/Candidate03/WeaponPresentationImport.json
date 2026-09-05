@@ -1,0 +1,68 @@
+{
+  "candidate": "03",
+  "stage": "C",
+  "static_meshes": {
+    "SM_RifleBrass_C03": {
+      "asset": "/Game/ONE/Art/Weapons/SM_RifleBrass_C03.SM_RifleBrass_C03",
+      "source": "ArtSource/Weapons/Candidate03/SM_RifleBrass_C03.fbx",
+      "source_sha256": "8f393dd4bc04ea5fab1999ed3387509ee408b069d59661135aa0f5084f4a7e4d",
+      "dimensions_cm": [
+        4.5,
+        0.9500000178813934,
+        0.949999988079071
+      ]
+    }
+  },
+  "materials": {
+    "M_MuzzleFlash_C03": {
+      "asset": "/Game/ONE/Materials/M_MuzzleFlash_C03.M_MuzzleFlash_C03",
+      "source": "Scripts/import_candidate03_weapon_presentation.py",
+      "connections": [
+        {
+          "connection": "VertexColor.aggregate -> FlashGain Multiply.A",
+          "connected": true
+        },
+        {
+          "connection": "FlashGain -> Multiply.B",
+          "connected": true
+        },
+        {
+          "connection": "FlashGain Multiply -> <MaterialProperty.MP_EMISSIVE_COLOR: 0>",
+          "connected": true
+        },
+        {
+          "connection": "VertexColor.A -> FlashAlpha Multiply.A",
+          "connected": true
+        },
+        {
+          "connection": "FlashAlpha -> Multiply.B",
+          "connected": true
+        },
+        {
+          "connection": "FlashAlpha Multiply -> <MaterialProperty.MP_OPACITY: 1>",
+          "connected": true
+        }
+      ],
+      "post_recompile_graph_readback": [
+        {
+          "branch": "FlashGain",
+          "property_input": "MaterialExpressionMultiply_2",
+          "multiply_A": "MaterialExpressionVertexColor_1",
+          "multiply_B": "MaterialExpressionScalarParameter_2",
+          "requested_vertex_output": "aggregate (index 0)",
+          "status": "PASS"
+        },
+        {
+          "branch": "FlashAlpha",
+          "property_input": "MaterialExpressionMultiply_3",
+          "multiply_A": "MaterialExpressionVertexColor_1",
+          "multiply_B": "MaterialExpressionScalarParameter_3",
+          "requested_vertex_output": "A",
+          "status": "PASS"
+        }
+      ],
+      "graph_status": "PASS"
+    }
+  },
+  "status": "PASS"
+}

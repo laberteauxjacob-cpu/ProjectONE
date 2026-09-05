@@ -23,4 +23,5 @@ private:
     void Refill();
     void ResetSandbox();
     void ClearGore();
+    void ToggleLighting();
 };

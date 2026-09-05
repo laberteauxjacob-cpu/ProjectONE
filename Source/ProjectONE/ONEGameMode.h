@@ -4,6 +4,7 @@
 #include "ONEGameMode.generated.h"
 
 class AONEZombie;
+class ULightComponent;
 UCLASS()
 class PROJECTONE_API AONEGameMode : public AGameModeBase
 {
@@ -20,6 +21,10 @@ public:
     AONEZombie* SpawnSandboxEnemyAt(const FVector& Location);
     void RefillSandboxAmmo();
     void ClearSandboxPresentation();
+    void SetSandboxDimLighting(bool Dim);
+    void ToggleSandboxLighting() { SetSandboxDimLighting(!bDimLighting); }
+    bool IsSandboxDimLighting() const { return bDimLighting; }
+    int32 GetSandboxLightCount() const { return SandboxLightIntensities.Num(); }
     bool IsSandbox() const { return bSandbox; }
     int32 GetRound() const { return Round; }
     int32 GetPoints() const { return Points; }
@@ -40,5 +45,7 @@ private:
     int32 Round = 0, Points = 0, Kills = 0, ToSpawn = 0;
     bool bGameOver = false, bIntermission = true;
     bool bSandbox = false;
+    bool bDimLighting = false;
+    TMap<TWeakObjectPtr<ULightComponent>,float> SandboxLightIntensities;
     float Countdown = 5.f, SpawnClock = 0.f;
 };

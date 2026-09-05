@@ -1,4 +1,10 @@
-# Candidate03 locomotion source
+# Candidate03 character sources
+
+The Stage D [modular infected inventory](InfectedModular.md) documents the derived
+infected meshes, matching sever boundaries and complementary anatomical-right
+attack. The locomotion source below remains unchanged by that work.
+
+## Response locomotion
 
 `ResponseLocomotion.blend` retains the accepted Response mesh, 21 source bones,
 bind matrices, materials and archived editable actions. The established importer

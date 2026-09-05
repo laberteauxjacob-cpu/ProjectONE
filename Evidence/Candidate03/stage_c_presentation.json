@@ -1,0 +1,156 @@
+{
+  "candidate": "Candidate03",
+  "capture_kind": "editor-game",
+  "capture_mode": "presentation",
+  "provenance_basis": "Runtime kind and source identity supplied by operator; encoding does not establish packaged validation or visual/audio approval.",
+  "source_revision": null,
+  "source_state": "working-tree",
+  "source": "Actual gameplay JPEG screenshot callbacks plus Unreal master-output WAV",
+  "frames": 2805,
+  "dimensions": [
+    1600,
+    900
+  ],
+  "capture_span_seconds": 108.083132,
+  "actual_capture_fps": 25.942993583864684,
+  "first_frame_audio_seconds": 0.257346,
+  "last_frame_audio_seconds": 108.340478,
+  "audio_duration_seconds": 108.352,
+  "final_frame_hold_seconds": 0.011521999999999366,
+  "maximum_frame_hold_seconds": 0.279478,
+  "source_audio": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "sample_width_bytes": 2,
+    "sample_frames": 5200896
+  },
+  "frames_csv_sha256": "abd8badbb41a245caf5e097f75961d705ef12f41813235e89a6caade46c0b25b",
+  "source_wav_sha256": "cda6c296839af1278180bf9ac4402471138dc4060980f154db770109aa811a6b",
+  "ordered_frame_identity_sha256": "450931742736daf471435a53e853d24c5a7c37412ecdf79a72664dd831949f35",
+  "frame_identity_method": "SHA256 of UTF-8 JSON lines [relative filename, original audio_seconds string, JPEG SHA256] in CSV order",
+  "video_output_fps": 30,
+  "frame_treatment": "Captured images held according to callback timestamps; first image held from audio time zero. CFR output duplicates or drops captured frames on the 30fps grid; no generated pixels, motion interpolation or retiming to hide stalls.",
+  "audio_treatment": "AAC transcode of the supplied engine WAV at original duration; this assembler does not replace, pad, stretch or synthesize audio. The source gameplay may itself use provisional synthesized sound assets.",
+  "audio_review": "Encoding does not establish perceptual audition or audible-phase coverage; run the separate gameplay-audio audit.",
+  "observed_phase_order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "chapters": [
+    {
+      "phase": 0,
+      "title": "5.56 mm Carbine / Bright / Standing fire and reload",
+      "start_seconds": 0,
+      "end_seconds": 9.943993
+    },
+    {
+      "phase": 1,
+      "title": "5.56 mm Carbine / Bright / Sideways fire",
+      "start_seconds": 9.943993,
+      "end_seconds": 15.690489
+    },
+    {
+      "phase": 2,
+      "title": "5.56 mm Carbine / Bright / Diagonal sprint / fire",
+      "start_seconds": 15.690489,
+      "end_seconds": 21.41195
+    },
+    {
+      "phase": 3,
+      "title": "5.56 mm Carbine / Bright / Movement / rapid aim",
+      "start_seconds": 21.41195,
+      "end_seconds": 27.13935
+    },
+    {
+      "phase": 4,
+      "title": "5.56 mm Carbine / Dim / Standing fire and reload",
+      "start_seconds": 27.13935,
+      "end_seconds": 37.051379
+    },
+    {
+      "phase": 5,
+      "title": "5.56 mm Carbine / Dim / Sideways fire",
+      "start_seconds": 37.051379,
+      "end_seconds": 42.765327
+    },
+    {
+      "phase": 6,
+      "title": "5.56 mm Carbine / Dim / Diagonal sprint / fire",
+      "start_seconds": 42.765327,
+      "end_seconds": 48.495977
+    },
+    {
+      "phase": 7,
+      "title": "5.56 mm Carbine / Dim / Movement / rapid aim",
+      "start_seconds": 48.495977,
+      "end_seconds": 54.227808
+    },
+    {
+      "phase": 8,
+      "title": "12-Gauge Pump Shotgun / Bright / Standing fire and reload",
+      "start_seconds": 54.227808,
+      "end_seconds": 64.145502
+    },
+    {
+      "phase": 9,
+      "title": "12-Gauge Pump Shotgun / Bright / Sideways fire",
+      "start_seconds": 64.145502,
+      "end_seconds": 69.846402
+    },
+    {
+      "phase": 10,
+      "title": "12-Gauge Pump Shotgun / Bright / Diagonal sprint / fire",
+      "start_seconds": 69.846402,
+      "end_seconds": 75.569373
+    },
+    {
+      "phase": 11,
+      "title": "12-Gauge Pump Shotgun / Bright / Movement / rapid aim",
+      "start_seconds": 75.569373,
+      "end_seconds": 81.262823
+    },
+    {
+      "phase": 12,
+      "title": "12-Gauge Pump Shotgun / Dim / Standing fire and reload",
+      "start_seconds": 81.262823,
+      "end_seconds": 91.190786
+    },
+    {
+      "phase": 13,
+      "title": "12-Gauge Pump Shotgun / Dim / Sideways fire",
+      "start_seconds": 91.190786,
+      "end_seconds": 96.918277
+    },
+    {
+      "phase": 14,
+      "title": "12-Gauge Pump Shotgun / Dim / Diagonal sprint / fire",
+      "start_seconds": 96.918277,
+      "end_seconds": 102.620703
+    },
+    {
+      "phase": 15,
+      "title": "12-Gauge Pump Shotgun / Dim / Movement / rapid aim",
+      "start_seconds": 102.620703,
+      "end_seconds": 108.352
+    }
+  ],
+  "chapter_timing": "First observed frame of each contiguous phase, not an exact engine operation boundary.",
+  "encoded": true,
+  "encoder_exit_code": 0,
+  "output_sha256": "2ee64aa977f8ea52b8c087b4421a5aefe5b2f51714c8a72437e0909ed868781c",
+  "output_bytes": 22267968
+}

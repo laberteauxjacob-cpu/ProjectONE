@@ -1,0 +1,56 @@
+Candidate03 Stage C: actual emitted case lifecycle
+Production weapon actions and case actors; no screenshot/audio capture.
+A separate budget fixture extends already-emitted cases to60s so natural6s expiry cannot hide cap eviction. Normal lifetime is tested before that fixture. No damage, ammo capacity, cadence, collision or motion tuning is changed.
+
+PASS | Case check uses actual sandbox without automatic waves
+PASS | Case fixture begins with no leftover actors
+PASS | One rifle discharge creates exactly one actual rifle case immediately
+PASS | Rifle case emission accompanies one ammo debit and no reserve transfer
+PASS | Committed ejection created an actual case actor
+PASS | Case actor has a loaded visible case mesh
+PASS | Case identity retains source slot0 and discharge1
+PASS | Case visual mesh ignores pawns, disables collision and cannot affect navigation
+PASS | Case has a nonzero swept collision radius and actual launch velocity
+PASS | Observed airborne velocity contains the initial combined impulse, within one tick of gravity
+PASS | Stationary rifle case inherits zero pawn velocity
+PASS | Observed first rifle case position is near the actual moving ejection port
+PASS | Production case begins with the configured finite lifetime
+PASS | Actual airborne case rotates after emission
+PASS | Pause freezes actual airborne case position, velocity and lifetime
+PASS | Settled swept sphere has actual floor support; surface gap 0.160cm
+PASS | Observed free-flight vertical acceleration -979.98cm/s2 over85 real samples
+PASS | Observed free-flight positions follow horizontal case velocity; maximum error 0.029cm/s
+PASS | Actual rifle case bounces, reaches supported rest and stays motionless before expiry
+PASS | Unmodified production case expires after 6.000s of world time
+PASS | Committed ejection created an actual case actor
+PASS | Case actor has a loaded visible case mesh
+PASS | Case identity retains source slot0 and discharge2
+PASS | Case visual mesh ignores pawns, disables collision and cannot affect navigation
+PASS | Case has a nonzero swept collision radius and actual launch velocity
+PASS | Observed airborne velocity contains the initial combined impulse, within one tick of gravity
+PASS | Moving rifle case inherits observed pawn velocity 225.00cm/s; pawn 225.00cm/s
+PASS | Moving case retains a separate ejection impulse in its combined initial velocity
+PASS | Shotgun discharge debits one loaded round
+PASS | Shotgun discharge retains its spent shell until the pump event
+PASS | Switch fixture intercepts the actual pump before its ejection event
+PASS | Holstered pre-ejection shotgun retains obligation and creates no hidden shell
+PASS | Resumed pump begins before the pending shell event
+PASS | Committed ejection created an actual case actor
+PASS | Case actor has a loaded visible case mesh
+PASS | Case identity retains source slot1 and discharge3
+PASS | Case visual mesh ignores pawns, disables collision and cannot affect navigation
+PASS | Case has a nonzero swept collision radius and actual launch velocity
+PASS | Observed airborne velocity contains the initial combined impulse, within one tick of gravity
+PASS | Shell actor appears on pump event 0.180s; observed 0.183s
+PASS | Interrupted/resumed pump creates exactly one physical shell
+PASS | Second switch after ejection finishes pump using the same shell actor with no duplicate
+PASS | Two pump interruptions preserve ammunition and the original discharge identity
+PASS | Budget fixture has a finite supported configured case cap
+PASS | Sustained real rifle fire produces one distinct physical case per committed discharge
+PASS | Case cap32 evicts oldest actor before extended lifetime, bounding actual world actors
+PASS | Cap stress and natural reload preserve total ammunition and holstered weapon state
+PASS | Explicit cleanup removes all case actors and live tracking entries
+PASS | Presentation cleanup preserves ammo and cumulative committed ejection count
+
+Checks: 49
+Failures: 0

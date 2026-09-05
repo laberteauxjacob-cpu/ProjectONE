@@ -129,15 +129,14 @@ void AONEValidation::Tick(float Dt)
     else if (Stage==1 && Elapsed-StageTime>1)
     {
         Hit(ArmTest,TEXT("upperarm_l"),32); Hit(ArmTest,TEXT("upperarm_l"),32);
-        Check(ArmTest && !ArmTest->HasLeftArm() && !ArmTest->IsDead(),TEXT("Two arm hits sever left arm while infected survives"));
+        Check(ArmTest && !ArmTest->HasRightArm() && ArmTest->HasLeftArm() && !ArmTest->IsDead(),TEXT("Two source_l arm hits sever anatomical right arm while infected survives"));
         if (ArmTest)
         {
             UONEBloodSubsystem* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>();
             const int32 PiecesBefore=Blood?Blood->GetPieceCount():-1;
             bool bPoseMatched=false;
             for (TActorIterator<AONEGorePiece> It(GetWorld());It;++It)
-                if (UPoseableMeshComponent* Piece=It->FindComponentByClass<UPoseableMeshComponent>())
-                    if (Piece->GetBoneTransformByName(TEXT("upperarm_l"),EBoneSpaces::WorldSpace).GetLocation().Equals(ArmTest->GetMesh()->GetSocketLocation(TEXT("upperarm_l")),1.f)) bPoseMatched=true;
+                if (It->GetPieceMesh() && It->GetPieceMesh()->GetSkeletalMeshAsset() && It->GetActivePhysicsBodyCount()>0 && It->GetTransitionErrorCm()<1.f) bPoseMatched=true;
             Check(bPoseMatched,TEXT("Detached arm begins at current evaluated shoulder transform"));
             const float Before=ArmTest->GetHealth(); Hit(ArmTest,TEXT("upperarm_l"),500);
             Check(ArmTest->GetHealth()==Before && !ArmTest->IsDead(),TEXT("Repeated removed-arm damage ignored"));
@@ -169,7 +168,7 @@ void AONEValidation::Tick(float Dt)
     else if (Stage==5 && Elapsed-StageTime>.6f)
     {
         Hit(IntactTest,TEXT("spine_02"),1000);
-        Check(IntactTest && IntactTest->IsDead() && IntactTest->HasHead() && IntactTest->HasLeftArm(),TEXT("Lethal torso hit preserves an intact corpse"));
+        Check(IntactTest && IntactTest->IsDead() && IntactTest->HasHead() && IntactTest->HasLeftArm() && IntactTest->HasRightArm() && IntactTest->HasLeftLeg(),TEXT("Lethal torso hit preserves an intact corpse"));
         W->SetTrigger(true); AmmoBefore=W->GetAmmo(); ReserveBefore=W->GetReserveAmmo();
         Stage=6; StageTime=Elapsed;
     }

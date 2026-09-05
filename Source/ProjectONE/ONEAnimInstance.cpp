@@ -10,13 +10,15 @@
 #include "AnimNodes/AnimNode_TwoWayBlend.h"
 #include "AnimNodes/AnimNode_LayeredBoneBlend.h"
 #include "AnimNodes/AnimNode_RotateRootBone.h"
+#include "AnimNodes/AnimNode_PoseSnapshot.h"
 #include "Animation/AnimNodeSpaceConversions.h"
 #include "BoneControllers/AnimNode_TwoBoneIK.h"
 #include "BoneControllers/AnimNode_ModifyBone.h"
 
 struct FONEAnimProxy : FAnimInstanceProxy
 {
-    FAnimNode_SequenceEvaluator_Standalone Idle,WalkA,WalkB,RunA,RunB,Turn,Ready,Action,Death;
+    FAnimNode_SequenceEvaluator_Standalone Idle,WalkA,WalkB,RunA,RunB,Turn,Ready,Action;
+    FAnimNode_PoseSnapshot DeathPose;
     FAnimNode_TwoWayBlend WalkDirection,RunDirection,Running,Locomotion,Turning,FullAction,Final;
     FAnimNode_RotateRootBone Facing;
     FAnimNode_ConvertLocalToComponentSpace PivotComponent;
@@ -67,7 +69,8 @@ struct FONEAnimProxy : FAnimInstanceProxy
         UpperBody.LayerSetup[0].BranchFilters.Add(Branch);
         UpperBody.bMeshSpaceRotationBlend=true;
         FullAction.A.SetLinkNode(&UpperBody); FullAction.B.SetLinkNode(&Action);
-        Final.A.SetLinkNode(&FullAction); Final.B.SetLinkNode(&Death);
+        DeathPose.Mode=ESnapshotSourceMode::SnapshotPin;
+        Final.A.SetLinkNode(&FullAction); Final.B.SetLinkNode(&DeathPose);
     }
     virtual FAnimNode_Base* GetCustomRootNode() override { return &Final; }
     static void Sample(FAnimNode_SequenceEvaluator_Standalone& Node,UAnimSequence* Clip,float Time,bool Loop=true)
@@ -86,6 +89,15 @@ struct FONEAnimProxy : FAnimInstanceProxy
         if (!Anim || !Pawn) return;
         AONEZombie* Z=Cast<AONEZombie>(Pawn);
         AONEPlayer* P=Cast<AONEPlayer>(Pawn);
+        if (Z && Z->IsDead())
+        {
+            // Physics is blended over the exact evaluated local pose. No fixed
+            // death sequence or interpolation toward a canned final posture.
+            DeathPose.Snapshot=Anim->CapturedDeathPose;
+            DeathPose.PreUpdate(Instance);
+            Final.Alpha=1.f;
+            return;
+        }
         const float FacingYaw=P ? P->GetBodyFacingYaw() : Pawn->GetActorRotation().Yaw;
         const FVector Local=FRotator(0,FacingYaw,0).UnrotateVector(Pawn->GetVelocity());
         const float Speed=Local.Size2D();
@@ -167,7 +179,7 @@ struct FONEAnimProxy : FAnimInstanceProxy
             }
         }
         PivotPelvis.SetAlpha(PivotWeight);
-        float ActionWeight=0,DeathWeight=0;
+        float ActionWeight=0;
         Sample(Ready,Anim->FindClip(TEXT("Idle")),IdleClock);
         ReadyUpperBody.BlendWeights[0]=P ? 1.f : 0.f;
         if (P && P->GetWeaponComponent())
@@ -183,23 +195,19 @@ struct FONEAnimProxy : FAnimInstanceProxy
             switch (Z->GetCombatState())
             {
                 case EONEZombieState::Attack:
-                    Sample(Action,Anim->FindClip(Z->HasLeftArm() ? TEXT("Attack") : TEXT("AttackOneArm")),Z->GetStateElapsed(),false);
+                    Sample(Action,Anim->FindClip(Z->HasLeftArm() && Z->HasRightArm() ? TEXT("Attack") :
+                        Z->HasLeftArm() ? TEXT("AttackOneArm") : TEXT("C03_AttackRight")),Z->GetStateElapsed(),false);
                     ActionWeight=1; break;
                 case EONEZombieState::Hit:
                     Sample(Action,Anim->FindClip(Z->IsHeavyReaction() ? TEXT("HeavyHit") : TEXT("Hit")),Z->GetStateElapsed(),false);
                     ActionWeight=1; break;
-                case EONEZombieState::Dead:
-                    Sample(Death,Anim->FindClip(TEXT("Death")),Z->GetStateElapsed(),false);
-                    DeathWeight=1; break;
                 default: break;
             }
             if (!Action.GetSequence()) Sample(Action,Anim->FindClip(TEXT("Attack")),0,false);
-            if (!Death.GetSequence()) Sample(Death,Anim->FindClip(TEXT("Death")),0,false);
         }
-        else if (!Death.GetSequence()) Sample(Death,Anim->FindClip(TEXT("Idle")),0);
         UpperBody.BlendWeights[0]=FMath::FInterpTo(UpperBody.BlendWeights[0],Z ? 0.f : ActionWeight,Dt,24.f);
         FullAction.Alpha=FMath::FInterpTo(FullAction.Alpha,Z ? ActionWeight : 0.f,Dt,24.f);
-        Final.Alpha=FMath::FInterpTo(Final.Alpha,DeathWeight,Dt,20.f);
+        Final.Alpha=0.f;
     }
 };
 UONEAnimInstance::UONEAnimInstance() { bUseMultiThreadedAnimationUpdate=false; }
@@ -209,7 +217,7 @@ void UONEAnimInstance::NativeInitializeAnimation()
     Clips.Reset();
     const bool bInfected=Cast<AONEZombie>(TryGetPawnOwner())!=nullptr;
     const FString Prefix=bInfected ? TEXT("A_Infected_") : TEXT("A_Response_");
-    TArray<FString> Names={TEXT("Idle"),TEXT("Walk"),TEXT("Run"),TEXT("Fire"),TEXT("Reload"),TEXT("Attack"),TEXT("AttackOneArm"),TEXT("Hit"),TEXT("HeavyHit"),TEXT("Death")};
+    TArray<FString> Names={TEXT("Idle"),TEXT("Walk"),TEXT("Run"),TEXT("Fire"),TEXT("Reload"),TEXT("Attack"),TEXT("AttackOneArm"),TEXT("Hit"),TEXT("HeavyHit")};
     if (!bInfected)
     {
         for (const TCHAR* Gait:{TEXT("Walk"),TEXT("Run")})
@@ -224,6 +232,9 @@ void UONEAnimInstance::NativeInitializeAnimation()
         const FString Asset=Prefix+Name;
         if (auto* Clip=LoadObject<UAnimSequence>(nullptr,*(TEXT("/Game/ONE/Animations/")+Asset+TEXT(".")+Asset))) Clips.Add(FName(*Name),Clip);
     }
+    if (bInfected)
+        if (auto* Clip=LoadObject<UAnimSequence>(nullptr,TEXT("/Game/ONE/Animations/Candidate03/A_Infected_C03_AttackRight.A_Infected_C03_AttackRight")))
+            Clips.Add(TEXT("C03_AttackRight"),Clip);
 }
 UAnimSequence* UONEAnimInstance::FindClip(FName Key) const { const auto* Clip=Clips.Find(Key); return Clip ? Clip->Get() : nullptr; }
 FAnimInstanceProxy* UONEAnimInstance::CreateAnimInstanceProxy() { return new FONEAnimProxy(this); }

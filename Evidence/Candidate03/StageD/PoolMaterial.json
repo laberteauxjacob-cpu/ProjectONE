@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "source": "Scripts/create_candidate03_pool_material.py",
+  "asset": "/Game/ONE/Materials/M_BloodPool_C03",
+  "reused_original_mask": "/Game/ONE/Textures/T_BloodMask",
+  "uv_scale": [
+    0.55,
+    0.36
+  ],
+  "uv_offset": [
+    0.225,
+    0.32
+  ],
+  "reason": "Original central ellipse occupied only 47% by 30% of decal half-extents; pool-specific UVs use the central continuous shape at approximately85% by83%, while impact/wound presentation retains the complete splatter mask.",
+  "checked_connections": [
+    "UV",
+    "Scale",
+    "Scaled UV",
+    "Center offset",
+    "Pool mask UV (first texture input)",
+    "<MaterialProperty.MP_BASE_COLOR: 5>",
+    "<MaterialProperty.MP_ROUGHNESS: 8>",
+    "<MaterialProperty.MP_OPACITY: 1>"
+  ],
+  "compiled_property_roots_verified": 3
+}

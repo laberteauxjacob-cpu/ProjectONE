@@ -1,0 +1,92 @@
+{
+  "candidate": "03",
+  "result": "PASS",
+  "skeleton": "/Game/ONE/Characters/SK_Infected_Skeleton.SK_Infected_Skeleton",
+  "meshes": {
+    "SK_Infected_Core": {
+      "asset": "/Game/ONE/Characters/Candidate03/SK_Infected_Core.SK_Infected_Core",
+      "source": "ArtSource/Exports/Candidate03/SK_Infected_Core.fbx",
+      "source_sha256": "080b3592ca4ac80155e5870750cb2598d9bf3b58cf6b234993d74292dfcded3d",
+      "material_slots": [
+        "M_OrangeFabric",
+        "M_InfectedSkin",
+        "M_Gore",
+        "M_ExposedBone",
+        "M_Webbing",
+        "M_IDBadge",
+        "M_ReflectiveTape",
+        "M_Ceramic",
+        "M_BootRubber"
+      ],
+      "source_vertices": 4824,
+      "source_triangles": 9528
+    },
+    "SK_Infected_Head": {
+      "asset": "/Game/ONE/Characters/Candidate03/SK_Infected_Head.SK_Infected_Head",
+      "source": "ArtSource/Exports/Candidate03/SK_Infected_Head.fbx",
+      "source_sha256": "1017cd48c850f5c6db014e275b45b40ab78ffa317bb1b40663dbd24d08715a21",
+      "material_slots": [
+        "M_InfectedSkin",
+        "M_DriedBlood",
+        "M_Eye",
+        "M_EyeDark",
+        "M_Hair",
+        "M_ExposedBone",
+        "M_Gore"
+      ],
+      "source_vertices": 5200,
+      "source_triangles": 8896
+    },
+    "SK_Infected_ArmLeft": {
+      "asset": "/Game/ONE/Characters/Candidate03/SK_Infected_ArmLeft.SK_Infected_ArmLeft",
+      "source": "ArtSource/Exports/Candidate03/SK_Infected_ArmLeft.fbx",
+      "source_sha256": "5c8a4dd744bb75f459af72cf0bc74b235bd61f7368c5655784d38b92e49fdda9",
+      "material_slots": [
+        "M_OrangeFabric",
+        "M_InfectedSkin",
+        "M_Gore",
+        "M_ExposedBone"
+      ],
+      "source_vertices": 2136,
+      "source_triangles": 4220
+    },
+    "SK_Infected_ArmRight": {
+      "asset": "/Game/ONE/Characters/Candidate03/SK_Infected_ArmRight.SK_Infected_ArmRight",
+      "source": "ArtSource/Exports/Candidate03/SK_Infected_ArmRight.fbx",
+      "source_sha256": "f2f29e98d66b5bf3e19948d8ec5a598139d3c0cfd60c04c3c16f1eb4c4b256d3",
+      "material_slots": [
+        "M_OrangeFabric",
+        "M_InfectedSkin",
+        "M_Gore",
+        "M_ExposedBone"
+      ],
+      "source_vertices": 2276,
+      "source_triangles": 4500
+    },
+    "SK_Infected_LegLeft": {
+      "asset": "/Game/ONE/Characters/Candidate03/SK_Infected_LegLeft.SK_Infected_LegLeft",
+      "source": "ArtSource/Exports/Candidate03/SK_Infected_LegLeft.fbx",
+      "source_sha256": "95844cbbee92216ca964757da3dca7616a925fd1a26711ab4afcc2a81a0d33c9",
+      "material_slots": [
+        "M_OrangeFabric",
+        "M_Gore",
+        "M_ExposedBone",
+        "M_Webbing",
+        "M_ReflectiveTape",
+        "M_BootRubber"
+      ],
+      "source_vertices": 2116,
+      "source_triangles": 4188
+    }
+  },
+  "animations": {
+    "A_Infected_C03_AttackRight": {
+      "asset": "/Game/ONE/Animations/Candidate03/A_Infected_C03_AttackRight.A_Infected_C03_AttackRight",
+      "source": "ArtSource/Exports/Candidate03/A_Infected_C03_AttackRight.fbx",
+      "source_sha256": "0ba3f9b16761606a177545fea9c0fb3aaeda022d382904cb1fbe378aa7a0c91f",
+      "duration_seconds": 1.0,
+      "contact_seconds": 0.48
+    }
+  },
+  "scope": "Import verification only; physics fitting, evaluated runtime seams and gameplay contact require later checks."
+}

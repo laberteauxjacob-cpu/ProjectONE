@@ -1,0 +1,416 @@
+{
+  "candidate": "Candidate03",
+  "capture_kind": "editor-game",
+  "capture_mode": "generic",
+  "provenance_basis": "Runtime kind and source identity supplied by operator; encoding does not establish packaged validation or visual/audio approval.",
+  "source_revision": "aa4d55d04bf375bbef41362af77eec10d9ea224f",
+  "source_state": "working-tree",
+  "source": "Actual gameplay JPEG screenshot callbacks plus Unreal master-output WAV",
+  "frames": 2149,
+  "dimensions": [
+    1600,
+    900
+  ],
+  "capture_span_seconds": 83.71384200000001,
+  "actual_capture_fps": 25.658839072276717,
+  "first_frame_audio_seconds": 0.327638,
+  "last_frame_audio_seconds": 84.04148,
+  "audio_duration_seconds": 84.07941666666666,
+  "final_frame_hold_seconds": 0.03793666666665274,
+  "maximum_frame_hold_seconds": 0.35275,
+  "source_audio": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "sample_width_bytes": 2,
+    "sample_frames": 4035812
+  },
+  "frames_csv_sha256": "a8a651bfb66c5e1c88db67108877564e14a9dabaf8bdd383de6d7c6feda1684a",
+  "source_wav_sha256": "5fde631296e80b6c0ef2647b17b9260eb1a8ee0ff1c83b4611d07e0d11be4461",
+  "ordered_frame_identity_sha256": "88d462fd70b6ab8475db2b26cf1436a8cf86c582181d47e5c1ea3ce476adfc76",
+  "frame_identity_method": "SHA256 of UTF-8 JSON lines [relative filename, original audio_seconds string, JPEG SHA256] in CSV order",
+  "video_output_fps": 30,
+  "frame_treatment": "Captured images held according to callback timestamps; first image held from audio time zero. CFR output duplicates or drops captured frames on the 30fps grid; no generated pixels, motion interpolation or retiming to hide stalls.",
+  "audio_treatment": "AAC transcode of the supplied engine WAV at original duration; this assembler does not replace, pad, stretch or synthesize audio. The source gameplay may itself use provisional synthesized sound assets.",
+  "audio_review": "Encoding does not establish perceptual audition or audible-phase coverage; run the separate gameplay-audio audit.",
+  "observed_phase_order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+  ],
+  "chapters": [
+    {
+      "phase": 0,
+      "title": "5.56 mm Carbine / Walk / Forward",
+      "start_seconds": 0,
+      "end_seconds": 1.445473
+    },
+    {
+      "phase": 1,
+      "title": "5.56 mm Carbine / Walk / Forward right",
+      "start_seconds": 1.445473,
+      "end_seconds": 2.847356
+    },
+    {
+      "phase": 2,
+      "title": "5.56 mm Carbine / Walk / Right",
+      "start_seconds": 2.847356,
+      "end_seconds": 4.287576
+    },
+    {
+      "phase": 3,
+      "title": "5.56 mm Carbine / Walk / Back right",
+      "start_seconds": 4.287576,
+      "end_seconds": 5.703668
+    },
+    {
+      "phase": 4,
+      "title": "5.56 mm Carbine / Walk / Back",
+      "start_seconds": 5.703668,
+      "end_seconds": 7.088283
+    },
+    {
+      "phase": 5,
+      "title": "5.56 mm Carbine / Walk / Back left",
+      "start_seconds": 7.088283,
+      "end_seconds": 8.517713
+    },
+    {
+      "phase": 6,
+      "title": "5.56 mm Carbine / Walk / Left",
+      "start_seconds": 8.517713,
+      "end_seconds": 9.933674
+    },
+    {
+      "phase": 7,
+      "title": "5.56 mm Carbine / Walk / Forward left",
+      "start_seconds": 9.933674,
+      "end_seconds": 11.348064
+    },
+    {
+      "phase": 8,
+      "title": "5.56 mm Carbine / Sprint / Forward",
+      "start_seconds": 11.348064,
+      "end_seconds": 12.768437
+    },
+    {
+      "phase": 9,
+      "title": "5.56 mm Carbine / Sprint / Forward right",
+      "start_seconds": 12.768437,
+      "end_seconds": 14.200149
+    },
+    {
+      "phase": 10,
+      "title": "5.56 mm Carbine / Sprint / Right",
+      "start_seconds": 14.200149,
+      "end_seconds": 15.60259
+    },
+    {
+      "phase": 11,
+      "title": "5.56 mm Carbine / Sprint / Back right",
+      "start_seconds": 15.60259,
+      "end_seconds": 17.023495
+    },
+    {
+      "phase": 12,
+      "title": "5.56 mm Carbine / Sprint / Back",
+      "start_seconds": 17.023495,
+      "end_seconds": 18.42022
+    },
+    {
+      "phase": 13,
+      "title": "5.56 mm Carbine / Sprint / Back left",
+      "start_seconds": 18.42022,
+      "end_seconds": 19.827471
+    },
+    {
+      "phase": 14,
+      "title": "5.56 mm Carbine / Sprint / Left",
+      "start_seconds": 19.827471,
+      "end_seconds": 21.234868
+    },
+    {
+      "phase": 15,
+      "title": "5.56 mm Carbine / Sprint / Forward left",
+      "start_seconds": 21.234868,
+      "end_seconds": 22.660972
+    },
+    {
+      "phase": 16,
+      "title": "5.56 mm Carbine / Reload walk / Forward",
+      "start_seconds": 22.660972,
+      "end_seconds": 25.068449
+    },
+    {
+      "phase": 17,
+      "title": "5.56 mm Carbine / Reload walk / Forward right",
+      "start_seconds": 25.068449,
+      "end_seconds": 27.501654
+    },
+    {
+      "phase": 18,
+      "title": "5.56 mm Carbine / Reload walk / Right",
+      "start_seconds": 27.501654,
+      "end_seconds": 29.926743
+    },
+    {
+      "phase": 19,
+      "title": "5.56 mm Carbine / Reload walk / Back right",
+      "start_seconds": 29.926743,
+      "end_seconds": 32.364923
+    },
+    {
+      "phase": 20,
+      "title": "5.56 mm Carbine / Reload walk / Back",
+      "start_seconds": 32.364923,
+      "end_seconds": 34.759074
+    },
+    {
+      "phase": 21,
+      "title": "5.56 mm Carbine / Reload walk / Back left",
+      "start_seconds": 34.759074,
+      "end_seconds": 37.216364
+    },
+    {
+      "phase": 22,
+      "title": "5.56 mm Carbine / Reload walk / Left",
+      "start_seconds": 37.216364,
+      "end_seconds": 39.653576
+    },
+    {
+      "phase": 23,
+      "title": "5.56 mm Carbine / Reload walk / Forward left",
+      "start_seconds": 39.653576,
+      "end_seconds": 42.074514
+    },
+    {
+      "phase": 24,
+      "title": "12-Gauge Pump Shotgun / Walk / Forward",
+      "start_seconds": 42.074514,
+      "end_seconds": 43.483783
+    },
+    {
+      "phase": 25,
+      "title": "12-Gauge Pump Shotgun / Walk / Forward right",
+      "start_seconds": 43.483783,
+      "end_seconds": 44.912744
+    },
+    {
+      "phase": 26,
+      "title": "12-Gauge Pump Shotgun / Walk / Right",
+      "start_seconds": 44.912744,
+      "end_seconds": 46.333863
+    },
+    {
+      "phase": 27,
+      "title": "12-Gauge Pump Shotgun / Walk / Back right",
+      "start_seconds": 46.333863,
+      "end_seconds": 47.746094
+    },
+    {
+      "phase": 28,
+      "title": "12-Gauge Pump Shotgun / Walk / Back",
+      "start_seconds": 47.746094,
+      "end_seconds": 49.185601
+    },
+    {
+      "phase": 29,
+      "title": "12-Gauge Pump Shotgun / Walk / Back left",
+      "start_seconds": 49.185601,
+      "end_seconds": 50.582984
+    },
+    {
+      "phase": 30,
+      "title": "12-Gauge Pump Shotgun / Walk / Left",
+      "start_seconds": 50.582984,
+      "end_seconds": 52.017498
+    },
+    {
+      "phase": 31,
+      "title": "12-Gauge Pump Shotgun / Walk / Forward left",
+      "start_seconds": 52.017498,
+      "end_seconds": 53.413165
+    },
+    {
+      "phase": 32,
+      "title": "12-Gauge Pump Shotgun / Sprint / Forward",
+      "start_seconds": 53.413165,
+      "end_seconds": 54.815129
+    },
+    {
+      "phase": 33,
+      "title": "12-Gauge Pump Shotgun / Sprint / Forward right",
+      "start_seconds": 54.815129,
+      "end_seconds": 56.235345
+    },
+    {
+      "phase": 34,
+      "title": "12-Gauge Pump Shotgun / Sprint / Right",
+      "start_seconds": 56.235345,
+      "end_seconds": 57.774609
+    },
+    {
+      "phase": 35,
+      "title": "12-Gauge Pump Shotgun / Sprint / Back right",
+      "start_seconds": 57.774609,
+      "end_seconds": 59.072696
+    },
+    {
+      "phase": 36,
+      "title": "12-Gauge Pump Shotgun / Sprint / Back",
+      "start_seconds": 59.072696,
+      "end_seconds": 60.492722
+    },
+    {
+      "phase": 37,
+      "title": "12-Gauge Pump Shotgun / Sprint / Back left",
+      "start_seconds": 60.492722,
+      "end_seconds": 61.90896
+    },
+    {
+      "phase": 38,
+      "title": "12-Gauge Pump Shotgun / Sprint / Left",
+      "start_seconds": 61.90896,
+      "end_seconds": 63.343198
+    },
+    {
+      "phase": 39,
+      "title": "12-Gauge Pump Shotgun / Sprint / Forward left",
+      "start_seconds": 63.343198,
+      "end_seconds": 64.757516
+    },
+    {
+      "phase": 40,
+      "title": "12-Gauge Pump Shotgun / Reload walk / Forward",
+      "start_seconds": 64.757516,
+      "end_seconds": 67.163451
+    },
+    {
+      "phase": 41,
+      "title": "12-Gauge Pump Shotgun / Reload walk / Forward right",
+      "start_seconds": 67.163451,
+      "end_seconds": 69.606802
+    },
+    {
+      "phase": 42,
+      "title": "12-Gauge Pump Shotgun / Reload walk / Right",
+      "start_seconds": 69.606802,
+      "end_seconds": 72.018215
+    },
+    {
+      "phase": 43,
+      "title": "12-Gauge Pump Shotgun / Reload walk / Back right",
+      "start_seconds": 72.018215,
+      "end_seconds": 74.417697
+    },
+    {
+      "phase": 44,
+      "title": "12-Gauge Pump Shotgun / Reload walk / Back",
+      "start_seconds": 74.417697,
+      "end_seconds": 76.85731
+    },
+    {
+      "phase": 45,
+      "title": "12-Gauge Pump Shotgun / Reload walk / Back left",
+      "start_seconds": 76.85731,
+      "end_seconds": 79.267863
+    },
+    {
+      "phase": 46,
+      "title": "12-Gauge Pump Shotgun / Reload walk / Left",
+      "start_seconds": 79.267863,
+      "end_seconds": 81.664102
+    },
+    {
+      "phase": 47,
+      "title": "12-Gauge Pump Shotgun / Reload walk / Forward left",
+      "start_seconds": 81.664102,
+      "end_seconds": 84.07941666666666
+    }
+  ],
+  "chapter_timing": "First observed frame of each contiguous phase, not an exact engine operation boundary.",
+  "encoded": true,
+  "encoder_exit_code": 0,
+  "output_sha256": "76e592a9392da96669c579fad81605cee0879c75d60ada7c3b13c0d31d022fd1",
+  "output_bytes": 29283189,
+  "source_state_detail": "Earlier full directional run, current imported locomotion assets, BEFORE accepted mesh tick prerequisite correction; phases48-53 deliberately excluded as superseded turn evidence.",
+  "input_selection": {
+    "original_frames_csv_sha256": "80cc9db9fea3f44234957865cb46d69a4822844ea9387c43c768ab20fa4f187c",
+    "original_wav_sha256": "7467c9cc393d6a0e26660db188fe3d7e0fde8b091dfee0071b6308184a4722e2",
+    "original_frame_count": 3659,
+    "selected_frame_count": 2149,
+    "original_pcm_frames": 6821888,
+    "selected_pcm_range_half_open": [
+      0,
+      4035812
+    ],
+    "selected_pcm_sha256": "31d3fd033231d1372fadc76fe51b44686132290195d2cfecdc258671b7679324",
+    "pcm_samples_byte_identical_to_original_range": true,
+    "retained_callback_timestamp_strings_unchanged": true,
+    "original_files_modified": false,
+    "excluded_phases": [
+      48,
+      49,
+      50,
+      51,
+      52,
+      53
+    ],
+    "excluded_outside_audio": [],
+    "selection_boundary": "PCM prefix ends at floor(first phase48 callback time * sample rate); no retiming, crossfade, replacement audio or synthesized frames."
+  },
+  "historical_stage_b_recording": true,
+  "current_stage_c_or_d_build_capture": false,
+  "source_audio_measurements": {
+    "peak_dbfs": -12.623024376040474,
+    "rms_dbfs": -45.15516212545029,
+    "phases_with_nonzero_signal": 17,
+    "total_phases": 48,
+    "measurement_only_no_perceptual_audition": true,
+    "scope": "Original historical Stage B audio retained including silent phases; this does not establish Stage C feedback coverage."
+  }
+}

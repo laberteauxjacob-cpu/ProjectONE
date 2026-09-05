@@ -4,6 +4,7 @@ public class ProjectONE : ModuleRules
     public ProjectONE(ReadOnlyTargetRules Target) : base(Target)
     {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-        PublicDependencyModuleNames.AddRange(new string[] {"Core", "CoreUObject", "Engine", "InputCore", "AIModule", "NavigationSystem", "AnimGraphRuntime", "ProceduralMeshComponent", "RenderCore", "RHI", "Json", "JsonUtilities", "AudioMixer", "ImageCore"});
+        PublicDependencyModuleNames.AddRange(new string[] {"Core", "CoreUObject", "Engine", "InputCore", "AIModule", "NavigationSystem", "AnimGraphRuntime", "ProceduralMeshComponent", "RenderCore", "RHI", "Json", "JsonUtilities", "AudioMixer", "ImageCore", "PhysicsCore"});
+        if (Target.bBuildEditor) PrivateDependencyModuleNames.Add("AssetRegistry");
     }
 }

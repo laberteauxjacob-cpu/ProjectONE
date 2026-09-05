@@ -2,7 +2,13 @@
 #include "ONEHealthComponent.h"
 #include "ONEPlayer.h"
 #include "ONEAnimInstance.h"
+#include "ONESnapshotAnimInstance.h"
 #include "ONEBloodSubsystem.h"
+#include "ONEPhysicsRuntime.h"
+#include "PhysicsEngine/PhysicsAsset.h"
+#include "ProfilingDebugging/CsvProfiler.h"
+
+CSV_DECLARE_CATEGORY_EXTERN(ONEPhysicality);
 #include "ONEGameMode.h"
 #include "AIController.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -20,7 +26,7 @@ namespace
     void EnsureModularPoseBones(USkeletalMesh* Asset)
     {
         if (!Asset || !Asset->GetResourceForRendering()) return;
-        const FName Bones[]={TEXT("head"),TEXT("lowerarm_l"),TEXT("hand_l")};
+        const FName Bones[]={TEXT("head"),TEXT("hand_l"),TEXT("hand_r"),TEXT("foot_l"),TEXT("foot_r"),TEXT("toe_l"),TEXT("toe_r")};
         bool Missing=false;
         const FSkeletalMeshRenderData* Data=Asset->GetResourceForRendering();
         for (int32 LOD=0;LOD<Data->LODRenderData.Num();++LOD)
@@ -37,7 +43,7 @@ namespace
         if (!Missing) return;
         // Followers cannot add missing bones through the base engine implementation.
         // Force evaluation only if the actual imported render LOD omitted a modular chain.
-        for (FName Bone:TArray<FName>{TEXT("head"),TEXT("hand_l")})
+        for (FName Bone:Bones)
         {
             const FName Name(*FString::Printf(TEXT("ONE_Pose_%s"),*Bone.ToString()));
             if (Asset->FindSocket(Name)) continue;
@@ -62,35 +68,51 @@ AONEZombie::AONEZombie()
     GetMesh()->SetAnimationMode(EAnimationMode::AnimationBlueprint);
     GetMesh()->SetAnimInstanceClass(UONEAnimInstance::StaticClass());
     GetMesh()->VisibilityBasedAnimTickOption=EVisibilityBasedAnimTickOption::AlwaysTickPoseAndRefreshBones;
-    HeadMesh=CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Head"));
-    HeadMesh->SetupAttachment(GetMesh());
-    HeadMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-    ArmMesh=CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("LeftArm"));
-    ArmMesh->SetupAttachment(GetMesh());
-    ArmMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-    HeadRegion=CreateDefaultSubobject<USphereComponent>(TEXT("HeadRegion"));
-    HeadRegion->SetupAttachment(GetMesh(),TEXT("head"));
-    HeadRegion->InitSphereRadius(18.f);
-    HeadRegion->SetRelativeLocation(FVector(0,0,9));
-    ArmRegion=CreateDefaultSubobject<USphereComponent>(TEXT("ArmRegion"));
-    ArmRegion->SetupAttachment(GetMesh(),TEXT("lowerarm_l"));
-    ArmRegion->InitSphereRadius(13.f);
-    UpperArmRegion=CreateDefaultSubobject<USphereComponent>(TEXT("UpperArmRegion"));
-    UpperArmRegion->SetupAttachment(GetMesh(),TEXT("upperarm_l"));
-    UpperArmRegion->InitSphereRadius(12.f);
+    auto MakePart=[this](const TCHAR* Name)
+    {
+        auto* Part=CreateDefaultSubobject<USkeletalMeshComponent>(Name);
+        Part->SetupAttachment(GetMesh());
+        Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+        Part->SetCanEverAffectNavigation(false);
+        Part->SetGenerateOverlapEvents(false);
+        return Part;
+    };
+    HeadMesh=MakePart(TEXT("Head"));
+    ArmLeftMesh=MakePart(TEXT("ArmLeft")); ArmRightMesh=MakePart(TEXT("ArmRight"));
+    LegLeftMesh=MakePart(TEXT("LegLeft")); ArmMesh=ArmRightMesh;
+    auto MakeRegion=[this](const TCHAR* Name,float Radius)
+    {
+        auto* Region=CreateDefaultSubobject<USphereComponent>(Name);
+        Region->SetupAttachment(GetMesh()); Region->InitSphereRadius(Radius);
+        return Region;
+    };
+    HeadRegion=MakeRegion(TEXT("HeadRegion"),18.f);
+    ArmLeftRegion=MakeRegion(TEXT("ArmLeftRegion"),13.f);
+    UpperArmLeftRegion=MakeRegion(TEXT("UpperArmLeftRegion"),12.f);
+    ArmRightRegion=MakeRegion(TEXT("ArmRightRegion"),13.f);
+    UpperArmRightRegion=MakeRegion(TEXT("UpperArmRightRegion"),12.f);
+    ArmRegion=ArmRightRegion; UpperArmRegion=UpperArmRightRegion;
+    auto MakeLegRegion=[this](const TCHAR* Name,float Radius)
+    {
+        auto* Region=CreateDefaultSubobject<UCapsuleComponent>(Name);
+        Region->SetupAttachment(GetMesh()); Region->InitCapsuleSize(Radius,Radius+20.f);
+        return Region;
+    };
+    LegLeftRegion=MakeLegRegion(TEXT("LegLeftRegion"),6.5f);
+    UpperLegLeftRegion=MakeLegRegion(TEXT("UpperLegLeftRegion"),8.f);
+    LegRightRegion=MakeLegRegion(TEXT("LegRightRegion"),6.5f);
+    UpperLegRightRegion=MakeLegRegion(TEXT("UpperLegRightRegion"),8.f);
     BodyRegion=CreateDefaultSubobject<UCapsuleComponent>(TEXT("BodyRegion"));
-    // The torso capsule follows character-space Z; imported bone Y/Z axes differ.
     BodyRegion->SetupAttachment(GetMesh());
-    BodyRegion->InitCapsuleSize(24.f,51.f);
-    BodyRegion->SetRelativeLocation(FVector(0,0,95));
-    for (UPrimitiveComponent* C : TArray<UPrimitiveComponent*>{HeadRegion,ArmRegion,UpperArmRegion,BodyRegion})
+    BodyRegion->InitCapsuleSize(22.f,29.f);
+    for (UPrimitiveComponent* C:TArray<UPrimitiveComponent*>{HeadRegion,ArmLeftRegion,UpperArmLeftRegion,ArmRightRegion,UpperArmRightRegion,
+        LegLeftRegion,UpperLegLeftRegion,LegRightRegion,UpperLegRightRegion,BodyRegion})
     {
         C->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
         C->SetCollisionObjectType(ECC_WorldDynamic);
         C->SetCollisionResponseToAllChannels(ECR_Ignore);
         C->SetCollisionResponseToChannel(ECC_Visibility,ECR_Block);
-        C->SetCanEverAffectNavigation(false);
-        C->SetGenerateOverlapEvents(false);
+        C->SetCanEverAffectNavigation(false); C->SetGenerateOverlapEvents(false);
     }
     AIControllerClass=AAIController::StaticClass();
     AutoPossessAI=EAutoPossessAI::PlacedInWorldOrSpawned;
@@ -100,29 +122,68 @@ AONEZombie::AONEZombie()
     GetCharacterMovement()->MaxWalkSpeed=ShambleSpeed;
     GetCharacterMovement()->MaxAcceleration=650;
     GetCharacterMovement()->BrakingDecelerationWalking=1200;
+    GetCharacterMovement()->bEnablePhysicsInteraction=false;
     GetCharacterMovement()->bUseRVOAvoidance=true;
     GetCharacterMovement()->AvoidanceConsiderationRadius=250;
 }
 void AONEZombie::BeginPlay()
 {
     Super::BeginPlay();
-    if (auto* M=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/SK_Infected.SK_Infected")))
+    if (auto* M=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/Candidate03/SK_Infected_Core.SK_Infected_Core")))
+    { EnsureModularPoseBones(M); GetMesh()->SetSkeletalMesh(M); }
+    const TCHAR* Paths[]={TEXT("SK_Infected_Head"),TEXT("SK_Infected_ArmLeft"),TEXT("SK_Infected_ArmRight"),TEXT("SK_Infected_LegLeft")};
+    const TArray<USkeletalMeshComponent*> Parts={HeadMesh,ArmLeftMesh,ArmRightMesh,LegLeftMesh};
+    for (int32 I=0;I<Parts.Num();++I)
     {
-        EnsureModularPoseBones(M);
-        GetMesh()->SetSkeletalMesh(M);
+        const FString Path=FString::Printf(TEXT("/Game/ONE/Characters/Candidate03/%s.%s"),Paths[I],Paths[I]);
+        if (auto* M=LoadObject<USkeletalMesh>(nullptr,*Path)) Parts[I]->SetSkeletalMesh(M);
+        Parts[I]->SetLeaderPoseComponent(GetMesh());
     }
-    if (auto* M=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/SK_Infected_Head.SK_Infected_Head"))) HeadMesh->SetSkeletalMesh(M);
-    if (auto* M=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/SK_Infected_ArmL.SK_Infected_ArmL"))) ArmMesh->SetSkeletalMesh(M);
+    if (auto* PA=LoadObject<UPhysicsAsset>(nullptr,TEXT("/Game/ONE/Characters/Candidate03/PA_Infected_C03.PA_Infected_C03"))) GetMesh()->SetPhysicsAsset(PA);
     if (const USkeletalMesh* Asset=GetMesh()->GetSkeletalMeshAsset())
     {
+        // Register components without named sockets in the constructor: the
+        // runtime-loaded skeleton does not exist until this point in BeginPlay.
+        const TArray<USceneComponent*> Regions={HeadRegion,ArmLeftRegion,UpperArmLeftRegion,ArmRightRegion,UpperArmRightRegion,
+            LegLeftRegion,UpperLegLeftRegion,LegRightRegion,UpperLegRightRegion,BodyRegion};
+        const FName Bones[]={TEXT("head"),TEXT("lowerarm_r"),TEXT("upperarm_r"),TEXT("lowerarm_l"),TEXT("upperarm_l"),
+            TEXT("calf_r"),TEXT("thigh_r"),TEXT("calf_l"),TEXT("thigh_l"),TEXT("spine_01")};
+        for (int32 I=0;I<Regions.Num();++I) Regions[I]->AttachToComponent(GetMesh(),FAttachmentTransformRules::KeepRelativeTransform,Bones[I]);
         const FReferenceSkeleton& Skeleton=Asset->GetRefSkeleton();
-        FTransform Bind=FTransform::Identity;
-        for (int32 Bone=Skeleton.FindBoneIndex(TEXT("head"));Bone!=INDEX_NONE;Bone=Skeleton.GetParentIndex(Bone)) Bind*=Skeleton.GetRefBonePose()[Bone];
-        HeadRegion->SetRelativeLocation(Bind.GetRotation().Inverse().RotateVector(FVector(0,0,9)));
+        auto Bind=[&Skeleton](FName Name)
+        {
+            FTransform Result=FTransform::Identity;
+            for (int32 Bone=Skeleton.FindBoneIndex(Name);Bone!=INDEX_NONE;Bone=Skeleton.GetParentIndex(Bone)) Result*=Skeleton.GetRefBonePose()[Bone];
+            return Result;
+        };
+        HeadRegion->SetRelativeLocation(Bind(TEXT("head")).GetRotation().Inverse().RotateVector(FVector(0,0,9)));
+        const FTransform TorsoBind=Bind(TEXT("spine_01"));
+        BodyRegion->SetRelativeLocation(TorsoBind.InverseTransformPosition(FVector(0,0,116)));
+        BodyRegion->SetRelativeRotation(TorsoBind.GetRotation().Inverse());
+        // Narrow capsules cover the entire bone segments and shared knee. Their
+        // reference widths leave separation between anatomical sides (8+8<18cm).
+        const TArray<UCapsuleComponent*> LegQueries={UpperLegLeftRegion,LegLeftRegion,UpperLegRightRegion,LegRightRegion};
+        const FName DistalBones[]={TEXT("calf_r"),TEXT("foot_r"),TEXT("calf_l"),TEXT("foot_l")};
+        FVector EndsA[4],EndsB[4];
+        for (int32 I=0;I<LegQueries.Num();++I)
+        {
+            auto* Query=LegQueries[I]; const FTransform ParentBind=Bind(Query->GetAttachSocketName());
+            EndsA[I]=ParentBind.GetLocation(); EndsB[I]=Bind(DistalBones[I]).GetLocation();
+            const FVector End=ParentBind.InverseTransformPosition(EndsB[I]);
+            Query->SetCapsuleHalfHeight(float(End.Size())*.5f+Query->GetUnscaledCapsuleRadius());
+            Query->SetRelativeLocation(End*.5);
+            Query->SetRelativeRotation(FQuat::FindBetweenNormals(FVector::UpVector,End.GetSafeNormal()));
+        }
+        ReferenceLegQuerySeparation=BIG_NUMBER;
+        for (int32 L=0;L<2;++L) for (int32 R=2;R<4;++R)
+        {
+            FVector A,B; FMath::SegmentDistToSegmentSafe(EndsA[L],EndsB[L],EndsA[R],EndsB[R],A,B);
+            ReferenceLegQuerySeparation=FMath::Min(ReferenceLegQuerySeparation,float(FVector::Dist(A,B))-LegQueries[L]->GetUnscaledCapsuleRadius()-LegQueries[R]->GetUnscaledCapsuleRadius());
+        }
+        for (auto* Region:TArray<USphereComponent*>{UpperArmLeftRegion,UpperArmRightRegion})
+            Region->SetRelativeLocation(Bind(Region->GetAttachSocketName()).InverseTransformVector(FVector(0,0,-10)));
     }
     GetMesh()->SetAnimInstanceClass(UONEAnimInstance::StaticClass());
-    HeadMesh->SetLeaderPoseComponent(GetMesh());
-    ArmMesh->SetLeaderPoseComponent(GetMesh());
     Target=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0));
     StateStart=GetWorld()->GetTimeSeconds();
     NextPath=StateStart+FMath::FRandRange(0,.35f);
@@ -161,7 +222,7 @@ void AONEZombie::Tick(float Dt)
             FCollisionQueryParams Params(SCENE_QUERY_STAT(InfectedContact),false,this);
             Params.AddIgnoredActor(Target);
             const bool bCover=GetWorld()->LineTraceSingleByObjectType(Cover,GetActorLocation()+FVector(0,0,20),Target->GetActorLocation()+FVector(0,0,20),FCollisionObjectQueryParams(ECC_WorldStatic),Params);
-            if (Distance<=AttackRange+8 && FVector::DotProduct(ToTarget,GetActorForwardVector())>.35f && !bCover) Target->ReceiveAttack(AttackDamage,GetActorLocation());
+            if ((HasLeftArm() || HasRightArm()) && Distance<=AttackRange+8 && FVector::DotProduct(ToTarget,GetActorForwardVector())>.35f && !bCover) Target->ReceiveAttack(AttackDamage,GetActorLocation());
         }
         if (GetStateElapsed()>=AttackDuration) { ChangeState(EONEZombieState::Pursue); NextAttack=Now+.3f; }
         return;
@@ -180,91 +241,298 @@ void AONEZombie::Tick(float Dt)
         if (auto* AI=Cast<AAIController>(GetController())) AI->MoveToActor(Target,AttackRange*.25f,true,true,true,nullptr,true);
     }
 }
+namespace
+{
+    FName RegionRoot(EONEHitRegion Region)
+    {
+        switch (Region)
+        {
+            case EONEHitRegion::Head: return TEXT("head");
+            case EONEHitRegion::ArmLeft: return TEXT("upperarm_r");
+            case EONEHitRegion::ArmRight: return TEXT("upperarm_l");
+            case EONEHitRegion::LegLeft: return TEXT("thigh_r");
+            case EONEHitRegion::LegRight: return TEXT("thigh_l");
+            default: return TEXT("spine_01");
+        }
+    }
+    bool BoneMatches(EONEHitRegion Region,FName Bone)
+    {
+        switch (Region)
+        {
+            case EONEHitRegion::Head: return Bone==TEXT("head");
+            case EONEHitRegion::ArmLeft: return Bone==TEXT("upperarm_r") || Bone==TEXT("lowerarm_r") || Bone==TEXT("hand_r");
+            case EONEHitRegion::ArmRight: return Bone==TEXT("upperarm_l") || Bone==TEXT("lowerarm_l") || Bone==TEXT("hand_l");
+            case EONEHitRegion::LegLeft: return Bone==TEXT("thigh_r") || Bone==TEXT("calf_r") || Bone==TEXT("foot_r") || Bone==TEXT("toe_r");
+            case EONEHitRegion::LegRight: return Bone==TEXT("thigh_l") || Bone==TEXT("calf_l") || Bone==TEXT("foot_l") || Bone==TEXT("toe_l");
+            case EONEHitRegion::Body: return Bone==TEXT("pelvis") || Bone==TEXT("spine_01") || Bone==TEXT("spine_02") || Bone==TEXT("neck");
+            default: return false;
+        }
+    }
+}
+bool AONEZombie::IsRegionPresent(EONEHitRegion Region) const
+{
+    switch (Region)
+    {
+        case EONEHitRegion::Head: return HasHead();
+        case EONEHitRegion::ArmLeft: return HasLeftArm();
+        case EONEHitRegion::ArmRight: return HasRightArm();
+        case EONEHitRegion::LegLeft: return HasLeftLeg();
+        case EONEHitRegion::Body: case EONEHitRegion::LegRight: return true;
+        default: return false;
+    }
+}
+FName AONEZombie::ResolveRegionBone(EONEHitRegion Region,FName Requested) const
+{
+    return BoneMatches(Region,Requested) ? Requested : RegionRoot(Region);
+}
 void AONEZombie::ReceiveBullet(const FHitResult& Hit,const FVector& Direction,float Damage)
 {
-    // Preserve the Candidate01 single-carbine-hit entry point for gameplay probes.
-    FONEWeaponDamagePacket Packet; Packet.Direction=Direction; Packet.Position=Hit.ImpactPoint; Packet.Pellets=1;
-    switch (GetHitRegion(Hit))
-    {
-        case EONEHitRegion::Head: Packet.HeadDamage=Damage; Packet.HeadTrauma=FMath::Max(HeadSeverThreshold,Damage*2.f); break;
-        case EONEHitRegion::Arm: Packet.ArmDamage=Damage; Packet.ArmTrauma=Damage; break;
-        case EONEHitRegion::Body: Packet.BodyDamage=Damage; break;
-        default: return;
-    }
-    ReceiveWeaponDamage(Packet);
+    const EONEHitRegion Region=GetHitRegion(Hit);
+    if (!FONEWeaponDamagePacket::IsValidRegion(Region)) return;
+    FONEWeaponDamagePacket Packet;
+    const float Trauma=Region==EONEHitRegion::Head ? FMath::Max(HeadSeverThreshold,Damage*2.f) : Damage;
+    Packet.Get(Region).AddPellet(Damage,Trauma,Hit.ImpactPoint,Direction,Hit.ImpactNormal,Hit.BoneName);
+    Packet.Finalize(); ReceiveWeaponDamage(Packet);
 }
 EONEHitRegion AONEZombie::GetHitRegion(const FHitResult& Hit) const
 {
-    if (IsDead()) return EONEHitRegion::Invalid;
-    const bool HeadHit=Hit.GetComponent()==HeadRegion || Hit.BoneName==TEXT("head");
-    const bool ArmHit=Hit.GetComponent()==ArmRegion || Hit.GetComponent()==UpperArmRegion || Hit.BoneName==TEXT("upperarm_l") || Hit.BoneName==TEXT("lowerarm_l") || Hit.BoneName==TEXT("hand_l");
-    if (HeadHit) return bHeadSevered ? EONEHitRegion::Invalid : EONEHitRegion::Head;
-    if (ArmHit) return bArmSevered ? EONEHitRegion::Invalid : EONEHitRegion::Arm;
-    return EONEHitRegion::Body;
+    const auto* Component=Hit.GetComponent();
+    EONEHitRegion Region=EONEHitRegion::Body;
+    // An explicit query component is authoritative. A bone cannot relabel it.
+    if (Component==HeadRegion) Region=EONEHitRegion::Head;
+    else if (Component==ArmLeftRegion || Component==UpperArmLeftRegion) Region=EONEHitRegion::ArmLeft;
+    else if (Component==ArmRightRegion || Component==UpperArmRightRegion) Region=EONEHitRegion::ArmRight;
+    else if (Component==LegLeftRegion || Component==UpperLegLeftRegion) Region=EONEHitRegion::LegLeft;
+    else if (Component==LegRightRegion || Component==UpperLegRightRegion) Region=EONEHitRegion::LegRight;
+    else if (Component!=BodyRegion && !Hit.BoneName.IsNone())
+        for (int32 I=1;I<FONEWeaponDamagePacket::RegionCount;++I)
+            if (BoneMatches(EONEHitRegion(I),Hit.BoneName)) { Region=EONEHitRegion(I); break; }
+    return IsRegionPresent(Region) ? Region : EONEHitRegion::Invalid;
 }
 bool AONEZombie::ReceiveWeaponDamage(const FONEWeaponDamagePacket& Packet)
 {
-    if (IsDead() || (Packet.ShotId!=0 && RecentShotIds.Contains(Packet.ShotId))) return false;
-    const float Body=FMath::Max(0.f,Packet.BodyDamage);
-    const float Head=bHeadSevered ? 0.f : FMath::Max(0.f,Packet.HeadDamage);
-    const float Arm=bArmSevered ? 0.f : FMath::Max(0.f,Packet.ArmDamage);
-    if (Body+Head+Arm<=0.f) return false;
-    if (Packet.ShotId!=0)
+    CSV_SCOPED_TIMING_STAT(ONEPhysicality,RegionalDamage);
+    if (Packet.ShotId && RecentShotIds.Contains(Packet.ShotId)) return false;
+    FONEWeaponRegionDamage Accepted[FONEWeaponDamagePacket::RegionCount];
+    bool SeverRegion[FONEWeaponDamagePacket::RegionCount]={};
+    float Total=0,HealthDamage=0,Largest=0;
+    int32 Strongest=0;
+    // Read the complete pre-discharge presence mask before changing any region.
+    for (int32 I=0;I<FONEWeaponDamagePacket::RegionCount;++I)
+    {
+        const auto Region=EONEHitRegion(I); const auto& In=Packet.Regions[I];
+        if (!IsRegionPresent(Region) || !FMath::IsFinite(In.Damage) || !FMath::IsFinite(In.Trauma) || In.Damage<=0 ||
+            In.Position.ContainsNaN() || In.Direction.ContainsNaN() || In.Normal.ContainsNaN()) continue;
+        auto& Out=Accepted[I]; Out=In;
+        Out.Damage=FMath::Min(In.Damage,10000.f); Out.Trauma=FMath::Clamp(In.Trauma,0.f,10000.f);
+        Out.Direction=In.Direction.GetSafeNormal(SMALL_NUMBER,GetActorForwardVector());
+        Out.Normal=In.Normal.GetSafeNormal(SMALL_NUMBER,-Out.Direction);
+        Out.Bone=ResolveRegionBone(Region,In.Bone);
+        Total+=Out.Damage;
+        HealthDamage+=Out.Damage*((Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight) ? .4f : 1.f);
+        if (Out.Damage>Largest) { Largest=Out.Damage; Strongest=I; }
+    }
+    if (Total<=0) return false;
+    if (Packet.ShotId)
     {
         if (RecentShotIds.Num()>=32) RecentShotIds.RemoveAt(0);
         RecentShotIds.Add(Packet.ShotId);
     }
-    ++DamageTransactions;
-    HeadTrauma+=bHeadSevered ? 0.f : FMath::Max(0.f,Packet.HeadTrauma);
-    ArmDamage+=bArmSevered ? 0.f : FMath::Max(0.f,Packet.ArmTrauma);
-    const bool HeadLoss=!bHeadSevered && Head>0 && HeadTrauma>=HeadSeverThreshold;
-    const bool ArmLoss=!HeadLoss && !bArmSevered && Arm>0 && ArmDamage>=ArmSeverThreshold;
-    // One discharge produces at most one detachment and one impact spray per victim.
-    if (HeadLoss) { Sever(true,Packet.Direction); Health->ApplyDamage(Health->MaxHealth); }
-    else
+    const bool WasDead=IsDead();
+    if (WasDead) ++CorpseTransactions; else ++DamageTransactions;
+    for (int32 I=0;I<FONEWeaponDamagePacket::RegionCount;++I)
     {
-        Health->ApplyDamage(Body+Head+Arm*.4f);
-        if (ArmLoss) Sever(false,Packet.Direction);
+        if (Accepted[I].Damage<=0) continue;
+        RegionalTrauma[I]=FMath::Min(RegionalTrauma[I]+Accepted[I].Trauma,100000.f);
+        const EONEHitRegion Region=EONEHitRegion(I);
+        const float Threshold=Region==EONEHitRegion::Head ? HeadSeverThreshold :
+            Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight ? ArmSeverThreshold :
+            Region==EONEHitRegion::LegLeft ? LegSeverThreshold : BIG_NUMBER;
+        SeverRegion[I]=RegionalTrauma[I]>=Threshold;
     }
-    if (!HeadLoss && !ArmLoss)
-        if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->Impact(Packet.Position,Packet.Direction,false);
-    if (Health->IsDead()) { Die(Packet.Direction); return true; }
+    // One spray per victim transaction; each anatomical wound has its own anchor.
+    const auto& Main=Accepted[Strongest];
+    if (WasDead && bRagdollActive) ONEPhysicsRuntime::ResetRest(GetMesh(),RestState,true);
+    auto* Blood=GetWorld() ? GetWorld()->GetSubsystem<UONEBloodSubsystem>() : nullptr;
+    if (Blood && GetMesh()->GetSkeletalMeshAsset())
+        Blood->Impact(Main.Position,Main.Direction,SeverRegion[1] || SeverRegion[2] || SeverRegion[3] || SeverRegion[4]);
+    for (int32 I=0;I<FONEWeaponDamagePacket::RegionCount;++I)
+    {
+        auto& RegionDamage=Accepted[I]; if (RegionDamage.Damage<=0) continue;
+        const auto Region=EONEHitRegion(I);
+        if (SeverRegion[I]) Sever(Region,RegionDamage.Direction);
+        else if (Blood && GetMesh()->GetSkeletalMeshAsset())
+        {
+            const bool HeavyBleed=Region==EONEHitRegion::Body && RegionDamage.Damage>=40.f;
+            const float Volume=HeavyBleed ? FMath::Clamp(RegionDamage.Damage*.5f,20.f,32.f) : FMath::Clamp(RegionDamage.Damage*.16f,1.2f,16.f);
+            Blood->AddWound(GetMesh(),Region,RegionDamage.Bone,RegionDamage.Position,RegionDamage.Normal,Volume,HeavyBleed);
+        }
+        if (WasDead && IsRegionPresent(Region) && bRagdollActive)
+            GetMesh()->AddImpulseAtLocation(RegionDamage.Direction*FMath::Clamp(RegionDamage.Damage*4.f,100.f,500.f),
+                GetMesh()->GetSocketLocation(RegionDamage.Bone),RegionDamage.Bone);
+    }
+    if (WasDead) return true;
+    const bool FatalLoss=!HasHead() || !HasLeftLeg() || (!HasLeftArm() && !HasRightArm());
+    Health->ApplyDamage(FatalLoss ? FMath::Max(Health->MaxHealth,Health->Health) : HealthDamage);
+    if (Health->IsDead())
+    {
+        Die(Main.Direction,EONEHitRegion(Strongest),Main.Bone,Main.Position,FMath::Clamp(Total*4.f,150.f,550.f));
+        return true;
+    }
     const float Now=GetWorld()->GetTimeSeconds();
     if (Now-LastReaction>=HitReactCooldown)
     {
-        bHeavyReaction=Body+Head+Arm>=Packet.HeavyStaggerThreshold;
+        bHeavyReaction=FMath::IsFinite(Packet.HeavyStaggerThreshold) && Total>=FMath::Max(0.f,Packet.HeavyStaggerThreshold);
         LastReaction=Now; StopPursuit(); ChangeState(EONEZombieState::Hit);
         NextAttack=Now+(bHeavyReaction ? .52f : .4f);
     }
     return true;
 }
-void AONEZombie::Sever(bool bHead,const FVector& Direction)
+void AONEZombie::GetCutWorld(EONEHitRegion Region,FVector& Point,FVector& Normal) const
 {
-    if ((bHead&&bHeadSevered)||(!bHead&&bArmSevered)) return;
-    ++SeverCount;
-    USkeletalMeshComponent* Part=bHead ? HeadMesh.Get() : ArmMesh.Get();
-    const FName Bone=bHead ? FName(TEXT("head")) : FName(TEXT("upperarm_l"));
-    if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>())
+    const FName Root=RegionRoot(Region);
+    // Repository-authored cut manifest component coordinates; convert through
+    // imported reference transforms instead of assuming Blender's local axes.
+    FVector RefPoint(0,0,157.8),RefNormal=FVector::UpVector;
+    if (Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight)
     {
-        Blood->Detach(Part,GetMesh(),Bone,Direction);
-        Blood->Impact(GetMesh()->GetSocketLocation(Bone),Direction,true);
+        const float Side=Region==EONEHitRegion::ArmLeft ? -1.f : 1.f;
+        RefPoint=FVector(.6531973,Side*19.3063946,140.4276123);
+        RefNormal=FVector(.13608277,Side*.27216554,-.95257938);
     }
-    Part->SetVisibility(false);
-    if (bHead) { bHeadSevered=true; HeadRegion->SetCollisionEnabled(ECollisionEnabled::NoCollision); }
-    else { bArmSevered=true; ArmRegion->SetCollisionEnabled(ECollisionEnabled::NoCollision); UpperArmRegion->SetCollisionEnabled(ECollisionEnabled::NoCollision); }
+    else if (Region==EONEHitRegion::LegLeft)
+    { RefPoint=FVector(.456,-9,79.040001); RefNormal=FVector(.028559776,0,-.999592125); }
+    Point=GetActorLocation(); Normal=GetActorUpVector();
+    if (const auto* Asset=GetMesh()->GetSkeletalMeshAsset())
+    {
+        const auto& Ref=Asset->GetRefSkeleton(); FTransform Bind=FTransform::Identity;
+        for (int32 I=Ref.FindBoneIndex(Root);I!=INDEX_NONE;I=Ref.GetParentIndex(I)) Bind*=Ref.GetRefBonePose()[I];
+        const FTransform Current=GetMesh()->GetSocketTransform(Root);
+        Point=Current.TransformPosition(Bind.InverseTransformPosition(RefPoint));
+        Normal=Current.TransformVectorNoScale(Bind.InverseTransformVectorNoScale(RefNormal)).GetSafeNormal();
+    }
 }
-void AONEZombie::Die(const FVector& Direction)
+void AONEZombie::Sever(EONEHitRegion Region,const FVector& Direction)
+{
+    if (!IsRegionPresent(Region)) return;
+    if (bRagdollActive) ONEPhysicsRuntime::ResetRest(GetMesh(),RestState,true);
+    if (bRagdollActive)
+    {
+        if (auto* Anim=Cast<UONEAnimInstance>(GetMesh()->GetAnimInstance()))
+            GetMesh()->SnapshotPose(Anim->CapturedDeathPose);
+        else if (auto* SnapshotAnim=Cast<UONESnapshotAnimInstance>(GetMesh()->GetAnimInstance()))
+            GetMesh()->SnapshotPose(SnapshotAnim->CapturedPose);
+    }
+    USkeletalMeshComponent* Part=nullptr;
+    switch (Region)
+    {
+        case EONEHitRegion::Head: Part=HeadMesh; bHeadSevered=true; HeadRegion->SetCollisionEnabled(ECollisionEnabled::NoCollision); break;
+        case EONEHitRegion::ArmLeft:
+            Part=ArmLeftMesh; bLeftArmSevered=true;
+            ArmLeftRegion->SetCollisionEnabled(ECollisionEnabled::NoCollision); UpperArmLeftRegion->SetCollisionEnabled(ECollisionEnabled::NoCollision); break;
+        case EONEHitRegion::ArmRight:
+            Part=ArmRightMesh; bRightArmSevered=true;
+            ArmRightRegion->SetCollisionEnabled(ECollisionEnabled::NoCollision); UpperArmRightRegion->SetCollisionEnabled(ECollisionEnabled::NoCollision); break;
+        case EONEHitRegion::LegLeft:
+            Part=LegLeftMesh; bLeftLegSevered=true;
+            LegLeftRegion->SetCollisionEnabled(ECollisionEnabled::NoCollision); UpperLegLeftRegion->SetCollisionEnabled(ECollisionEnabled::NoCollision); break;
+        default: return;
+    }
+    ++SeverCount;
+    const FName Bone=RegionRoot(Region); FVector Cut,Normal; GetCutWorld(Region,Cut,Normal);
+    if (Part && Part->GetSkeletalMeshAsset() && GetMesh()->GetSkeletalMeshAsset())
+        if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>())
+        {
+            AONEGorePiece* Piece=Blood->Detach(Part,GetMesh(),Bone,Direction);
+            Blood->AddWound(GetMesh(),Region,Bone,Cut,Normal,24.f,true);
+            if (Piece) Blood->AddWound(Piece->GetPieceMesh(),Region,Bone,Cut,-Normal,12.f,true);
+        }
+    if (Part) Part->SetVisibility(false);
+    if (bRagdollActive && Region==EONEHitRegion::LegLeft)
+        StumpFitError=ONEPhysicsRuntime::ConfigureLeftStump(GetMesh(),true);
+    // Preserve cut-root transforms/weights for the remaining capped stump.
+    // Kinematic missing chains must also be removed, not merely made non-simulated.
+    if (GetMesh()->GetPhysicsAsset()) GetMesh()->TermBodiesBelow(Bone);
+}
+void AONEZombie::Die(const FVector& Direction,EONEHitRegion ImpactRegion,FName ImpactBone,const FVector& ImpactPosition,float Impulse)
 {
     if (IsDead()) return;
+    const FVector Inherited=GetVelocity();
+    if (GetMesh()->GetSkeletalMeshAsset())
+        if (auto* Anim=Cast<UONEAnimInstance>(GetMesh()->GetAnimInstance())) GetMesh()->SnapshotPose(Anim->CapturedDeathPose);
     StopPursuit(); ChangeState(EONEZombieState::Dead);
-    GetCharacterMovement()->DisableMovement();
+    GetCharacterMovement()->DisableMovement(); GetCharacterMovement()->SetAvoidanceEnabled(false);
     GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-    for (UPrimitiveComponent* C : TArray<UPrimitiveComponent*>{HeadRegion,ArmRegion,UpperArmRegion,BodyRegion}) C->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+    if (GetMesh()->GetSkeletalMeshAsset() && GetMesh()->GetPhysicsAsset())
+    {
+        TArray<FName> Missing;
+        if (!HasHead()) Missing.Add(TEXT("head"));
+        if (!HasLeftArm()) Missing.Add(TEXT("upperarm_r"));
+        if (!HasRightArm()) Missing.Add(TEXT("upperarm_l"));
+        if (!HasLeftLeg()) Missing.Add(TEXT("thigh_r"));
+        const auto Result=ONEPhysicsRuntime::Start(GetMesh(),Inherited,Missing);
+        RagdollPositionError=Result.PositionErrorCm; RagdollAngleError=Result.AngleErrorDegrees;
+        StumpFitError=Result.StumpFitErrorCm;
+        bRagdollActive=Result.SimulatedBodies>0;
+        ONEPhysicsRuntime::ResetRest(GetMesh(),RestState,false);
+        // If the impacted body was severed, distribute the bounded impact to the
+        // torso; do not address a terminated rigid body with a stale region bone.
+        const FName Body=GetMesh()->IsSimulatingPhysics(ImpactBone) ? ImpactBone : FName(TEXT("spine_01"));
+        if (bRagdollActive) GetMesh()->AddImpulseAtLocation(Direction*Impulse,GetMesh()->GetSocketLocation(Body),Body);
+    }
+    if (bRagdollActive)
+    {
+        // Timers execute after physics without moving the character/animation
+        // tick dependencies to a different group. No catch-up loop after hitches.
+        FTimerManagerTimerParameters Parameters; Parameters.bLoop=true; Parameters.bMaxOncePerFrame=true;
+        GetWorld()->GetTimerManager().SetTimer(RestTimer,this,&AONEZombie::ObserveRest,.1f,Parameters);
+    }
     if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>())
     {
-        Blood->Pool(GetActorLocation()+GetActorForwardVector()*30.f,75.f);
+        // Promote only an actual fatal torso impact. Head/limb loss already
+        // owns cut-anchored sources and must not invent another chest injury.
+        if (ImpactRegion==EONEHitRegion::Body && GetMesh()->GetSkeletalMeshAsset())
+            Blood->AddWound(GetMesh(),EONEHitRegion::Body,ResolveRegionBone(EONEHitRegion::Body,ImpactBone),ImpactPosition,-Direction,8.f,true);
         Blood->RegisterCorpse(this);
     }
     SetLifeSpan(28.f);
     if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->NotifyZombieKilled(this,100);
+}
+int32 AONEZombie::GetActivePhysicsBodyCount() const { return ONEPhysicsRuntime::Count(GetMesh()); }
+void AONEZombie::ObserveRest() { if (bRagdollActive) ONEPhysicsRuntime::UpdateRest(GetMesh(),RestState); }
+int32 AONEZombie::GetAwakePhysicsBodyCount() const { return ONEPhysicsRuntime::Count(GetMesh(),true); }
+int32 AONEZombie::GetRegionPhysicsBodyCount(EONEHitRegion Region) const
+{
+    return FONEWeaponDamagePacket::IsValidRegion(Region) ? ONEPhysicsRuntime::ExistingChainBodies(GetMesh(),RegionRoot(Region)) : 0;
+}
+void AONEZombie::EndPlay(const EEndPlayReason::Type Reason)
+{
+    if (GetWorld()) GetWorld()->GetTimerManager().ClearTimer(RestTimer);
+    if (GetWorld()) if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->RemoveSourcesForActor(this);
+    Super::EndPlay(Reason);
+}
+
+float AONEZombie::GetLegQueryCoverageErrorCm(EONEHitRegion Region) const
+{
+    if ((Region!=EONEHitRegion::LegLeft && Region!=EONEHitRegion::LegRight) || !IsRegionPresent(Region) || !GetMesh()->GetSkeletalMeshAsset()) return BIG_NUMBER;
+    const bool Left=Region==EONEHitRegion::LegLeft;
+    const UCapsuleComponent* Queries[]={Left?UpperLegLeftRegion.Get():UpperLegRightRegion.Get(),Left?LegLeftRegion.Get():LegRightRegion.Get()};
+    const FName Bones[]={Left?FName(TEXT("thigh_r")):FName(TEXT("thigh_l")),Left?FName(TEXT("calf_r")):FName(TEXT("calf_l")),Left?FName(TEXT("foot_r")):FName(TEXT("foot_l"))};
+    float Maximum=0.f;
+    for (int32 Segment=0;Segment<2;++Segment)
+    {
+        const FVector Start=GetMesh()->GetSocketLocation(Bones[Segment]),End=GetMesh()->GetSocketLocation(Bones[Segment+1]);
+        for (float T:{0.f,.25f,.5f,.75f,1.f})
+        {
+            const FVector Point=FMath::Lerp(Start,End,T); float Best=BIG_NUMBER;
+            for (const UCapsuleComponent* Query:Queries)
+            {
+                const FVector Center=Query->GetComponentLocation(),Axis=Query->GetUpVector();
+                const float Radius=Query->GetScaledCapsuleRadius(),Half=Query->GetScaledCapsuleHalfHeight()-Radius;
+                Best=FMath::Min(Best,float(FMath::PointDistToSegment(Point,Center-Axis*Half,Center+Axis*Half))-Radius);
+            }
+            Maximum=FMath::Max(Maximum,FMath::Max(0.f,Best));
+        }
+    }
+    return Maximum;
 }

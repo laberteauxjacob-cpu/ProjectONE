@@ -1,0 +1,403 @@
+{
+  "candidate": "03",
+  "accepted_source": "ArtSource/Characters/Infected.blend",
+  "editable_source": "ArtSource/Characters/Candidate03/InfectedModular.blend",
+  "fps": 100,
+  "skeleton_asset": "/Game/ONE/Characters/SK_Infected_Skeleton",
+  "coordinate_contract": "Centimetres, source +X forward/+Z up; UE preserves X and reflects source Y. Source _r is anatomical left.",
+  "meshes": {
+    "SK_Infected_Core": {
+      "vertices": 4824,
+      "triangles": 9528,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000298023224,
+      "materials": [
+        "M_OrangeFabric",
+        "M_InfectedSkin",
+        "M_Gore",
+        "M_ExposedBone",
+        "M_Webbing",
+        "M_IDBadge",
+        "M_ReflectiveTape",
+        "M_Ceramic",
+        "M_BootRubber"
+      ],
+      "source": "ArtSource/Exports/Candidate03/SK_Infected_Core.fbx",
+      "asset": "/Game/ONE/Characters/Candidate03/SK_Infected_Core"
+    },
+    "SK_Infected_Head": {
+      "vertices": 5200,
+      "triangles": 8896,
+      "weight_sum_min": 1.0,
+      "weight_sum_max": 1.0,
+      "materials": [
+        "M_InfectedSkin",
+        "M_DriedBlood",
+        "M_Eye",
+        "M_EyeDark",
+        "M_Hair",
+        "M_ExposedBone",
+        "M_Gore"
+      ],
+      "source": "ArtSource/Exports/Candidate03/SK_Infected_Head.fbx",
+      "asset": "/Game/ONE/Characters/Candidate03/SK_Infected_Head"
+    },
+    "SK_Infected_ArmLeft": {
+      "vertices": 2136,
+      "triangles": 4220,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000223517418,
+      "materials": [
+        "M_OrangeFabric",
+        "M_InfectedSkin",
+        "M_Gore",
+        "M_ExposedBone",
+        "M_Webbing",
+        "M_IDBadge",
+        "M_ReflectiveTape",
+        "M_Ceramic",
+        "M_BootRubber"
+      ],
+      "source": "ArtSource/Exports/Candidate03/SK_Infected_ArmLeft.fbx",
+      "asset": "/Game/ONE/Characters/Candidate03/SK_Infected_ArmLeft"
+    },
+    "SK_Infected_ArmRight": {
+      "vertices": 2276,
+      "triangles": 4500,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000223517418,
+      "materials": [
+        "M_OrangeFabric",
+        "M_InfectedSkin",
+        "M_Gore",
+        "M_ExposedBone"
+      ],
+      "source": "ArtSource/Exports/Candidate03/SK_Infected_ArmRight.fbx",
+      "asset": "/Game/ONE/Characters/Candidate03/SK_Infected_ArmRight"
+    },
+    "SK_Infected_LegLeft": {
+      "vertices": 2116,
+      "triangles": 4188,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000223517418,
+      "materials": [
+        "M_OrangeFabric",
+        "M_InfectedSkin",
+        "M_Gore",
+        "M_ExposedBone",
+        "M_Webbing",
+        "M_IDBadge",
+        "M_ReflectiveTape",
+        "M_Ceramic",
+        "M_BootRubber"
+      ],
+      "source": "ArtSource/Exports/Candidate03/SK_Infected_LegLeft.fbx",
+      "asset": "/Game/ONE/Characters/Candidate03/SK_Infected_LegLeft"
+    }
+  },
+  "clips": {
+    "A_Infected_C03_AttackRight": {
+      "duration": 1,
+      "contact_seconds": 0.48,
+      "source": "ArtSource/Exports/Candidate03/A_Infected_C03_AttackRight.fbx",
+      "asset": "/Game/ONE/Animations/Candidate03/A_Infected_C03_AttackRight",
+      "present_anatomical_arm": "right",
+      "strike_bone": "hand_l"
+    }
+  },
+  "cuts": {
+    "ArmLeft": {
+      "part": "SK_Infected_ArmLeft",
+      "bone": "upperarm_r",
+      "seam_id": 1,
+      "source_component_cm": [
+        0.6531972885131836,
+        19.306394577026367,
+        140.4276123046875
+      ],
+      "ue_component_cm": [
+        0.6531972885131836,
+        -19.306394577026367,
+        140.4276123046875
+      ],
+      "source_bone_local_cm": [
+        -7.152557373046875e-07,
+        4.800003528594971,
+        -5.163252353668213e-06
+      ],
+      "source_normal": [
+        0.13608276844024658,
+        0.27216553688049316,
+        -0.9525793790817261
+      ],
+      "ue_component_normal": [
+        0.13608276844024658,
+        -0.27216553688049316,
+        -0.9525793790817261
+      ],
+      "bone_bind_source_matrix": [
+        [
+          0.9854434728622437,
+          0.13608278334140778,
+          0.10189700126647949,
+          0.0
+        ],
+        [
+          -0.13608399033546448,
+          0.27216553688049316,
+          0.9525806903839111,
+          18.0
+        ],
+        [
+          0.1018967479467392,
+          -0.9525793790817261,
+          0.2867221236228943,
+          145.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "distal_loops": [
+        {
+          "rim_vertices": 28,
+          "center_source_cm": [
+            0.6557030081748962,
+            19.287914276123047,
+            140.42269897460938
+          ],
+          "max_radius_cm": 7.548175354205509,
+          "surface": "tissue"
+        }
+      ],
+      "proximal_loops": [
+        {
+          "rim_vertices": 28,
+          "center_source_cm": [
+            0.6557031869888306,
+            19.287918090820312,
+            140.42269897460938
+          ],
+          "max_radius_cm": 7.5481762228274265,
+          "surface": "tissue"
+        }
+      ],
+      "runtime_stump_contract": "Retain cut-root bone evaluation and weights. Remove its physics body chain, never hide/scale the bone."
+    },
+    "ArmRight": {
+      "part": "SK_Infected_ArmRight",
+      "bone": "upperarm_l",
+      "seam_id": 2,
+      "source_component_cm": [
+        0.6531972885131836,
+        -19.306394577026367,
+        140.4276123046875
+      ],
+      "ue_component_cm": [
+        0.6531972885131836,
+        19.306394577026367,
+        140.4276123046875
+      ],
+      "source_bone_local_cm": [
+        1.0728836059570312e-06,
+        4.80003547668457,
+        4.470348358154297e-06
+      ],
+      "source_normal": [
+        0.13608276844024658,
+        -0.27216553688049316,
+        -0.9525793790817261
+      ],
+      "ue_component_normal": [
+        0.13608276844024658,
+        0.27216553688049316,
+        -0.9525793790817261
+      ],
+      "bone_bind_source_matrix": [
+        [
+          0.9745572805404663,
+          0.13608281314373016,
+          0.17810338735580444,
+          0.0
+        ],
+        [
+          -0.13608157634735107,
+          -0.27216553688049316,
+          0.9525806903839111,
+          -18.0
+        ],
+        [
+          0.17810314893722534,
+          -0.9525794386863708,
+          -0.24672210216522217,
+          145.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "distal_loops": [
+        {
+          "rim_vertices": 28,
+          "center_source_cm": [
+            0.6531972885131836,
+            -19.306394577026367,
+            140.4276123046875
+          ],
+          "max_radius_cm": 6.700000394258025,
+          "surface": "tissue"
+        }
+      ],
+      "proximal_loops": [
+        {
+          "rim_vertices": 28,
+          "center_source_cm": [
+            0.6531972289085388,
+            -19.306394577026367,
+            140.4276123046875
+          ],
+          "max_radius_cm": 6.700000394258025,
+          "surface": "tissue"
+        }
+      ],
+      "runtime_stump_contract": "Retain cut-root bone evaluation and weights. Remove its physics body chain, never hide/scale the bone."
+    },
+    "LegLeft": {
+      "part": "SK_Infected_LegLeft",
+      "bone": "thigh_r",
+      "seam_id": 3,
+      "source_component_cm": [
+        0.4560000002384186,
+        9.0,
+        79.04000091552734
+      ],
+      "ue_component_cm": [
+        0.4560000002384186,
+        -9.0,
+        79.04000091552734
+      ],
+      "source_bone_local_cm": [
+        8.940696716308594e-08,
+        15.966499328613281,
+        7.562339305877686e-07
+      ],
+      "source_normal": [
+        0.02855977602303028,
+        0.0,
+        -0.999592125415802
+      ],
+      "ue_component_normal": [
+        0.02855977602303028,
+        -0.0,
+        -0.999592125415802
+      ],
+      "bone_bind_source_matrix": [
+        [
+          0.9991845488548279,
+          0.02855977974832058,
+          0.028548117727041245,
+          0.0
+        ],
+        [
+          -0.028559772297739983,
+          5.820766091346741e-11,
+          0.9995920658111572,
+          9.0
+        ],
+        [
+          0.028548136353492737,
+          -0.9995923042297363,
+          0.0008156605181284249,
+          95.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "distal_loops": [
+        {
+          "rim_vertices": 28,
+          "center_source_cm": [
+            0.45567381381988525,
+            9.000585556030273,
+            79.03999328613281
+          ],
+          "max_radius_cm": 9.235936542348638,
+          "surface": "tissue"
+        },
+        {
+          "rim_vertices": 16,
+          "center_source_cm": [
+            -0.9999998211860657,
+            17.5,
+            78.9983901977539
+          ],
+          "max_radius_cm": 5.602285454695058,
+          "surface": "intersected pocket cloth"
+        }
+      ],
+      "proximal_loops": [
+        {
+          "rim_vertices": 28,
+          "center_source_cm": [
+            0.45567360520362854,
+            9.000585556030273,
+            79.04000091552734
+          ],
+          "max_radius_cm": 9.235937150596383,
+          "surface": "tissue"
+        },
+        {
+          "rim_vertices": 16,
+          "center_source_cm": [
+            -1.000000238418579,
+            17.5,
+            78.99839782714844
+          ],
+          "max_radius_cm": 5.602285747443263,
+          "surface": "intersected pocket cloth"
+        }
+      ],
+      "runtime_stump_contract": "Retain cut-root bone evaluation and weights. Remove its physics body chain, never hide/scale the bone."
+    },
+    "Head": {
+      "part": "SK_Infected_Head",
+      "bone": "head",
+      "source_component_cm": [
+        0,
+        0,
+        157.8
+      ],
+      "ue_component_cm": [
+        0,
+        0,
+        157.8
+      ],
+      "source_bone_local_cm": [
+        0.0,
+        0.8000030517578125,
+        0.0
+      ],
+      "contract": "Accepted closed head and neck caps retained without geometry changes."
+    }
+  },
+  "retained_actions": [
+    "A_Infected_Idle",
+    "A_Infected_Walk",
+    "A_Infected_Run",
+    "A_Infected_Attack",
+    "A_Infected_AttackOneArm",
+    "A_Infected_Hit",
+    "A_Infected_Death"
+  ],
+  "retained_action_source_fps": 30
+}

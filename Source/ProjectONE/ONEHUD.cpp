@@ -3,6 +3,8 @@
 #include "ONEPlayer.h"
 #include "ONEWeaponComponent.h"
 #include "ONE03MovementCheck.h"
+#include "ONE03PresentationCheck.h"
+#include "ONE03PhysicalityCheck.h"
 #include "EngineUtils.h"
 #include "Engine/Canvas.h"
 #include "Engine/Engine.h"
@@ -93,15 +95,27 @@ void AONEHUD::DrawHUD()
                 !(Screen.X>W-M-380*K && Screen.Y>H-M-222*K))
                 Label(FString::Printf(TEXT("%dm"),Distance/100),Screen.X,Screen.Y,.85f*K,Dim);
         }
-        Panel(W*.5f-272*K,M,544*K,82*K);
+        Panel(W*.5f-292*K,M,584*K,82*K);
         Label("SANDBOX  /  F1 RETURN TO ROUNDS",W*.5f-255*K,M+9*K,.76f*K,Teal);
         Label("F2 +1 INFECTED   F3 +6   F4 REFILL BOTH",W*.5f-255*K,M+33*K,.7f*K);
-        Label("F5 RESET ENCOUNTER   F6 CLEAR GORE   1 / 2 EQUIP",W*.5f-255*K,M+56*K,.7f*K,Dim);
+        Label(FString::Printf(TEXT("F5 RESET   F6 CLEANUP   F7 LIGHTS: %s"),GM->IsSandboxDimLighting()?TEXT("DIM"):TEXT("BRIGHT")),W*.5f-255*K,M+56*K,.7f*K,Dim);
     }
     for (TActorIterator<AONE03MovementCheck> It(GetWorld());It;++It)
     {
         Panel(W*.5f-360*K,M+96*K,720*K,36*K);
         Label(It->GetSegmentLabel(),W*.5f-342*K,M+104*K,.82f*K,Amber);
+        break;
+    }
+    for (TActorIterator<AONE03PresentationCheck> It(GetWorld());It;++It)
+    {
+        Panel(W*.5f-390*K,M+96*K,780*K,36*K);
+        Label(It->GetSegmentLabel(),W*.5f-372*K,M+104*K,.82f*K,Amber);
+        break;
+    }
+    for (TActorIterator<AONE03PhysicalityCheck> It(GetWorld());It;++It)
+    {
+        Panel(W*.5f-390*K,M+96*K,780*K,36*K);
+        Label(It->GetSegmentLabel(),W*.5f-372*K,M+104*K,.82f*K,Amber);
         break;
     }
     if (GM->IsIntermission() && !GM->IsGameOver())

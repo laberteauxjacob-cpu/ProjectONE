@@ -11,6 +11,10 @@
 #include "ONECombatCheck.h"
 #include "ONE03MovementCheck.h"
 #include "ONE03WeaponCheck.h"
+#include "ONE03PresentationCheck.h"
+#include "ONE03CaseCheck.h"
+#include "ONE03DamageCheck.h"
+#include "ONE03PhysicalityCheck.h"
 #include "Misc/CommandLine.h"
 #include "Kismet/GameplayStatics.h"
 #include "NavigationSystem.h"
@@ -19,6 +23,8 @@
 #include "Engine/TargetPoint.h"
 #include "Engine/StaticMeshActor.h"
 #include "Engine/StaticMesh.h"
+#include "Engine/Light.h"
+#include "Components/LightComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "EngineUtils.h"
 
@@ -35,7 +41,11 @@ void AONEGameMode::BeginPlay()
     Super::BeginPlay();
     const bool bMovementCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03MovementCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03MovementCapture")) || FString(FCommandLine::Get()).Contains(TEXT("ONE03ManualCapture="));
     const bool bWeaponCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03WeaponCheck"));
-    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck;
+    const bool bPresentationCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03PresentationCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03PresentationCapture"));
+    const bool bCaseCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03CaseCheck"));
+    const bool bDamageCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03DamageCheck"));
+    const bool bPhysicalityCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityProfile"));
+    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck;
     if (bSandbox) { bIntermission=false; Countdown=0; }
     // Authored material categories drive concrete versus metal impact audio.
     for (TActorIterator<AStaticMeshActor> It(GetWorld());It;++It)
@@ -54,6 +64,10 @@ void AONEGameMode::BeginPlay()
     if (FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare"))) GetWorld()->SpawnActor<AONECombatCheck>();
     if (bMovementCheck) GetWorld()->SpawnActor<AONE03MovementCheck>();
     if (bWeaponCheck) GetWorld()->SpawnActor<AONE03WeaponCheck>();
+    if (bPresentationCheck) GetWorld()->SpawnActor<AONE03PresentationCheck>();
+    if (bCaseCheck) GetWorld()->SpawnActor<AONE03CaseCheck>();
+    if (bDamageCheck) GetWorld()->SpawnActor<AONE03DamageCheck>();
+    if (bPhysicalityCheck) GetWorld()->SpawnActor<AONE03PhysicalityCheck>();
 }
 void AONEGameMode::StartRound()
 {
@@ -147,12 +161,16 @@ void AONEGameMode::ToggleSandbox()
 }
 AONEZombie* AONEGameMode::SpawnSandboxEnemyAt(const FVector& Location)
 {
+    const bool Diagnose=FParse::Param(FCommandLine::Get(),TEXT("ONE03SpawnDiagnostics"));
     if (!bSandbox || bGameOver || Alive.Num()>=MaximumActive) return nullptr;
     const AONEPlayer* Player=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0));
     UNavigationSystemV1* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
     if (!Player || !Nav || !ZombieClass) return nullptr;
     FNavLocation PlayerFloor;
-    if (!Nav->ProjectPointToNavigation(Player->GetNavAgentLocation(),PlayerFloor,FVector(80,80,45))) return nullptr;
+    if (!Nav->ProjectPointToNavigation(Player->GetNavAgentLocation(),PlayerFloor,FVector(80,80,45)))
+    { if (Diagnose) UE_LOG(LogTemp,Display,TEXT("ONE03_SPAWN no_player_floor player=%s navagent=%s"),*Player->GetActorLocation().ToString(),*Player->GetNavAgentLocation().ToString()); return nullptr; }
+    if (Diagnose) UE_LOG(LogTemp,Display,TEXT("ONE03_SPAWN request=%s player=%s navagent=%s floor=%s"),*Location.ToString(),*Player->GetActorLocation().ToString(),*Player->GetNavAgentLocation().ToString(),*PlayerFloor.Location.ToString());
+    int32 NavMiss=0,PathMiss=0,Blocked=0,SpawnMiss=0;
     const UCapsuleComponent* Capsule=ZombieClass.GetDefaultObject()->GetCapsuleComponent();
     const float HalfHeight=Capsule->GetScaledCapsuleHalfHeight();
     const FCollisionShape Shape=FCollisionShape::MakeCapsule(Capsule->GetScaledCapsuleRadius(),HalfHeight);
@@ -167,17 +185,19 @@ AONEZombie* AONEGameMode::SpawnSandboxEnemyAt(const FVector& Location)
     for (const FVector& Offset:Offsets)
     {
         FNavLocation Projected;
-        if (!Nav->ProjectPointToNavigation(DesiredFloor+Offset,Projected,FVector(50,50,35))) continue;
+        if (!Nav->ProjectPointToNavigation(DesiredFloor+Offset,Projected,FVector(50,50,35))) { ++NavMiss; continue; }
         UNavigationPath* Path=UNavigationSystemV1::FindPathToLocationSynchronously(this,Projected.Location,PlayerFloor.Location);
-        if (!Path || !Path->IsValid() || Path->IsPartial()) continue;
+        if (!Path || !Path->IsValid() || Path->IsPartial()) { ++PathMiss; continue; }
         const FVector Point=Projected.Location+FVector(0,0,HalfHeight+10.f);
-        if (GetWorld()->OverlapBlockingTestByChannel(Point,FQuat::Identity,ECC_Pawn,Shape)) continue;
+        if (GetWorld()->OverlapBlockingTestByChannel(Point,FQuat::Identity,ECC_Pawn,Shape)) { ++Blocked; continue; }
         FActorSpawnParameters Params;
         // Do not let collision adjustment move a verified floor point onto a prop.
         Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
         if (AONEZombie* Zombie=GetWorld()->SpawnActor<AONEZombie>(ZombieClass,Point,FRotator(0,180,0),Params))
-        { Alive.Add(Zombie); return Zombie; }
+        { Alive.Add(Zombie); if (Diagnose) UE_LOG(LogTemp,Display,TEXT("ONE03_SPAWN accepted=%s"),*Point.ToString()); return Zombie; }
+        ++SpawnMiss;
     }
+    if (Diagnose) UE_LOG(LogTemp,Display,TEXT("ONE03_SPAWN rejected nav=%d path=%d overlap=%d spawn=%d"),NavMiss,PathMiss,Blocked,SpawnMiss);
     return nullptr;
 }
 void AONEGameMode::SpawnSandboxEnemies(int32 Count)
@@ -196,4 +216,21 @@ void AONEGameMode::ClearSandboxPresentation()
     if (!bSandbox) return;
     if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->ClearPresentation();
     if (auto* Player=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0))) Player->GetWeaponComponent()->ClearEjectedCases();
+}
+void AONEGameMode::SetSandboxDimLighting(bool Dim)
+{
+    if (!bSandbox) return;
+    if (SandboxLightIntensities.IsEmpty())
+        for (TActorIterator<ALight> It(GetWorld());It;++It)
+            if (auto* Light=It->GetLightComponent()) SandboxLightIntensities.Add(Light,Light->Intensity);
+    bDimLighting=Dim;
+    // Only authored room-light actors participate. The weapon's attached light
+    // keeps its own short envelope, and the map's fixed exposure is unchanged.
+    for (const auto& Entry:SandboxLightIntensities)
+        if (auto* Light=Entry.Key.Get())
+        {
+            // Retain enough room illumination to judge hands, cases and nearby
+            // surfaces under the existing fixed exposure, not a black-screen test.
+            Light->SetIntensity(Entry.Value*(Dim?.18f:1.f));
+        }
 }

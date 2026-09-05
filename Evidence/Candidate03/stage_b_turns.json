@@ -1,0 +1,120 @@
+{
+  "candidate": "Candidate03",
+  "capture_kind": "editor-game",
+  "capture_mode": "generic",
+  "provenance_basis": "Runtime kind and source identity supplied by operator; encoding does not establish packaged validation or visual/audio approval.",
+  "source_revision": "aa4d55d04bf375bbef41362af77eec10d9ea224f",
+  "source_state": "working-tree",
+  "source": "Actual gameplay JPEG screenshot callbacks plus Unreal master-output WAV",
+  "frames": 1588,
+  "dimensions": [
+    1600,
+    900
+  ],
+  "capture_span_seconds": 60.938778,
+  "actual_capture_fps": 26.042530751108924,
+  "first_frame_audio_seconds": 0.300896,
+  "last_frame_audio_seconds": 61.239674,
+  "audio_duration_seconds": 61.269333333333336,
+  "final_frame_hold_seconds": 0.029659333333334814,
+  "maximum_frame_hold_seconds": 0.322138,
+  "source_audio": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "sample_width_bytes": 2,
+    "sample_frames": 2940928
+  },
+  "frames_csv_sha256": "16c8a96a7c8e0e3171549ec4628c55f331c6294df332a73f6e6201b8d614bd2d",
+  "source_wav_sha256": "99bc8f7b2770001f27aca9c210cc85e4b682aadc575d6aa23f57834e6f84dea9",
+  "ordered_frame_identity_sha256": "9c46476e7d04ba0c0cab4daa9ba8ab09c5af4d243d0a696137649bfbecf61a73",
+  "frame_identity_method": "SHA256 of UTF-8 JSON lines [relative filename, original audio_seconds string, JPEG SHA256] in CSV order",
+  "video_output_fps": 30,
+  "frame_treatment": "Captured images held according to callback timestamps; first image held from audio time zero. CFR output duplicates or drops captured frames on the 30fps grid; no generated pixels, motion interpolation or retiming to hide stalls.",
+  "audio_treatment": "AAC transcode of the supplied engine WAV at original duration; this assembler does not replace, pad, stretch or synthesize audio. The source gameplay may itself use provisional synthesized sound assets.",
+  "audio_review": "Encoding does not establish perceptual audition or audible-phase coverage; run the separate gameplay-audio audit.",
+  "observed_phase_order": [
+    48,
+    49,
+    50,
+    51,
+    52,
+    53
+  ],
+  "chapters": [
+    {
+      "phase": 48,
+      "title": "5.56 mm Carbine / Stationary aim circles and abrupt reversals",
+      "start_seconds": 0,
+      "end_seconds": 16.241252
+    },
+    {
+      "phase": 49,
+      "title": "12-Gauge Pump Shotgun / Stationary aim circles and abrupt reversals",
+      "start_seconds": 16.241252,
+      "end_seconds": 32.468885
+    },
+    {
+      "phase": 50,
+      "title": "5.56 mm Carbine / Continuous direction reversals",
+      "start_seconds": 32.468885,
+      "end_seconds": 39.678635
+    },
+    {
+      "phase": 51,
+      "title": "12-Gauge Pump Shotgun / Continuous direction reversals",
+      "start_seconds": 39.678635,
+      "end_seconds": 46.888067
+    },
+    {
+      "phase": 52,
+      "title": "5.56 mm Carbine / Moving fire and rapid aim",
+      "start_seconds": 46.888067,
+      "end_seconds": 54.087726
+    },
+    {
+      "phase": 53,
+      "title": "12-Gauge Pump Shotgun / Moving fire and rapid aim",
+      "start_seconds": 54.087726,
+      "end_seconds": 61.269333333333336
+    }
+  ],
+  "chapter_timing": "First observed frame of each contiguous phase, not an exact engine operation boundary.",
+  "encoded": true,
+  "encoder_exit_code": 0,
+  "output_sha256": "9118b68f15e855a07acbc190a21a4293e75fd6edc4f9ecb4808aa8ff7eb138c3",
+  "output_bytes": 14396973,
+  "source_state_detail": "Accepted Turn3 focused capture AFTER mesh tick prerequisite correction; same uncommitted Stage B work based on Candidate02. No exact intermediate source commit exists.",
+  "input_selection": {
+    "original_frames_csv_sha256": "4509fc7747ecd8227ef53f91902b8295ab4c729841681ccd987fedfcfacd7354",
+    "original_wav_sha256": "99bc8f7b2770001f27aca9c210cc85e4b682aadc575d6aa23f57834e6f84dea9",
+    "original_frame_count": 1589,
+    "selected_frame_count": 1588,
+    "original_pcm_frames": 2940928,
+    "selected_pcm_range_half_open": [
+      0,
+      2940928
+    ],
+    "selected_pcm_sha256": "e0e1e971706457ed31a832602127cf89517655cb33beea34e804b286445e4c0a",
+    "pcm_samples_byte_identical_to_original_range": true,
+    "retained_callback_timestamp_strings_unchanged": true,
+    "original_files_modified": false,
+    "excluded_phases": [],
+    "excluded_outside_audio": [
+      {
+        "file": "frame_01588.jpg",
+        "audio_seconds": "61.278064"
+      }
+    ],
+    "selection_boundary": "Entire original PCM retained; final JPEG callback occurs beyond the recorded audio end and is omitted rather than padding/stretched audio."
+  },
+  "historical_stage_b_recording": true,
+  "current_stage_c_or_d_build_capture": false,
+  "source_audio_measurements": {
+    "peak_dbfs": -12.65824286373637,
+    "rms_dbfs": -42.961615202313595,
+    "phases_with_nonzero_signal": 5,
+    "total_phases": 6,
+    "measurement_only_no_perceptual_audition": true,
+    "scope": "Original historical Stage B audio retained including silent phases; this does not establish Stage C feedback coverage."
+  }
+}

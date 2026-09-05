@@ -1,0 +1,50 @@
+{
+  "candidate": "03",
+  "stage": "C",
+  "generator": "Scripts/create_candidate03_weapon_presentation.py",
+  "provenance": "Original project-local procedural mesh and material graph; no external model, image or sample input",
+  "coordinate_convention": "Centimetres, case cylinder axis +X; centred origin; UE legacy import reflects source Y",
+  "static_meshes": {
+    "SM_RifleBrass_C03": {
+      "source": "ArtSource/Weapons/Candidate03/SM_RifleBrass_C03.fbx",
+      "blend": "ArtSource/Weapons/Candidate03/RifleBrass_C03.blend",
+      "asset": "/Game/ONE/Art/Weapons/SM_RifleBrass_C03",
+      "source_sha256": "8f393dd4bc04ea5fab1999ed3387509ee408b069d59661135aa0f5084f4a7e4d",
+      "dimensions_cm": [
+        4.5,
+        0.95,
+        0.95
+      ],
+      "material_slots": [
+        "M_Brass"
+      ],
+      "description": "Spent bottleneck rifle case, extractor groove, open neck; no projectile"
+    }
+  },
+  "materials": {
+    "M_MuzzleFlash_C03": {
+      "source": "Scripts/import_candidate03_weapon_presentation.py",
+      "asset": "/Game/ONE/Materials/M_MuzzleFlash_C03",
+      "shading": "Unlit additive, two-sided, ordinary depth testing",
+      "emissive": "Vertex RGB multiplied by FlashGain (12)",
+      "opacity": "Vertex alpha multiplied by FlashAlpha (default 0; animated per discharge)",
+      "geometry_source": "Source/ProjectONE/ONEPlayer.cpp: BuildMuzzleFlash",
+      "texture_dependencies": []
+    }
+  },
+  "reused_assets": [
+    "/Game/ONE/Materials/M_Brass",
+    "/Game/ONE/Art/Weapons/SM_ShotgunShell"
+  ],
+  "validation": {
+    "source_dimensions_cm": [
+      4.5,
+      0.949999988079071,
+      0.949999988079071
+    ],
+    "vertices": 288,
+    "polygons": 266,
+    "external_inputs": []
+  },
+  "metadata_sanitation": "FBX author paths and Blender workspace metadata sanitized before import; established sanitizer verified nonmetadata art data unchanged."
+}
