@@ -161,14 +161,14 @@ struct FONEAnimProxy : FAnimInstanceProxy
         float DirectionBlend=0.f,StrideProjection=1.f;
         if (P)
         {
-            static const TCHAR* Directions[]={TEXT("F"),TEXT("FR"),TEXT("R"),TEXT("BR"),TEXT("B"),TEXT("BL"),TEXT("L"),TEXT("FL")};
+            static const TCHAR* PlayerDirectionSuffixes[]={TEXT("F"),TEXT("FR"),TEXT("R"),TEXT("BR"),TEXT("B"),TEXT("BL"),TEXT("L"),TEXT("FL")};
             const float Sector=FRotator::ClampAxis(DirectionYaw)/45.f;
             const int32 A=FMath::FloorToInt(Sector)%8,B=(A+1)%8;
             DirectionBlend=Sector-FMath::FloorToFloat(Sector);
             auto DirectionClip=[&](const TCHAR* Gait,int32 Index,UAnimSequence* Fallback)
             {
-                UAnimSequence* Clip=Anim->FindClip(FName(*FString::Printf(TEXT("C03_%s_%s"),Gait,Directions[Index])));
-                if (auto* Current=Anim->FindClip(FName(*FString::Printf(TEXT("C05_%s_%s"),Gait,Directions[Index])))) return Current;
+                UAnimSequence* Clip=Anim->FindClip(FName(*FString::Printf(TEXT("C03_%s_%s"),Gait,PlayerDirectionSuffixes[Index])));
+                if (auto* Current=Anim->FindClip(FName(*FString::Printf(TEXT("C05_%s_%s"),Gait,PlayerDirectionSuffixes[Index])))) return Current;
                 return Clip ? Clip : Fallback;
             };
             WalkClip=DirectionClip(TEXT("Walk"),A,WalkClip);
