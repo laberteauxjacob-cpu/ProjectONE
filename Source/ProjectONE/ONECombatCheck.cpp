@@ -6,6 +6,9 @@
 #include "ONEGameMode.h"
 #include "ONEPlayerController.h"
 #include "ONEBloodSubsystem.h"
+#include "NavigationSystem.h"
+#include "NavigationPath.h"
+#include "EngineUtils.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/PointLightComponent.h"
@@ -295,8 +298,43 @@ void AONECombatCheck::Tick(float Dt)
     case 99: if (Elapsed>2) {
         Check(!Player->IsDead() && GM->IsSandbox() && GM->GetPoints()==0,TEXT("Restart restores live sandbox and resets score"));
         Check(W->GetAmmoForWeapon(0)==24 && W->GetReserveAmmoForWeapon(0)==192 && W->GetAmmoForWeapon(1)==6 && W->GetReserveAmmoForWeapon(1)==36 && !W->NeedsPump(1),TEXT("Restart restores both weapons, reserves, operation and pump states"));
-        Finish();
+        Check(FVector::Dist2D(Player->GetActorLocation(),FVector::ZeroVector)<10.f,TEXT("Sandbox spawn regression starts at actual default player entry"));
+        // Reproduce the reported controls: F2, F3, then another F3 while occupied.
+        // Their requested (400,-110) column overlaps the east bench footprint.
+        GM->SpawnSandboxEnemies(1); GM->SpawnSandboxEnemies(6); GM->SpawnSandboxEnemies(6);
+        bool AllRoutes=true,AllOnFloor=true;
+        for (TActorIterator<AONEZombie> It(GetWorld());It;++It)
+            if (!It->IsDead())
+            {
+                SpawnCheckEnemies.Add(*It); SpawnCheckOrigins.Add(It->GetActorLocation());
+                UNavigationPath* Path=UNavigationSystemV1::FindPathToLocationSynchronously(this,It->GetNavAgentLocation(),Player->GetNavAgentLocation(),*It);
+                AllRoutes&=Path && Path->IsValid() && !Path->IsPartial();
+                AllOnFloor&=FMath::Abs(It->GetNavAgentLocation().Z-Player->GetNavAgentLocation().Z)<30.f;
+            }
+        Check(SpawnCheckEnemies.Num()==13 && GM->GetRemaining()==13,TEXT("Default F2/F3/F3 requests create thirteen distinct registered enemies despite occupied candidates"));
+        Check(AllRoutes && SpawnCheckEnemies.Num()==13,TEXT("Every default-control spawn has a complete non-partial path to the player"));
+        Check(AllOnFloor && SpawnCheckEnemies.Num()==13,TEXT("Default-control spawns remain on the player's floor rather than the bench top"));
+        FScreenshotRequest::RequestScreenshot(Folder/TEXT("sandbox_spawn_initial.png"),true,false);
+        Next(100);
     } break;
+    case 100:
+        Player->Health->Restore();
+        if (T>8.f) {
+        bool AllProgressed=true,AllOnFloor=true;
+        for (int32 I=0;I<SpawnCheckEnemies.Num();++I)
+        {
+            AONEZombie* Enemy=SpawnCheckEnemies[I].Get();
+            if (!Enemy || Enemy->IsDead()) { AllProgressed=false; AllOnFloor=false; continue; }
+            const float StartDistance=FVector::Dist2D(SpawnCheckOrigins[I],Player->GetActorLocation());
+            const float EndDistance=FVector::Dist2D(Enemy->GetActorLocation(),Player->GetActorLocation());
+            AllProgressed&=FVector::Dist2D(Enemy->GetActorLocation(),SpawnCheckOrigins[I])>50.f && EndDistance<StartDistance-40.f;
+            AllOnFloor&=FMath::Abs(Enemy->GetNavAgentLocation().Z-Player->GetNavAgentLocation().Z)<30.f;
+        }
+        Check(AllProgressed && SpawnCheckEnemies.Num()==13,TEXT("All thirteen default-control enemies leave their spawn positions and approach the player within eight seconds"));
+        Check(AllOnFloor && !Player->IsDead(),TEXT("Pursuing crowd remains on floor during protected observation; none remains stranded on a prop"));
+        FScreenshotRequest::RequestScreenshot(Folder/TEXT("sandbox_spawn_pursuit.png"),true,false);
+        Finish();
+        } break;
     }
     if (Elapsed>100) { Check(false,FString::Printf(TEXT("Timed out at stage %d"),Stage)); Finish(); }
 }

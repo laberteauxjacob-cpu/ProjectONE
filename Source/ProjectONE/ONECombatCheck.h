@@ -27,5 +27,7 @@ private:
     double PauseStart=0,AudioStart=0,LastCapture=0,FinishedAt=0;
     bool bComparison=false,bRecording=false,bFinished=false;
     FVector FirstFoot=FVector::ZeroVector;
+    TArray<TWeakObjectPtr<AONEZombie>> SpawnCheckEnemies;
+    TArray<FVector> SpawnCheckOrigins;
     FString Report,FrameReport,PendingFrame,Folder;
 };

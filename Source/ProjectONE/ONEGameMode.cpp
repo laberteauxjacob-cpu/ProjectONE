@@ -12,6 +12,8 @@
 #include "Misc/CommandLine.h"
 #include "Kismet/GameplayStatics.h"
 #include "NavigationSystem.h"
+#include "NavigationPath.h"
+#include "Components/CapsuleComponent.h"
 #include "Engine/TargetPoint.h"
 #include "Engine/StaticMeshActor.h"
 #include "Engine/StaticMesh.h"
@@ -140,18 +142,37 @@ void AONEGameMode::ToggleSandbox()
 AONEZombie* AONEGameMode::SpawnSandboxEnemyAt(const FVector& Location)
 {
     if (!bSandbox || bGameOver || Alive.Num()>=MaximumActive) return nullptr;
-    FVector Point=Location;
-    if (UNavigationSystemV1* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld()))
+    const AONEPlayer* Player=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0));
+    UNavigationSystemV1* Nav=FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
+    if (!Player || !Nav || !ZombieClass) return nullptr;
+    FNavLocation PlayerFloor;
+    if (!Nav->ProjectPointToNavigation(Player->GetNavAgentLocation(),PlayerFloor,FVector(80,80,45))) return nullptr;
+    const UCapsuleComponent* Capsule=ZombieClass.GetDefaultObject()->GetCapsuleComponent();
+    const float HalfHeight=Capsule->GetScaledCapsuleHalfHeight();
+    const FCollisionShape Shape=FCollisionShape::MakeCapsule(Capsule->GetScaledCapsuleRadius(),HalfHeight);
+    const FVector DesiredFloor(Location.X,Location.Y,PlayerFloor.Location.Z);
+    // A pawn-center query can prefer a bench's isolated top polygon. Search near
+    // the player's floor height, and require a complete route before placement.
+    const FVector Offsets[]={FVector::ZeroVector,
+        FVector(90,0,0),FVector(-90,0,0),FVector(0,90,0),FVector(0,-90,0),
+        FVector(90,90,0),FVector(-90,90,0),FVector(90,-90,0),FVector(-90,-90,0),
+        FVector(180,0,0),FVector(-180,0,0),FVector(0,180,0),FVector(0,-180,0),
+        FVector(180,180,0),FVector(-180,180,0),FVector(180,-180,0),FVector(-180,-180,0)};
+    for (const FVector& Offset:Offsets)
     {
         FNavLocation Projected;
-        if (!Nav->ProjectPointToNavigation(Point,Projected,FVector(80,80,220))) return nullptr;
-        Point=Projected.Location+FVector(0,0,98);
+        if (!Nav->ProjectPointToNavigation(DesiredFloor+Offset,Projected,FVector(50,50,35))) continue;
+        UNavigationPath* Path=UNavigationSystemV1::FindPathToLocationSynchronously(this,Projected.Location,PlayerFloor.Location);
+        if (!Path || !Path->IsValid() || Path->IsPartial()) continue;
+        const FVector Point=Projected.Location+FVector(0,0,HalfHeight+10.f);
+        if (GetWorld()->OverlapBlockingTestByChannel(Point,FQuat::Identity,ECC_Pawn,Shape)) continue;
+        FActorSpawnParameters Params;
+        // Do not let collision adjustment move a verified floor point onto a prop.
+        Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
+        if (AONEZombie* Zombie=GetWorld()->SpawnActor<AONEZombie>(ZombieClass,Point,FRotator(0,180,0),Params))
+        { Alive.Add(Zombie); return Zombie; }
     }
-    FActorSpawnParameters Params;
-    Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
-    AONEZombie* Zombie=GetWorld()->SpawnActor<AONEZombie>(ZombieClass,Point,FRotator(0,180,0),Params);
-    if (Zombie) Alive.Add(Zombie);
-    return Zombie;
+    return nullptr;
 }
 void AONEGameMode::SpawnSandboxEnemies(int32 Count)
 {
