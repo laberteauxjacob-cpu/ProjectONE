@@ -280,7 +280,9 @@ float UONEWeaponComponent::GetPumpFraction() const
 {
     if (Operation!=EONEWeaponOperation::Pump) return 0.f;
     const float T=GetOperationElapsed(); const auto& D=GetDefinition();
-    return T<D.PumpRearTime ? FMath::Clamp(T/FMath::Max(.001f,D.PumpRearTime),0.f,1.f) : FMath::Clamp(1.f-(T-D.PumpRearTime)/FMath::Max(.001f,D.PumpForwardTime-D.PumpRearTime),0.f,1.f);
+    const float Fraction=T<D.PumpRearTime ? FMath::Clamp(T/FMath::Max(.001f,D.PumpRearTime),0.f,1.f) : FMath::Clamp(1.f-(T-D.PumpRearTime)/FMath::Max(.001f,D.PumpForwardTime-D.PumpRearTime),0.f,1.f);
+    // Match the authored support-hand curve in each rearward/forward segment.
+    return Fraction*Fraction*(3.f-2.f*Fraction);
 }
 bool UONEWeaponComponent::ShouldShowLoadingShell() const
 { const float T=GetOperationElapsed(); const float Insert=FindEventTime(EONEWeaponEvent::ShellCommit,.6f); return Operation==EONEWeaponOperation::ShellInsert && T>=Insert*.2f && T<Insert; }
