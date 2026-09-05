@@ -1,0 +1,1315 @@
+{
+  "schema_version": 1,
+  "title": "Candidate04 packaged weapon and machine visual review",
+  "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+  "review_method": "Individually viewed original 1600x900 saved gameplay JPEGs in bounded chronological windows, with sparse endpoints labeled separately. No edited images, generated visuals, animation-source render substitutes, audio audition, native input, or full-movie playback.",
+  "completion": "Bounded visual inspection completed with limitations and a persistent HUD text defect; not an unrestricted visual-quality PASS.",
+  "total_individually_inspected_frames": 75,
+  "total_dense_frames": 68,
+  "total_sparse_frames": 7,
+  "captures": [
+    {
+      "capture_id": "20260905_125659_E8EDAEE6",
+      "repository_relative_raw_directory": "Packaged/Candidate04/Windows/ProjectONE/Saved/Candidate04/PresentationCapture/20260905_125659_E8EDAEE6",
+      "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+      "recording_context": "Fresh packaged S2 game, scripted production controller input and real gameplay camera; this reviewer did not send native inputs.",
+      "raw_frames_count": 2932,
+      "capture_assertions": {
+        "pass_lines": 58,
+        "fail_lines": 0,
+        "scope": "Recorded functional assertions, separate from this visual review."
+      },
+      "media_assembly_status": {
+        "status": "Initial AV assembly rejected; visual frames remain valid evidence.",
+        "reported_reason": "Last JPEG callback audio timestamp 148.194454s exceeded the engine WAV endpoint 148.160s by 34.454ms. No assembled movie is certified by this review.",
+        "provenance": "Endpoint values and assembly rejection reported by the capture owner; this reviewer inspected original JPEGs only."
+      },
+      "files": {
+        "frames.csv": {
+          "bytes": 144444,
+          "sha256": "3e0787b8b0277d2cd94dcc16115b1a4db83191f06ac6f70dc648a1977a307dd4"
+        },
+        "checks.txt": {
+          "bytes": 4358,
+          "sha256": "460335c00c120c81d9adf208ce26e07648e24e060cb40f1081ddc510b6cdbe6e"
+        },
+        "chapters.csv": {
+          "bytes": 4788,
+          "sha256": "de6dc7819270b551bebf6aee0c6a746e705dfb5c7fb07bafc23538b43a0c137d"
+        },
+        "observations.csv": {
+          "bytes": 230567,
+          "sha256": "ee4f2656efc4f24bd8915df2116a7891e8f843ae75a870c842d82d8178064d23"
+        },
+        "input_events.csv": {
+          "bytes": 7867,
+          "sha256": "09d202181d2e7ae8f03a931dc916ade07409b0a8abd323d0e66f0b70edb8cf20"
+        }
+      },
+      "individually_inspected_frame_count": 17,
+      "dense_windows": [
+        {
+          "subject": "M4 handoff into machine tray",
+          "sampling": "Every saved original JPEG in this inclusive interval was individually inspected at 1600x900; no image editing or generated contact sheet.",
+          "first_frame": 633,
+          "last_frame": 649,
+          "count": 17,
+          "audio_seconds": [
+            31.35749,
+            32.089754
+          ],
+          "world_seconds": [
+            33.333935,
+            34.067257
+          ]
+        }
+      ],
+      "sparse_original_frame_indices": [],
+      "inspected_frames": [
+        {
+          "file": "frame_00633.jpg",
+          "frame_index": 633,
+          "audio_seconds": 31.35749,
+          "world_seconds": 33.333935,
+          "phase": 20,
+          "weapon_slot": 1,
+          "ammo": 24,
+          "reserve": 177,
+          "operation": 0,
+          "bytes": 93826,
+          "sha256": "60d5f8590cb89243d3fb3a5420bcce66a155fd3e236737eaf34bda534c49397a"
+        },
+        {
+          "file": "frame_00634.jpg",
+          "frame_index": 634,
+          "audio_seconds": 31.38932,
+          "world_seconds": 33.367268,
+          "phase": 20,
+          "weapon_slot": 1,
+          "ammo": 24,
+          "reserve": 177,
+          "operation": 0,
+          "bytes": 93072,
+          "sha256": "516f3f02c1b4559e7ea98f2d338965a3c9fac3eb3dc2894d1c5efa395feb7069"
+        },
+        {
+          "file": "frame_00635.jpg",
+          "frame_index": 635,
+          "audio_seconds": 31.455411,
+          "world_seconds": 33.433933,
+          "phase": 20,
+          "weapon_slot": 1,
+          "ammo": 24,
+          "reserve": 177,
+          "operation": 0,
+          "bytes": 93138,
+          "sha256": "3673eb7d7db3015cdc11194fb7a4ee5aad3f07534b539498b2094b82059fc1b4"
+        },
+        {
+          "file": "frame_00636.jpg",
+          "frame_index": 636,
+          "audio_seconds": 31.488753,
+          "world_seconds": 33.467266,
+          "phase": 20,
+          "weapon_slot": 1,
+          "ammo": 24,
+          "reserve": 177,
+          "operation": 0,
+          "bytes": 93222,
+          "sha256": "80190b55ea40f6118ac0bcf259c3eed8b255d5a159e0d193ef34859d90625ced"
+        },
+        {
+          "file": "frame_00637.jpg",
+          "frame_index": 637,
+          "audio_seconds": 31.555728,
+          "world_seconds": 33.533932,
+          "phase": 20,
+          "weapon_slot": 1,
+          "ammo": 24,
+          "reserve": 177,
+          "operation": 0,
+          "bytes": 93054,
+          "sha256": "a6ae6b3c5159f0fda3a68a88cf77109fa6945420d693869e0a264c64acfd7aaf"
+        },
+        {
+          "file": "frame_00638.jpg",
+          "frame_index": 638,
+          "audio_seconds": 31.588831,
+          "world_seconds": 33.567265,
+          "phase": 20,
+          "weapon_slot": 1,
+          "ammo": 24,
+          "reserve": 177,
+          "operation": 0,
+          "bytes": 93020,
+          "sha256": "b8d1b9262690c525669c2bebb841248a97298ea5f14de59df27bbc17427b6881"
+        },
+        {
+          "file": "frame_00639.jpg",
+          "frame_index": 639,
+          "audio_seconds": 31.622417,
+          "world_seconds": 33.600597,
+          "phase": 20,
+          "weapon_slot": 1,
+          "ammo": 24,
+          "reserve": 177,
+          "operation": 0,
+          "bytes": 93085,
+          "sha256": "411efdf4477a829da8fdc2dc7b29b5d0baf2b454f2deda99fcde17c948768175"
+        },
+        {
+          "file": "frame_00640.jpg",
+          "frame_index": 640,
+          "audio_seconds": 31.688941,
+          "world_seconds": 33.667263,
+          "phase": 20,
+          "weapon_slot": 1,
+          "ammo": 24,
+          "reserve": 177,
+          "operation": 0,
+          "bytes": 92996,
+          "sha256": "1b84377ea1a140528b72723ddf1ce015ebe1960fcad2d6ee27b75552f0d0161a"
+        },
+        {
+          "file": "frame_00641.jpg",
+          "frame_index": 641,
+          "audio_seconds": 31.722412,
+          "world_seconds": 33.700596,
+          "phase": 20,
+          "weapon_slot": 1,
+          "ammo": 24,
+          "reserve": 177,
+          "operation": 0,
+          "bytes": 92941,
+          "sha256": "b843173eb5de9edc3136c9a00166b9b9ffbcfa2d1176e5df881748426757755a"
+        },
+        {
+          "file": "frame_00642.jpg",
+          "frame_index": 642,
+          "audio_seconds": 31.755571,
+          "world_seconds": 33.733929,
+          "phase": 20,
+          "weapon_slot": 1,
+          "ammo": 24,
+          "reserve": 177,
+          "operation": 0,
+          "bytes": 93078,
+          "sha256": "f6ad7ca83ac7fbace37139f12048677be7f9e0ec22f884d1ec627b8bc74f7af8"
+        },
+        {
+          "file": "frame_00643.jpg",
+          "frame_index": 643,
+          "audio_seconds": 31.822204,
+          "world_seconds": 33.800594,
+          "phase": 21,
+          "weapon_slot": 0,
+          "ammo": 7,
+          "reserve": 49,
+          "operation": 0,
+          "bytes": 98339,
+          "sha256": "e10e326823a544279ddb3c98076e7727c53b740c00dc96cfc76ec4428388d3e4"
+        },
+        {
+          "file": "frame_00644.jpg",
+          "frame_index": 644,
+          "audio_seconds": 31.888753,
+          "world_seconds": 33.86726,
+          "phase": 21,
+          "weapon_slot": 0,
+          "ammo": 7,
+          "reserve": 49,
+          "operation": 0,
+          "bytes": 98685,
+          "sha256": "1dba58feb6d9bd446b9bd6c206e301909b8724b74623dc917cc8bdfa96e2e17a"
+        },
+        {
+          "file": "frame_00645.jpg",
+          "frame_index": 645,
+          "audio_seconds": 31.922488,
+          "world_seconds": 33.900593,
+          "phase": 21,
+          "weapon_slot": 0,
+          "ammo": 7,
+          "reserve": 49,
+          "operation": 0,
+          "bytes": 98680,
+          "sha256": "a98d5350cb1923986ad617f1700be537cc6fd7ca8027493d5f4d57cf0a4a156f"
+        },
+        {
+          "file": "frame_00646.jpg",
+          "frame_index": 646,
+          "audio_seconds": 31.988903,
+          "world_seconds": 33.967258,
+          "phase": 21,
+          "weapon_slot": 0,
+          "ammo": 7,
+          "reserve": 49,
+          "operation": 0,
+          "bytes": 98147,
+          "sha256": "536d34e8f8ae62d09e0795a8cbd02e91091a971d8a2896c68b5c392c0d3e4061"
+        },
+        {
+          "file": "frame_00647.jpg",
+          "frame_index": 647,
+          "audio_seconds": 32.022467,
+          "world_seconds": 34.000591,
+          "phase": 21,
+          "weapon_slot": 0,
+          "ammo": 7,
+          "reserve": 49,
+          "operation": 0,
+          "bytes": 97971,
+          "sha256": "4682623f7ab72bbe568ad9876ad3b04e41fde220968363914e5000e1376710c8"
+        },
+        {
+          "file": "frame_00648.jpg",
+          "frame_index": 648,
+          "audio_seconds": 32.056039,
+          "world_seconds": 34.033924,
+          "phase": 21,
+          "weapon_slot": 0,
+          "ammo": 7,
+          "reserve": 49,
+          "operation": 0,
+          "bytes": 97679,
+          "sha256": "9add64585e43d35b08a387e6a4adc0d4a0f8321ae53b9af6f1f9c4da5bd71a05"
+        },
+        {
+          "file": "frame_00649.jpg",
+          "frame_index": 649,
+          "audio_seconds": 32.089754,
+          "world_seconds": 34.067257,
+          "phase": 21,
+          "weapon_slot": 0,
+          "ammo": 7,
+          "reserve": 49,
+          "operation": 0,
+          "bytes": 96922,
+          "sha256": "0e5a3ae32eabe6ad7ae971f5c7b9144c2f7a0ad977e31cdf3fa79ede1f850de8"
+        }
+      ]
+    },
+    {
+      "capture_id": "20260905_130222_160831EC",
+      "repository_relative_raw_directory": "Packaged/Candidate04/Windows/ProjectONE/Saved/Candidate04/PresentationCapture/20260905_130222_160831EC",
+      "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+      "recording_context": "Fresh packaged S2 game, scripted production controller input and real gameplay camera; this reviewer did not send native inputs.",
+      "raw_frames_count": 3001,
+      "capture_assertions": {
+        "pass_lines": 58,
+        "fail_lines": 0,
+        "scope": "Recorded functional assertions, separate from this visual review."
+      },
+      "media_assembly_status": {
+        "status": "Original raw visual review; final AV assembly is documented independently.",
+        "reported_endpoint_issue": "Capture owner reported the final JPEG callback 9.795667ms beyond the engine WAV endpoint.",
+        "reported_resolution": "Owner authorized excluding one out-of-audio callback in the final idle tail from movie assembly while preserving all raw frames and original audio; no padding or stretching. This review neither performs nor certifies that assembly."
+      },
+      "files": {
+        "frames.csv": {
+          "bytes": 147911,
+          "sha256": "09ee098b7e321e22f03e9ee607ee11fd0dc3d7c1efa94ce63bde8feb291f6f3c"
+        },
+        "checks.txt": {
+          "bytes": 4358,
+          "sha256": "5a7236918bbad7b4ea939eee5419741fc63f9fb9504c0ff05382fad751793229"
+        },
+        "chapters.csv": {
+          "bytes": 4788,
+          "sha256": "d589a1ea1c608baed3755455c5bfc6d2ac8d6d39b4c1d3473c718b41acbb10e8"
+        },
+        "observations.csv": {
+          "bytes": 230705,
+          "sha256": "e8e606b9df7b330537dbef44da393e4ef48ee8e631bbd804b72a9e26904cb9bc"
+        },
+        "input_events.csv": {
+          "bytes": 7867,
+          "sha256": "37e946a6991df64e392ef288a4bc8e5f494f2d1fb04f735b3dd906985939e3f8"
+        }
+      },
+      "individually_inspected_frame_count": 58,
+      "dense_windows": [
+        {
+          "subject": "Pistol reload removal/reach subwindow",
+          "sampling": "Every saved original JPEG in this inclusive interval was individually inspected at 1600x900; no image editing or generated contact sheet.",
+          "first_frame": 59,
+          "last_frame": 66,
+          "count": 8,
+          "audio_seconds": [
+            2.919442,
+            3.253173
+          ],
+          "world_seconds": [
+            4.900023,
+            5.233356
+          ]
+        },
+        {
+          "subject": "M4 upgraded rifle retrieval subwindow",
+          "sampling": "Every saved original JPEG in this inclusive interval was individually inspected at 1600x900; no image editing or generated contact sheet.",
+          "first_frame": 937,
+          "last_frame": 945,
+          "count": 9,
+          "audio_seconds": [
+            46.29025,
+            46.723317
+          ],
+          "world_seconds": [
+            48.267708,
+            48.701111
+          ]
+        },
+        {
+          "subject": "Base Remington 870 discharge through pump recovery",
+          "sampling": "Every saved original JPEG in this inclusive interval was individually inspected at 1600x900; no image editing or generated contact sheet.",
+          "first_frame": 2016,
+          "last_frame": 2032,
+          "count": 17,
+          "audio_seconds": [
+            100.028057,
+            100.825664
+          ],
+          "world_seconds": [
+            102.002754,
+            102.802742
+          ]
+        },
+        {
+          "subject": "Base Remington 870 first shell receiver-approach and commit subwindow",
+          "sampling": "Every saved original JPEG in this inclusive interval was individually inspected at 1600x900; no image editing or generated contact sheet.",
+          "first_frame": 2115,
+          "last_frame": 2122,
+          "count": 8,
+          "audio_seconds": [
+            104.892142,
+            105.225885
+          ],
+          "world_seconds": [
+            106.869354,
+            107.202682
+          ]
+        },
+        {
+          "subject": "Gravebreaker pump and case flight subwindow",
+          "sampling": "Every saved original JPEG in this inclusive interval was individually inspected at 1600x900; no image editing or generated contact sheet.",
+          "first_frame": 2696,
+          "last_frame": 2704,
+          "count": 9,
+          "audio_seconds": [
+            133.427584,
+            133.895138
+          ],
+          "world_seconds": [
+            135.404892,
+            135.871658
+          ]
+        }
+      ],
+      "sparse_original_frame_indices": [
+        75,
+        83,
+        91,
+        829,
+        840,
+        950,
+        2692
+      ],
+      "inspected_frames": [
+        {
+          "file": "frame_00059.jpg",
+          "frame_index": 59,
+          "audio_seconds": 2.919442,
+          "world_seconds": 4.900023,
+          "phase": 4,
+          "weapon_slot": 0,
+          "ammo": 0,
+          "reserve": 56,
+          "operation": 4,
+          "bytes": 108199,
+          "sha256": "e0b94a537f067013d12e3492b159b8e438c7a66cc94745cf993925beb9505553"
+        },
+        {
+          "file": "frame_00060.jpg",
+          "frame_index": 60,
+          "audio_seconds": 2.953268,
+          "world_seconds": 4.933356,
+          "phase": 4,
+          "weapon_slot": 0,
+          "ammo": 0,
+          "reserve": 56,
+          "operation": 4,
+          "bytes": 108217,
+          "sha256": "b6767fe884afb355a596f558dee9c2dda208f121dc8ce0af86ac084ecce26741"
+        },
+        {
+          "file": "frame_00061.jpg",
+          "frame_index": 61,
+          "audio_seconds": 3.019153,
+          "world_seconds": 5.000022,
+          "phase": 5,
+          "weapon_slot": 0,
+          "ammo": 0,
+          "reserve": 56,
+          "operation": 4,
+          "bytes": 108675,
+          "sha256": "c1225bb45ff90ae8cb893231e9528e2df232ac10041703f4f5dec8e4df86017d"
+        },
+        {
+          "file": "frame_00062.jpg",
+          "frame_index": 62,
+          "audio_seconds": 3.052658,
+          "world_seconds": 5.033356,
+          "phase": 5,
+          "weapon_slot": 0,
+          "ammo": 0,
+          "reserve": 56,
+          "operation": 4,
+          "bytes": 108821,
+          "sha256": "578cb93aa9bf0ccab66bbfa271b23d2e7fd9f615f646760353103a951f20a28c"
+        },
+        {
+          "file": "frame_00063.jpg",
+          "frame_index": 63,
+          "audio_seconds": 3.119311,
+          "world_seconds": 5.100023,
+          "phase": 5,
+          "weapon_slot": 0,
+          "ammo": 0,
+          "reserve": 56,
+          "operation": 4,
+          "bytes": 108903,
+          "sha256": "39f621efcfb75c31034f004de1d682c18ee4d4c55777b961639ad71d162a038a"
+        },
+        {
+          "file": "frame_00064.jpg",
+          "frame_index": 64,
+          "audio_seconds": 3.153414,
+          "world_seconds": 5.133356,
+          "phase": 5,
+          "weapon_slot": 0,
+          "ammo": 0,
+          "reserve": 56,
+          "operation": 4,
+          "bytes": 108779,
+          "sha256": "dae6af7d3e5a3353fee70179ad1576512b64423cd7d8036c5cf813651d77bf5e"
+        },
+        {
+          "file": "frame_00065.jpg",
+          "frame_index": 65,
+          "audio_seconds": 3.219787,
+          "world_seconds": 5.200023,
+          "phase": 5,
+          "weapon_slot": 0,
+          "ammo": 0,
+          "reserve": 56,
+          "operation": 4,
+          "bytes": 108920,
+          "sha256": "87ad8fbfc8f2faa70d9510aa40e43c9e90bf02cc32c247a21a768eba722dd94f"
+        },
+        {
+          "file": "frame_00066.jpg",
+          "frame_index": 66,
+          "audio_seconds": 3.253173,
+          "world_seconds": 5.233356,
+          "phase": 5,
+          "weapon_slot": 0,
+          "ammo": 0,
+          "reserve": 56,
+          "operation": 4,
+          "bytes": 108925,
+          "sha256": "621008a479d637342b1b30a047e52fab6db6a83aff72ebfd5533db05873d9c2c"
+        },
+        {
+          "file": "frame_00075.jpg",
+          "frame_index": 75,
+          "audio_seconds": 3.720182,
+          "world_seconds": 5.700022,
+          "phase": 5,
+          "weapon_slot": 0,
+          "ammo": 0,
+          "reserve": 56,
+          "operation": 4,
+          "bytes": 109103,
+          "sha256": "5572f7f9140a6e98c3032a50cd05526e7c4e9f548f3b5aad55e899067cfc6750"
+        },
+        {
+          "file": "frame_00083.jpg",
+          "frame_index": 83,
+          "audio_seconds": 4.120609,
+          "world_seconds": 6.100024,
+          "phase": 5,
+          "weapon_slot": 0,
+          "ammo": 7,
+          "reserve": 49,
+          "operation": 4,
+          "bytes": 109294,
+          "sha256": "3f99345280ca42752ed164fdeba199441360b7522d9597cc118a640f1da15d66"
+        },
+        {
+          "file": "frame_00091.jpg",
+          "frame_index": 91,
+          "audio_seconds": 4.487214,
+          "world_seconds": 6.466691,
+          "phase": 5,
+          "weapon_slot": 0,
+          "ammo": 7,
+          "reserve": 49,
+          "operation": 0,
+          "bytes": 107373,
+          "sha256": "722bb0b52a9378c67e3cd6c0769452a454382b46f11f74d32d12b796a3eb2576"
+        },
+        {
+          "file": "frame_00829.jpg",
+          "frame_index": 829,
+          "audio_seconds": 40.757999,
+          "world_seconds": 42.733727,
+          "phase": 25,
+          "weapon_slot": 0,
+          "ammo": 4,
+          "reserve": 42,
+          "operation": 0,
+          "bytes": 92598,
+          "sha256": "08e336c160a12dbd3770ffbca434a19f20a0bc2a1e7a0bd25a5fbf8a804847bb"
+        },
+        {
+          "file": "frame_00840.jpg",
+          "frame_index": 840,
+          "audio_seconds": 41.357577,
+          "world_seconds": 43.333717,
+          "phase": 26,
+          "weapon_slot": 0,
+          "ammo": 4,
+          "reserve": 42,
+          "operation": 0,
+          "bytes": 94503,
+          "sha256": "c189478e4d228498add0869c118ceb89a91e1674eba66fa041fc62a8074a3772"
+        },
+        {
+          "file": "frame_00937.jpg",
+          "frame_index": 937,
+          "audio_seconds": 46.29025,
+          "world_seconds": 48.267708,
+          "phase": 29,
+          "weapon_slot": 0,
+          "ammo": 4,
+          "reserve": 42,
+          "operation": 0,
+          "bytes": 100338,
+          "sha256": "f4d6ed6eb1c63df5a11ca3e3de365622051eb5db780cba3137bb1505c74cf207"
+        },
+        {
+          "file": "frame_00938.jpg",
+          "frame_index": 938,
+          "audio_seconds": 46.356727,
+          "world_seconds": 48.334381,
+          "phase": 29,
+          "weapon_slot": 0,
+          "ammo": 4,
+          "reserve": 42,
+          "operation": 0,
+          "bytes": 99366,
+          "sha256": "ec9567d5d1a121445d7c4ff579e5d00b95faa1c9489a8de3f4c1a0bfca72e3be"
+        },
+        {
+          "file": "frame_00939.jpg",
+          "frame_index": 939,
+          "audio_seconds": 46.423249,
+          "world_seconds": 48.401047,
+          "phase": 29,
+          "weapon_slot": 0,
+          "ammo": 4,
+          "reserve": 42,
+          "operation": 0,
+          "bytes": 99225,
+          "sha256": "bd964c0913e9ced4a17f9b21875c12016f7455c27d89d16b869d052d480016ac"
+        },
+        {
+          "file": "frame_00940.jpg",
+          "frame_index": 940,
+          "audio_seconds": 46.456547,
+          "world_seconds": 48.434391,
+          "phase": 29,
+          "weapon_slot": 0,
+          "ammo": 4,
+          "reserve": 42,
+          "operation": 1,
+          "bytes": 99200,
+          "sha256": "027cb35a1493eb846d70f452d32559f2d1b67ef3ab43bca37c3d74e928def212"
+        },
+        {
+          "file": "frame_00941.jpg",
+          "frame_index": 941,
+          "audio_seconds": 46.490361,
+          "world_seconds": 48.467739,
+          "phase": 29,
+          "weapon_slot": 0,
+          "ammo": 4,
+          "reserve": 42,
+          "operation": 1,
+          "bytes": 99395,
+          "sha256": "e707be1bd0e9193b491670d11fb41ec9f3e58fff0f4eb738e11e61596f46aa30"
+        },
+        {
+          "file": "frame_00942.jpg",
+          "frame_index": 942,
+          "audio_seconds": 46.556589,
+          "world_seconds": 48.534409,
+          "phase": 29,
+          "weapon_slot": 0,
+          "ammo": 4,
+          "reserve": 42,
+          "operation": 1,
+          "bytes": 99608,
+          "sha256": "34b13a3f171bc442249ddfdad16706ce021e92e03e6701d6234900e3746c3cf2"
+        },
+        {
+          "file": "frame_00943.jpg",
+          "frame_index": 943,
+          "audio_seconds": 46.623306,
+          "world_seconds": 48.601093,
+          "phase": 29,
+          "weapon_slot": 0,
+          "ammo": 4,
+          "reserve": 42,
+          "operation": 1,
+          "bytes": 99773,
+          "sha256": "95cf7cf0e55f066ee54879c923d90853377f0f9377d6e6ba1a81307a33b8dc2d"
+        },
+        {
+          "file": "frame_00944.jpg",
+          "frame_index": 944,
+          "audio_seconds": 46.656982,
+          "world_seconds": 48.634441,
+          "phase": 29,
+          "weapon_slot": 1,
+          "ammo": 36,
+          "reserve": 540,
+          "operation": 1,
+          "bytes": 100161,
+          "sha256": "39e473f3feeae8db4c2d2c3d81df3663c0fd09cbab0df851d77e6bf76c2688ea"
+        },
+        {
+          "file": "frame_00945.jpg",
+          "frame_index": 945,
+          "audio_seconds": 46.723317,
+          "world_seconds": 48.701111,
+          "phase": 29,
+          "weapon_slot": 1,
+          "ammo": 36,
+          "reserve": 540,
+          "operation": 1,
+          "bytes": 100347,
+          "sha256": "ed8e05cee9d7148747b6af2c329a9506dde0a23f6414920eb4cf43cde4e51b8b"
+        },
+        {
+          "file": "frame_00950.jpg",
+          "frame_index": 950,
+          "audio_seconds": 46.957263,
+          "world_seconds": 48.934475,
+          "phase": 29,
+          "weapon_slot": 1,
+          "ammo": 36,
+          "reserve": 540,
+          "operation": 0,
+          "bytes": 94046,
+          "sha256": "b046b9560254870f4be95e302b5d60ae4654940c5e1fc736828e3eb7b0b5a369"
+        },
+        {
+          "file": "frame_02016.jpg",
+          "frame_index": 2016,
+          "audio_seconds": 100.028057,
+          "world_seconds": 102.002754,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 2,
+          "bytes": 130175,
+          "sha256": "061307448a8164c1a14990f2a520df7c65f6443d68022a400f96e26907abbf51"
+        },
+        {
+          "file": "frame_02017.jpg",
+          "frame_index": 2017,
+          "audio_seconds": 100.09298,
+          "world_seconds": 102.06942,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 2,
+          "bytes": 127807,
+          "sha256": "a232cd790020da514ad4236e9f9aceef4fabb889ad5ffd9d4b006b6964037b25"
+        },
+        {
+          "file": "frame_02018.jpg",
+          "frame_index": 2018,
+          "audio_seconds": 100.125332,
+          "world_seconds": 102.102753,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 2,
+          "bytes": 127974,
+          "sha256": "456e32e085a48c1d72f9be12d25755b830f1679e70c07afeda1dbf734b73bb51"
+        },
+        {
+          "file": "frame_02019.jpg",
+          "frame_index": 2019,
+          "audio_seconds": 100.191951,
+          "world_seconds": 102.169418,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 2,
+          "bytes": 128270,
+          "sha256": "96703dbb63ed05c1896d60b5f2676f410d31357fdd4b7b64743204470a8212af"
+        },
+        {
+          "file": "frame_02020.jpg",
+          "frame_index": 2020,
+          "audio_seconds": 100.225379,
+          "world_seconds": 102.202751,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 2,
+          "bytes": 128453,
+          "sha256": "f0f5b3b2dc23d7d2510c3e85dc80bab1e092db3733dd18b7eb7e77eeef559d65"
+        },
+        {
+          "file": "frame_02021.jpg",
+          "frame_index": 2021,
+          "audio_seconds": 100.292252,
+          "world_seconds": 102.269417,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 127568,
+          "sha256": "35c6ff1fb6a6ba41e4160440ff5b95365bfdcf68552eeb3c07638b00c3978430"
+        },
+        {
+          "file": "frame_02022.jpg",
+          "frame_index": 2022,
+          "audio_seconds": 100.358733,
+          "world_seconds": 102.336082,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 127768,
+          "sha256": "1151bb1b96d4b54310fc0fa8309a3f8867b0e3daf1e78cb9efdc1d337e238fee"
+        },
+        {
+          "file": "frame_02023.jpg",
+          "frame_index": 2023,
+          "audio_seconds": 100.392049,
+          "world_seconds": 102.369415,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 127781,
+          "sha256": "0e50d886bbbafc0c20aec8728a7edc04a6e40d452ad589c7709adca244a7e1b6"
+        },
+        {
+          "file": "frame_02024.jpg",
+          "frame_index": 2024,
+          "audio_seconds": 100.458798,
+          "world_seconds": 102.436081,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 127880,
+          "sha256": "7b7162ed71fb6b6ce0a8d3fa5097c7a5503172339d5d7046197f4567a080e636"
+        },
+        {
+          "file": "frame_02025.jpg",
+          "frame_index": 2025,
+          "audio_seconds": 100.525066,
+          "world_seconds": 102.502747,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 128014,
+          "sha256": "f55210b5b696849143962fbbe676adbe20fb1305fcafd733262ed97ff6dbc631"
+        },
+        {
+          "file": "frame_02026.jpg",
+          "frame_index": 2026,
+          "audio_seconds": 100.559233,
+          "world_seconds": 102.536079,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 128035,
+          "sha256": "efe08f6a79833f6ba4e45b06ad7cb1efdee7df42a17ee43a370da2fdac75e308"
+        },
+        {
+          "file": "frame_02027.jpg",
+          "frame_index": 2027,
+          "audio_seconds": 100.625898,
+          "world_seconds": 102.602745,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 128196,
+          "sha256": "9cd8faca2034f29b69bfcd5312747e78967339974b2fcdfd24576956c500c1b9"
+        },
+        {
+          "file": "frame_02028.jpg",
+          "frame_index": 2028,
+          "audio_seconds": 100.659245,
+          "world_seconds": 102.636078,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 128213,
+          "sha256": "7de32837d93ee804447fcbd1c725916541f4d55858d5db62c0228e3c75d781e4"
+        },
+        {
+          "file": "frame_02029.jpg",
+          "frame_index": 2029,
+          "audio_seconds": 100.692268,
+          "world_seconds": 102.669411,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 128333,
+          "sha256": "b2acff7bbd8dfd0e3efb5613a86f070f65ca6fc6f7bdf746015b86bb96d43c3b"
+        },
+        {
+          "file": "frame_02030.jpg",
+          "frame_index": 2030,
+          "audio_seconds": 100.758546,
+          "world_seconds": 102.736076,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 128060,
+          "sha256": "ec7eaeccfe0621e1d075a86c68530b7be5af96e6fc6b5d39ad2efdf36c7a7de4"
+        },
+        {
+          "file": "frame_02031.jpg",
+          "frame_index": 2031,
+          "audio_seconds": 100.792121,
+          "world_seconds": 102.769409,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 3,
+          "bytes": 128246,
+          "sha256": "3be6503c341ecb3c031494c27c76487d957a61076fc87bc9a4551db012573d19"
+        },
+        {
+          "file": "frame_02032.jpg",
+          "frame_index": 2032,
+          "audio_seconds": 100.825664,
+          "world_seconds": 102.802742,
+          "phase": 65,
+          "weapon_slot": 1,
+          "ammo": 5,
+          "reserve": 36,
+          "operation": 0,
+          "bytes": 127150,
+          "sha256": "3fe03ec62f76870030c48e538c294dda21ab1eb7d8d61cb47143babfa96c8223"
+        },
+        {
+          "file": "frame_02115.jpg",
+          "frame_index": 2115,
+          "audio_seconds": 104.892142,
+          "world_seconds": 106.869354,
+          "phase": 66,
+          "weapon_slot": 1,
+          "ammo": 1,
+          "reserve": 36,
+          "operation": 6,
+          "bytes": 129099,
+          "sha256": "17d6254f2e0d91bfa540627d9be6998fe0d0ee8d31662f7c1325f15b1ad24782"
+        },
+        {
+          "file": "frame_02116.jpg",
+          "frame_index": 2116,
+          "audio_seconds": 104.95865,
+          "world_seconds": 106.93602,
+          "phase": 66,
+          "weapon_slot": 1,
+          "ammo": 1,
+          "reserve": 36,
+          "operation": 6,
+          "bytes": 129070,
+          "sha256": "17cab33bc010174613d34278a4048685f0d2173f62cdb9c94f66132a26e9fee0"
+        },
+        {
+          "file": "frame_02117.jpg",
+          "frame_index": 2117,
+          "audio_seconds": 104.992149,
+          "world_seconds": 106.969353,
+          "phase": 66,
+          "weapon_slot": 1,
+          "ammo": 1,
+          "reserve": 36,
+          "operation": 6,
+          "bytes": 129146,
+          "sha256": "2b450963ac9aec82981ae43059978d5bf4a8b4f1383e780ba267f3a9556f3e4f"
+        },
+        {
+          "file": "frame_02118.jpg",
+          "frame_index": 2118,
+          "audio_seconds": 105.058559,
+          "world_seconds": 107.036018,
+          "phase": 66,
+          "weapon_slot": 1,
+          "ammo": 1,
+          "reserve": 36,
+          "operation": 6,
+          "bytes": 129252,
+          "sha256": "187d970beef72637fe23d01a404de7d29903e5dccf3a02253ad20b25eff2e803"
+        },
+        {
+          "file": "frame_02119.jpg",
+          "frame_index": 2119,
+          "audio_seconds": 105.092253,
+          "world_seconds": 107.069351,
+          "phase": 66,
+          "weapon_slot": 1,
+          "ammo": 1,
+          "reserve": 36,
+          "operation": 6,
+          "bytes": 129200,
+          "sha256": "53e7846aee0de11d2b7e05737771861397d98510da1124b6afefb3485f3c4419"
+        },
+        {
+          "file": "frame_02120.jpg",
+          "frame_index": 2120,
+          "audio_seconds": 105.126944,
+          "world_seconds": 107.102684,
+          "phase": 66,
+          "weapon_slot": 1,
+          "ammo": 1,
+          "reserve": 36,
+          "operation": 6,
+          "bytes": 129269,
+          "sha256": "c2ba26476ef6a12c73e792fecc1f11833eb87220a71d06014423dc2c3acf5152"
+        },
+        {
+          "file": "frame_02121.jpg",
+          "frame_index": 2121,
+          "audio_seconds": 105.159305,
+          "world_seconds": 107.136017,
+          "phase": 66,
+          "weapon_slot": 1,
+          "ammo": 2,
+          "reserve": 35,
+          "operation": 6,
+          "bytes": 129302,
+          "sha256": "a1c9d7b3b2855e7722b84fb03b8f50b2e2536a47538a78d7e6bd0735d0a91fb7"
+        },
+        {
+          "file": "frame_02122.jpg",
+          "frame_index": 2122,
+          "audio_seconds": 105.225885,
+          "world_seconds": 107.202682,
+          "phase": 66,
+          "weapon_slot": 1,
+          "ammo": 2,
+          "reserve": 35,
+          "operation": 6,
+          "bytes": 129400,
+          "sha256": "97dc8e39dd01fafbf3c9412dadf01c94f0588f9f0ffe11ec7be7e083f5018c68"
+        },
+        {
+          "file": "frame_02692.jpg",
+          "frame_index": 2692,
+          "audio_seconds": 133.229968,
+          "world_seconds": 135.204849,
+          "phase": 81,
+          "weapon_slot": 1,
+          "ammo": 7,
+          "reserve": 120,
+          "operation": 2,
+          "bytes": 134723,
+          "sha256": "92bbae4c9af19550c79d72d36c37a529a23876958c3ddc1e30a872ab1c3f7be9"
+        },
+        {
+          "file": "frame_02696.jpg",
+          "frame_index": 2696,
+          "audio_seconds": 133.427584,
+          "world_seconds": 135.404892,
+          "phase": 81,
+          "weapon_slot": 1,
+          "ammo": 7,
+          "reserve": 120,
+          "operation": 3,
+          "bytes": 132797,
+          "sha256": "451f53657c380517a2cce1e565edc2088564acb94e0d7980f1aaf675a249396b"
+        },
+        {
+          "file": "frame_02697.jpg",
+          "frame_index": 2697,
+          "audio_seconds": 133.495017,
+          "world_seconds": 135.471573,
+          "phase": 81,
+          "weapon_slot": 1,
+          "ammo": 7,
+          "reserve": 120,
+          "operation": 3,
+          "bytes": 132978,
+          "sha256": "488ee592f0d8f5d517f0295c2bb87811ca2ed25e5d25a7ba3877cf2bc7a1496a"
+        },
+        {
+          "file": "frame_02698.jpg",
+          "frame_index": 2698,
+          "audio_seconds": 133.527474,
+          "world_seconds": 135.504913,
+          "phase": 81,
+          "weapon_slot": 1,
+          "ammo": 7,
+          "reserve": 120,
+          "operation": 3,
+          "bytes": 133021,
+          "sha256": "70aba12f70a9bc8cf0eb353d4295864e958f1166e831c519069b6e348f0f8b77"
+        },
+        {
+          "file": "frame_02699.jpg",
+          "frame_index": 2699,
+          "audio_seconds": 133.594326,
+          "world_seconds": 135.571594,
+          "phase": 81,
+          "weapon_slot": 1,
+          "ammo": 7,
+          "reserve": 120,
+          "operation": 3,
+          "bytes": 133199,
+          "sha256": "6e8894162a4be9b4dd3d82ba4d356741712a09519b766c0f25045140d9411c82"
+        },
+        {
+          "file": "frame_02700.jpg",
+          "frame_index": 2700,
+          "audio_seconds": 133.628201,
+          "world_seconds": 135.604935,
+          "phase": 81,
+          "weapon_slot": 1,
+          "ammo": 7,
+          "reserve": 120,
+          "operation": 3,
+          "bytes": 133936,
+          "sha256": "cda9e61f21cf6045d1b9fccd1efedf4e89ceb7d09ef36baaf979081f30a53249"
+        },
+        {
+          "file": "frame_02701.jpg",
+          "frame_index": 2701,
+          "audio_seconds": 133.695382,
+          "world_seconds": 135.671616,
+          "phase": 81,
+          "weapon_slot": 1,
+          "ammo": 7,
+          "reserve": 120,
+          "operation": 3,
+          "bytes": 133954,
+          "sha256": "6ec71802d8f5e41578f98b9a100772b9fc9c2989f43e6cf9ca1b75f71696bbca"
+        },
+        {
+          "file": "frame_02702.jpg",
+          "frame_index": 2702,
+          "audio_seconds": 133.761335,
+          "world_seconds": 135.738297,
+          "phase": 81,
+          "weapon_slot": 1,
+          "ammo": 7,
+          "reserve": 120,
+          "operation": 3,
+          "bytes": 134223,
+          "sha256": "f9de4ac5343ace7c6d3af1a36735df5c3240013f14571f41db88ccf9fbae68f0"
+        },
+        {
+          "file": "frame_02703.jpg",
+          "frame_index": 2703,
+          "audio_seconds": 133.827461,
+          "world_seconds": 135.804977,
+          "phase": 81,
+          "weapon_slot": 1,
+          "ammo": 7,
+          "reserve": 120,
+          "operation": 3,
+          "bytes": 133903,
+          "sha256": "d9fe2e3be5bc498ff411a77e14e821276c67dd8ea529bdb89cde4b3d4daa278b"
+        },
+        {
+          "file": "frame_02704.jpg",
+          "frame_index": 2704,
+          "audio_seconds": 133.895138,
+          "world_seconds": 135.871658,
+          "phase": 81,
+          "weapon_slot": 1,
+          "ammo": 7,
+          "reserve": 120,
+          "operation": 3,
+          "bytes": 134161,
+          "sha256": "a941a5131360471cda411e0fdb42cd1b79764f916deaa33f41e3c939328ccafa"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "subject": "Machine lighting and assembled preview",
+      "capture_evidence": [
+        {
+          "capture_id": "20260905_125659_E8EDAEE6",
+          "frames": [
+            633,
+            649
+          ]
+        },
+        {
+          "capture_id": "20260905_130222_160831EC",
+          "frames": [
+            829,
+            840,
+            937,
+            945
+          ]
+        }
+      ],
+      "observation": "The relocated overhead light leaves the rifle distinct from the tray and preserves shading on the arms. The cyan processing preview and green waiting preview have discernible weapon and cradle forms. The green cast remains strong and a small bright housing highlight remains, but these inspected views do not show the old broad white wash over the hands and rifle.",
+      "limit": "Qualitative comparison with previously reviewed editor captures, not a controlled brightness measurement. Fine receiver/finger detail remains dark and small."
+    },
+    {
+      "subject": "M4 handoff and retrieval",
+      "capture_evidence": [
+        {
+          "capture_id": "20260905_125659_E8EDAEE6",
+          "frames": [
+            633,
+            649
+          ]
+        },
+        {
+          "capture_id": "20260905_130222_160831EC",
+          "frames": [
+            937,
+            945,
+            950
+          ]
+        }
+      ],
+      "observation": "The first sequence moves from the held rifle into tray acceptance and preview rotation. In the second capture the assembled waiting rifle turns toward the approaching hands and is pulled into carry; sparse frame 950 shows the held rifle with an empty tray. No obvious lasting duplicate rifle or large position pop was observed within these reviewed intervals.",
+      "limit": "The second dense interval ends before the sparse ready endpoint; intermediate frames 946-949 were not inspected. Exact finger-to-grip contact and sub-frame continuity are not certified."
+    },
+    {
+      "subject": "M1911 reload and magazine",
+      "capture_evidence": [
+        {
+          "capture_id": "20260905_130222_160831EC",
+          "frames": [
+            59,
+            66,
+            75,
+            83,
+            91
+          ]
+        }
+      ],
+      "observation": "The support arm opens away from the torso in the dense removal/reach subwindow. Later sparse images show a separate rectangular dropped magazine below and to screen-left of the feet, followed by the return to a two-hand carry pose.",
+      "limit": "The pistol and hands occupy very few native pixels and overlap the body. The fresh magazine seating, exact release frame, and slide travel cannot be independently resolved in this selection. This is not a complete dense reload review, and ammo text is not used as proof of physical seating."
+    },
+    {
+      "subject": "Remington 870 shot, pump and case",
+      "capture_evidence": [
+        {
+          "capture_id": "20260905_130222_160831EC",
+          "frames": [
+            2016,
+            2032
+          ]
+        }
+      ],
+      "observation": "Frame 2016 shows a short pale flash at the barrel end, separate long fired trajectories, and local illumination on the upper body. The flash is absent in subsequent inspected frames. A small red case becomes visible near the gun and moves outward to screen-right and downward across the latter pump frames. The weapon stays in the held pose during recovery.",
+      "limit": "Support-arm and fore-end displacement is subtle from this nearly frontal top-down angle. The images support a visible case trajectory but do not measure pump travel, contact error, or an ejection count across the full capture."
+    },
+    {
+      "subject": "Individual shotgun shell insertion",
+      "capture_evidence": [
+        {
+          "capture_id": "20260905_130222_160831EC",
+          "frames": [
+            2115,
+            2122
+          ]
+        }
+      ],
+      "observation": "The support arm moves inward from an open elbow position toward the receiver while the shotgun is held diagonally. The arm motion is more legible than the tiny loading prop.",
+      "limit": "The shell is obscured by the hands and receiver at this distance. Physical shell seating and finger contact are unresolved. This is a short receiver-approach subwindow, not every frame of the entire first shell cycle."
+    },
+    {
+      "subject": "Gravebreaker upgraded appearance and pump",
+      "capture_evidence": [
+        {
+          "capture_id": "20260905_130222_160831EC",
+          "frames": [
+            2692,
+            2696,
+            2704
+          ]
+        }
+      ],
+      "observation": "The upgraded shotgun retains a dark gun silhouette with warm copper/ember detail instead of a uniformly glowing surface. Sparse frame 2692 shows a short muzzle flash and warm fired trajectories. In the dense pump subwindow a small red case moves away to screen-right and downward; the held gun remains stable through recovery.",
+      "limit": "The warm trim is subdued at native gameplay scale; small fore-end displacement and exact support-hand contact remain difficult to distinguish. The flash frame is a sparse endpoint separated from the dense pump interval."
+    },
+    {
+      "subject": "Persistent missing HUD glyphs",
+      "capture_evidence": [
+        {
+          "capture_id": "20260905_125659_E8EDAEE6",
+          "frames": [
+            634,
+            635,
+            636
+          ]
+        },
+        {
+          "capture_id": "20260905_130222_160831EC",
+          "frames": [
+            60,
+            61,
+            840,
+            939,
+            945,
+            2699
+          ]
+        }
+      ],
+      "observation": "Letters and portions of HUD labels intermittently disappear in the original JPEGs while neighboring frames have fuller text. This occurs in both packaged captures, including title, controls and weapon/status panels.",
+      "limit": "The cause and whether the defect is limited to recorded frames are unproven. A separate reported crisp native overview behind a firewall prompt does not establish that this defect was fixed. This reviewer performed no security-prompt or native-input action."
+    }
+  ],
+  "scope_limits": [
+    "Only the explicitly listed 75 JPEGs were visually inspected by this reviewer; the raw capture totals are not reviewed-frame counts.",
+    "No full-motion video playback, perceptual audio audition, timbre judgment, audio synchronization certification, or native-control claim.",
+    "No broad locomotion, crowd, combat balance, performance, publication, or release acceptance claim follows from this weapon/machine sample.",
+    "No image content was altered; per-frame hashes bind the original saved files. Frame timestamps are the recorded capture clocks, not manually estimated event times.",
+    "The native gameplay camera limits fine mechanism and contact readability; source/import validation and functional checks remain separate evidence."
+  ]
+}

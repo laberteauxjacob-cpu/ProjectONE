@@ -1,0 +1,661 @@
+{
+  "candidate": "Candidate04",
+  "capture_kind": "packaged",
+  "capture_mode": "generic",
+  "provenance_basis": "Runtime kind and source identity supplied by operator; encoding does not establish packaged validation or visual/audio approval.",
+  "source_revision": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+  "source_state": "exact-commit",
+  "source": "Actual gameplay JPEG screenshot callbacks plus Unreal master-output WAV",
+  "frames": 3001,
+  "original_captured_frames": 3001,
+  "presented_frames": 3000,
+  "dimensions": [
+    1600,
+    900
+  ],
+  "capture_span_seconds": 148.109686,
+  "actual_capture_fps": 20.255258660125712,
+  "first_frame_audio_seconds": 0.017443,
+  "last_frame_audio_seconds": 148.127129,
+  "last_captured_frame_audio_seconds": 148.127129,
+  "last_presented_frame_audio_seconds": 148.06066,
+  "audio_duration_seconds": 148.11733333333333,
+  "final_frame_hold_seconds": 0.05667333333332181,
+  "maximum_frame_hold_seconds": 0.07084000000000401,
+  "source_audio": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "sample_width_bytes": 2,
+    "sample_frames": 7109632
+  },
+  "frames_csv_sha256": "09ee098b7e321e22f03e9ee607ee11fd0dc3d7c1efa94ce63bde8feb291f6f3c",
+  "source_wav_sha256": "973ba0d34b41077aedb574898f867fd39f2d50c1088e3c9cd0df493c477bdc7b",
+  "ordered_frame_identity_sha256": "7dee33974757d2ff1de679f34d59b7c6c4a088d81527a4ec011b1ef3796d5f09",
+  "ordered_presented_frame_identity_sha256": "5b630010a5a43985979b5a15eda56af15f6101aaad94fbd53c8eb2eb566d3898",
+  "terminal_idle_clip": {
+    "option_enabled": true,
+    "applied": true,
+    "original_captured_frames": 3001,
+    "presented_frames": 3000,
+    "original_last_frame_audio_seconds": 148.127129,
+    "presented_last_frame_audio_seconds": 148.06066,
+    "audio_end_seconds": 148.11733333333333,
+    "source_tail_gap_seconds": 0.009795666666661873,
+    "omitted_callbacks": [
+      {
+        "original_frame_index": 3000,
+        "file": "frame_03000.jpg",
+        "audio_seconds": 148.127129,
+        "audio_seconds_original_text": "148.127129",
+        "phase": 83,
+        "phase_label": "FINAL INVENTORY / BOTH MACHINES RETURNED TO IDLE",
+        "sha256": "d15d22715f9bd34882335ee23893b8983fb107bd86276900276189de24b6195a"
+      }
+    ],
+    "policy": "Only callbacks at/after actual WAV end; at most 3 and at most 0.1s beyond audio, all in the final native-labeled idle phase with at least 2s retained. No audio change or timestamp retiming.",
+    "final_presented_frame_hold_seconds": 0.05667333333332181,
+    "retained_final_idle_seconds": 2.956479333333334,
+    "retained_final_idle_observed_span_seconds": 2.8998060000000123
+  },
+  "frame_identity_method": "SHA256 of UTF-8 JSON lines [relative filename, original audio_seconds string, JPEG SHA256] in CSV order",
+  "video_output_fps": 30,
+  "frame_treatment": "Captured images held according to callback timestamps; first image held from audio time zero. CFR output duplicates or drops captured frames on the 30fps grid; no generated pixels, motion interpolation or retiming to hide stalls.",
+  "audio_treatment": "AAC transcode of the supplied engine WAV at original duration; this assembler does not replace, pad, stretch or synthesize audio. The source gameplay may itself use provisional synthesized sound assets.",
+  "audio_review": "Encoding does not establish perceptual audition or audible-phase coverage; run the separate gameplay-audio audit.",
+  "observed_phase_order": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    81,
+    82,
+    83
+  ],
+  "chapters": [
+    {
+      "phase": 0,
+      "title": "DISCLOSED SANDBOX +10000 POINTS",
+      "start_seconds": 0,
+      "end_seconds": 0.184003
+    },
+    {
+      "phase": 1,
+      "title": "RELEASED T / SEPARATE INPUT FRAME",
+      "start_seconds": 0.184003,
+      "end_seconds": 0.383165
+    },
+    {
+      "phase": 2,
+      "title": "DISCLOSED SANDBOX +10000 POINTS",
+      "start_seconds": 0.383165,
+      "end_seconds": 0.583145
+    },
+    {
+      "phase": 4,
+      "title": "M1911 / BASE SEMIAUTOMATIC FIRE AND RELOAD",
+      "start_seconds": 0.583145,
+      "end_seconds": 3.019153
+    },
+    {
+      "phase": 5,
+      "title": "ACTUAL RELOAD / OLD MAGAZINE DROP OR INDIVIDUAL SHELLS",
+      "start_seconds": 3.019153,
+      "end_seconds": 6.487983
+    },
+    {
+      "phase": 6,
+      "title": "DISCLOSED SANDBOX NEXT-ROLL FAMILY",
+      "start_seconds": 6.487983,
+      "end_seconds": 6.655003
+    },
+    {
+      "phase": 7,
+      "title": "WASD THROUGH CENTER AISLE TO MYSTERY BOX",
+      "start_seconds": 6.655003,
+      "end_seconds": 11.422713
+    },
+    {
+      "phase": 8,
+      "title": "HOLD F / PAY 950 / OPEN AND CYCLE",
+      "start_seconds": 11.422713,
+      "end_seconds": 12.022777
+    },
+    {
+      "phase": 9,
+      "title": "ACTUAL BOX PREVIEW CYCLE / WAIT FOR REWARD",
+      "start_seconds": 12.022777,
+      "end_seconds": 16.988593
+    },
+    {
+      "phase": 10,
+      "title": "READY REWARD WAITS FOR DELIBERATE COLLECTION",
+      "start_seconds": 16.988593,
+      "end_seconds": 18.321949
+    },
+    {
+      "phase": 11,
+      "title": "F RELEASED THEN HELD AGAIN / COLLECT BOX REWARD",
+      "start_seconds": 18.321949,
+      "end_seconds": 18.955187
+    },
+    {
+      "phase": 12,
+      "title": "ACTUAL COLLECTION AND EQUIP",
+      "start_seconds": 18.955187,
+      "end_seconds": 19.988859
+    },
+    {
+      "phase": 13,
+      "title": "SELECT THE ACQUIRED INSTANCE THROUGH SLOT INPUT",
+      "start_seconds": 19.988859,
+      "end_seconds": 20.054897
+    },
+    {
+      "phase": 15,
+      "title": "M4A1 / BASE AUTOMATIC FIRE AND MAGAZINE RELOAD",
+      "start_seconds": 20.054897,
+      "end_seconds": 22.522127
+    },
+    {
+      "phase": 16,
+      "title": "ACTUAL RELOAD / OLD MAGAZINE DROP OR INDIVIDUAL SHELLS",
+      "start_seconds": 22.522127,
+      "end_seconds": 26.02247
+    },
+    {
+      "phase": 17,
+      "title": "F7 / DIM ARENA / COMPLETE PACK-A-PUNCH LIGHTING CYCLE",
+      "start_seconds": 26.02247,
+      "end_seconds": 26.18832
+    },
+    {
+      "phase": 18,
+      "title": "WASD THROUGH CENTER AISLE TO PACK-A-PUNCH",
+      "start_seconds": 26.18832,
+      "end_seconds": 30.724053
+    },
+    {
+      "phase": 19,
+      "title": "HOLD F / PHYSICAL HANDOFF / PAY 5000",
+      "start_seconds": 30.724053,
+      "end_seconds": 31.35558
+    },
+    {
+      "phase": 20,
+      "title": "HANDOFF ACCEPTANCE / RESERVED INSTANCE",
+      "start_seconds": 31.35558,
+      "end_seconds": 31.822625
+    },
+    {
+      "phase": 21,
+      "title": "REMAINING HANDOFF / RETURN MOVEMENT CONTROL",
+      "start_seconds": 31.822625,
+      "end_seconds": 32.12266
+    },
+    {
+      "phase": 22,
+      "title": "WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING",
+      "start_seconds": 32.12266,
+      "end_seconds": 32.956828
+    },
+    {
+      "phase": 23,
+      "title": "DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT",
+      "start_seconds": 32.956828,
+      "end_seconds": 33.122318
+    },
+    {
+      "phase": 24,
+      "title": "FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING",
+      "start_seconds": 33.122318,
+      "end_seconds": 37.658635
+    },
+    {
+      "phase": 25,
+      "title": "NINE-SECOND PROCESS / PHYSICAL OUTPUT",
+      "start_seconds": 37.658635,
+      "end_seconds": 40.824234
+    },
+    {
+      "phase": 26,
+      "title": "READY UPGRADE WAITS / NO AUTOMATIC PICKUP",
+      "start_seconds": 40.824234,
+      "end_seconds": 42.122705
+    },
+    {
+      "phase": 27,
+      "title": "RETURN TO OUTPUT CONTACT POSITION",
+      "start_seconds": 42.122705,
+      "end_seconds": 45.724911
+    },
+    {
+      "phase": 28,
+      "title": "FRESH HOLD F / RETRIEVE THE SAME UPGRADED INSTANCE",
+      "start_seconds": 45.724911,
+      "end_seconds": 46.29025
+    },
+    {
+      "phase": 29,
+      "title": "HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP",
+      "start_seconds": 46.29025,
+      "end_seconds": 47.290438
+    },
+    {
+      "phase": 30,
+      "title": "SELECT RETURNED UPGRADED SLOT",
+      "start_seconds": 47.290438,
+      "end_seconds": 47.324461
+    },
+    {
+      "phase": 31,
+      "title": "F7 / BRIGHT ARENA / READABLE WEAPON MECHANICS",
+      "start_seconds": 47.324461,
+      "end_seconds": 47.490553
+    },
+    {
+      "phase": 32,
+      "title": "OVERCURRENT / ACTUAL UPGRADED ASSEMBLY AND FIRE",
+      "start_seconds": 47.490553,
+      "end_seconds": 47.558863
+    },
+    {
+      "phase": 33,
+      "title": "OVERCURRENT / ACTUAL UPGRADED ASSEMBLY AND FIRE",
+      "start_seconds": 47.558863,
+      "end_seconds": 49.92549
+    },
+    {
+      "phase": 34,
+      "title": "ACTUAL RELOAD / OLD MAGAZINE DROP OR INDIVIDUAL SHELLS",
+      "start_seconds": 49.92549,
+      "end_seconds": 53.424817
+    },
+    {
+      "phase": 35,
+      "title": "SELECT ORIGINAL PISTOL INSTANCE",
+      "start_seconds": 53.424817,
+      "end_seconds": 53.891365
+    },
+    {
+      "phase": 36,
+      "title": "RESTORE PISTOL MAGAZINE THROUGH ACTUAL RELOAD",
+      "start_seconds": 53.891365,
+      "end_seconds": 58.858438
+    },
+    {
+      "phase": 37,
+      "title": "WASD THROUGH CENTER AISLE TO PACK-A-PUNCH",
+      "start_seconds": 58.858438,
+      "end_seconds": 63.160805
+    },
+    {
+      "phase": 38,
+      "title": "HOLD F / PHYSICAL HANDOFF / PAY 5000",
+      "start_seconds": 63.160805,
+      "end_seconds": 63.792581
+    },
+    {
+      "phase": 39,
+      "title": "HANDOFF ACCEPTANCE / RESERVED INSTANCE",
+      "start_seconds": 63.792581,
+      "end_seconds": 64.259321
+    },
+    {
+      "phase": 40,
+      "title": "REMAINING HANDOFF / RETURN MOVEMENT CONTROL",
+      "start_seconds": 64.259321,
+      "end_seconds": 64.559604
+    },
+    {
+      "phase": 41,
+      "title": "WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING",
+      "start_seconds": 64.559604,
+      "end_seconds": 65.428355
+    },
+    {
+      "phase": 42,
+      "title": "DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT",
+      "start_seconds": 65.428355,
+      "end_seconds": 65.560003
+    },
+    {
+      "phase": 43,
+      "title": "FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING",
+      "start_seconds": 65.560003,
+      "end_seconds": 70.128866
+    },
+    {
+      "phase": 44,
+      "title": "NINE-SECOND PROCESS / PHYSICAL OUTPUT",
+      "start_seconds": 70.128866,
+      "end_seconds": 73.260416
+    },
+    {
+      "phase": 45,
+      "title": "READY UPGRADE WAITS / NO AUTOMATIC PICKUP",
+      "start_seconds": 73.260416,
+      "end_seconds": 74.59285
+    },
+    {
+      "phase": 46,
+      "title": "RETURN TO OUTPUT CONTACT POSITION",
+      "start_seconds": 74.59285,
+      "end_seconds": 78.161438
+    },
+    {
+      "phase": 47,
+      "title": "FRESH HOLD F / RETRIEVE THE SAME UPGRADED INSTANCE",
+      "start_seconds": 78.161438,
+      "end_seconds": 78.826129
+    },
+    {
+      "phase": 48,
+      "title": "HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP",
+      "start_seconds": 78.826129,
+      "end_seconds": 79.825931
+    },
+    {
+      "phase": 49,
+      "title": "SELECT RETURNED UPGRADED SLOT",
+      "start_seconds": 79.825931,
+      "end_seconds": 79.89228
+    },
+    {
+      "phase": 51,
+      "title": "LAST WORD / ACTUAL UPGRADED PISTOL AND MAGAZINE DROP",
+      "start_seconds": 79.89228,
+      "end_seconds": 82.361112
+    },
+    {
+      "phase": 52,
+      "title": "ACTUAL RELOAD / OLD MAGAZINE DROP OR INDIVIDUAL SHELLS",
+      "start_seconds": 82.361112,
+      "end_seconds": 85.859212
+    },
+    {
+      "phase": 53,
+      "title": "SELECT AVAILABLE SLOT FOR NEXT BOX ACQUISITION",
+      "start_seconds": 85.859212,
+      "end_seconds": 86.292843
+    },
+    {
+      "phase": 54,
+      "title": "F7 / DIM ARENA / COMPLETE MYSTERY BOX LIGHTING CYCLE",
+      "start_seconds": 86.292843,
+      "end_seconds": 86.45939
+    },
+    {
+      "phase": 55,
+      "title": "DISCLOSED SANDBOX NEXT-ROLL FAMILY",
+      "start_seconds": 86.45939,
+      "end_seconds": 86.661202
+    },
+    {
+      "phase": 56,
+      "title": "WASD THROUGH CENTER AISLE TO MYSTERY BOX",
+      "start_seconds": 86.661202,
+      "end_seconds": 91.160652
+    },
+    {
+      "phase": 57,
+      "title": "HOLD F / PAY 950 / OPEN AND CYCLE",
+      "start_seconds": 91.160652,
+      "end_seconds": 91.794194
+    },
+    {
+      "phase": 58,
+      "title": "ACTUAL BOX PREVIEW CYCLE / WAIT FOR REWARD",
+      "start_seconds": 91.794194,
+      "end_seconds": 96.759137
+    },
+    {
+      "phase": 59,
+      "title": "READY REWARD WAITS FOR DELIBERATE COLLECTION",
+      "start_seconds": 96.759137,
+      "end_seconds": 98.059295
+    },
+    {
+      "phase": 60,
+      "title": "F RELEASED THEN HELD AGAIN / COLLECT BOX REWARD",
+      "start_seconds": 98.059295,
+      "end_seconds": 98.692245
+    },
+    {
+      "phase": 61,
+      "title": "ACTUAL COLLECTION AND EQUIP",
+      "start_seconds": 98.692245,
+      "end_seconds": 99.725299
+    },
+    {
+      "phase": 62,
+      "title": "SELECT THE ACQUIRED INSTANCE THROUGH SLOT INPUT",
+      "start_seconds": 99.725299,
+      "end_seconds": 99.791912
+    },
+    {
+      "phase": 63,
+      "title": "F7 / BRIGHT ARENA / READABLE SHOTGUN MECHANICS",
+      "start_seconds": 99.791912,
+      "end_seconds": 99.925392
+    },
+    {
+      "phase": 64,
+      "title": "REMINGTON 870 / BASE PUMP AND SHELL RELOAD",
+      "start_seconds": 99.925392,
+      "end_seconds": 99.993115
+    },
+    {
+      "phase": 65,
+      "title": "REMINGTON 870 / BASE PUMP AND SHELL RELOAD",
+      "start_seconds": 99.993115,
+      "end_seconds": 103.992865
+    },
+    {
+      "phase": 66,
+      "title": "ACTUAL RELOAD / OLD MAGAZINE DROP OR INDIVIDUAL SHELLS",
+      "start_seconds": 103.992865,
+      "end_seconds": 112.025769
+    },
+    {
+      "phase": 67,
+      "title": "WASD THROUGH CENTER AISLE TO PACK-A-PUNCH",
+      "start_seconds": 112.025769,
+      "end_seconds": 116.56146
+    },
+    {
+      "phase": 68,
+      "title": "HOLD F / PHYSICAL HANDOFF / PAY 5000",
+      "start_seconds": 116.56146,
+      "end_seconds": 117.192812
+    },
+    {
+      "phase": 69,
+      "title": "HANDOFF ACCEPTANCE / RESERVED INSTANCE",
+      "start_seconds": 117.192812,
+      "end_seconds": 117.659922
+    },
+    {
+      "phase": 70,
+      "title": "REMAINING HANDOFF / RETURN MOVEMENT CONTROL",
+      "start_seconds": 117.659922,
+      "end_seconds": 117.959554
+    },
+    {
+      "phase": 71,
+      "title": "WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING",
+      "start_seconds": 117.959554,
+      "end_seconds": 118.795196
+    },
+    {
+      "phase": 72,
+      "title": "DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT",
+      "start_seconds": 118.795196,
+      "end_seconds": 118.926722
+    },
+    {
+      "phase": 73,
+      "title": "FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING",
+      "start_seconds": 118.926722,
+      "end_seconds": 123.427939
+    },
+    {
+      "phase": 74,
+      "title": "NINE-SECOND PROCESS / PHYSICAL OUTPUT",
+      "start_seconds": 123.427939,
+      "end_seconds": 126.66067
+    },
+    {
+      "phase": 75,
+      "title": "READY UPGRADE WAITS / NO AUTOMATIC PICKUP",
+      "start_seconds": 126.66067,
+      "end_seconds": 127.994502
+    },
+    {
+      "phase": 76,
+      "title": "RETURN TO OUTPUT CONTACT POSITION",
+      "start_seconds": 127.994502,
+      "end_seconds": 131.494877
+    },
+    {
+      "phase": 77,
+      "title": "FRESH HOLD F / RETRIEVE THE SAME UPGRADED INSTANCE",
+      "start_seconds": 131.494877,
+      "end_seconds": 132.094309
+    },
+    {
+      "phase": 78,
+      "title": "HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP",
+      "start_seconds": 132.094309,
+      "end_seconds": 133.094331
+    },
+    {
+      "phase": 79,
+      "title": "SELECT RETURNED UPGRADED SLOT",
+      "start_seconds": 133.094331,
+      "end_seconds": 133.160729
+    },
+    {
+      "phase": 81,
+      "title": "GRAVEBREAKER / ACTUAL UPGRADED PUMP AND SHELL RELOAD",
+      "start_seconds": 133.160729,
+      "end_seconds": 137.16145
+    },
+    {
+      "phase": 82,
+      "title": "ACTUAL RELOAD / OLD MAGAZINE DROP OR INDIVIDUAL SHELLS",
+      "start_seconds": 137.16145,
+      "end_seconds": 145.160854
+    },
+    {
+      "phase": 83,
+      "title": "FINAL INVENTORY / BOTH MACHINES RETURNED TO IDLE",
+      "start_seconds": 145.160854,
+      "end_seconds": 148.11733333333333
+    }
+  ],
+  "chapter_timing": "First observed frame of each contiguous phase, not an exact engine operation boundary.",
+  "native_chapters_sha256": "d589a1ea1c608baed3755455c5bfc6d2ac8d6d39b4c1d3473c718b41acbb10e8",
+  "original_checks_sha256": "5a7236918bbad7b4ea939eee5419741fc63f9fb9504c0ff05382fad751793229",
+  "assembler_script_sha256": "f14070e273479770082a05f3ed84cb3f61ea5033e0a67f056a5f87103a7d617f",
+  "assembler": "Evidence/Candidate04/Tools/assemble_candidate04_evidence.py",
+  "input_provenance": "Recorder observation/input_events.csv distinguish scripted production dispatch from passive native input; this assembler does not infer human operation.",
+  "encoded": true,
+  "encoder_exit_code": 0,
+  "output_sha256": "537495bf1692ef74f321a25108799818d05626fcbec731b89d3146093280801b",
+  "output_bytes": 30033564,
+  "chapter_metadata_remux": {
+    "method": "FFmpeg stream-copy remux with explicit per-chapter title metadata; no AV re-encoding",
+    "helper_repository_path": "Evidence/Candidate04/Tools/repair_movie_chapters.py",
+    "helper_sha256": "3e45d13b06ccddcea9b16fc7bdf0de8fd0b57067a8d2fa29c84b28759c64fbf8",
+    "expected_output_duration_seconds": 148.11733333333333,
+    "original_encoded_sha256": "8d83417312998aa6194dae7a4bbf923dbf64b5aadab4b60366c88798fe8d6938",
+    "encoded_video_audio_packet_hashes_unchanged": true,
+    "av_stream_sha256": [
+      "0,v,SHA256=91962fa7329b54d1507685a3a0b570fa33306d8374e563b4401f145d56a97083",
+      "1,a,SHA256=56a78e2a61e9270f4a8f549fb55625758f47965ca1a9cf31c7ffbfeced506669"
+    ],
+    "chapter_count": 80,
+    "all_chapter_titles_verified": true,
+    "maximum_chapter_time_rounding_seconds": 0.0004980000000074369,
+    "missing_qt_chapter_track_warning": false,
+    "full_av_decode_exit_code": 0,
+    "container_duration_seconds_rounded_to_10ms": 148.12,
+    "decoded_audio_peak_dbfs_rounded": -14.7,
+    "decoded_audio_mean_dbfs_rounded": -42.0,
+    "audio_audition_performed": false,
+    "original_encoded_file_preserved_privately": true
+  }
+}

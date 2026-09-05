@@ -1,0 +1,824 @@
+{
+  "schema": "projectone.candidate04.machine_performance.v1",
+  "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+  "runtime_identity": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292024832,
+      "sha256": "6da13b06b2428e817a43ad78a5136967313fbccfbab8b509094134544907038e"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10724873,
+      "sha256": "6c930025402f035da1b11d9e422cbf8a50c1d3c030214ec897ec4164254b7181"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 219283440,
+      "sha256": "c0bfd0205456d7dae91860c33869eb06fe65c40283093aca68f4acd98383a107"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 223633,
+      "sha256": "66ecd5d2e0659baa6c79f6c4f113f2193de698168a053de3a4dedb600e338785"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "parser": {
+    "filename": "analyze_candidate03_performance.py",
+    "bytes": 18885,
+    "sha256": "e7c3f57d61865c81af882e2f00342cd5c22c8462944c4a25c0ab5ed9543ae5e2"
+  },
+  "method": {
+    "percentiles": "linear interpolation at (n-1)*p",
+    "thresholds_ms": [
+      16.7,
+      33.3,
+      50,
+      100
+    ],
+    "threshold_test": "strict greater-than",
+    "frame_policy": "every numeric source row retained once in full timeline; zero-duration rows also retained",
+    "selected_window": "complete recorded frames with cumulative CSV FrameTime start>=10 and end<=20; full spikes retained separately",
+    "numeric_roundtrip": "repr(float) output is reparsed and compared to every original numeric cell",
+    "scope_policy": "MachineVisual nested within inclusive MachineState; separate inclusive PresentationDriver; overlapping physics/Chaos scopes never summed or subtracted"
+  },
+  "workload_limits": [
+    "One run per count; no confidence interval or causal attribution.",
+    "Candidate04 dynamic registered target-count combat includes two machines, carried Last Word fire/reloads, corpse/part work and health protection; Candidate03 reference is stationary living-only.",
+    "M4 to Overcurrent processing/preview is measured, but carried Overcurrent and Gravebreaker fire are not profiled.",
+    "Initial machine actor/asset construction, acquisition and pistol-upgrade setup precede CSV and are not measured. Setup can leave a real corpse/blood or survivor.",
+    "Candidate03 reference includes its benchmark screenshot spike. Candidate04 profile has no screenshot or audio recording; these are different media workloads.",
+    "No GPU cost or GPU improvement claim is supported by these comparisons."
+  ],
+  "ambient_application": {
+    "status": "EXPLICIT_EXISTING_IDLE_BLENDER",
+    "limitation": "Boundary CPU accounting does not establish identical background activity or exclude short unsampled bursts.",
+    "threshold_cpu_seconds_per_wall_second": 0.05,
+    "runs": [
+      {
+        "enemy_count": 6.0,
+        "cpu_seconds": 0.546875,
+        "wall_seconds": 79.0,
+        "cpu_seconds_per_wall_second": 0.006922468354430379
+      },
+      {
+        "enemy_count": 12.0,
+        "cpu_seconds": 0.296875,
+        "wall_seconds": 79.01600000000326,
+        "cpu_seconds_per_wall_second": 0.0037571504505415076
+      },
+      {
+        "enemy_count": 18.0,
+        "cpu_seconds": 0.625,
+        "wall_seconds": 79.04699999999139,
+        "cpu_seconds_per_wall_second": 0.007906688425874076
+      }
+    ]
+  },
+  "runs": {
+    "6": {
+      "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+      "capture_kind": "packaged",
+      "enemy_count_requested": 6,
+      "input_csv": {
+        "filename": "Profile(20260905_061020).csv",
+        "bytes": 7947472,
+        "sha256": "ae9e1cca32f69f01386b89ff5f720363e4554c6fce111f2556421ab15c549d8f"
+      },
+      "actor_report": {
+        "filename": "checks.txt",
+        "bytes": 3602,
+        "sha256": "960032b71797a0f53b05f915961e7e89fc6bcbf60844243f2177645998e60fde"
+      },
+      "runtime_log": {
+        "filename": "FinalPackaged-Profile6-8055041ebc98.log",
+        "bytes": 119428,
+        "sha256": "e6dc349347a129cfd0ce4b29f461c5052407f4c17bc7ff9ff3ea5c2d864224a9"
+      },
+      "observations": {
+        "filename": "observations.csv",
+        "bytes": 111927,
+        "sha256": "0194efc90377505851883626145e52e2ae2e417d6854412e7f615ded1b8d9539"
+      },
+      "completed_capture": true,
+      "exit_code": 0,
+      "actor_summary": {
+        "Complete": 1.0,
+        "Checks": 35.0,
+        "Failures": 0.0,
+        "Frames": 0.0,
+        "Profile requested live": 6.0,
+        "Profile actual maximum live": 6.0,
+        "Profile actual frames": 3765.0,
+        "Frames at exact requested count": 2824.0,
+        "Both active seconds": 3.700917,
+        "Successful registered spawns": 38.0
+      },
+      "settings_supplied_by_runner": {
+        "resolution": "1600x900",
+        "max_fps": 120,
+        "vsync": 0
+      },
+      "settings_readback_from_log": {
+        "t.MaxFPS": 120.0,
+        "r.VSync": 0.0,
+        "r.ScreenPercentage": 100.0
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9168]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_scenario": "candidate04_two_machines_production_input_combat"
+      },
+      "metadata_fields_omitted": 26,
+      "capture_rows": 3766,
+      "counter_samples": 3765,
+      "rows_without_project_counters": 1,
+      "zero_duration_frame_rows": 0,
+      "csv_begin_event_frame": 0,
+      "csv_end_event_frame": 3765,
+      "actual_live_histogram_frames": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 48,
+        "5": 893,
+        "6": 2824
+      },
+      "exact_requested_count_fraction": 0.750066401062417,
+      "both_active_profile_seconds": 3.7009000000000007,
+      "both_active_frame_time_seconds": 3.702120500000002,
+      "observation_samples": 308,
+      "observation_last_profile_seconds": 31.37743,
+      "actual_shots_during_observed_profile": 70.0,
+      "actual_magazine_drops_during_observed_profile": 5.0,
+      "upgraded_combat": {
+        "family": "Pistol",
+        "variant": "Last Word",
+        "phase": 34,
+        "begin_event_frame": 765,
+        "end_event_frame": 3765,
+        "shot_counter_baseline": 24,
+        "actual_committed_discharge_count": 70,
+        "csv_variant_samples": 3000,
+        "all_combat_samples_upgraded": true,
+        "family_variant_observation_samples": 244,
+        "observed_shots_since_event_baseline": 70.0,
+        "scope_limit": "Carried Last Word only. The machine processes/displays M4 to Overcurrent. Carried Overcurrent and Gravebreaker firing are not profiled."
+      },
+      "sampling_note": "ProfileSeconds is the actual actor counter. CSV cumulative FrameTime and 10Hz world observations are separate clocks; no invented offset or row interpolation."
+    },
+    "12": {
+      "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+      "capture_kind": "packaged",
+      "enemy_count_requested": 12,
+      "input_csv": {
+        "filename": "Profile(20260905_061139).csv",
+        "bytes": 7968616,
+        "sha256": "73c32a5ff5dd26dbffb0c6e3a309cf97528f442e06c0f44f75a3ed482b40432f"
+      },
+      "actor_report": {
+        "filename": "checks.txt",
+        "bytes": 3604,
+        "sha256": "dce13a499f34d7ed9cd5b45e8c4d1160ab6f7b5c02df720bf5a80da761c6cad6"
+      },
+      "runtime_log": {
+        "filename": "FinalPackaged-Profile12-8055041ebc98.log",
+        "bytes": 114726,
+        "sha256": "a33378631d5483be10d47f9a70833db856ca17177908f361a8876152f5f24ea0"
+      },
+      "observations": {
+        "filename": "observations.csv",
+        "bytes": 112309,
+        "sha256": "3908faaca18737039d83033832a79e4cca2f7277ca5cb3e27f88589ae314f3c5"
+      },
+      "completed_capture": true,
+      "exit_code": 0,
+      "actor_summary": {
+        "Complete": 1.0,
+        "Checks": 35.0,
+        "Failures": 0.0,
+        "Frames": 0.0,
+        "Profile requested live": 12.0,
+        "Profile actual maximum live": 12.0,
+        "Profile actual frames": 3765.0,
+        "Frames at exact requested count": 2689.0,
+        "Both active seconds": 3.70047,
+        "Successful registered spawns": 43.0
+      },
+      "settings_supplied_by_runner": {
+        "resolution": "1600x900",
+        "max_fps": 120,
+        "vsync": 0
+      },
+      "settings_readback_from_log": {
+        "t.MaxFPS": 120.0,
+        "r.VSync": 0.0,
+        "r.ScreenPercentage": 100.0
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9168]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_scenario": "candidate04_two_machines_production_input_combat"
+      },
+      "metadata_fields_omitted": 26,
+      "capture_rows": 3766,
+      "counter_samples": 3765,
+      "rows_without_project_counters": 1,
+      "zero_duration_frame_rows": 0,
+      "csv_begin_event_frame": 0,
+      "csv_end_event_frame": 3765,
+      "actual_live_histogram_frames": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 102,
+        "11": 974,
+        "12": 2689
+      },
+      "exact_requested_count_fraction": 0.7142098273572377,
+      "both_active_profile_seconds": 3.7004,
+      "both_active_frame_time_seconds": 3.7021717000000107,
+      "observation_samples": 307,
+      "observation_last_profile_seconds": 31.323923,
+      "actual_shots_during_observed_profile": 70.0,
+      "actual_magazine_drops_during_observed_profile": 5.0,
+      "upgraded_combat": {
+        "family": "Pistol",
+        "variant": "Last Word",
+        "phase": 34,
+        "begin_event_frame": 765,
+        "end_event_frame": 3765,
+        "shot_counter_baseline": 24,
+        "actual_committed_discharge_count": 70,
+        "csv_variant_samples": 3000,
+        "all_combat_samples_upgraded": true,
+        "family_variant_observation_samples": 243,
+        "observed_shots_since_event_baseline": 70.0,
+        "scope_limit": "Carried Last Word only. The machine processes/displays M4 to Overcurrent. Carried Overcurrent and Gravebreaker firing are not profiled."
+      },
+      "sampling_note": "ProfileSeconds is the actual actor counter. CSV cumulative FrameTime and 10Hz world observations are separate clocks; no invented offset or row interpolation."
+    },
+    "18": {
+      "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+      "capture_kind": "packaged",
+      "enemy_count_requested": 18,
+      "input_csv": {
+        "filename": "Profile(20260905_061258).csv",
+        "bytes": 7894789,
+        "sha256": "af3352be02aff687e5fe9c19ab92ead8328d9edb50f2aa1fc43b9ab0c147d2d8"
+      },
+      "actor_report": {
+        "filename": "checks.txt",
+        "bytes": 3604,
+        "sha256": "100a57ba74d999c1565ee7bb9f7fbdd068b27901d6f3587cde7921ab98219100"
+      },
+      "runtime_log": {
+        "filename": "FinalPackaged-Profile18-8055041ebc98.log",
+        "bytes": 117651,
+        "sha256": "84ec04531ccafcad0f2de327e24cd62be2f43b6c8e5ce8212ac0c83ee1f59cb1"
+      },
+      "observations": {
+        "filename": "observations.csv",
+        "bytes": 112627,
+        "sha256": "4e7c5803f864cb899a30f6615cf7bd81a6f9ecd2054ab999f7fcd26e77071dcc"
+      },
+      "completed_capture": true,
+      "exit_code": 0,
+      "actor_summary": {
+        "Complete": 1.0,
+        "Checks": 35.0,
+        "Failures": 0.0,
+        "Frames": 0.0,
+        "Profile requested live": 18.0,
+        "Profile actual maximum live": 18.0,
+        "Profile actual frames": 3732.0,
+        "Frames at exact requested count": 2926.0,
+        "Both active seconds": 3.70025,
+        "Successful registered spawns": 48.0
+      },
+      "settings_supplied_by_runner": {
+        "resolution": "1600x900",
+        "max_fps": 120,
+        "vsync": 0
+      },
+      "settings_readback_from_log": {
+        "t.MaxFPS": 120.0,
+        "r.VSync": 0.0,
+        "r.ScreenPercentage": 100.0
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9168]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_scenario": "candidate04_two_machines_production_input_combat"
+      },
+      "metadata_fields_omitted": 26,
+      "capture_rows": 3733,
+      "counter_samples": 3732,
+      "rows_without_project_counters": 1,
+      "zero_duration_frame_rows": 0,
+      "csv_begin_event_frame": 0,
+      "csv_end_event_frame": 3732,
+      "actual_live_histogram_frames": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 63,
+        "17": 743,
+        "18": 2926
+      },
+      "exact_requested_count_fraction": 0.7840300107181136,
+      "both_active_profile_seconds": 3.7002000000000006,
+      "both_active_frame_time_seconds": 3.701910500000004,
+      "observation_samples": 310,
+      "observation_last_profile_seconds": 31.299892,
+      "actual_shots_during_observed_profile": 70.0,
+      "actual_magazine_drops_during_observed_profile": 5.0,
+      "upgraded_combat": {
+        "family": "Pistol",
+        "variant": "Last Word",
+        "phase": 34,
+        "begin_event_frame": 765,
+        "end_event_frame": 3732,
+        "shot_counter_baseline": 24,
+        "actual_committed_discharge_count": 70,
+        "csv_variant_samples": 2967,
+        "all_combat_samples_upgraded": true,
+        "family_variant_observation_samples": 247,
+        "observed_shots_since_event_baseline": 70.0,
+        "scope_limit": "Carried Last Word only. The machine processes/displays M4 to Overcurrent. Carried Overcurrent and Gravebreaker firing are not profiled."
+      },
+      "sampling_note": "ProfileSeconds is the actual actor counter. CSV cumulative FrameTime and 10Hz world observations are separate clocks; no invented offset or row interpolation."
+    }
+  },
+  "comparison_to_candidate03": {
+    "6": {
+      "full": {
+        "reference_report_repo_path": "Evidence/Candidate03/Performance/C03/alive6_full.json",
+        "reference_sha256": "bd2821fcf8ef5d300ebebb19950db6aa92b745e701369df0f1a81a82dbb19c34",
+        "metrics": {
+          "mean_ms": {
+            "candidate03": 8.375400033333333,
+            "candidate04": 8.33501747211896,
+            "delta_ms": -0.04038256121437378,
+            "delta_percent": -0.48215680509175496
+          },
+          "p95_ms": {
+            "candidate03": 8.558769999999999,
+            "candidate04": 8.810275,
+            "delta_ms": 0.25150500000000164,
+            "delta_percent": 2.938564770405113
+          },
+          "p99_ms": {
+            "candidate03": 8.697700999999997,
+            "candidate04": 9.403574999999998,
+            "delta_ms": 0.7058740000000014,
+            "delta_percent": 8.115638833756204
+          },
+          "max_ms": {
+            "candidate03": 132.6865,
+            "candidate04": 12.5948,
+            "delta_ms": -120.0917,
+            "delta_percent": -90.50785121319804
+          }
+        },
+        "spikes_candidate03": {
+          "above_16.7_ms": {
+            "count": 3,
+            "percent": 0.1
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          }
+        },
+        "spikes_candidate04": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "reference_frames": 3000,
+        "candidate04_frames": 3766
+      },
+      "10to20": {
+        "reference_report_repo_path": "Evidence/Candidate03/Performance/C03/alive6_10to20.json",
+        "reference_sha256": "fa2308622f90c17aa210c17025b387ae166b565b4dc4e6dc94151f27f3aaaad4",
+        "metrics": {
+          "mean_ms": {
+            "candidate03": 8.432974915540541,
+            "candidate04": 8.334982652210176,
+            "delta_ms": -0.09799226333036515,
+            "delta_percent": -1.162012982509672
+          },
+          "p95_ms": {
+            "candidate03": 8.534279999999999,
+            "candidate04": 8.847729999999999,
+            "delta_ms": 0.31344999999999956,
+            "delta_percent": 3.67283473239687
+          },
+          "p99_ms": {
+            "candidate03": 8.660884000000001,
+            "candidate04": 9.377123999999998,
+            "delta_ms": 0.7162399999999973,
+            "delta_percent": 8.269825574387063
+          },
+          "max_ms": {
+            "candidate03": 132.6865,
+            "candidate04": 10.1841,
+            "delta_ms": -122.5024,
+            "delta_percent": -92.32469015310525
+          }
+        },
+        "spikes_candidate03": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          }
+        },
+        "spikes_candidate04": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "reference_frames": 1184,
+        "candidate04_frames": 1199
+      }
+    },
+    "12": {
+      "full": {
+        "reference_report_repo_path": "Evidence/Candidate03/Performance/C03/alive12_full.json",
+        "reference_sha256": "0cf95ff15186a03cf14a1fefbc6b7c27871879949d03f239c3b34bad970a42cb",
+        "metrics": {
+          "mean_ms": {
+            "candidate03": 8.381775666666668,
+            "candidate04": 8.33691176314392,
+            "delta_ms": -0.044863903522747606,
+            "delta_percent": -0.5352553600446031
+          },
+          "p95_ms": {
+            "candidate03": 8.606114999999999,
+            "candidate04": 8.8281,
+            "delta_ms": 0.2219850000000001,
+            "delta_percent": 2.5793868661992096
+          },
+          "p99_ms": {
+            "candidate03": 8.772502000000001,
+            "candidate04": 9.360824999999997,
+            "delta_ms": 0.5883229999999955,
+            "delta_percent": 6.706444752021663
+          },
+          "max_ms": {
+            "candidate03": 136.6046,
+            "candidate04": 17.1668,
+            "delta_ms": -119.43780000000001,
+            "delta_percent": -87.43321967195834
+          }
+        },
+        "spikes_candidate03": {
+          "above_16.7_ms": {
+            "count": 3,
+            "percent": 0.1
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          }
+        },
+        "spikes_candidate04": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.026553372278279343
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "reference_frames": 3000,
+        "candidate04_frames": 3766
+      },
+      "10to20": {
+        "reference_report_repo_path": "Evidence/Candidate03/Performance/C03/alive12_10to20.json",
+        "reference_sha256": "b3cc71d3fff65f2bfeff10a5cfe46ed459bb217180300217dfacd1ec043c5c5b",
+        "metrics": {
+          "mean_ms": {
+            "candidate03": 8.437617905405405,
+            "candidate04": 8.336103505843072,
+            "delta_ms": -0.10151439956233332,
+            "delta_percent": -1.2031168121194489
+          },
+          "p95_ms": {
+            "candidate03": 8.59996,
+            "candidate04": 8.840509999999998,
+            "delta_ms": 0.24054999999999893,
+            "delta_percent": 2.7971060330513042
+          },
+          "p99_ms": {
+            "candidate03": 8.723548,
+            "candidate04": 9.412583999999997,
+            "delta_ms": 0.689035999999998,
+            "delta_percent": 7.8985752127459845
+          },
+          "max_ms": {
+            "candidate03": 136.6046,
+            "candidate04": 10.2626,
+            "delta_ms": -126.342,
+            "delta_percent": -92.48736865376422
+          }
+        },
+        "spikes_candidate03": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          }
+        },
+        "spikes_candidate04": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "reference_frames": 1184,
+        "candidate04_frames": 1198
+      }
+    },
+    "18": {
+      "full": {
+        "reference_report_repo_path": "Evidence/Candidate03/Performance/C03/alive18_full.json",
+        "reference_sha256": "6bca23f57ee4ec11cb9fc697f905a771479403f6f96ecc13e713c7ec776ef5e9",
+        "metrics": {
+          "mean_ms": {
+            "candidate03": 8.3861489,
+            "candidate04": 8.412347897133673,
+            "delta_ms": 0.026198997133672464,
+            "delta_percent": 0.3124079651587448
+          },
+          "p95_ms": {
+            "candidate03": 8.80425,
+            "candidate04": 9.1053,
+            "delta_ms": 0.30105000000000004,
+            "delta_percent": 3.419371326348071
+          },
+          "p99_ms": {
+            "candidate03": 9.072519999999997,
+            "candidate04": 9.709131999999997,
+            "delta_ms": 0.6366119999999995,
+            "delta_percent": 7.016925837584262
+          },
+          "max_ms": {
+            "candidate03": 140.2602,
+            "candidate04": 22.0846,
+            "delta_ms": -118.1756,
+            "delta_percent": -84.25454975823504
+          }
+        },
+        "spikes_candidate03": {
+          "above_16.7_ms": {
+            "count": 3,
+            "percent": 0.1
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          }
+        },
+        "spikes_candidate04": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.02678810608090008
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "reference_frames": 3000,
+        "candidate04_frames": 3733
+      },
+      "10to20": {
+        "reference_report_repo_path": "Evidence/Candidate03/Performance/C03/alive18_10to20.json",
+        "reference_sha256": "a4756a543dff57679d1ef47e9c7aade0dec1bb44b82246902bb8264dfba269b4",
+        "metrics": {
+          "mean_ms": {
+            "candidate03": 8.4410539306847,
+            "candidate04": 8.339890484140234,
+            "delta_ms": -0.10116344654446507,
+            "delta_percent": -1.1984693780561968
+          },
+          "p95_ms": {
+            "candidate03": 8.822899999999999,
+            "candidate04": 8.910934999999998,
+            "delta_ms": 0.08803499999999964,
+            "delta_percent": 0.9978011764839186
+          },
+          "p99_ms": {
+            "candidate03": 9.060198000000002,
+            "candidate04": 9.357987999999997,
+            "delta_ms": 0.29778999999999556,
+            "delta_percent": 3.286793511576629
+          },
+          "max_ms": {
+            "candidate03": 140.2602,
+            "candidate04": 10.2043,
+            "delta_ms": -130.0559,
+            "delta_percent": -92.72473588373609
+          }
+        },
+        "spikes_candidate03": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.08453085376162299
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.08453085376162299
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.08453085376162299
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.08453085376162299
+          }
+        },
+        "spikes_candidate04": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        },
+        "reference_frames": 1183,
+        "candidate04_frames": 1198
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "candidate": "Candidate04",
+  "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+  "status": "LAUNCH_OBSERVED_NATIVE_INPUT_BLOCKED",
+  "launch_command": "./Scripts/Launch.ps1 -Candidate Candidate04 -Sandbox",
+  "launch_script_exit_code": 0,
+  "package": "Packaged/Candidate04/Windows",
+  "package_origin": "Extracted and hash-verified from the audited complete Candidate04 archive; existing Candidate03 package preserved.",
+  "archive_sha256": "1ad1a3258f16fccf12451fff829aa9124321491a457232b88efa871826ba783c",
+  "native_observation": {
+    "method": "Computer Use returned-window selection and read-only Windows.Graphics.Capture snapshot",
+    "ordinary_launch_observed": true,
+    "sandbox_visible": true,
+    "starter_weapon_visible": "M1911",
+    "loaded_rounds_visible": 7,
+    "reserve_rounds_visible": 56,
+    "second_slot_visible": "EMPTY",
+    "points_visible": 0,
+    "test_points_granted_visible": 0,
+    "health_visible": 100,
+    "barrier": "Windows Security firewall permission dialog overlays the game.",
+    "security_prompt_acted_on": false,
+    "user_dismissal_requested": true,
+    "native_keyboard_or_mouse_gameplay_events_sent": 0,
+    "native_input_or_machine_hold_pass_claimed": false
+  },
+  "cleanup": "Only the two identity-checked Project ONE test processes created by this launch were stopped after the blocked attempt. This was process cleanup, not a successful in-game Quit test; no security setting was changed.",
+  "limits": [
+    "The Computer Use safety guidance forbids acting on security or privacy permission requests. The prompt was left for the user.",
+    "The available key API exposes short key chords without sustained key-down duration; native held movement, sprint and 0.4-second F interactions remain unverified.",
+    "This ordinary launch used no passive recorder or scripted presentation fixture. No native gameplay video is claimed.",
+    "Two read-only native observations showed intact visible HUD labels behind the dialog, but intermittent missing glyphs remain in engine JPEG captures. These observations do not establish that the defect is limited to capture.",
+    "Functional controller-dispatch tests and the progression recording are separate automated evidence.",
+    "No perceptual audio audition was performed."
+  ]
+}

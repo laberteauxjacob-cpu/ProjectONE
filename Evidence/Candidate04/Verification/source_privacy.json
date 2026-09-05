@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "candidate": "Candidate04",
+  "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+  "result": "NO_FINDINGS_IN_RECORDED_AUDIT_SCOPES",
+  "curated_utc": "2026-09-05T12:46:25.346562+00:00",
+  "public_baseline_commit": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a",
+  "public_source_commits": [
+    {
+      "commit": "8cb16600d64909ffbae70f305aeda3d6d693aadd",
+      "parent": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a",
+      "subject": "Implement Candidate04 weapon progression and physical upgrade machines",
+      "changed_file_count": 272,
+      "changed_source_config_script_files": [
+        "Config/DefaultInput.ini",
+        "Scripts/Launch.ps1",
+        "Scripts/Package.ps1",
+        "Scripts/Validate-Packaged.ps1",
+        "Scripts/assemble_candidate04_capture.py",
+        "Scripts/audit_candidate04_machine_sources.py",
+        "Scripts/create_candidate04_audio.py",
+        "Scripts/create_candidate04_machine_assets.py",
+        "Scripts/create_candidate04_machine_audio.py",
+        "Scripts/create_candidate04_weapon_assets.py",
+        "Scripts/create_release_archive.py",
+        "Scripts/import_candidate04_audio.py",
+        "Scripts/import_candidate04_effect_materials.py",
+        "Scripts/import_candidate04_machine_assets.py",
+        "Scripts/import_candidate04_weapon_assets.py",
+        "Scripts/place_candidate04_machines.py",
+        "Scripts/sanitize_asset_metadata.py",
+        "Source/ProjectONE/ONE03MovementCheck.cpp",
+        "Source/ProjectONE/ONE03WeaponCheck.cpp",
+        "Source/ProjectONE/ONE04ArsenalCheck.cpp",
+        "Source/ProjectONE/ONE04ArsenalCheck.h",
+        "Source/ProjectONE/ONE04MachinePresentation.cpp",
+        "Source/ProjectONE/ONE04MachinePresentation.h",
+        "Source/ProjectONE/ONE04PresentationCheck.cpp",
+        "Source/ProjectONE/ONE04PresentationCheck.h",
+        "Source/ProjectONE/ONE04ProgressionCheck.cpp",
+        "Source/ProjectONE/ONE04ProgressionCheck.h",
+        "Source/ProjectONE/ONE04WeaponTests.cpp",
+        "Source/ProjectONE/ONEAnimInstance.cpp",
+        "Source/ProjectONE/ONEBloodSubsystem.cpp",
+        "Source/ProjectONE/ONEBloodSubsystem.h",
+        "Source/ProjectONE/ONECombatCheck.cpp",
+        "Source/ProjectONE/ONEGameMode.cpp",
+        "Source/ProjectONE/ONEGameMode.h",
+        "Source/ProjectONE/ONEHUD.cpp",
+        "Source/ProjectONE/ONEInteractionComponent.cpp",
+        "Source/ProjectONE/ONEInteractionComponent.h",
+        "Source/ProjectONE/ONEPlayer.cpp",
+        "Source/ProjectONE/ONEPlayer.h",
+        "Source/ProjectONE/ONEPlayerController.cpp",
+        "Source/ProjectONE/ONEPlayerController.h",
+        "Source/ProjectONE/ONEProgressionMachine.cpp",
+        "Source/ProjectONE/ONEProgressionMachine.h",
+        "Source/ProjectONE/ONEWeaponCatalog.cpp",
+        "Source/ProjectONE/ONEWeaponCatalog.h",
+        "Source/ProjectONE/ONEWeaponComponent.cpp",
+        "Source/ProjectONE/ONEWeaponComponent.h",
+        "Source/ProjectONE/ONEWeaponInventory.cpp",
+        "Source/ProjectONE/ONEWeaponMagazine.cpp",
+        "Source/ProjectONE/ONEWeaponMagazine.h",
+        "Source/ProjectONE/ONEWeaponTypes.h"
+      ],
+      "all_changed_source_config_script_paths_in_final_text_audit": true
+    },
+    {
+      "commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+      "parent": "8cb16600d64909ffbae70f305aeda3d6d693aadd",
+      "subject": "Exercise Last Word during machine stress profiles",
+      "changed_file_count": 1,
+      "changed_source_config_script_files": [
+        "Source/ProjectONE/ONE04PresentationCheck.cpp"
+      ],
+      "all_changed_source_config_script_paths_in_final_text_audit": true
+    }
+  ],
+  "full_precommit_audit": {
+    "verified_utc": "2026-09-05T12:26:39.308817+00:00",
+    "commit": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a",
+    "base": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a",
+    "outgoing_commit_count": 29,
+    "commits_since_base": 0,
+    "outgoing_history_root_matches_public_base": true,
+    "head_tracked_files": 629,
+    "historical_git_blobs_scanned": 768,
+    "unique_payloads_scanned": 1140,
+    "lfs_objects_verified": 314,
+    "lfs_total_bytes_all_outgoing_versions": 212061139,
+    "working_and_index_included": true,
+    "working_nonignored_files": 873,
+    "findings": [],
+    "clear": true
+  },
+  "final_text_audit": {
+    "verified_utc": "2026-09-05T12:39:08.296395+00:00",
+    "audited_file_count": 318,
+    "findings": [],
+    "clear": true,
+    "s2_content_binding": {
+      "exact_bytes": 187,
+      "crlf_to_lf_only": 98,
+      "mixed_line_endings_only": 33,
+      "unresolved": 0
+    },
+    "s2_content_binding_method": "At curation, existing audited SHA-256 snapshots were compared with S2 Git text blobs. Exact bytes matched for 187 files; 98 differ only by CRLF/LF conversion. For 33 mixed-line-ending files, current bytes still match the recorded audit digest and normalize to the S2 blob. No binary asset was reread or rescanned for this binding.",
+    "coverage": "All current nonignored supported text extensions, including code, configuration, scripts, documentation, JSON and CSV. Checks cover credential-like tokens, secret assignments, personal home paths, machine-identity fields, private network addresses, UTF-8 decoding and common double-encoding artifacts. The detailed audit retains per-file hashes."
+  },
+  "s2_delta_review": {
+    "files": [
+      "Source/ProjectONE/ONE04PresentationCheck.cpp"
+    ],
+    "insertions": 25,
+    "deletions": 3,
+    "scope": "Profile setup acquires Last Word through production controls, verifies actual upgraded combat and records the effective-upgrade CSV counter. No Content or other binary asset changes occur between S1 and S2."
+  },
+  "fresh_checkout_lfs_integrity": {
+    "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+    "payloads": 488,
+    "bytes": 233654563,
+    "hashes_and_sizes_matched": true,
+    "record": "fresh_build.json",
+    "scope": "Integrity of final committed payloads, not a new privacy content scan."
+  },
+  "scope_limits": [
+    "The full ancestry/index/working-payload scan was recorded while HEAD was the public Candidate03 baseline and Candidate04 work was uncommitted: 873 nonignored working files. It is not represented as a post-S2 full binary rescan.",
+    "The earlier full scan inspected 29 public-ancestry commits, 768 historical/index Git blobs and 1,140 unique content payloads; referenced LFS objects were verified, compressed Blender content was expanded, and generated/private paths were screened. Its LFS totals cover outgoing versions and differ from final checkout counts.",
+    "The later 318-file text scan and explicit two-commit ancestry/delta review supplement that earlier scan. Final text snapshots are bound to S2 as described; no additional complete binary-metadata scan is claimed.",
+    "Heuristic scanning is not proof that every possible secret or private datum is absent. Binary release privacy, compressed cooked data, media inspection, archive contents and future documentation/evidence changes require their own coverage.",
+    "Private rollback refs, unrelated ignored files, raw diagnostics, host names and device identifiers are excluded from this public report."
+  ]
+}

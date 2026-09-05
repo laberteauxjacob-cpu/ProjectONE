@@ -1,0 +1,264 @@
+{
+  "schema": 2,
+  "remote": "https://github.com/laberteauxjacob-cpu/ProjectONE",
+  "branch": "codex/candidate04",
+  "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+  "prior_verified_checkout_commit": "8cb16600d64909ffbae70f305aeda3d6d693aadd",
+  "started_utc": "2026-09-05T12:39:38.864012+00:00",
+  "ended_utc": "2026-09-05T12:41:09.694652+00:00",
+  "commands": [
+    {
+      "command": "git fetch origin codex/candidate04",
+      "exit_code": 0,
+      "elapsed_seconds": 0.75
+    },
+    {
+      "command": "git merge-base --is-ancestor <source-commit> origin/codex/candidate04",
+      "exit_code": 0,
+      "elapsed_seconds": 0.031
+    },
+    {
+      "command": "git merge --ff-only <source-commit>",
+      "exit_code": 0,
+      "elapsed_seconds": 0.375
+    },
+    {
+      "command": "git lfs pull",
+      "exit_code": 0,
+      "elapsed_seconds": 0.438
+    },
+    {
+      "command": "git lfs fsck",
+      "exit_code": 0,
+      "elapsed_seconds": 0.609
+    }
+  ],
+  "checks": {
+    "tracked_file_count": 875,
+    "lfs_file_count": 488,
+    "lfs_total_bytes": 233654563,
+    "lfs_hashes_and_sizes_match": true,
+    "clean_worktree_before_build": true,
+    "private_original_history_absent": true,
+    "tracked_source_unchanged_after_build": true,
+    "native_prerequisite_installers_staged": true,
+    "native_prerequisite_installer_bytes_match_engine": true,
+    "required_runtime_bytes_bound_to_source_commit": true,
+    "tracked_source_unchanged_after_verification": true
+  },
+  "build_steps": [
+    {
+      "target": "editor",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Build.ps1 -EngineRoot <verified-UE-5.7.2-root>",
+      "started_utc": "2026-09-05T12:40:04.639890+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-05T12:40:18.224861+00:00",
+      "elapsed_seconds": 13.593
+    },
+    {
+      "target": "game",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Build.ps1 -Game -EngineRoot <verified-UE-5.7.2-root>",
+      "started_utc": "2026-09-05T12:40:18.227501+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-05T12:40:36.322066+00:00",
+      "elapsed_seconds": 18.094
+    },
+    {
+      "target": "package",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Package.ps1 -Candidate Candidate04 -EngineRoot <verified-UE-5.7.2-root>",
+      "started_utc": "2026-09-05T12:40:36.323570+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-05T12:40:56.421558+00:00",
+      "elapsed_seconds": 20.094
+    },
+    {
+      "target": "native_tests",
+      "command": "UnrealEditor-Cmd <fresh-root>/ProjectONE.uproject -unattended -nop4 -nosplash -nullrhi -ExecCmds=\"Automation RunTests ProjectONE\" -TestExit=\"Automation Test Queue Empty\" -ReportOutputPath=<local-report-dir>",
+      "started_utc": "2026-09-05T12:40:57.089836+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-05T12:41:09.652286+00:00",
+      "elapsed_seconds": 12.562
+    }
+  ],
+  "prerequisites": [
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.arm64.exe",
+      "bytes": 11733072,
+      "sha256": "0423f7d1c765afea32a414eb156478d694924ea948ac21a4565a4fb1025b258f"
+    }
+  ],
+  "built_runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292024832,
+      "sha256": "6da13b06b2428e817a43ad78a5136967313fbccfbab8b509094134544907038e"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10724873,
+      "sha256": "6c930025402f035da1b11d9e422cbf8a50c1d3c030214ec897ec4164254b7181"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 219283440,
+      "sha256": "c0bfd0205456d7dae91860c33869eb06fe65c40283093aca68f4acd98383a107"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 223633,
+      "sha256": "66ecd5d2e0659baa6c79f6c4f113f2193de698168a053de3a4dedb600e338785"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "toolchain": {
+    "engine_version": "5.7.2",
+    "engine_changelist": 49658320,
+    "platform": "Win64",
+    "configuration": "Development"
+  },
+  "candidate": "Candidate04",
+  "result": "BUILD_AND_NATIVE_TESTS_PASS_PACKAGED_SUITE_PENDING",
+  "source_build_record_result": "BUILD_PASS_PENDING_RELEASE_AUDIT",
+  "fresh_clone_root": "<fresh-root>",
+  "source_parent_commit": "8cb16600d64909ffbae70f305aeda3d6d693aadd",
+  "initial_candidate04_source_commit": "8cb16600d64909ffbae70f305aeda3d6d693aadd",
+  "public_baseline_commit": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a",
+  "checkout_method": "The initial public Candidate04 source was cloned into a neutral checkout. This verified public fast-forward to S2 rebuilt Editor, Win64 game and Windows Development package from a clean worktree without local Git object alternates.",
+  "native_tests": {
+    "result": "ALL_NINE_PASSED",
+    "source_test_names_matched": true,
+    "succeeded_without_warnings": 6,
+    "succeeded_with_warnings": 3,
+    "failed": 0,
+    "not_run": 0,
+    "in_process": 0,
+    "total_duration_seconds": 0.1375775933265686,
+    "warning_count": 5,
+    "warning_summary": "Five UWorld::DestroyActor warnings report missing world context during teardown of isolated native test worlds: one in AnatomicalSidesAndCorpseTransactions, three in RegionalTraumaBoundaries, one in WeaponPacketsAreIdempotent. All four inventory tests have zero warnings. The engine reports state Success for all tests; warning-bearing results are classified separately here.",
+    "tests": [
+      {
+        "name": "AnatomicalSidesAndCorpseTransactions",
+        "full_test_path": "ProjectONE.Combat.AnatomicalSidesAndCorpseTransactions",
+        "engine_state": "Success",
+        "result": "SuccessWithWarnings",
+        "duration_seconds": 0.009430397301912308,
+        "warning_count": 1,
+        "error_count": 0,
+        "warning_categories": [
+          "isolated_test_world_teardown_has_no_world_context"
+        ]
+      },
+      {
+        "name": "DamageAndDeathAreMonotonic",
+        "full_test_path": "ProjectONE.Combat.DamageAndDeathAreMonotonic",
+        "engine_state": "Success",
+        "result": "Success",
+        "duration_seconds": 0.00764169916510582,
+        "warning_count": 0,
+        "error_count": 0,
+        "warning_categories": []
+      },
+      {
+        "name": "RegionalPelletsKeepSpatialData",
+        "full_test_path": "ProjectONE.Combat.RegionalPelletsKeepSpatialData",
+        "engine_state": "Success",
+        "result": "Success",
+        "duration_seconds": 0.008198998868465424,
+        "warning_count": 0,
+        "error_count": 0,
+        "warning_categories": []
+      },
+      {
+        "name": "RegionalTraumaBoundaries",
+        "full_test_path": "ProjectONE.Combat.RegionalTraumaBoundaries",
+        "engine_state": "Success",
+        "result": "SuccessWithWarnings",
+        "duration_seconds": 0.009836599230766296,
+        "warning_count": 3,
+        "error_count": 0,
+        "warning_categories": [
+          "isolated_test_world_teardown_has_no_world_context"
+        ]
+      },
+      {
+        "name": "WeaponPacketsAreIdempotent",
+        "full_test_path": "ProjectONE.Combat.WeaponPacketsAreIdempotent",
+        "engine_state": "Success",
+        "result": "SuccessWithWarnings",
+        "duration_seconds": 0.009514998644590378,
+        "warning_count": 1,
+        "error_count": 0,
+        "warning_categories": [
+          "isolated_test_world_teardown_has_no_world_context"
+        ]
+      },
+      {
+        "name": "AcquisitionPlansAndUpgradeRefill",
+        "full_test_path": "ProjectONE.Inventory.AcquisitionPlansAndUpgradeRefill",
+        "engine_state": "Success",
+        "result": "Success",
+        "duration_seconds": 0.06630130112171173,
+        "warning_count": 0,
+        "error_count": 0,
+        "warning_categories": []
+      },
+      {
+        "name": "ExactInstanceReservationAndRollback",
+        "full_test_path": "ProjectONE.Inventory.ExactInstanceReservationAndRollback",
+        "engine_state": "Success",
+        "result": "Success",
+        "duration_seconds": 0.009223300963640213,
+        "warning_count": 0,
+        "error_count": 0,
+        "warning_categories": []
+      },
+      {
+        "name": "ResetRejectsOldMachineCallbacks",
+        "full_test_path": "ProjectONE.Inventory.ResetRejectsOldMachineCallbacks",
+        "engine_state": "Success",
+        "result": "Success",
+        "duration_seconds": 0.009147100150585175,
+        "warning_count": 0,
+        "error_count": 0,
+        "warning_categories": []
+      },
+      {
+        "name": "SixIndependentVariantsAndTiming",
+        "full_test_path": "ProjectONE.Inventory.SixIndependentVariantsAndTiming",
+        "engine_state": "Success",
+        "result": "Success",
+        "duration_seconds": 0.008283201605081558,
+        "warning_count": 0,
+        "error_count": 0,
+        "warning_categories": []
+      }
+    ]
+  },
+  "lfs_inventory_scope": "All 488 tracked LFS payload sizes and SHA-256 values matched their Git pointers. The compact public record retains totals; the full payload inventory remains in the detailed source-build record.",
+  "packaged_functional_validation": {
+    "status": "PENDING",
+    "expected_modes": 15,
+    "scope": "The package built successfully. The separate fifteen-mode packaged runtime suite is running at this checkpoint; no packaged functional PASS is claimed here."
+  },
+  "limitations": [
+    "This is a clean public checkout on the validation host, not a clean Windows installation without development prerequisites.",
+    "Build durations include an incremental public fast-forward from the initial Candidate04 source checkout, not deletion of all prior engine/project caches.",
+    "The six required runtime files are bound to this exact source build; full archive integrity and ordinary packaged input are separate checks.",
+    "Native tests do not establish rendered motion, perceptual sound quality, sustained ordinary held-key input or performance.",
+    "Private paths, device identifiers and raw logs are omitted."
+  ]
+}

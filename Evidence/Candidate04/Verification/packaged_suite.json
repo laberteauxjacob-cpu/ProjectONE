@@ -1,0 +1,404 @@
+{
+  "schema": 1,
+  "candidate": "Candidate04",
+  "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+  "result": "PASS",
+  "curated_utc": "2026-09-05T12:56:45.893676+00:00",
+  "requested_modes": 15,
+  "passed_modes": 15,
+  "pass_assertions": 984,
+  "fail_assertions": 0,
+  "required_runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "expected_bytes": 164864,
+      "expected_sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+      "matches_fresh_build": true
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "expected_bytes": 292024832,
+      "expected_sha256": "6da13b06b2428e817a43ad78a5136967313fbccfbab8b509094134544907038e",
+      "bytes": 292024832,
+      "sha256": "6da13b06b2428e817a43ad78a5136967313fbccfbab8b509094134544907038e",
+      "matches_fresh_build": true
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "expected_bytes": 10724873,
+      "expected_sha256": "6c930025402f035da1b11d9e422cbf8a50c1d3c030214ec897ec4164254b7181",
+      "bytes": 10724873,
+      "sha256": "6c930025402f035da1b11d9e422cbf8a50c1d3c030214ec897ec4164254b7181",
+      "matches_fresh_build": true
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "expected_bytes": 219283440,
+      "expected_sha256": "c0bfd0205456d7dae91860c33869eb06fe65c40283093aca68f4acd98383a107",
+      "bytes": 219283440,
+      "sha256": "c0bfd0205456d7dae91860c33869eb06fe65c40283093aca68f4acd98383a107",
+      "matches_fresh_build": true
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "expected_bytes": 223633,
+      "expected_sha256": "66ecd5d2e0659baa6c79f6c4f113f2193de698168a053de3a4dedb600e338785",
+      "bytes": 223633,
+      "sha256": "66ecd5d2e0659baa6c79f6c4f113f2193de698168a053de3a4dedb600e338785",
+      "matches_fresh_build": true
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "expected_bytes": 25646504,
+      "expected_sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e",
+      "matches_fresh_build": true
+    }
+  ],
+  "issues": [],
+  "modes": [
+    {
+      "mode": "ONE03MovementCheck",
+      "completion_marker": "ONE03_MOVEMENT_COMPLETE",
+      "pass_assertions": 112,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "54 base-carbine/shotgun directional, turn and moving-fire trials; explicit per-trial slot/family assertions; scripted movement/aim and production weapon methods.",
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 1,
+      "legacy_loadout_verified": true,
+      "verified_variant_trials": 54,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 107371,
+        "sha256": "680200e9f61ec94f89b16b7348ddbc28183b35134cc4185ae4101949e877321d"
+      }
+    },
+    {
+      "mode": "ONE03WeaponCheck",
+      "completion_marker": "ONE03_WEAPON_COMPLETE",
+      "pass_assertions": 85,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Base M4A1/Remington870 full capacities, frame-spaced production bindings, reload/sprint/pump/pause/death/restart integration.",
+      "reported_checks": 85,
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 2,
+      "legacy_loadout_verified": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 114890,
+        "sha256": "e63fa49a71ad95df5eae7100cdd6fc876cabe0afaa2f6ede443e8e62c339a5f6"
+      }
+    },
+    {
+      "mode": "ONE03CaseCheck",
+      "completion_marker": "ONE03_CASE_COMPLETE",
+      "pass_assertions": 49,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Actual emitted base rifle/shotgun cases; inherited motion, world support, lifetime and budget. Cap fixture extends emitted-case lifetime solely to isolate eviction.",
+      "reported_checks": 49,
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 1,
+      "legacy_loadout_verified": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 99109,
+        "sha256": "012e16410b93e040e8fc72f74e6954b00068533b4bb613e8408cb2bd8dc61332"
+      }
+    },
+    {
+      "mode": "ONE03PresentationCheck",
+      "completion_marker": "ONE03_PRESENTATION_COMPLETE",
+      "pass_assertions": 121,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Base carbine/shotgun bright/dim movement and rapid-aim trials; attached flash, evaluated muzzle and event/audio-bank diagnostics. Numeric checks are not visual or audio approval.",
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 1,
+      "legacy_loadout_verified": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 111981,
+        "sha256": "7ce4b9f9590a3d7c72ff51cdbcc268c5a931cf92ae218c5ff1db5948c3b37d24"
+      }
+    },
+    {
+      "mode": "ONE03DamageCheck",
+      "completion_marker": "ONE03_DAMAGE_COMPLETE",
+      "pass_assertions": 42,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Explicit regional damage packets and anatomical fixtures; simultaneous severing, replay/absent-region rejection, corpse transaction and late-sever checks.",
+      "reported_checks": 42,
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 1,
+      "legacy_loadout_verified": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 98038,
+        "sha256": "ebae4620075562ecdc6ab28eacfcf53faa81858bc2e53c67b6777afd72c2c114"
+      }
+    },
+    {
+      "mode": "ONE03PhysicalityCheck",
+      "completion_marker": "ONE03_PHYSICALITY_COMPLETE",
+      "pass_assertions": 241,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Eleven physicality phases with controlled injury, crowd and health fixtures; real skeletal physics, corpse contact, wounds/trails, cleanup and arena routes.",
+      "reported_checks": 241,
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 1,
+      "legacy_loadout_verified": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 129934,
+        "sha256": "a605ef9e79bc1bf77ffb95ef3f4a205d034a521b44d77d9b998fc132b8baf74d"
+      }
+    },
+    {
+      "mode": "ONE04ProgressionCheck",
+      "completion_marker": "ONE04_PROGRESSION_COMPLETE",
+      "pass_assertions": 72,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Fresh M1911/Empty inventory; frame-spaced production F holds with declared approach teleports and point-boundary setup; actual machine waits, reservation/refund/retrieval and OpenLevel restart.",
+      "reported_checks": 72,
+      "engine_base_directory_matches_fresh_package": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 114304,
+        "sha256": "d8520d519c8048948b57eb0941712464626d7ec00aac1bc5eb4016396399f83e"
+      },
+      "private_actor_report_binding": {
+        "bytes": 12588,
+        "sha256": "5625fc1605aa36e553dfb57467836ab9f4c4bc57338bceae9960c8eadbdc1a3b"
+      },
+      "actor_assertion_stream_matches_log": true,
+      "real_level_restart": true
+    },
+    {
+      "mode": "ONE04ArsenalCheck",
+      "completion_marker": "ONE04_ARSENAL_COMPLETE",
+      "pass_assertions": 148,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "All six effective variants; isolated collision floor and unregistered high-health torso targets. Owned-instance setup bypasses machine waiting; actual damage/spread/range/events unchanged. Magazine cap fixture extends emitted-debris lifetime solely to isolate eviction.",
+      "reported_checks": 148,
+      "engine_base_directory_matches_fresh_package": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 113131,
+        "sha256": "ae75af77b4dc36ac9408a28441fc5f1427f656b0cf24ccb158b38e25069f6a6e"
+      },
+      "private_actor_report_binding": {
+        "bytes": 29415,
+        "sha256": "81dc6344181b0889772b21b065a91ec51ec6604517dc49c8c3f5b8dbb49c8011"
+      },
+      "actor_assertion_stream_matches_log": true,
+      "verified_variants": [
+        "M1911",
+        "Last Word",
+        "M4A1",
+        "Overcurrent",
+        "Remington 870",
+        "Gravebreaker"
+      ]
+    },
+    {
+      "mode": "ONECombatCheck",
+      "completion_marker": "ONE_COMBAT_COMPLETE",
+      "pass_assertions": 40,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Legacy base M4A1/Remington870 switching/reload/pump/pause/death and regional-damage fixtures, with actual production weapon operations.",
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 2,
+      "legacy_loadout_verified": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 103498,
+        "sha256": "5fc0fe403119ec6b641eff7abedb899c772c08629b45eefce8f4f301b9d63f79"
+      }
+    },
+    {
+      "mode": "ONECompare",
+      "completion_marker": "ONE_COMBAT_COMPLETE",
+      "pass_assertions": 3,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Legacy base weapon comparison via scripted movement/aim/fire/reload; genuine engine recording is generated but this suite summary is not media review or audition.",
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 1,
+      "legacy_loadout_verified": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 92482,
+        "sha256": "47e02afa61662592e71531182fe599c7ae4abf510cd4646618ce97fb7bae158e"
+      }
+    },
+    {
+      "mode": "ONEPresentation",
+      "completion_marker": "ONE_PRESENTATION_COMPLETE",
+      "pass_assertions": 33,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Legacy authored locomotion and moving fire/reload, hit and attack fixtures; synchronous PNG recording affects timing.",
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 1,
+      "legacy_loadout_verified": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 95976,
+        "sha256": "2f5237e5864417901814c4de00393c0bf1b62570b6e4ff83ec80d787adb76397"
+      }
+    },
+    {
+      "mode": "ONEValidate",
+      "completion_marker": "ONE_VALIDATION_COMPLETE",
+      "pass_assertions": 35,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Legacy runtime assets, actual ammo/reload, one-arm pursuit/attacks, damage and restart fixtures.",
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 2,
+      "legacy_loadout_verified": true,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 102485,
+        "sha256": "9190c57c6ae8aee7cdb92a01b665e27849c1aeb1a6c70afed842810da472636a"
+      }
+    },
+    {
+      "mode": "ONEBenchmark=6",
+      "completion_marker": "ONE_VALIDATION_COMPLETE",
+      "pass_assertions": 1,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Legacy living-enemy fixture with the requested 6/12/18 actual alive count; one screenshot at 15 seconds. This is not CSV performance evidence.",
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 1,
+      "legacy_loadout_verified": true,
+      "requested_alive": 6,
+      "actual_alive": 6,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 91280,
+        "sha256": "8a96ed594396c7054361d546258d08e2ae96da53e2928918d1518935e52883cc"
+      }
+    },
+    {
+      "mode": "ONEBenchmark=12",
+      "completion_marker": "ONE_VALIDATION_COMPLETE",
+      "pass_assertions": 1,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Legacy living-enemy fixture with the requested 6/12/18 actual alive count; one screenshot at 15 seconds. This is not CSV performance evidence.",
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 1,
+      "legacy_loadout_verified": true,
+      "requested_alive": 12,
+      "actual_alive": 12,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 91287,
+        "sha256": "320658931eee92d77054ed346cafaef4336e5f77213819e5fc6f13803977613b"
+      }
+    },
+    {
+      "mode": "ONEBenchmark=18",
+      "completion_marker": "ONE_VALIDATION_COMPLETE",
+      "pass_assertions": 1,
+      "fail_assertions": 0,
+      "failure_labels": [],
+      "completion_occurrences": 1,
+      "completion_failures": 0,
+      "exit_code": 0,
+      "fixture_scope": "Legacy living-enemy fixture with the requested 6/12/18 actual alive count; one screenshot at 15 seconds. This is not CSV performance evidence.",
+      "engine_base_directory_matches_fresh_package": true,
+      "legacy_loadout_grants": 1,
+      "legacy_loadout_verified": true,
+      "requested_alive": 18,
+      "actual_alive": 18,
+      "issues": [],
+      "result": "PASS",
+      "private_log_binding": {
+        "bytes": 91287,
+        "sha256": "a5255b77857cb29126ba28dd5ea0d339662fd61ea9a8d0afd059a35127b3925e"
+      }
+    }
+  ],
+  "validator_summary_binding": {
+    "bytes": 4018,
+    "sha256": "09e3e87265c655cfb1179473933302af9c0d4991c07795bf10f5129ca97ef117"
+  },
+  "invocation": "Scripts/Validate-Packaged.ps1 -Candidate Candidate04; default fifteen modes, 1600x900, windowed, unattended; only ONECompare gets process-local unfocused-audio override.",
+  "limits": [
+    "Functional completion, native OS input, media inspection, audio audition and performance are separate evidence.",
+    "The validator records zero process exits only for passed modes. A missing row does not supply an exit code; this curator preserves it as null and incomplete.",
+    "Legacy fixtures explicitly install base M4A1/Remington870 after starter initialization. C04 progression starts with M1911/Empty; Arsenal declares six-variant setup.",
+    "Legacy presentation/comparison modes and each benchmark can generate images/audio; these timings are not recording-free performance measurements.",
+    "Private logs and actor reports are digest-bound but omitted; no host/device identifiers or private paths are published."
+  ]
+}

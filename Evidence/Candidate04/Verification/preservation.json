@@ -1,0 +1,83 @@
+{
+  "schema": "projectone.candidate04.preservation.v1",
+  "status": "PASS",
+  "verified_utc": "2026-09-05T13:21:55.347747+00:00",
+  "candidate04_built_source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+  "verification_head": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+  "baseline_recorded_utc": "2026-09-05T11:39:21.0608062Z",
+  "baseline_record_sha256": "e5370efa9cd1f27e5e0ec5f7e3c6f64a943316a8270ab5122989587ba32a8adc",
+  "candidate03_files_verified": [
+    {
+      "path": "Packaged/Candidate03/Windows/ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+      "matches_recorded_baseline": true
+    },
+    {
+      "path": "Packaged/Candidate03/Windows/ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 291752448,
+      "sha256": "a87eedc25e8f042b6bebc1e2f8200e3ec0d0e5d59f0c6fac8bdd6ad8522785c6",
+      "matches_recorded_baseline": true
+    },
+    {
+      "path": "Packaged/Candidate03/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10718725,
+      "sha256": "8f63887316597bb7c43d4d865744b828d441d5cd527496afa3a7086758a845f9",
+      "matches_recorded_baseline": true
+    },
+    {
+      "path": "Packaged/Candidate03/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 209333184,
+      "sha256": "acb8de9366240b77f7d391971d41c7e794a5908d7f905a3993c774524256996a",
+      "matches_recorded_baseline": true
+    },
+    {
+      "path": "Packaged/Candidate03/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 197036,
+      "sha256": "ffcd400882e08d523390610a2d1266d5dea18c253ad12327da41de0712a02b28",
+      "matches_recorded_baseline": true
+    },
+    {
+      "path": "Releases/ProjectONE-Candidate03-Windows.zip",
+      "bytes": 398043452,
+      "sha256": "ada689b2314d3047d581d0523a2cbcd91f57661d06554d6288a6b4fae79600d2",
+      "matches_recorded_baseline": true
+    }
+  ],
+  "candidate03_file_count": 6,
+  "candidate03_local_tag": {
+    "tag_object": "20c1be9b3cf7c659789e731f759f23f4b91ec434",
+    "peeled_commit": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a"
+  },
+  "candidate03_public_tag": {
+    "tag_object": "20c1be9b3cf7c659789e731f759f23f4b91ec434",
+    "peeled_commit": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a"
+  },
+  "candidate03_local_and_public_annotated_tag_unchanged": true,
+  "public_ref_check": "Read-only ls-remote of the explicit public candidate03 tag and peeled target; no fetch or ref mutation.",
+  "candidate04_performance_inventory": {
+    "path": "Evidence/Candidate04/Performance/inventory.json",
+    "sha256": "11c32d1df5443e30f3cd180cc54a890f1f91c5014d509d51cdc95c4cc0256c39",
+    "files_including_inventory": 16,
+    "payload_hashes_and_bytes_verified": 15
+  },
+  "working_runtime_review": {
+    "compared_to": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+    "scopes": [
+      "Source",
+      "Config",
+      "Content",
+      "Scripts",
+      "ArtSource",
+      "Art"
+    ],
+    "tracked_changed_paths": [],
+    "untracked_authored_paths": [],
+    "source_config_content_scripts_art_identical": true,
+    "documentation_evidence_and_attributes_changes_allowed": true
+  },
+  "limitations": "File identity and tag preservation only. This check does not repeat Candidate03 gameplay or assert audiovisual approval.",
+  "candidate03_mutated": false,
+  "git_refs_mutated": false,
+  "engine_run": false
+}

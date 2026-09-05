@@ -1,0 +1,1482 @@
+{
+  "selection": "all numeric capture rows; no trimming",
+  "frame_index_ranges_inclusive": [
+    [
+      0,
+      3732
+    ]
+  ],
+  "frames": 3733,
+  "frame_time_seconds_sum": 31.403294700000096,
+  "frame_time": {
+    "column": "FrameTime",
+    "samples": 3733,
+    "mean_ms": 8.412347897133673,
+    "median_ms": 8.3743,
+    "p95_ms": 9.1053,
+    "p99_ms": 9.709131999999997,
+    "max_ms": 22.0846,
+    "nonzero_samples": 3733,
+    "spikes": {
+      "above_16.7_ms": {
+        "count": 1,
+        "percent": 0.02678810608090008
+      },
+      "above_33.3_ms": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "above_50_ms": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "above_100_ms": {
+        "count": 0,
+        "percent": 0.0
+      }
+    }
+  },
+  "cpu_scopes_ms": {
+    "PhysicsVerbose/AllWorkers/StepSolver": {
+      "samples": 3733,
+      "mean_ms": 1.7904868470399142,
+      "median_ms": 1.467,
+      "p95_ms": 3.49338,
+      "p99_ms": 3.746016,
+      "max_ms": 4.8051,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "Exclusive/AllWorkers/Physics": {
+      "samples": 3733,
+      "mean_ms": 1.7911762925261185,
+      "median_ms": 1.4678,
+      "p95_ms": 3.49416,
+      "p99_ms": 3.7470239999999997,
+      "max_ms": 4.8059,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_Integrate": {
+      "samples": 3733,
+      "mean_ms": 0.0170011251004554,
+      "median_ms": 0.0149,
+      "p95_ms": 0.0332,
+      "p99_ms": 0.045303999999999955,
+      "max_ms": 0.3511,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_KinematicTargets": {
+      "samples": 3733,
+      "mean_ms": 0.0314388427538173,
+      "median_ms": 0.0296,
+      "p95_ms": 0.04823999999999996,
+      "p99_ms": 0.06606799999999999,
+      "max_ms": 0.1491,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_UpdateConstraintPositionBasedState": {
+      "samples": 3733,
+      "mean_ms": 0.0005497990892043932,
+      "median_ms": 0.0005,
+      "p95_ms": 0.0009,
+      "p99_ms": 0.0013,
+      "max_ms": 0.1671,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_ComputeIntermediateSpatialAcceleration": {
+      "samples": 3733,
+      "mean_ms": 0.20021382266273774,
+      "median_ms": 0.1736,
+      "p95_ms": 0.39993999999999996,
+      "p99_ms": 0.5425439999999998,
+      "max_ms": 0.7513,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_IntegrateKinematicSpatial": {
+      "samples": 3733,
+      "mean_ms": 0.25332850254487005,
+      "median_ms": 0.2216,
+      "p95_ms": 0.4705999999999998,
+      "p99_ms": 0.6240359999999999,
+      "max_ms": 0.8315,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/DetectCollisions_BroadPhase": {
+      "samples": 3733,
+      "mean_ms": 0.13060141976962228,
+      "median_ms": 0.118,
+      "p95_ms": 0.28527999999999976,
+      "p99_ms": 0.4840479999999998,
+      "max_ms": 0.5929,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/DetectCollisions_NarrowPhase": {
+      "samples": 3733,
+      "mean_ms": 0.15842984195017412,
+      "median_ms": 0.1515,
+      "p95_ms": 0.31933999999999885,
+      "p99_ms": 0.5557359999999999,
+      "max_ms": 0.732,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_DetectCollisions": {
+      "samples": 3733,
+      "mean_ms": 0.3351055987141709,
+      "median_ms": 0.3258,
+      "p95_ms": 0.7600399999999999,
+      "p99_ms": 0.8436479999999998,
+      "max_ms": 1.0218,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/CCD": {
+      "samples": 3733,
+      "mean_ms": 0.000290865255826413,
+      "median_ms": 0.0003,
+      "p95_ms": 0.0006,
+      "p99_ms": 0.0008,
+      "max_ms": 0.0012,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_CreateConstraintGraph": {
+      "samples": 3733,
+      "mean_ms": 0.04485839807125636,
+      "median_ms": 0.0362,
+      "p95_ms": 0.10283999999999997,
+      "p99_ms": 0.15365999999999966,
+      "max_ms": 0.4757,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_CreateIslands": {
+      "samples": 3733,
+      "mean_ms": 0.0367506295204929,
+      "median_ms": 0.0122,
+      "p95_ms": 0.1389,
+      "p99_ms": 0.16953599999999996,
+      "max_ms": 0.249,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_PruneCollisions": {
+      "samples": 3733,
+      "mean_ms": 0.011037074738815966,
+      "median_ms": 0.0083,
+      "p95_ms": 0.0253,
+      "p99_ms": 0.060867999999999985,
+      "max_ms": 0.1869,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_ReloadCacheTotalSerialized": {
+      "samples": 3733,
+      "mean_ms": 0.0001925529065095098,
+      "median_ms": 0.0002,
+      "p95_ms": 0.0004,
+      "p99_ms": 0.0008,
+      "max_ms": 0.0016,
+      "nonzero_samples": 3524,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_BuildGroups": {
+      "samples": 3733,
+      "mean_ms": 0.06381690329493704,
+      "median_ms": 0.0439,
+      "p95_ms": 0.14263999999999996,
+      "p99_ms": 0.2305479999999998,
+      "max_ms": 0.4194,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_PerIslandSolve": {
+      "samples": 3733,
+      "mean_ms": 0.46159919635681756,
+      "median_ms": 0.2896,
+      "p95_ms": 1.14652,
+      "p99_ms": 1.321803999999999,
+      "max_ms": 1.8716,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_CCDCorrection": {
+      "samples": 3733,
+      "mean_ms": 0.0008855612108223949,
+      "median_ms": 0.0008,
+      "p95_ms": 0.0014,
+      "p99_ms": 0.0017,
+      "max_ms": 0.0067,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_SavePostSolve": {
+      "samples": 3733,
+      "mean_ms": 0.00010535762121618002,
+      "median_ms": 0.0001,
+      "p95_ms": 0.0002,
+      "p99_ms": 0.0004,
+      "max_ms": 0.0008,
+      "nonzero_samples": 2744,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_DeactivateSleep": {
+      "samples": 3733,
+      "mean_ms": 0.042653978033753016,
+      "median_ms": 0.0379,
+      "p95_ms": 0.0824,
+      "p99_ms": 0.09880399999999995,
+      "max_ms": 0.1997,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_IslandEndTick": {
+      "samples": 3733,
+      "mean_ms": 9.311545673720869e-05,
+      "median_ms": 0.0001,
+      "p95_ms": 0.0002,
+      "p99_ms": 0.0003,
+      "max_ms": 0.0006,
+      "nonzero_samples": 2587,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl": {
+      "samples": 3733,
+      "mean_ms": 1.3166955263862845,
+      "median_ms": 1.0676,
+      "p95_ms": 2.7643,
+      "p99_ms": 2.9679279999999992,
+      "max_ms": 3.3572,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_PullData": {
+      "samples": 3733,
+      "mean_ms": 0.14140219662469866,
+      "median_ms": 0.1281,
+      "p95_ms": 0.2428199999999999,
+      "p99_ms": 0.27804399999999985,
+      "max_ms": 0.4317,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/PerIslandSolve_GatherTotalSerialized": {
+      "samples": 3733,
+      "mean_ms": 0.0,
+      "median_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.0,
+      "max_ms": 0.0,
+      "nonzero_samples": 0,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/PerIslandSolve_ApplyTotalSerialized": {
+      "samples": 3733,
+      "mean_ms": 0.10375711224216448,
+      "median_ms": 0.0957,
+      "p95_ms": 0.22213999999999995,
+      "p99_ms": 0.26110399999999995,
+      "max_ms": 0.4521,
+      "nonzero_samples": 2965,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/PerIslandSolve_ApplyPushOutTotalSerialized": {
+      "samples": 3733,
+      "mean_ms": 0.018887088132869007,
+      "median_ms": 0.0187,
+      "p95_ms": 0.0389,
+      "p99_ms": 0.04546799999999998,
+      "max_ms": 0.1707,
+      "nonzero_samples": 2965,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/PerIslandSolve_ApplyProjectionTotalSerialized": {
+      "samples": 3733,
+      "mean_ms": 0.02507621216180016,
+      "median_ms": 0.0201,
+      "p95_ms": 0.0592,
+      "p99_ms": 0.06546799999999998,
+      "max_ms": 0.1834,
+      "nonzero_samples": 2965,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/PerIslandSolve_ScatterTotalSerialized": {
+      "samples": 3733,
+      "mean_ms": 0.0,
+      "median_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.0,
+      "max_ms": 0.0,
+      "nonzero_samples": 0,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/GameThread/AcquireSceneWriteLock": {
+      "samples": 3733,
+      "mean_ms": 0.04574371818912403,
+      "median_ms": 0.0412,
+      "p95_ms": 0.0641,
+      "p99_ms": 0.09527199999999994,
+      "max_ms": 0.2894,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "Exclusive/GameThread/Physics": {
+      "samples": 3733,
+      "mean_ms": 0.461433458344495,
+      "median_ms": 0.402,
+      "p95_ms": 0.9797999999999998,
+      "p99_ms": 1.1657799999999998,
+      "max_ms": 1.5369,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "ONEProgression/GameThread/MachineVisual": {
+      "samples": 3733,
+      "mean_ms": 0.02791034020894723,
+      "median_ms": 0.0253,
+      "p95_ms": 0.0378,
+      "p99_ms": 0.057571999999999936,
+      "max_ms": 0.3726,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "ONEProgression/GameThread/MachineState": {
+      "samples": 3733,
+      "mean_ms": 0.02929906241628717,
+      "median_ms": 0.0263,
+      "p95_ms": 0.038839999999999965,
+      "p99_ms": 0.08467999999999984,
+      "max_ms": 0.3744,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "ONEPhysicality/GameThread/BloodFixedStep": {
+      "samples": 3733,
+      "mean_ms": 0.009368256094294133,
+      "median_ms": 0.0,
+      "p95_ms": 0.09353999999999997,
+      "p99_ms": 0.185468,
+      "max_ms": 0.4572,
+      "nonzero_samples": 314,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "ONEProgression/GameThread/PresentationDriver": {
+      "samples": 3733,
+      "mean_ms": 0.0547465577283686,
+      "median_ms": 0.0483,
+      "p95_ms": 0.0707,
+      "p99_ms": 0.1536399999999995,
+      "max_ms": 13.3256,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "RenderThreadTime": {
+      "samples": 3733,
+      "mean_ms": 2.5717236806857757,
+      "median_ms": 2.6013,
+      "p95_ms": 3.154859999999999,
+      "p99_ms": 3.511856,
+      "max_ms": 8.3532,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "GameThreadTime": {
+      "samples": 3733,
+      "mean_ms": 5.917587998928476,
+      "median_ms": 5.3405,
+      "p95_ms": 8.893999999999998,
+      "p99_ms": 9.523368,
+      "max_ms": 18.9478,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 1,
+          "percent": 0.02678810608090008
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "RHIThreadTime": {
+      "samples": 3733,
+      "mean_ms": 2.551939458880257,
+      "median_ms": 2.5524,
+      "p95_ms": 3.1848599999999996,
+      "p99_ms": 3.417211999999999,
+      "max_ms": 3.9993,
+      "nonzero_samples": 3733,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "ONEPhysicality/GameThread/RagdollRest": {
+      "samples": 3733,
+      "mean_ms": 0.00729255290650951,
+      "median_ms": 0.0,
+      "p95_ms": 0.0298,
+      "p99_ms": 0.04658799999999974,
+      "max_ms": 0.2996,
+      "nonzero_samples": 1564,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "Chaos/AllWorkers/ApplyConstraints": {
+      "samples": 3733,
+      "mean_ms": 0.30674031609965174,
+      "median_ms": 0.2937,
+      "p95_ms": 0.6511399999999999,
+      "p99_ms": 0.708236,
+      "max_ms": 0.8612,
+      "nonzero_samples": 2965,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_Scatter": {
+      "samples": 3733,
+      "mean_ms": 0.11993836056790784,
+      "median_ms": 0.0709,
+      "p95_ms": 0.3233799999999999,
+      "p99_ms": 0.36251599999999984,
+      "max_ms": 0.6082,
+      "nonzero_samples": 2965,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "PhysicsVerbose/AllWorkers/StepSolver_Gather": {
+      "samples": 3733,
+      "mean_ms": 0.30215561210822395,
+      "median_ms": 0.2307,
+      "p95_ms": 0.7317599999999995,
+      "p99_ms": 0.9615879999999981,
+      "max_ms": 1.4858,
+      "nonzero_samples": 2965,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "ONEPhysicality/GameThread/StumpCollisionTransfer": {
+      "samples": 3733,
+      "mean_ms": 2.7859630324136082e-05,
+      "median_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.0006,
+      "max_ms": 0.0039,
+      "nonzero_samples": 49,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "ONEPhysicality/GameThread/RagdollInitialize": {
+      "samples": 3733,
+      "mean_ms": 0.003300857219394589,
+      "median_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.10773999999999992,
+      "max_ms": 0.5253,
+      "nonzero_samples": 49,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "ONEPhysicality/GameThread/PartInitialize": {
+      "samples": 3733,
+      "mean_ms": 0.0021379051701044737,
+      "median_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.0,
+      "max_ms": 0.6258,
+      "nonzero_samples": 25,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    },
+    "ONEPhysicality/GameThread/RegionalDamage": {
+      "samples": 3733,
+      "mean_ms": 0.008387275649611572,
+      "median_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.44806799999999997,
+      "max_ms": 1.3689,
+      "nonzero_samples": 68,
+      "spikes": {
+        "above_16.7_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_33.3_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_50_ms": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "above_100_ms": {
+          "count": 0,
+          "percent": 0.0
+        }
+      }
+    }
+  },
+  "scope_interpretation": "MachineState, MachineVisual and PresentationDriver are regular inclusive timing scopes; MachineVisual is nested inside MachineState on ordinary ticks. Physics/Chaos scopes can nest and aggregate workers. All scopes remain separate; no sum or subtraction estimates unique CPU wall time.",
+  "gpu": {
+    "status": "not_claimed",
+    "reason": "No GPU attribution or GPU improvement is inferred from capped CPU frame timings."
+  },
+  "longest_frames": [
+    {
+      "capture_frame_index": 0,
+      "csv_start_seconds": 0.0,
+      "frame_ms": 22.0846,
+      "counter_valid": false,
+      "actual_counters": null,
+      "machine_scope_ms": {
+        "MachineState": 0.02,
+        "MachineVisual": 0.0195,
+        "PresentationDriver": 13.3256
+      }
+    },
+    {
+      "capture_frame_index": 3289,
+      "csv_start_seconds": 27.559039600000062,
+      "frame_ms": 12.2064,
+      "counter_valid": true,
+      "actual_counters": {
+        "Live": 17.0,
+        "RequestedLive": 18.0,
+        "BoxState": 3.0,
+        "UpgradeState": 3.0,
+        "Phase": 34.0,
+        "ProfileSeconds": 27.5523,
+        "LiveMagazines": 2.0,
+        "EffectiveUpgraded": 1.0
+      },
+      "machine_scope_ms": {
+        "MachineState": 0.0259,
+        "MachineVisual": 0.0248,
+        "PresentationDriver": 0.078
+      }
+    },
+    {
+      "capture_frame_index": 3344,
+      "csv_start_seconds": 28.062332900000055,
+      "frame_ms": 11.6133,
+      "counter_valid": true,
+      "actual_counters": {
+        "Live": 16.0,
+        "RequestedLive": 18.0,
+        "BoxState": 3.0,
+        "UpgradeState": 3.0,
+        "Phase": 34.0,
+        "ProfileSeconds": 28.0556,
+        "LiveMagazines": 2.0,
+        "EffectiveUpgraded": 1.0
+      },
+      "machine_scope_ms": {
+        "MachineState": 0.028,
+        "MachineVisual": 0.0271,
+        "PresentationDriver": 0.074
+      }
+    },
+    {
+      "capture_frame_index": 3340,
+      "csv_start_seconds": 28.024831200000055,
+      "frame_ms": 10.7927,
+      "counter_valid": true,
+      "actual_counters": {
+        "Live": 17.0,
+        "RequestedLive": 18.0,
+        "BoxState": 3.0,
+        "UpgradeState": 3.0,
+        "Phase": 34.0,
+        "ProfileSeconds": 28.0181,
+        "LiveMagazines": 2.0,
+        "EffectiveUpgraded": 1.0
+      },
+      "machine_scope_ms": {
+        "MachineState": 0.028,
+        "MachineVisual": 0.0271,
+        "PresentationDriver": 0.0549
+      }
+    },
+    {
+      "capture_frame_index": 3522,
+      "csv_start_seconds": 29.57927470000009,
+      "frame_ms": 10.6224,
+      "counter_valid": true,
+      "actual_counters": {
+        "Live": 17.0,
+        "RequestedLive": 18.0,
+        "BoxState": 3.0,
+        "UpgradeState": 3.0,
+        "Phase": 34.0,
+        "ProfileSeconds": 29.573,
+        "LiveMagazines": 1.0,
+        "EffectiveUpgraded": 1.0
+      },
+      "machine_scope_ms": {
+        "MachineState": 0.0305,
+        "MachineVisual": 0.0291,
+        "PresentationDriver": 0.0603
+      }
+    },
+    {
+      "capture_frame_index": 3290,
+      "csv_start_seconds": 27.571246000000063,
+      "frame_ms": 10.3138,
+      "counter_valid": true,
+      "actual_counters": {
+        "Live": 18.0,
+        "RequestedLive": 18.0,
+        "BoxState": 3.0,
+        "UpgradeState": 3.0,
+        "Phase": 34.0,
+        "ProfileSeconds": 27.5645,
+        "LiveMagazines": 2.0,
+        "EffectiveUpgraded": 1.0
+      },
+      "machine_scope_ms": {
+        "MachineState": 0.0337,
+        "MachineVisual": 0.0321,
+        "PresentationDriver": 0.0723
+      }
+    },
+    {
+      "capture_frame_index": 3029,
+      "csv_start_seconds": 25.346720000000055,
+      "frame_ms": 10.2572,
+      "counter_valid": true,
+      "actual_counters": {
+        "Live": 17.0,
+        "RequestedLive": 18.0,
+        "BoxState": 3.0,
+        "UpgradeState": 3.0,
+        "Phase": 34.0,
+        "ProfileSeconds": 25.34,
+        "LiveMagazines": 1.0,
+        "EffectiveUpgraded": 1.0
+      },
+      "machine_scope_ms": {
+        "MachineState": 0.0253,
+        "MachineVisual": 0.0245,
+        "PresentationDriver": 0.0503
+      }
+    },
+    {
+      "capture_frame_index": 3552,
+      "csv_start_seconds": 29.835605800000096,
+      "frame_ms": 10.2047,
+      "counter_valid": true,
+      "actual_counters": {
+        "Live": 17.0,
+        "RequestedLive": 18.0,
+        "BoxState": 3.0,
+        "UpgradeState": 3.0,
+        "Phase": 34.0,
+        "ProfileSeconds": 29.8289,
+        "LiveMagazines": 1.0,
+        "EffectiveUpgraded": 1.0
+      },
+      "machine_scope_ms": {
+        "MachineState": 0.0263,
+        "MachineVisual": 0.0258,
+        "PresentationDriver": 0.0709
+      }
+    },
+    {
+      "capture_frame_index": 2280,
+      "csv_start_seconds": 19.014578600000014,
+      "frame_ms": 10.2043,
+      "counter_valid": true,
+      "actual_counters": {
+        "Live": 16.0,
+        "RequestedLive": 18.0,
+        "BoxState": 3.0,
+        "UpgradeState": 3.0,
+        "Phase": 34.0,
+        "ProfileSeconds": 19.0095,
+        "LiveMagazines": 1.0,
+        "EffectiveUpgraded": 1.0
+      },
+      "machine_scope_ms": {
+        "MachineState": 0.0255,
+        "MachineVisual": 0.0245,
+        "PresentationDriver": 0.0514
+      }
+    },
+    {
+      "capture_frame_index": 3321,
+      "csv_start_seconds": 27.850683200000052,
+      "frame_ms": 10.1449,
+      "counter_valid": true,
+      "actual_counters": {
+        "Live": 17.0,
+        "RequestedLive": 18.0,
+        "BoxState": 3.0,
+        "UpgradeState": 3.0,
+        "Phase": 34.0,
+        "ProfileSeconds": 27.8439,
+        "LiveMagazines": 2.0,
+        "EffectiveUpgraded": 1.0
+      },
+      "machine_scope_ms": {
+        "MachineState": 0.0275,
+        "MachineVisual": 0.0265,
+        "PresentationDriver": 0.0576
+      }
+    }
+  ],
+  "source_commit": "8055041ebc98a4df7cd8923b05e7b89ad7372e38",
+  "input": {
+    "filename": "Profile(20260905_061258).csv",
+    "bytes": 7894789,
+    "sha256": "af3352be02aff687e5fe9c19ab92ead8328d9edb50f2aa1fc43b9ab0c147d2d8"
+  },
+  "full_timeline": {
+    "file": "machines18_full.csv",
+    "filename": "machines18_full.csv",
+    "bytes": 8576283,
+    "sha256": "c06bfc4524a5a6910670f43e4887dd7779fb3cd5bb26593263c6fe137359c156",
+    "all_numeric_cells_verified": true,
+    "event_text": "omitted; only event count retained",
+    "duplicate_column_mapping": {
+      "TextureStreaming/RenderAssetStreamingUpdate [csv_column_349]": "TextureStreaming/RenderAssetStreamingUpdate",
+      "TextureStreaming/RenderAssetStreamingUpdate [csv_column_351]": "TextureStreaming/RenderAssetStreamingUpdate"
+    }
+  }
+}
