@@ -12,6 +12,9 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "AudioMixerBlueprintLibrary.h"
+#include "AudioDeviceManager.h"
+#include "AudioMixerDevice.h"
+#include "AudioMixerSubmix.h"
 #include "Engine/GameViewportClient.h"
 #include "Engine/StaticMesh.h"
 #include "UnrealClient.h"
@@ -35,7 +38,15 @@ void AONECombatCheck::BeginPlay()
     Report=TEXT("Candidate02 actual runtime integration checks\nNo weapon or damage mocks. Normal gameplay camera.\n\n");
     FrameReport=TEXT("file,audio_seconds,world_seconds,phase,weapon,ammo,reserve,operation\n");
     if (RestartCheck) { Stage=99; Report=RestartReport; Failures=RestartFailures; RestartCheck=false; }
-    if (bComparison) UGameViewportClient::OnScreenshotCaptured().AddUObject(this,&AONECombatCheck::Screenshot);
+    if (bComparison)
+    {
+        UGameViewportClient::OnScreenshotCaptured().AddUObject(this,&AONECombatCheck::Screenshot);
+        // UE's auto-disabled submix skips silent buffers, shortening recordings.
+        // Keep the real master clock continuous only in this capture process.
+        if (auto* Mixer=FAudioDeviceManager::GetAudioMixerDeviceFromWorldContext(this))
+            if (auto Master=Mixer->GetMasterSubmix().Pin())
+                Mixer->AudioRenderThreadCommand([Master]() { Master->SetAutoDisable(false); });
+    }
 }
 void AONECombatCheck::EndPlay(const EEndPlayReason::Type Reason)
 {
