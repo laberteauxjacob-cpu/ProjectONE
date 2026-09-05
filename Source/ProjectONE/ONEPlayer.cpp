@@ -121,7 +121,7 @@ void AONEPlayer::StopSprint() { bSprint = false; }
 void AONEPlayer::SelectCarbine() { Weapon->SelectWeapon(0); }
 void AONEPlayer::SelectShotgun() { Weapon->SelectWeapon(1); }
 void AONEPlayer::CycleWeapon() { Weapon->CycleWeapon(); }
-void AONEPlayer::ReleaseHeldInputs() { bSprint=false; Weapon->SetTrigger(false); }
+void AONEPlayer::ReleaseHeldInputs() { bSprint=false; Weapon->ClearHeldInput(); }
 void AONEPlayer::Tick(float Dt)
 {
     Super::Tick(Dt);

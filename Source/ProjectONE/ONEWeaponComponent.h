@@ -14,6 +14,7 @@ public:
     virtual void BeginPlay() override;
     virtual void TickComponent(float Dt,ELevelTick Tick,FActorComponentTickFunction* ThisTick) override;
     void SetTrigger(bool Held);
+    void ClearHeldInput() { bTrigger=false; bPendingShot=false; }
     void BeginReload();
     void CancelReload();
     void CancelAllOperations();

@@ -136,7 +136,9 @@ void UONEWeaponComponent::SetTrigger(bool Held)
         if (GetDefinition().bShellReload && IsReloading() && Operation!=EONEWeaponOperation::ShellEnd) StartOperation(EONEWeaponOperation::ShellEnd);
     }
     bTrigger=Held;
-    if (!Held) bPendingShot=false;
+    // A semi-auto press is one buffered command: releasing the button during the
+    // closing pose must not erase it. Pause and focus changes explicitly clear it.
+    if (!Held && GetDefinition().bAutomatic) bPendingShot=false;
 }
 void UONEWeaponComponent::BeginReload()
 {
