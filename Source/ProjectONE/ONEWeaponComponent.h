@@ -69,7 +69,7 @@ private:
     void Fire();
     void StartOperation(EONEWeaponOperation Next,int32 DefinitionIndex=-1);
     void FinishOperation();
-    void ProcessEvent(const FONEWeaponTimedEvent& Event);
+    void ProcessWeaponEvent(const FONEWeaponTimedEvent& Event);
     void StopOperationAudio();
     void PlayMechanical(USoundBase* Sound);
     const FONEWeaponOperationDefinition* FindOperation(int32 Index,EONEWeaponOperation Op) const;

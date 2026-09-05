@@ -200,9 +200,9 @@ void UONEWeaponComponent::StartOperation(EONEWeaponOperation Next,int32 I)
     StopOperationAudio(); Operation=Next; OperationIndex=I<0 ? EquippedIndex : I;
     OperationStart=GetWorld()->GetTimeSeconds(); NextEvent=0; ++OperationSerial;
     if (const auto* O=FindOperation(OperationIndex,Operation))
-        while (NextEvent<O->Events.Num() && O->Events[NextEvent].Time<=0.f) ProcessEvent(O->Events[NextEvent++]);
+        while (NextEvent<O->Events.Num() && O->Events[NextEvent].Time<=0.f) ProcessWeaponEvent(O->Events[NextEvent++]);
 }
-void UONEWeaponComponent::ProcessEvent(const FONEWeaponTimedEvent& E)
+void UONEWeaponComponent::ProcessWeaponEvent(const FONEWeaponTimedEvent& E)
 {
     if (!Carried.IsValidIndex(OperationIndex)) return;
     auto& State=Carried[OperationIndex]; const auto& D=WeaponDefinitions[OperationIndex];
@@ -253,7 +253,7 @@ void UONEWeaponComponent::TickComponent(float Dt,ELevelTick Tick,FActorComponent
     {
         const int32 Serial=OperationSerial;
         if (const auto* O=FindOperation(OperationIndex,Operation))
-            while (OperationSerial==Serial && NextEvent<O->Events.Num() && O->Events[NextEvent].Time<=GetOperationElapsed()) ProcessEvent(O->Events[NextEvent++]);
+            while (OperationSerial==Serial && NextEvent<O->Events.Num() && O->Events[NextEvent].Time<=GetOperationElapsed()) ProcessWeaponEvent(O->Events[NextEvent++]);
         if (Serial==OperationSerial && GetOperationElapsed()>=GetOperationDuration()) FinishOperation();
     }
     if (Operation==EONEWeaponOperation::Ready && NeedsPump(EquippedIndex)) StartOperation(EONEWeaponOperation::Pump);
