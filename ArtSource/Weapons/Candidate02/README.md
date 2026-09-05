@@ -50,4 +50,6 @@ Regenerate with Blender 5.1.2 using `Scripts/create_candidate02_weapon_assets.py
 The targeted `Scripts/import_candidate02_weapon_assets.py` imports only the new
 inventory and three new materials, reuses the accepted materials/skeletons, and
 checks imported clip lengths. It writes its results under ignored `Saved/Candidate02`.
+Include `-AllowCommandletAudio` when running the Unreal import commandlet so the
+BINKA decoder module loads; this flag was required for a clean import exit.
 Run the portable metadata sanitizer after regeneration and before publication.

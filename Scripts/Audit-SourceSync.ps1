@@ -1,22 +1,27 @@
-# Read-only audit of UE's serialized FAssetImportInfo JSON and original sources.
+# Read-only Candidate02 audit of UE's serialized FAssetImportInfo and authored sources.
 # Does not launch Unreal or write to content; safe while gameplay reads assets.
+param([string]$OutputRelativePath = 'Evidence/Candidate02/source_sync.json')
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $records = [System.Collections.Generic.List[object]]::new()
-$groups = @(
-    @{ Folder = 'Exports'; Filter = '*.fbx' },
-    @{ Folder = 'Textures'; Filter = '*.png' },
-    @{ Folder = 'Audio'; Filter = '*.wav' }
-)
-foreach ($group in $groups) {
-    $sourceDirectory = Join-Path $projectRoot ('ArtSource/' + $group.Folder)
-    foreach ($sourceFile in Get-ChildItem -LiteralPath $sourceDirectory -Filter $group.Filter | Sort-Object Name) {
-        if ($group.Folder -eq 'Audio') { $assetFolder = 'Audio' }
-        elseif ($group.Folder -eq 'Textures') { $assetFolder = 'Textures' }
-        elseif ($sourceFile.BaseName.StartsWith('A_')) { $assetFolder = 'Animations' }
-        elseif ($sourceFile.BaseName.StartsWith('SK_') -or $sourceFile.BaseName.StartsWith('SM_Infected')) { $assetFolder = 'Characters' }
-        else { $assetFolder = 'Art/Environment' }
-        $assetRelative = 'Content/ONE/' + $assetFolder + '/' + $sourceFile.BaseName + '.uasset'
+$sources = [System.Collections.Generic.List[object]]::new()
+# The accepted report supplies its explicit 39-path inventory; old hashes remain
+# historical evidence and are not used as today's expected source hashes.
+$baseline = Get-Content -Raw -LiteralPath (Join-Path $projectRoot 'Evidence/final_source_sync.json') | ConvertFrom-Json
+if ($baseline.sources.Count -ne 39) { throw 'Expected the accepted 39-source Candidate01 inventory' }
+foreach ($entry in $baseline.sources) { $sources.Add(@{source=$entry.source; asset=$entry.asset; candidate='01'}) }
+$candidate = Get-Content -Raw -LiteralPath (Join-Path $projectRoot 'ArtSource/Weapons/Candidate02/inventory.json') | ConvertFrom-Json
+foreach ($name in $candidate.static_meshes) { $sources.Add(@{source="ArtSource/Exports/$name.fbx"; asset="/Game/ONE/Art/Weapons/$name"; candidate='02'}) }
+$clips = @($candidate.animations.PSObject.Properties.Name) + @($candidate.infected_reaction.name)
+foreach ($name in $clips) { $sources.Add(@{source="ArtSource/Exports/$name.fbx"; asset="/Game/ONE/Animations/$name"; candidate='02'}) }
+foreach ($entry in $candidate.audio.PSObject.Properties.Value) { $sources.Add(@{source=$entry.source; asset=$entry.asset; candidate='02'}) }
+if ($candidate.static_meshes.Count -ne 5 -or $clips.Count -ne 9 -or $candidate.audio.PSObject.Properties.Name.Count -ne 25 -or $sources.Count -ne 78) {
+    throw 'Expected 39 accepted sources plus 14 new FBXs and 25 new WAVs'
+}
+if (@($sources.source | Sort-Object -Unique).Count -ne $sources.Count) { throw 'Duplicate source in inventory' }
+foreach ($entry in $sources) {
+        $sourceFile = Get-Item -LiteralPath (Join-Path $projectRoot $entry.source)
+        $assetRelative = 'Content/' + $entry.asset.Substring('/Game/'.Length) + '.uasset'
         $assetFile = Join-Path $projectRoot $assetRelative
         if (-not (Test-Path -LiteralPath $assetFile -PathType Leaf)) { throw "Missing imported asset: $assetFile" }
         $assetText = [System.Text.Encoding]::UTF8.GetString([System.IO.File]::ReadAllBytes($assetFile))
@@ -29,19 +34,25 @@ foreach ($group in $groups) {
         $importedMd5 = ([string]$recorded.FileMD5).ToLowerInvariant()
         if ($sourceMd5 -ne $importedMd5) { throw "Stale imported asset $assetRelative : source=$sourceMd5 imported=$importedMd5" }
         $records.Add([ordered]@{
-            source = 'ArtSource/' + $group.Folder + '/' + $sourceFile.Name
-            asset = '/Game/ONE/' + $assetFolder + '/' + $sourceFile.BaseName
+            source = $entry.source
+            asset = $entry.asset
+            introduced_in_candidate = $entry.candidate
             md5 = $sourceMd5
             matching_import_hash = $true
         })
-    }
 }
 $report = [ordered]@{
     verified_utc = [DateTime]::UtcNow.ToString('o')
     method = 'Compared original source MD5 with FileMD5 in serialized Unreal FAssetImportInfo JSON; read-only filesystem audit'
     count = $records.Count
+    accepted_candidate01_sources = 39
+    new_candidate02_fbx = 14
+    new_candidate02_wav = 25
     all_source_hashes_match = $true
     sources = $records
 }
-$report | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $projectRoot 'Evidence/final_source_sync.json')
-Write-Output "ONE FINAL SOURCE HASHES ALL MATCH: $($records.Count) original sources"
+$reportPath = Join-Path $projectRoot $OutputRelativePath
+if ([System.IO.Path]::GetFullPath($reportPath) -eq [System.IO.Path]::GetFullPath((Join-Path $projectRoot 'Evidence/final_source_sync.json'))) { throw 'Candidate01 historical evidence must remain unchanged' }
+New-Item -ItemType Directory -Force -Path (Split-Path -Parent $reportPath) | Out-Null
+$report | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $reportPath
+Write-Output "ONE CANDIDATE02 SOURCE HASHES ALL MATCH: $($records.Count) sources (39 accepted + 14 FBX + 25 WAV)"

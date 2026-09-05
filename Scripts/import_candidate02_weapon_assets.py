@@ -1,8 +1,9 @@
-"""Targeted Candidate02 import. Run through UnrealEditor-Cmd -run=pythonscript.
+"""Targeted Candidate02 import. UnrealEditor-Cmd -run=pythonscript -AllowCommandletAudio.
 
 Requires the accepted Candidate01 assets already present. Imports only the
 explicit inventory below; never rebuilds C01 meshes, materials or animations.
 Gameplay event timing lives in editable native weapon definitions.
+AllowCommandletAudio is required to load the BINKA audio decoder during import.
 """
 from pathlib import Path
 import json
