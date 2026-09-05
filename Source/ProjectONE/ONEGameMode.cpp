@@ -9,6 +9,8 @@
 #include "ONEValidation.h"
 #include "ONEPresentationCheck.h"
 #include "ONECombatCheck.h"
+#include "ONE03MovementCheck.h"
+#include "ONE03WeaponCheck.h"
 #include "Misc/CommandLine.h"
 #include "Kismet/GameplayStatics.h"
 #include "NavigationSystem.h"
@@ -31,7 +33,9 @@ AONEGameMode::AONEGameMode()
 void AONEGameMode::BeginPlay()
 {
     Super::BeginPlay();
-    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare"));
+    const bool bMovementCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03MovementCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03MovementCapture")) || FString(FCommandLine::Get()).Contains(TEXT("ONE03ManualCapture="));
+    const bool bWeaponCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03WeaponCheck"));
+    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck;
     if (bSandbox) { bIntermission=false; Countdown=0; }
     // Authored material categories drive concrete versus metal impact audio.
     for (TActorIterator<AStaticMeshActor> It(GetWorld());It;++It)
@@ -48,6 +52,8 @@ void AONEGameMode::BeginPlay()
         GetWorld()->SpawnActor<AONEValidation>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONEPresentation"))) GetWorld()->SpawnActor<AONEPresentationCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare"))) GetWorld()->SpawnActor<AONECombatCheck>();
+    if (bMovementCheck) GetWorld()->SpawnActor<AONE03MovementCheck>();
+    if (bWeaponCheck) GetWorld()->SpawnActor<AONE03WeaponCheck>();
 }
 void AONEGameMode::StartRound()
 {
@@ -92,7 +98,7 @@ void AONEGameMode::Tick(float DeltaSeconds)
         {
             const FVector Tick=Origin+FVector(Distance,0,0);
             DrawDebugLine(GetWorld(),Tick-FVector(0,35,0),Tick+FVector(0,35,0),FColor(230,170,60),false,-1,0,2);
-            DrawDebugString(GetWorld(),Tick+FVector(0,-50,10),FString::Printf(TEXT("%dm"),Distance/100),nullptr,FColor::White,0,false,.8f);
+            // HUD projects the distance labels and excludes essential panels.
         }
         return;
     }

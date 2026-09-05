@@ -22,3 +22,15 @@ The accepted Project ONE assets remain the foundation. `Scripts/create_candidate
 Before public publication, private author paths in FBX headers, Blender workspace metadata and PNG text chunks were sanitized without changing geometry, animation or image pixels. Twelve old Unreal import records were refreshed to match those metadata-only FBX changes. The current [source/import audit](../Evidence/Candidate02/source_sync.json) verifies all 78 source hashes: the original 39 plus 14 new FBX files and 25 WAVs. Candidate01's old evidence remains historical.
 
 Engine-provided runtime code, fonts and libraries are separate from the original game assets. The Windows release retains its packaged notices and includes Unreal's third-party notice catalog as described in [DistributionNotice](DistributionNotice.md). No Unreal Engine source or authoring tools are uploaded in the project repository or playable archive. No broad license for the original game code or art was selected.
+
+## Candidate03 Stage B additions
+
+`Scripts/create_candidate03_locomotion.py` authors eighteen new clips on the
+accepted Response rig: eight walk directions, eight run directions and two
+stepping turns. `ArtSource/Characters/Candidate03/ResponseLocomotion.blend` and
+its inventory retain editable keys, stride lengths and directional conventions;
+the FBX files are in `ArtSource/Exports/Candidate03`. The matching import script
+retains the accepted skeleton. Metadata sanitation removed private author paths
+without changing parsed animation/geometry properties. The Candidate03
+[source audit](../Evidence/Candidate03/source_sync.json) matches all 96 current
+source hashes, including the eighteen additions. No external asset was used.

@@ -4,6 +4,12 @@
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Components/InputComponent.h"
+#include "GameFramework/PlayerInput.h"
+#include "ONEWeaponComponent.h"
+#include "InputKeyEventArgs.h"
+#include "Misc/CommandLine.h"
+#include "HAL/PlatformTime.h"
+#include "CoreGlobals.h"
 AONEPlayerController::AONEPlayerController()
 {
     bShowMouseCursor = true;
@@ -12,11 +18,28 @@ AONEPlayerController::AONEPlayerController()
 void AONEPlayerController::BeginPlay()
 {
     Super::BeginPlay();
+    bTraceInput=FParse::Param(FCommandLine::Get(),TEXT("ONE03InputTrace"));
     CurrentMouseCursor=EMouseCursor::Crosshairs;
     FInputModeGameAndUI Mode;
     Mode.SetHideCursorDuringCapture(false);
     Mode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
     SetInputMode(Mode);
+}
+bool AONEPlayerController::InputKey(const FInputKeyEventArgs& Params)
+{
+    const bool bHandled=Super::InputKey(Params);
+    if (bTraceInput && Params.Event!=IE_Axis)
+    {
+        const auto* P=Cast<AONEPlayer>(GetPawn());
+        const auto* W=P ? P->GetWeaponComponent() : nullptr;
+        // These modifier flags are PlayerInput's processed state, not an OS
+        // modifier snapshot. Delivered modifier key edges are logged separately.
+        UE_LOG(LogTemp,Display,TEXT("ONE03_INPUT frame=%llu real=%.6f key=%s event=%d amount=%.3f processed_shift=%d processed_ctrl=%d processed_alt=%d processed_cmd=%d handled=%d paused=%d sprint=%d operation=%d ammo=%d reserve=%d"),
+            static_cast<unsigned long long>(GFrameCounter),FPlatformTime::Seconds(),*Params.Key.ToString(),int32(Params.Event),Params.AmountDepressed,
+            PlayerInput && PlayerInput->IsShiftPressed(),PlayerInput && PlayerInput->IsCtrlPressed(),PlayerInput && PlayerInput->IsAltPressed(),PlayerInput && PlayerInput->IsCmdPressed(),
+            bHandled,IsPaused(),P && P->IsSprintRequested(),W ? int32(W->GetOperation()) : -1,W ? W->GetAmmo() : -1,W ? W->GetReserveAmmo() : -1);
+    }
+    return bHandled;
 }
 void AONEPlayerController::SetupInputComponent()
 {
@@ -33,6 +56,7 @@ void AONEPlayerController::SetupInputComponent()
 }
 void AONEPlayerController::FlushPressedKeys()
 {
+    if (bTraceInput) UE_LOG(LogTemp,Display,TEXT("ONE03_INPUT_FLUSH frame=%llu real=%.6f"),static_cast<unsigned long long>(GFrameCounter),FPlatformTime::Seconds());
     Super::FlushPressedKeys();
     if (AONEPlayer* ControlledPawn=Cast<AONEPlayer>(GetPawn())) ControlledPawn->ReleaseHeldInputs();
 }

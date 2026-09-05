@@ -209,7 +209,7 @@ void AONECombatCheck::Tick(float Dt)
     case 13: if (T>1) {
         Check(W->GetTotalShotsFired()==Shots,TEXT("Switch clears held firing without a ghost shotgun discharge"));
         Check(Player->MuzzleLight->Intensity==0,TEXT("Switch leaves no stale muzzle flash"));
-        W->RefillAllAmmo(); Count=0; Next(14);
+        W->RefillAllAmmo(); W->AddReserveAmmo(-99999); Count=0; Next(14);
     } break;
     case 14:
         if (W->CanFire() && W->GetAmmo()>0) { W->SetTrigger(false); W->SetTrigger(true); ++Count; }
@@ -221,6 +221,8 @@ void AONECombatCheck::Tick(float Dt)
     case 140: if (T>.05f) {
             Check(W->GetTimeSinceEmpty()<.15f,TEXT("Empty shotgun triggers distinct empty feedback"));
             W->SetTrigger(false);
+            Check(W->GetReserveAmmo()==0 && !W->IsReloading(),TEXT("No-reserve empty shotgun cannot enter an automatic reload loop"));
+            W->AddReserveAmmo(36);
             Reserve=W->GetReserveAmmo(); Shots=W->GetTotalShotsFired(); W->BeginReload(); Next(15);
         } break;
     case 15: if (T>1.03f) {

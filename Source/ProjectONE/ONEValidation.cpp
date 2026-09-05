@@ -170,20 +170,21 @@ void AONEValidation::Tick(float Dt)
     {
         Hit(IntactTest,TEXT("spine_02"),1000);
         Check(IntactTest && IntactTest->IsDead() && IntactTest->HasHead() && IntactTest->HasLeftArm(),TEXT("Lethal torso hit preserves an intact corpse"));
-        W->SetTrigger(true); AmmoBefore=W->GetAmmo();
+        W->SetTrigger(true); AmmoBefore=W->GetAmmo(); ReserveBefore=W->GetReserveAmmo();
         Stage=6; StageTime=Elapsed;
     }
     else if (Stage==6)
     {
         if (Elapsed-StageTime<3) P->AddMovementInput(FVector(1,0,0),.5f);
-        if (Elapsed-StageTime>5)
+        if (W->IsReloading() && W->GetAmmo()==0)
         {
             Check(W->GetAmmo()==0,TEXT("Held trigger exhausts magazine at cadence"));
-            Check(W->GetTimeSinceEmpty()<.6f,TEXT("Empty trigger produces distinct feedback state"));
-            W->SetTrigger(false); ReserveBefore=W->GetReserveAmmo(); W->BeginReload();
-            Check(W->IsReloading(),TEXT("Reload starts from empty magazine"));
+            W->SetTrigger(false);
+            Check(W->GetAutomaticReloadCount()>0 && W->GetReserveAmmo()==ReserveBefore,TEXT("Final shot automatically starts reload before transferring reserve ammunition"));
+            Check(W->IsReloading(),TEXT("Reload starts from empty magazine without a second input"));
             Capture(TEXT("04_reload_and_crowd")); Stage=7; StageTime=Elapsed;
         }
+        else if (Elapsed-StageTime>8) { Check(false,TEXT("Final-shot automatic reload started within cadence deadline")); SaveAndExit(); }
     }
     else if (Stage==7 && Elapsed-StageTime>2.5f)
     {

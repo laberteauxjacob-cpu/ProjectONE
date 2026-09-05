@@ -4,24 +4,57 @@
 #include "ONEWeaponComponent.h"
 #include "Animation/AnimInstanceProxy.h"
 #include "Animation/AnimSequence.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Engine/SkeletalMesh.h"
 #include "AnimNodes/AnimNode_SequenceEvaluator.h"
 #include "AnimNodes/AnimNode_TwoWayBlend.h"
 #include "AnimNodes/AnimNode_LayeredBoneBlend.h"
+#include "AnimNodes/AnimNode_RotateRootBone.h"
+#include "Animation/AnimNodeSpaceConversions.h"
+#include "BoneControllers/AnimNode_TwoBoneIK.h"
+#include "BoneControllers/AnimNode_ModifyBone.h"
 
 struct FONEAnimProxy : FAnimInstanceProxy
 {
-    FAnimNode_SequenceEvaluator_Standalone Idle,Walk,Run,Back,Left,Right,Ready,Action,Death;
-    FAnimNode_TwoWayBlend ForwardBack,LeftRight,Directions,Running,Locomotion,FullAction,Final;
+    FAnimNode_SequenceEvaluator_Standalone Idle,WalkA,WalkB,RunA,RunB,Turn,Ready,Action,Death;
+    FAnimNode_TwoWayBlend WalkDirection,RunDirection,Running,Locomotion,Turning,FullAction,Final;
+    FAnimNode_RotateRootBone Facing;
+    FAnimNode_ConvertLocalToComponentSpace PivotComponent;
+    FAnimNode_ConvertComponentToLocalSpace PivotLocal;
+    FAnimNode_ModifyBone PivotPelvis,PivotFootRotation[2];
+    FAnimNode_TwoBoneIK PivotLeg[2];
     FAnimNode_LayeredBoneBlend ReadyUpperBody,UpperBody;
-    float Phase=0,IdleClock=0,SmoothedSpeed=0,SmoothedX=1,SmoothedY=0;
+    float Phase=0,IdleClock=0,SmoothedSpeed=0,DirectionYaw=0;
     FONEAnimProxy(UAnimInstance* Instance):FAnimInstanceProxy(Instance)
     {
-        ForwardBack.A.SetLinkNode(&Walk); ForwardBack.B.SetLinkNode(&Back);
-        LeftRight.A.SetLinkNode(&Left); LeftRight.B.SetLinkNode(&Right);
-        Directions.A.SetLinkNode(&ForwardBack); Directions.B.SetLinkNode(&LeftRight);
-        Running.A.SetLinkNode(&Directions); Running.B.SetLinkNode(&Run);
+        WalkDirection.A.SetLinkNode(&WalkA); WalkDirection.B.SetLinkNode(&WalkB);
+        RunDirection.A.SetLinkNode(&RunA); RunDirection.B.SetLinkNode(&RunB);
+        Running.A.SetLinkNode(&WalkDirection); Running.B.SetLinkNode(&RunDirection);
         Locomotion.A.SetLinkNode(&Idle); Locomotion.B.SetLinkNode(&Running);
-        ReadyUpperBody.BasePose.SetLinkNode(&Locomotion);
+        Turning.A.SetLinkNode(&Locomotion); Turning.B.SetLinkNode(&Turn);
+        Facing.BasePose.SetLinkNode(&Turning);
+        PivotComponent.LocalPose.SetLinkNode(&Facing);
+        PivotPelvis.ComponentPose.SetLinkNode(&PivotComponent);
+        PivotPelvis.BoneToModify.BoneName=TEXT("pelvis");
+        PivotPelvis.TranslationMode=BMM_Additive;
+        PivotPelvis.TranslationSpace=BCS_ComponentSpace;
+        PivotPelvis.Translation=FVector(0,0,-5.f);
+        for (int32 I=0;I<2;++I)
+        {
+            const FName Foot=I==0 ? TEXT("foot_l") : TEXT("foot_r");
+            PivotLeg[I].IKBone.BoneName=Foot;
+            PivotLeg[I].bAllowStretching=false;
+            PivotLeg[I].EffectorLocationSpace=BCS_ComponentSpace;
+            PivotLeg[I].JointTargetLocationSpace=BCS_ComponentSpace;
+            PivotFootRotation[I].BoneToModify.BoneName=Foot;
+            PivotFootRotation[I].RotationMode=BMM_Replace;
+            PivotFootRotation[I].RotationSpace=BCS_ComponentSpace;
+            PivotFootRotation[I].ComponentPose.SetLinkNode(&PivotLeg[I]);
+        }
+        PivotLeg[0].ComponentPose.SetLinkNode(&PivotPelvis);
+        PivotLeg[1].ComponentPose.SetLinkNode(&PivotFootRotation[0]);
+        PivotLocal.ComponentPose.SetLinkNode(&PivotFootRotation[1]);
+        ReadyUpperBody.BasePose.SetLinkNode(&PivotLocal);
         ReadyUpperBody.AddPose();
         ReadyUpperBody.BlendPoses[0].SetLinkNode(&Ready);
         FBranchFilter ReadyBranch; ReadyBranch.BoneName=TEXT("spine_01"); ReadyBranch.BlendDepth=2;
@@ -53,43 +86,87 @@ struct FONEAnimProxy : FAnimInstanceProxy
         if (!Anim || !Pawn) return;
         AONEZombie* Z=Cast<AONEZombie>(Pawn);
         AONEPlayer* P=Cast<AONEPlayer>(Pawn);
-        const FVector Local=Pawn->GetActorRotation().UnrotateVector(Pawn->GetVelocity());
+        const float FacingYaw=P ? P->GetBodyFacingYaw() : Pawn->GetActorRotation().Yaw;
+        const FVector Local=FRotator(0,FacingYaw,0).UnrotateVector(Pawn->GetVelocity());
         const float Speed=Local.Size2D();
         SmoothedSpeed=FMath::FInterpTo(SmoothedSpeed,Speed,Dt,12.f);
-        if (Speed>3)
+        if (Speed>3.f)
         {
-            SmoothedX=FMath::FInterpTo(SmoothedX,Local.X/Speed,Dt,12.f);
-            SmoothedY=FMath::FInterpTo(SmoothedY,Local.Y/Speed,Dt,12.f);
+            const float Desired=FMath::RadiansToDegrees(FMath::Atan2(Local.Y,Local.X));
+            DirectionYaw=FMath::FixedTurn(DirectionYaw,Desired,Dt*900.f);
         }
-        const float WalkSpeed=Z ? Z->AuthoredWalkSpeed : (P ? P->AuthoredWalkSpeed : 180.f);
+        const float WalkSpeed=Z ? Z->AuthoredWalkSpeed : (P ? P->AuthoredWalkSpeed : 225.f);
         const float RunSpeed=Z ? Z->AuthoredRunSpeed : (P ? P->AuthoredRunSpeed : 370.f);
-        float RunWeight=FMath::Clamp((SmoothedSpeed-WalkSpeed)/FMath::Max(1.f,RunSpeed-WalkSpeed),0.f,1.f);
-        // Side/backward sprint uses the authored directional stride at a matched playback rate.
-        if (!Z) RunWeight*=FMath::Clamp((SmoothedX-.45f)/.55f,0.f,1.f);
+        const float RunWeight=FMath::Clamp((SmoothedSpeed-WalkSpeed)/FMath::Max(1.f,RunSpeed-WalkSpeed),0.f,1.f);
         UAnimSequence* WalkClip=Anim->FindClip(TEXT("Walk"));
         UAnimSequence* RunClip=Anim->FindClip(TEXT("Run"));
-        const float WalkStride=WalkSpeed*(WalkClip ? WalkClip->GetPlayLength() : .8f);
-        const float RunStride=RunSpeed*(RunClip ? RunClip->GetPlayLength() : .6f);
-        const float Stride=FMath::Lerp(WalkStride,RunStride,RunWeight);
-        // A blend of orthogonal steps shortens diagonal stride; compensate its phase rate.
-        const float DirectionScale=Z ? 1.f : FMath::Lerp(FMath::Max(1.f,FMath::Abs(SmoothedX)+FMath::Abs(SmoothedY)),1.f,RunWeight);
-        Phase=FMath::Fmod(Phase+Dt*Speed*DirectionScale/FMath::Max(1.f,Stride),1.f);
+        UAnimSequence* WalkSecond=WalkClip;
+        UAnimSequence* RunSecond=RunClip;
+        float DirectionBlend=0.f,StrideProjection=1.f;
+        if (P)
+        {
+            static const TCHAR* Directions[]={TEXT("F"),TEXT("FR"),TEXT("R"),TEXT("BR"),TEXT("B"),TEXT("BL"),TEXT("L"),TEXT("FL")};
+            const float Sector=FRotator::ClampAxis(DirectionYaw)/45.f;
+            const int32 A=FMath::FloorToInt(Sector)%8,B=(A+1)%8;
+            DirectionBlend=Sector-FMath::FloorToFloat(Sector);
+            auto DirectionClip=[&](const TCHAR* Gait,int32 Index,UAnimSequence* Fallback)
+            {
+                UAnimSequence* Clip=Anim->FindClip(FName(*FString::Printf(TEXT("C03_%s_%s"),Gait,Directions[Index])));
+                return Clip ? Clip : Fallback;
+            };
+            WalkClip=DirectionClip(TEXT("Walk"),A,WalkClip);
+            WalkSecond=DirectionClip(TEXT("Walk"),B,WalkClip);
+            RunClip=DirectionClip(TEXT("Run"),A,RunClip);
+            RunSecond=DirectionClip(TEXT("Run"),B,RunClip);
+            // Compensate only projection loss between adjacent 45-degree source
+            // strides. Exact cardinal AND diagonal clips always use 1.
+            const float Angle=PI/4.f;
+            StrideProjection=(1.f-DirectionBlend)*FMath::Cos(DirectionBlend*Angle)
+                +DirectionBlend*FMath::Cos((1.f-DirectionBlend)*Angle);
+        }
+        const float WalkStride=WalkSpeed*(WalkClip ? WalkClip->GetPlayLength() : .72f);
+        const float RunStride=RunSpeed*(RunClip ? RunClip->GetPlayLength() : .62f);
+        const float Stride=FMath::Lerp(WalkStride,RunStride,RunWeight)*StrideProjection;
+        Phase=FMath::Fmod(Phase+Dt*Speed/FMath::Max(1.f,Stride),1.f);
         IdleClock+=Dt;
         Sample(Idle,Anim->FindClip(TEXT("Idle")),IdleClock);
-        auto LoopSample=[&](FAnimNode_SequenceEvaluator_Standalone& Node,FName Name)
+        auto LoopSample=[&](FAnimNode_SequenceEvaluator_Standalone& Node,UAnimSequence* Clip)
         {
-            UAnimSequence* Clip=Anim->FindClip(Name); if (!Clip) Clip=WalkClip;
             Sample(Node,Clip,Phase*(Clip ? Clip->GetPlayLength() : 1.f));
         };
-        LoopSample(Walk,TEXT("Walk")); LoopSample(Run,TEXT("Run"));
-        LoopSample(Back,TEXT("Back"));
-        // UE import reflects the authored Y axis: source StrafeL moves toward UE +Y.
-        LoopSample(Left,TEXT("StrafeR")); LoopSample(Right,TEXT("StrafeL"));
-        ForwardBack.Alpha=Z ? 0.f : FMath::Clamp(-SmoothedX*3.f,0.f,1.f);
-        LeftRight.Alpha=FMath::Clamp(SmoothedY*3.f+.5f,0.f,1.f);
-        Directions.Alpha=Z ? 0.f : FMath::Abs(SmoothedY)/FMath::Max(.01f,FMath::Abs(SmoothedX)+FMath::Abs(SmoothedY));
+        LoopSample(WalkA,WalkClip); LoopSample(WalkB,WalkSecond);
+        LoopSample(RunA,RunClip); LoopSample(RunB,RunSecond);
+        WalkDirection.Alpha=DirectionBlend;
+        RunDirection.Alpha=DirectionBlend;
         Running.Alpha=RunWeight;
-        Locomotion.Alpha=FMath::Clamp(SmoothedSpeed/40.f,0.f,1.f);
+        Locomotion.Alpha=FMath::Clamp(SmoothedSpeed/60.f,0.f,1.f);
+        const bool bTurn=P && P->IsTurningInPlace();
+        UAnimSequence* TurnClip=P ? Anim->FindClip(P->GetTurnDirection()>0 ? TEXT("C03_Turn_R") : TEXT("C03_Turn_L")) : nullptr;
+        Sample(Turn,TurnClip ? TurnClip : Anim->FindClip(TEXT("Idle")),P ? P->GetTurnAnimationTime() : 0.f,false);
+        Turning.Alpha=FMath::FInterpTo(Turning.Alpha,bTurn ? 1.f : 0.f,Dt,25.f);
+        Facing.Yaw=P ? FMath::FindDeltaAngleDegrees(Pawn->GetActorRotation().Yaw,FacingYaw) : 0.f;
+        // RotateRootBone postmultiplies the root basis. Convert component yaw
+        // through the actual imported root basis instead of assuming its axes.
+        if (const USkeletalMesh* Mesh=Instance->GetSkelMeshComponent()->GetSkeletalMeshAsset())
+            if (Mesh->GetRefSkeleton().GetNum()>0)
+                Facing.MeshToComponent=Mesh->GetRefSkeleton().GetRefBonePose()[0].GetRotation().Rotator();
+        const FTransform MeshWorld=Instance->GetSkelMeshComponent()->GetComponentTransform();
+        float PivotWeight=0.f;
+        for (int32 I=0;I<2;++I)
+        {
+            const float Weight=P ? P->GetPivotFootWeight(I) : 0.f;
+            PivotLeg[I].SetAlpha(Weight);
+            PivotFootRotation[I].SetAlpha(Weight);
+            PivotWeight=FMath::Max(PivotWeight,Weight);
+            if (P && Weight>0.f)
+            {
+                const FTransform Foot=P->GetPivotFootWorld(I).GetRelativeTransform(MeshWorld);
+                PivotLeg[I].EffectorLocation=Foot.GetLocation();
+                PivotLeg[I].JointTargetLocation=MeshWorld.InverseTransformPosition(P->GetPivotKneeWorld(I));
+                PivotFootRotation[I].Rotation=Foot.Rotator();
+            }
+        }
+        PivotPelvis.SetAlpha(PivotWeight);
         float ActionWeight=0,DeathWeight=0;
         Sample(Ready,Anim->FindClip(TEXT("Idle")),IdleClock);
         ReadyUpperBody.BlendWeights[0]=P ? 1.f : 0.f;
@@ -116,7 +193,6 @@ struct FONEAnimProxy : FAnimInstanceProxy
                     DeathWeight=1; break;
                 default: break;
             }
-            // Provide valid sequences even while actions have zero weight.
             if (!Action.GetSequence()) Sample(Action,Anim->FindClip(TEXT("Attack")),0,false);
             if (!Death.GetSequence()) Sample(Death,Anim->FindClip(TEXT("Death")),0,false);
         }
@@ -131,12 +207,19 @@ void UONEAnimInstance::NativeInitializeAnimation()
 {
     Super::NativeInitializeAnimation();
     Clips.Reset();
-    const FString Prefix=Cast<AONEZombie>(TryGetPawnOwner()) ? TEXT("A_Infected_") : TEXT("A_Response_");
-    const TArray<FString> Names={TEXT("Idle"),TEXT("Walk"),TEXT("Run"),TEXT("Back"),TEXT("StrafeL"),TEXT("StrafeR"),TEXT("Fire"),TEXT("Reload"),TEXT("Attack"),TEXT("AttackOneArm"),TEXT("Hit"),TEXT("HeavyHit"),TEXT("Death")};
     const bool bInfected=Cast<AONEZombie>(TryGetPawnOwner())!=nullptr;
+    const FString Prefix=bInfected ? TEXT("A_Infected_") : TEXT("A_Response_");
+    TArray<FString> Names={TEXT("Idle"),TEXT("Walk"),TEXT("Run"),TEXT("Fire"),TEXT("Reload"),TEXT("Attack"),TEXT("AttackOneArm"),TEXT("Hit"),TEXT("HeavyHit"),TEXT("Death")};
+    if (!bInfected)
+    {
+        for (const TCHAR* Gait:{TEXT("Walk"),TEXT("Run")})
+            for (const TCHAR* Direction:{TEXT("F"),TEXT("FR"),TEXT("R"),TEXT("BR"),TEXT("B"),TEXT("BL"),TEXT("L"),TEXT("FL")})
+                Names.Add(FString::Printf(TEXT("C03_%s_%s"),Gait,Direction));
+        Names.Add(TEXT("C03_Turn_L")); Names.Add(TEXT("C03_Turn_R"));
+    }
     for (const FString& Name:Names)
     {
-        if (bInfected && (Name==TEXT("Back")||Name.StartsWith(TEXT("Strafe"))||Name==TEXT("Fire")||Name==TEXT("Reload"))) continue;
+        if (bInfected && (Name==TEXT("Fire")||Name==TEXT("Reload"))) continue;
         if (!bInfected && (Name.StartsWith(TEXT("Attack"))||Name==TEXT("Hit")||Name==TEXT("HeavyHit")||Name==TEXT("Death"))) continue;
         const FString Asset=Prefix+Name;
         if (auto* Clip=LoadObject<UAnimSequence>(nullptr,*(TEXT("/Game/ONE/Animations/")+Asset+TEXT(".")+Asset))) Clips.Add(FName(*Name),Clip);

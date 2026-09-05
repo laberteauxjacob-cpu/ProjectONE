@@ -1,0 +1,64 @@
+Candidate03 actual movement integration
+Each directional axis feeds CharacterMovement input; diagonal inputs are not pre-normalized by this probe.
+
+PASS | Player walk tuning exceeds fastest implemented infected speed
+PASS | Sprint remains faster than walking
+PASS | CARBINE / WALK / FORWARD actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / WALK / FORWARD RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / WALK / RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / WALK / BACK RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / WALK / BACK actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / WALK / BACK LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / WALK / LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / WALK / FORWARD LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / SPRINT / FORWARD actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | CARBINE / SPRINT / FORWARD RIGHT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | CARBINE / SPRINT / RIGHT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | CARBINE / SPRINT / BACK RIGHT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | CARBINE / SPRINT / BACK actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | CARBINE / SPRINT / BACK LEFT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | CARBINE / SPRINT / LEFT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | CARBINE / SPRINT / FORWARD LEFT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | CARBINE / RELOAD WALK / FORWARD actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / RELOAD WALK / FORWARD RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / RELOAD WALK / RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / RELOAD WALK / BACK RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / RELOAD WALK / BACK actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / RELOAD WALK / BACK LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / RELOAD WALK / LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | CARBINE / RELOAD WALK / FORWARD LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / WALK / FORWARD actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / WALK / FORWARD RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / WALK / RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / WALK / BACK RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / WALK / BACK actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / WALK / BACK LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / WALK / LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / WALK / FORWARD LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / SPRINT / FORWARD actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | SHOTGUN / SPRINT / FORWARD RIGHT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | SHOTGUN / SPRINT / RIGHT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | SHOTGUN / SPRINT / BACK RIGHT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | SHOTGUN / SPRINT / BACK actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | SHOTGUN / SPRINT / BACK LEFT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | SHOTGUN / SPRINT / LEFT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | SHOTGUN / SPRINT / FORWARD LEFT actual mean/min/max 370.00/370.00/370.00 target 370.00 cm/s
+PASS | SHOTGUN / RELOAD WALK / FORWARD actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / RELOAD WALK / FORWARD RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / RELOAD WALK / RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / RELOAD WALK / BACK RIGHT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / RELOAD WALK / BACK actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / RELOAD WALK / BACK LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / RELOAD WALK / LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | SHOTGUN / RELOAD WALK / FORWARD LEFT actual mean/min/max 225.00/225.00/225.00 target 225.00 cm/s
+PASS | Stationary circles do not translate the player capsule
+PASS | Repeated aim circles produce evaluated lower-body foot motion
+PASS | Both feet lift in world space during turn steps: 15.55 / 11.57 cm
+PASS | Stationary circles do not translate the player capsule
+PASS | Repeated aim circles produce evaluated lower-body foot motion
+PASS | Both feet lift in world space during turn steps: 11.79 / 15.09 cm
+PASS | Actual shots dispatch during continuous translation, sprint and rapid aim changes
+PASS | Actual shots dispatch during continuous translation, sprint and rapid aim changes
+
+Failures: 0
+Captured frames: 3659

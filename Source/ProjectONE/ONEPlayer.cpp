@@ -15,6 +15,8 @@
 #include "Components/PointLightComponent.h"
 #include "Engine/World.h"
 #include "Engine/SkeletalMesh.h"
+#include "Kismet/GameplayStatics.h"
+#include "Misc/CommandLine.h"
 
 AONEPlayer::AONEPlayer()
 {
@@ -77,6 +79,10 @@ AONEPlayer::AONEPlayer()
 void AONEPlayer::BeginPlay()
 {
     Super::BeginPlay();
+    // CharacterMovement already ticks before this actor and the mesh. The mesh
+    // must also wait for our aim/body update, or actor yaw rotates yesterday's
+    // evaluated feet for a frame before the root correction and pivot IK run.
+    GetMesh()->AddTickPrerequisiteActor(this);
     if (auto* Asset = LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/SK_Response.SK_Response"))) GetMesh()->SetSkeletalMesh(Asset);
     if (const USkeletalMesh* Asset=GetMesh()->GetSkeletalMeshAsset())
     {
@@ -116,12 +122,124 @@ void AONEPlayer::MoveRight(float V) { if (!IsDead()) AddMovementInput(FVector(1,
 void AONEPlayer::StartFire() { if (!IsDead()) Weapon->SetTrigger(true); }
 void AONEPlayer::StopFire() { Weapon->SetTrigger(false); }
 void AONEPlayer::Reload() { if (!IsDead()) Weapon->BeginReload(); }
-void AONEPlayer::StartSprint() { bSprint = true; }
-void AONEPlayer::StopSprint() { bSprint = false; }
+void AONEPlayer::StartSprint() { SetSprintHeld(true); }
+void AONEPlayer::StopSprint() { SetSprintHeld(false); }
+void AONEPlayer::SetSprintHeld(bool Held)
+{
+    const bool bTrace=FParse::Param(FCommandLine::Get(),TEXT("ONE03InputTrace"));
+    if (bTrace) UE_LOG(LogTemp,Display,TEXT("ONE03_SPRINT_REQUEST held=%d previous=%d paused=%d dead=%d operation=%d ammo=%d reserve=%d"),
+        Held,bSprint,UGameplayStatics::IsGamePaused(this),IsDead(),Weapon ? int32(Weapon->GetOperation()) : -1,Weapon ? Weapon->GetAmmo() : -1,Weapon ? Weapon->GetReserveAmmo() : -1);
+    if (Held && (IsDead() || UGameplayStatics::IsGamePaused(this))) return;
+    const bool bStarted=Held && !bSprint;
+    bSprint=Held;
+    GetCharacterMovement()->MaxWalkSpeed=bSprint ? RunSpeed : WalkSpeed;
+    if (bStarted && Weapon) Weapon->InterruptReloadForSprint();
+    if (bTrace) UE_LOG(LogTemp,Display,TEXT("ONE03_SPRINT_RESULT held=%d started=%d operation=%d interrupts=%d ammo=%d reserve=%d"),
+        bSprint,bStarted,Weapon ? int32(Weapon->GetOperation()) : -1,Weapon ? Weapon->GetSprintReloadInterruptCount() : -1,Weapon ? Weapon->GetAmmo() : -1,Weapon ? Weapon->GetReserveAmmo() : -1);
+}
+void AONEPlayer::ClearReloadPresentation()
+{
+    LoadingShell->SetVisibility(false);
+    HeldMagazine->SetVisibility(false);
+    SeatedMagazine->SetVisibility(Weapon && Weapon->GetDefinition().MagazineMesh.IsValid());
+}
 void AONEPlayer::SelectCarbine() { Weapon->SelectWeapon(0); }
 void AONEPlayer::SelectShotgun() { Weapon->SelectWeapon(1); }
 void AONEPlayer::CycleWeapon() { Weapon->CycleWeapon(); }
-void AONEPlayer::ReleaseHeldInputs() { bSprint=false; Weapon->ClearHeldInput(); }
+void AONEPlayer::ReleaseHeldInputs() { SetSprintHeld(false); Weapon->ClearHeldInput(); }
+float AONEPlayer::GetPivotFootWeight(int32 Foot) const
+{
+    // Release each captured support into its authored swing, not a shared
+    // one-frame rotation of both feet. This correction only runs on sharp pivots.
+    const float T=FMath::Clamp((PivotElapsed-PivotReleaseAt[Foot])/.13f,0.f,1.f);
+    return 1.f-T*T*(3.f-2.f*T);
+}
+void AONEPlayer::CapturePivotFeet()
+{
+    const FVector Forward=FRotator(0,BodyFacingYaw,0).Vector();
+    const FName Feet[]={TEXT("foot_l"),TEXT("foot_r")};
+    const FName Knees[]={TEXT("calf_l"),TEXT("calf_r")};
+    for (int32 I=0;I<2;++I)
+    {
+        PivotFeet[I]=GetMesh()->GetSocketTransform(Feet[I],RTS_World);
+        PivotKnees[I]=GetMesh()->GetSocketLocation(Knees[I])+Forward*30.f;
+        PivotReleaseAt[I]=0.f;
+    }
+    if (bTurningInPlace)
+    {
+        // Source _l opens a positive UE turn; _r opens a negative one.
+        // The other support stays fixed until the second authored step begins.
+        const int32 Trailing=TurnDirection>0 ? 1 : 0;
+        PivotReleaseAt[Trailing]=FMath::Clamp((AuthoredTurnDuration*.5f-TurnTime)/
+            FMath::Clamp(AimAngularSpeed*AuthoredTurnDuration/90.f*1.5f,1.f,4.f),0.f,.22f);
+    }
+    PivotElapsed=0.f;
+}
+void AONEPlayer::UpdateBodyFacing(float Dt,float AimYaw)
+{
+    PivotElapsed+=Dt;
+    if (!bFacingInitialized)
+    {
+        BodyFacingYaw=AimYaw;
+        PreviousAimYaw=AimYaw;
+        bFacingInitialized=true;
+    }
+    const float MeasuredRate=FMath::Abs(FMath::FindDeltaAngleDegrees(PreviousAimYaw,AimYaw))/FMath::Max(.001f,Dt);
+    // Respond immediately to acceleration; let the step finish when the mouse
+    // stops, rather than dropping playback speed halfway through a footfall.
+    AimAngularSpeed=FMath::Max(MeasuredRate,FMath::FInterpTo(AimAngularSpeed,0.f,Dt,7.f));
+    PreviousAimYaw=AimYaw;
+    const float Speed=GetVelocity().Size2D();
+    float Delta=FMath::FindDeltaAngleDegrees(BodyFacingYaw,AimYaw);
+    if (Speed>20.f)
+    {
+        // Moving feet already take steps. Preserve the direction cycle while the
+        // pelvis catches aim changes; upper-body aim is evaluated independently.
+        bTurningInPlace=false;
+        BodyFacingYaw=FMath::FixedTurn(BodyFacingYaw,AimYaw,Dt*540.f);
+    }
+    else
+    {
+        if (bTurningInPlace && Delta*TurnDirection < -28.f)
+        {
+            TurnDirection=Delta>=0 ? 1 : -1;
+            TurnStartYaw=BodyFacingYaw;
+            TurnTime=0.f;
+            CapturePivotFeet();
+        }
+        if (!bTurningInPlace && FMath::Abs(Delta)>TurnTriggerAngle)
+        {
+            bTurningInPlace=true;
+            TurnDirection=Delta>=0 ? 1 : -1;
+            TurnStartYaw=BodyFacingYaw;
+            TurnTime=0.f;
+        }
+        if (bTurningInPlace)
+        {
+            // Same two-step yaw curve as the source clip. A quicker mouse sweep
+            // accelerates the step, rather than spinning a static idle pose.
+            const float FollowRate=AimAngularSpeed*AuthoredTurnDuration/90.f*1.5f;
+            const float Rate=FMath::Clamp(FMath::Max(FollowRate,FMath::Abs(Delta)/55.f),1.f,4.f);
+            TurnTime=FMath::Min(AuthoredTurnDuration,TurnTime+Dt*Rate);
+            const float T=FMath::Clamp(TurnTime/FMath::Max(.01f,AuthoredTurnDuration),0.f,1.f);
+            auto Smooth=[](float V) { V=FMath::Clamp(V,0.f,1.f); return V*V*(3.f-2.f*V); };
+            const float Fraction=T<.5f ? .5f*Smooth(T*2.f) : .5f+.5f*Smooth((T-.5f)*2.f);
+            BodyFacingYaw=FRotator::NormalizeAxis(TurnStartYaw+TurnDirection*90.f*Fraction);
+            if (T>=1.f) bTurningInPlace=false;
+        }
+    }
+    // Keep aim responsive and the waist bounded during instantaneous reversals.
+    // Capture the evaluated feet before changing actor yaw; the animation graph
+    // solves them in world space and releases them into consecutive swing steps.
+    Delta=FMath::FindDeltaAngleDegrees(BodyFacingYaw,AimYaw);
+    if (FMath::Abs(Delta)>MaximumAimOffset)
+    {
+        const float Adjustment=Delta-FMath::Sign(Delta)*MaximumAimOffset;
+        if (FMath::Abs(Adjustment)>4.f) CapturePivotFeet();
+        BodyFacingYaw=FRotator::NormalizeAxis(BodyFacingYaw+Adjustment);
+        if (bTurningInPlace) TurnStartYaw=FRotator::NormalizeAxis(TurnStartYaw+Adjustment);
+    }
+}
 void AONEPlayer::Tick(float Dt)
 {
     Super::Tick(Dt);
@@ -132,7 +250,7 @@ void AONEPlayer::Tick(float Dt)
     SeatedMagazine->SetVisibility(Weapon->GetDefinition().MagazineMesh.IsValid() && Weapon->ShouldShowSeatedMagazine());
     HeldMagazine->SetVisibility(!IsDead() && Weapon->GetDefinition().MagazineMesh.IsValid() && Weapon->ShouldShowHeldMagazine());
     if (IsDead()) return;
-    GetCharacterMovement()->MaxWalkSpeed = bSprint && !Weapon->IsReloading() ? RunSpeed : WalkSpeed;
+    GetCharacterMovement()->MaxWalkSpeed = bSprint ? RunSpeed : WalkSpeed;
     if (bAimOverride) AimPoint=OverrideAimPoint;
     else if (auto* PC = Cast<APlayerController>(GetController()))
     {
@@ -150,7 +268,12 @@ void AONEPlayer::Tick(float Dt)
         }
     }
     FVector Flat = AimPoint - GetActorLocation(); Flat.Z = 0;
-    if (!Flat.IsNearlyZero()) SetActorRotation(FMath::RInterpTo(GetActorRotation(),Flat.Rotation(),Dt,20.f));
+    if (!Flat.IsNearlyZero())
+    {
+        const float AimYaw=Flat.Rotation().Yaw;
+        UpdateBodyFacing(Dt,AimYaw);
+        SetActorRotation(FRotator(0,AimYaw,0));
+    }
 }
 FVector AONEPlayer::GetMuzzleLocation() const { return Gun->GetComponentTransform().TransformPosition(Weapon->GetDefinition().Muzzle); }
 void AONEPlayer::FlashMuzzle() { MuzzleTime = Weapon->GetDefinition().FlashDuration; }

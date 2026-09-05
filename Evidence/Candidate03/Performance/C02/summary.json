@@ -1,0 +1,298 @@
+{
+  "status": "ACTUAL_BASELINE_CAPTURED",
+  "candidate": "02",
+  "built_source_commit": "0637288d32b6fbebc67ef93d4f03e439ff38bb67",
+  "platform": "Windows Development",
+  "resolution": "1600x900",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "cpu": "AMD Ryzen 9 5950X 16-Core Processor",
+  "max_fps": 120,
+  "vsync": 0,
+  "selected_window_capture_seconds": [
+    10,
+    20
+  ],
+  "repeats_per_count": 1,
+  "timing_scope": "Captured frame time plus individual engine CSV CPU timing scopes; solver scope is not total physics wall time.",
+  "alignment": "Capture-relative selection, no claimed exact world-time alignment. Per-run wall-log offset recorded separately.",
+  "retained_interruption": "Legacy benchmark takes one PNG at actor elapsed15s; each selected interval retains one greater-than100ms frame near capture second15. Causal attribution is consistent with that screenshot but not independently instrumented.",
+  "raw_data_policy": "Raw CSV and logs remain local under Saved. Curated numeric timelines omit event text and private metadata.",
+  "runs": [
+    {
+      "enemies": 6,
+      "observed_alive_at_end": 6,
+      "validation_failures": 0,
+      "selected_frame_time": {
+        "column": "FrameTime",
+        "samples": 1184,
+        "mean_ms": 8.43559704391892,
+        "median_ms": 8.3298,
+        "p95_ms": 8.514655,
+        "p99_ms": 8.611680000000002,
+        "max_ms": 135.5696,
+        "nonzero_samples": 1184,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          }
+        }
+      },
+      "full_frame_time": {
+        "column": "FrameTime",
+        "samples": 3000,
+        "mean_ms": 8.373698866666667,
+        "median_ms": 8.33215,
+        "p95_ms": 8.52481,
+        "p99_ms": 8.641915,
+        "max_ms": 135.5696,
+        "nonzero_samples": 3000,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 2,
+            "percent": 0.06666666666666667
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          }
+        }
+      },
+      "selected_solver_scope": {
+        "name": "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl",
+        "samples": 1184,
+        "mean_ms": 0.08517863175675676,
+        "median_ms": 0.08465,
+        "p95_ms": 0.09738499999999999,
+        "p99_ms": 0.11060200000000005,
+        "max_ms": 0.1757,
+        "nonzero_samples": 1184,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "log_timestamp_offset_seconds": 0.233,
+      "selected_report": "alive6_10to20.json",
+      "full_report": "alive6_full.json"
+    },
+    {
+      "enemies": 12,
+      "observed_alive_at_end": 12,
+      "validation_failures": 0,
+      "selected_frame_time": {
+        "column": "FrameTime",
+        "samples": 1184,
+        "mean_ms": 8.440982516891891,
+        "median_ms": 8.3293,
+        "p95_ms": 8.564174999999999,
+        "p99_ms": 8.709335,
+        "max_ms": 141.3121,
+        "nonzero_samples": 1184,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.08445945945945946
+          }
+        }
+      },
+      "full_frame_time": {
+        "column": "FrameTime",
+        "samples": 3000,
+        "mean_ms": 8.376398566666667,
+        "median_ms": 8.32895,
+        "p95_ms": 8.560224999999999,
+        "p99_ms": 8.718032999999998,
+        "max_ms": 141.3121,
+        "nonzero_samples": 3000,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 2,
+            "percent": 0.06666666666666667
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          }
+        }
+      },
+      "selected_solver_scope": {
+        "name": "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl",
+        "samples": 1184,
+        "mean_ms": 0.0898558277027027,
+        "median_ms": 0.08815,
+        "p95_ms": 0.10756999999999999,
+        "p99_ms": 0.12918500000000002,
+        "max_ms": 0.1681,
+        "nonzero_samples": 1184,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "log_timestamp_offset_seconds": 0.223,
+      "selected_report": "alive12_10to20.json",
+      "full_report": "alive12_full.json"
+    },
+    {
+      "enemies": 18,
+      "observed_alive_at_end": 18,
+      "validation_failures": 0,
+      "selected_frame_time": {
+        "column": "FrameTime",
+        "samples": 1183,
+        "mean_ms": 8.441768892645817,
+        "median_ms": 8.3304,
+        "p95_ms": 8.60094,
+        "p99_ms": 8.793336,
+        "max_ms": 142.3466,
+        "nonzero_samples": 1183,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.08453085376162299
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.08453085376162299
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.08453085376162299
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.08453085376162299
+          }
+        }
+      },
+      "full_frame_time": {
+        "column": "FrameTime",
+        "samples": 3000,
+        "mean_ms": 8.381834533333333,
+        "median_ms": 8.3307,
+        "p95_ms": 8.60613,
+        "p99_ms": 8.790727999999996,
+        "max_ms": 142.3466,
+        "nonzero_samples": 3000,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 3,
+            "percent": 0.1
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          },
+          "above_100_ms": {
+            "count": 1,
+            "percent": 0.03333333333333333
+          }
+        }
+      },
+      "selected_solver_scope": {
+        "name": "PhysicsVerbose/AllWorkers/StepSolver_AdvanceOneTimeStepImpl",
+        "samples": 1183,
+        "mean_ms": 0.09743753169907017,
+        "median_ms": 0.0941,
+        "p95_ms": 0.12605999999999995,
+        "p99_ms": 0.15552600000000005,
+        "max_ms": 0.2337,
+        "nonzero_samples": 1183,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "log_timestamp_offset_seconds": 0.219,
+      "selected_report": "alive18_10to20.json",
+      "full_report": "alive18_full.json"
+    }
+  ]
+}

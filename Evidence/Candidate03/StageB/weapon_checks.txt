@@ -1,0 +1,91 @@
+Candidate03 Stage B: actual player/weapon integration
+Real capacities, shot dispatch, operation clocks and ammo transfers. No mocked weapon or ammo setter.
+Initial binding fixture injects frame-spaced UE input events through PlayerController::InputKey; this proves production binding dispatch, not native OS keyboard delivery.
+PASS | Weapon check uses the real sandbox without normal waves
+PASS | Controller-routed mouse press/release dispatches one real fire action
+PASS | Controller-routed R press starts the production magazine reload
+PASS | Controller-routed LeftShift dispatches Run and immediately interrupts reload
+PASS | Production Shift binding preserves pre-transfer ammunition
+PASS | Frame-spaced controller events maintain simultaneous W and LeftShift input
+PASS | Production W axis and Run action produce real sprint displacement in the mapped direction
+PASS | Production release events clear movement and sprint without lingering held input
+PASS | Controller-routed interrupted reload cannot resume a stale transfer after key release
+PASS | Both normal loaded capacities are used
+PASS | Rifle last shot empties its actual magazine and starts auto reload without another trigger pull
+PASS | Automatic rifle reload begins before its transfer and leaves holstered shotgun untouched
+PASS | Automatic rifle reload conserves ammo, runs once and does not fire after released input
+PASS | Shotgun automatic reload follows six real trigger presses and the final empty magazine
+PASS | Final shotgun shot finishes required pump and exactly one ejection per shot before automatic shell loading
+PASS | Automatic shell reload fills capacity from six earned insertions without ghost semi-auto fire
+PASS | Interruption fixture spends one real round
+PASS | Shift immediately cancels rifle before magazine removal at 0.250 seconds
+PASS | rifle before magazine removal preserves exactly completed transfers
+PASS | Sprint interruption immediately removes obsolete held reload props
+PASS | Reload interruption permits actual sprint displacement immediately
+PASS | Held Shift defeats repeated R without delayed transfers, auto reload or extra ejection
+PASS | Interruption fixture spends one real round
+PASS | Shift immediately cancels rifle with magazine removed at 0.750 seconds
+PASS | rifle with magazine removed preserves exactly completed transfers
+PASS | Sprint interruption immediately removes obsolete held reload props
+PASS | Reload interruption permits actual sprint displacement immediately
+PASS | Held Shift defeats repeated R without delayed transfers, auto reload or extra ejection
+PASS | Interruption fixture spends one real round
+PASS | Shift immediately cancels rifle before ammunition transfer at 1.100 seconds
+PASS | rifle before ammunition transfer preserves exactly completed transfers
+PASS | Sprint interruption immediately removes obsolete held reload props
+PASS | Reload interruption permits actual sprint displacement immediately
+PASS | Held Shift defeats repeated R without delayed transfers, auto reload or extra ejection
+PASS | Interruption fixture spends one real round
+PASS | Shift immediately cancels rifle after ammunition transfer at 1.284 seconds
+PASS | rifle after ammunition transfer preserves exactly completed transfers
+PASS | Sprint interruption immediately removes obsolete held reload props
+PASS | Reload interruption permits actual sprint displacement immediately
+PASS | Held Shift defeats repeated R without delayed transfers, auto reload or extra ejection
+PASS | Interruption fixture spends one real round
+PASS | Shift immediately cancels rifle after bolt event at 1.900 seconds
+PASS | rifle after bolt event preserves exactly completed transfers
+PASS | Sprint interruption immediately removes obsolete held reload props
+PASS | Reload interruption permits actual sprint displacement immediately
+PASS | Held Shift defeats repeated R without delayed transfers, auto reload or extra ejection
+PASS | Interruption fixture spends one real round
+PASS | Shift immediately cancels shotgun opening at 0.183 seconds
+PASS | shotgun opening preserves exactly completed transfers
+PASS | Sprint interruption immediately removes obsolete held reload props
+PASS | Reload interruption permits actual sprint displacement immediately
+PASS | Held Shift defeats repeated R without delayed transfers, auto reload or extra ejection
+PASS | Interruption fixture spends one real round
+PASS | Shift immediately cancels shotgun before shell insertion at 0.400 seconds
+PASS | shotgun before shell insertion preserves exactly completed transfers
+PASS | Sprint interruption immediately removes obsolete held reload props
+PASS | Reload interruption permits actual sprint displacement immediately
+PASS | Held Shift defeats repeated R without delayed transfers, auto reload or extra ejection
+PASS | Interruption fixture spends one real round
+PASS | Shift immediately cancels shotgun after shell insertion at 0.683 seconds
+PASS | shotgun after shell insertion preserves exactly completed transfers
+PASS | Sprint interruption immediately removes obsolete held reload props
+PASS | Reload interruption permits actual sprint displacement immediately
+PASS | Held Shift defeats repeated R without delayed transfers, auto reload or extra ejection
+PASS | Empty equipped rifle defers automatic and manual reload while stationary Shift remains held
+PASS | Releasing Shift makes the empty equipped rifle immediately eligible
+PASS | Sprint release starts one automatic reload without stale held firing
+PASS | Switching leaves canceled empty rifle holstered without hidden auto reload or stale commit
+PASS | Re-equipping the empty rifle waits for equip then automatically reloads once
+PASS | Direct weapon start requests explicitly reject paused state
+PASS | Pause preserves reload clock, ammo and operation despite direct input attempts
+PASS | Resume completes the legitimate reload with no buffered pause shot
+PASS | Pump is still required after ejection and blocks a second shot before lock
+PASS | Sprint and R cannot cancel or skip an active pump
+PASS | Holstered post-ejection shotgun retains its unfinished pump
+PASS | Resumed pump locks with no duplicate ejection, ammo loss or ghost shot
+PASS | Zero-reserve shotgun still fires and ejects exactly six loaded shells
+PASS | Dry trigger produces empty feedback without a shot or casing
+PASS | No reserve means no repeating automatic reload loop
+PASS | New reserve makes the empty equipped shotgun automatically reload
+PASS | Dead player rejects direct equip, fire, sprint and reload starts
+PASS | Death cancels auto shell loading and all later transfers or firing
+PASS | Real level restart restores live sandbox and score
+PASS | Restart restores both carried ammo stores and clears pump obligation
+PASS | Restart has no stale operation, automatic reload, trigger or sprint input
+
+Checks: 85
+Failures: 0

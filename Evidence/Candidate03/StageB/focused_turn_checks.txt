@@ -1,0 +1,16 @@
+Candidate03 actual movement integration
+Each directional axis feeds CharacterMovement input; diagonal inputs are not pre-normalized by this probe.
+
+PASS | Player walk tuning exceeds fastest implemented infected speed
+PASS | Sprint remains faster than walking
+PASS | Stationary circles do not translate the player capsule
+PASS | Repeated aim circles produce evaluated lower-body foot motion
+PASS | Both feet lift in world space during turn steps: 15.07 / 15.99 cm
+PASS | Stationary circles do not translate the player capsule
+PASS | Repeated aim circles produce evaluated lower-body foot motion
+PASS | Both feet lift in world space during turn steps: 13.19 / 15.26 cm
+PASS | Actual shots dispatch during continuous translation, sprint and rapid aim changes
+PASS | Actual shots dispatch during continuous translation, sprint and rapid aim changes
+
+Failures: 0
+Captured frames: 1589

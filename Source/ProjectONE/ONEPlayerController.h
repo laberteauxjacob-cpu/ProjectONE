@@ -11,7 +11,9 @@ public:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
     virtual void FlushPressedKeys() override;
+    virtual bool InputKey(const FInputKeyEventArgs& Params) override;
 private:
+    bool bTraceInput=false;
     void TogglePause();
     void Restart();
     void QuitFromPause();

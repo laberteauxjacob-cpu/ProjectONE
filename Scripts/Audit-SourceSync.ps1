@@ -1,8 +1,11 @@
-# Read-only Candidate02 audit of UE's serialized FAssetImportInfo and authored sources.
+# Read-only audit of UE's serialized FAssetImportInfo and authored sources.
 # Does not launch Unreal or write to content; safe while gameplay reads assets.
-param([string]$OutputRelativePath = 'Evidence/Candidate02/source_sync.json')
+param([string]$OutputRelativePath = 'Evidence/Candidate02/source_sync.json', [switch]$Candidate03)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
+if ($Candidate03 -and -not $PSBoundParameters.ContainsKey('OutputRelativePath')) {
+    $OutputRelativePath = 'Evidence/Candidate03/source_sync.json'
+}
 $records = [System.Collections.Generic.List[object]]::new()
 $sources = [System.Collections.Generic.List[object]]::new()
 # The accepted report supplies its explicit 39-path inventory; old hashes remain
@@ -18,6 +21,25 @@ foreach ($entry in $candidate.audio.PSObject.Properties.Value) { $sources.Add(@{
 if ($candidate.static_meshes.Count -ne 5 -or $clips.Count -ne 9 -or $candidate.audio.PSObject.Properties.Name.Count -ne 25 -or $sources.Count -ne 78) {
     throw 'Expected 39 accepted sources plus 14 new FBXs and 25 new WAVs'
 }
+$candidate03Count = 0
+if ($Candidate03) {
+    # Explicit Stage B inventory. Extend deliberately when Stage C/D is accepted.
+    $locomotion = Get-Content -Raw -LiteralPath (Join-Path $projectRoot 'ArtSource/Characters/Candidate03/inventory.json') | ConvertFrom-Json
+    $expectedClips = @('A_Response_C03_Turn_L', 'A_Response_C03_Turn_R')
+    foreach ($gait in @('Walk', 'Run')) {
+        foreach ($direction in @('F', 'FR', 'R', 'BR', 'B', 'BL', 'L', 'FL')) {
+            $expectedClips += "A_Response_C03_${gait}_${direction}"
+        }
+    }
+    $actualClips = @($locomotion.clips.PSObject.Properties.Name)
+    if ($actualClips.Count -ne 18 -or @(Compare-Object ($expectedClips | Sort-Object) ($actualClips | Sort-Object)).Count -ne 0) {
+        throw 'Expected the explicit eighteen Candidate03 Stage B animations'
+    }
+    foreach ($name in ($expectedClips | Sort-Object)) {
+        $sources.Add(@{source="ArtSource/Exports/Candidate03/$name.fbx"; asset="/Game/ONE/Animations/$name"; candidate='03'})
+    }
+    $candidate03Count = 18
+}
 if (@($sources.source | Sort-Object -Unique).Count -ne $sources.Count) { throw 'Duplicate source in inventory' }
 foreach ($entry in $sources) {
         $sourceFile = Get-Item -LiteralPath (Join-Path $projectRoot $entry.source)
@@ -30,6 +52,11 @@ foreach ($entry in $sources) {
         $sourceMetadata = @($jsonMatch.Value | ConvertFrom-Json)
         $recorded = $sourceMetadata | Where-Object { [System.IO.Path]::GetFileName($_.RelativeFilename) -eq $sourceFile.Name } | Select-Object -First 1
         if (-not $recorded) { throw "Source filename mismatch in: $assetFile" }
+        if ($entry.candidate -eq '03') {
+            if ($sourceMetadata.Count -ne 1 -or [IO.Path]::IsPathRooted([string]$recorded.RelativeFilename)) { throw "Unexpected Candidate03 import path: $assetRelative" }
+            $resolvedImport = [IO.Path]::GetFullPath((Join-Path (Split-Path -Parent $assetFile) $recorded.RelativeFilename))
+            if ($resolvedImport -ne $sourceFile.FullName) { throw "Candidate03 import path resolves outside its inventory: $assetRelative" }
+        }
         $sourceMd5 = (Get-FileHash -LiteralPath $sourceFile.FullName -Algorithm MD5).Hash.ToLowerInvariant()
         $importedMd5 = ([string]$recorded.FileMD5).ToLowerInvariant()
         if ($sourceMd5 -ne $importedMd5) { throw "Stale imported asset $assetRelative : source=$sourceMd5 imported=$importedMd5" }
@@ -51,8 +78,14 @@ $report = [ordered]@{
     all_source_hashes_match = $true
     sources = $records
 }
+if ($Candidate03) { $report['new_candidate03_stage_b_fbx'] = $candidate03Count }
 $reportPath = Join-Path $projectRoot $OutputRelativePath
+if (-not [IO.Path]::GetFullPath($reportPath).StartsWith([IO.Path]::GetFullPath($projectRoot) + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Audit output must remain inside the project' }
 if ([System.IO.Path]::GetFullPath($reportPath) -eq [System.IO.Path]::GetFullPath((Join-Path $projectRoot 'Evidence/final_source_sync.json'))) { throw 'Candidate01 historical evidence must remain unchanged' }
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $reportPath) | Out-Null
 $report | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $reportPath
-Write-Output "ONE CANDIDATE02 SOURCE HASHES ALL MATCH: $($records.Count) sources (39 accepted + 14 FBX + 25 WAV)"
+if ($Candidate03) {
+    Write-Output "ONE CANDIDATE03 SOURCE HASHES ALL MATCH: $($records.Count) sources (78 accepted + 18 Stage B FBX)"
+} else {
+    Write-Output "ONE CANDIDATE02 SOURCE HASHES ALL MATCH: $($records.Count) sources (39 accepted + 14 FBX + 25 WAV)"
+}

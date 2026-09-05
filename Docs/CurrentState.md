@@ -1,5 +1,10 @@
 # Current state — Candidate02
 
+Candidate03 is being developed on `codex/candidate03`; the published playable
+candidate below remains Candidate02 until the complete correction pass is
+verified. See [Candidate03 progress](Passes/Candidate03.md) for the current
+movement/reload checkpoint and the remaining weapon/physicality stages.
+
 Candidate02 is the original Project ONE containment arena with two carried
 weapons and a developer sandbox. It retains the accepted player, infected
 archetype, room, rounds, points, blood and severing foundation. Project Zero

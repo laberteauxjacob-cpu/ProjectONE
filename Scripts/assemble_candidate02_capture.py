@@ -15,6 +15,7 @@ p = argparse.ArgumentParser()
 p.add_argument('--input', type=pathlib.Path, required=True)
 p.add_argument('--output', type=pathlib.Path, required=True)
 p.add_argument('--ffmpeg', default='ffmpeg')
+p.add_argument('--capture-kind', choices=('packaged','editor-game'), default='packaged', help='Identify the actual runtime used; encoding does not establish packaged validation.')
 args = p.parse_args()
 rows = list(csv.DictReader((args.input/'frames.csv').open()))
 if len(rows) < 2:
@@ -38,6 +39,6 @@ lines.append(lines[-2])
 concat.write_text('\n'.join(lines)+'\n')
 args.output.parent.mkdir(parents=True, exist_ok=True)
 subprocess.run([args.ffmpeg,'-y','-hide_banner','-loglevel','warning','-f','concat','-safe','0','-i',str(concat),'-i',str(audio),'-c:v','libx264','-crf','20','-preset','medium','-pix_fmt','yuv420p','-r','30','-c:a','aac','-b:a','192k','-t',str(duration),'-movflags','+faststart',str(args.output)], check=True)
-report = {'source':'Actual packaged gameplay screenshot callback plus Unreal master-submix WAV', 'frames':len(rows), 'capture_span_seconds':times[-1]-times[0], 'actual_capture_fps':(len(rows)-1)/(times[-1]-times[0]), 'first_frame_audio_seconds':times[0], 'audio_duration_seconds':duration, 'video_output_fps':30, 'frame_treatment':'Timestamped captured frames held as needed; no AI generation or motion interpolation', 'audio_review':'Engine output captured; perceptual audition not established by encoding'}
+report = {'source':'Actual '+args.capture_kind+' gameplay screenshot callback plus Unreal master-submix WAV', 'frames':len(rows), 'capture_span_seconds':times[-1]-times[0], 'actual_capture_fps':(len(rows)-1)/(times[-1]-times[0]), 'first_frame_audio_seconds':times[0], 'audio_duration_seconds':duration, 'video_output_fps':30, 'frame_treatment':'Timestamped captured frames held as needed; no AI generation or motion interpolation', 'audio_review':'Engine output captured; perceptual audition not established by encoding'}
 args.output.with_suffix('.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report,indent=2))

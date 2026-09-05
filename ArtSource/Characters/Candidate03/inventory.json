@@ -1,0 +1,138 @@
+{
+  "source": "ResponseLocomotion.blend",
+  "fps": 100,
+  "skeleton": "SK_Response_Skeleton",
+  "source_axes": "+X forward, source Y reflected to UE Y",
+  "directions_are": "Unreal actor-local +X forward / +Y right",
+  "walk_speed_cm_s": 225.0,
+  "run_speed_cm_s": 370.0,
+  "turn_duration": 0.6,
+  "turn_degrees": 90,
+  "clips": {
+    "A_Response_C03_Walk_F": {
+      "duration": 0.72,
+      "speed": 225.0,
+      "stride_cm": 162.0,
+      "direction_degrees_ue": 0,
+      "stance_fraction": 0.51
+    },
+    "A_Response_C03_Walk_FR": {
+      "duration": 0.72,
+      "speed": 225.0,
+      "stride_cm": 162.0,
+      "direction_degrees_ue": 45,
+      "stance_fraction": 0.51
+    },
+    "A_Response_C03_Walk_R": {
+      "duration": 0.72,
+      "speed": 225.0,
+      "stride_cm": 162.0,
+      "direction_degrees_ue": 90,
+      "stance_fraction": 0.51
+    },
+    "A_Response_C03_Walk_BR": {
+      "duration": 0.72,
+      "speed": 225.0,
+      "stride_cm": 162.0,
+      "direction_degrees_ue": 135,
+      "stance_fraction": 0.51
+    },
+    "A_Response_C03_Walk_B": {
+      "duration": 0.72,
+      "speed": 225.0,
+      "stride_cm": 162.0,
+      "direction_degrees_ue": 180,
+      "stance_fraction": 0.51
+    },
+    "A_Response_C03_Walk_BL": {
+      "duration": 0.72,
+      "speed": 225.0,
+      "stride_cm": 162.0,
+      "direction_degrees_ue": 225,
+      "stance_fraction": 0.51
+    },
+    "A_Response_C03_Walk_L": {
+      "duration": 0.72,
+      "speed": 225.0,
+      "stride_cm": 162.0,
+      "direction_degrees_ue": 270,
+      "stance_fraction": 0.51
+    },
+    "A_Response_C03_Walk_FL": {
+      "duration": 0.72,
+      "speed": 225.0,
+      "stride_cm": 162.0,
+      "direction_degrees_ue": 315,
+      "stance_fraction": 0.51
+    },
+    "A_Response_C03_Run_F": {
+      "duration": 0.62,
+      "speed": 370.0,
+      "stride_cm": 229.4,
+      "direction_degrees_ue": 0,
+      "stance_fraction": 0.35
+    },
+    "A_Response_C03_Run_FR": {
+      "duration": 0.62,
+      "speed": 370.0,
+      "stride_cm": 229.4,
+      "direction_degrees_ue": 45,
+      "stance_fraction": 0.35
+    },
+    "A_Response_C03_Run_R": {
+      "duration": 0.62,
+      "speed": 370.0,
+      "stride_cm": 229.4,
+      "direction_degrees_ue": 90,
+      "stance_fraction": 0.35
+    },
+    "A_Response_C03_Run_BR": {
+      "duration": 0.62,
+      "speed": 370.0,
+      "stride_cm": 229.4,
+      "direction_degrees_ue": 135,
+      "stance_fraction": 0.35
+    },
+    "A_Response_C03_Run_B": {
+      "duration": 0.62,
+      "speed": 370.0,
+      "stride_cm": 229.4,
+      "direction_degrees_ue": 180,
+      "stance_fraction": 0.35
+    },
+    "A_Response_C03_Run_BL": {
+      "duration": 0.62,
+      "speed": 370.0,
+      "stride_cm": 229.4,
+      "direction_degrees_ue": 225,
+      "stance_fraction": 0.35
+    },
+    "A_Response_C03_Run_L": {
+      "duration": 0.62,
+      "speed": 370.0,
+      "stride_cm": 229.4,
+      "direction_degrees_ue": 270,
+      "stance_fraction": 0.35
+    },
+    "A_Response_C03_Run_FL": {
+      "duration": 0.62,
+      "speed": 370.0,
+      "stride_cm": 229.4,
+      "direction_degrees_ue": 315,
+      "stance_fraction": 0.35
+    },
+    "A_Response_C03_Turn_L": {
+      "duration": 0.6,
+      "turn_degrees_ue": -90,
+      "body_yaw_fraction": "0.5*smoothstep(2*t) for t<0.5; 0.5+0.5*smoothstep(2*t-1) otherwise",
+      "ankle_gap_max_cm": 2.5151747623215615e-05
+    },
+    "A_Response_C03_Turn_R": {
+      "duration": 0.6,
+      "turn_degrees_ue": 90,
+      "body_yaw_fraction": "0.5*smoothstep(2*t) for t<0.5; 0.5+0.5*smoothstep(2*t-1) otherwise",
+      "ankle_gap_max_cm": 2.8649705856671062e-05
+    }
+  },
+  "limitations": "Source numeric checks do not establish runtime foot planting or perceived motion quality."
+}

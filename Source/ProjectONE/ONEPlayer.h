@@ -31,12 +31,24 @@ public:
     void ClearWeaponEffects();
     void ApplyWeaponPresentation(const FONEWeaponDefinition& Definition);
     void ReleaseHeldInputs();
-    void SetSprintHeld(bool Held) { bSprint=Held; }
+    void SetSprintHeld(bool Held);
+    bool IsSprintRequested() const { return bSprint && !IsDead(); }
+    void ClearReloadPresentation();
+    float GetBodyFacingYaw() const { return BodyFacingYaw; }
+    bool IsTurningInPlace() const { return bTurningInPlace; }
+    float GetTurnAnimationTime() const { return TurnTime; }
+    int32 GetTurnDirection() const { return TurnDirection; }
+    float GetPivotFootWeight(int32 Foot) const;
+    const FTransform& GetPivotFootWorld(int32 Foot) const { return PivotFeet[Foot]; }
+    const FVector& GetPivotKneeWorld(int32 Foot) const { return PivotKnees[Foot]; }
     void SetAimOverride(bool Enabled,const FVector& Position) { bAimOverride=Enabled; OverrideAimPoint=Position; }
-    UPROPERTY(EditAnywhere, Category="Movement") float WalkSpeed = 180.f;
+    UPROPERTY(EditAnywhere, Category="Movement") float WalkSpeed = 225.f;
     UPROPERTY(EditAnywhere, Category="Movement") float RunSpeed = 370.f;
-    UPROPERTY(EditAnywhere, Category="Animation") float AuthoredWalkSpeed = 180.f;
+    UPROPERTY(EditAnywhere, Category="Animation") float AuthoredWalkSpeed = 225.f;
     UPROPERTY(EditAnywhere, Category="Animation") float AuthoredRunSpeed = 370.f;
+    UPROPERTY(EditAnywhere, Category="Animation") float TurnTriggerAngle = 55.f;
+    UPROPERTY(EditAnywhere, Category="Animation") float MaximumAimOffset = 70.f;
+    UPROPERTY(EditAnywhere, Category="Animation") float AuthoredTurnDuration = .60f;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UONEHealthComponent> Health;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UONEWeaponComponent> Weapon;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Gun;
@@ -54,7 +66,21 @@ private:
     void StartFire(); void StopFire(); void Reload();
     void StartSprint(); void StopSprint();
     void SelectCarbine(); void SelectShotgun(); void CycleWeapon();
+    void UpdateBodyFacing(float DeltaSeconds,float AimYaw);
+    void CapturePivotFeet();
     bool bSprint = false;
+    bool bFacingInitialized = false;
+    bool bTurningInPlace = false;
+    float BodyFacingYaw = 0.f;
+    float TurnStartYaw = 0.f;
+    float TurnTime = 0.f;
+    float PreviousAimYaw = 0.f;
+    float AimAngularSpeed = 0.f;
+    float PivotElapsed = 1.f;
+    float PivotReleaseAt[2] = {0.f,0.f};
+    FTransform PivotFeet[2];
+    FVector PivotKnees[2];
+    int32 TurnDirection = 1;
     bool bAimOverride = false;
     FVector OverrideAimPoint=FVector::ZeroVector;
     FVector AimPoint = FVector::ZeroVector;

@@ -34,7 +34,7 @@ UONEWeaponComponent::UONEWeaponComponent()
 {
     PrimaryComponentTick.bCanEverTick=true;
     FONEWeaponDefinition Carbine;
-    Carbine.Id=TEXT("AR01"); Carbine.DisplayName=FText::FromString(TEXT("AR-01 CARBINE"));
+    Carbine.Id=TEXT("AR01"); Carbine.DisplayName=FText::FromString(TEXT("5.56 mm Carbine"));
     Carbine.Mesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_Carbine_C02Body"));
     Carbine.MagazineMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_Carbine_Magazine"));
     Carbine.ReadyAnimation=Clip(TEXT("A_Response_Idle"));
@@ -49,7 +49,7 @@ UONEWeaponComponent::UONEWeaponComponent()
         Event(.4f,EONEWeaponEvent::MagazineOut,TEXT("S_CarbineMagOut")),Event(1.2f,EONEWeaponEvent::MagazineCommit,TEXT("S_CarbineMagIn")),Event(1.74f,EONEWeaponEvent::Sound,TEXT("S_CarbineBolt"))});
     WeaponDefinitions.Add(Carbine);
     FONEWeaponDefinition Shotgun=Carbine;
-    Shotgun.Id=TEXT("SG01"); Shotgun.DisplayName=FText::FromString(TEXT("SG-01 PUMP SHOTGUN"));
+    Shotgun.Id=TEXT("SG01"); Shotgun.DisplayName=FText::FromString(TEXT("12-Gauge Pump Shotgun"));
     Shotgun.bAutomatic=false; Shotgun.bShellReload=true; Shotgun.bPumpAction=true;
     Shotgun.Capacity=6; Shotgun.InitialReserve=36; Shotgun.ReserveLimit=60;
     Shotgun.RoundReserveReward=8;
@@ -125,16 +125,19 @@ float UONEWeaponComponent::GetReloadProgress() const { return IsReloading() ? Ge
 bool UONEWeaponComponent::CanFire() const
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    return P && !P->IsDead() && GetAmmo()>0 && !NeedsPump(EquippedIndex) &&
+    return P && !P->IsDead() && !UGameplayStatics::IsGamePaused(this) && GetAmmo()>0 && !NeedsPump(EquippedIndex) &&
         (Operation==EONEWeaponOperation::Ready || (GetDefinition().bAutomatic && Operation==EONEWeaponOperation::Fire)) && GetTimeSinceShot()>=GetDefinition().FireInterval;
 }
 void UONEWeaponComponent::SetTrigger(bool Held)
 {
+    const auto* P=Cast<AONEPlayer>(GetOwner());
+    if (Held && (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this))) return;
     if (Held && !bTrigger)
     {
         bPendingShot=true;
         // A per-shell reload may be interrupted; an already inserted shell remains earned.
-        if (GetDefinition().bShellReload && IsReloading() && Operation!=EONEWeaponOperation::ShellEnd) StartOperation(EONEWeaponOperation::ShellEnd);
+        if (GetDefinition().bShellReload && IsReloading() && Operation!=EONEWeaponOperation::ShellEnd)
+        { AdvanceOperationEvents(); StartOperation(EONEWeaponOperation::ShellEnd); }
     }
     bTrigger=Held;
     // A semi-auto press is one buffered command: releasing the button during the
@@ -144,13 +147,35 @@ void UONEWeaponComponent::SetTrigger(bool Held)
 void UONEWeaponComponent::BeginReload()
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (!P || P->IsDead() || (Operation!=EONEWeaponOperation::Ready && Operation!=EONEWeaponOperation::Fire) || NeedsPump(EquippedIndex) || GetAmmo()>=GetDefinition().Capacity || GetReserveAmmo()<=0) return;
+    // Held sprint has priority over both R and automatic reload, even while still.
+    // Ignored R presses are not queued to fight the player's escape on later ticks.
+    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || P->IsSprintRequested() ||
+        (Operation!=EONEWeaponOperation::Ready && Operation!=EONEWeaponOperation::Fire) ||
+        NeedsPump(EquippedIndex) || GetAmmo()>=GetDefinition().Capacity || GetReserveAmmo()<=0) return;
     bPendingShot=false;
     StartOperation(GetDefinition().bShellReload ? EONEWeaponOperation::ShellStart : EONEWeaponOperation::MagazineReload);
 }
 void UONEWeaponComponent::CancelReload()
 {
-    if (IsReloading()) { StopOperationAudio(); Operation=EONEWeaponOperation::Ready; ++OperationSerial; NextEvent=0; }
+    if (!IsReloading()) return;
+    // Input can arrive before this component's tick. Honor transfers whose event
+    // time has already elapsed, then invalidate all later events atomically.
+    if (!UGameplayStatics::IsGamePaused(this)) AdvanceOperationEvents();
+    StopOperationAudio(); Operation=EONEWeaponOperation::Ready; ++OperationSerial; NextEvent=0;
+    bPendingShot=false;
+    if (auto* P=Cast<AONEPlayer>(GetOwner())) P->ClearReloadPresentation();
+}
+void UONEWeaponComponent::InterruptReloadForSprint()
+{
+    const auto* P=Cast<AONEPlayer>(GetOwner());
+    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !IsReloading()) return;
+    CancelReload(); ++SprintReloadInterrupts;
+}
+bool UONEWeaponComponent::CanAutoReload() const
+{
+    const auto* P=Cast<AONEPlayer>(GetOwner());
+    return P && !P->IsDead() && !UGameplayStatics::IsGamePaused(this) && !P->IsSprintRequested() &&
+        Operation==EONEWeaponOperation::Ready && !NeedsPump(EquippedIndex) && GetAmmo()==0 && GetReserveAmmo()>0;
 }
 void UONEWeaponComponent::StopOperationAudio()
 {
@@ -168,7 +193,8 @@ void UONEWeaponComponent::CancelAllOperations()
 bool UONEWeaponComponent::SelectWeapon(int32 I)
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (!P || P->IsDead() || !Carried.IsValidIndex(I) || (I==EquippedIndex && PendingIndex<0)) return false;
+    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !Carried.IsValidIndex(I) || (I==EquippedIndex && PendingIndex<0)) return false;
+    if (IsReloading()) CancelReload();
     CancelAllOperations();
     if (I==EquippedIndex) { if (NeedsPump(I)) StartOperation(EONEWeaponOperation::Pump); return true; }
     PendingIndex=I; StartOperation(EONEWeaponOperation::Equip,I); return true;
@@ -253,18 +279,26 @@ void UONEWeaponComponent::FinishOperation()
     else if (Finished==EONEWeaponOperation::ShellStart || Finished==EONEWeaponOperation::ShellInsert)
         StartOperation(GetAmmo()<GetDefinition().Capacity && GetReserveAmmo()>0 ? EONEWeaponOperation::ShellInsert : EONEWeaponOperation::ShellEnd);
 }
+void UONEWeaponComponent::AdvanceOperationEvents()
+{
+    const int32 Serial=OperationSerial;
+    if (const auto* O=FindOperation(OperationIndex,Operation))
+        while (OperationSerial==Serial && NextEvent<O->Events.Num() && O->Events[NextEvent].Time<=GetOperationElapsed()) ProcessWeaponEvent(O->Events[NextEvent++]);
+}
 void UONEWeaponComponent::TickComponent(float Dt,ELevelTick Tick,FActorComponentTickFunction* ThisTick)
 {
     Super::TickComponent(Dt,Tick,ThisTick);
-    const auto* P=Cast<AONEPlayer>(GetOwner()); if (!P || P->IsDead()) return;
+    const auto* P=Cast<AONEPlayer>(GetOwner()); if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this)) return;
     if (Operation!=EONEWeaponOperation::Ready)
     {
         const int32 Serial=OperationSerial;
-        if (const auto* O=FindOperation(OperationIndex,Operation))
-            while (OperationSerial==Serial && NextEvent<O->Events.Num() && O->Events[NextEvent].Time<=GetOperationElapsed()) ProcessWeaponEvent(O->Events[NextEvent++]);
+        AdvanceOperationEvents();
         if (Serial==OperationSerial && GetOperationElapsed()>=GetOperationDuration()) FinishOperation();
     }
     if (Operation==EONEWeaponOperation::Ready && NeedsPump(EquippedIndex)) StartOperation(EONEWeaponOperation::Pump);
+    // Pump/equip/fire completion comes first. Only the empty equipped weapon may
+    // reload automatically; a held trigger is never required to enter this path.
+    if (CanAutoReload()) { BeginReload(); if (IsReloading()) ++AutomaticReloads; }
     const bool WantsShot=GetDefinition().bAutomatic ? bTrigger : bPendingShot;
     if (WantsShot && CanFire()) { Fire(); bPendingShot=false; }
     else if (WantsShot && Operation==EONEWeaponOperation::Ready && GetAmmo()<=0 && GetTimeSinceEmpty()>.35f)

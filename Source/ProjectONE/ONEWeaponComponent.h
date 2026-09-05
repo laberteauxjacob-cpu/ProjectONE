@@ -17,6 +17,8 @@ public:
     void ClearHeldInput() { bTrigger=false; bPendingShot=false; }
     void BeginReload();
     void CancelReload();
+    void InterruptReloadForSprint();
+    bool CanAutoReload() const;
     void CancelAllOperations();
     bool SelectWeapon(int32 Index);
     void CycleWeapon() { SelectWeapon(((PendingIndex>=0 ? PendingIndex : EquippedIndex)+1)%2); }
@@ -51,6 +53,8 @@ public:
     int32 GetShellInsertCount() const { return ShellsInserted; }
     int32 GetMagazineCommitCount() const { return MagazinesCommitted; }
     int32 GetEjectionCount() const { return CasesEjected; }
+    int32 GetAutomaticReloadCount() const { return AutomaticReloads; }
+    int32 GetSprintReloadInterruptCount() const { return SprintReloadInterrupts; }
     uint64 GetLastShotId() const { return LastShotId; }
     const FONEWeaponDefinition& GetDefinition() const;
     const FONEWeaponDefinition* GetDefinitionForWeapon(int32 Index) const;
@@ -71,6 +75,7 @@ private:
     void Fire();
     void StartOperation(EONEWeaponOperation Next,int32 DefinitionIndex=-1);
     void FinishOperation();
+    void AdvanceOperationEvents();
     void ProcessWeaponEvent(const FONEWeaponTimedEvent& Event);
     void StopOperationAudio();
     void PlayMechanical(USoundBase* Sound);
@@ -83,6 +88,7 @@ private:
     EONEWeaponOperation Operation=EONEWeaponOperation::Ready;
     int32 EquippedIndex=0,PendingIndex=-1,OperationIndex=0,NextEvent=0,OperationSerial=0;
     int32 ShotsFired=0,ShellsInserted=0,MagazinesCommitted=0,CasesEjected=0;
+    int32 AutomaticReloads=0,SprintReloadInterrupts=0;
     uint64 LastShotId=0;
     bool bTrigger=false,bPendingShot=false,bLastHitKill=false;
     float OperationStart=0,LastShot=-100,LastEmpty=-100,LastHit=-100;

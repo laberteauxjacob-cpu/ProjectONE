@@ -1,5 +1,11 @@
 # Project ONE — Candidate02
 
+Candidate03 development is in progress on `codex/candidate03`. The
+[correction-pass record](Docs/Passes/Candidate03.md) distinguishes its verified
+internal stages from the still-published Candidate02 package. Local launch and
+package scripts now default to Candidate03; pass `-Candidate Candidate02` to
+launch the preserved build.
+
 An original solo, top-down facility survival prototype in Unreal Engine 5.7.2. Candidate02 develops the accepted single-room foundation into a two-weapon combat sandbox. It is a playable development candidate, with provisional character polish and synthesized audio.
 
 Start with [CurrentState](Docs/CurrentState.md) for implemented behavior and limitations, then the [Candidate02 pass report](Docs/Passes/Candidate02.md) for exact build revisions, verification and evidence. The public project includes its actual Unreal Content, editable Blender sources, original audio and asset-generation scripts.

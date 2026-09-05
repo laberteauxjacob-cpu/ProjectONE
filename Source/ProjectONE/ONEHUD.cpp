@@ -2,6 +2,8 @@
 #include "ONEGameMode.h"
 #include "ONEPlayer.h"
 #include "ONEWeaponComponent.h"
+#include "ONE03MovementCheck.h"
+#include "EngineUtils.h"
 #include "Engine/Canvas.h"
 #include "Engine/Engine.h"
 
@@ -28,7 +30,7 @@ void AONEHUD::DrawHUD()
     const FLinearColor Teal(.34f,.86f,.79f), Dim(.47f,.59f,.61f), Amber(.98f,.64f,.24f);
     Panel(M,M,276*K,86*K);
     Label("PROJECT ONE", M+17*K,M+12*K,1.25f*K);
-    Label("B-07 / CANDIDATE 02", M+17*K,M+45*K,.72f*K,Dim);
+    Label("B-07 / CANDIDATE 03", M+17*K,M+45*K,.72f*K,Dim);
     Panel(W-M-236*K,M,236*K,86*K);
     Label(GM->IsSandbox()?TEXT("DEVELOPER SANDBOX"):FString::Printf(TEXT("ROUND  %02d"),FMath::Max(1,GM->GetRound())),W-M-218*K,M+12*K,1.10f*K,Amber);
     Label(FString::Printf(TEXT("%d REMAINING    /    %06d PTS"),GM->GetRemaining(),GM->GetPoints()),W-M-218*K,M+46*K,.65f*K);
@@ -42,20 +44,25 @@ void AONEHUD::DrawHUD()
     Label("ESC PAUSE   F1 SANDBOX",M+17*K,H-M-14*K,.62f*K,Dim);
     if (const UONEWeaponComponent* Weapon = P->GetWeaponComponent())
     {
-        Panel(W-M-304*K,H-M-140*K,304*K,140*K);
-        const float X = W-M-287*K;
-        Label(Weapon->GetWeaponName().ToString(),X,H-M-128*K,.68f*K,Dim);
-        Label(FString::Printf(TEXT("%02d"),Weapon->GetAmmo()),X,H-M-102*K,1.65f*K,Weapon->GetAmmo()?FLinearColor::White:Amber);
-        Label(FString::Printf(TEXT("/ %03d"),Weapon->GetReserveAmmo()),X+67*K,H-M-85*K,.9f*K,Dim);
+        Panel(W-M-360*K,H-M-202*K,360*K,202*K);
+        const float X = W-M-343*K, Y=H-M-202*K;
+        Label(Weapon->GetWeaponName().ToString(),X,Y+12*K,.86f*K,Teal);
+        Label(FString::Printf(TEXT("%02d"),Weapon->GetAmmo()),X,Y+36*K,1.65f*K,Weapon->GetAmmo()?FLinearColor::White:Amber);
+        Label(FString::Printf(TEXT("/ %03d"),Weapon->GetReserveAmmo()),X+67*K,Y+53*K,.9f*K,Dim);
         FString Operation=TEXT("READY");
-        if (Weapon->IsReloading()) Operation=Weapon->GetDefinition().bShellReload?TEXT("RELOADING / FIRE TO INTERRUPT"):TEXT("RELOADING");
+        if (Weapon->IsReloading()) Operation=TEXT("RELOADING / SHIFT TO CANCEL");
         else if (Weapon->GetOperation()==EONEWeaponOperation::Equip) Operation=TEXT("EQUIPPING");
         else if (Weapon->NeedsPump(Weapon->GetEquippedIndex())) Operation=TEXT("PUMP ACTION");
-        else if (Weapon->GetTimeSinceEmpty()<.45f) Operation=TEXT("EMPTY / PRESS R");
-        Label(Operation,X,H-M-62*K,.63f*K,Weapon->IsBusy()||Weapon->GetAmmo()==0?Amber:Dim);
-        if (Weapon->IsBusy()) DrawRect(Amber,X,H-M-43*K,270*K*Weapon->GetOperationProgress(),2*K);
-        Label("LMB FIRE   R RELOAD   TAB CYCLE",X,H-M-35*K,.63f*K,Dim);
-        Label(FString::Printf(TEXT("%s1 AR %02d/%03d    %s2 SG %d/%02d"),Weapon->GetEquippedIndex()==0?TEXT(">"):TEXT(" "),Weapon->GetAmmoForWeapon(0),Weapon->GetReserveAmmoForWeapon(0),Weapon->GetEquippedIndex()==1?TEXT(">"):TEXT(" "),Weapon->GetAmmoForWeapon(1),Weapon->GetReserveAmmoForWeapon(1)),X,H-M-17*K,.63f*K,Teal);
+        else if (Weapon->GetAmmo()==0) Operation=Weapon->GetReserveAmmo()==0?TEXT("EMPTY / NO RESERVE"):P->IsSprintRequested()?TEXT("EMPTY / RELEASE SHIFT TO RELOAD"):TEXT("EMPTY / AUTO RELOAD");
+        Label(Operation,X,Y+81*K,.74f*K,Weapon->IsBusy()||Weapon->GetAmmo()==0?Amber:Dim);
+        if (Weapon->IsBusy()) DrawRect(Amber,X,Y+104*K,326*K*Weapon->GetOperationProgress(),2*K);
+        for (int32 Slot=0;Slot<2;++Slot)
+        {
+            const bool Selected=Weapon->GetEquippedIndex()==Slot;
+            Label(FString::Printf(TEXT("%s %d  %s    %02d / %03d"),Selected?TEXT(">"):TEXT(" "),Slot+1,Slot?TEXT("12-GAUGE PUMP"):TEXT("5.56 CARBINE"),Weapon->GetAmmoForWeapon(Slot),Weapon->GetReserveAmmoForWeapon(Slot)),X,Y+(113+23*Slot)*K,.78f*K,Selected?Teal:Dim);
+        }
+        Label("TAB / WHEEL SWITCH    R RELOAD",X,Y+162*K,.73f*K,Dim);
+        Label("LMB FIRE    SHIFT CANCEL + SPRINT",X,Y+183*K,.73f*K,Dim);
         if (Weapon->GetTimeSinceHit()<.18f)
         {
             float MX,MY;
@@ -75,10 +82,27 @@ void AONEHUD::DrawHUD()
     }
     if (GM->IsSandbox())
     {
+        for (int32 Distance : {0,200,500,1000})
+        {
+            FVector2D Screen,PlayerScreen;
+            PlayerOwner->ProjectWorldLocationToScreen(P->GetActorLocation(),PlayerScreen);
+            if (PlayerOwner->ProjectWorldLocationToScreen(FVector(-500+Distance,250,16),Screen) &&
+                Screen.X>0 && Screen.X<W-35*K && Screen.Y>M+110*K && Screen.Y<H-20*K &&
+                !(FMath::Abs(Screen.X-PlayerScreen.X)<70*K && FMath::Abs(Screen.Y-PlayerScreen.Y)<105*K) &&
+                !(Screen.X<M+290*K && Screen.Y>H-M-118*K) &&
+                !(Screen.X>W-M-380*K && Screen.Y>H-M-222*K))
+                Label(FString::Printf(TEXT("%dm"),Distance/100),Screen.X,Screen.Y,.85f*K,Dim);
+        }
         Panel(W*.5f-272*K,M,544*K,82*K);
         Label("SANDBOX  /  F1 RETURN TO ROUNDS",W*.5f-255*K,M+9*K,.76f*K,Teal);
         Label("F2 +1 INFECTED   F3 +6   F4 REFILL BOTH",W*.5f-255*K,M+33*K,.7f*K);
         Label("F5 RESET ENCOUNTER   F6 CLEAR GORE   1 / 2 EQUIP",W*.5f-255*K,M+56*K,.7f*K,Dim);
+    }
+    for (TActorIterator<AONE03MovementCheck> It(GetWorld());It;++It)
+    {
+        Panel(W*.5f-360*K,M+96*K,720*K,36*K);
+        Label(It->GetSegmentLabel(),W*.5f-342*K,M+104*K,.82f*K,Amber);
+        break;
     }
     if (GM->IsIntermission() && !GM->IsGameOver())
     {
