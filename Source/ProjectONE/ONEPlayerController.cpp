@@ -31,6 +31,11 @@ void AONEPlayerController::SetupInputComponent()
     InputComponent->BindKey(EKeys::F5, IE_Pressed, this, &AONEPlayerController::ResetSandbox).bExecuteWhenPaused=true;
     InputComponent->BindKey(EKeys::F6, IE_Pressed, this, &AONEPlayerController::ClearGore);
 }
+void AONEPlayerController::FlushPressedKeys()
+{
+    Super::FlushPressedKeys();
+    if (AONEPlayer* Player=Cast<AONEPlayer>(GetPawn())) Player->ReleaseHeldInputs();
+}
 void AONEPlayerController::TogglePause()
 {
     if (const AONEGameMode* GM = GetWorld()->GetAuthGameMode<AONEGameMode>(); GM && !GM->IsGameOver())

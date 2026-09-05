@@ -4,6 +4,7 @@
 #include "ONEWeaponComponent.h"
 #include "ONEHealthComponent.h"
 #include "ONEGameMode.h"
+#include "ONEPlayerController.h"
 #include "ONEBloodSubsystem.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -258,7 +259,17 @@ void AONECombatCheck::Tick(float Dt)
         }
         GM->ClearSandboxPresentation();
         if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Check(Blood->GetDecalCount()==0 && Blood->GetPieceCount()==0 && Blood->GetCorpseCount()==0,TEXT("Sandbox clear removes blood, parts and bodies through bounded runtime subsystem"));
-        W->RefillAllAmmo(); W->SetTrigger(true); Next(26);
+        W->RefillAllAmmo(); W->SetTrigger(true); Next(260);
+    } break;
+    case 260: if (T>.1f) {
+        W->SetTrigger(false); Shots=W->GetTotalShotsFired();
+        W->SetTrigger(true); W->SetTrigger(false);
+        if (auto* Controller=Cast<AONEPlayerController>(Player->GetController())) Controller->FlushPressedKeys();
+        Next(261);
+    } break;
+    case 261: if (T>1.1f) {
+        Check(W->GetTotalShotsFired()==Shots,TEXT("Viewport key flush clears a semi-auto tap queued behind the pump"));
+        Next(26);
     } break;
     case 26: if (T>1.1f) { W->SetTrigger(false); W->BeginReload(); Next(30); } break;
     case 30: if (T>.65f) {

@@ -10,6 +10,7 @@ public:
     AONEPlayerController();
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
+    virtual void FlushPressedKeys() override;
 private:
     void TogglePause();
     void Restart();
