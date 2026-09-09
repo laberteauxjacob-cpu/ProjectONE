@@ -93,7 +93,9 @@ foreach ($mode in $Modes) {
     $label = $mode.Replace('=', '_')
     $log = Join-Path $runRoot "$label.log"
     $arguments = @("-$mode", '-windowed', '-ResX=1600', '-ResY=900', '-unattended', '-nosplash', "-abslog=`"$log`"")
-    if ($RenderOffscreen) { $arguments += '-RenderOffScreen' }
+    # Offscreen viewports must retain the requested test size even when the
+    # desktop work area is smaller or changes during an unattended run.
+    if ($RenderOffscreen) { $arguments += @('-RenderOffScreen', '-ForceRes') }
     # Process-only master-mix capture override; normal game settings stay intact.
     if ($mode -in @('ONECompare', 'ONE03PresentationCapture', 'ONE03PhysicalityCapture')) { $arguments += '-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0' }
     $windowStyle = if ($ShowWindow) { 'Normal' } else { 'Hidden' }

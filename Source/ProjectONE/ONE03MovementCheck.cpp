@@ -70,10 +70,14 @@ void AONE03MovementCheck::Check(bool Pass,const FString& Label)
 }
 void AONE03MovementCheck::PrepareTrial()
 {
-    ++Trial; Stage=0; StageStart=Elapsed; Samples=0; SpeedSum=0; MinSpeed=BIG_NUMBER; MaxSpeed=0;
     auto* W=Player->GetWeaponComponent();
-    Player->ReleaseHeldInputs(); W->RefillAllAmmo();
+    Player->ReleaseHeldInputs();
     Player->GetCharacterMovement()->StopMovementImmediately();
+    // A completed movement sample can precede the reload's mechanical end.
+    // Wait, then issue fresh fixture requests; production rejects busy switches.
+    if (W->IsBusy()) { Stage=23; StageStart=Elapsed; return; }
+    ++Trial; Stage=0; StageStart=Elapsed; Samples=0; SpeedSum=0; MinSpeed=BIG_NUMBER; MaxSpeed=0;
+    W->RefillAllAmmo();
     if (Trial>=48)
     {
         if (Trial>=54) { Finish(); return; }
@@ -156,7 +160,11 @@ void AONE03MovementCheck::Tick(float Dt)
         PrepareTrial();
     }
     float T=Elapsed-StageStart;
-    if (Stage==0 && T>.55f && !W->IsBusy())
+    if (Stage==23 && !W->IsBusy())
+    {
+        PrepareTrial();
+    }
+    else if (Stage==0 && T>.55f && !W->IsBusy())
     {
         const int32 ExpectedSlot=Trial/24;
         const EONEWeaponFamily ExpectedFamily=ExpectedSlot==0 ? EONEWeaponFamily::Carbine : EONEWeaponFamily::Shotgun;
