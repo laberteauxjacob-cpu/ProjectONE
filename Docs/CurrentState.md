@@ -1,118 +1,81 @@
-# Current state — Candidate06 in development
+# Current state — Candidate06
 
-Candidate06 implementation is on `codex/candidate06`. Its local Editor build,
-28 automation tests and new pickup/map imports pass. A recorded six-weapon
-combat check passes 1,728 assertions, including head/low input and active shake
-invariance. Survival and relocated-map checks pass; broader validation and
-packaging remain in progress. It is not yet a verified playable release.
-See [Candidate06](Passes/Candidate06.md) for current
-scope and [combat rules](CombatRules.md) for the current source contract.
+Candidate06 implements the requested combat, survival, rewards and machine
+changes on the accepted Project ONE foundation. Packaged gameplay source S3 is
+`c2c422012f4f219fb5e63ac24294a6ba8428f999`; final publication revision D is
+[the `candidate06` tag](https://github.com/laberteauxjacob-cpu/ProjectONE/tree/candidate06). Review branch: `codex/candidate06`.
+**Release and actual-public-download status:** [Release](https://github.com/laberteauxjacob-cpu/ProjectONE/releases/tag/candidate06) / [final download-verification record](https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate06/Candidate06-PublicationVerification.json). Final verification is issued after publication; this committed text does not claim those later checks already ran.
 
-The verified published baseline below remains Candidate05 until Candidate06
-finishes packaging and publication. Preserve its tag and package.
+The [Candidate06 pass](Passes/Candidate06.md) records issue coverage, final
+tuning, source-bound evidence and limitations. [Controls](../README.md#controls),
+[combat rules](CombatRules.md) and [survival/rewards tuning](Candidate06SurvivalRewards.md)
+describe current behavior. Historical passes retain their original rules.
 
-## Verified Candidate05 baseline
+Revision D adds documentation, evidence and their attributes, plus one movie-assembly command argument in `Scripts/assemble_candidate06_capture.py`: `-vf tpad=stop_mode=clone:stop_duration=1,fps=30`. The explicit last-image extension, trimmed at the unchanged WAV endpoint, corrects the first combat encode ending about 0.259 seconds before its audio. Original failed output and diagnostics remain preserved privately. This offline assembly correction changes no gameplay source or packaged runtime; the package remains the verified S3 build without a rebuild.
 
-**Local build, packaged checks, media and four profiles verified.** Packaged
-source S is `6b8621cef9d2a87de6e6eabc1743359c6274da5a`. Its clean public-source
-Editor/Game/package build and all 17 engine automation tests pass. The default
-suite passes 19 modes / 3,942 assertions; the supplemental suite passes 10 runs
-/ 3,506 assertions, both with zero failures. Archive and local extraction match.
+## Verification evidence
 
-Publication is verified only by the [Candidate05-PublicationVerification.json](https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate05/Candidate05-PublicationVerification.json) attachment, issued after actual public downloads and Git LFS checks. It identifies the reviewed [candidate05 tag](https://github.com/laberteauxjacob-cpu/ProjectONE/tree/candidate05), documentation revision D, packaged source S and downloaded asset hashes. These pages report locally verified evidence until that attachment is issued.
+All 15 final S3 packaged runs completed with exit 0, 4,084 assertions and zero
+failures. Every runner records successful source/runtime checks before and
+after execution. The retained S1 runs below are outside that S3 total.
 
-Candidate05 continues the existing arena, enemies, regional combat, two-slot
-inventory and Box/Pack-a-Punch economy. It replaces queued rejected shots with
-eligible post-pose dispatch, commits magazine reloads through sprint/fire/switch
-requests, and gives live hits, new kills and corpse hits distinct feedback.
-Minor reactions preserve threat; heavy reactions and death can stop attacks.
-Eighteen revised player clips, three stepping attack families, original rounded
-HUD art, designed menus, spatial ambience/zombie voices and held upgrade effects
-complete the requested presentation changes. See [controls](../README.md#controls)
-and the [current combat rules](CombatRules.md) for the changed reload/input policy.
-
-| Final-source evidence | Result |
+| Evidence | Result and scope |
 | --- | --- |
-| Fresh public build, LFS, engine automation tests, runtime hashes/privacy | PASS: [exact-S4 record](../Evidence/Candidate05/Verification/fresh_build.json); 1,129 tracked files, 648 LFS files / 297,457,501 bytes; 17 tests with five historical warnings; 45 runtime identities / 666,304,586 bytes |
-| [Full 19-mode packaged suite](../Evidence/Candidate05/Verification/packaged_suite.json) | PASS: 19 modes, 3,942 assertions, zero failures; individual exit 0 and exact-source runtime binding |
-| [Supplemental combat/UI checks](../Evidence/Candidate05/Verification/Supplemental/summary.json) | PASS: 10 runs / 3,506 assertions / zero failures; 30/60/120 cadence, 480 projected aim rays, four UI sizes and final motion/presentation captures |
-| [Motion and presentation films](../Evidence/Candidate05/Media/README.md) | Encode and full decode pass: 1,389 / 5,257 source JPEGs; 51.179 / 196.950-second MP4 containers with actual engine audio. [Chronological image review](../Evidence/Candidate05/Visual/README.md) is bounded, with endpoint and perceptual limits |
-| [Native desktop controls](../Evidence/Candidate05/Verification/native_input.json) | LIMITED PASS: 13 discrete actions / 16 trace events, six runtime hashes match; held movement and machine input remain untested |
-| [Four recording-free rifle/crowd profiles](../Evidence/Candidate05/Performance/FinalS4/README.md) | All complete: M4A1/Overcurrent × requested 12/18, 14,937 numeric frames retained, mean 8.3500–8.5201 ms; every spike retained; non-isolated host |
-| [Archive](../Evidence/Candidate05/Verification/archive.json) and local package | PASS: 1,217 entries, 409,708,689-byte ZIP, all runtime bytes match the fresh build; local extraction rehashed |
-| [Earlier-candidate preservation](../Evidence/Candidate05/Preservation.json) | PASS before release for Candidate01–04; separate publication attachment will report final D, public downloads and LFS verification |
+| Clean public-source Editor/Game/package build at S3 | PASS, all three exit 0; UE 5.7.2, Win64 Development. [Build record](../Evidence/Candidate06/Verification/fresh_build.json) |
+| S3 public source payloads and engine automation | PASS: 1,223 tracked files; 660 LFS payloads / 300,752,452 bytes; all 28 tests pass with five warning events. Final D checkout/LFS: The [post-publication verification attachment](https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate06/Candidate06-PublicationVerification.json) records the final tag/branch/main identity, fresh D checkout and source/evidence LFS verification when issued; no final D result is asserted here |
+| S3 runtime identity and scoped privacy audit | PASS: six required runtime identities match the build; 45 retained files / 666,721,590 bytes; no actionable findings. [Runtime audit in the fresh build record](../Evidence/Candidate06/Verification/fresh_build.json) |
+| Release archive | PASS: 409,889,719 bytes; 1,217 entries; SHA256 `4dd954cdeb894d2be371fa78df0f640ef7a623685c40aa5cf0261c804f1c8b0a`; all entry CRCs, 1,215 manifest payloads and six extracted runtime identities verified. [local archive/extraction record](../Evidence/Candidate06/Verification/archive.json) |
+| Final packaged combat, grouping, survival and relocated map | S3 PASS: 2,110 / 922 / 100 / 35 assertions respectively, all zero failures and exit 0. [All 15 source-bound results](../Evidence/Candidate06/Verification/packaged_checks.json) |
+| Retained S1 progression and projected aim | PASS at S1: 95 progression assertions; 2,708 projected-aim assertions / 480 shots; zero failures. [Source comparison and limits](../Evidence/Candidate06/Verification/retained_coverage.md). These runs were not rerun at S3. |
+| Final S3 cadence and rendered UI | [Weapon timing](../Evidence/Candidate06/Verification/weapon_timing.md): 197 checks per 30/60/120 cap, 591 total; UI: 49 checks at each of 1600×900 and 1280×720, all zero failures. [UI originals and review](../Evidence/Candidate06/UI/review.md) |
+| Final capture stills and UI images | Bounded S3 combat, grouping, survival and portability reviews complete with stated limits; all 12 original UI PNGs inspected. Exact scopes are in the pass. |
+| Encoded media | Four S3 recordings pass 24 inspection checks each, including full video/audio decode with exit 0. They contain H.264 1600×900 at 30 FPS and AAC 48 kHz stereo, with separately measured source-WAV, video, audio and container durations. This is byte/format/decode verification; continuous playback and perceptual audio audition were not performed. [media, audio measurements and limits](../Evidence/Candidate06/Media/README.md) |
+| Actual engine audio and perceptual listening | Original 48 kHz stereo 16-bit PCM measured; no full-scale samples in any of the four WAVs. AAC decode passes; no perceptual audition or sample-for-sample lossy-codec equality claim. [media, audio measurements and limits](../Evidence/Candidate06/Media/README.md) |
+| Native desktop input | [LIMITED PASS](../Evidence/Candidate06/Verification/native_input.json): 14 discrete actions / 22 input edges; normal quit; runtime identities unchanged. No held combinations, movement/approach or audio-audition claim. |
+| Recording-free M4A1/870 × requested 6/12/18 profiles | All six executions PASS, 38 assertions each. Measurements/occupancy/interpretation: 22,129 retained frames; means 8.3359–8.3750 ms, p99 8.9514–10.2795 ms and maxima 20.6116–31.4236 ms. Seven frames exceed 16.7 ms and none exceed 33.3 ms. One non-isolated sample per workload supplies no matched-baseline or universal-FPS claim. [full timelines, occupancy and host limits](../Evidence/Candidate06/Performance/README.md) |
+| Public downloads and previous-candidate preservation | [Release](https://github.com/laberteauxjacob-cpu/ProjectONE/releases/tag/candidate06) / [final download-verification record](https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate06/Candidate06-PublicationVerification.json). Final verification is issued after publication; this committed text does not claim those later checks already ran |
 
-The verified local ZIP SHA256 is
-`746cdc8d2299ba034b517e60bb519a599c3c6b84340d2700de6ccc4b39e8c8a4`.
-The first native attempt stopped at the Windows Security prompt without sending
-input or choosing network permissions. After the user handled it, the retry
-verified one shot (7 to 6/56), reload (7/55), tools, pause/resume, restart
-(0 points, 100 health, 7/56 and empty slot 2), and normal quit. A W tap did not
-establish movement; it is included in the 13 actions, not a verified movement
-result. This is not a continuous native playtest.
+Retained source S1 is `8b5f32640e1239f7035be4c7c1cc6713f0d8be8e`.
+The exact S1/S3 comparison establishes identical committed bytes for 119 of
+121 source files, including both retained drivers and their production authority.
+It does not establish S3 runtime, visual, audio, native-input or performance results.
 
-M4A1/Overcurrent are configured for 600/690 RPM. Their ideal burst DPS rises
-60%, from 200/460 to 320/736, because of cadence alone. Final full-magazine
-M4A1/Overcurrent rates at caps 30/60/120 are 599.997/684.780,
-599.996/688.520 and 599.988/688.512 RPM. The
-[timing record](../Evidence/Candidate05/Verification/weapon_timing.json) retains
-frame quantization, a one-shot hitch recovery and finite-window limits.
-The four profiles ran on the recorded Ryzen 9 5950X / GeForce RTX 3090 host,
-Windows 11 25H2, actual 1600x900, cap 120, VSync off and screen percentage 100.
-Their exact requested crowd count was present in 61.37–75.74% of counter frames;
-replenished targets were not continuously held at 12/18. Maximum frame times
-range from 18.8083 to 34.0449 ms. No locked-120-FPS, isolated GPU-cost or general
-regression claim follows from one run per workload.
+The [S3 source review](../Evidence/Candidate06/Verification/source_review.md)
+reports no actionable finding in the three-file orientation correction.
+Input and pickup authority are unchanged; static geometry supports the motif
+correction under the ordinary camera. The separate native report records visible
+upright skull, gold ×2, teal crate and local glows. All scheduled package runs, six-profile analysis and encoded-media verification are complete.
+Neither source review nor the completed build substitutes for the native check.
 
-Player walk/sprint remain 225/370 cm/s, infected movement 100/195 cm/s,
-strike damage 19 and protection 0.55 seconds. Two slots, M1911 7/56 start, prices
-950/5000, cycles five/nine seconds and indefinite physical Ready rewards remain.
+Aim uses the selected horizontal plane without enemy snapping. Each bullet or
+pellet keeps one direction and range budget through bounded body penetration.
+Head damage is 1.5×; qualifying head kills add 120 points instead of the normal
+100, alongside 10 impact points per living victim per discharge. Regeneration
+starts after 15 accepted-damage-free seconds at 10% of current maximum HP/s.
 
-## Verification history and limits
+The Box excludes owned families and costs 950. Pack-a-Punch uses a fresh F tap,
+accepts reload/empty/pump states and costs 5,000. Processing remains nine seconds.
+Ready upgrades return automatically within clear front/side reach to the same
+slot, independently of the other gun's reload. The 15-second ready deadline
+causes permanent loss without refund; reachable exact-boundary collection wins.
 
-Earlier source checkpoints are preserved in one sequence: S1's clean unity build
-found a colliding lookup name; S2 fixed it but its legacy movement fixture tried
-to switch during a committed reload, and its UI guard exposed actual 888x500
-instead of requested 1600x900. S3 waited for reload completion and forced the
-viewport; 15 modes passed, then three obsolete interruption/death expectations
-failed in `ONEValidate`, leaving three benchmarks unrun. S4 changes those fixtures
-to separately verify a minor hit preserving one contact, a meaningful heavy hit
-cancelling contact and death preventing later contact from an independent
-baseline. Production combat is unchanged by S4. Its completed `ONEValidate`
-passes 44 assertions, and its full 19-mode suite passes independently of the
-earlier failed attempts.
+Insta-Kill, Double Points and Max Ammo share one 1% natural drop roll with equal
+weights. Timed effects and uncollected drops last 30 seconds; the actor cap is
+8. Camera shake has 100%, 50% and Off settings and does not affect logical aim.
+Player walk/sprint remain 225/370 cm/s, infected movement 100/195 cm/s, strike
+damage 19 and protection 0.55 seconds. Two slots and the M1911 7/56 start remain.
 
-[Development evidence](../Evidence/Candidate05/README.md) keeps earlier cadence,
-standing-height aim, UI and rendered rehearsals under their original source
-scope. Elevated-target aim results are superseded for close standing-height
-coverage. Rehearsal frames and audio are not final packaged media. Final
-[four-size UI review](../Evidence/Candidate05/UI/four_sizes_review.md) viewed
-all 24 original PNGs; the final UI/aura review inspected 32 consecutive windows,
-303 distinct images and 15 full frames. No blocking settled UI/aura defect was
-observed in that scope. Final chronological reviews retain mechanical joint
-motion, similar swipe/rake silhouettes, a brief reel icon/name crossfade and
-fine hand-contact/effect readability limits. Dim Last Word/Gravebreaker fire and
-reload were not visually established; machine light obscures exact aura timing.
+This remains a development sandbox with provisional tuning. Finite still-image samples, numerical fixtures and one non-isolated profile per workload do not establish uninterrupted human play, a universal frame-rate guarantee or player approval. Native held firing combinations, movement feel and perceptual audio audition were not tested. The new pickup cues are synthetic; the accepted infected visual/physical and recorded-audio milestone remains future work.
 
-Perceptual audio listening is unverified: two attempts, including September 9,
-confirmed that the tool cannot receive audio input.
-[Numerical audio checks](../Evidence/Candidate05/Audio/README.md) cover the
-51.178667-second motion and 196.949333-second presentation WAVs, both with zero
-full-scale samples. The presentation generic phase-energy result remains FAIL:
-pause phases 92/93 and death phase 96 contain only zero samples, consistent
-with their recorded lifecycle context. No all-phase-audio PASS is claimed.
-Waveform and cue checks cannot establish timbre, spatial balance or naturalism.
-Offscreen scripted tests are not native input, measured foot lift is not movement
-approval, and Candidate04's pistol profiles are not a matched rifle baseline.
-Final recordings use actual engine audio; profiles retain spikes and disclose
-their actual host conditions.
+## Preserved baseline and next milestone
 
-Candidate04's preserved public package uses reviewed D
-[`2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d`](https://github.com/laberteauxjacob-cpu/ProjectONE/commit/2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d),
-built S `8055041ebc98a4df7cd8923b05e7b89ad7372e38`.
-Its [pass](Passes/Candidate04.md), [evidence](../Evidence/Candidate04/README.md),
-tags, releases and package passed the S4 pre-release preservation checks.
-That record explicitly does not verify Candidate05 publication.
-The [Candidate05 pass](Passes/Candidate05.md) contains the issue/balance tables.
-Recommend one next milestone: a focused human playtest and polish pass on
-movement, attack feel and the actual audio mix.
+[Candidate05](Passes/Candidate05.md) remains preserved at public revision
+`77e182db7d2b4f4e8aba970b0949b9567c94f43a`, packaged from
+`6b8621cef9d2a87de6e6eabc1743359c6274da5a`. Its release, earlier candidates and
+historical evidence are retained separately; Candidate06 does not rewrite them.
+
+Recommend the accepted [infected redesign and recorded-audio milestone](Roadmap.md):
+decayed human visuals, natural pursuit/attacks, controlled crowd physics and
+suitable recorded physical sounds. Six perk chambers follow afterward.
+Future maps retain hidden spawn → occluded approach → visible entrance → pursuit;
+the small Portability06 map is a dependency check, not a finished production map.

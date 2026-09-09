@@ -1,0 +1,4376 @@
+{
+  "candidate": "06",
+  "branch": "codex/candidate06",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "started_utc": "2026-09-09T20:47:25.202701+00:00",
+  "ended_utc": "2026-09-09T20:50:44.108573+00:00",
+  "checkout_method": "Public remote clone in a neutral build path, clean before fetch and build; no local object alternates.",
+  "checks": {
+    "candidate06_eight_source_assets_match": true,
+    "tracked_file_count": 1223,
+    "lfs_file_count": 660,
+    "lfs_total_bytes": 300752452,
+    "lfs_hashes_and_sizes_match": true,
+    "clean_worktree_before_build": true,
+    "private_original_history_absent": true,
+    "tracked_source_unchanged_after_build": true,
+    "native_prerequisite_installers_staged": true,
+    "native_prerequisite_installer_bytes_match_engine": true,
+    "required_runtime_bytes_bound_to_source_commit": true,
+    "candidate06_source_assets_unchanged_after_verification": true,
+    "all_28_source_tests_pass": true,
+    "tracked_source_unchanged_after_verification": true
+  },
+  "toolchain": {
+    "engine_version": "5.7.2",
+    "engine_changelist": 49658320,
+    "platform": "Win64",
+    "configuration": "Development"
+  },
+  "build_steps": [
+    {
+      "target": "editor",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Build.ps1 -EngineRoot <verified-UE-5.7.2-root>",
+      "started_utc": "2026-09-09T20:48:24.005303+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-09T20:49:18.153103+00:00",
+      "elapsed_seconds": 54.141
+    },
+    {
+      "target": "game",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Build.ps1 -Game -EngineRoot <verified-UE-5.7.2-root>",
+      "started_utc": "2026-09-09T20:49:18.156121+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-09T20:50:06.948825+00:00",
+      "elapsed_seconds": 48.796
+    },
+    {
+      "target": "package",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Package.ps1 -Candidate Candidate06 -EngineRoot <verified-UE-5.7.2-root>",
+      "started_utc": "2026-09-09T20:50:06.956087+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-09T20:50:28.447969+00:00",
+      "elapsed_seconds": 21.484
+    },
+    {
+      "target": "native_tests",
+      "command": "UnrealEditor-Cmd <fresh-root>/ProjectONE.uproject -unattended -nop4 -nosplash -nullrhi -ExecCmds=\"Automation RunTests ProjectONE\" -TestExit=\"Automation Test Queue Empty\" -ReportOutputPath=<local-report-dir>",
+      "started_utc": "2026-09-09T20:50:29.159882+00:00",
+      "exit_code": 0,
+      "ended_utc": "2026-09-09T20:50:44.034811+00:00",
+      "elapsed_seconds": 14.86
+    }
+  ],
+  "lfs_files": [
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineBolt.wav",
+      "bytes": 25004,
+      "sha256": "f55fa4324c308e7fa72123987d34693f78f16a40055df3c8deb65f997355daa2"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineEmpty.wav",
+      "bytes": 9644,
+      "sha256": "c70ef143a8a55cc75ece37c5ed9ef8a843accd7096718c52f79649d30c7ac217"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineMagIn.wav",
+      "bytes": 22124,
+      "sha256": "3519848326c3eeba708d27f1a96840320e81dfa4ca9a1bea2d93b3d26eeb3d24"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineMagOut.wav",
+      "bytes": 26924,
+      "sha256": "5004c875d26492c30c97c43ba727c65b7cadc4830c97ef26416f68ec30f37c4d"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineShot_01.wav",
+      "bytes": 41324,
+      "sha256": "3d4f4886b52135a445cf7bdd7bd7f8cc44f3b50d8fcdc18f7ff88cbe32915cb8"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineShot_02.wav",
+      "bytes": 41324,
+      "sha256": "a54ebca21820d57833df40686e8779abde433ada46230471e0ac528d8ed030b9"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_CarbineShot_03.wav",
+      "bytes": 41324,
+      "sha256": "9d428928a67ba016f0878fb52672171dfaaa9c4f9f4ce226420eb8cb88d6dca3"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ConcreteImpact_01.wav",
+      "bytes": 23084,
+      "sha256": "183a4a62b9269e71387b1b70c126ce134c2b7558024f78794124d63d3214075c"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ConcreteImpact_02.wav",
+      "bytes": 23084,
+      "sha256": "6b23dec35acb0f9bb57e0f74be8b79a9eab39b6fe18f7a5ea5140fc7d4f61d62"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_FleshImpact_01.wav",
+      "bytes": 22124,
+      "sha256": "d3f7e10634d8cf242823784ac35e16da67561204b3b6fbe2973769c2afd4fb6b"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_FleshImpact_02.wav",
+      "bytes": 22124,
+      "sha256": "c77cd9ffb6bed778c54981be83605d90292f3cacbcb61c8d224354fac84009a1"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_FleshImpact_03.wav",
+      "bytes": 22124,
+      "sha256": "09270c0a93a27469d0633a1f11e256293171b192ac3679546d7ad5193aab1aa5"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_MetalImpact_01.wav",
+      "bytes": 31724,
+      "sha256": "bc3c8fa6b528fca4316d8187407843b1c3374a9106235c0a04bdbc3e0ce6f3dc"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_MetalImpact_02.wav",
+      "bytes": 31724,
+      "sha256": "cf9026871bbe8be003b3aeb1ff1f34a80f25632bf3ed7314991c1dd6394afbf8"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunEmpty.wav",
+      "bytes": 12524,
+      "sha256": "eb4d3def5e592116375ea931731cdc99fbe5d6ce3b59a8be5e9961122276abb4"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunPumpBack.wav",
+      "bytes": 22124,
+      "sha256": "2025aa96f0ab6c7562a6f9ade474d4e0ccaa0b83ed7130e540144463bbe6ebde"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunPumpForward.wav",
+      "bytes": 24044,
+      "sha256": "ceee07efe51f6aa66514465562e2f45ddb3e2b29de7f9e74a818957828187cbf"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunPumpLock.wav",
+      "bytes": 16364,
+      "sha256": "51c434dff188227665ba2d8a7a29f221d920b50a5c39f016ae7e445fd5794730"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunReloadEnd.wav",
+      "bytes": 22124,
+      "sha256": "a92ae290d3c31d1a6c383bfd7b3d9b2069ce1fbb4a832ff7be780ad9c2861be9"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunReloadStart.wav",
+      "bytes": 22124,
+      "sha256": "ec50c2fd879eed2b9b673a3dfd063d06a97b9e117d473a1e4c6aa91aaae279ff"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunShellInsert.wav",
+      "bytes": 18284,
+      "sha256": "bed1f8c151730bbbb06bda37f25b3c009050540f4c5deab3e4288ad27357acd4"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunShot_01.wav",
+      "bytes": 71084,
+      "sha256": "cffafdaa288ae707d021f929ebffc3e2f95aded2a428aaab912330cc6b60e719"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunShot_02.wav",
+      "bytes": 71084,
+      "sha256": "f4171fdf5a452fc53b88321d391436393e35a6aa39fffb8e8100dad14a77cedc"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_ShotgunShot_03.wav",
+      "bytes": 71084,
+      "sha256": "5c289be41b3bcbd4f84a2e6830c01df5e41b907bc9e6e53ba314f60d47f22269"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate02/S_WeaponEquip.wav",
+      "bytes": 19244,
+      "sha256": "534e0c0b3299c1e17dea566f5db2b834657f51a6d462b5413b34390906b1708b"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_01.wav",
+      "bytes": 40364,
+      "sha256": "28cb1d48227077c66ccaa70a6d625655412eaa28c27439439251ecb33f93ee97"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_02.wav",
+      "bytes": 40364,
+      "sha256": "88c0eae677879af37310badc56ca51f70c14ccd5fc5936d6205e221c0698b848"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_03.wav",
+      "bytes": 40364,
+      "sha256": "6aee85f2ea02ae251c2503fcc10d0bb963584c34f76a10aaa52c72c1cab32df0"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_04.wav",
+      "bytes": 40364,
+      "sha256": "1af417b206f496ea500f65dcebabdb1116e0b3ff6c0b8130f64b4c9ccacc9fc0"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_05.wav",
+      "bytes": 40364,
+      "sha256": "a0e12c54719af07d2f0d35f57865cf0ff2ceae83b76d3abbe1cffd1ca92fbf49"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_CarbineShot_06.wav",
+      "bytes": 40364,
+      "sha256": "7495eccd8a0407aef46c2cf0881537ad2ae264f987bc0ec4630207e0e72c3755"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_01.wav",
+      "bytes": 63404,
+      "sha256": "33c8e3427ea6a8761a87fd1e5e98c4652d03c2e982a8d819be9950839fc30e2e"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_02.wav",
+      "bytes": 63404,
+      "sha256": "d96cf2d98dacd4a1ca3eabd9a877f0aaf40885d1be1fd4346f5e4ef3f4989aef"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_03.wav",
+      "bytes": 63404,
+      "sha256": "26668778f72348586fdbfc3004a04a15d6a3261a224e70a81244898a22749981"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_04.wav",
+      "bytes": 63404,
+      "sha256": "6b59392f219253529fce1bbc990074826767af75b44a4f46898802c97962cfb2"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_05.wav",
+      "bytes": 63404,
+      "sha256": "4a6ac009514ae3d3276c48a545b5b4aebd1c17b0e95f9212399c2f473d51547f"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate03/S_C03_ShotgunShot_06.wav",
+      "bytes": 63404,
+      "sha256": "2faef9e81d1e88f8ad8bfa6c038d99fd173833a215a949f3ff8c2e81b3ea61f4"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_GravebreakerShot_01.wav",
+      "bytes": 76844,
+      "sha256": "88b1a3fbc71bcc68ab77127fa5395e94ef670467fd32e9ff44300b92d7b1f645"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_GravebreakerShot_02.wav",
+      "bytes": 76844,
+      "sha256": "360084dc1464ee8d66f3c03687652f6c53e08b5ff9b714da92f5f17d7c9815ca"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_GravebreakerShot_03.wav",
+      "bytes": 76844,
+      "sha256": "0e1a4dc6ff1918b8f64c91fe7a527b316462115b08e81f867da1acda5bf10dad"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_GravebreakerShot_04.wav",
+      "bytes": 76844,
+      "sha256": "ce22d29f0feeb2df6e59b88cbb953c591b7fcacb324053d55841957565134077"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_GravebreakerShot_05.wav",
+      "bytes": 76844,
+      "sha256": "0f9ed2615bd1d1483b91d3844dd2b33681d10c3d642b94bfcb2cfe388c46d0db"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_GravebreakerShot_06.wav",
+      "bytes": 76844,
+      "sha256": "9790e577f440dad0a27eff27f5911fe14ca2c641f91d7fee94d98eb2817df046"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_LastWordShot_01.wav",
+      "bytes": 49964,
+      "sha256": "ee6c41064df4f95aed7b5496ce7fcdd96e495299e292ffe8a3ff38a3fae98536"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_LastWordShot_02.wav",
+      "bytes": 49964,
+      "sha256": "4ee3ecbcaddf2c7315f5f3de829ac1daacd2da56c6d0bc1f4a46608b55b16399"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_LastWordShot_03.wav",
+      "bytes": 49964,
+      "sha256": "34355146a97ca507cedfd65f039ecc47cbf5c0aa4ca8a1e5771fc9d6224883e2"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_LastWordShot_04.wav",
+      "bytes": 49964,
+      "sha256": "9803ac7649c735bd58cfc8a774d50640293c5d5705e10acda47854276da5039e"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_LastWordShot_05.wav",
+      "bytes": 49964,
+      "sha256": "f7ecb599316c80877ee38c713b9baa0eafcfcd884be24a94ded17129cb2b4386"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_LastWordShot_06.wav",
+      "bytes": 49964,
+      "sha256": "3c764340e291a81c845809469350c9acb8d36d9b4b3b185555d1d421b20172fd"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_M1911Shot_01.wav",
+      "bytes": 38444,
+      "sha256": "605a5c72ec940cc49342ff579f9af5ec5e53df446dfc3927d57ffe910f35a52e"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_M1911Shot_02.wav",
+      "bytes": 38444,
+      "sha256": "217eef1fc29e4d86c77d36b0c7733374651e25888fe3f9d558f45289e169b634"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_M1911Shot_03.wav",
+      "bytes": 38444,
+      "sha256": "6b82ed53df64c277260235e58734bd567de9c5d32ba180ef802c80e0e0d278bc"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_M1911Shot_04.wav",
+      "bytes": 38444,
+      "sha256": "bafa91651d02eef1d33bd681b260d8981937f8fcca5a684820d8f3bfcf83444e"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_M1911Shot_05.wav",
+      "bytes": 38444,
+      "sha256": "b9a41e2173872aca3f7317c3bbf969d40beafebd050bb2fd4bbc7d3cb70ec2e1"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_M1911Shot_06.wav",
+      "bytes": 38444,
+      "sha256": "19c012b416bb7c1cc37785f02208dadd70c552d5e66a5763ca2ba071d979fdea"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_OvercurrentShot_01.wav",
+      "bytes": 53804,
+      "sha256": "5b975fae6c1f3226c11d76d58c172d7574eaffa8e7710191f0404141ada4c4d5"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_OvercurrentShot_02.wav",
+      "bytes": 53804,
+      "sha256": "a04fd63cbb6c000a99855bae1d41a5d7e7c1651dd013905ab1fd8da9e0818fa6"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_OvercurrentShot_03.wav",
+      "bytes": 53804,
+      "sha256": "6707ef741545a42704889bb0415d9732961cadedfece8b08e1147c449b029b10"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_OvercurrentShot_04.wav",
+      "bytes": 53804,
+      "sha256": "38c1d675b8f71c02b68b7c34112e1d823d903ad2cfdf5f63199bd8b11375a8bf"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_OvercurrentShot_05.wav",
+      "bytes": 53804,
+      "sha256": "28322f0d3daf51e18ea630f20a0be88bb251d823824c7d5014d9e23b611c985c"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_OvercurrentShot_06.wav",
+      "bytes": 53804,
+      "sha256": "4e0547c16a94e762e7463647b3106a7da8e8c0edffcb802ffbe8946406d97e4e"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_PistolEmpty.wav",
+      "bytes": 11564,
+      "sha256": "86f0d375b0abb4b97b2fc338953b0a8fe7e6e596833dcb751b81654412a0bdda"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_PistolMagIn.wav",
+      "bytes": 18284,
+      "sha256": "a67b70d639b79bf8e1a8eb41e49cb3fb74a7a4193e1be38f0e49f85879fb6a4a"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_PistolMagOut.wav",
+      "bytes": 17324,
+      "sha256": "3005b7679d16b302107ff4110b190b7d94ab243926ed1969b2fb4e364760b236"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate04/S_C04_PistolSlide.wav",
+      "bytes": 19244,
+      "sha256": "6469f219da06431511f664eb8bdcbd48d98352688d90b2cbee7f1d0ee78f371b"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_AmbientDrip_01.wav",
+      "bytes": 67244,
+      "sha256": "36ece2311a796f5eef7f5bcf6637681a69f56ecc633c8656004d1c54324306cc"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_AmbientDrip_02.wav",
+      "bytes": 67244,
+      "sha256": "d255053da2bdf06cec14186d50657e466bdeacd8fd5e26372a7c56d47e10fccd"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_AmbientDrip_03.wav",
+      "bytes": 67244,
+      "sha256": "96dcebbca26323d4de83e7800b066ab590b93950c398775b336bf73e00ef8dce"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_AmbientMotorLoop.wav",
+      "bytes": 1056044,
+      "sha256": "96921b682ad66d3f75c537e7dce06db396bf24b59970f7372865b4edee1e0824"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_AmbientPipe_01.wav",
+      "bytes": 172844,
+      "sha256": "4847036ef46116be05216a27e2bb031e9e753db1084b4b04a0e79a28cb728cef"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_AmbientPipe_02.wav",
+      "bytes": 172844,
+      "sha256": "1c182768bce492c5d35343bf7ff3b423cedc06ac32cb7b622ccf521b5ec40e09"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_AmbientPipe_03.wav",
+      "bytes": 172844,
+      "sha256": "350dba3d33e2cd7ae61c1d5ecf5238894e313a9e92dac3b403e4e9dedadde148"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_AmbientVentLoop.wav",
+      "bytes": 864044,
+      "sha256": "df01a2cca1faa806ab767b3f4154cfa00396e0f6189625c8c2bf2831977ceefe"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_GravebreakerShot_01.wav",
+      "bytes": 65324,
+      "sha256": "1c2dc7faceea84acde3513198bc03ea859a546ee6bde2052cf4cc90bd9b52d4f"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_GravebreakerShot_02.wav",
+      "bytes": 65324,
+      "sha256": "6e5da762f4692221ac1fbc8aebb21d27288b5d469e1acab4466a4fab6ddc2de5"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_GravebreakerShot_03.wav",
+      "bytes": 65324,
+      "sha256": "4719a678b449274dd1b5b613ccd5e753169cee1fef1b213d856ea8db482e6e45"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_GravebreakerShot_04.wav",
+      "bytes": 65324,
+      "sha256": "94040079ee025513cbf487bc9253af8ecdd578d6bcbe63fa3a96e8112914c257"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_GravebreakerShot_05.wav",
+      "bytes": 65324,
+      "sha256": "d5f082262f5f20a4761a177de6a44e4e48e73348bcf90269dad08a09973abd64"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_GravebreakerShot_06.wav",
+      "bytes": 65324,
+      "sha256": "4b84e2144cb9fabaa6c96e12c16057ebcd841e0df260bfbd976f8872479dfe74"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_LastWordShot_01.wav",
+      "bytes": 44204,
+      "sha256": "8b359ae54f7cbe5b213d4022ebdf792cc26a5635671827a1b8bef480a921a3aa"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_LastWordShot_02.wav",
+      "bytes": 44204,
+      "sha256": "194618f922acdcfae86d86222adc22d870ccb010439f5f63827e8f028e001c5d"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_LastWordShot_03.wav",
+      "bytes": 44204,
+      "sha256": "01fc493b16299f8fe52d8678b706bc85ec7086a16a56ed2901dc133e7293d4f2"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_LastWordShot_04.wav",
+      "bytes": 44204,
+      "sha256": "16982f95bd31fa8ba048dcd2696ff4d22fb4e31a27c5a8d11e8b43fd2c6a42f1"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_LastWordShot_05.wav",
+      "bytes": 44204,
+      "sha256": "2a8ef364f14fceb87ff73971d3c709e526fdb5b0ffea51d227b963d237a10d16"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_LastWordShot_06.wav",
+      "bytes": 44204,
+      "sha256": "8161311f1d175732f1839fafaaaf4c340969201b6d9e2ada7a3422dc83ed9d1f"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_OvercurrentShot_01.wav",
+      "bytes": 40364,
+      "sha256": "648693af2b80e184c387fe17b47650d49e2c658b4489e70ff5089e9e0d4ba1ae"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_OvercurrentShot_02.wav",
+      "bytes": 40364,
+      "sha256": "7627f7c5883e52186ed6e72dc8f041d48dd27cf5163db2a21f0ea70ee9381d00"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_OvercurrentShot_03.wav",
+      "bytes": 40364,
+      "sha256": "60fea6d459390902b32f89ffc057ef66b4a6213157a10405b073840d0055e2d3"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_OvercurrentShot_04.wav",
+      "bytes": 40364,
+      "sha256": "106e59c57797602bb51b72661a1d40c0d89b063f42923ad598b1df7310277a3d"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_OvercurrentShot_05.wav",
+      "bytes": 40364,
+      "sha256": "2f4bb045d3e203e89e4523444af1da35d212cd6f6f65a85858b772fe692ceef3"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_OvercurrentShot_06.wav",
+      "bytes": 40364,
+      "sha256": "9de7b737253998912f574421700f680a40c6fecbd6d737782f78082a240da5a9"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieAttack_01.wav",
+      "bytes": 58720,
+      "sha256": "573b8e04bdab066b5422e06ddcfdb6b825d47fabc6a7afbad373aa2c79782427"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieAttack_02.wav",
+      "bytes": 61484,
+      "sha256": "4877f8cea224dcfc575b2c90027905e1bf0db10e22db5b86ea9affbd4d1d8c41"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieAttack_03.wav",
+      "bytes": 64248,
+      "sha256": "a572778bc29f8c5f477c79f2d798e2d439a3387bcb576c9ee2c0fe1fd6168d11"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieAttack_04.wav",
+      "bytes": 67014,
+      "sha256": "a6e5f0e0dc932302f7a45cb99e7e13d525a226980366a012ef07f82703d9de61"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieAttack_05.wav",
+      "bytes": 69778,
+      "sha256": "7f5497b11f93357bd4ad5902a54de1ab199ddff84fb1cbc9924006f77ca5d2b4"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieAttack_06.wav",
+      "bytes": 72544,
+      "sha256": "26e5e36b015f84de8945778a9831c98947e4be084fbc7e66b2b6e7b17f91584d"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieBreath_01.wav",
+      "bytes": 132980,
+      "sha256": "2c96436f3ab27b26f31b4e1563c7eca4e55fdcbc2a01388b521a7ac984b1daf7"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieBreath_02.wav",
+      "bytes": 139244,
+      "sha256": "aabb0d9b013a6a9583f7fffd18e85e1ccf3c4875bbd730cecde52acaf54ab5dc"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieBreath_03.wav",
+      "bytes": 145508,
+      "sha256": "4f97a9811240ab5072a37a22a08bd632cba7f6d1542e2b9d79c09a8b6a5dffe5"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieBreath_04.wav",
+      "bytes": 151772,
+      "sha256": "9af2d86ebc3b910355df084c3c7775964fe48b97b0c431fd0f8fef33188cba24"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieDeath_01.wav",
+      "bytes": 132980,
+      "sha256": "343c5757279b8dd4cc5e3079cefae6e985dc003eca51eac4c9ecf0947188996e"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieDeath_02.wav",
+      "bytes": 139244,
+      "sha256": "d2261c50d83912144986b2c794f297b716e8f181f7b7181b89862171f148c9a7"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieDeath_03.wav",
+      "bytes": 145508,
+      "sha256": "7cb253a4b53fe95c7d8e2d00b1c5e7cb5dad3b2389fe679a9adc7d9f27197bea"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieDeath_04.wav",
+      "bytes": 151772,
+      "sha256": "984ce4c36ff323ca0949feeaa6ecc339da1b9f3f771c37a2eea4038630d5e377"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieHit_01.wav",
+      "bytes": 27548,
+      "sha256": "2090a8d667192cfc4f416ff1fe6e84878c8ec8f1d5872db279d060aa0c92fb2e"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieHit_02.wav",
+      "bytes": 28844,
+      "sha256": "f07ada4c448c6983a3f840c49e7ac10c58ccac79c729df0b344f5d6ee271623a"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieHit_03.wav",
+      "bytes": 30140,
+      "sha256": "3bda86f9cdbe63a1e6689571590548469f258b6f218829efdcc1ad8b3c3a3b69"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombieHit_04.wav",
+      "bytes": 31436,
+      "sha256": "aa2244c5ba0678a798b3c0ebedf54aea7187c4f497a28b15a7a6974133e596c4"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombiePursuit_01.wav",
+      "bytes": 84390,
+      "sha256": "cf34f587b4b9f150ce9f7db3eb707d3846006c1ce71d8188a0c958a5b92ebea5"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombiePursuit_02.wav",
+      "bytes": 88364,
+      "sha256": "9d4bda0a2972783f87be7c5487ae445939e3fefbbc496667d4f1f64436e3cfdd"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombiePursuit_03.wav",
+      "bytes": 92338,
+      "sha256": "34205ffa9aed82d4b263111f60be5f0177487cd6d06714b989e6fc1f4f641906"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate05/S_ZombiePursuit_04.wav",
+      "bytes": 96312,
+      "sha256": "8ee25d84aee62996ca852dad0ea5d24aa827e774ab18eb5989450b05b95a2e6d"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate06/S_Pickup06_DoublePoints.wav",
+      "bytes": 71084,
+      "sha256": "64047ffa926f3726249ca57a32b485cd2d43eada05ed44caff2fd7b7126adb45"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate06/S_Pickup06_InstaKill.wav",
+      "bytes": 82604,
+      "sha256": "25d5b27d2bcc03c9cdfe876ee308ab8555c1d0ada0a53b0ade6725c02d1a4d9f"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate06/S_Pickup06_MaxAmmo.wav",
+      "bytes": 84524,
+      "sha256": "aaa57ee5d30ef7540b4ce0b66ac96d92191c53cb18c2abcdc76c436f811df084"
+    },
+    {
+      "path": "ArtSource/Audio/S_CarbineShot.wav",
+      "bytes": 54728,
+      "sha256": "67010e1168d61ef2fd41e49259cb92f70aebb5a9cdd5f6d0647593c79e35cda3"
+    },
+    {
+      "path": "ArtSource/Audio/S_Empty.wav",
+      "bytes": 14156,
+      "sha256": "5b14b51ff58c9b7dd4d779e843ed8c95e50f4f546ac44baf6cf363473219d669"
+    },
+    {
+      "path": "ArtSource/Audio/S_Impact.wav",
+      "bytes": 21212,
+      "sha256": "ca817c60bb2be448edcdbc518bd12e99bb33c9b7f8400df05cb1d6ad872ea0db"
+    },
+    {
+      "path": "ArtSource/Audio/S_Reload.wav",
+      "bytes": 158804,
+      "sha256": "d32e527c9413dbd88b083772e498d580e914f52d71685d6d818dc66e7a0641a9"
+    },
+    {
+      "path": "ArtSource/Characters/C05/InfectedMotion.blend",
+      "bytes": 2793823,
+      "sha256": "8ef04f5652a893ea6db9ee7f2abd6be35d63e4f9bbb4983fe660c4c8ba8374f3"
+    },
+    {
+      "path": "ArtSource/Characters/C05/ResponseMotion.blend",
+      "bytes": 2765112,
+      "sha256": "02c8622741ab8bdb4930cc1475ba9a6c68b82616dd625d9a16dbe45ac2787e27"
+    },
+    {
+      "path": "ArtSource/Characters/Candidate03/InfectedModular.blend",
+      "bytes": 1608145,
+      "sha256": "4fcade0002dc6ffddf5c5fb94cc25435b55fe67c105c212276ff95c3fd145080"
+    },
+    {
+      "path": "ArtSource/Characters/Candidate03/ResponseLocomotion.blend",
+      "bytes": 1818171,
+      "sha256": "e1132015862fc7404075c2555b75bff9302a7b1393fe36499fc40cec9a412b2e"
+    },
+    {
+      "path": "ArtSource/Characters/CharacterWorkshop.blend",
+      "bytes": 1805535,
+      "sha256": "dce4534c51f49adbbcd80e74057b3feff404b8a0e280b146544df87190bdcdbc"
+    },
+    {
+      "path": "ArtSource/Characters/Infected.blend",
+      "bytes": 1796214,
+      "sha256": "c0ac3512615b3bd59e119a2f38efeaea06fa8d76df67d3c7353ee0cf0831e149"
+    },
+    {
+      "path": "ArtSource/Characters/Response.blend",
+      "bytes": 930724,
+      "sha256": "8a36af1ef2f44e78ebe01f408a2f7a14ab4e17937e947e13b03e32ad0facd924"
+    },
+    {
+      "path": "ArtSource/Environment/ProjectONE_IndustrialKit.blend",
+      "bytes": 2011036,
+      "sha256": "c2b596526a8c8333825d6acd973b8da7632c26d73955cc18a493325726cf7d45"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Attack.fbx",
+      "bytes": 197500,
+      "sha256": "dbd2261c4aaa9c89b746b3f69ebba0216e2a46bf5d34fe790b4065069f8546eb"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_AttackOneArm.fbx",
+      "bytes": 197500,
+      "sha256": "3eb9f97a99e3620affb68836fb25ade813bc5dfee0f7c793e91b38f106d918ed"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Death.fbx",
+      "bytes": 197180,
+      "sha256": "38c0bc2848a6a22e0bb21090268bbebbc387fa24bfce4b46b32ff2f0b764122d"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_HeavyHit.fbx",
+      "bytes": 208268,
+      "sha256": "90d6518b8acccaeb6493c483d127907d4ef1c740633110e4fe7f77b8f0340df3"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Hit.fbx",
+      "bytes": 164044,
+      "sha256": "0718dd43ec1a7c3aa0bd664b3ec8934c85c3e28b6cb84a88f7bd48b644953714"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Idle.fbx",
+      "bytes": 254364,
+      "sha256": "8cd7cefd3c6dd06c800f8eafdbfde0b4c36ef9f833797ab6145ceef56cdadd57"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Run.fbx",
+      "bytes": 185228,
+      "sha256": "872cbefd4a54c6e09d1cacf35be85b6599a8ed28241495953bd6d334b0ff9800"
+    },
+    {
+      "path": "ArtSource/Exports/A_Infected_Walk.fbx",
+      "bytes": 205372,
+      "sha256": "f7d3506c86f8a48b50c481ae0cb1343a7a13a12128991a133f9fc0106bc96033"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Back.fbx",
+      "bytes": 173116,
+      "sha256": "2ac20e52fb238ad638b8ce1adc809023af307ea81aa459656042a7f28a549a07"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_CarbineReload.fbx",
+      "bytes": 369228,
+      "sha256": "99995b66d34289ea6c7bf35a9861066436e80f143db77358917d14e74b4ac72c"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Equip.fbx",
+      "bytes": 185276,
+      "sha256": "eb19a5ea372efe93f7125a5f1bbd03065c1782dc7f2c76a977187d4e1363a35e"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Fire.fbx",
+      "bytes": 149740,
+      "sha256": "c946236458e01c76b9e2bb5eec45f461ee4e0c567077ec5641419bc34abc6b15"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Idle.fbx",
+      "bytes": 247180,
+      "sha256": "9c11c2f600209b6d3614f1779a86a73623e70cf572b54192c209aa2bdbd58030"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Reload.fbx",
+      "bytes": 222156,
+      "sha256": "da2eeacf8b724183f3dd1466263ed264840d774592871972833258f69949dec8"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Run.fbx",
+      "bytes": 171132,
+      "sha256": "f06882d1abae9922bdc2d6921ceeeec2ddd624a18adfbc01af8dc2b41d020721"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunFire.fbx",
+      "bytes": 180076,
+      "sha256": "8c45a2387980b182f27ddd989db8a9682e3189f43cc584786eea381c5f03cc88"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunPump.fbx",
+      "bytes": 205788,
+      "sha256": "f33632cf70c20b1d8e2fd07116f939c48e9c20e3e4cf58683400a78105e8084e"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunReady.fbx",
+      "bytes": 401948,
+      "sha256": "bb5276c89185be4853720e209db2e421eafa93d6f19a13efc41f151ed98defb7"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunReloadEnd.fbx",
+      "bytes": 181404,
+      "sha256": "74b10ed11181c968bd9bdd5da126bd63bf6602f34b082a5a1e5757c85a63718c"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunReloadShell.fbx",
+      "bytes": 242972,
+      "sha256": "9732c372b5c755e32fb28a2551944ffe95cfb2750628cd0c62515220a2ce1e1a"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_ShotgunReloadStart.fbx",
+      "bytes": 185372,
+      "sha256": "1a03ea70365acd4b3d4cf1af6f5e27d96dfb91d2c3457aaca99f8cdf134092db"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_StrafeL.fbx",
+      "bytes": 173116,
+      "sha256": "4764a3bef58d61b15c4035750079a6283ef9246c37121523f7b38920574ffb9c"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_StrafeR.fbx",
+      "bytes": 173116,
+      "sha256": "0544377805e01f094e2ad90b3c3d4b278e8d9b1468d046f04b9cba800739f3db"
+    },
+    {
+      "path": "ArtSource/Exports/A_Response_Walk.fbx",
+      "bytes": 173116,
+      "sha256": "36937e7a8001fb28e6ca5f560e27b2e961f840cfb8b61a9985367842512f3dac"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Infected_C03_AttackRight.fbx",
+      "bytes": 268524,
+      "sha256": "0ba3f9b16761606a177545fea9c0fb3aaeda022d382904cb1fbe378aa7a0c91f"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_B.fbx",
+      "bytes": 216892,
+      "sha256": "460c3ab516f364f9ba2372f3df724ea33c691236f0ac0e5b84a0deaff41ef8ec"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_BL.fbx",
+      "bytes": 218092,
+      "sha256": "bdf021a81d1c88128853378e0d366c669819a603f279cb928dccb3b4e228c13d"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_BR.fbx",
+      "bytes": 218076,
+      "sha256": "1e3127c39f486ca18ae553385cb7e9f789b2ce7ec7d4cbaed93e299136abdf53"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_F.fbx",
+      "bytes": 216892,
+      "sha256": "02c668631ac720d49ac14034915ede7349958fc69a6577ef2a76c72f2a212c09"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_FL.fbx",
+      "bytes": 218092,
+      "sha256": "911565631664dc90f0a7c7e420084afafc7395713c7bfd137288ba121efe5d04"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_FR.fbx",
+      "bytes": 218060,
+      "sha256": "32af9bd7b3094bfd7c25ff1e03072106af3d9bdb352cd5e5daf6502c1cfbc877"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_L.fbx",
+      "bytes": 218172,
+      "sha256": "52397d5374c708b9f4387653dc78c41271bf4f3262a724cb1047e0bfa3593df7"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Run_R.fbx",
+      "bytes": 218108,
+      "sha256": "abe631f655688a67856fac2dbfc98374053bc45cc4abf500f38dd222181b8074"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Turn_L.fbx",
+      "bytes": 216812,
+      "sha256": "752dfafc966ee7a4dcc0db3a0668e056226f72b9262c468c1ac64b5b3ddb256c"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Turn_R.fbx",
+      "bytes": 216812,
+      "sha256": "d26361dc52b9751d87808b877fa9e43a8745aa824ae2d58aeaf762e0717490e7"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_B.fbx",
+      "bytes": 229772,
+      "sha256": "a1b0505aa531566cff580d8f30b8448cd76670123cff45943c446c01e95e08d5"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_BL.fbx",
+      "bytes": 231260,
+      "sha256": "d1fa010d77050c284564395d1e5db7dfb75db4b9bb4967890fbbd80230ce8e81"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_BR.fbx",
+      "bytes": 231244,
+      "sha256": "1123065b7d86ddf09551dec0ac9c74c790b1b6ee0f2fc687de4a086421344400"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_F.fbx",
+      "bytes": 229852,
+      "sha256": "9b4020e99b1d3d9051a5899548a9a8e089696b9691ec765333294a343457bfcb"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_FL.fbx",
+      "bytes": 231164,
+      "sha256": "a2293d3e08cb1c465b4a914e4c0264429379d9bb2ec60699947a8fdeb267b953"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_FR.fbx",
+      "bytes": 231196,
+      "sha256": "a3a0281dd2f5b48eedfe416b83290febc10a10fb4c6bff806d9aab8c31792175"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_L.fbx",
+      "bytes": 231484,
+      "sha256": "c54ac559ee678d78c2d76012fb59fbd1493b855960b673ad38a71816b630ce8b"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/A_Response_C03_Walk_R.fbx",
+      "bytes": 231404,
+      "sha256": "2f66f022c26253abff342e5bed5ed8e26c4f2352ef1fa8f2b1e917e28f11f0e4"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/SK_Infected_ArmLeft.fbx",
+      "bytes": 184428,
+      "sha256": "5c8a4dd744bb75f459af72cf0bc74b235bd61f7368c5655784d38b92e49fdda9"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/SK_Infected_ArmRight.fbx",
+      "bytes": 176076,
+      "sha256": "f2f29e98d66b5bf3e19948d8ec5a598139d3c0cfd60c04c3c16f1eb4c4b256d3"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/SK_Infected_Core.fbx",
+      "bytes": 323068,
+      "sha256": "080b3592ca4ac80155e5870750cb2598d9bf3b58cf6b234993d74292dfcded3d"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/SK_Infected_Head.fbx",
+      "bytes": 270060,
+      "sha256": "1017cd48c850f5c6db014e275b45b40ab78ffa317bb1b40663dbd24d08715a21"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate03/SK_Infected_LegLeft.fbx",
+      "bytes": 178476,
+      "sha256": "95844cbbee92216ca964757da3dca7616a925fd1a26711ab4afcc2a81a0d33c9"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineHandoff.fbx",
+      "bytes": 228860,
+      "sha256": "9ffb494ae57ae6852391ac58e5b061acb6bacaea9161b0409f327cfb1c3d1b47"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineReload.fbx",
+      "bytes": 368684,
+      "sha256": "ed731225b6475505d4f49895b061b474d3ca497d347deebbf02932e583319b7d"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_CarbineRetrieve.fbx",
+      "bytes": 217708,
+      "sha256": "8a5bea3e52a78449b79f68b7cbc70fabfd2005fb57f960a9b283ba6cf7ff9fd5"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_PistolEquip.fbx",
+      "bytes": 185436,
+      "sha256": "f637142233f388ec27368931619a3dc63b90b004cf27941a271f59739af5910a"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_PistolFire.fbx",
+      "bytes": 172364,
+      "sha256": "871df29ef47452f7b887d133c972b3e4fa983952a221f0f5ca77b7deca966cbf"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_PistolHandoff.fbx",
+      "bytes": 229020,
+      "sha256": "48b51603f8f7071e710cc20984d77625ede478c0490e7900445060ba36f6ab3a"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReady.fbx",
+      "bytes": 402972,
+      "sha256": "d003746ba1eb06cd9ae0e381ac22b4bc047daf53bc7087a92bff7515f8592bbc"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_PistolReload.fbx",
+      "bytes": 340028,
+      "sha256": "317441d13d92da7465d06fa02b30986228a2f98a777702e05a5b2b6965d88530"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_PistolRetrieve.fbx",
+      "bytes": 217820,
+      "sha256": "40280d75af3d0241ca3045ee738f5fb154f684609c5b4c3eb47e318058b4ee02"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunHandoff.fbx",
+      "bytes": 228860,
+      "sha256": "c328a139f4808ad6e84781c51da6554a35b36c6076b3c4d9cc9d471d01fc64e7"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_ShotgunRetrieve.fbx",
+      "bytes": 217708,
+      "sha256": "861fc81490e99becee93bc2901a1f6dcadfc115daf8fb3b93818311ac472a3f8"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/A_Response_C04_UnarmedReady.fbx",
+      "bytes": 382700,
+      "sha256": "afe76c4e202c1f7b8459f3124515a694dd0ec63e60a44dcd0285679c289c13b6"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_Gravebreaker_Body.fbx",
+      "bytes": 314268,
+      "sha256": "4faa9dcb3cfabe4e7f31213c2b8679f6abe068d208459218063298622caa830b"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_Gravebreaker_ForeEnd.fbx",
+      "bytes": 144460,
+      "sha256": "99d4aafbba588c90a1a1dab18391fa221aaed3a8f3138e0867117741d794d508"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_LastWord_Body.fbx",
+      "bytes": 311148,
+      "sha256": "25e52544d8ea0fd86e21568bf38bf3f83445515821270de86a96e3c311d77c59"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_LastWord_Magazine.fbx",
+      "bytes": 72396,
+      "sha256": "c7be747be73f0d9747825a468ffc143a4469fe3332f7774b79822bc440cf07f2"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_LastWord_Slide.fbx",
+      "bytes": 156572,
+      "sha256": "b73532d755cc9fc88f45fd1a6030b81f4116a0a57673d5877e9946ef70abd974"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_M1911_Body.fbx",
+      "bytes": 274700,
+      "sha256": "00f10209c0f5b9426d83251b841118f02091ca766f4d8c4e9999f7636e95f355"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_M1911_Case.fbx",
+      "bytes": 47628,
+      "sha256": "38eaf799aa8cc39f86a3b3a3b255cba0233292ca8a5d777260406b2817e82a82"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_M1911_Magazine.fbx",
+      "bytes": 66620,
+      "sha256": "e9f9ce5484743b909d5bb79a214f281dd3c4828d619e9928965ecc5a8291d239"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_M1911_Slide.fbx",
+      "bytes": 118796,
+      "sha256": "886370651edf17fc83195dc5b16b8ecafb3bec861e1bf049389fabae4f438e13"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_M4A1_Body.fbx",
+      "bytes": 491612,
+      "sha256": "69d1ae550f55b84d9614a6a87c77abf7c3dc33957d0f322b434cc29a70abb58c"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_M4A1_Magazine.fbx",
+      "bytes": 145260,
+      "sha256": "98860b55e8b8ae17e14bb1467701b6ccbed8d31e8f4e6322484b63724aceda7a"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_Overcurrent_Body.fbx",
+      "bytes": 532140,
+      "sha256": "1fafa2ab0f15d629ac134e8ede52a8c8d5086dd308472e6a15551e9413e2c9f2"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_Overcurrent_Magazine.fbx",
+      "bytes": 155052,
+      "sha256": "d6eb749b5112d4b1baf7182322e2528dc43c8ae24c2f83e096a1242ba69bbbeb"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_Remington870_Body.fbx",
+      "bytes": 270972,
+      "sha256": "95c3c88de537c8a013677b2fc7be5295a686ea4cfd8f7e6b5beea99315080307"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate04/SM_Remington870_ForeEnd.fbx",
+      "bytes": 135404,
+      "sha256": "4b2c84a102fe912caad754795729711d24b2a6b1c887218b4bd370f4fdb3764d"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Infected_C05_RakeLeft.fbx",
+      "bytes": 293932,
+      "sha256": "9b943001ee76de31b96cdddac7d11525ad801f729e57beabf58c7ac190b9d413"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Infected_C05_RakeRight.fbx",
+      "bytes": 294108,
+      "sha256": "a4bbade68b724a3e7373905bcda0cf2f332c87263a0da6891a5167b0419acc83"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Infected_C05_Run.fbx",
+      "bytes": 233532,
+      "sha256": "e3217ff313ea29c04aa06b18c1a4fcb296e6ef52c386cc7df3b50a4b89deb19a"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Infected_C05_SwipeLeft.fbx",
+      "bytes": 278988,
+      "sha256": "f86d2af322befae9f1f4d90779f98fbafd27c277e85f45269f40f03e869de8b3"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Infected_C05_SwipeRight.fbx",
+      "bytes": 279132,
+      "sha256": "12537a46948163267c90432365aeb9d32c91017a279e439422b465344fba0eff"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Infected_C05_TwoHand.fbx",
+      "bytes": 290940,
+      "sha256": "357a02a14c674894efae048331166966fa144197efb7dc042ef88005afcf12cf"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Infected_C05_Walk.fbx",
+      "bytes": 283692,
+      "sha256": "b37eadee8d768c004c12f7fb5d4aeec0086f9f6e140963c06884542610a38124"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Run_B.fbx",
+      "bytes": 217004,
+      "sha256": "e58244dd4341c73e9c76cfc519cb44ffb6296f15427455f6a3c3886412a60c48"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Run_BL.fbx",
+      "bytes": 217468,
+      "sha256": "fb352300f8d958a7b6f999ac96f6e195cccc59ccae733ddc2b66567528718991"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Run_BR.fbx",
+      "bytes": 217484,
+      "sha256": "bb4243a17e63bfd709fa9c6ae1c62bdb310f5b341af0679f54a4736438a1243f"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Run_F.fbx",
+      "bytes": 217036,
+      "sha256": "d62eb7c43a95768f74536b2fd8ec9491fc3a0bdfcee052f2afa0c71c436bb2dc"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Run_FL.fbx",
+      "bytes": 217468,
+      "sha256": "25efd3196f43f10f65d1acc0e6bf952bc664345b1435991a2be0785c04d2606f"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Run_FR.fbx",
+      "bytes": 217452,
+      "sha256": "7ecd9c5d7f85f16f6b20b4e1fd2a50850726041bb46b39e1a3fead230b1b7fae"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Run_L.fbx",
+      "bytes": 217580,
+      "sha256": "ca9ed8078dc93ca9933531dd30530a829dddb8200023428ef7bba1ad477eaff8"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Run_R.fbx",
+      "bytes": 217596,
+      "sha256": "1c685664eff0bb3446445e9005f01dfd24533db1649f260d766be60bbec57d03"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Turn_L.fbx",
+      "bytes": 218012,
+      "sha256": "00094f5f7413411c15b8b5aacba21121cc8b24c567ad2015111e97bd34b2efc6"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Turn_R.fbx",
+      "bytes": 218028,
+      "sha256": "9b65cfb86c9a1f11f90642f14a822423890019cc0dd953b85046c3083cfc5e5c"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Walk_B.fbx",
+      "bytes": 228412,
+      "sha256": "a5efdfbc18a37ce0da6fe0185abfb37d23207e9411a675dc50a33e758f9101e4"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Walk_BL.fbx",
+      "bytes": 229036,
+      "sha256": "734f844b89967fe09c6f637a2d6b17ed26402de57faa42d386cd5160ecfb4e6e"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Walk_BR.fbx",
+      "bytes": 229020,
+      "sha256": "322d7943f81294cb34135fce8e6300b58c71cebd7eab9b938c080a157221b055"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Walk_F.fbx",
+      "bytes": 228380,
+      "sha256": "bbeb166c7d888a8c7f80309d780ef0c41a1c900148cc16eedc81a3a088350636"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Walk_FL.fbx",
+      "bytes": 229052,
+      "sha256": "4656d0f3d4add2726082f7dffe5470ca670ba5f9190c53d291c0aabc31102606"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Walk_FR.fbx",
+      "bytes": 229052,
+      "sha256": "3f6842686d5609b605d746e95a7b859915289581c2791e9817be1c88548e0d46"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Walk_L.fbx",
+      "bytes": 229308,
+      "sha256": "f32773694c384b73ef840f2ac800605f0226f7c96e7b6cf9e73eb233b0553945"
+    },
+    {
+      "path": "ArtSource/Exports/Candidate05/A_Response_C05_Walk_R.fbx",
+      "bytes": 229260,
+      "sha256": "e449ab5d8662a837c01a569abf3b1b37231550ea7d5779e4f395e12fc391dfd9"
+    },
+    {
+      "path": "ArtSource/Exports/SK_Infected.fbx",
+      "bytes": 516364,
+      "sha256": "d505fac162b1517a60c232ac615c107792dffae72d9341d17abb8e469e621ebd"
+    },
+    {
+      "path": "ArtSource/Exports/SK_Infected_ArmL.fbx",
+      "bytes": 174428,
+      "sha256": "4e950a21b3d8a7e3b715728f892e5d8003b393488abf47df0fb123879c660afc"
+    },
+    {
+      "path": "ArtSource/Exports/SK_Infected_Head.fbx",
+      "bytes": 255004,
+      "sha256": "7107a1e0f0f4b805367863e9c1f61e45d2d4b1ea97da4741f344bd1bad80dd04"
+    },
+    {
+      "path": "ArtSource/Exports/SK_Response.fbx",
+      "bytes": 985084,
+      "sha256": "821bf82f767259515cd59b1a061487019bdcfbffab7568e44e837b2881fbc9c0"
+    },
+    {
+      "path": "ArtSource/Exports/SM_Carbine.fbx",
+      "bytes": 160204,
+      "sha256": "b78b0ac19aac056f0d5429cd7f9643cbb0fe204d4edc747b72859222c3bd1e37"
+    },
+    {
+      "path": "ArtSource/Exports/SM_Carbine_C02Body.fbx",
+      "bytes": 112476,
+      "sha256": "11fc63b7eb1ff11eae90a8a4da8b71446e3bb9ccacc35d8a6921b54ffa010e9c"
+    },
+    {
+      "path": "ArtSource/Exports/SM_Carbine_Magazine.fbx",
+      "bytes": 24908,
+      "sha256": "d7efdf65975de7e3720ef3cc966eea08aa8f2babf335ede43bc892797e1d3796"
+    },
+    {
+      "path": "ArtSource/Exports/SM_ContainmentSign.fbx",
+      "bytes": 710588,
+      "sha256": "295a5657251683a04a037e0955396601dc56d73ca337af6a8ba093b92e3848ac"
+    },
+    {
+      "path": "ArtSource/Exports/SM_CutawayBarrier.fbx",
+      "bytes": 27660,
+      "sha256": "5b24b408cb4eb09c5736bfc23ea4e680a5a9e3cbc885574f4fd7056dd51e77be"
+    },
+    {
+      "path": "ArtSource/Exports/SM_FloorModule.fbx",
+      "bytes": 21916,
+      "sha256": "5c4ea391496b49679042f0503b67e064671506f2a4924e962265bbe45b9d3c61"
+    },
+    {
+      "path": "ArtSource/Exports/SM_FloorWayfinding.fbx",
+      "bytes": 622620,
+      "sha256": "4560b8a657ab4cdc97696109e6d59f4e78db0969007c3ae37cea214fe86816e1"
+    },
+    {
+      "path": "ArtSource/Exports/SM_Infected_ArmL.fbx",
+      "bytes": 132044,
+      "sha256": "8b24ea9567f120c89d6cdb9daf82fb148fd6b3fa1a23d9462e766f852819d2f3"
+    },
+    {
+      "path": "ArtSource/Exports/SM_Infected_Head.fbx",
+      "bytes": 204652,
+      "sha256": "1fbfbfc16cfc28df1b91ae57cea1bd337f30035c3d5d194d626b876c644bc8e3"
+    },
+    {
+      "path": "ArtSource/Exports/SM_LabConsole.fbx",
+      "bytes": 94348,
+      "sha256": "0b04c82fb9e7b93c59cba68f1e493a6c89ce6734957aa4a95ad776beef0d3715"
+    },
+    {
+      "path": "ArtSource/Exports/SM_PowerRack.fbx",
+      "bytes": 303676,
+      "sha256": "e993ddfc076972f1a3d73a7874ebff4b5e8cdfe6db6e2c2237e764e760260b97"
+    },
+    {
+      "path": "ArtSource/Exports/SM_PressureDoor.fbx",
+      "bytes": 257564,
+      "sha256": "e8ee2e3b63dc99cefbe75aea88c09806ea5986258f0fe831b0371fcf95604801"
+    },
+    {
+      "path": "ArtSource/Exports/SM_PressureVessel.fbx",
+      "bytes": 212268,
+      "sha256": "b5a765e6bbbe77bfebf04e55adf16a94aa61a5081b838b93947813bf11591e98"
+    },
+    {
+      "path": "ArtSource/Exports/SM_PumpShotgun.fbx",
+      "bytes": 216892,
+      "sha256": "2850986d75f81816d6a28d8f02797f2f2fa40d250d5d74c0bdfd17934e78bb88"
+    },
+    {
+      "path": "ArtSource/Exports/SM_PumpShotgun_ForeEnd.fbx",
+      "bytes": 50556,
+      "sha256": "f48836a2562e0fd91da77c6b577f93a2a87a17fa6475b1f9d4441c9915162175"
+    },
+    {
+      "path": "ArtSource/Exports/SM_ResearchBench.fbx",
+      "bytes": 49452,
+      "sha256": "f8c4701f20b4a988e7f3e8cb747c5f93f579cc1e4912430fce28080bd993d289"
+    },
+    {
+      "path": "ArtSource/Exports/SM_ServiceHatch.fbx",
+      "bytes": 40444,
+      "sha256": "c127c344f793417039d7b38d974ba20d9ba2548599ccd0124ebd8b3787b2aed2"
+    },
+    {
+      "path": "ArtSource/Exports/SM_ShotgunShell.fbx",
+      "bytes": 45340,
+      "sha256": "dca2ac6285b9750cb62e45318f28bf31f3e58dbcad4e6581d275e3f82800e85d"
+    },
+    {
+      "path": "ArtSource/Exports/SM_WallBay.fbx",
+      "bytes": 77724,
+      "sha256": "df6159788cbfaecd096c3616b67bec6bdf825a7497d2406b3e58c2bde690ff0f"
+    },
+    {
+      "path": "ArtSource/Exports/SM_WallLight.fbx",
+      "bytes": 24876,
+      "sha256": "967f134bea367ab2581858b868728a4d9ef69078e1a9c3fe46d6468620375dbf"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxActivate.wav",
+      "bytes": 90284,
+      "sha256": "09b397024b5631678d7ff251f2e608f6bf573181ec81b491fad715e4bf2c8775"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxClose.wav",
+      "bytes": 67244,
+      "sha256": "a90f68290de1763384010d743c6c492058bfcdb9a975ddf2fd259dd96f863789"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCollect.wav",
+      "bytes": 47084,
+      "sha256": "2da08740a836303c5102e58f973eeee4198483084b72e2c2598e9e063ee0c124"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle01.wav",
+      "bytes": 16364,
+      "sha256": "d80730e5225c5a2a7e3c0538b6d28043a251712d4f99c5b8aab1a42e9885cbaa"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle02.wav",
+      "bytes": 16364,
+      "sha256": "847f1f507cfcede6dd4cb4201624fdc7b5c21b8ad10bb99061917c52a14f0440"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxCycle03.wav",
+      "bytes": 16364,
+      "sha256": "b7e981aeccb1d000e7569fcf8d9fd6889166c7cfded5124777e9654ad32c4da4"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxIdle.wav",
+      "bytes": 288044,
+      "sha256": "2f1f1c7d01fcd18b6f58804df9d76238a56688c1b1302fa64b20e968117317ba"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_BoxReveal.wav",
+      "bytes": 130604,
+      "sha256": "138dda7c641789ac26387fab8de627c41664ae4e1f39d348b76cd45bb8684fa6"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeActivate.wav",
+      "bytes": 42284,
+      "sha256": "a71ccbadb02aa0817a9e333e5eef641196e6329f2ccb54637e837d10d74210bf"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeClose.wav",
+      "bytes": 73004,
+      "sha256": "f7826bd6f2ea7ba0cdc19bdd1af2b758a37db5b28da6e330d3f47cbca63242af"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeCollect.wav",
+      "bytes": 49964,
+      "sha256": "163c9d79493771c0cde9e6d0734a5c11147abd5bb5d507bbca780e97553edb5f"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeComplete.wav",
+      "bytes": 142124,
+      "sha256": "24f4ba1a6e0a80cc129b926f4807f42d209eeae7bafbac792f5841d64570fcf3"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeIdle.wav",
+      "bytes": 192044,
+      "sha256": "b8cfc94887885ff9438eaf048f21c4470ad8f672357ddc64a389a87352eafb76"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeIntake.wav",
+      "bytes": 105644,
+      "sha256": "360d588a614b8fbc2af58a7f87ffdd48f418db5b0597d41748ff6937ae113d9c"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeOutput.wav",
+      "bytes": 119084,
+      "sha256": "3abb001c23265854f1c8a9fa4028cd001ed01180c0cc8db4dcc722db2ccece19"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Audio/S_C04_UpgradeProcess.wav",
+      "bytes": 288044,
+      "sha256": "889b78935e6a2dc2401e45111d4a92de5633225566ee26cc279ebab17b96dbfb"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxBody.fbx",
+      "bytes": 804108,
+      "sha256": "8a7813cdd70506f8e531de011fdf9579599e838854899a53fcbeb5b5df0fbe7f"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLid.fbx",
+      "bytes": 237660,
+      "sha256": "709397c1d19d6a0ad7eb7daba972c65a66c39e9e6559ea2fb49c864657d4c850"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxLock.fbx",
+      "bytes": 31260,
+      "sha256": "eb5fc5c9600329e24bb9c1948a7037ca2c125dbb50fea362e3277eb563354c50"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_BoxRotor.fbx",
+      "bytes": 94764,
+      "sha256": "e3f0beb6ac337c3e2e42ce34af3f510386ea76963111c5b1a2a6bfc69884c61c"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicRod.fbx",
+      "bytes": 19484,
+      "sha256": "ab2c7cf3fdb5a1161b3f7de0dea9b26ba9ff7170101d3a0f9546ef61e20173da"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_HydraulicSleeve.fbx",
+      "bytes": 19500,
+      "sha256": "b10a36f1a7b6b5aa9d5096c140dea7a3fa47e676daca36dea8a36a17a9b90bca"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeBody.fbx",
+      "bytes": 2143436,
+      "sha256": "44d08df7d8c13d51640094f84ee029871789d53088a281a547885335243c4d07"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeClamp.fbx",
+      "bytes": 33980,
+      "sha256": "3389315e181836f99936cb6ab30d84445fc3bd9eaaf8483a5f99ffcba688c298"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeCradle.fbx",
+      "bytes": 34508,
+      "sha256": "97ad9b1b33a1c69ff0c20d2951b47b1c89f10dfc9d11d8b213816840a9eb1e50"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeRing.fbx",
+      "bytes": 83084,
+      "sha256": "67777aceeba5562ec1cd0490cf0ff6dbccc1ddcb40e0a782eed6cb3ed6ababf2"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/Exports/SM_C04_UpgradeShield.fbx",
+      "bytes": 32300,
+      "sha256": "8d479040ff803dcec8328d40a9ce2321483fd460c1c0c6b04bcce0f579990b10"
+    },
+    {
+      "path": "ArtSource/Machines/Candidate04/ProjectONE_Machines_C04.blend",
+      "bytes": 2598853,
+      "sha256": "9abae3fa3151c1f964ed4f1df7839d707c2cb44b97ef641e066fd8167d72e908"
+    },
+    {
+      "path": "ArtSource/UI/Candidate05/WeaponIconStudio.blend",
+      "bytes": 1618886,
+      "sha256": "5dded4276db3073f515630aaca13a5825e28ac79f399590c525d49456fada4b8"
+    },
+    {
+      "path": "ArtSource/Weapons/Candidate02/InfectedHeavyReaction.blend",
+      "bytes": 1925140,
+      "sha256": "f2031f50f7c3f91ba2287433b774ae5259647d31cf8df91dfdcce324f1e341e8"
+    },
+    {
+      "path": "ArtSource/Weapons/Candidate02/ResponseWeaponActions.blend",
+      "bytes": 1659853,
+      "sha256": "eb60d8b0152b5814ff95261ce706ee7b57619ec83d11586fe7764b5c74e1ebca"
+    },
+    {
+      "path": "ArtSource/Weapons/Candidate03/RifleBrass_C03.blend",
+      "bytes": 91449,
+      "sha256": "3baac09c753ec3275227c092442be0453095acf9c59da03f97384c2eee6025c7"
+    },
+    {
+      "path": "ArtSource/Weapons/Candidate03/SM_RifleBrass_C03.fbx",
+      "bytes": 22812,
+      "sha256": "8f393dd4bc04ea5fab1999ed3387509ee408b069d59661135aa0f5084f4a7e4d"
+    },
+    {
+      "path": "ArtSource/Weapons/Candidate04/ResponseWeaponActions.blend",
+      "bytes": 3080030,
+      "sha256": "c56f884b654986b9ef3db752c4a1665cd8d6415f164f8dfa2e274ec609113968"
+    },
+    {
+      "path": "ArtSource/Weapons/Candidate04/WeaponWorkshop.blend",
+      "bytes": 1651750,
+      "sha256": "608eba3425876ae48e89b4d99c1f18adf083eed32ad4b2524097e2006a6f75be"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Attack.uasset",
+      "bytes": 95127,
+      "sha256": "606f277ccdd6bd3f236b2b3ab986bfbc79e7c59391c8241c6a84a76b4e0777b0"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_AttackOneArm.uasset",
+      "bytes": 93179,
+      "sha256": "3416ec6885b402904abc14e81d7a041d480e1d0e80eba3624ed6cde56a8ffe62"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Death.uasset",
+      "bytes": 123377,
+      "sha256": "7d331edc5f09fddd6d532a1cf72a91876b224dce4cc2a3a5827ba01a6a35219f"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_HeavyHit.uasset",
+      "bytes": 47462,
+      "sha256": "e09a20e70770098e487184f7b65fe3967c50e588d95b4eda8aac9d00001de134"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Hit.uasset",
+      "bytes": 54021,
+      "sha256": "117ef24ffbefeda48188246b7dc1715d46965b1a75855830c57a57f8b3903d9e"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Idle.uasset",
+      "bytes": 200459,
+      "sha256": "67341b5abe31cc562327dee05d5aaa4884261d17abbf490f67e6b7ce672d5ed4"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Run.uasset",
+      "bytes": 94245,
+      "sha256": "65df0661bb2aa3a5b337c964d8f0cb9f80abc3eec262b6c01e3520522ea541f7"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Infected_Walk.uasset",
+      "bytes": 141483,
+      "sha256": "eab72b1372ee608f37f8dfa2f97addfbba43c6a7c770cb78fa8fedcbaa8e095f"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Back.uasset",
+      "bytes": 71819,
+      "sha256": "2faed5bf54a853b393ffc91205d52a87c615c9472925f7557073b10a00ad6cba"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_B.uasset",
+      "bytes": 63108,
+      "sha256": "5d1c4709c03b68e1d18bd48fd2d5026a55a2705c7de94b62fdf39809fa00767d"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_BL.uasset",
+      "bytes": 67146,
+      "sha256": "16dfb2a9755c964d1f30e27c34416cb6b4e8780311bc341741a8e4556976faf0"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_BR.uasset",
+      "bytes": 67146,
+      "sha256": "a9344f633e5f9cf7bc5eb48c3e913893c38087d901b4360b09e1a72f1f16f48b"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_F.uasset",
+      "bytes": 63108,
+      "sha256": "3987834481f8fb4d9f56e1682f429121bfb05a7d91406b68b5eed0a765ee4c12"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_FL.uasset",
+      "bytes": 67146,
+      "sha256": "8a003c9431ffa232dca86311b9e540ef75884eac078569a3167bc23cc312a0c3"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_FR.uasset",
+      "bytes": 67146,
+      "sha256": "72a7d5b90a83465fd57672e0fda60c1504e33e4f14eceac0b104641525877ff3"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_L.uasset",
+      "bytes": 67140,
+      "sha256": "d4655b5d2e3edfbe1fc4bfe3bb2a651e059d876d997453618e9b935962bfe38e"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Run_R.uasset",
+      "bytes": 67140,
+      "sha256": "95202383a9e6662b1f6bd2fc82c108ac954fbbf86e5c451ce670674cfb0a6a0f"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Turn_L.uasset",
+      "bytes": 65930,
+      "sha256": "60a2d780ecee753fca20a8b38e8a585bf66ec5b9bbb9cdd8cb6628a1193f5f6f"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Turn_R.uasset",
+      "bytes": 65930,
+      "sha256": "409d6928181eba8cec9a2b5087de9bd4500d87b10f9ff854525adcc75e3ab962"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_B.uasset",
+      "bytes": 68554,
+      "sha256": "b7ce60bbb4563cabfced6460a35fa4e0d699625eb4e7577d8b6d57d433ddcba3"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_BL.uasset",
+      "bytes": 73232,
+      "sha256": "8e8d8f8fa50bf2be6f5b6b6f2d9de2c2f5e50b28dce9732130ca47abd5f5cbe3"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_BR.uasset",
+      "bytes": 73232,
+      "sha256": "ee8e715cffcb0f991c36efd2cbcdb17c7551839b519c9e8ae6e83e76245f4b0c"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_F.uasset",
+      "bytes": 68554,
+      "sha256": "c604da96b34731ef76f801b7e0c22dd9a88419eaed39b5abec0005e003124586"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_FL.uasset",
+      "bytes": 73232,
+      "sha256": "09a92c38a3382842d900dfecc0a8cb43d9ec0c6fa3121b71165ab9925b23f339"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_FR.uasset",
+      "bytes": 73232,
+      "sha256": "c65733458498dc4b411cafc1a341aac5b5b67edc1e8aa7ecb1ba103d03a93881"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_L.uasset",
+      "bytes": 73226,
+      "sha256": "e5af704cb5824d8e1f892773e5d56d5fa7abe0ac9fab5c293f63d7ed1edd5c9f"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_C03_Walk_R.uasset",
+      "bytes": 73226,
+      "sha256": "58c8d1f0ca4a615338050fbbb9201a61ad011db3d03c73a65e7eca55752c017e"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_CarbineReload.uasset",
+      "bytes": 116615,
+      "sha256": "d6a875864e099e58f6c07cedb6788cf19ba3fca2516b616f500f5e30ef38bf98"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Equip.uasset",
+      "bytes": 41812,
+      "sha256": "33c018139a56d45ed9c5530550357b977db6b283f89d052e40fe2f6039a3d9f9"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Fire.uasset",
+      "bytes": 39624,
+      "sha256": "fe0b1de95f865b29d5b1a5c1ab6324ef68503b91bb399854f69fc5a7de8d76b4"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Idle.uasset",
+      "bytes": 168427,
+      "sha256": "1cca9e00cde8de07cfa4f282df553c81b2bad8c044d501d3947581080ffe1aae"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Reload.uasset",
+      "bytes": 120823,
+      "sha256": "60c591517f238eba66f979e9c9c339aa95d409fa35e0ec12dbcde734002e0859"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Run.uasset",
+      "bytes": 65509,
+      "sha256": "61f61cb1f3a18f1999a8ef710207d64001b1184acc616a51164ca211e18e73e5"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunFire.uasset",
+      "bytes": 36920,
+      "sha256": "619667885b958d2a12df4cd2c74b9b956cbe15d44ae68fc7ec15b36bc5d11b12"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunPump.uasset",
+      "bytes": 45240,
+      "sha256": "6e89737e164ac7df7ee6d44b9bd4ee69c1ebff8a57c6d529db0e2c9ff03aa227"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunReady.uasset",
+      "bytes": 105953,
+      "sha256": "c8089f7f939625c744b86d449e90a46c5b3c997317379783ac0fae026594539e"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunReloadEnd.uasset",
+      "bytes": 45750,
+      "sha256": "a1d7ca04584d24549b7e13827a878330f79e50fa6488a3384653cdd58f153d75"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunReloadShell.uasset",
+      "bytes": 55074,
+      "sha256": "56ef24a9ddd75e168deb465acc244313f42122af021b782b558e78857a62a360"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_ShotgunReloadStart.uasset",
+      "bytes": 47298,
+      "sha256": "0925d2ad1f137af06651cfe3b225487993a377080fe6b06bbe740ff342b9fb29"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_StrafeL.uasset",
+      "bytes": 71837,
+      "sha256": "995ba36be94a5af4097efe67777c7d5eb57343f683c6dc0ace019c2e31f4ed92"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_StrafeR.uasset",
+      "bytes": 71837,
+      "sha256": "b98ba38318778208e7e792ff5a78622dd20600726ec81b3f69a70389d72799c2"
+    },
+    {
+      "path": "Content/ONE/Animations/A_Response_Walk.uasset",
+      "bytes": 71819,
+      "sha256": "7ac719dc30e784e0ef86c3d8b3f57286a1d05f68102a6c59da9b77234807aa6e"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate03/A_Infected_C03_AttackRight.uasset",
+      "bytes": 242300,
+      "sha256": "b2822fe9dcbc0002eb95ab913be512109bc295c83f8128812940b8f9fc0798cd"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_CarbineHandoff.uasset",
+      "bytes": 71051,
+      "sha256": "f84a45bc7136d101185522fafbee6606cd69d002b70b9373b62bbd8b2c715fd1"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_CarbineReload.uasset",
+      "bytes": 150536,
+      "sha256": "c623f4a7bf7cb3aef6d7984fd05da660d0237a995db6ed88832681bf20dc662c"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_CarbineRetrieve.uasset",
+      "bytes": 66449,
+      "sha256": "86e7249b26d10451c204f31cf67564f80ee78810d084de26b8c9ac10f65830bd"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolEquip.uasset",
+      "bytes": 50297,
+      "sha256": "475733adc4f5c04080abe72d638ca91b4df1ac1ca85643b736fe8659f77d6966"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolFire.uasset",
+      "bytes": 39923,
+      "sha256": "5b1c187efd7b730b29bf08e489980d68491bc0eaab547fd703d0b45bc4fd4b29"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolHandoff.uasset",
+      "bytes": 71045,
+      "sha256": "fef3aa9a4314642640aaf7bb8ed3cc989384da07aca714c746c9be3518e27595"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolReady.uasset",
+      "bytes": 167804,
+      "sha256": "5ef46fa4c4fe287bb606d70bebda1931708d44eb0e7a46a27ec976f70e49847b"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolReload.uasset",
+      "bytes": 133250,
+      "sha256": "3159c47cac8f4512ab52f5b03fcbbaa8369cc5287663be5bdd9b0e00c310f59f"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_PistolRetrieve.uasset",
+      "bytes": 66443,
+      "sha256": "2bd47bdf5ee97928558d0318c416755fd46ea68ed6cf6bb00e13ef16b44bc6a9"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_ShotgunHandoff.uasset",
+      "bytes": 71051,
+      "sha256": "f5329bf36264f50113eb246843e96226e48bc190145265c7da00d67094d09948"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_ShotgunRetrieve.uasset",
+      "bytes": 66449,
+      "sha256": "360c50174cdf69fe2ad7142eed5c53d2d61fa7abdeb5a04cd7b47151e2857fe8"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate04/A_Response_C04_UnarmedReady.uasset",
+      "bytes": 28994,
+      "sha256": "9bad55150f303255458fa03216d811224ad81cc07ffcc7e5e88c0ece296fa228"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Infected_C05_RakeLeft.uasset",
+      "bytes": 213834,
+      "sha256": "e8ea4fe209655585dd4592e8dc76bce3e5a7521075f59e0161adf5cb642bc5a8"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Infected_C05_RakeRight.uasset",
+      "bytes": 213840,
+      "sha256": "aa9c6aaa2e7a83d1c193ea1382bec43e9d57161749a4abc71252100434dd60dd"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Infected_C05_Run.uasset",
+      "bytes": 127561,
+      "sha256": "6b124d5155a7e7b52d09d00196d8dbb250595ad5d4a77d304894c0bcc41d0d57"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Infected_C05_SwipeLeft.uasset",
+      "bytes": 196589,
+      "sha256": "84eb0054acb648ba5a85da36770d1e32183ce888e1e94478ac37c33f8e319210"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Infected_C05_SwipeRight.uasset",
+      "bytes": 193491,
+      "sha256": "e0cf531aac85c7c02ce0f93287c279a67e7e1b71204d86ff3f4822be379021b1"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Infected_C05_TwoHand.uasset",
+      "bytes": 188068,
+      "sha256": "2598f294eee0b944555c30f199040745570f18c623ebb074fb88758511d93349"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Infected_C05_Walk.uasset",
+      "bytes": 183506,
+      "sha256": "e81ea9fea45f23cc31517be5c1de1e06b266c7e582e2e64be88d013cee425c49"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Run_B.uasset",
+      "bytes": 76469,
+      "sha256": "a03a9909c835c9dc75f56d6eed89d0064a187f09a51e962a0e696428fd8dbe88"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Run_BL.uasset",
+      "bytes": 76475,
+      "sha256": "009e151abe27171077b8c2a65a59211b5e8c84c8a2bea7a1cf52a1aebe96ad4f"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Run_BR.uasset",
+      "bytes": 76475,
+      "sha256": "a7abd8db4dff94b8936893f9843fae3901475573d6a969dae43fc776f9568f05"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Run_F.uasset",
+      "bytes": 76469,
+      "sha256": "a69567e238b38c1fe12b6ef8fbdd9637e90668ac743f13e8590301254f7a6a57"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Run_FL.uasset",
+      "bytes": 76475,
+      "sha256": "ca197d4ec6ee76085c09e694e7434a88001e45bb52dec34b095c95875bbe1e9c"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Run_FR.uasset",
+      "bytes": 76475,
+      "sha256": "60f0403a21328f2440b9b59a57ac3084052ef4e66f54444162b8b0fc2c5cdb91"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Run_L.uasset",
+      "bytes": 76469,
+      "sha256": "33f16b7f66da5373c7b7dc66859760c8cb7982e610e46b5d07ed2f294d98e85f"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Run_R.uasset",
+      "bytes": 76469,
+      "sha256": "3e6106eaa8482b0cffa772370bd51a63bb0587831bcd83de4ddba9dcb7830c32"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Turn_L.uasset",
+      "bytes": 67995,
+      "sha256": "de943627ebf8776ad76b4cb01cb2b3d5129b93a8fbae6ace33fcb069eab19035"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Turn_R.uasset",
+      "bytes": 67995,
+      "sha256": "68035585d710893547dbc2ad32ca208443a0bbf52cf94dde1c6898494b200e97"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Walk_B.uasset",
+      "bytes": 85115,
+      "sha256": "0ff905bf856c45eed064820d0e8e6af5c1a37cecaef935dc6d1fe7ce33218d36"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Walk_BL.uasset",
+      "bytes": 85121,
+      "sha256": "e777bf9fddfb81045e64d4c9345c62878ca663585ca5501d506cd4d3a2787bb1"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Walk_BR.uasset",
+      "bytes": 85121,
+      "sha256": "4b7406f069e2872fd5e183ac7a0950b00b7a978347245d57030990c3b93945be"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Walk_F.uasset",
+      "bytes": 85115,
+      "sha256": "38f819f5b5ddb3f1ff60b869b217c1ae8209b3a8e9fba9cf0e6a34cf110641a6"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Walk_FL.uasset",
+      "bytes": 85121,
+      "sha256": "bb55d51aa0a5d917e3df11df2b2eed3e11c45398d7641bfb4f7d2201d732d10a"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Walk_FR.uasset",
+      "bytes": 85121,
+      "sha256": "a79af2f41b869f538faf752bd0112482153a0383f0527dc34b6ce99daf6ef135"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Walk_L.uasset",
+      "bytes": 85115,
+      "sha256": "80056438712c5fa9179c208a2f364a94cebca394cd5b057c3e2fa8c94c23210c"
+    },
+    {
+      "path": "Content/ONE/Animations/Candidate05/A_Response_C05_Walk_R.uasset",
+      "bytes": 85115,
+      "sha256": "bba1d8a30bf9b3578d5676f92d3b43ae2637f6e0f1cbf7cc6e232977645b1316"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_Carbine.uasset",
+      "bytes": 207885,
+      "sha256": "8c2450f29d096bb408ebc0d0674aa35f03b84cfd2f0771079e229fa964e3021a"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_ContainmentSign.uasset",
+      "bytes": 718313,
+      "sha256": "574bae35fd0f41febf5ff0c0ccfc936ce7078437764a534e591cd09d839a9089"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_CutawayBarrier.uasset",
+      "bytes": 31032,
+      "sha256": "6355b668721b6d0f4889a861b45b4a6694d82a078c748d33292bc668ed1b59f5"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_FloorModule.uasset",
+      "bytes": 23392,
+      "sha256": "367f2017fefed00b7a59a263a4d0eb36a1aeae4d690f2edb461298b68f0da815"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_FloorWayfinding.uasset",
+      "bytes": 627207,
+      "sha256": "4c31aa2e7e3f8cc843f56e9fc3020fd51d33c2acfe8a1852d73c1290e8eafdc4"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_LabConsole.uasset",
+      "bytes": 112381,
+      "sha256": "f4624f317b88f0e636725d64a6d12ef86912dfa49ca3368f7e2a7d582505de25"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_PowerRack.uasset",
+      "bytes": 318554,
+      "sha256": "05eac642be9ecd6727d1dd224cf14b54b099c8ec80819afabe77498126130f83"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_PressureDoor.uasset",
+      "bytes": 276076,
+      "sha256": "5269f7a682dcb9253ae5646cfc646d48448f5165c8cad454ef18ba74a89dc0bf"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_PressureVessel.uasset",
+      "bytes": 255916,
+      "sha256": "0a65ddf1b74db1063ba2bd5e3c73a0210e27b0350e731c14ca821eb44601b36f"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_ResearchBench.uasset",
+      "bytes": 62868,
+      "sha256": "e4cdabbd17126a4676aa5aeaff76b0b01e32906115f26bb1f659508a081087dd"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_ServiceHatch.uasset",
+      "bytes": 62977,
+      "sha256": "316fbeb1a6a4d6c2250a6364184a92a145e3ef543050720bf895685a3b772aed"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_WallBay.uasset",
+      "bytes": 101822,
+      "sha256": "ff87c993b1d5e546af720b03761c043126753069a2ed6d008a131cc44c4c8274"
+    },
+    {
+      "path": "Content/ONE/Art/Environment/SM_WallLight.uasset",
+      "bytes": 40508,
+      "sha256": "3ab6056b08ca65923181ef46de7fa85bfa6e65fb9fb3bcb0efb6966c48101f20"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_Gravebreaker_Body.uasset",
+      "bytes": 280511,
+      "sha256": "da64ed8fe7c51f01e965fa82da3ef05114ebc5e3f1863e1dc4a83e7efebd44da"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_Gravebreaker_ForeEnd.uasset",
+      "bytes": 173994,
+      "sha256": "e87327d8ad408fcb8583ae48a7cd04a1e76fd47d92c9fa5e25d504b984908494"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_LastWord_Body.uasset",
+      "bytes": 288574,
+      "sha256": "bb0a4cb759501b38d6b72de4909e61a8103618176369b707f78db006e118c0c8"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_LastWord_Magazine.uasset",
+      "bytes": 76514,
+      "sha256": "346e4b65bb66683e2772e95a89677f7575d72a7233a2b340b1e3cd7cc96e195a"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_LastWord_Slide.uasset",
+      "bytes": 154970,
+      "sha256": "9959ac54b9a7f9dd7bcc31470e29069bcbc92eed6ae75cc813d1729721945069"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Body.uasset",
+      "bytes": 274924,
+      "sha256": "f8113ff639b714fa655a23761f05ca10f0c9f9816df14a3d13b14fb248b9a172"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Case.uasset",
+      "bytes": 49854,
+      "sha256": "d75b5423e47a96e5bcf35b88b0f27862c9599a4d95ff7c322cd232dcb79b941d"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Magazine.uasset",
+      "bytes": 70648,
+      "sha256": "b4e70e64d2aa168f7744a839643ce90e823dbeaa70c38f621ae6950ceffc73ec"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_M1911_Slide.uasset",
+      "bytes": 119992,
+      "sha256": "f9574960457aa31ed636a9d6142b9e042015a6e8abe63f4da2b3e8c426916d89"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_M4A1_Body.uasset",
+      "bytes": 446130,
+      "sha256": "dc234d808ecd86c5707bb7384946edcb60dfcdd1f238823cf350381ed21ab462"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_M4A1_Magazine.uasset",
+      "bytes": 152013,
+      "sha256": "1e03c3179d9c01178b29f1f5d23e64be3a8c41dc4fa998655e9865cf271a6bbb"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_Overcurrent_Body.uasset",
+      "bytes": 520200,
+      "sha256": "62c07df11dc626c76a430f7e8c329e9242b5fc6db7665a67e68d518e3ea52df0"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_Overcurrent_Magazine.uasset",
+      "bytes": 137548,
+      "sha256": "4001254ceed3a8ca4ddb4118c3a06063bab21201c3197dca807ea9e4dc180cb1"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_Remington870_Body.uasset",
+      "bytes": 303537,
+      "sha256": "d01039bf5ac928d8a996146b58877d7464a821fe17486e51cb9708f96dbefe03"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/Candidate04/SM_Remington870_ForeEnd.uasset",
+      "bytes": 151459,
+      "sha256": "dde373fc9416f1a73179524946753a4c66a3f51afabdc0f4b21b101e06110373"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_Carbine_C02Body.uasset",
+      "bytes": 139686,
+      "sha256": "b3527f4f442832f63408d8fd69b063a2da30338bbeada792cefe3cc6b69bd143"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_Carbine_Magazine.uasset",
+      "bytes": 19694,
+      "sha256": "95ed900988942d152e8e2ef0f193bc96ae05a0a0a1b154b2fd4d6bd1c6ac6cb2"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_PumpShotgun.uasset",
+      "bytes": 255535,
+      "sha256": "971aae789705e4f2da05a6129dcf011212cf20e085eeb6d9f1469f754a77f102"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_PumpShotgun_ForeEnd.uasset",
+      "bytes": 59704,
+      "sha256": "6b90b7f6bb40fdd87b05d42dd2e9ea04fd1bb9b86d8d7fa9809f16fd4d9676a2"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_RifleBrass_C03.uasset",
+      "bytes": 22507,
+      "sha256": "41ff13cbe73fffb0a43b2375b577dea6627c7269e57309338d4721f969f5f846"
+    },
+    {
+      "path": "Content/ONE/Art/Weapons/SM_ShotgunShell.uasset",
+      "bytes": 58322,
+      "sha256": "aaf0b7f739f84eb30b7ba6b72136c896103710291171a7e8af82bee13b21e17a"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_AmbientDrip_01.uasset",
+      "bytes": 15571,
+      "sha256": "9d68610eaa626b0d6f1e2ee2fdf0201ca61800174b9f64cfd3b31cbb02779310"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_AmbientDrip_02.uasset",
+      "bytes": 15929,
+      "sha256": "18bc52ac7fad49a0f3a17d0d12c2283c08f0aef5057534c72da5b65a3aedd7bb"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_AmbientDrip_03.uasset",
+      "bytes": 18061,
+      "sha256": "37095af6c09eb7d97cf9379b5be9012e4e61e3261b92b8d23b1001caddebe11e"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_AmbientMotorLoop.uasset",
+      "bytes": 636996,
+      "sha256": "889ccd8b23e808d69929d4a3104428c61c4f47e132bc314167e32a2471be2970"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_AmbientPipe_01.uasset",
+      "bytes": 50422,
+      "sha256": "9a192a865609310acd21ce4e7499567036f77a2127892c215d522498fc15e402"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_AmbientPipe_02.uasset",
+      "bytes": 52238,
+      "sha256": "f298a630fc418d3913e9358735df97f31db370325a9b5a685252a01e902ea3f4"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_AmbientPipe_03.uasset",
+      "bytes": 54875,
+      "sha256": "336a7b117f99826a04c94cef56e17265cc6a45acf73b82f6b142615ebbcc4189"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_AmbientVentLoop.uasset",
+      "bytes": 592049,
+      "sha256": "8b6ee791a6d721b7199c25662ecc807edee80eb546db098ebf693af8d820a3e2"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_GravebreakerShot_01.uasset",
+      "bytes": 47345,
+      "sha256": "26101c050a5de51f62c53ef715e06933a306629dab066e3665bdba2e2d960cad"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_GravebreakerShot_02.uasset",
+      "bytes": 46759,
+      "sha256": "6511bb0b03e81d3b7f88a25a6058f4746638834f83ee553198842dae783269b7"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_GravebreakerShot_03.uasset",
+      "bytes": 47031,
+      "sha256": "d1849292dd5b8ff87b7ff4cc73427a4c4b4b1d347a043fa005fcb55e780bfd0e"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_GravebreakerShot_04.uasset",
+      "bytes": 47466,
+      "sha256": "80902819c9b8510a30deaae58d3b639a3a6cae4c64d0ff4083626688c4e6653e"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_GravebreakerShot_05.uasset",
+      "bytes": 47259,
+      "sha256": "2ff9d10d403ab987053491e862ff1e65ac546808b06227e399f4486fdd00c0dc"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_GravebreakerShot_06.uasset",
+      "bytes": 48089,
+      "sha256": "ced8062ec3098b8e2d9665b133daf78b7f99e796ca5751c235e25dfaaa5643e7"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_LastWordShot_01.uasset",
+      "bytes": 30651,
+      "sha256": "8a6f12682bcf9011d3dcb341183bd6008259d0ab72f6e51d88dfc96db5707e97"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_LastWordShot_02.uasset",
+      "bytes": 31136,
+      "sha256": "eb43df144a42cc8b2980848802f6cf33eff94b2f94caf15d3e24bd5e0e8b1cf0"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_LastWordShot_03.uasset",
+      "bytes": 30634,
+      "sha256": "26afb9aea19be2d620ed7e9d03ea260e34b1ae667313b77eecda33fe0a7409f6"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_LastWordShot_04.uasset",
+      "bytes": 31603,
+      "sha256": "94c8f2ff44f6d0b5213464bd5d6e6fd59d963bb24da39f967c381e660be2dc04"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_LastWordShot_05.uasset",
+      "bytes": 31636,
+      "sha256": "e98e77f9209dfd60a260fb658d39ce8c0f505715d337191d9e794374a6232292"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_LastWordShot_06.uasset",
+      "bytes": 31020,
+      "sha256": "d2854f4d3b7aa6f0b9c3545067409adcc78ac3a676e0452cddb4ab21d94c5d46"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_OvercurrentShot_01.uasset",
+      "bytes": 19587,
+      "sha256": "08c2ad4367ec0930f447132c9c54a7f5f7858cc52a12d4d0734e8a1b97d39708"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_OvercurrentShot_02.uasset",
+      "bytes": 19615,
+      "sha256": "6f67aa27116dd8ae288b86528c788ca7f5fdade79bc433fc017c5ccfdc070496"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_OvercurrentShot_03.uasset",
+      "bytes": 20082,
+      "sha256": "5ad406b9e1d1cc367adef26e8e58cafeb87f4cfcf10faa6820238ae3357c0ebe"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_OvercurrentShot_04.uasset",
+      "bytes": 20243,
+      "sha256": "f5b79a3a66bda579b4a76c79a8e79f83cde3e9d2b5b6dd44f342373f9ab778c0"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_OvercurrentShot_05.uasset",
+      "bytes": 19758,
+      "sha256": "1a0eb81d66030d031762fd97edb596dcdf191f72c9ad2bef47c793149afe9037"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_OvercurrentShot_06.uasset",
+      "bytes": 19593,
+      "sha256": "9774c48bb6c0eb3c41d288a98dfb1f9642e668f538554c6d0ddf466c9d625b76"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieAttack_01.uasset",
+      "bytes": 33453,
+      "sha256": "3946ff3b518bb92547709e40035502d16140ba8a5063b5acd9b39e757669aa8f"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieAttack_02.uasset",
+      "bytes": 35378,
+      "sha256": "8986e2a08b28a64bb8fdf71e640e040c9cb840e3361c035850d289973ef9001a"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieAttack_03.uasset",
+      "bytes": 36882,
+      "sha256": "652b0fe715fdae1e8989bc17c3f42d2f2f31d1ce330cb57ac848bafc461eb611"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieAttack_04.uasset",
+      "bytes": 38305,
+      "sha256": "e7b1e67a4ec876c0d7c83d1bdced39e4f9ae0acf275e3f6a5a6d1f15eb342b8a"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieAttack_05.uasset",
+      "bytes": 40348,
+      "sha256": "10ca4b8629a45af0dec9b3b7c3cfc2f05f03a8691210d1b3b38d446f7ad03780"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieAttack_06.uasset",
+      "bytes": 41814,
+      "sha256": "ad6d41ca3f076ffd595c351a61df988c70e49826d41ecaa7bb91e1502a00074b"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieBreath_01.uasset",
+      "bytes": 63515,
+      "sha256": "304bd11f58f53dfa02235cd140102a5f63ac82d3b3157067de4457819f6788c5"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieBreath_02.uasset",
+      "bytes": 66393,
+      "sha256": "1175d6ca81cd8431b8f4a6f9eea83d6cebac12a25451f5fe415683d883f580bc"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieBreath_03.uasset",
+      "bytes": 73823,
+      "sha256": "d9a3ede1b3b1f6a9751e7c89088b42744c431a468041b3b0995f476b53d3ccb4"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieBreath_04.uasset",
+      "bytes": 74402,
+      "sha256": "0b4ab3d9479f2059b2bd2599433a96a5de87bed251138af93b7d6bf1dc60a228"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieDeath_01.uasset",
+      "bytes": 61696,
+      "sha256": "f657a3278a071993388c12072482e766f71ea954ac612d755a68d95ba0db74c4"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieDeath_02.uasset",
+      "bytes": 65549,
+      "sha256": "c3b4a07399373f17deb044af11b3090a1274795521f9c70e21830e5187973010"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieDeath_03.uasset",
+      "bytes": 68362,
+      "sha256": "ca39020e1cc0d6df1522678c70799ae968290b3ed9196b7d1fb90e797722d808"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieDeath_04.uasset",
+      "bytes": 72513,
+      "sha256": "510bc8df56cc8d31ed12cdb6b04a04a74ef0706e3f7d7e7127580033501beb04"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieHit_01.uasset",
+      "bytes": 17521,
+      "sha256": "bca52ad0af2175c9a0fbd2bc041484609d16712da2626a690a5701e9cdba325b"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieHit_02.uasset",
+      "bytes": 18066,
+      "sha256": "1d287a30440d7059bad1b3ea1f387a3b67e64f24a271209a1b8563a324c51934"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieHit_03.uasset",
+      "bytes": 19017,
+      "sha256": "f52fcbe838a7bf25e4c9bcc0074c6f50327c6372363264a80e44a07c7941ece7"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombieHit_04.uasset",
+      "bytes": 19729,
+      "sha256": "93d7c027d5cac1547f6bbdd7553183d7f1649d8e186879190119b10a80c7ab88"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombiePursuit_01.uasset",
+      "bytes": 40353,
+      "sha256": "9a78fa1221119cd2ba5e191c86c03e7dffc702b91c8691713237d2b85f038b6f"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombiePursuit_02.uasset",
+      "bytes": 43050,
+      "sha256": "9d087cc76f381ecf870ddadd9630407e6691375bb628a708776104a1c2b33d7f"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombiePursuit_03.uasset",
+      "bytes": 45407,
+      "sha256": "5ac16ac601c2be593deae341396bbd58756f330b2b81b631dc9226ac62c2be77"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate05/S_ZombiePursuit_04.uasset",
+      "bytes": 48199,
+      "sha256": "fe3f2d78505c33a8d81b3d5c4550151a2fb477c32d637ac602c1bbd2ccb07c48"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate06/S_Pickup06_DoublePoints.uasset",
+      "bytes": 43248,
+      "sha256": "58223628c2e05b79a6f52c178c1541e4291087ff198c630bcbc7368e918f4b47"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate06/S_Pickup06_InstaKill.uasset",
+      "bytes": 37107,
+      "sha256": "b47d0b6975755ff0169282a4fc20d02e4900ba46d35964768e3e9bd5cf436123"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate06/S_Pickup06_MaxAmmo.uasset",
+      "bytes": 45846,
+      "sha256": "7047f5b9419d964c782169d13d74358da4ce64d5681bd56cb50865c302af2474"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxActivate.uasset",
+      "bytes": 55782,
+      "sha256": "48563609af8c06f5ed70d385a4890b3af1d8965de41327de239a418dda07baf2"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxClose.uasset",
+      "bytes": 45887,
+      "sha256": "9a1a923e6ec31c3880f54398bf3cc125d895f9434f6142760dcd8795fbe5644a"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCollect.uasset",
+      "bytes": 29704,
+      "sha256": "c0558d657219dafd4e726065b65eb89a2dd26be7276d427bc59bbc57f4ce43c4"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCycle01.uasset",
+      "bytes": 12308,
+      "sha256": "15e63205ae644e705329908d1c262742d0caabd681db66e2fc56e0a59550cb09"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCycle02.uasset",
+      "bytes": 12353,
+      "sha256": "84ad103ef1260dc8dae363e75d66182b7ff1623c83a6a2d95819fe1a56196721"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxCycle03.uasset",
+      "bytes": 12381,
+      "sha256": "283b4c937923839ee3e5d920b9a25959d7a4afeac709e538ffab5a58a39abe89"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxIdle.uasset",
+      "bytes": 40716,
+      "sha256": "fab7598e78ea71531ca402211d4db7afa90c56d5e1957801169ab0ec5d48a645"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_BoxReveal.uasset",
+      "bytes": 76885,
+      "sha256": "ada8404d8ab43f897185c7e9a381f1183f56a356d2a8f09d2a4aca5f840e7af1"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeActivate.uasset",
+      "bytes": 14740,
+      "sha256": "0f26daae910b5d5f96b0a48d669ec036233bd644abbf8518e827fae7a0d186cf"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeClose.uasset",
+      "bytes": 49916,
+      "sha256": "b08792fee9e5fc92251d431a03f4c910725e00620fe102c8da3f143defbff7af"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeCollect.uasset",
+      "bytes": 30203,
+      "sha256": "a2f4b3177460a9c2409996bf8eca1294521a750037518ad1c2039771844cd3e7"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeComplete.uasset",
+      "bytes": 66065,
+      "sha256": "fd5760784feeb26dd9473283813ad66026c2794e15fe85281355accb24eb7a16"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeIdle.uasset",
+      "bytes": 30827,
+      "sha256": "c67cb42113f2f1f1d33e0bdf21f2d12671883d84e6cf4f7fccbbadc8bf538f8a"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeIntake.uasset",
+      "bytes": 72481,
+      "sha256": "74761c11cc7dac50786ad93a6ea11df4a225da56ba883c454eb95d8e5f6e3d20"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeOutput.uasset",
+      "bytes": 82125,
+      "sha256": "314448f99ee9c71b116eae17de18a866d733066443fb50da4106e160aaf6072b"
+    },
+    {
+      "path": "Content/ONE/Audio/Machines/Candidate04/S_C04_UpgradeProcess.uasset",
+      "bytes": 67122,
+      "sha256": "6044de715c5eaa342723d8e653623ffe1a1cfd91c531c2d53104c9aebdaed173"
+    },
+    {
+      "path": "Content/ONE/Audio/S_CarbineShot.uasset",
+      "bytes": 21258,
+      "sha256": "9faab6c0b50b7edc78d2504890f7f7b7d2bb3ea1f5435986e22e72edfcd14111"
+    },
+    {
+      "path": "Content/ONE/Audio/S_Empty.uasset",
+      "bytes": 7208,
+      "sha256": "63350e2389ef2b24d6ab38da3e9cd803c77b5d18a8fce02706e2ecb0155bf807"
+    },
+    {
+      "path": "Content/ONE/Audio/S_Impact.uasset",
+      "bytes": 13246,
+      "sha256": "67832602d3bcc841bc34a67e0eb9fbd9c8df8630ce1d4434ff029b3d2230dec0"
+    },
+    {
+      "path": "Content/ONE/Audio/S_Reload.uasset",
+      "bytes": 39801,
+      "sha256": "536ddb7b52df76ecf6c60581cbc2d1ea5dddcdf4cfb98f5ea00f6c3958d529df"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_01.uasset",
+      "bytes": 17079,
+      "sha256": "76862ec431fcfcc29252a9c3251023093c46b73770b2dbbbe3709d4963e88bfb"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_02.uasset",
+      "bytes": 17136,
+      "sha256": "abd35867d0217d90d2d423eab6cfe5159e1f8299e54bbb10c92189134c4b7df0"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_03.uasset",
+      "bytes": 17957,
+      "sha256": "cf330042b8d08b0214b416575c3bef1e539e96144bc815520999286b9b6bf756"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_04.uasset",
+      "bytes": 16469,
+      "sha256": "c47fe6aac1c58338fbf02cb9126d7041bdb1aeff4636eb7d9abbc0718a434d49"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_05.uasset",
+      "bytes": 17480,
+      "sha256": "21846d5f382193ea8626f66ce713c75f21eaa06676270a084c26229847063532"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_CarbineShot_06.uasset",
+      "bytes": 17212,
+      "sha256": "38770f2e8dd937cc54d96955690f89772dc64b8990b6699d621b20fdff5e9d4d"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_01.uasset",
+      "bytes": 35693,
+      "sha256": "72dd6af57f5b5f2afc82379754c60cc6765d5fd23ce7f481ff4efb6025ddbaea"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_02.uasset",
+      "bytes": 32966,
+      "sha256": "ae6cfeaccea04ebd8478d40598c7d05fc11918d980fb4085f8f17bd1418ed510"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_03.uasset",
+      "bytes": 36792,
+      "sha256": "47675aa5b5a1e38a12cd640966772df15ea2e75ff015a465818ba67ab1d13338"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_04.uasset",
+      "bytes": 33626,
+      "sha256": "b1a26c1520a728af048429d2fc92b28a09b6925a329521a5fdda031a3b598566"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_05.uasset",
+      "bytes": 35355,
+      "sha256": "05e2a795182b701a240524abe9655a60fd0deb8e7c64738b4e96f3231955e5d4"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate03/S_C03_ShotgunShot_06.uasset",
+      "bytes": 33558,
+      "sha256": "e2cb912d65818461b82efb2cb5359313b47fea7b5bc5e1682894c0a2b40367f9"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_GravebreakerShot_01.uasset",
+      "bytes": 31152,
+      "sha256": "f21618f907a6be18e4d5e8d91ea5d05bf4c3b007e819e16b498e0846e513c0b4"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_GravebreakerShot_02.uasset",
+      "bytes": 28967,
+      "sha256": "9b7df3ca90e80515c09f1f06cc6bc1517e52395ce2baecf31fa937513a33bc0c"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_GravebreakerShot_03.uasset",
+      "bytes": 33767,
+      "sha256": "e2e9632f5671f234ed0e6d518616f7ed565b1bfc814c0dc87f95bf78ceb6da1b"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_GravebreakerShot_04.uasset",
+      "bytes": 30981,
+      "sha256": "6d2456397bdf6ab7381b6fcb47e73fa2c1383e09999b6e88fbbed3bbd75b75f8"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_GravebreakerShot_05.uasset",
+      "bytes": 32671,
+      "sha256": "bf3c32c87e80c2a18d8d6bfa6c432c1b0ef03b32afe2e1e14b9b96a10e8f867b"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_GravebreakerShot_06.uasset",
+      "bytes": 30970,
+      "sha256": "11b09001010b59d8d6460cdab5cd0b43890ac40a9abbf54081cf773e22b76ee7"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_LastWordShot_01.uasset",
+      "bytes": 16849,
+      "sha256": "757ce3043d9e8801a96c32de5283dd950ca36746d4673c8b9c71d64e182544e5"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_LastWordShot_02.uasset",
+      "bytes": 18081,
+      "sha256": "70721df8a82a1a0ec78f110ad27c75e171dfba86ed3a74a66c433029ae4a813f"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_LastWordShot_03.uasset",
+      "bytes": 17925,
+      "sha256": "565bf189598807b480228b30aec3ba813383df82f1edf8b53418630f775adda1"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_LastWordShot_04.uasset",
+      "bytes": 17969,
+      "sha256": "ae328e5aa94a71767a7d945c0c82bdbba85abc38df8ce3b305ce46a657242765"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_LastWordShot_05.uasset",
+      "bytes": 18592,
+      "sha256": "e8898baca5478ff3455564bc44cac2eacf6df3b780f12063d77a86d0c500457d"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_LastWordShot_06.uasset",
+      "bytes": 18561,
+      "sha256": "fc4a2ffd73c173005e0acd69df5e934d0fd0d2aa4df761cd055ac80b321225ab"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_M1911Shot_01.uasset",
+      "bytes": 16231,
+      "sha256": "31447814e6e3e95552883b6a63846492fc7a2afac8a8e9ef278f5bee3eebca97"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_M1911Shot_02.uasset",
+      "bytes": 17467,
+      "sha256": "7342067c63a0b198ac9c6972ba3c4e1e8663b05c9e6a2fe1a24d48f8fc3b1438"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_M1911Shot_03.uasset",
+      "bytes": 17424,
+      "sha256": "e70f8c2f6a8fb7facbce717a86e9aaab29e209546b11894c1c494bd28d71eccd"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_M1911Shot_04.uasset",
+      "bytes": 17149,
+      "sha256": "7b8a901c66834352ccdf175dcf8895356eaac217e0ab02c32e64cb1c3ce50296"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_M1911Shot_05.uasset",
+      "bytes": 18018,
+      "sha256": "546a588837d5d99aefe3a4506d56c505fcbe2ca7a0c85cb7112166a81a2e7dd5"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_M1911Shot_06.uasset",
+      "bytes": 18142,
+      "sha256": "939fec559239f78f2462e771d7eb9fe42631c3f9033abc78af7a56886a17e35a"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_OvercurrentShot_01.uasset",
+      "bytes": 16936,
+      "sha256": "ef7a5e8030793e5d2b03ffc0359e34d26bd26444b8d6e76e13374e550ef50c6c"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_OvercurrentShot_02.uasset",
+      "bytes": 17341,
+      "sha256": "c41315915f105cbf6c3d3f5f92be9afd262d691032fc5388b5f6e05014030bd4"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_OvercurrentShot_03.uasset",
+      "bytes": 17484,
+      "sha256": "469626fc4facf828e82f01254181da81acec77e29bd311aa2ebc9dd917eebd45"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_OvercurrentShot_04.uasset",
+      "bytes": 16530,
+      "sha256": "026fb2fa003c44f2d21eca10c7772f70a4c7b3b0a139868dbe19517a0973020b"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_OvercurrentShot_05.uasset",
+      "bytes": 17684,
+      "sha256": "366029636a995ac56892c9a2b2493e4242f7bdcef861a150f78af27bd75b0555"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_OvercurrentShot_06.uasset",
+      "bytes": 17884,
+      "sha256": "51c2ce65a84f66522d7eac2eecf0305fe473740dde5bcaba807f9199a04c540e"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_PistolEmpty.uasset",
+      "bytes": 5295,
+      "sha256": "610a75e77d8fafc75ada9ae1ebb2715db1dae0d29bbafb24e2aef5345dd44c41"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_PistolMagIn.uasset",
+      "bytes": 8711,
+      "sha256": "218df19d468f27642765cfdc32614b563603afeacea205efe151f39659a02b7c"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_PistolMagOut.uasset",
+      "bytes": 7215,
+      "sha256": "b90ea14b7a19b3cb33b7201e968da175ae4832f97189037ddc571acdc49854f0"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/Candidate04/S_C04_PistolSlide.uasset",
+      "bytes": 10541,
+      "sha256": "93c2436267bbaf0afb30a22026f969a240ba255ace41d13e351632f51025151f"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineBolt.uasset",
+      "bytes": 14796,
+      "sha256": "51b988c56265ed9975276c19a27443ed383a0089a11779d722bbd9d61ff7aaef"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineEmpty.uasset",
+      "bytes": 7508,
+      "sha256": "bf64fca413fd6ace4d1417a71f704d098c49a9305b39d8f825ba35213b5f76fa"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineMagIn.uasset",
+      "bytes": 10222,
+      "sha256": "751db31816b8ce220b322fdcbdc9544de2958f156d5e0ac875f5397dbec1e3c3"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineMagOut.uasset",
+      "bytes": 16370,
+      "sha256": "36150a2f45a0d14574cde4b22cf116664014bd4f0cb2ee681f1f1fd7abf2ab0f"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineShot_01.uasset",
+      "bytes": 15264,
+      "sha256": "76bccd15400ea49f7edef1df920f26013efa4b714ab7bd5763642684cb794ca7"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineShot_02.uasset",
+      "bytes": 15395,
+      "sha256": "682fa2671fef8ae1760810264cb40d290dd299d31f0b70acc151d440af9ea529"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_CarbineShot_03.uasset",
+      "bytes": 15082,
+      "sha256": "bebb850bcb8a51429735d82cf43930b70c472a4c0492f8f539929f002c306830"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ConcreteImpact_01.uasset",
+      "bytes": 15770,
+      "sha256": "57a7736a3ff663eeadf4ac9688425f05c8799023db3aecea2b8147726b7a9503"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ConcreteImpact_02.uasset",
+      "bytes": 15596,
+      "sha256": "9a9797080b714602cf219cf3241bafd4c6c01f1cb6657ed6f3762d641535a135"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_FleshImpact_01.uasset",
+      "bytes": 11431,
+      "sha256": "54dc974afda0269eef6c8a15603fdb6bfb80abf965e8fd9238ba0f6d720eed99"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_FleshImpact_02.uasset",
+      "bytes": 11768,
+      "sha256": "f2f64655c6c57c92979750cb30066278857bf58dc3447cd06e2baf3b7a290e01"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_FleshImpact_03.uasset",
+      "bytes": 11689,
+      "sha256": "4262e7f7a34154cf450a5611c31b9bfbb977051ac5a932cc4d87ef5f2f5ddc42"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_MetalImpact_01.uasset",
+      "bytes": 8731,
+      "sha256": "95a2ff0b88c1f25b94ce1422a060a90ad4ca0eba32050ba25c69b812ef88d2d1"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_MetalImpact_02.uasset",
+      "bytes": 8523,
+      "sha256": "c5524242318a5a8241af783c4cbad1557c670e5e8e84ab919209271501cf4039"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunEmpty.uasset",
+      "bytes": 8542,
+      "sha256": "cdfc5615abd31dd0e861ea1f71ce41a4c2c53d32fa973371a1d6cdf2b93c8c81"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunPumpBack.uasset",
+      "bytes": 20556,
+      "sha256": "b317a5336d02b899aefb50d68e7d49d5c5e04c43938b2ec091d3150678a526a0"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunPumpForward.uasset",
+      "bytes": 21773,
+      "sha256": "281d7698a8e9738f817ccba7bce74aa9f56ce8c5da0d16f4b5a2e639e0187317"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunPumpLock.uasset",
+      "bytes": 9190,
+      "sha256": "ee19922e1fae176bb14e8ec0d6d9ef0c3d8a8c3a6f0556bdc3cb3e1d1960c2ad"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunReloadEnd.uasset",
+      "bytes": 15920,
+      "sha256": "8d3b9ca735e22eebf29391a3979f2517f118eed4dae9a4fc5558a6546aa35c3f"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunReloadStart.uasset",
+      "bytes": 17025,
+      "sha256": "7b4d270964fcde0ce254ae138b5a79eb61e3a9440bda13b839d5aabce34ec9bf"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunShellInsert.uasset",
+      "bytes": 12439,
+      "sha256": "d7a92a2fb522ecce057e325aa30998a723f0a0324af4acb2d2b60937a9ce7f4c"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunShot_01.uasset",
+      "bytes": 28141,
+      "sha256": "1a54ef9ef5234e25188b9c23feba174b6dd8beffb4563b4829e5fa41a1e8d9ba"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunShot_02.uasset",
+      "bytes": 28566,
+      "sha256": "9789d943d0a89d99f14855b83d5985bf49f9bdc16bd0e3488a22beac4bc19b37"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_ShotgunShot_03.uasset",
+      "bytes": 27923,
+      "sha256": "23bad11f892939e483526564f2c94a99ce202ed1a24ade3ea7e26fa692702cdd"
+    },
+    {
+      "path": "Content/ONE/Audio/Weapons/S_WeaponEquip.uasset",
+      "bytes": 14608,
+      "sha256": "594db575bcf5f8c98a3a38050d526fe9b7bebecaa2659f35d79d310eb975fa86"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PA_Infected_ArmLeft_C03.uasset",
+      "bytes": 9518,
+      "sha256": "5beb3ee14fb6c512d7f63d13c9cab2d462b61c60c352edd33873f2d7621fdd41"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PA_Infected_ArmRight_C03.uasset",
+      "bytes": 9522,
+      "sha256": "7692f6e7bf0e17e64bd5cae26227d0c08f665a1ad39401eb18a225a0c9187cae"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PA_Infected_C03.uasset",
+      "bytes": 38688,
+      "sha256": "72e55f19e37ce1113ec0d7b66170a33b569bb6d6c3a2175a9dbf626375548530"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PA_Infected_Head_C03.uasset",
+      "bytes": 4681,
+      "sha256": "c01a73f03c914e833d3931c88d958fb537ca7fccdef0c939faa9b2b12a19e25c"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PA_Infected_LegLeft_C03.uasset",
+      "bytes": 9604,
+      "sha256": "abff4cecb75fa2ce5221d52857858415e61c772f2626f5436b889e2ebb712736"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/PM_Infected_C03.uasset",
+      "bytes": 1196,
+      "sha256": "135cc982d5a3da3cba59d156b574a400dcf0ab4fb0dde65058a4922f62586983"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/SK_Infected_ArmLeft.uasset",
+      "bytes": 643704,
+      "sha256": "c83d3f8601b98688e45a577cd87d13f5b78e3f1e29b1aa0f46e6f43ab3846179"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/SK_Infected_ArmRight.uasset",
+      "bytes": 683276,
+      "sha256": "05889e3ae95bf5d8833128feb962663d01964367b49b18f18e4b53945341b16a"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/SK_Infected_Core.uasset",
+      "bytes": 1575848,
+      "sha256": "c1e030a90f7b0b113360d1dba5d17963a41aa61892be183faf38f50a8e27aad9"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/SK_Infected_Head.uasset",
+      "bytes": 1645342,
+      "sha256": "d66621509d50167c48850a9891b544c8bb5d98886ef03cada309df47a44be443"
+    },
+    {
+      "path": "Content/ONE/Characters/Candidate03/SK_Infected_LegLeft.uasset",
+      "bytes": 620323,
+      "sha256": "4f4dfffcd2a6631f7c5c9c5461eb89f942cc9d43a3f6563f4195037ea30cfed0"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Infected.uasset",
+      "bytes": 2290037,
+      "sha256": "20df9210096d9172f5655510a334d5cfc7dce0710f340731d444e67e92acf997"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Infected_ArmL.uasset",
+      "bytes": 643103,
+      "sha256": "2f9ff37604f0e68ab3bac7feecf81ebb0f3b3d71345e9af30da3a24f31f4782a"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Infected_Head.uasset",
+      "bytes": 1636631,
+      "sha256": "bc44f01022c50b9db88dcd8faf541961db1dc4731667b077d584e2ce0d105f54"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Infected_Skeleton.uasset",
+      "bytes": 6208,
+      "sha256": "530259ac1d97b0cff0d4485d20507bfc03e535125c2e3ab70d849f56f027760e"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Response.uasset",
+      "bytes": 5306899,
+      "sha256": "d750c1d6e8d3e3359742d1bba517cb79e7c20fd732ea933a1014bda7edebf382"
+    },
+    {
+      "path": "Content/ONE/Characters/SK_Response_Skeleton.uasset",
+      "bytes": 6208,
+      "sha256": "97b77043f17ffcd0f7f6e16de8cb6fecc331925b335ebd8714dfdcdfebea34f6"
+    },
+    {
+      "path": "Content/ONE/Characters/SM_Infected_ArmL.uasset",
+      "bytes": 150408,
+      "sha256": "991e45838fd398f42a9e3f25160fec379d09bded3e0892a2a4221baee2f3b516"
+    },
+    {
+      "path": "Content/ONE/Characters/SM_Infected_Head.uasset",
+      "bytes": 267997,
+      "sha256": "b7e2c37bc8690fb8b7081832f3ee37bf530e35145692962dfe4b53cd505e2673"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_BoxBody.uasset",
+      "bytes": 681518,
+      "sha256": "f2672fe3d6e994c3540b1260c8e7efd07977ddab3b3ff4b67b6feff4124b0820"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_BoxLid.uasset",
+      "bytes": 198530,
+      "sha256": "ebb07ff96ec12db09316754f67b39de7a084a820f0aec3cd5b0ceccb53d18d49"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_BoxLock.uasset",
+      "bytes": 30484,
+      "sha256": "bb572645d700d8bfa68a646aee9d4f608ac36d08416aeeb9ce1e6fea9f643de9"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_BoxRotor.uasset",
+      "bytes": 104766,
+      "sha256": "d5646d6516548a798be7be3faf96c84a7ce1b42ea922a27ba9151c47150b2015"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_HydraulicRod.uasset",
+      "bytes": 16671,
+      "sha256": "21b50833f185d661e0c7acf504974081237811ef312df38b1af691a710960443"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_HydraulicSleeve.uasset",
+      "bytes": 16853,
+      "sha256": "01e6c59da11714ce577477865ecc42787e21df3c1c91ea9a63ab9c36c497ad3e"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeBody.uasset",
+      "bytes": 1626099,
+      "sha256": "c38f54bf85b6bed51474638447808cfad8bf38041e02fe465da471948a631f79"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeClamp.uasset",
+      "bytes": 33688,
+      "sha256": "224e655cff102a4b56ed982dbc37f2cf5697a3b2d8ca9882da1441a8becf6dea"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeCradle.uasset",
+      "bytes": 33229,
+      "sha256": "7e6d29081ca5c575164448d9b2ead5890bacfa12cc99e5a75fbb79a587457e0c"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeRing.uasset",
+      "bytes": 89052,
+      "sha256": "d9ab6ff8a8c478ffad9077093d015576cd5d1d1bcb8eb3816dc284b6f77ecbdb"
+    },
+    {
+      "path": "Content/ONE/Machines/Candidate04/SM_C04_UpgradeShield.uasset",
+      "bytes": 29781,
+      "sha256": "c04cde6725d44758298f5d97446fbd662552c7ec935db9009a0eb1df6b963ff0"
+    },
+    {
+      "path": "Content/ONE/Maps/Containment.umap",
+      "bytes": 196792,
+      "sha256": "f728a7fe545c1f34ca6b122c7669037ac05b4e15458b62137384e21ba0031d4f"
+    },
+    {
+      "path": "Content/ONE/Maps/Portability06.umap",
+      "bytes": 75163,
+      "sha256": "dacd728044ead397a3bb54d4495f9cd9208b5944e100b9b2027af9dfeff34333"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_BluedSteel.uasset",
+      "bytes": 6706,
+      "sha256": "3d6b32a4957c645dea28231e3b46aabaa2b02a0dfe187d96098d350fa9ed3949"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_Bore.uasset",
+      "bytes": 6647,
+      "sha256": "31df7382b080a0b3e8e848607ae12dcc8a23e5514e9ee24274b2b96545dabdf0"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_Brass.uasset",
+      "bytes": 6681,
+      "sha256": "1cbd9ac59655c72d4c7813e219cedd92c434cbcbea722ea5253316d1f7c16f22"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_CyanArmor.uasset",
+      "bytes": 6701,
+      "sha256": "16229e4088e4970feae81784a76c3c93c530ed7e15e726415b5be6a78f85b270"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_CyanEnergy.uasset",
+      "bytes": 8021,
+      "sha256": "39e2a74823754333c3032eb54f37b30438ee8a82b18f6cf8945f0fb2014f6c7b"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_EdgeSteel.uasset",
+      "bytes": 6701,
+      "sha256": "5a067d39900781b1e82f072f8b0be7457f892f88fd646c138c7db6f75c48f9ea"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_EmberArmor.uasset",
+      "bytes": 6706,
+      "sha256": "140647caeed244818b359040b54f59c5f05592bbc12540c0beac919989d793c4"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_EmberEnergy.uasset",
+      "bytes": 8026,
+      "sha256": "bfa0fa2b4c19005a3a30a164d59d9b2e061a09f922540988b08224682a47dda7"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_Ivory.uasset",
+      "bytes": 6681,
+      "sha256": "58e8514d111506db76674d48779ade6fce74f69acf420a247ef02ee0c218f739"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_Parkerized.uasset",
+      "bytes": 6706,
+      "sha256": "34fbf8cede317da5ec1f8640954a95559462138e42802208d6b8682363b98061"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_Polymer.uasset",
+      "bytes": 6662,
+      "sha256": "6b25a8d8fc7040106d7d3ff1367673f327b9d4048fcd2137bd7cdcc6a2ea184e"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_VioletArmor.uasset",
+      "bytes": 6711,
+      "sha256": "ae78f08c2d1482762e9197e9c7b724c610eca25aaef26f4b68adba24bf5643f1"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_VioletEnergy.uasset",
+      "bytes": 8031,
+      "sha256": "5fc7c9be789fe9f8dc080a9d0eb9c4015fc3c88723ab97cf0b6415251747c5ae"
+    },
+    {
+      "path": "Content/ONE/Materials/Candidate04/M_C04_Walnut.uasset",
+      "bytes": 6657,
+      "sha256": "560888ae2ec47325588c413e31b3fbf876af79bdb8b5bd144df1dc0d0b51ace0"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Amber.uasset",
+      "bytes": 7604,
+      "sha256": "9372f9c377ee5ebe3fa14cf1a20908fd4839c16d6f7a9c9b40c6e2a7d6738889"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Blood.uasset",
+      "bytes": 6709,
+      "sha256": "586360241048114090215383e29e363d35c835524908c49d0a93a9c5f9cfb798"
+    },
+    {
+      "path": "Content/ONE/Materials/M_BloodFlesh.uasset",
+      "bytes": 7600,
+      "sha256": "9dbb5e2055e8e10153c0c22b628b14770e8dfe0241653eb0fa3df9ddeb201010"
+    },
+    {
+      "path": "Content/ONE/Materials/M_BloodPool_C03.uasset",
+      "bytes": 8744,
+      "sha256": "513a500297b7d2290124af440657353795c2f7c03152dd12497f11276bdbe69c"
+    },
+    {
+      "path": "Content/ONE/Materials/M_BootRubber.uasset",
+      "bytes": 7600,
+      "sha256": "24b71619f1c7c54a87ade9b9c23b138218e35aef17b9426d1133f32ac5b8d56f"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Brass.uasset",
+      "bytes": 6034,
+      "sha256": "697afebd223a74ed8efab519600418d8a23fd1d70b6086dc1e9a446a6a04fe0e"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Ceramic.uasset",
+      "bytes": 7614,
+      "sha256": "f86d71b34f3b45304535d16231868e8f4375389cc9ba339b24c1d406639ccb72"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Concrete.uasset",
+      "bytes": 7590,
+      "sha256": "081e1f468e44d4e9d1352e95d1a31cb6d159c637dfbc7ea2582db44e8e0a7b86"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Copper.uasset",
+      "bytes": 7609,
+      "sha256": "0fbc21a2edbb5c0e2ee452debfe929e0915d58be9075c9b6b3c443aeb1d6e00d"
+    },
+    {
+      "path": "Content/ONE/Materials/M_DriedBlood.uasset",
+      "bytes": 7600,
+      "sha256": "cbf7339f7231f51c7858f85d73a237e589718c2a56c697aa66518a4d2465a422"
+    },
+    {
+      "path": "Content/ONE/Materials/M_ExposedBone.uasset",
+      "bytes": 7605,
+      "sha256": "aacf686c69a2237d97bf55c2479a03e8f29d5e7a66eed7867329e8ba710f3573"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Eye.uasset",
+      "bytes": 7565,
+      "sha256": "c5fe8059c2c87642ff293f3419493f3ee56f221e91cda5cce594219f4bcdd5a7"
+    },
+    {
+      "path": "Content/ONE/Materials/M_EyeDark.uasset",
+      "bytes": 7585,
+      "sha256": "52bdc84f7d7914fb878614c8a75b9c31be18164f6c49c2a70a4758b27c333c36"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Floor.uasset",
+      "bytes": 7575,
+      "sha256": "9803b9aa7e640023e1013d949583ee5d7e892f39e8cef32dfd085217380eea2c"
+    },
+    {
+      "path": "Content/ONE/Materials/M_FloorEdge.uasset",
+      "bytes": 7624,
+      "sha256": "4b0b8e6fa6370b4f048c295e0f917963f3f47a114808ff709486397cee7c7213"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Gore.uasset",
+      "bytes": 7570,
+      "sha256": "18fa550ae75541bb65b4fafa3e905322cc110e379e9b5012a1ca6af510efe636"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Graphite.uasset",
+      "bytes": 7619,
+      "sha256": "a30c4bbe370fef9f792e10d24caab47b57f7ef8dcb191ee51d9fb3467c7ea408"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Hair.uasset",
+      "bytes": 7570,
+      "sha256": "77a85742aebb45860980fa644933e5b94b74e9f6b7ab31f3bc2803a3bce6f561"
+    },
+    {
+      "path": "Content/ONE/Materials/M_IDBadge.uasset",
+      "bytes": 7585,
+      "sha256": "6c6ade8d95fc3e773d9f9cdd2e3af3f5bb66fa91eb9cc74a75efd36d01ea5571"
+    },
+    {
+      "path": "Content/ONE/Materials/M_InfectedSkin.uasset",
+      "bytes": 7610,
+      "sha256": "c58b7b05ae6cad6800fb05a21b30c0d707cb1b1455744085ad38e637694813d8"
+    },
+    {
+      "path": "Content/ONE/Materials/M_LightAmber.uasset",
+      "bytes": 8333,
+      "sha256": "c1e78fe0d25c1c0f3c39215a68f99e9e454dc64e7beca6bf0ac87a0e9c751cd4"
+    },
+    {
+      "path": "Content/ONE/Materials/M_LightCool.uasset",
+      "bytes": 8328,
+      "sha256": "f5a26ac63627da6bc49526262a0238e5bd5a9e582f1d0fc24a320c5d03077633"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Marking.uasset",
+      "bytes": 7585,
+      "sha256": "70a0128280abb719627e3e9af921cd73cb0cdb798a043b8413379b1831bb5a76"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Muzzle.uasset",
+      "bytes": 5075,
+      "sha256": "cd46c461298a2bd1d08a3ea7f5bc8bbe4f892d513a2a3b504c1d67880727a83e"
+    },
+    {
+      "path": "Content/ONE/Materials/M_MuzzleFlash_C03.uasset",
+      "bytes": 8272,
+      "sha256": "75c300e9650596758fa390ffc9f0305c962153621b0de2fde4fa6fb9957c5595"
+    },
+    {
+      "path": "Content/ONE/Materials/M_OrangeFabric.uasset",
+      "bytes": 7610,
+      "sha256": "895825fb2797f1cecd9b4dced68b1bbe1c059310af20c0a415e99ca61979c915"
+    },
+    {
+      "path": "Content/ONE/Materials/M_PaleMetal.uasset",
+      "bytes": 7624,
+      "sha256": "735652a229d8bbbd5f1f75f6ffdca31a6ade2a4aa806a07aaefba0281deb88c1"
+    },
+    {
+      "path": "Content/ONE/Materials/M_ReflectiveTape.uasset",
+      "bytes": 7649,
+      "sha256": "6eafd4c1ebe62a0b6ad008300b95e5c5c698c9acdbae114c6b87c418c25ae9f4"
+    },
+    {
+      "path": "Content/ONE/Materials/M_ResponseAccent.uasset",
+      "bytes": 7620,
+      "sha256": "68d8530d9724433325c26be51aa75931e9b2d9ee6f44a4f296e0ed9b122ed6de"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Rubber.uasset",
+      "bytes": 7580,
+      "sha256": "7890e549695a05162f39d5a200e94cd2453bc876c9d9e8e639abca615b87fb0f"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Screen.uasset",
+      "bytes": 7609,
+      "sha256": "44bf2fdf2b5c1fbf7c01152a36e59f2deb4bfe044f77450e14cf32cba2d41445"
+    },
+    {
+      "path": "Content/ONE/Materials/M_ShellHull.uasset",
+      "bytes": 6025,
+      "sha256": "154f7a99b427f2f74b71a4c9509f83c6aa56781559cace9c136d41d68b3e0619"
+    },
+    {
+      "path": "Content/ONE/Materials/M_ShotgunPolymer.uasset",
+      "bytes": 6050,
+      "sha256": "f7ad480095c0fd55378e271d69f2a6b382a9d8250a15fc383687e84f10bc06c4"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Skin.uasset",
+      "bytes": 7570,
+      "sha256": "d626baf0888c6a74608690cccf26a58de595642cebc4878833f54c38880b1412"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Steel.uasset",
+      "bytes": 7604,
+      "sha256": "4a9200c262d3f271aea399c2928daf91f8b4e068b077607ff182f60e8c6b6623"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Teal.uasset",
+      "bytes": 7599,
+      "sha256": "5a14297957753da413e59cb62a3afe0796f565772de7c4591876800699a11cba"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Tracer_C04.uasset",
+      "bytes": 6267,
+      "sha256": "2855ef96aba6a58edac2a9c4a6bab746de2d1c21e2741bf82f17fb1098fa887e"
+    },
+    {
+      "path": "Content/ONE/Materials/M_UniformSlate.uasset",
+      "bytes": 7610,
+      "sha256": "106e64eb9199775708153e1189fcac8251f47bf3a1d21a92caf516bd24ac428f"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Visor.uasset",
+      "bytes": 7604,
+      "sha256": "06cea66305f749ba202f480e062bfddd10cf84a7f97c747358ac282eed863a05"
+    },
+    {
+      "path": "Content/ONE/Materials/M_Webbing.uasset",
+      "bytes": 7585,
+      "sha256": "099849705b79aac1653f7e65fa7d12bbac95d1f1d8ec175843d3ceb48f39a57d"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Amber.uasset",
+      "bytes": 6699,
+      "sha256": "9ea7f4d028e7ed809a5ed7a6436aa56b14299790f6177e784d8494d5e1fe59a8"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Armor.uasset",
+      "bytes": 6699,
+      "sha256": "d9c81857bf26cb7a106d1d5940d7312d050d4bbb40d3e98041b4e48833fb2f36"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Carbon.uasset",
+      "bytes": 6704,
+      "sha256": "6af90557b863da306e7dd4c73d98098e735b03c603b9b64099ae635c62b9c6bf"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Ceramic.uasset",
+      "bytes": 6709,
+      "sha256": "223a1aac4f6c57610119dba0d71949aa97cb1e01d6fff8f7cd7f2215476eec89"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Copper.uasset",
+      "bytes": 6704,
+      "sha256": "00fc20eba9dff214784dbdfc7014d48e6a60e8c44f20ec4196405a783df81414"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Edge.uasset",
+      "bytes": 6694,
+      "sha256": "12786bca4e3b72b82fac83a5ffcd955aeddd054f8b9debef5bc2639f020b47a3"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Lamp.uasset",
+      "bytes": 8567,
+      "sha256": "b8b201f075b7d277e62f9e58b4bd9004a3307f8f9e2b72b3e4f2e58c6f534b9e"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Rubber.uasset",
+      "bytes": 6675,
+      "sha256": "47bb7ed19bc1e476cc029c444deba349920d224e4b359e41f825caf280d60070"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Screen.uasset",
+      "bytes": 6704,
+      "sha256": "7103be7240d3ca9ee9df4b7ecb780e7883c5d841bc727de71e463db53f328adc"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Steel.uasset",
+      "bytes": 6699,
+      "sha256": "b6bfe9cb1e246e2ce0edaa36c80ae1d4af75ac6910713ada77fb8e8459c7235b"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Stencil.uasset",
+      "bytes": 6680,
+      "sha256": "d0eb4121a2aa0cd90cc48ceca8d2d922cf670d2261147241bb37c99ca5cc7ffe"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Teal.uasset",
+      "bytes": 6694,
+      "sha256": "163e81a4e4445526b23c40fc05da0557778899125d5b6e8673748e8f2e970411"
+    },
+    {
+      "path": "Content/ONE/Materials/Machines/Candidate04/M_C04_Violet.uasset",
+      "bytes": 8577,
+      "sha256": "88e6ff4b4abb925ad3073f96398708beb6ad71739096401f10d5f2f7879dae35"
+    },
+    {
+      "path": "Content/ONE/Pickups/Candidate06/M_Pickup06.uasset",
+      "bytes": 10075,
+      "sha256": "d1988993d66cbe561e5aadd3e7d2ea2f81871cdd7a9052d4d3ade80229141f3a"
+    },
+    {
+      "path": "Content/ONE/Textures/T_BloodMask.uasset",
+      "bytes": 8203,
+      "sha256": "24f4371f396355832a35d64d04c3e529c1cee544257cf9e99b84c302c6745f90"
+    },
+    {
+      "path": "Content/ONE/UI/Candidate05/T_UI05Glyphs.uasset",
+      "bytes": 126290,
+      "sha256": "3dce4658b5f1196462d3adb36d287210b062d82b9f8cad87fce8082400851e3d"
+    },
+    {
+      "path": "Content/ONE/UI/Candidate05/T_UI05Numerals.uasset",
+      "bytes": 40734,
+      "sha256": "2aaf76c06b90647a9637da64df092bfbc2a772f11e2e00be663c997db9dd66b6"
+    },
+    {
+      "path": "Content/ONE/UI/Candidate05/T_UI05Panel.uasset",
+      "bytes": 5664,
+      "sha256": "53539056cb5c936a7488663cb5ea634ed4eefb4da2bb51cce1e4144dbedf9113"
+    },
+    {
+      "path": "Content/ONE/UI/Candidate05/T_UI05_Gravebreaker.uasset",
+      "bytes": 193209,
+      "sha256": "c91bd00db8491b50a96644f47f0ab2aaea67b60251ef1f1d488c057b5b59da78"
+    },
+    {
+      "path": "Content/ONE/UI/Candidate05/T_UI05_LastWord.uasset",
+      "bytes": 191928,
+      "sha256": "b4e94a06088f5c0c4555f470f33ee4b6d86d5d1eb65e46880f1c20574104f039"
+    },
+    {
+      "path": "Content/ONE/UI/Candidate05/T_UI05_M1911.uasset",
+      "bytes": 182611,
+      "sha256": "54a08006bc95de7e843868432d766f9fc697e5037924f366a307ed1450090cdd"
+    },
+    {
+      "path": "Content/ONE/UI/Candidate05/T_UI05_M4A1.uasset",
+      "bytes": 197001,
+      "sha256": "af52a80403fcc3ecd388ac990237ea7e208a96bd36f915be44a7098ccd2861ca"
+    },
+    {
+      "path": "Content/ONE/UI/Candidate05/T_UI05_Overcurrent.uasset",
+      "bytes": 207328,
+      "sha256": "d80ef34d470aa062ed9efeeff5368a63aab902d0217b6c621f3f95d92cc9dde0"
+    },
+    {
+      "path": "Content/ONE/UI/Candidate05/T_UI05_Remington870.uasset",
+      "bytes": 188968,
+      "sha256": "ef5ba1c860c515b476ec8edaf7229a98bf9602db1d39933f34571b2c9671bdcc"
+    },
+    {
+      "path": "Evidence/Candidate02/WeaponComparison.mp4",
+      "bytes": 4474421,
+      "sha256": "1117a7bea0c7afc692ac43815fa712fbf7515716370bddfa7815839a02d3d4d9"
+    },
+    {
+      "path": "Evidence/Candidate03/native_controls.mp4",
+      "bytes": 11131144,
+      "sha256": "2fe10bc37db895e1d2c1d411f4930cef980121f66bd5e3f77479f749ef5c2011"
+    },
+    {
+      "path": "Evidence/Candidate03/stage_b_directions.mp4",
+      "bytes": 29283189,
+      "sha256": "76e592a9392da96669c579fad81605cee0879c75d60ada7c3b13c0d31d022fd1"
+    },
+    {
+      "path": "Evidence/Candidate03/stage_b_turns.mp4",
+      "bytes": 14396973,
+      "sha256": "9118b68f15e855a07acbc190a21a4293e75fd6edc4f9ecb4808aa8ff7eb138c3"
+    },
+    {
+      "path": "Evidence/Candidate03/stage_c_presentation.mp4",
+      "bytes": 22267968,
+      "sha256": "2ee64aa977f8ea52b8c087b4421a5aefe5b2f51714c8a72437e0909ed868781c"
+    },
+    {
+      "path": "Evidence/Candidate03/stage_d_physicality.mp4",
+      "bytes": 28413320,
+      "sha256": "efcbcf9946977a1124b0f23ec87da18061a070ec1488b4426f29740ece7549a0"
+    },
+    {
+      "path": "Evidence/Candidate04/progression_loop.mp4",
+      "bytes": 30033564,
+      "sha256": "537495bf1692ef74f321a25108799818d05626fcbec731b89d3146093280801b"
+    },
+    {
+      "path": "Evidence/Candidate04/weapon_comparison.mp4",
+      "bytes": 7949954,
+      "sha256": "e3b4c6e5535ad06d788fec4a13cad965d89b8773d6cbd10901c57b07b1b9947d"
+    },
+    {
+      "path": "Evidence/Candidate05/UI/game_over.png",
+      "bytes": 532654,
+      "sha256": "cd33b785f2cc1b8e81daeef8c7747ceb2e25e232beb24978dcdb6f7df4c977db"
+    },
+    {
+      "path": "Evidence/Candidate05/UI/pause.png",
+      "bytes": 475306,
+      "sha256": "64fd69be41edba592ff48a8ae2c5ed74941576a10aaac03405338a3a1cbd8d8d"
+    },
+    {
+      "path": "Evidence/Candidate05/UI/sandbox_tools.png",
+      "bytes": 618908,
+      "sha256": "b5a01531c774d4e0b7bf7ef6b98232e03d91158c06527d13976bccff73354c9f"
+    },
+    {
+      "path": "Evidence/Candidate05/UI/starter.png",
+      "bytes": 1218432,
+      "sha256": "17d73a4ffacc4362e4a2b40fc886a8484fcec8309cc0c28b47ee688da3cf3c90"
+    },
+    {
+      "path": "Evidence/ScriptedGameplay.gif",
+      "bytes": 40047939,
+      "sha256": "c59478d8c579a0f262d3c4151d5d8c7a06422aca7a6eac13df92e75a1d40b044"
+    }
+  ],
+  "source_assets": [
+    {
+      "path": "ArtSource/Audio/Candidate06/S_Pickup06_InstaKill.wav",
+      "bytes": 82604,
+      "sha256": "25d5b27d2bcc03c9cdfe876ee308ab8555c1d0ada0a53b0ade6725c02d1a4d9f"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate06/S_Pickup06_DoublePoints.wav",
+      "bytes": 71084,
+      "sha256": "64047ffa926f3726249ca57a32b485cd2d43eada05ed44caff2fd7b7126adb45"
+    },
+    {
+      "path": "ArtSource/Audio/Candidate06/S_Pickup06_MaxAmmo.wav",
+      "bytes": 84524,
+      "sha256": "aaa57ee5d30ef7540b4ce0b66ac96d92191c53cb18c2abcdc76c436f811df084"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate06/S_Pickup06_InstaKill.uasset",
+      "bytes": 37107,
+      "sha256": "b47d0b6975755ff0169282a4fc20d02e4900ba46d35964768e3e9bd5cf436123"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate06/S_Pickup06_DoublePoints.uasset",
+      "bytes": 43248,
+      "sha256": "58223628c2e05b79a6f52c178c1541e4291087ff198c630bcbc7368e918f4b47"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate06/S_Pickup06_MaxAmmo.uasset",
+      "bytes": 45846,
+      "sha256": "7047f5b9419d964c782169d13d74358da4ce64d5681bd56cb50865c302af2474"
+    },
+    {
+      "path": "Content/ONE/Pickups/Candidate06/M_Pickup06.uasset",
+      "bytes": 10075,
+      "sha256": "d1988993d66cbe561e5aadd3e7d2ea2f81871cdd7a9052d4d3ade80229141f3a"
+    },
+    {
+      "path": "Content/ONE/Maps/Portability06.umap",
+      "bytes": 75163,
+      "sha256": "dacd728044ead397a3bb54d4495f9cd9208b5944e100b9b2027af9dfeff34333"
+    }
+  ],
+  "native_tests": {
+    "tests": [
+      {
+        "testDisplayName": "CloseCursorFullCircle",
+        "fullTestPath": "ProjectONE.Aim.CloseCursorFullCircle",
+        "state": "Success",
+        "duration": 0.008116401731967926,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "RegionConvergenceAndObstructionSegments",
+        "fullTestPath": "ProjectONE.Aim.RegionConvergenceAndObstructionSegments",
+        "state": "Success",
+        "duration": 0.008494101464748383,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "BoundedStepAndLimbMasks",
+        "fullTestPath": "ProjectONE.Candidate05.Attacks.BoundedStepAndLimbMasks",
+        "state": "Success",
+        "duration": 0.008273299783468246,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "ThreeFamiliesOneContact",
+        "fullTestPath": "ProjectONE.Candidate05.Attacks.ThreeFamiliesOneContact",
+        "state": "Success",
+        "duration": 0.06209329888224602,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "WallHeadingLimbAndDeathCancel",
+        "fullTestPath": "ProjectONE.Candidate05.Attacks.WallHeadingLimbAndDeathCancel",
+        "state": "Success",
+        "duration": 0.023691702634096146,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "LiveKillCorpseAndMinorContinuity",
+        "fullTestPath": "ProjectONE.Candidate05.Feedback.LiveKillCorpseAndMinorContinuity",
+        "state": "Success",
+        "duration": 0.010010000318288803,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "PrivateSpreadStreamIgnoresGlobalRandomNoise",
+        "fullTestPath": "ProjectONE.Candidate06.Ballistics.PrivateSpreadStreamIgnoresGlobalRandomNoise",
+        "state": "Success",
+        "duration": 0.008153900504112244,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "SixProfilesOriginalDistanceAndBodyBudgets",
+        "fullTestPath": "ProjectONE.Candidate06.Ballistics.SixProfilesOriginalDistanceAndBodyBudgets",
+        "state": "Success",
+        "duration": 0.008503399789333344,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "BaseHeadDamageCannotBypassHealth",
+        "fullTestPath": "ProjectONE.Candidate06.Combat.BaseHeadDamageCannotBypassHealth",
+        "state": "Success",
+        "duration": 0.010402198880910873,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "ExplicitInstaKillKeepsOrdinaryImpulseBounds",
+        "fullTestPath": "ProjectONE.Candidate06.Combat.ExplicitInstaKillKeepsOrdinaryImpulseBounds",
+        "state": "Success",
+        "duration": 0.009243600070476532,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "LethalDischargeStrictHeadMajority",
+        "fullTestPath": "ProjectONE.Candidate06.Combat.LethalDischargeStrictHeadMajority",
+        "state": "Success",
+        "duration": 0.011336501687765121,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "EmptyReloadAndPumpTransfer",
+        "fullTestPath": "ProjectONE.Candidate06.Inventory.EmptyReloadAndPumpTransfer",
+        "state": "Success",
+        "duration": 0.08027820289134979,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "ReadyBoundaryOrdering",
+        "fullTestPath": "ProjectONE.Candidate06.Machines.ReadyBoundaryOrdering",
+        "state": "Success",
+        "duration": 0.006668899208307266,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "RelocatedApproachesAndWalls",
+        "fullTestPath": "ProjectONE.Candidate06.Machines.RelocatedApproachesAndWalls",
+        "state": "Success",
+        "duration": 0.010838199406862259,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "ChanceWeightsAndRefresh",
+        "fullTestPath": "ProjectONE.Candidate06.PowerUps.ChanceWeightsAndRefresh",
+        "state": "Success",
+        "duration": 0.008163101971149445,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "DischargeVictimAndRunDedup",
+        "fullTestPath": "ProjectONE.Candidate06.Rewards.DischargeVictimAndRunDedup",
+        "state": "Success",
+        "duration": 0.008361000567674637,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "AcceptedDamageDelayAndMaximum",
+        "fullTestPath": "ProjectONE.Candidate06.Survival.AcceptedDamageDelayAndMaximum",
+        "state": "Success",
+        "duration": 0.009240299463272095,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "AnatomicalSidesAndCorpseTransactions",
+        "fullTestPath": "ProjectONE.Combat.AnatomicalSidesAndCorpseTransactions",
+        "state": "Success",
+        "duration": 0.009943298995494843,
+        "warnings": 1,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "DamageAndDeathAreMonotonic",
+        "fullTestPath": "ProjectONE.Combat.DamageAndDeathAreMonotonic",
+        "state": "Success",
+        "duration": 0.008172299712896347,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "RegionalPelletsKeepSpatialData",
+        "fullTestPath": "ProjectONE.Combat.RegionalPelletsKeepSpatialData",
+        "state": "Success",
+        "duration": 0.008222799748182297,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "RegionalTraumaBoundaries",
+        "fullTestPath": "ProjectONE.Combat.RegionalTraumaBoundaries",
+        "state": "Success",
+        "duration": 0.010120600461959839,
+        "warnings": 3,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "WeaponPacketsAreIdempotent",
+        "fullTestPath": "ProjectONE.Combat.WeaponPacketsAreIdempotent",
+        "state": "Success",
+        "duration": 0.009724296629428864,
+        "warnings": 1,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "AcquisitionPlansAndUpgradeRefill",
+        "fullTestPath": "ProjectONE.Inventory.AcquisitionPlansAndUpgradeRefill",
+        "state": "Success",
+        "duration": 0.009342897683382034,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "ExactInstanceReservationAndRollback",
+        "fullTestPath": "ProjectONE.Inventory.ExactInstanceReservationAndRollback",
+        "state": "Success",
+        "duration": 0.009447701275348663,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "ResetRejectsOldMachineCallbacks",
+        "fullTestPath": "ProjectONE.Inventory.ResetRejectsOldMachineCallbacks",
+        "state": "Success",
+        "duration": 0.0091404989361763,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "SixIndependentVariantsAndTiming",
+        "fullTestPath": "ProjectONE.Inventory.SixIndependentVariantsAndTiming",
+        "state": "Success",
+        "duration": 0.008260998874902725,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "AutomaticPhaseAndHitch",
+        "fullTestPath": "ProjectONE.Weapons.Candidate05.AutomaticPhaseAndHitch",
+        "state": "Success",
+        "duration": 0.008275497704744339,
+        "warnings": 0,
+        "errors": 0
+      },
+      {
+        "testDisplayName": "CatalogCadenceAndUpgradeBanks",
+        "fullTestPath": "ProjectONE.Weapons.Candidate05.CatalogCadenceAndUpgradeBanks",
+        "state": "Success",
+        "duration": 0.008425001055002213,
+        "warnings": 0,
+        "errors": 0
+      }
+    ],
+    "warning_count": 5,
+    "succeeded": 25,
+    "succeededWithWarnings": 3,
+    "failed": 0,
+    "notRun": 0,
+    "inProcess": 0,
+    "totalDuration": 0.3909440338611603
+  },
+  "prerequisites": [
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.arm64.exe",
+      "bytes": 11733072,
+      "sha256": "0423f7d1c765afea32a414eb156478d694924ea948ac21a4565a4fb1025b258f"
+    }
+  ],
+  "built_runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292697088,
+      "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10731021,
+      "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 221414272,
+      "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 240183,
+      "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "schema": "one06.fresh_source_verification.v1",
+  "result": "PASS",
+  "raw_build_report": {
+    "file": "FreshBuildVerification_c2c422012f4f.json",
+    "bytes": 146040,
+    "sha256": "8f4e9e10c2171d9508f1ac0b10562733e9b955316b99954964710f2bbebe814f"
+  },
+  "repository": {
+    "host": "github.com",
+    "owner": "laberteauxjacob-cpu",
+    "name": "ProjectONE",
+    "transport": "https"
+  },
+  "binary_audit": {
+    "result": "PASS",
+    "raw_report": {
+      "file": "FreshReleaseAudit.json",
+      "bytes": 27780,
+      "sha256": "2bdac1b5c6c8be260aab81d05535e83b9f4f17729c899866a56ec5c3e7f35f7d"
+    },
+    "retained_file_count": 45,
+    "retained_bytes": 666721590,
+    "runtime_files": [
+      {
+        "path": "Engine/Binaries/ThirdParty/DbgHelp/dbghelp.dll",
+        "bytes": 2232712,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "c61402133c5a961be61cf8fc651cca42be2232f502549d239150b855fab173d2",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 20872,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "dbghelp.pdb",
+              "absolute_path": false,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/MsQuic/v220/win64/msquic.dll",
+        "bytes": 2547104,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "f71b5f857abe1509756947a4f4863f293e583ea6050583e6942843694d8d9938",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 20896,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "msquic.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/NVIDIA/NVaftermath/Win64/GFSDK_Aftermath_Lib.x64.dll",
+        "bytes": 5442616,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "99e10fd351e3154fd7f0b819c8ad39b16ee01223a61c1994bd24bcdb82972430",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 20536,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "GFSDK_Aftermath_Lib.x64.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Ogg/Win64/VS2015/libogg_64.dll",
+        "bytes": 59856,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "77bfe5db8b9b2227dd25a02de2947a7cce3afd7e520cde3cc019b5b568e3c925",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 10704,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "libogg_64.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vorbis/Win64/VS2015/libvorbis_64.dll",
+        "bytes": 1724880,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "b67768dd12b0895833f306f5ae12d28964830e00f2b431135425f5b24077915d",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 10704,
+          "codeview_records": []
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vorbis/Win64/VS2015/libvorbisfile_64.dll",
+        "bytes": 48592,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "b8610a446acbe9e553cff7290cf9b0f3e190800ad4c08d9eea90c06aa382f680",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 10704,
+          "codeview_records": []
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_api_dump.dll",
+        "bytes": 11001096,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "377cefcb66f5f018d55641083c32404de5658a1e86d484b92f57f25b74c54ff9",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21256,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "VkLayer_api_dump.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_api_dump.json",
+        "bytes": 12828,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "281669fdf39baf7e49e0507387645997451187be2f7d444b0c169ef078004e46",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_crash_diagnostic.dll",
+        "bytes": 2029320,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "c6586cbec5d6de0daed5d2452914d099b8e63c86bf0970df6dca38c7c3129590",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21256,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "VkLayer_crash_diagnostic.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_crash_diagnostic.json",
+        "bytes": 9527,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "3601109840469aea0b9008512157e043c89500705cb346270fb019d7ed6f724e",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_gfxreconstruct.dll",
+        "bytes": 5603072,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "e519bb52d80c40fba7dc474331d39ecf66aacf7486bc9019e46c60941711f399",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21248,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "VkLayer_gfxreconstruct.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_gfxreconstruct.json",
+        "bytes": 27234,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "a6c78d253715f260a0fe7c8e1b0ce3e153aa8a802a2ba89b0dd46561e686b636",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_profiles.dll",
+        "bytes": 1776392,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "92701f48cc945f4d30602aead362dc9f77729a0a9efbcceb378a8f61877d0277",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21256,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "VkLayer_khronos_profiles.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_profiles.json",
+        "bytes": 70320,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "8c9d6e4bf6d38c2cf223b598aaf86a08242a1a07d62b24236cca3e64e0daf91c",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_shader_object.dll",
+        "bytes": 371464,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "8f037a67ffa89af0fca90d91393e7854265bb515de7bffbe01513ed514a4fdf2",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21256,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "VkLayer_khronos_shader_object.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_shader_object.json",
+        "bytes": 4455,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "98b9a12a5723665abab2eadfcab700a5785172adad22e5ca1364ab466268185f",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_synchronization2.dll",
+        "bytes": 341768,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "8707201541cec52165828c92b494022567ae97d42245bf272a656f6965dbfd5e",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21256,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "VkLayer_khronos_synchronization2.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_synchronization2.json",
+        "bytes": 1910,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "80a014d0b4337ea6ab05b8295fe6d1ba7f4cc0cf6bfe918873a0d30960973696",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_validation.dll",
+        "bytes": 17958152,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "c6bdf73e611635a22b00981ebfb3117a05b3384b4a1d9e115d5fdc7fdc85db8f",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21256,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "VkLayer_khronos_validation.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_validation.json",
+        "bytes": 82965,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "be1722a7a84efca54cd0bd1625f37016b556dd696586620f81ff5fa1c155a198",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64/WinPixEventRuntime.dll",
+        "bytes": 69080,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "283c554d3b72142041bb5680739b39b96b58162c6b7a9e968dc2a76235150da1",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 30680,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "WinPixEventRuntime.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Binaries/ThirdParty/Windows/XAudio2_9/x64/xaudio2_9redist.dll",
+        "bytes": 858176,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "bbd9bec2356aa0b03ca6b02d6fb107e63ff2d5975f4217c5b79fba14c5b913df",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 20032,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "XAudio2_9Redist.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Config/StagedBuild_ProjectONE.ini",
+        "bytes": 3,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Content/Renderer/TessellationTable.bin",
+        "bytes": 259568,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "edc4f3b628a139c5e185bbaeca661c95c1f427368d3b92892c5cff36c56dd941",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Content/Slate/Cursor/invisible.cur",
+        "bytes": 326,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "fef3980fa567e9c45d5d8dcaa432a2c1a3f3bb17fe67d7ab198164f56c142aa1",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Content/SlateDebug/Fonts/LastResort.tps",
+        "bytes": 930,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "0f775fa99d05e21d43d2d06d55982b23dcdccdb512a9a5a07aff674f212c41b8",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Content/SlateDebug/Fonts/LastResort.ttf",
+        "bytes": 5395052,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "fff0f8de0b868b964950fe97c9b60f893e9bc85a4f90b3629c5693db058b97b9",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Extras/GPUDumpViewer/GPUDumpViewer.html",
+        "bytes": 187194,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "15966544a010b56930a7389b5e9cbeee7a9ae545d132906e983ac954a839df67",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Extras/GPUDumpViewer/OpenGPUDumpViewer.bat",
+        "bytes": 879,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "e8f7ef9c88697041bd87902b76e52558979ca866c7450b1da108a94a027f441b",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Extras/GPUDumpViewer/OpenGPUDumpViewer.sh",
+        "bytes": 2165,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "1b222b5d5aad6dd9b5b9f0a1c72d38635149540f2c7a368600ec76c1d304390a",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "Engine/Extras/Redist/en-us/vc_redist.arm64.exe",
+        "bytes": 11733072,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "0423f7d1c765afea32a414eb156478d694924ea948ac21a4565a4fb1025b258f",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21136,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "burn.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+        "bytes": 25646504,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21128,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "burn.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "Engine/Plugins/NNE/NNERuntimeORT/Binaries/ThirdParty/Onnxruntime/Win64/onnxruntime.dll",
+        "bytes": 14692896,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "8ba79c4cb4809413348fca0d5f4d1b7a2d529d8b32de0f9ca514c6f2488b4223",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21024,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "onnxruntime.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/D3D12/x64/D3D12Core.dll",
+        "bytes": 4544032,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "ecfc9f71a15739d69a246fcc7b737789392793496a073c0ffc6d3127c3183e56",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21024,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "D3D12Core.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/D3D12/x64/d3d12SDKLayers.dll",
+        "bytes": 5104656,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "4dee11053a4082c5c9e3d6fba9b9c49e076dda28679601792a81f57a09dac614",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21008,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "d3d12SDKLayers.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/DML/x64/DirectML.dll",
+        "bytes": 18537992,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "30a8a708b05eafe25e6a4d1e66554c92d5e63da6a5d8faa3fae1e39226c10b49",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 21000,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "DirectML.pdb",
+              "absolute_path": true,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+        "bytes": 292697088,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 1,
+        "pe": {
+          "security_directory_bytes": 0,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "ProjectONE.pdb",
+              "absolute_path": false,
+              "private_user_path": false
+            }
+          ]
+        }
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/tbb12.dll",
+        "bytes": 331728,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "0278433e085de109e2be36b4e0027116c53bf46a83d82d08b6c95ba2a5e98eb3",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 10704,
+          "codeview_records": []
+        }
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/tbbmalloc.dll",
+        "bytes": 117712,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "58535cfe511f13e074d460f146123880cac25268560527ad5e248cbce897adc9",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 10704,
+          "codeview_records": []
+        }
+      },
+      {
+        "path": "ProjectONE/Content/Paks/global.ucas",
+        "bytes": 2645248,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "8b5db970aead274c259c5b97a39dceb2c6a79b910245cc6ca15846d07d22ad38",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "ProjectONE/Content/Paks/global.utoc",
+        "bytes": 686,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "014299de91be838bcf2773052f27f427e05349948c94087dfd458627d30aefe1",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+        "bytes": 10731021,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+        "bytes": 221414272,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+        "bytes": 240183,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0
+      },
+      {
+        "path": "ProjectONE.exe",
+        "bytes": 164864,
+        "publication": "retain_runtime_or_notice",
+        "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+        "personal_path_ascii_count": 0,
+        "personal_path_utf16_unclassified_count": 0,
+        "upstream_engine_diagnostic_count": 0,
+        "pe": {
+          "security_directory_bytes": 10704,
+          "codeview_records": [
+            {
+              "format": "CodeView_RSDS",
+              "pdb_basename": "BootstrapPackagedGame-Win64-Shipping.pdb",
+              "absolute_path": false,
+              "private_user_path": false
+            }
+          ]
+        }
+      }
+    ],
+    "source_asset_metadata_findings": [],
+    "upstream_engine_diagnostic": {
+      "source": "Engine/Source/Runtime/D3D12RHI/Private/Windows/WindowsD3D12Device.cpp",
+      "line": 1357,
+      "classification": "Unchanged Unreal Engine diagnostic example shown only when LOCALAPPDATA is missing while clearing the driver PSO cache. It is not a path from this project or validation host and is not used for filesystem access.",
+      "matched_occurrences": 1
+    }
+  },
+  "audit_correction": "An initial whole-binary UTF8 errors-ignore scan fabricated three path-like strings across PCM/compressed bytes. The corrected scan preserves invalid-byte boundaries and checks printable path components; all eight asset hashes and relative import fields remained unchanged. Original findings and byte-offset review are retained privately.",
+  "limits": [
+    "Fresh Editor/Game/package and source automation are separate from packaged play, native input, media and performance.",
+    "No game binary is modified after build. Debug symbols, logs and captured Saved output are omitted from the archive."
+  ]
+}

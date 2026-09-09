@@ -1,0 +1,187 @@
+{
+  "schema": "projectone.candidate06.performance.v1",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "capture_kind": "packaged",
+  "baseline_comparable": false,
+  "isolated_host": false,
+  "host_condition": "ambient_processes_recorded_no_isolation_claim",
+  "host": {
+    "host_condition": "ambient_processes_recorded_no_isolation_claim",
+    "isolated_host": false,
+    "baseline_comparable": false,
+    "anonymous_observations": [
+      {
+        "role": "other_observed",
+        "cpu_seconds": 28.828125,
+        "wall_seconds": 58.54700000002049,
+        "cpu_seconds_per_wall_second": 0.4923928638528005
+      },
+      {
+        "role": "other_observed",
+        "cpu_seconds": 28.53125,
+        "wall_seconds": 59.421000000002095,
+        "cpu_seconds_per_wall_second": 0.48015432254588436
+      },
+      {
+        "role": "other_observed",
+        "cpu_seconds": 19.875,
+        "wall_seconds": 58.389999999984866,
+        "cpu_seconds_per_wall_second": 0.3403836273335357
+      },
+      {
+        "role": "other_observed",
+        "cpu_seconds": 15.40625,
+        "wall_seconds": 58.280999999988126,
+        "cpu_seconds_per_wall_second": 0.2643442974554853
+      },
+      {
+        "role": "other_observed",
+        "cpu_seconds": 13.15625,
+        "wall_seconds": 59.35899999999674,
+        "cpu_seconds_per_wall_second": 0.2216386731582527
+      },
+      {
+        "role": "other_observed",
+        "cpu_seconds": 5.234375,
+        "wall_seconds": 58.280999999988126,
+        "cpu_seconds_per_wall_second": 0.08981271769532209
+      }
+    ],
+    "basis": "Host condition is explicitly supplied by the runner/operator. Raw identities, PID, window title and executable paths are omitted.",
+    "limitation": "A preserved game or other ambient processes may compete for CPU/GPU resources. Boundary accounting cannot rule out unsampled bursts. No isolated cost, matched-baseline improvement or identical background workload is inferred."
+  },
+  "runtime_identity": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292697088,
+      "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10731021,
+      "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 221414272,
+      "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 240183,
+      "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "parser": {
+    "filename": "analyze_candidate03_performance.py",
+    "bytes": 18885,
+    "sha256": "e7c3f57d61865c81af882e2f00342cd5c22c8462944c4a25c0ab5ed9543ae5e2"
+  },
+  "curator": {
+    "filename": "curate_performance.py",
+    "bytes": 42612,
+    "sha256": "261c31a1c6648b3b9f58fb0fd64e71bd0c91f1f411ea1df9146fd76fd18acbc0"
+  },
+  "manifest": {
+    "filename": "profile_manifest.private.json",
+    "bytes": 7925,
+    "sha256": "9500936f55e598632ceec82b900c23112ab6258e83faa3ce208ea6bdb13b95ab"
+  },
+  "settings_supplied_by_runner": {
+    "resolution": "1600x900",
+    "max_fps": 120,
+    "vsync": 0,
+    "screen_percentage": 100
+  },
+  "workloads": [
+    {
+      "weapon": "870",
+      "requested_alive": 6,
+      "full_timeline": "870_6_full.csv",
+      "analysis": "870_6_analysis.json",
+      "raw_frame_rows": 3695,
+      "retained_frame_rows": 3695,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "870",
+      "requested_alive": 12,
+      "full_timeline": "870_12_full.csv",
+      "analysis": "870_12_analysis.json",
+      "raw_frame_rows": 3694,
+      "retained_frame_rows": 3694,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "870",
+      "requested_alive": 18,
+      "full_timeline": "870_18_full.csv",
+      "analysis": "870_18_analysis.json",
+      "raw_frame_rows": 3690,
+      "retained_frame_rows": 3690,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 6,
+      "full_timeline": "m4a1_6_full.csv",
+      "analysis": "m4a1_6_analysis.json",
+      "raw_frame_rows": 3693,
+      "retained_frame_rows": 3693,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 12,
+      "full_timeline": "m4a1_12_full.csv",
+      "analysis": "m4a1_12_analysis.json",
+      "raw_frame_rows": 3680,
+      "retained_frame_rows": 3680,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 18,
+      "full_timeline": "m4a1_18_full.csv",
+      "analysis": "m4a1_18_analysis.json",
+      "raw_frame_rows": 3677,
+      "retained_frame_rows": 3677,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    }
+  ],
+  "method": {
+    "percentile": "Linear interpolation at(n\u22121)*p",
+    "spike_thresholds_ms": [
+      16.7,
+      33.3,
+      50,
+      100
+    ],
+    "frame_policy": "All source numeric rows and every spike retained once. Raw event text omitted; source CSV hash retained.",
+    "setup": "Actual acquisition and any requested upgrade finish before CSV. Two forced pickups collect through overlap and three world drops start present. Setup is not a startup benchmark; effect/drop occupancy is measured separately.",
+    "scope_policy": "Inclusive project scopes and individual overlapping physics scopes are never summed or subtracted.",
+    "baseline": "No cross-candidate matched-baseline comparison is made."
+  }
+}

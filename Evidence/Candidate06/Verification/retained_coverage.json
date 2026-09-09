@@ -1,0 +1,1349 @@
+{
+  "schema": "projectone.candidate06.retained_source_coverage.v1",
+  "created_utc": "2026-09-09T20:48:41.447548+00:00",
+  "status": "S1_PASS_COVERAGE_RETAINED_FOR_BYTE_IDENTICAL_PATHS_NOT_S3_RERUNS",
+  "executed_source_s1": "8b5f32640e1239f7035be4c7c1cc6713f0d8be8e",
+  "final_source_s3": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "s1_is_ancestor_of_s3": true,
+  "retention_basis": "Only pickup rendering/emission/light placement and part layout, its two design documents, and a separate weapon compatibility fixture changed. Aim/ballistics/input/GM/scoring/health/power-up authority/machines/inventory and the two retained drivers are the same committed bytes. This preserves evidence of their tested rules; it does not relabel S1 processes or executable hashes as S3.",
+  "exact_changed_paths": [
+    "ArtSource/Pickups/Candidate06/README.md",
+    "ArtSource/Pickups/Candidate06/design.json",
+    "Source/ProjectONE/ONE05WeaponCheck.cpp",
+    "Source/ProjectONE/ONE06PickupVisualComponent.cpp"
+  ],
+  "diff_bytes": 13567,
+  "diff_sha256": "ac9a469c0852717a254342e3ad8067e94726d8f323e7506f25724709bb0f5f66",
+  "changed_file_identities": [
+    {
+      "path": "ArtSource/Pickups/Candidate06/README.md",
+      "s1": {
+        "git_blob": "3031e51ff25da0929ddf6bc84128d60eedf40b52",
+        "bytes": 1641,
+        "sha256": "50af3891d494f59bf3a329bc8eaeef66b92ebcd89e82622a382a4574ae59d909"
+      },
+      "s3": {
+        "git_blob": "ed21e596dd502ee4c0bbe3d85799a411974490a1",
+        "bytes": 2993,
+        "sha256": "c141800c89630b13d3b456b9efc276955aec9a265fd692e81b0680a9b2daaa1d"
+      }
+    },
+    {
+      "path": "ArtSource/Pickups/Candidate06/design.json",
+      "s1": {
+        "git_blob": "f579f5771e831a67072660a95ddb8b7774b334be",
+        "bytes": 1552,
+        "sha256": "fa3c392b4564dfd25e3314ef6a47abbe31b1e69cf6ed1accda1da944e80a5ba1"
+      },
+      "s3": {
+        "git_blob": "8c1deea40b56a9ef95cb308aedf642d47379c89b",
+        "bytes": 2885,
+        "sha256": "e29677e1a65d30d5c3200c4858caba53c9b4c9305d9a5b67e518e9e14ee363cb"
+      }
+    },
+    {
+      "path": "Source/ProjectONE/ONE05WeaponCheck.cpp",
+      "s1": {
+        "git_blob": "d6022f56fa832c16e40942a0a343c7fb8aa55ac6",
+        "bytes": 21909,
+        "sha256": "426ca1bcff59e56fb6608fe22fa1edb35577986ee041401d169fa2257555b3ed"
+      },
+      "s3": {
+        "git_blob": "3ac3d7687a0719100c27c1d95e8f379a52eca730",
+        "bytes": 22115,
+        "sha256": "9585e6f4e184cd0f3fc2c5b0674d2ff9dc77e933165210b486c3a2189a2a2160"
+      }
+    },
+    {
+      "path": "Source/ProjectONE/ONE06PickupVisualComponent.cpp",
+      "s1": {
+        "git_blob": "6ad90ba3ceb11b75fe850963f713711b90078dd4",
+        "bytes": 9478,
+        "sha256": "c649a7382571eb90cc697e6a50a219fc59c1c8f409e00f063056e400c073a95d"
+      },
+      "s3": {
+        "git_blob": "78d3b7f1ab39dea19df6fde18636f213781d6715",
+        "bytes": 10356,
+        "sha256": "f9b97a8a0f4909981fadaa1d1dca509664b4fedc5e1571724606736b4edf2d3e"
+      }
+    }
+  ],
+  "reviewed_change_effects": [
+    {
+      "paths": [
+        "Source/ProjectONE/ONE06PickupVisualComponent.cpp",
+        "ArtSource/Pickups/Candidate06/design.json",
+        "ArtSource/Pickups/Candidate06/README.md"
+      ],
+      "effect": "Existing pickup material coloured emission gains32x; the single bounded light becomes explicitly32lumens and moves from emblem+10cm to-48cm while its64cm attenuation radius stays unchanged. S3 additionally reflects each part position from(X,Y,Z) to(X,-Y,Z) and local yaw to-Yaw, keeping positive scales, so the authored skull/numeral orientation matches the ordinary overhead camera. Material opacity/warning behaviour, actor ownership, overlap, damage and reward authority are unchanged. Actual corrected visual/performance verification remains S3-specific."
+    },
+    {
+      "paths": [
+        "Source/ProjectONE/ONE05WeaponCheck.cpp"
+      ],
+      "effect": "Stage7 finds an unowned family using IsFamilyRollEligible rather than only the equipped family; stage8 additionally requires a valid acquisition plan at the same inventory revision. No firing/reload/inventory production file changes."
+    }
+  ],
+  "unchanged_source_file_count": 119,
+  "source_file_count": 121,
+  "unchanged_source_files": [
+    {
+      "path": "Source/ProjectONE.Target.cs",
+      "git_blob_s1": "584951013de5f73784ca4618eb2f7b20d14f1661",
+      "git_blob_s3": "584951013de5f73784ca4618eb2f7b20d14f1661",
+      "bytes": 344,
+      "sha256": "051573fe8d1a9175b7ef12386b9b4977a04141d38db5e4ac2f9697ca1163783e",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03CaseCheck.cpp",
+      "git_blob_s1": "747ad7b0297b289e0eab461396d68fb223148910",
+      "git_blob_s3": "747ad7b0297b289e0eab461396d68fb223148910",
+      "bytes": 18706,
+      "sha256": "4aca603a1dd4432e03ac21ee7f598ae43d60eaf878ac798580553157615177d3",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03CaseCheck.h",
+      "git_blob_s1": "ef4a34929ae14cee7ef74ba1e7dfee6d0669f0c6",
+      "git_blob_s3": "ef4a34929ae14cee7ef74ba1e7dfee6d0669f0c6",
+      "bytes": 1642,
+      "sha256": "50fcfa1cb45784319c8b9d3cb1094dab9f09fc199709ed21ad4e571acb7cdd56",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03DamageCheck.cpp",
+      "git_blob_s1": "a3a9711363182e922da8e3e860cd7a08dd47b568",
+      "git_blob_s3": "a3a9711363182e922da8e3e860cd7a08dd47b568",
+      "bytes": 18782,
+      "sha256": "5ac629cc0fe01d898e85e0db62abeab64eb229bdd0d6dcdcfba53c845a2a3869",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03DamageCheck.h",
+      "git_blob_s1": "ffb055bfe4fd88eee085d2de1b7993c7d8b49292",
+      "git_blob_s3": "ffb055bfe4fd88eee085d2de1b7993c7d8b49292",
+      "bytes": 1438,
+      "sha256": "bee883c4b4f162eb1910ee503672594d1fb8b028ebb02efe50bdbee6104f90f2",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03MovementCheck.cpp",
+      "git_blob_s1": "4055b48f5ad29cb494b46221d90971c909e50987",
+      "git_blob_s3": "4055b48f5ad29cb494b46221d90971c909e50987",
+      "bytes": 14699,
+      "sha256": "f83d01b8d6a7a1f0808cba244c1dcf3b6e0519a3dd56dff494c023456ef74766",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03MovementCheck.h",
+      "git_blob_s1": "88da00dbec24676fa4e95e89221919a00d1f8530",
+      "git_blob_s3": "88da00dbec24676fa4e95e89221919a00d1f8530",
+      "bytes": 1401,
+      "sha256": "25711b737b7863d978b965760bf96f4606ef8eae0243f6b77a4a36e73bcd43ff",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03PhysicalityCheck.cpp",
+      "git_blob_s1": "06767e2726a2735761b66a2fef3d20931fff4da4",
+      "git_blob_s3": "06767e2726a2735761b66a2fef3d20931fff4da4",
+      "bytes": 37711,
+      "sha256": "8f19f3feb136e5a3e6d79ad2e57272aaf99021b18782160808c82043fd2670e1",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03PhysicalityCheck.h",
+      "git_blob_s1": "e1715d2120c9d9aa71e170ea208e87e07f84dbbd",
+      "git_blob_s3": "e1715d2120c9d9aa71e170ea208e87e07f84dbbd",
+      "bytes": 2657,
+      "sha256": "419c61248f458a83d425b6e2b45c2619609c71817b6cf94b479677f4eb0aa91d",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03PhysicsAssets.cpp",
+      "git_blob_s1": "860a8bb6addf7415d5caca1817ab20786580f6b9",
+      "git_blob_s3": "860a8bb6addf7415d5caca1817ab20786580f6b9",
+      "bytes": 19183,
+      "sha256": "d24af8e44f5c7e8dba09ec4d8d677f167f9819ad700ca31f0a6acda2bce528a6",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03PhysicsAssets.h",
+      "git_blob_s1": "7a139e77914fad0c19dded5ce327957b80bd0f10",
+      "git_blob_s3": "7a139e77914fad0c19dded5ce327957b80bd0f10",
+      "bytes": 655,
+      "sha256": "9272e2526fc6851e3437f82baaa16344ee81ea68e055323b160b56c8c29251d2",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03PresentationCheck.cpp",
+      "git_blob_s1": "77667f11a895bcae1210b3c59eae4fd7663bd9ca",
+      "git_blob_s3": "77667f11a895bcae1210b3c59eae4fd7663bd9ca",
+      "bytes": 11537,
+      "sha256": "16541e10fefe92c4d3e1fa561c862cd026327074c87603f8d9bd1b3c12a87e58",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03PresentationCheck.h",
+      "git_blob_s1": "51b667d373b0071de448e07c7a124bfeb0387f67",
+      "git_blob_s3": "51b667d373b0071de448e07c7a124bfeb0387f67",
+      "bytes": 1435,
+      "sha256": "5d7ea279e61b645b1869057ae1098360e11c3e05045b7b873dd10656c0bfdc7b",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03WeaponCheck.cpp",
+      "git_blob_s1": "62a2fd511d4f235f357431e7244c11e080846ff0",
+      "git_blob_s3": "62a2fd511d4f235f357431e7244c11e080846ff0",
+      "bytes": 21462,
+      "sha256": "76a663f22fb24cc8d2656f5d8cc255d22414f4d06f1ab8dc1cab05674dabd82d",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE03WeaponCheck.h",
+      "git_blob_s1": "7456b8467aa98f49fc18bd274f1a9f6d965202bc",
+      "git_blob_s3": "7456b8467aa98f49fc18bd274f1a9f6d965202bc",
+      "bytes": 933,
+      "sha256": "00ef82f7a1f4bce56f3a4992f197e030bf66948b62996bd4c11397988f3c4d92",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE04ArsenalCheck.cpp",
+      "git_blob_s1": "c029c12d71d1c07f1e0e63e8ad4b37474918fe40",
+      "git_blob_s3": "c029c12d71d1c07f1e0e63e8ad4b37474918fe40",
+      "bytes": 23818,
+      "sha256": "1a4c0d5310d1a9e4116a44e53928638984cf0bf45345a8cb23707c6d3aaa0d35",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE04ArsenalCheck.h",
+      "git_blob_s1": "da51f82412a1634fbcbb45c885c82beb7fa0d27f",
+      "git_blob_s3": "da51f82412a1634fbcbb45c885c82beb7fa0d27f",
+      "bytes": 1716,
+      "sha256": "2e1bb7099202dcd5cdb7b368f939793169ebb58125c4ecfc8d9fafcb40f1053e",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE04MachinePresentation.cpp",
+      "git_blob_s1": "f86624356549f8a6e0ec8ae84a3946aea70cef99",
+      "git_blob_s3": "f86624356549f8a6e0ec8ae84a3946aea70cef99",
+      "bytes": 20064,
+      "sha256": "ab7fdcdf7b6f55c31869b3b3e8103568077cabb39b6be6061284444e26069eef",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE04MachinePresentation.h",
+      "git_blob_s1": "9a52ff2b97b7af4e2365548e023c917ae4e162a9",
+      "git_blob_s3": "9a52ff2b97b7af4e2365548e023c917ae4e162a9",
+      "bytes": 4589,
+      "sha256": "c485cb16232bdf97fe9300f8575032f6e5eeb51247565e90a6822d14eefb3a3b",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE04PresentationCheck.cpp",
+      "git_blob_s1": "d78f8beddd00c8dfa20bab36282ecce1b1764773",
+      "git_blob_s3": "d78f8beddd00c8dfa20bab36282ecce1b1764773",
+      "bytes": 34020,
+      "sha256": "e32714f93138d906b523756f644019c381371af7d03a7c9fada9fd86efc739fd",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE04PresentationCheck.h",
+      "git_blob_s1": "7dfc76fdb612ad0158eabca17e907fc94b8bee80",
+      "git_blob_s3": "7dfc76fdb612ad0158eabca17e907fc94b8bee80",
+      "bytes": 3250,
+      "sha256": "c8a6da751551daa1bb122122725a0834b7a0275d648fece8d5099788957e9dfc",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE04ProgressionCheck.cpp",
+      "git_blob_s1": "6e406823d39fe834c030525510845b0dee63ddac",
+      "git_blob_s3": "6e406823d39fe834c030525510845b0dee63ddac",
+      "bytes": 33465,
+      "sha256": "7073fc97ca0c60f43b50676bf041f143cbeb28cfcf7b3a75aed93688424e75c4",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE04ProgressionCheck.h",
+      "git_blob_s1": "ace5e50ade9a9dfa04d956fa303c2e372885765b",
+      "git_blob_s3": "ace5e50ade9a9dfa04d956fa303c2e372885765b",
+      "bytes": 1596,
+      "sha256": "7a01056808ac2604416beca5233d1c70427c008664e29dc56b30a9023a4995fd",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE04WeaponTests.cpp",
+      "git_blob_s1": "bee8ce5c96524a49adf4c96bf8a275b860736e0e",
+      "git_blob_s3": "bee8ce5c96524a49adf4c96bf8a275b860736e0e",
+      "bytes": 15996,
+      "sha256": "115f6e55f03900a2d8958a5133daa207379bfdce3c9c6c5aa8ffb936666a381e",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05AimCheck.cpp",
+      "git_blob_s1": "fe9314c0a5bc14e2a078c5df2c3108b2c3f2d071",
+      "git_blob_s3": "fe9314c0a5bc14e2a078c5df2c3108b2c3f2d071",
+      "bytes": 16805,
+      "sha256": "c1516e513c3d66c68524f91f1847f774dc6cbc3b448feb25a3b95e409c614c12",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05AimCheck.h",
+      "git_blob_s1": "16d8daa9295389c78024e3c682b8efc074896a5d",
+      "git_blob_s3": "16d8daa9295389c78024e3c682b8efc074896a5d",
+      "bytes": 1270,
+      "sha256": "381ad6641d589b0c3ea2ee60670c9fe9c66c9b882cba48ce69f46c38dcd12a30",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05AimTests.cpp",
+      "git_blob_s1": "67031bd226721e680443bd3d63b418d5680b0c58",
+      "git_blob_s3": "67031bd226721e680443bd3d63b418d5680b0c58",
+      "bytes": 4762,
+      "sha256": "5f4ecb253d484d63ba0d08b00484be909b29669cdcbcb7363097e7d67420af5d",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05AttackMotion.h",
+      "git_blob_s1": "8f10b835de1ef472765422b841cb0fc5ba558bc3",
+      "git_blob_s3": "8f10b835de1ef472765422b841cb0fc5ba558bc3",
+      "bytes": 1324,
+      "sha256": "594a4b7277969fba8ae59e06ba77b274bd3092ec808a4c24f4ad42c1a8a3c7c2",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05AttackTests.cpp",
+      "git_blob_s1": "1a2d2e7e0305603952b720aa2d8c6b3cfa8c86d3",
+      "git_blob_s3": "1a2d2e7e0305603952b720aa2d8c6b3cfa8c86d3",
+      "bytes": 10081,
+      "sha256": "49be1a281f4d138da72e46c8c7aa8f80b687f0f09ed5a39a5ee22dd0a2c669a0",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05Audio.cpp",
+      "git_blob_s1": "4cf8f6a942b462a11efac90297f28a8660520c2c",
+      "git_blob_s3": "4cf8f6a942b462a11efac90297f28a8660520c2c",
+      "bytes": 1952,
+      "sha256": "dc3cc356ebba5d7a4706fa3219ba8e8aeddba51d0ab5aa55543921cc5fb2fe45",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05Audio.h",
+      "git_blob_s1": "7fdb483808a87bb9c1299cd5a112ffafa4bcb84c",
+      "git_blob_s3": "7fdb483808a87bb9c1299cd5a112ffafa4bcb84c",
+      "bytes": 903,
+      "sha256": "036bbae20037957f2a5a6662b8b32dbbdc18612610bfd1d319c03d11ec3b7ab7",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05MotionCheck.cpp",
+      "git_blob_s1": "4cc645349bba349ec35ef98c3342e78ffe0024c7",
+      "git_blob_s3": "4cc645349bba349ec35ef98c3342e78ffe0024c7",
+      "bytes": 25536,
+      "sha256": "fa386c87646454bacc95cfe3bab6b70d20b2ea255d9ab206ac4050cee7bdbd8a",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05MotionCheck.h",
+      "git_blob_s1": "d2848701d03926607434e9f77a2327a2c5ca8e0a",
+      "git_blob_s3": "d2848701d03926607434e9f77a2327a2c5ca8e0a",
+      "bytes": 2277,
+      "sha256": "05eb5d12ce1c40521f3b9e8c066ebd73718c86bc3d4eff856f47e1050b941288",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05PresentationCheck.cpp",
+      "git_blob_s1": "0574f8a6e8c4c9288034562eafb84529c7895738",
+      "git_blob_s3": "0574f8a6e8c4c9288034562eafb84529c7895738",
+      "bytes": 48686,
+      "sha256": "b78a042bceb8a4f75ba55d9b51404996a0742a8b79b1326da0e559cf1c281a07",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05PresentationCheck.h",
+      "git_blob_s1": "844bee0362a4e7597783da7d5427e7f4d2010d15",
+      "git_blob_s3": "844bee0362a4e7597783da7d5427e7f4d2010d15",
+      "bytes": 3711,
+      "sha256": "5b8632b5552d6c7efbe06b31ea94fe3d63f1ec5d3b44babf4dc955a8f43c4ca5",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05UICheck.cpp",
+      "git_blob_s1": "ee899f2c4eaefd41f9dbde5c7b3d6b2a81c343a0",
+      "git_blob_s3": "ee899f2c4eaefd41f9dbde5c7b3d6b2a81c343a0",
+      "bytes": 18105,
+      "sha256": "b6138311f4cdc8d5f3e1a9ed8f054f765d0f50432abe56049945cfb4d5fc56a5",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05UICheck.h",
+      "git_blob_s1": "202b0dea114458f213e2dfeb3c8db93e371eef8f",
+      "git_blob_s3": "202b0dea114458f213e2dfeb3c8db93e371eef8f",
+      "bytes": 1699,
+      "sha256": "4d87fa2a4cd384652c282acfa8581aba5215f1d10784b5f2dedd771da2ee6a05",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05WeaponCheck.h",
+      "git_blob_s1": "64175c6d73235b6a5e5dccf5ef688d3f243e0571",
+      "git_blob_s3": "64175c6d73235b6a5e5dccf5ef688d3f243e0571",
+      "bytes": 1374,
+      "sha256": "642c5eadfd2a6532336096887af53100cec604906513f7cb818ca8677fb57309",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05WeaponTests.cpp",
+      "git_blob_s1": "cfe4c063b6008296ab5e93bc44091b56d23a0e0e",
+      "git_blob_s3": "cfe4c063b6008296ab5e93bc44091b56d23a0e0e",
+      "bytes": 3370,
+      "sha256": "b02f08e166553217fb16538ec76542d261fd19b7f0eaf4c4896ed50b794536d3",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06Ballistics.cpp",
+      "git_blob_s1": "e1bead106548ed9e423c4bab82bd84cc610057c5",
+      "git_blob_s3": "e1bead106548ed9e423c4bab82bd84cc610057c5",
+      "bytes": 1530,
+      "sha256": "894a36afdc8a204ed37e5bdffd1dac145a2aebd56de16168a948669cb23ae2b8",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06Ballistics.h",
+      "git_blob_s1": "53dbdc305ffd0de7a243090129d6a87340a80008",
+      "git_blob_s3": "53dbdc305ffd0de7a243090129d6a87340a80008",
+      "bytes": 456,
+      "sha256": "36a6930176406254b65b54ebca09e1e9ffae5851148bda46972cbfc1b4252aea",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CameraModifier.cpp",
+      "git_blob_s1": "52614b182882183032edea8c6de08e3fe95412e6",
+      "git_blob_s3": "52614b182882183032edea8c6de08e3fe95412e6",
+      "bytes": 1262,
+      "sha256": "4ead53df6ae2a26a128c7f64d18d3f181dc0f85dedd590ba90a0183019045c73",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CameraModifier.h",
+      "git_blob_s1": "82c5f04a942185aeeea3a939902f59d90212d763",
+      "git_blob_s3": "82c5f04a942185aeeea3a939902f59d90212d763",
+      "bytes": 534,
+      "sha256": "fe760d51426f70359afb6ca5f27f0445119604583355694ad7a13a45bff24daf",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CaptureComponent.cpp",
+      "git_blob_s1": "0968f64ee6e46dd5a526b826af08a029c6a2ee47",
+      "git_blob_s3": "0968f64ee6e46dd5a526b826af08a029c6a2ee47",
+      "bytes": 19601,
+      "sha256": "17c4221609428a46b15a3a3e5b1ee7ad401669210e639e3641f5f93d45ec483a",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CaptureComponent.h",
+      "git_blob_s1": "1b162fa93f0965d26be0331f6ee89ab29aa1b567",
+      "git_blob_s3": "1b162fa93f0965d26be0331f6ee89ab29aa1b567",
+      "bytes": 2608,
+      "sha256": "caac7d748ff568cc8f2516aebf42af414c8ce9c1685d919df587504b7f18661b",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CombatAwards.cpp",
+      "git_blob_s1": "9ef38f804370a57e5588aada8580541cbd1a4fee",
+      "git_blob_s3": "9ef38f804370a57e5588aada8580541cbd1a4fee",
+      "bytes": 2187,
+      "sha256": "013aadbac4ee9de4639394c02758e3c0352ce4f714796dee04f5f256ad617e74",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CombatAwards.h",
+      "git_blob_s1": "aeb7d6c652d92261629a38f51553d04f52cb049f",
+      "git_blob_s3": "aeb7d6c652d92261629a38f51553d04f52cb049f",
+      "bytes": 1322,
+      "sha256": "43da614fe2147db6ef52af09c7c4a22f2ef95a281ba9823fcb71f85ff62a723c",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CombatCheck.cpp",
+      "git_blob_s1": "0a841f8378ae9efd43ba8468602803b43a055899",
+      "git_blob_s3": "0a841f8378ae9efd43ba8468602803b43a055899",
+      "bytes": 19279,
+      "sha256": "4bd170ba89a939e5ff7425fbf3eeb1b58d2e5d59bda034a1484bf7eccb2c49be",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CombatCheck.h",
+      "git_blob_s1": "62bf8780fee80c9b5b9254ad6e872aba0601701c",
+      "git_blob_s3": "62bf8780fee80c9b5b9254ad6e872aba0601701c",
+      "bytes": 1728,
+      "sha256": "71c59e097d1945f954481b218d17970f1991b05e02e2ac8fe598dd9929c00ebf",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CombatTests.cpp",
+      "git_blob_s1": "2903baedb72bdc3760f52f9bc0dcd7181ced8650",
+      "git_blob_s3": "2903baedb72bdc3760f52f9bc0dcd7181ced8650",
+      "bytes": 18377,
+      "sha256": "17d68c0b5e69f09e29270492859da352c3bcafedc827f5df0af00bf2621a4df5",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CombatTypes.h",
+      "git_blob_s1": "e56bd9b8ed8cc936edc03901041a008d17103b26",
+      "git_blob_s3": "e56bd9b8ed8cc936edc03901041a008d17103b26",
+      "bytes": 715,
+      "sha256": "62199f30be3cee10bc01d7075b10a41dcee5d8e0b33931651c4b5eead2715623",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06GroupingCheck.cpp",
+      "git_blob_s1": "4e0d468f0112bc987bbd1e21a3631e45f6e93075",
+      "git_blob_s3": "4e0d468f0112bc987bbd1e21a3631e45f6e93075",
+      "bytes": 22420,
+      "sha256": "0746e8879c12021877a3cdb89e3283712ed3d5d59152d9eadac044396d8ffb62",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06GroupingCheck.h",
+      "git_blob_s1": "57e120861167ff0ce5bfbc76f4b107de921a9c03",
+      "git_blob_s3": "57e120861167ff0ce5bfbc76f4b107de921a9c03",
+      "bytes": 2192,
+      "sha256": "22e46756fa577f4cb3063ba6c0dab8ef30bd4498242dc0fffb6a4af829318a3f",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06ImpactSubsystem.cpp",
+      "git_blob_s1": "3d42ccc5e2b6663e526f85cfd265826e1b5a070a",
+      "git_blob_s3": "3d42ccc5e2b6663e526f85cfd265826e1b5a070a",
+      "bytes": 3527,
+      "sha256": "6cbf9256fd8ab9292edd43ce9ce81bc93b2b3e27b36d0bf11897b9f697c2fba4",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06ImpactSubsystem.h",
+      "git_blob_s1": "43673fc792454eaf75ec7914bba7c3ab55227a6b",
+      "git_blob_s3": "43673fc792454eaf75ec7914bba7c3ab55227a6b",
+      "bytes": 1213,
+      "sha256": "a9e56f679aa064a1827a78eb09057c61516e3c7b24e0314fa0bea0f92f8a237f",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06MachineRules.h",
+      "git_blob_s1": "d29bce458ff2230b013a807225f006b775bedf46",
+      "git_blob_s3": "d29bce458ff2230b013a807225f006b775bedf46",
+      "bytes": 1100,
+      "sha256": "f88767526c89f1761c2463ffbaf1606ff6fd892c31f74ead016108033158a1bd",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06MachineTests.cpp",
+      "git_blob_s1": "3468180eb76db5c76938f0d87dfbbe7ce80f08dc",
+      "git_blob_s3": "3468180eb76db5c76938f0d87dfbbe7ce80f08dc",
+      "bytes": 4497,
+      "sha256": "a33b4f1cdd2d3be48090a28e519dbd897b4693eae401154903a650c62c93b9d5",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06PickupVisualComponent.h",
+      "git_blob_s1": "79ca52b561d0aa46356c55be51e18563610f0298",
+      "git_blob_s3": "79ca52b561d0aa46356c55be51e18563610f0298",
+      "bytes": 2060,
+      "sha256": "ff1ae862b78e97fab2d29e1505059eb62d8ade05d483e0fd986883d2a2c25a23",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06PortabilityCheck.cpp",
+      "git_blob_s1": "3f43ceab44aaeaa6b90d7bcd4bee7bfbfbfaeced",
+      "git_blob_s3": "3f43ceab44aaeaa6b90d7bcd4bee7bfbfbfaeced",
+      "bytes": 25379,
+      "sha256": "f72b219965ffe0da266ccec70ecfdc410875cfef495f0feee9ed73c41392699d",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06PortabilityCheck.h",
+      "git_blob_s1": "512cfea6af79b3b78d91dfbba9a50850de85f35a",
+      "git_blob_s3": "512cfea6af79b3b78d91dfbba9a50850de85f35a",
+      "bytes": 2088,
+      "sha256": "c329acd0bca7724b8955d4823c37b1deaeffc0932f8149247bb89a0510cf8a0d",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06SurvivalCheck.cpp",
+      "git_blob_s1": "0ab92142572cf4346b055e0eb61b4a3e3b8fd756",
+      "git_blob_s3": "0ab92142572cf4346b055e0eb61b4a3e3b8fd756",
+      "bytes": 33950,
+      "sha256": "2b572d250b96c483ed19a22d2d86814c12301498aece1829ee51e750647263ff",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06SurvivalCheck.h",
+      "git_blob_s1": "0a9ade6493e07d08eda6bdbbdc64f4ba5309743f",
+      "git_blob_s3": "0a9ade6493e07d08eda6bdbbdc64f4ba5309743f",
+      "bytes": 2119,
+      "sha256": "74521409bb99e6fb66ca09ae9d1f7c610c9c16fc58e0690ad11cf0eabce8a01f",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06SurvivalTests.cpp",
+      "git_blob_s1": "c42042982d7493055fac6bcb00da779e032d16d7",
+      "git_blob_s3": "c42042982d7493055fac6bcb00da779e032d16d7",
+      "bytes": 12043,
+      "sha256": "cfe78b5afaec258c1070716cdeab89e92d77d9d7396385fa727ba080b3a1b370",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEAim.cpp",
+      "git_blob_s1": "491e69bbf86900ef684458da59e5bd43995ebe95",
+      "git_blob_s3": "491e69bbf86900ef684458da59e5bd43995ebe95",
+      "bytes": 3241,
+      "sha256": "6f66428e8b27c89cbf242464fc85dce2ce8defa4c0dc4360604c5d17fa425a2a",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEAim.h",
+      "git_blob_s1": "3ec13819e0ee8a3cbe856ad153b19464dd339434",
+      "git_blob_s3": "3ec13819e0ee8a3cbe856ad153b19464dd339434",
+      "bytes": 815,
+      "sha256": "1c320301ad05a39ffa65ebf61560403a955594b47ff2ad3fe4be7b8f858dbd5d",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEAmbientAudioComponent.cpp",
+      "git_blob_s1": "b23c66b42068610dddb4d592a154e4686c7f8ad3",
+      "git_blob_s3": "b23c66b42068610dddb4d592a154e4686c7f8ad3",
+      "bytes": 4431,
+      "sha256": "9198aa7bf8b20cc3b1195e09235f900df5b7a6ae1c8079ce3e51dbc3627125a2",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEAmbientAudioComponent.h",
+      "git_blob_s1": "58615f66233fc05664ddf8bcc6d069a78a42dab2",
+      "git_blob_s3": "58615f66233fc05664ddf8bcc6d069a78a42dab2",
+      "bytes": 1176,
+      "sha256": "dbc6da63dd36621c6307b0103d17db060abd401df45794353b6a148d71112233",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEAnimInstance.cpp",
+      "git_blob_s1": "897cfc53eb424f3396d79caea118efd7f02a860b",
+      "git_blob_s3": "897cfc53eb424f3396d79caea118efd7f02a860b",
+      "bytes": 18965,
+      "sha256": "632bdda55721117c39e5a54dcb2e44d6fe59e9c6a474cf9a3440e78c3e9606ac",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEAnimInstance.h",
+      "git_blob_s1": "cafe6fe2c2e32a429c8f0898cf894235e828ffa7",
+      "git_blob_s3": "cafe6fe2c2e32a429c8f0898cf894235e828ffa7",
+      "bytes": 804,
+      "sha256": "557f4bcc5ddf58c0b114c44782203eb1f28392162988b208790abfba9632f795",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEBloodSubsystem.cpp",
+      "git_blob_s1": "e10d71b60750d66ffd9b3f4a2dcfb6f371136a69",
+      "git_blob_s3": "e10d71b60750d66ffd9b3f4a2dcfb6f371136a69",
+      "bytes": 21368,
+      "sha256": "60a8597a9b17666cfc1fb829c6e575856ea446ef367d4a9679da389d4f5ad550",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEBloodSubsystem.h",
+      "git_blob_s1": "c899a42627be7d98cb0c72da11b0a7c86f2bd0f6",
+      "git_blob_s3": "c899a42627be7d98cb0c72da11b0a7c86f2bd0f6",
+      "bytes": 5497,
+      "sha256": "38c2d7cbc25a0dd2a8f1aebd1d9f281ca02dadde4eadcf0c9856d3f774b17e79",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONECombatCheck.cpp",
+      "git_blob_s1": "49f51734bb4e23294b07c60c7a7a15d7cf1d2052",
+      "git_blob_s3": "49f51734bb4e23294b07c60c7a7a15d7cf1d2052",
+      "bytes": 23834,
+      "sha256": "13c661b104770e16bff745d649a15e5929c605af013c243f9282a04beb6d0fe5",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONECombatCheck.h",
+      "git_blob_s1": "ccbb212484a775d1f30f9bba98a3d72af42644c9",
+      "git_blob_s3": "ccbb212484a775d1f30f9bba98a3d72af42644c9",
+      "bytes": 1293,
+      "sha256": "9c753ac1b862285cb8b94362609f6e66089b0ecf0c3613a89206c6a0da7476f9",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEGameMode.cpp",
+      "git_blob_s1": "192a27acd4f8a19a8d56891fa76e1536b718ed65",
+      "git_blob_s3": "192a27acd4f8a19a8d56891fa76e1536b718ed65",
+      "bytes": 22193,
+      "sha256": "a6bc574ac1bd3a2bb0100da1ec7c9ef5151428961ac7b55315812024446002f3",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEGameMode.h",
+      "git_blob_s1": "b0391abd985da83b65ab5a56c0fb795de9494a50",
+      "git_blob_s3": "b0391abd985da83b65ab5a56c0fb795de9494a50",
+      "bytes": 4110,
+      "sha256": "0223d1f045fd99762a6e70f713a67b84dbdb11e518f04814adfca0229d213d2d",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEHUD.cpp",
+      "git_blob_s1": "7b5d75ebcfa5dd29d5566195047dc77cd5c737cb",
+      "git_blob_s3": "7b5d75ebcfa5dd29d5566195047dc77cd5c737cb",
+      "bytes": 35380,
+      "sha256": "1346b0763a00b61c53abe2a021f2d3772a60d50511d99752a317b753f8d74057",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEHUD.h",
+      "git_blob_s1": "3581cf2688952039843f0ca32994a051f1ccbb19",
+      "git_blob_s3": "3581cf2688952039843f0ca32994a051f1ccbb19",
+      "bytes": 4379,
+      "sha256": "400d6f65c9f63dfc8afe47b6ae83e7376f431cf18d8ed474e34fc5d461acd8e6",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEHealthComponent.cpp",
+      "git_blob_s1": "c7c7b519021c7eae258b344c62015c3e6c9133cc",
+      "git_blob_s3": "c7c7b519021c7eae258b344c62015c3e6c9133cc",
+      "bytes": 3254,
+      "sha256": "2135f4023ef5e806f69106b906237f8e2ff9df366745e31de44c7202fe97504b",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEHealthComponent.h",
+      "git_blob_s1": "2c1fddbeab7296032c40637788aabad5b99b3841",
+      "git_blob_s3": "2c1fddbeab7296032c40637788aabad5b99b3841",
+      "bytes": 1689,
+      "sha256": "0a180a016adffb919248755da6023989c80346a16b325e750279bef302b17b6c",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEInteractionComponent.cpp",
+      "git_blob_s1": "7be026dcae0f10c074c0ba87a1e60986161e8606",
+      "git_blob_s3": "7be026dcae0f10c074c0ba87a1e60986161e8606",
+      "bytes": 2647,
+      "sha256": "147669fffef2e1a47ea1e08ce5ab5890bff17f067141eed3f76ff4ac6d77b73c",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEInteractionComponent.h",
+      "git_blob_s1": "8464236578aff2074d36e40c423da9fdf55b6925",
+      "git_blob_s3": "8464236578aff2074d36e40c423da9fdf55b6925",
+      "bytes": 2353,
+      "sha256": "c0ce1e74da699ad60fe6ea35404f1557d59216b4abd8995112ef2f522cec33ae",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPhysicsRuntime.cpp",
+      "git_blob_s1": "1f44b8647d6616f436b1c438e02a2da9dd3f7233",
+      "git_blob_s3": "1f44b8647d6616f436b1c438e02a2da9dd3f7233",
+      "bytes": 18895,
+      "sha256": "339900197ac9d210cd77450b0859b1e2f4a9720245cbb1bc99b49a888c28fa66",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPhysicsRuntime.h",
+      "git_blob_s1": "45d44dbd3a6c1de01cd7ffe74a8c26357330d7a8",
+      "git_blob_s3": "45d44dbd3a6c1de01cd7ffe74a8c26357330d7a8",
+      "bytes": 1920,
+      "sha256": "0bceebe1d23ad7a6d65618916c186387f3f36d24c3b48880023cd09bc2fcf9fd",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPlayer.cpp",
+      "git_blob_s1": "c0c5a3f0130783ad1765cdc8ebd7ccd1637a36d5",
+      "git_blob_s3": "c0c5a3f0130783ad1765cdc8ebd7ccd1637a36d5",
+      "bytes": 32597,
+      "sha256": "37384ab6054df6708d36cf03d0eee14f117c8f79d5c0b56ed0eb967e431e9ab2",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPlayer.h",
+      "git_blob_s1": "4c8943c15a5469f56b1012602c114edf63a6a70c",
+      "git_blob_s3": "4c8943c15a5469f56b1012602c114edf63a6a70c",
+      "bytes": 7535,
+      "sha256": "9cc96dfaac3c0a05c4fe86dcb88ef98c95b41e008b08f550729df370bdd93db5",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPlayerController.cpp",
+      "git_blob_s1": "fb5d110f909cbc2b2c7d2faabe6ac92ba579b9c9",
+      "git_blob_s3": "fb5d110f909cbc2b2c7d2faabe6ac92ba579b9c9",
+      "bytes": 11682,
+      "sha256": "66ab7b448e1b68c4f8021bfd006399c51d031ef7cb00b86379c042493439ea0c",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPlayerController.h",
+      "git_blob_s1": "7f64ae7fb2d7b2e4b9193f711a39691998ae8832",
+      "git_blob_s3": "7f64ae7fb2d7b2e4b9193f711a39691998ae8832",
+      "bytes": 1227,
+      "sha256": "b7cdd182c135a0436f64e517777f15f082757473371082a69b6efafaa882ae71",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPowerUpComponent.cpp",
+      "git_blob_s1": "d7851a31f5c844bf71cbbdc72cbb16c5f87f1f60",
+      "git_blob_s3": "d7851a31f5c844bf71cbbdc72cbb16c5f87f1f60",
+      "bytes": 9121,
+      "sha256": "67bbe5b04ff649022fb94a8ea2e55719d40413c2f5161b565a98c8986c166654",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPowerUpComponent.h",
+      "git_blob_s1": "e7118e9e03703a9879545fe4f9ed397e7890bc37",
+      "git_blob_s3": "e7118e9e03703a9879545fe4f9ed397e7890bc37",
+      "bytes": 3519,
+      "sha256": "9433e330f605ac9e7c052317c969b44e7baf986f3d132b4c831a6caf996a5710",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPowerUpPickup.cpp",
+      "git_blob_s1": "812a12fa9c0db2a781d2669023742946b69b324e",
+      "git_blob_s3": "812a12fa9c0db2a781d2669023742946b69b324e",
+      "bytes": 3713,
+      "sha256": "7d27da15f93df0187a1f5979e62541b800b17a152577dacea2b3d1586f97c954",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPowerUpPickup.h",
+      "git_blob_s1": "7fba7a0aa8d304272df7f9292c617f5083496919",
+      "git_blob_s3": "7fba7a0aa8d304272df7f9292c617f5083496919",
+      "bytes": 1394,
+      "sha256": "083d316c13b40de803d86481a981516ff9af885aaed79374ff32bd7d7b2b9f2b",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPresentationCheck.cpp",
+      "git_blob_s1": "908cbe9a834eb28de27b88344cd7aa28a11c28b2",
+      "git_blob_s3": "908cbe9a834eb28de27b88344cd7aa28a11c28b2",
+      "bytes": 14011,
+      "sha256": "015f7cbe81b0d5e86b2c83b538b2ff128794154f32d7b9f176fb28540ce2c273",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPresentationCheck.h",
+      "git_blob_s1": "6a857ba71ce339aeb77811fcea4538a690619df3",
+      "git_blob_s3": "6a857ba71ce339aeb77811fcea4538a690619df3",
+      "bytes": 1267,
+      "sha256": "9ce98252cf96030911fad8e9ebf0f44bd2334f3dc077ac70d45a268d6163581a",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEProgressionMachine.cpp",
+      "git_blob_s1": "7449b57b6162d30991ad51f50add7a91bfb5f031",
+      "git_blob_s3": "7449b57b6162d30991ad51f50add7a91bfb5f031",
+      "bytes": 22377,
+      "sha256": "7459f9b5c0cf0a9d19e4f8c4b66dd2c7dbc225b42779b2bd27740a56ba299195",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEProgressionMachine.h",
+      "git_blob_s1": "9d984ba3f8bd0264e3a35d32cd5fa766a48c48e8",
+      "git_blob_s3": "9d984ba3f8bd0264e3a35d32cd5fa766a48c48e8",
+      "bytes": 5017,
+      "sha256": "648e3c9072274acf459ec1562fb32bfda500219a407c6059f9c33840561f3185",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONESnapshotAnimInstance.cpp",
+      "git_blob_s1": "ecc65afa717928bed3f1c98e69e4d3d1b6871eac",
+      "git_blob_s3": "ecc65afa717928bed3f1c98e69e4d3d1b6871eac",
+      "bytes": 1188,
+      "sha256": "36710407619f8a6c753f86573307c9121f2693bffc3d6680add3b569774b6421",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONESnapshotAnimInstance.h",
+      "git_blob_s1": "e859a9f6e2fd0318df783af65abc6f8f37c19c91",
+      "git_blob_s3": "e859a9f6e2fd0318df783af65abc6f8f37c19c91",
+      "bytes": 599,
+      "sha256": "3f7c92041bf44cf43ccff443af87a8b6f0a63b3b4e2f34c4d93bcb47b65ec460",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONETests.cpp",
+      "git_blob_s1": "79b5680940fb250efa35611f5c980feabce072ac",
+      "git_blob_s3": "79b5680940fb250efa35611f5c980feabce072ac",
+      "bytes": 14538,
+      "sha256": "aa0c676fb5681b53afefd95975c23630d88f60447de7290172090e6a15f5eeec",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEUITypes.h",
+      "git_blob_s1": "d53dc30275d07832c728f206a7122287b5920995",
+      "git_blob_s3": "d53dc30275d07832c728f206a7122287b5920995",
+      "bytes": 478,
+      "sha256": "70fbc7c7b1b558c4d06f9d1d3fb66455d712f0ae51deb5040ba0a860d5f465b6",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEValidation.cpp",
+      "git_blob_s1": "e0de88328da96005c6a53e3f9ffd75cf8dbf3954",
+      "git_blob_s3": "e0de88328da96005c6a53e3f9ffd75cf8dbf3954",
+      "bytes": 22010,
+      "sha256": "250bacd016ee7dcf753468eae59b66d601d447b59f88a670db1052dfc8fe2e52",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEValidation.h",
+      "git_blob_s1": "6604da1c134aeb3d55b0007e2998384351761460",
+      "git_blob_s3": "6604da1c134aeb3d55b0007e2998384351761460",
+      "bytes": 1155,
+      "sha256": "7cf04120e1d69e1cfd125213d63ba2dde7230802760007a70fa03388f5155948",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponCase.cpp",
+      "git_blob_s1": "70eb507e1eff197e4ba6af4abb78893ea2300c43",
+      "git_blob_s3": "70eb507e1eff197e4ba6af4abb78893ea2300c43",
+      "bytes": 3051,
+      "sha256": "f129cd5619fb10affd3f2604261af787bd1ae8b0cad463e382ede8d93f0a518d",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponCase.h",
+      "git_blob_s1": "cec0fa94de46c3a79f05516890ae558679bb329c",
+      "git_blob_s3": "cec0fa94de46c3a79f05516890ae558679bb329c",
+      "bytes": 1434,
+      "sha256": "81d8d9433b6736151975db552e4bff7d719537b5153f230778a76980819ef155",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponCatalog.cpp",
+      "git_blob_s1": "44e35d145e659e427968ef45a596b0f16b2ec4d8",
+      "git_blob_s3": "44e35d145e659e427968ef45a596b0f16b2ec4d8",
+      "bytes": 12047,
+      "sha256": "35f356cdde89815c67c6980c7e869a7752a6bdd700b773505d9d9f1b85d13072",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponCatalog.h",
+      "git_blob_s1": "e1df2d71a89014bdaa6b41c5353ef0875f33492b",
+      "git_blob_s3": "e1df2d71a89014bdaa6b41c5353ef0875f33492b",
+      "bytes": 165,
+      "sha256": "9f87d48271aae219b612c67b09fa1f28a45d68882a6a5313075277cdb005e723",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponComponent.cpp",
+      "git_blob_s1": "7b08c18d9fdbbcef68d0ae0af45e9f224a8701b1",
+      "git_blob_s3": "7b08c18d9fdbbcef68d0ae0af45e9f224a8701b1",
+      "bytes": 39066,
+      "sha256": "4f89f4411c4dd983a7437cc302599a849b4b806483914ad44cb564aaafdc208e",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponComponent.h",
+      "git_blob_s1": "fb633a879eae97f018da7c2af3f5a58bb29f03dc",
+      "git_blob_s3": "fb633a879eae97f018da7c2af3f5a58bb29f03dc",
+      "bytes": 11507,
+      "sha256": "496619740e18ea2b5e4b31d9fe0d8d09599e60dd61dd0e439794bb6d7103c4c6",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponInventory.cpp",
+      "git_blob_s1": "21d5ab2711be066a4a238c28b1d821c8bc2de26d",
+      "git_blob_s3": "21d5ab2711be066a4a238c28b1d821c8bc2de26d",
+      "bytes": 11636,
+      "sha256": "577835bfabd7959168c02406dfb3cb280d76b9d0752b9ab6c9819779f0814313",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponMagazine.cpp",
+      "git_blob_s1": "2f80feeb47bdbf4a62260b62b303a907b60d017e",
+      "git_blob_s3": "2f80feeb47bdbf4a62260b62b303a907b60d017e",
+      "bytes": 4021,
+      "sha256": "cfbe9b3ee850e5c405def399fc4338cd05f6faa457f2df8a5c0933717e080205",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponMagazine.h",
+      "git_blob_s1": "bcef89e6a2adbd8c4793f876d86b9067ad48d7a8",
+      "git_blob_s3": "bcef89e6a2adbd8c4793f876d86b9067ad48d7a8",
+      "bytes": 1606,
+      "sha256": "ae404aec3f12ea84c1a5bd1a3b42e7da08f10b069a7a2e037612ca3ae5176bb5",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponTiming.h",
+      "git_blob_s1": "b6588103dc0ca2537aa043c7e7300705ea18639b",
+      "git_blob_s3": "b6588103dc0ca2537aa043c7e7300705ea18639b",
+      "bytes": 750,
+      "sha256": "f6b62fa67fdd930ee14233169d5593b89fef207f5a9eeb43a1dea8813e1d4555",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponTypes.h",
+      "git_blob_s1": "be6ca62bb3a100fc24d7e1c243520304192767b7",
+      "git_blob_s3": "be6ca62bb3a100fc24d7e1c243520304192767b7",
+      "bytes": 12367,
+      "sha256": "d09a17dc46889d7e0cd45842f4ab44ad3bf0d64d8a19cc53fc9e5c8f8391cf00",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEZombie.cpp",
+      "git_blob_s1": "dda2b8e65800029ce45ebc74d59c1b3e20de7683",
+      "git_blob_s3": "dda2b8e65800029ce45ebc74d59c1b3e20de7683",
+      "bytes": 36045,
+      "sha256": "c7b5103ae56285a3fe250a68b6f599d52233e1684229edc14e8e170948bc5ad2",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEZombie.h",
+      "git_blob_s1": "8d063b2ad29e48e38e5d0c5a9f80b0d9d1e33582",
+      "git_blob_s3": "8d063b2ad29e48e38e5d0c5a9f80b0d9d1e33582",
+      "bytes": 7843,
+      "sha256": "e3811e8d8805f5ab54f67494cba4e53e8a96a3b94669ef56ef558522c6ebad7f",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEZombieAudioComponent.cpp",
+      "git_blob_s1": "8a86dbfd71b166437d7eac431d66f642724c08f6",
+      "git_blob_s3": "8a86dbfd71b166437d7eac431d66f642724c08f6",
+      "bytes": 5309,
+      "sha256": "2b896fe4118556b67459599614c4685cf14ee4b05fa70d1be62671458fbcb751",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEZombieAudioComponent.h",
+      "git_blob_s1": "0d0b04495f5b75624d28e9ddfa616fe4420c8e76",
+      "git_blob_s3": "0d0b04495f5b75624d28e9ddfa616fe4420c8e76",
+      "bytes": 1684,
+      "sha256": "7827453c8f2fc1653bf1bddf1e1715b4b538359f692b29550dafde630c476c27",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ProjectONE.Build.cs",
+      "git_blob_s1": "7ac83cd797972cd22fd4e395ca81e4ca6c367455",
+      "git_blob_s3": "7ac83cd797972cd22fd4e395ca81e4ca6c367455",
+      "bytes": 557,
+      "sha256": "90d6dbe34b4a0f2da6043074923838b74ed087c0a54fec5127fc3870c474f7fc",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONE/ProjectONE.cpp",
+      "git_blob_s1": "d76db303a3e2d80407c86cae48a7673e3744ae87",
+      "git_blob_s3": "d76db303a3e2d80407c86cae48a7673e3744ae87",
+      "bytes": 116,
+      "sha256": "047cb657c5efc05a405663e92439034a18739d22224f1888c456a495bfb25a10",
+      "same_committed_bytes": true
+    },
+    {
+      "path": "Source/ProjectONEEditor.Target.cs",
+      "git_blob_s1": "42831a9244f7242acee92cceeb6b0a84d7b9d180",
+      "git_blob_s3": "42831a9244f7242acee92cceeb6b0a84d7b9d180",
+      "bytes": 358,
+      "sha256": "2b44463273143a212aef16454d499121da866aee0c6ed032e9b20c28405bba02",
+      "same_committed_bytes": true
+    }
+  ],
+  "explicit_unchanged_groups": {
+    "aim_and_player_input": [
+      "Source/ProjectONE/ONE06CameraModifier.cpp",
+      "Source/ProjectONE/ONE06CameraModifier.h",
+      "Source/ProjectONE/ONEAim.cpp",
+      "Source/ProjectONE/ONEAim.h",
+      "Source/ProjectONE/ONEPlayer.cpp",
+      "Source/ProjectONE/ONEPlayer.h",
+      "Source/ProjectONE/ONEPlayerController.cpp",
+      "Source/ProjectONE/ONEPlayerController.h"
+    ],
+    "ballistics_weapons_inventory": [
+      "Source/ProjectONE/ONE06Ballistics.cpp",
+      "Source/ProjectONE/ONE06Ballistics.h",
+      "Source/ProjectONE/ONE06CombatTypes.h",
+      "Source/ProjectONE/ONEWeaponCase.cpp",
+      "Source/ProjectONE/ONEWeaponCase.h",
+      "Source/ProjectONE/ONEWeaponCatalog.cpp",
+      "Source/ProjectONE/ONEWeaponCatalog.h",
+      "Source/ProjectONE/ONEWeaponComponent.cpp",
+      "Source/ProjectONE/ONEWeaponComponent.h",
+      "Source/ProjectONE/ONEWeaponInventory.cpp",
+      "Source/ProjectONE/ONEWeaponMagazine.cpp",
+      "Source/ProjectONE/ONEWeaponMagazine.h",
+      "Source/ProjectONE/ONEWeaponTiming.h",
+      "Source/ProjectONE/ONEWeaponTypes.h"
+    ],
+    "game_mode_and_scoring": [
+      "Source/ProjectONE/ONE06CombatAwards.cpp",
+      "Source/ProjectONE/ONE06CombatAwards.h",
+      "Source/ProjectONE/ONEGameMode.cpp",
+      "Source/ProjectONE/ONEGameMode.h"
+    ],
+    "health_and_damage": [
+      "Source/ProjectONE/ONEHealthComponent.cpp",
+      "Source/ProjectONE/ONEHealthComponent.h",
+      "Source/ProjectONE/ONEZombie.cpp",
+      "Source/ProjectONE/ONEZombie.h",
+      "Source/ProjectONE/ONEZombieAudioComponent.cpp",
+      "Source/ProjectONE/ONEZombieAudioComponent.h"
+    ],
+    "powerup_authority": [
+      "Source/ProjectONE/ONEPowerUpComponent.cpp",
+      "Source/ProjectONE/ONEPowerUpComponent.h",
+      "Source/ProjectONE/ONEPowerUpPickup.cpp",
+      "Source/ProjectONE/ONEPowerUpPickup.h"
+    ],
+    "machines_and_interaction": [
+      "Source/ProjectONE/ONE04MachinePresentation.cpp",
+      "Source/ProjectONE/ONE04MachinePresentation.h",
+      "Source/ProjectONE/ONE06MachineRules.h",
+      "Source/ProjectONE/ONEInteractionComponent.cpp",
+      "Source/ProjectONE/ONEInteractionComponent.h",
+      "Source/ProjectONE/ONEProgressionMachine.cpp",
+      "Source/ProjectONE/ONEProgressionMachine.h"
+    ],
+    "retained_drivers": [
+      "Source/ProjectONE/ONE04ProgressionCheck.cpp",
+      "Source/ProjectONE/ONE04ProgressionCheck.h",
+      "Source/ProjectONE/ONE05AimCheck.cpp",
+      "Source/ProjectONE/ONE05AimCheck.h"
+    ]
+  },
+  "config_and_content_committed_entries_unchanged": true,
+  "config_content_note": "Identical committed regular blobs/LFS pointer references; final S3 hydration/build verification is a separate report.",
+  "retained_runs": [
+    {
+      "mode": "progression",
+      "executed_source_commit": "8b5f32640e1239f7035be4c7c1cc6713f0d8be8e",
+      "not_rerun_at_s3": true,
+      "run_id": "20260909T202408_464391_progression_bb7bd660",
+      "result": "PASS",
+      "exit_code": 0,
+      "checks": 95,
+      "failures": 0,
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "runtime_files": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292696576,
+          "sha256": "7b5c6147c03acae47886f37234afbb77f6af9162d34ea1bdc88597856e585f58"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10731021,
+          "sha256": "fd0c5c8471288893f4385eb3551a533291a40e0d74b6d80fcf8c28d5fe0da13b"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221408128,
+          "sha256": "ae8be3f661d4ba38bab50283bc03bdbecdd7a08f56d4082590084a8af4a0300b"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 240183,
+          "sha256": "cd7609faf41e3fc2e2e5c0f11ffad57a6c11501d8822689e150f9a1f165592d0"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "recorded_pre_and_post_source_runtime_verified": true,
+      "fresh_build_record": {
+        "file": "FreshBuildVerification_8b5f32640e12.json",
+        "bytes": 146031,
+        "sha256": "639e68418acb4d65ba5bc7769d1431e8ff97879ee83c9d98c0de0a5a7455b18a"
+      },
+      "evidence": [
+        {
+          "file": "progression/result.json",
+          "bytes": 3507,
+          "sha256": "ff5cd66c5d817bdc9dbfcb0531edde50ab012603e7ccec723424649c609eb7b6"
+        },
+        {
+          "file": "progression/engine.log",
+          "bytes": 123136,
+          "sha256": "976f18fdb6fec46abe3bbbaf08233982c83786469aa4b5c2539fe2d684c82e5b"
+        },
+        {
+          "file": "progression/checks.json",
+          "bytes": 16846,
+          "sha256": "83707e0b963b24c6ed07426e56862c48668669df20ab34916be112215a94bca1"
+        },
+        {
+          "file": "progression/timeline.csv",
+          "bytes": 47975,
+          "sha256": "b456a270eda7ab65941c4ed7a015163f3012c8374e095a658739fe0c0e9ecd36"
+        }
+      ],
+      "real_level_restart": true,
+      "ordered_log_and_json_assertions_match": true
+    },
+    {
+      "mode": "projected_aim",
+      "executed_source_commit": "8b5f32640e1239f7035be4c7c1cc6713f0d8be8e",
+      "not_rerun_at_s3": true,
+      "run_id": "20260909T202539_592519_aim05_afcc75f2",
+      "result": "PASS",
+      "exit_code": 0,
+      "checks": 2708,
+      "failures": 0,
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "runtime_files": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292696576,
+          "sha256": "7b5c6147c03acae47886f37234afbb77f6af9162d34ea1bdc88597856e585f58"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10731021,
+          "sha256": "fd0c5c8471288893f4385eb3551a533291a40e0d74b6d80fcf8c28d5fe0da13b"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221408128,
+          "sha256": "ae8be3f661d4ba38bab50283bc03bdbecdd7a08f56d4082590084a8af4a0300b"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 240183,
+          "sha256": "cd7609faf41e3fc2e2e5c0f11ffad57a6c11501d8822689e150f9a1f165592d0"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "recorded_pre_and_post_source_runtime_verified": true,
+      "fresh_build_record": {
+        "file": "FreshBuildVerification_8b5f32640e12.json",
+        "bytes": 146031,
+        "sha256": "639e68418acb4d65ba5bc7769d1431e8ff97879ee83c9d98c0de0a5a7455b18a"
+      },
+      "evidence": [
+        {
+          "file": "projected_aim/result.json",
+          "bytes": 3608,
+          "sha256": "99f1ff658ee8526ead402f57ca408bcf07bf343b4b8763fe69e4b8c2a1f87df7"
+        },
+        {
+          "file": "projected_aim/engine.log",
+          "bytes": 515133,
+          "sha256": "cb7c2327bca0e133902291b5d98044b4ae05f4013f857a2669b6281ad72c1771"
+        },
+        {
+          "file": "projected_aim/checks.txt",
+          "bytes": 288357,
+          "sha256": "8c90681769f59657ce49b371da37075432bbf632e63deeae0f937e266ac22e90"
+        },
+        {
+          "file": "projected_aim/rays.csv",
+          "bytes": 78162,
+          "sha256": "348c73a034a33294af60a846307ebb508710f65f4f5f8c71266c77a481a3a4fd"
+        }
+      ],
+      "ray_rows": 480,
+      "actual_discharge_counter": 480,
+      "rows_per_variant": {
+        "0": 80,
+        "1": 80,
+        "2": 80,
+        "3": 80,
+        "4": 80,
+        "5": 80
+      },
+      "variants": 6,
+      "headings_degrees": [
+        0,
+        45,
+        90,
+        135,
+        180,
+        225,
+        270,
+        315
+      ],
+      "cases_per_heading": 10,
+      "complete_unique_variant_heading_case_matrix": true,
+      "evaluated_pose_matches_shot_frame_every_row": true,
+      "ordered_log_and_checks_text_assertions_match": true,
+      "row_scope": "One recorded shot observation per discharge; not480 total shotgun pellet paths."
+    }
+  ],
+  "historical_failed_weapon30": {
+    "source_commit": "8b5f32640e1239f7035be4c7c1cc6713f0d8be8e",
+    "requested_max_fps": 30,
+    "process_exit_code": 0,
+    "runner_result": "FAILED",
+    "checks": 197,
+    "failures": 2,
+    "passed_assertions": 195,
+    "not_retained_as_pass": true,
+    "failed_assertions": [
+      {
+        "pass": false,
+        "label": "Ordinary reload test begins with a genuinely eligible unowned-family acquisition plan",
+        "stage": 7,
+        "variant": 0,
+        "world_seconds": 5.209074400365353
+      },
+      {
+        "pass": false,
+        "label": "Ordinary reload test begins with a genuinely eligible unowned-family acquisition plan",
+        "stage": 7,
+        "variant": 1,
+        "world_seconds": 16.17636189982295
+      }
+    ],
+    "cause": "Pistol variants0/1 already receive a carbine in Prepare. The old stage7 chose carbine again based only on the equipped pistol, so the no-owned-family acquisition plan correctly returned invalid. Both reported failures are this fixture setup assertion.",
+    "coverage_gap": "An invalid plan also made the later acquisition-rejection expression trivially false; S3 now requires a genuinely eligible same-revision plan while testing committed reload. The failed run is not promoted to a whole-mode pass because other assertions passed.",
+    "evidence": [
+      {
+        "file": "weapon30_failed/result.json",
+        "bytes": 2902,
+        "sha256": "d4436e0d3d7a657e30e2e68dfd44f4b41f4dd77a4c5dcb2a103fe441a38cec3a"
+      },
+      {
+        "file": "weapon30_failed/engine.log",
+        "bytes": 127067,
+        "sha256": "0cb15c7081b9e853241166c35532af272f04355258ff5fc6f20b9e7cbff8152a"
+      },
+      {
+        "file": "weapon30_failed/checks.json",
+        "bytes": 39128,
+        "sha256": "985ec7d354d6b4d41362cfdb7f0566653d96d04c81b6059d5819d6ab7bb8119e"
+      },
+      {
+        "file": "weapon30_failed/timeline.csv",
+        "bytes": 130007,
+        "sha256": "350204566702f616fc292ee1afe9309578eec77e5a053db1b0e3bbecf851eaf8"
+      }
+    ]
+  },
+  "limits": [
+    "Neither retained progression nor projected-aim run was executed at S3.",
+    "S1 runtime binaries differ from the rebuilt S3 package; no binary equality or whole-S3-suite PASS is claimed.",
+    "Retaining numerical rule coverage does not retain S1 pickup visual acceptance, captures, performance, native-input evidence or the changed weapon fixture.",
+    "S3 build/runtime integration and corrected pickup/weapon checks are separate root-owned verification.",
+    "Raw logs remain private; portable evidence records bind their actual byte lengths/hashes."
+  ]
+}

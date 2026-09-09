@@ -1,0 +1,162 @@
+{
+  "status": "PASS",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "workloads": [
+    {
+      "weapon": "870",
+      "requested_alive": 6,
+      "rows": 3695,
+      "mean_ms": 8.335916779431665,
+      "p95_ms": 8.70963,
+      "p99_ms": 8.951382,
+      "max_ms": 20.6116,
+      "spikes_strictly_above_ms": {
+        "16.7": 1,
+        "33.3": 0,
+        "50": 0,
+        "100": 0
+      },
+      "maximum_frame_indices": [
+        0
+      ],
+      "valid_counter_rows": 3694,
+      "exact_requested_rows": 3445,
+      "exact_live_fraction": 0.9325933946940985,
+      "both_machines_active_profile_seconds": 3.217200000000001,
+      "committed_shots": 16,
+      "readme_headline_matches": true
+    },
+    {
+      "weapon": "870",
+      "requested_alive": 12,
+      "rows": 3694,
+      "mean_ms": 8.339776935571196,
+      "p95_ms": 8.7993,
+      "p99_ms": 9.296445000000004,
+      "max_ms": 25.5873,
+      "spikes_strictly_above_ms": {
+        "16.7": 1,
+        "33.3": 0,
+        "50": 0,
+        "100": 0
+      },
+      "maximum_frame_indices": [
+        0
+      ],
+      "valid_counter_rows": 3693,
+      "exact_requested_rows": 3288,
+      "exact_live_fraction": 0.8903330625507717,
+      "both_machines_active_profile_seconds": 3.2085,
+      "committed_shots": 16,
+      "readme_headline_matches": true
+    },
+    {
+      "weapon": "870",
+      "requested_alive": 18,
+      "rows": 3690,
+      "mean_ms": 8.346771029810299,
+      "p95_ms": 8.91349,
+      "p99_ms": 9.400663999999999,
+      "max_ms": 30.0013,
+      "spikes_strictly_above_ms": {
+        "16.7": 1,
+        "33.3": 0,
+        "50": 0,
+        "100": 0
+      },
+      "maximum_frame_indices": [
+        0
+      ],
+      "valid_counter_rows": 3689,
+      "exact_requested_rows": 3183,
+      "exact_live_fraction": 0.8628354567633505,
+      "both_machines_active_profile_seconds": 3.2173,
+      "committed_shots": 16,
+      "readme_headline_matches": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 6,
+      "rows": 3693,
+      "mean_ms": 8.339944191714054,
+      "p95_ms": 8.8964,
+      "p99_ms": 9.605588,
+      "max_ms": 21.2065,
+      "spikes_strictly_above_ms": {
+        "16.7": 1,
+        "33.3": 0,
+        "50": 0,
+        "100": 0
+      },
+      "maximum_frame_indices": [
+        0
+      ],
+      "valid_counter_rows": 3692,
+      "exact_requested_rows": 2948,
+      "exact_live_fraction": 0.7984832069339112,
+      "both_machines_active_profile_seconds": 3.216799999999999,
+      "committed_shots": 144,
+      "readme_headline_matches": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 12,
+      "rows": 3680,
+      "mean_ms": 8.370885027173912,
+      "p95_ms": 9.09749,
+      "p99_ms": 10.217336999999999,
+      "max_ms": 24.9783,
+      "spikes_strictly_above_ms": {
+        "16.7": 1,
+        "33.3": 0,
+        "50": 0,
+        "100": 0
+      },
+      "maximum_frame_indices": [
+        0
+      ],
+      "valid_counter_rows": 3679,
+      "exact_requested_rows": 2566,
+      "exact_live_fraction": 0.6974721391682522,
+      "both_machines_active_profile_seconds": 3.2112,
+      "committed_shots": 144,
+      "readme_headline_matches": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 18,
+      "rows": 3677,
+      "mean_ms": 8.37503440304596,
+      "p95_ms": 9.060899999999998,
+      "p99_ms": 10.279535999999988,
+      "max_ms": 31.4236,
+      "spikes_strictly_above_ms": {
+        "16.7": 2,
+        "33.3": 0,
+        "50": 0,
+        "100": 0
+      },
+      "maximum_frame_indices": [
+        0
+      ],
+      "valid_counter_rows": 3676,
+      "exact_requested_rows": 2386,
+      "exact_live_fraction": 0.6490750816104461,
+      "both_machines_active_profile_seconds": 3.2172,
+      "committed_shots": 144,
+      "readme_headline_matches": true
+    }
+  ],
+  "retained_rows_checked": 22129,
+  "inventory_entries_verified": 14,
+  "method": "Independently read six retained full CSVs; recompute full FrameTime mean/p95/p99/max and threshold counts, counter-valid exact-live fractions, machine-active profile-clock duration and final combat shot deltas; compare each formatted README table cell and all inventory payload hashes.",
+  "proposed_wording_corrections": [
+    "Rename table column Both Active s to Both machines Active s; the value is not the duration of both power-ups.",
+    "State exact-live fractions exclude the one initial row without project counters in each file.",
+    "State six retained frame-zero maxima and actual above-threshold counts; do not imply a locked 120 FPS or continuously maintained requested crowd."
+  ],
+  "limits": [
+    "Headline and inventory review only; this does not repeat the curator's all-numeric-cell comparison with private original CSVs.",
+    "One non-isolated run per workload; no matched earlier-candidate baseline, uncertainty interval, causal attribution or user gameplay approval."
+  ]
+}

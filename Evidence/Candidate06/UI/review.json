@@ -1,0 +1,427 @@
+{
+  "schema": "one06.ui_s3_visual_review.v1",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "created_utc": "2026-09-09T21:07:02.129041+00:00",
+  "result": "SCOPED_ORIGINAL_PNG_REVIEW_COMPLETE_NO_BLOCKING_LAYOUT_FINDING",
+  "images_viewed": 12,
+  "resolutions": [
+    "1600x900",
+    "1280x720"
+  ],
+  "method": "All six actual PNGs per resolution viewed directly at original resolution in capture order, including restart. No contact-sheet substitute, crop, retouch, resave or re-encoding.",
+  "observations": [
+    {
+      "files": [
+        "01_starter_0_7_56.png",
+        "06_restarted_starter.png"
+      ],
+      "finding": "At both sizes, round/remaining, points/health, weapon/ammo and two slots fit within the viewport. Starter and restarted states show zero points, 100 health, M1911 7/56 and empty slot 2."
+    },
+    {
+      "files": [
+        "02_expanded_tools.png"
+      ],
+      "finding": "At both sizes the full help tray is visible, including LMB-only fire, held RMB head / Left Ctrl low, Box hold F and upgrade tap F / auto-return. Shake, weapon forcing, three forced pickup buttons and Back to game remain readable and separated, with no clipped final row."
+    },
+    {
+      "files": [
+        "03_compact_1500.png"
+      ],
+      "finding": "The 1500-point text, health, ammo and slot panels are separated at both sizes. The small aim-height caption crosses background floor lettering at this particular cursor position; principal HUD figures and controls stay legible."
+    },
+    {
+      "files": [
+        "04_pause.png"
+      ],
+      "finding": "Pause heading, round 0, zero kills, 1500 points, elapsed time and distinct Resume/Restart/Quit controls fit at both sizes. Background dimming clearly separates the menu."
+    },
+    {
+      "files": [
+        "05_death.png"
+      ],
+      "finding": "Game Over heading, round 0, zero kills, 550 points, elapsed time, Try again and Quit fit at both sizes. The 550 points follow the disclosed 950-point Box purchase from the 1500-point fixture balance."
+    }
+  ],
+  "limits": [
+    "Static inspection of these 12 PNGs only; no continuous playback, transitions, audio audition, performance or native-input test.",
+    "Only actual 1600x900 and1280x720 runs are covered; no additional resolution or display-scaling claim.",
+    "Input uses production Controller InputKey/SetMouseLocation and drawn target bounds. The five exercised button actions are grant points, close tray, resume, restart and quit; the three pickup buttons are visually inspected here, with their separate native actions recorded elsewhere.",
+    "The fixture discloses a points grant/spend, a Box-approach teleport and actual purchase, fatal ReceiveAttack, level restart and final quit. It is a test sequence, not uninterrupted survival play.",
+    "The reused actor embeds candidate05 in checks.json; execution source and runtime hashes bind these two results to Candidate06 S3.",
+    "No cropped or modified image is proposed for public copying; raw engine logs and private runner results are hash-bound only, not in the copy list."
+  ],
+  "runs": [
+    {
+      "run_id": "20260909T210302_430077_ui_15050378",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "resolution": "1600x900",
+      "exit_code": 0,
+      "checks": 49,
+      "failures": 0,
+      "legacy_actor_name": "ONE05UICheck; actual S3 Candidate06 binary",
+      "actor_metadata_candidate_field": "05",
+      "engine_simulated_input": true,
+      "native_input": false,
+      "quit_requested_via_button": true,
+      "ordered_assertions_match_log": true,
+      "valid_drawn_target_metadata_rows": 5,
+      "scripted_drawn_actions": [
+        8,
+        16,
+        1,
+        2,
+        3
+      ],
+      "fresh_build_record": {
+        "basename": "FreshBuildVerification_c2c422012f4f.json",
+        "bytes": 146040,
+        "sha256": "8f4e9e10c2171d9508f1ac0b10562733e9b955316b99954964710f2bbebe814f"
+      },
+      "runtime_files": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292697088,
+          "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10731021,
+          "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221414272,
+          "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 240183,
+          "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "pre_and_post_runtime_verified": true,
+      "bindings": [
+        {
+          "path": "1600x900/run_result.json",
+          "bytes": 4890,
+          "sha256": "78a567c6e3745299fabb4f3bd9daff77704c445a5f8965af2e2982ad768894cf"
+        },
+        {
+          "path": "1600x900/engine.log",
+          "bytes": 104725,
+          "sha256": "7c9a262f69237c1f446fc6b12b93d4c59bfcf404d37ffd7b6b1c2f2f074e57ca"
+        },
+        {
+          "path": "1600x900/checks.json",
+          "bytes": 11168,
+          "sha256": "c8f32398308c335299c02f91f5ca1825e828988e1853a6d4150fcaf7f8a76144"
+        },
+        {
+          "path": "1600x900/input.csv",
+          "bytes": 1192,
+          "sha256": "2bec372532bd5838d992e7f565d8c8ac818bfbe15c6e501ccb8f92bdf38a616e"
+        }
+      ],
+      "images": [
+        {
+          "file": "01_starter_0_7_56.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 0.6955992020666599,
+          "frame": 81,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1600x900/01_starter_0_7_56.png",
+          "bytes": 1218299,
+          "sha256": "931c229872964b3feed74a037d787dab167186a2527473a75dd9b492bf53d52c",
+          "viewed_original_full_image": true
+        },
+        {
+          "file": "02_expanded_tools.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 1.2310515940189362,
+          "frame": 130,
+          "points": 0,
+          "paused": false,
+          "tools": true,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1600x900/02_expanded_tools.png",
+          "bytes": 610048,
+          "sha256": "841ab6e043c4121fbcf6ec87c38d5eab40f9744c93bab16ca1e328f1b1d4178d",
+          "viewed_original_full_image": true
+        },
+        {
+          "file": "03_compact_1500.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 2.147004194557667,
+          "frame": 232,
+          "points": 1500,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1600x900/03_compact_1500.png",
+          "bytes": 1219683,
+          "sha256": "0d1969704375184c3972d717768f668290545ab79a56ff1be091bca43aa5b3e5",
+          "viewed_original_full_image": true
+        },
+        {
+          "file": "04_pause.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 3.0147490948438644,
+          "frame": 361,
+          "points": 1500,
+          "paused": true,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1600x900/04_pause.png",
+          "bytes": 475105,
+          "sha256": "a2a8ae585dc9f8d544f7b82427410a8d1d72c9fcd045f14c06357ab8372ab668",
+          "viewed_original_full_image": true
+        },
+        {
+          "file": "05_death.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 4.8398082964122295,
+          "frame": 676,
+          "points": 550,
+          "paused": false,
+          "tools": false,
+          "dead": true,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1600x900/05_death.png",
+          "bytes": 533510,
+          "sha256": "d9628b062f4515cb5231094d8e57e014abb39913324e868fae363c329526982f",
+          "viewed_original_full_image": true
+        },
+        {
+          "file": "06_restarted_starter.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 0.9576727077364922,
+          "frame": 864,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1600x900/06_restarted_starter.png",
+          "bytes": 1218678,
+          "sha256": "308a256cac5452b5aa726520d363e470c430abfe22dd5729132210a478afc3ab",
+          "viewed_original_full_image": true
+        }
+      ]
+    },
+    {
+      "run_id": "20260909T210316_412498_ui_655b534c",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "resolution": "1280x720",
+      "exit_code": 0,
+      "checks": 49,
+      "failures": 0,
+      "legacy_actor_name": "ONE05UICheck; actual S3 Candidate06 binary",
+      "actor_metadata_candidate_field": "05",
+      "engine_simulated_input": true,
+      "native_input": false,
+      "quit_requested_via_button": true,
+      "ordered_assertions_match_log": true,
+      "valid_drawn_target_metadata_rows": 5,
+      "scripted_drawn_actions": [
+        8,
+        16,
+        1,
+        2,
+        3
+      ],
+      "fresh_build_record": {
+        "basename": "FreshBuildVerification_c2c422012f4f.json",
+        "bytes": 146040,
+        "sha256": "8f4e9e10c2171d9508f1ac0b10562733e9b955316b99954964710f2bbebe814f"
+      },
+      "runtime_files": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292697088,
+          "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10731021,
+          "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221414272,
+          "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 240183,
+          "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "pre_and_post_runtime_verified": true,
+      "bindings": [
+        {
+          "path": "1280x720/run_result.json",
+          "bytes": 4888,
+          "sha256": "08b34af06e4eef700dd9e69e80a53511597ddd4f544a1a0150698aa88516b34c"
+        },
+        {
+          "path": "1280x720/engine.log",
+          "bytes": 104525,
+          "sha256": "14835320aa87487cbf3e9e94669cf20e7880a22818d7d1907eeb7abe9ef6f0f9"
+        },
+        {
+          "path": "1280x720/checks.json",
+          "bytes": 11563,
+          "sha256": "98defc77c728357677b28ce43bf2a83af334a718f8c678a210d273af9a38a365"
+        },
+        {
+          "path": "1280x720/input.csv",
+          "bytes": 1192,
+          "sha256": "e1cb08f0439a135d2c7d0dcd59ffec37ede419d4566f041a3ebcd3c3ce0eb690"
+        }
+      ],
+      "images": [
+        {
+          "file": "01_starter_0_7_56.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 0.6867231987416744,
+          "frame": 80,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1280x720/01_starter_0_7_56.png",
+          "bytes": 811948,
+          "sha256": "0a863e4257ee0f5f117114b26fba7be37e910d442b4cc65eb6b1a6ecdee69c32",
+          "viewed_original_full_image": true
+        },
+        {
+          "file": "02_expanded_tools.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 1.214351300150156,
+          "frame": 134,
+          "points": 0,
+          "paused": false,
+          "tools": true,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1280x720/02_expanded_tools.png",
+          "bytes": 418121,
+          "sha256": "874a8fa283091cd3f4648c5bca8e53a952e2e435be414c5fa33bf63b3067cd9a",
+          "viewed_original_full_image": true
+        },
+        {
+          "file": "03_compact_1500.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 2.1222533024847507,
+          "frame": 238,
+          "points": 1500,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1280x720/03_compact_1500.png",
+          "bytes": 814428,
+          "sha256": "4ef53b5d007a317a68eaa5f24b51b4dc15740820dd7c9623d3b3ed86757b1b3b",
+          "viewed_original_full_image": true
+        },
+        {
+          "file": "04_pause.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 3.00031940639019,
+          "frame": 373,
+          "points": 1500,
+          "paused": true,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1280x720/04_pause.png",
+          "bytes": 328415,
+          "sha256": "633a9b3fafd26a50988e8b01038e65b9febd07c1bd54e1d8b08558d29c297989",
+          "viewed_original_full_image": true
+        },
+        {
+          "file": "05_death.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 4.817179303616285,
+          "frame": 690,
+          "points": 550,
+          "paused": false,
+          "tools": false,
+          "dead": true,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1280x720/05_death.png",
+          "bytes": 367235,
+          "sha256": "b59e5ebecebbe84180c456781987b3afd1187a92196a88eda36212167babeaf7",
+          "viewed_original_full_image": true
+        },
+        {
+          "file": "06_restarted_starter.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 0.9510582946240902,
+          "frame": 880,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "path": "Evidence/Candidate06/UI/1280x720/06_restarted_starter.png",
+          "bytes": 815096,
+          "sha256": "245e1ebf960988d2f7bc21cb6191644e3cf4930507f583f7c2b319b6019a4b91",
+          "viewed_original_full_image": true
+        }
+      ]
+    }
+  ]
+}

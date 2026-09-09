@@ -1,0 +1,537 @@
+{
+  "schema": "one06.final_media_manifest.v1",
+  "status": "PASS",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "generated_utc": "2026-09-09T21:16:25.076860+00:00",
+  "movies_verified": 4,
+  "inspection_checks": 96,
+  "runtime_identity": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292697088,
+      "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10731021,
+      "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 221414272,
+      "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 240183,
+      "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "tools": [
+    {
+      "file": "inspect_media.py",
+      "bytes": 17788,
+      "sha256": "6ea06cc1067b7084a86c2b51b4e3a3e68bf89994f7908eea3dc5c19ed4953631"
+    },
+    {
+      "file": "assemble_candidate06_capture.py",
+      "bytes": 22470,
+      "sha256": "ebc3259e83cbe0886a42c61ee819d04b7c26ca926e18ddf250d0187baa1ef96a"
+    },
+    {
+      "file": "audit_gameplay_audio.py",
+      "bytes": 16284,
+      "sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d"
+    }
+  ],
+  "movies": [
+    {
+      "mode": "combat",
+      "movie": {
+        "file": "candidate06_combat.mp4",
+        "bytes": 13670064,
+        "sha256": "4ade5f80f89da4fb041e30b9860b9ca9f15fc214b83aee422d9b2dec2893224c"
+      },
+      "assembly": {
+        "file": "candidate06_combat.assembly.json",
+        "bytes": 55472,
+        "sha256": "5e84dca1798993f434ab30339df3243cb53696ddd9922ee6e95dbbce8aa417e1"
+      },
+      "release_url": "https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate06/candidate06_combat.mp4",
+      "packaged_run": {
+        "run_id": "20260909T205406_581763_combat_fbd327a0",
+        "result": {
+          "file": "result.json",
+          "bytes": 4599,
+          "sha256": "01933b7f46ccfe73c1b0d2d93ad143fe08622a17fdb75012e30e989237dd4365"
+        },
+        "completion": {
+          "failures": 0,
+          "checks": 2110
+        },
+        "verification": {
+          "basename": "FreshBuildVerification_c2c422012f4f.json",
+          "bytes": 146040,
+          "sha256": "8f4e9e10c2171d9508f1ac0b10562733e9b955316b99954964710f2bbebe814f"
+        },
+        "source_runtime_pre_and_post_verified": true
+      },
+      "source_jpeg_frames": 2095,
+      "source_wav_seconds": 79.12533333333333,
+      "source_wav_samples": 3798016,
+      "source_wav": {
+        "path": "gameplay_master.wav",
+        "bytes": 15192108,
+        "sha256": "e98fd8ed83319124b4ae88bc63a36d7c6bc7dcd32a5528e936253863fdce8e5c"
+      },
+      "first_frame_audio_seconds": 0.163721301,
+      "last_frame_audio_seconds": 78.864551201,
+      "first_image_hold_from_audio_zero_seconds": 0.163721301,
+      "final_image_hold_seconds": 0.2607821323333326,
+      "actual_real_stop_tail_seconds": 0.4013018012046814,
+      "video": {
+        "index": 0,
+        "type": "video",
+        "codec": "h264",
+        "time_base": "1/15360",
+        "duration_ticks": 1215488,
+        "duration_seconds": 79.13333333333334,
+        "start_seconds": 0.0,
+        "declared_frames": 2374,
+        "width": 1600,
+        "height": 900,
+        "average_rate": "30",
+        "pixel_format": "yuvj420p"
+      },
+      "audio_stream": {
+        "index": 1,
+        "type": "audio",
+        "codec": "aac",
+        "time_base": "1/48000",
+        "duration_ticks": 3798000,
+        "duration_seconds": 79.125,
+        "start_seconds": 0.0,
+        "declared_frames": 3710,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "channel_layout": "stereo",
+        "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+      },
+      "color_range": {
+        "pixel_format": "yuvj420p",
+        "color_range_value": 2,
+        "color_range_name": "JPEG",
+        "method": "PyAV container/stream metadata only, no frame decode by curator"
+      },
+      "inspection_checks": 24,
+      "decoded_frames": 2374,
+      "decode_exit_code": 0,
+      "decode_output_seconds": 79.125333,
+      "source_audio_measurements": {
+        "status": "MEASURED",
+        "sample_peak_dbfs": -12.404969,
+        "rms_dbfs": -38.293597,
+        "full_scale_sample_count": 0,
+        "silence_threshold_dbfs": -60,
+        "wholly_quiet_100ms_window_ranges": [
+          {
+            "start_seconds": 0.0,
+            "end_seconds": 0.1,
+            "windows": 1
+          }
+        ]
+      },
+      "reports": {
+        "inspection": "combat/inspection.json",
+        "source_audio": "combat/source_audio_metrics.json"
+      }
+    },
+    {
+      "mode": "grouping",
+      "movie": {
+        "file": "candidate06_grouping.mp4",
+        "bytes": 7895868,
+        "sha256": "cecd87d46c13c8c63caa3898a85efbc0293a4391b2ec0bdd8f460da87e378d22"
+      },
+      "assembly": {
+        "file": "candidate06_grouping.assembly.json",
+        "bytes": 16481,
+        "sha256": "9cd7bab62b0df506ed5f9585ecf1c73676a93b2a858c6396ad3f139ab5ad46db"
+      },
+      "release_url": "https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate06/candidate06_grouping.mp4",
+      "packaged_run": {
+        "run_id": "20260909T205532_701222_grouping_aef400cf",
+        "result": {
+          "file": "result.json",
+          "bytes": 5363,
+          "sha256": "9d272110024f6d806d9b7c631cc61888355d3e9ae2d607cd5003bd5e23862200"
+        },
+        "completion": {
+          "complete": 1,
+          "failures": 0,
+          "checks": 922,
+          "trials": 18,
+          "frames": 1135
+        },
+        "verification": {
+          "basename": "FreshBuildVerification_c2c422012f4f.json",
+          "bytes": 146040,
+          "sha256": "8f4e9e10c2171d9508f1ac0b10562733e9b955316b99954964710f2bbebe814f"
+        },
+        "source_runtime_pre_and_post_verified": true
+      },
+      "source_jpeg_frames": 1135,
+      "source_wav_seconds": 44.181333333333335,
+      "source_wav_samples": 2120704,
+      "source_wav": {
+        "path": "gameplay_master.wav",
+        "bytes": 8482860,
+        "sha256": "089d5aa8ce850f5ba8e256552abf0fdc5fe52afa7865b4ff3575378d781875b5"
+      },
+      "first_frame_audio_seconds": 0.154061198,
+      "last_frame_audio_seconds": 43.883445099,
+      "first_image_hold_from_audio_zero_seconds": 0.154061198,
+      "final_image_hold_seconds": 0.29788823433333533,
+      "actual_real_stop_tail_seconds": 0.4080689996480942,
+      "video": {
+        "index": 0,
+        "type": "video",
+        "codec": "h264",
+        "time_base": "1/15360",
+        "duration_ticks": 678400,
+        "duration_seconds": 44.166666666666664,
+        "start_seconds": 0.0,
+        "declared_frames": 1325,
+        "width": 1600,
+        "height": 900,
+        "average_rate": "30",
+        "pixel_format": "yuvj420p"
+      },
+      "audio_stream": {
+        "index": 1,
+        "type": "audio",
+        "codec": "aac",
+        "time_base": "1/48000",
+        "duration_ticks": 2120688,
+        "duration_seconds": 44.181,
+        "start_seconds": 0.0,
+        "declared_frames": 2072,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "channel_layout": "stereo",
+        "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+      },
+      "color_range": {
+        "pixel_format": "yuvj420p",
+        "color_range_value": 2,
+        "color_range_name": "JPEG",
+        "method": "PyAV container/stream metadata only, no frame decode by curator"
+      },
+      "inspection_checks": 24,
+      "decoded_frames": 1325,
+      "decode_exit_code": 0,
+      "decode_output_seconds": 44.166667,
+      "source_audio_measurements": {
+        "status": "MEASURED",
+        "sample_peak_dbfs": -12.990345,
+        "rms_dbfs": -38.398556,
+        "full_scale_sample_count": 0,
+        "silence_threshold_dbfs": -60,
+        "wholly_quiet_100ms_window_ranges": [
+          {
+            "start_seconds": 0.0,
+            "end_seconds": 0.1,
+            "windows": 1
+          }
+        ]
+      },
+      "reports": {
+        "inspection": "grouping/inspection.json",
+        "source_audio": "grouping/source_audio_metrics.json"
+      }
+    },
+    {
+      "mode": "survival",
+      "movie": {
+        "file": "candidate06_survival.mp4",
+        "bytes": 8575509,
+        "sha256": "da63d15dcf0c0a1f5264e614c54a27a647003c7561a8c9694d7a4c484e498f34"
+      },
+      "assembly": {
+        "file": "candidate06_survival.assembly.json",
+        "bytes": 7261,
+        "sha256": "2a479373daa5788a115641f344cbfd3af62d1d9b345856cd09d4bb30a7a3cf19"
+      },
+      "release_url": "https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate06/candidate06_survival.mp4",
+      "packaged_run": {
+        "run_id": "20260909T205623_227713_survival_f0210473",
+        "result": {
+          "file": "result.json",
+          "bytes": 4853,
+          "sha256": "3f8322e750c17632d2a629bca40086d78ba35823fb8a2c8265af8f22e008919b"
+        },
+        "completion": {
+          "complete": 1,
+          "failures": 0,
+          "checks": 100,
+          "frames": 1735
+        },
+        "verification": {
+          "basename": "FreshBuildVerification_c2c422012f4f.json",
+          "bytes": 146040,
+          "sha256": "8f4e9e10c2171d9508f1ac0b10562733e9b955316b99954964710f2bbebe814f"
+        },
+        "source_runtime_pre_and_post_verified": true
+      },
+      "source_jpeg_frames": 1735,
+      "source_wav_seconds": 66.688,
+      "source_wav_samples": 3201024,
+      "source_wav": {
+        "path": "gameplay_master.wav",
+        "bytes": 12804140,
+        "sha256": "ee711ad993e10973d1e1eb8c9ee3199048e5798fc4db7644cb4492ad5efdec67"
+      },
+      "first_frame_audio_seconds": 0.1597948,
+      "last_frame_audio_seconds": 66.409329001,
+      "first_image_hold_from_audio_zero_seconds": 0.1597948,
+      "final_image_hold_seconds": 0.27867099899999914,
+      "actual_real_stop_tail_seconds": 0.406606700271368,
+      "video": {
+        "index": 0,
+        "type": "video",
+        "codec": "h264",
+        "time_base": "1/15360",
+        "duration_ticks": 1024512,
+        "duration_seconds": 66.7,
+        "start_seconds": 0.0,
+        "declared_frames": 2001,
+        "width": 1600,
+        "height": 900,
+        "average_rate": "30",
+        "pixel_format": "yuvj420p"
+      },
+      "audio_stream": {
+        "index": 1,
+        "type": "audio",
+        "codec": "aac",
+        "time_base": "1/48000",
+        "duration_ticks": 3201024,
+        "duration_seconds": 66.688,
+        "start_seconds": 0.0,
+        "declared_frames": 3127,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "channel_layout": "stereo",
+        "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+      },
+      "color_range": {
+        "pixel_format": "yuvj420p",
+        "color_range_value": 2,
+        "color_range_name": "JPEG",
+        "method": "PyAV container/stream metadata only, no frame decode by curator"
+      },
+      "inspection_checks": 24,
+      "decoded_frames": 2001,
+      "decode_exit_code": 0,
+      "decode_output_seconds": 66.688,
+      "source_audio_measurements": {
+        "status": "MEASURED",
+        "sample_peak_dbfs": -16.499761,
+        "rms_dbfs": -45.344269,
+        "full_scale_sample_count": 0,
+        "silence_threshold_dbfs": -60,
+        "wholly_quiet_100ms_window_ranges": [
+          {
+            "start_seconds": 0.0,
+            "end_seconds": 0.1,
+            "windows": 1
+          },
+          {
+            "start_seconds": 34.9,
+            "end_seconds": 35.5,
+            "windows": 6
+          },
+          {
+            "start_seconds": 66.0,
+            "end_seconds": 66.688,
+            "windows": 7
+          }
+        ]
+      },
+      "reports": {
+        "inspection": "survival/inspection.json",
+        "source_audio": "survival/source_audio_metrics.json"
+      }
+    },
+    {
+      "mode": "portability",
+      "movie": {
+        "file": "candidate06_portability.mp4",
+        "bytes": 6963126,
+        "sha256": "2af53b336d46a6272608d4fe2b81f29ffb7af6e7af1d581d92404ca0c930a4ea"
+      },
+      "assembly": {
+        "file": "candidate06_portability.assembly.json",
+        "bytes": 7116,
+        "sha256": "02c22fd0a3ecaf655346dd4dab17ba42c12a0fc584f98bfaf464a54a8d6f08e7"
+      },
+      "release_url": "https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate06/candidate06_portability.mp4",
+      "packaged_run": {
+        "run_id": "20260909T205736_999851_portability_bcea128d",
+        "result": {
+          "file": "result.json",
+          "bytes": 4645,
+          "sha256": "e1f0b759a692671994ef36ab547c73bd63b3c439a2818447e1e0d8760b2d84fc"
+        },
+        "completion": {
+          "complete": 1,
+          "failures": 0,
+          "checks": 35,
+          "observed_frames": 4145
+        },
+        "verification": {
+          "basename": "FreshBuildVerification_c2c422012f4f.json",
+          "bytes": 146040,
+          "sha256": "8f4e9e10c2171d9508f1ac0b10562733e9b955316b99954964710f2bbebe814f"
+        },
+        "source_runtime_pre_and_post_verified": true
+      },
+      "source_jpeg_frames": 1131,
+      "source_wav_seconds": 44.842666666666666,
+      "source_wav_samples": 2152448,
+      "source_wav": {
+        "path": "gameplay_master.wav",
+        "bytes": 8609836,
+        "sha256": "66ca3b57fc982fba7695d7ff38c4276fa2b3e398f9037073ea2952b271ad2c21"
+      },
+      "first_frame_audio_seconds": 0.171918098,
+      "last_frame_audio_seconds": 44.556217901,
+      "first_image_hold_from_audio_zero_seconds": 0.171918098,
+      "final_image_hold_seconds": 0.28644876566666966,
+      "actual_real_stop_tail_seconds": 0.40795380249619484,
+      "video": {
+        "index": 0,
+        "type": "video",
+        "codec": "h264",
+        "time_base": "1/15360",
+        "duration_ticks": 688640,
+        "duration_seconds": 44.833333333333336,
+        "start_seconds": 0.0,
+        "declared_frames": 1345,
+        "width": 1600,
+        "height": 900,
+        "average_rate": "30",
+        "pixel_format": "yuvj420p"
+      },
+      "audio_stream": {
+        "index": 1,
+        "type": "audio",
+        "codec": "aac",
+        "time_base": "1/48000",
+        "duration_ticks": 2152416,
+        "duration_seconds": 44.842,
+        "start_seconds": 0.0,
+        "declared_frames": 2103,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "channel_layout": "stereo",
+        "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+      },
+      "color_range": {
+        "pixel_format": "yuvj420p",
+        "color_range_value": 2,
+        "color_range_name": "JPEG",
+        "method": "PyAV container/stream metadata only, no frame decode by curator"
+      },
+      "inspection_checks": 24,
+      "decoded_frames": 1345,
+      "decode_exit_code": 0,
+      "decode_output_seconds": 44.833333,
+      "source_audio_measurements": {
+        "status": "MEASURED",
+        "sample_peak_dbfs": -17.747353,
+        "rms_dbfs": -40.914719,
+        "full_scale_sample_count": 0,
+        "silence_threshold_dbfs": -60,
+        "wholly_quiet_100ms_window_ranges": [
+          {
+            "start_seconds": 0.0,
+            "end_seconds": 0.1,
+            "windows": 1
+          }
+        ]
+      },
+      "reports": {
+        "inspection": "portability/inspection.json",
+        "source_audio": "portability/source_audio_metrics.json"
+      }
+    }
+  ],
+  "history": "Initial combat predecode probe rejection and MP4 preserved privately. Corrected final-still hold, explicit30fps filter and full-range pixel-format interpretation are evidence-production changes; runtime source remains S3.",
+  "public_downloads_verified_by_this_report": false,
+  "audio_audition": false,
+  "continuous_playback": false,
+  "limits": [
+    "All package source/runtime bindings come from the actual packaged-run verifier. Encoding alone does not derive a source commit from binary bytes.",
+    "Full decode, byte identity and PCM numerical measurements do not establish visual direction, human game feel, perceived audio quality or benchmark performance.",
+    "Original PCM measurements are not sample-for-sample comparisons with lossy AAC. Quiet windows use the stated -60dBFS threshold and capture clock limits.",
+    "The report inventories other curated payloads and does not hash itself."
+  ],
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 3811,
+      "sha256": "43b59a6883d01f61db69a9abd7f0a11b66f2c2bda0d0b8d02f0f2508fde74185"
+    },
+    {
+      "file": "combat/inspection.json",
+      "bytes": 63214,
+      "sha256": "e2f45db5dfcea872935a9e1006401a612967750597a76401e1624ee7306b1864"
+    },
+    {
+      "file": "combat/source_audio_metrics.json",
+      "bytes": 621511,
+      "sha256": "2a0e8eb35eb7e8b96339dd169f3f781fae353a4921fc95f165726e46153f6e6b"
+    },
+    {
+      "file": "grouping/inspection.json",
+      "bytes": 22981,
+      "sha256": "5c7db192014d269818edf86848ea4e16ee70e6e2a66ff24c2c19cc9c7bb67d55"
+    },
+    {
+      "file": "grouping/source_audio_metrics.json",
+      "bytes": 181465,
+      "sha256": "7c597608545d2d4619215fce0ae96ead7090ceca003804fb0ff5bf5878896aa6"
+    },
+    {
+      "file": "survival/inspection.json",
+      "bytes": 13426,
+      "sha256": "fdbdd90230fee801721d89483df823793d6b67b89db37168b920430d1e3f5f45"
+    },
+    {
+      "file": "survival/source_audio_metrics.json",
+      "bytes": 92220,
+      "sha256": "5e4e11670e4c36205fde388d1cbb18e4657b5837ba2c4f359c76d08d56599a17"
+    },
+    {
+      "file": "portability/inspection.json",
+      "bytes": 13308,
+      "sha256": "6a87f1d8a1843d5cac603f97094baa52c8d5d02c661544c3d7abfcd9b6a73c72"
+    },
+    {
+      "file": "portability/source_audio_metrics.json",
+      "bytes": 77214,
+      "sha256": "8c035affa270f57ac4a2aa1a1d156b84dba58ce2ce36fd5a6bb7464ba83909cd"
+    }
+  ]
+}

@@ -1,0 +1,403 @@
+{
+  "schema": "one06.movie_inspection.v1",
+  "status": "PASS",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "generated_utc": "2026-09-09T21:13:13.385577+00:00",
+  "checks": [
+    {
+      "check": "Actual nonempty MP4 input exists",
+      "status": "PASS"
+    },
+    {
+      "check": "Inspection output is separate from original capture inputs",
+      "status": "PASS"
+    },
+    {
+      "check": "Explicit FFmpeg binary exists",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly sidecar records successful Candidate06 encoding",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly operator-supplied source is the requested exact packaged commit",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly render mode is explicit",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual capture metadata, ordered JPEG bytes, timestamps and WAV match the assembly sidecar",
+      "status": "PASS"
+    },
+    {
+      "check": "Source capture is 1600x900 with 48 kHz stereo master audio",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual MP4 bytes match the completed assembly sidecar",
+      "status": "PASS"
+    },
+    {
+      "check": "Container has exactly one video and one audio stream",
+      "status": "PASS"
+    },
+    {
+      "check": "Video metadata is H.264 1600x900 planar 8-bit 4:2:0 (including full-range yuvj420p) 30 fps with a declared frame count",
+      "status": "PASS"
+    },
+    {
+      "check": "Audio metadata is AAC 48 kHz stereo",
+      "status": "PASS"
+    },
+    {
+      "check": "video endpoint differs from the original WAV by no more than one codec frame plus 2 ms",
+      "status": "PASS"
+    },
+    {
+      "check": "video start remains at the original time origin within declared codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "audio endpoint differs from the original WAV by no more than one codec frame plus 2 ms",
+      "status": "PASS"
+    },
+    {
+      "check": "audio start remains at the original time origin within declared codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Container duration agrees with the original WAV within combined endpoint tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Complete FFmpeg decode exits zero with strict errors enabled",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode emits terminal progress=end",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode reports a positive terminal video frame count",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual decoded video frame count equals the MP4 declared video count",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode reaches the original timeline endpoint within codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Numerical PCM audit reads the exact original bound master WAV",
+      "status": "PASS"
+    },
+    {
+      "check": "Movie, sidecar and capture inputs remain unchanged throughout inspection",
+      "status": "PASS"
+    }
+  ],
+  "tools": [
+    {
+      "file": "inspect_media.py",
+      "bytes": 17788,
+      "sha256": "6ea06cc1067b7084a86c2b51b4e3a3e68bf89994f7908eea3dc5c19ed4953631"
+    },
+    {
+      "file": "assemble_candidate06_capture.py",
+      "bytes": 22470,
+      "sha256": "ebc3259e83cbe0886a42c61ee819d04b7c26ca926e18ddf250d0187baa1ef96a"
+    },
+    {
+      "file": "audit_gameplay_audio.py",
+      "bytes": 16284,
+      "sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d"
+    }
+  ],
+  "limits": [
+    "The exact source label is bound to the assembler record, not independently derived from game binaries; use the separate package/runtime verification.",
+    "Format, byte identity and full decode completion are separate from visual gameplay review, perceptual audio audition, native input and performance.",
+    "Source WAV measurements describe original PCM. Encoded AAC audio is fully decoded for errors but not compared sample-for-sample with lossy source audio.",
+    "Existing outputs and originals are preserved. Path-bearing command, error and progress diagnostics remain private."
+  ],
+  "movie": {
+    "file": "candidate06_survival.mp4",
+    "bytes": 8575509,
+    "sha256": "da63d15dcf0c0a1f5264e614c54a27a647003c7561a8c9694d7a4c484e498f34"
+  },
+  "assembly": {
+    "file": "candidate06_survival.assembly.json",
+    "bytes": 7261,
+    "sha256": "2a479373daa5788a115641f344cbfd3af62d1d9b345856cd09d4bb30a7a3cf19"
+  },
+  "source_capture": {
+    "frames": 1735,
+    "dimensions": [
+      1600,
+      900
+    ],
+    "first_frame_audio_seconds": 0.1597948,
+    "last_frame_audio_seconds": 66.409329001,
+    "audio_duration_seconds": 66.688,
+    "audio_sample_frames": 3201024,
+    "actual_real_stop_tail_seconds": 0.406606700271368,
+    "recorded_audio_after_last_callback_seconds": 0.27867099899999914,
+    "input_files": [
+      {
+        "file": "capture.json",
+        "sha256": "bc511cdd69fd37d80ffc17f651d4d6f2cf4572d8d63ed5fd9c751208af3969b9",
+        "bytes": 3579
+      },
+      {
+        "file": "frames.csv",
+        "sha256": "efb73c1c2905f65d6839c212f008d8a963fa793bf681ff2c9a43bbf3e91475ae",
+        "bytes": 192290
+      },
+      {
+        "file": "gameplay_master.wav",
+        "sha256": "ee711ad993e10973d1e1eb8c9ee3199048e5798fc4db7644cb4492ad5efdec67",
+        "bytes": 12804140
+      }
+    ],
+    "ordered_frame_identity_sha256": "59b928bd4797d5acb16566f18bab7dd6f32b51812d5f494a9b14768205578194",
+    "source_wav_layout": {
+      "header_block_align": 2,
+      "computed_frame_bytes": 4,
+      "unreal_block_align_quirk": true,
+      "pcm_bytes": 12804096,
+      "channels": 2,
+      "rate": 48000
+    },
+    "chapters": [
+      {
+        "phase": 1,
+        "title": "Setup: production player and survival components",
+        "start_seconds": 0,
+        "end_seconds": 2.1513687
+      },
+      {
+        "phase": 2,
+        "title": "First accepted attack: 15-second recovery delay",
+        "start_seconds": 2.1513687,
+        "end_seconds": 17.425551102
+      },
+      {
+        "phase": 3,
+        "title": "Repeated accepted attack: recovery delay resets",
+        "start_seconds": 17.425551102,
+        "end_seconds": 32.680712502
+      },
+      {
+        "phase": 4,
+        "title": "200 HP maximum: 20 HP per second recovery",
+        "start_seconds": 32.680712502,
+        "end_seconds": 33.283528902
+      },
+      {
+        "phase": 6,
+        "title": "Standing overlap collection 1 and effect",
+        "start_seconds": 33.283528902,
+        "end_seconds": 33.441343002
+      },
+      {
+        "phase": 8,
+        "title": "Standing overlap collection 2 and effect",
+        "start_seconds": 33.441343002,
+        "end_seconds": 33.599925302
+      },
+      {
+        "phase": 9,
+        "title": "Pickup collection setup 3",
+        "start_seconds": 33.599925302,
+        "end_seconds": 33.632844001
+      },
+      {
+        "phase": 10,
+        "title": "Actual pistol discharge before Max Ammo collection",
+        "start_seconds": 33.632844001,
+        "end_seconds": 33.841160901
+      },
+      {
+        "phase": 11,
+        "title": "Standing overlap collection 3 and effect",
+        "start_seconds": 33.841160901,
+        "end_seconds": 33.9902924
+      },
+      {
+        "phase": 13,
+        "title": "Standing overlap collection 4 and effect",
+        "start_seconds": 33.9902924,
+        "end_seconds": 34.165721901
+      },
+      {
+        "phase": 14,
+        "title": "Collected Insta-Kill and Double Points: ordinary torso cursor setup",
+        "start_seconds": 34.165721901,
+        "end_seconds": 34.555441603
+      },
+      {
+        "phase": 15,
+        "title": "Actual pistol trace against a healthy 112 HP infected with both pickups active",
+        "start_seconds": 34.555441603,
+        "end_seconds": 34.589750603
+      },
+      {
+        "phase": 16,
+        "title": "Collected effects produce one body kill and exactly 220 points",
+        "start_seconds": 34.589750603,
+        "end_seconds": 35.012218401
+      },
+      {
+        "phase": 17,
+        "title": "Real gameplay pause freezes survival and pickup clocks",
+        "start_seconds": 35.012218401,
+        "end_seconds": 35.662089203
+      },
+      {
+        "phase": 18,
+        "title": "30-second world lifetime and timed-effect expiry",
+        "start_seconds": 35.662089203,
+        "end_seconds": 65.995809101
+      },
+      {
+        "phase": 19,
+        "title": "Cap and award checks; final overlap collection",
+        "start_seconds": 65.995809101,
+        "end_seconds": 66.128142703
+      },
+      {
+        "phase": 20,
+        "title": "Death invalidates recovery modifiers and pickup ownership",
+        "start_seconds": 66.128142703,
+        "end_seconds": 66.688
+      }
+    ],
+    "timebase_limit": "audio_seconds is screenshot callback platform time minus the CPU timestamp immediately after StartRecordingOutput; audio render scheduling offset is not measured",
+    "frame_treatment": "First actual image held from audio time zero; subsequent actual images held by original callback timestamps; last image held to unmodified WAV endpoint. Millisecond concat timebase, CFR30 samples may duplicate/drop captured images; no generated pixels, crop, overlays, motion interpolation or retiming to hide stalls.",
+    "audio_treatment": "AAC transcode of the original engine WAV on its original timeline; no replacement, padding, tempo change or synthetic silence. Codec/container endpoint quantization requires separate output probing. This does not establish timbre/localization approval."
+  },
+  "probe": {
+    "tool": "PyAV",
+    "version": "17.1.0",
+    "method": "Container and stream metadata only; no PyAV frame decode.",
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "container_duration_seconds": 66.7,
+    "container_start_seconds": 0.0,
+    "streams": [
+      {
+        "index": 0,
+        "type": "video",
+        "codec": "h264",
+        "time_base": "1/15360",
+        "duration_ticks": 1024512,
+        "duration_seconds": 66.7,
+        "start_seconds": 0.0,
+        "declared_frames": 2001,
+        "width": 1600,
+        "height": 900,
+        "average_rate": "30",
+        "pixel_format": "yuvj420p"
+      },
+      {
+        "index": 1,
+        "type": "audio",
+        "codec": "aac",
+        "time_base": "1/48000",
+        "duration_ticks": 3201024,
+        "duration_seconds": 66.688,
+        "start_seconds": 0.0,
+        "declared_frames": 3127,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "channel_layout": "stereo",
+        "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+      }
+    ]
+  },
+  "endpoint_tolerances_seconds": {
+    "video": 0.035333333333333335,
+    "audio": 0.02333333333333333,
+    "limit": "Codec/container endpoint checks do not measure perceived audiovisual synchronization or the capture clock start offset."
+  },
+  "decode": {
+    "status": "PASS",
+    "exit_code": 0,
+    "elapsed_seconds": 0.594,
+    "ffmpeg": {
+      "file": "ffmpeg-win-x86_64-v7.1.exe",
+      "bytes": 87638016,
+      "sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3"
+    },
+    "terminal_progress_end": true,
+    "terminal_video_frames": 2001,
+    "terminal_output_seconds": 66.688,
+    "scope": "Both mapped streams fully decoded to null; no seek, duration or frame limit. Video frame passthrough.",
+    "private_logs": [
+      "decode_command.private.json",
+      "decode_progress.private.log",
+      "decode_stderr.private.log"
+    ]
+  },
+  "source_audio": {
+    "status": "MEASURED",
+    "metrics_file": {
+      "file": "source_audio_metrics.json",
+      "bytes": 92220,
+      "sha256": "5e4e11670e4c36205fde388d1cbb18e4657b5837ba2c4f359c76d08d56599a17"
+    },
+    "format": {
+      "encoding": "integer PCM",
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "bits_per_sample": 16,
+      "frame_count": 3201024,
+      "duration_seconds": 66.688
+    },
+    "overall": {
+      "duration_seconds": 66.688,
+      "frame_count": 3201024,
+      "channel_sample_count": 6402048,
+      "sample_peak_normalized": 0.1496276855,
+      "sample_peak_dbfs": -16.499761,
+      "rms_normalized": 0.0054048861,
+      "rms_dbfs": -45.344269,
+      "crest_factor_db": 28.844508,
+      "sample_peak_headroom_db": 16.499761,
+      "full_scale_sample_count": 0,
+      "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+      "nonzero_sample_count": 6187724,
+      "nonzero_sample_percent": 96.652259,
+      "exact_zero_frame_count": 70646,
+      "longest_exact_zero_seconds": 0.630625,
+      "silent_frame_count_at_threshold": 810548,
+      "silent_frame_percent_at_threshold": 25.321522,
+      "longest_silence_seconds_at_threshold": 0.69345833,
+      "channels": [
+        {
+          "channel_index": 0,
+          "sample_peak_dbfs": -16.615681,
+          "rms_dbfs": -45.277456,
+          "dc_normalized": -1.2104e-06,
+          "absolute_dc_dbfs": -118.341507,
+          "full_scale_sample_count": 0,
+          "nonzero_sample_count": 3099025
+        },
+        {
+          "channel_index": 1,
+          "sample_peak_dbfs": -16.499761,
+          "rms_dbfs": -45.412126,
+          "dc_normalized": -1.3288e-06,
+          "absolute_dc_dbfs": -117.530768,
+          "full_scale_sample_count": 0,
+          "nonzero_sample_count": 3088699
+        }
+      ]
+    },
+    "warnings": [],
+    "perceptual_audio_review": false
+  }
+}

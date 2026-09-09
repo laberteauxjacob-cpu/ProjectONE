@@ -1,0 +1,1957 @@
+{
+  "schema": "one06.movie_inspection.v1",
+  "status": "PASS",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "generated_utc": "2026-09-09T21:12:19.470947+00:00",
+  "checks": [
+    {
+      "check": "Actual nonempty MP4 input exists",
+      "status": "PASS"
+    },
+    {
+      "check": "Inspection output is separate from original capture inputs",
+      "status": "PASS"
+    },
+    {
+      "check": "Explicit FFmpeg binary exists",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly sidecar records successful Candidate06 encoding",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly operator-supplied source is the requested exact packaged commit",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly render mode is explicit",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual capture metadata, ordered JPEG bytes, timestamps and WAV match the assembly sidecar",
+      "status": "PASS"
+    },
+    {
+      "check": "Source capture is 1600x900 with 48 kHz stereo master audio",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual MP4 bytes match the completed assembly sidecar",
+      "status": "PASS"
+    },
+    {
+      "check": "Container has exactly one video and one audio stream",
+      "status": "PASS"
+    },
+    {
+      "check": "Video metadata is H.264 1600x900 planar 8-bit 4:2:0 (including full-range yuvj420p) 30 fps with a declared frame count",
+      "status": "PASS"
+    },
+    {
+      "check": "Audio metadata is AAC 48 kHz stereo",
+      "status": "PASS"
+    },
+    {
+      "check": "video endpoint differs from the original WAV by no more than one codec frame plus 2 ms",
+      "status": "PASS"
+    },
+    {
+      "check": "video start remains at the original time origin within declared codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "audio endpoint differs from the original WAV by no more than one codec frame plus 2 ms",
+      "status": "PASS"
+    },
+    {
+      "check": "audio start remains at the original time origin within declared codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Container duration agrees with the original WAV within combined endpoint tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Complete FFmpeg decode exits zero with strict errors enabled",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode emits terminal progress=end",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode reports a positive terminal video frame count",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual decoded video frame count equals the MP4 declared video count",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode reaches the original timeline endpoint within codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Numerical PCM audit reads the exact original bound master WAV",
+      "status": "PASS"
+    },
+    {
+      "check": "Movie, sidecar and capture inputs remain unchanged throughout inspection",
+      "status": "PASS"
+    }
+  ],
+  "tools": [
+    {
+      "file": "inspect_media.py",
+      "bytes": 17788,
+      "sha256": "6ea06cc1067b7084a86c2b51b4e3a3e68bf89994f7908eea3dc5c19ed4953631"
+    },
+    {
+      "file": "assemble_candidate06_capture.py",
+      "bytes": 22470,
+      "sha256": "ebc3259e83cbe0886a42c61ee819d04b7c26ca926e18ddf250d0187baa1ef96a"
+    },
+    {
+      "file": "audit_gameplay_audio.py",
+      "bytes": 16284,
+      "sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d"
+    }
+  ],
+  "limits": [
+    "The exact source label is bound to the assembler record, not independently derived from game binaries; use the separate package/runtime verification.",
+    "Format, byte identity and full decode completion are separate from visual gameplay review, perceptual audio audition, native input and performance.",
+    "Source WAV measurements describe original PCM. Encoded AAC audio is fully decoded for errors but not compared sample-for-sample with lossy source audio.",
+    "Existing outputs and originals are preserved. Path-bearing command, error and progress diagnostics remain private."
+  ],
+  "movie": {
+    "file": "candidate06_combat.mp4",
+    "bytes": 13670064,
+    "sha256": "4ade5f80f89da4fb041e30b9860b9ca9f15fc214b83aee422d9b2dec2893224c"
+  },
+  "assembly": {
+    "file": "candidate06_combat.assembly.json",
+    "bytes": 55472,
+    "sha256": "5e84dca1798993f434ab30339df3243cb53696ddd9922ee6e95dbbce8aa417e1"
+  },
+  "source_capture": {
+    "frames": 2095,
+    "dimensions": [
+      1600,
+      900
+    ],
+    "first_frame_audio_seconds": 0.163721301,
+    "last_frame_audio_seconds": 78.864551201,
+    "audio_duration_seconds": 79.12533333333333,
+    "audio_sample_frames": 3798016,
+    "actual_real_stop_tail_seconds": 0.4013018012046814,
+    "recorded_audio_after_last_callback_seconds": 0.2607821323333326,
+    "input_files": [
+      {
+        "file": "capture.json",
+        "sha256": "a39f4b1514ada9f2f8254e380dd8c22a19101bbe421072e3439606abb10935a8",
+        "bytes": 35647
+      },
+      {
+        "file": "frames.csv",
+        "sha256": "a20273753668a15afea84b4b51c80fa87ed633f2c2925b4dc70d91128bca457e",
+        "bytes": 256551
+      },
+      {
+        "file": "gameplay_master.wav",
+        "sha256": "e98fd8ed83319124b4ae88bc63a36d7c6bc7dcd32a5528e936253863fdce8e5c",
+        "bytes": 15192108
+      }
+    ],
+    "ordered_frame_identity_sha256": "fddc2b08544159c158f0624d0a465ef0f2f19b4d865f2fd2a3519c88b8995901",
+    "source_wav_layout": {
+      "header_block_align": 2,
+      "computed_frame_bytes": 4,
+      "unreal_block_align_quirk": true,
+      "pcm_bytes": 15192064,
+      "channels": 2,
+      "rate": 48000
+    },
+    "chapters": [
+      {
+        "phase": 0,
+        "title": "unlabelled",
+        "start_seconds": 0,
+        "end_seconds": 0.197876602
+      },
+      {
+        "phase": 1,
+        "title": "variant 0 / case 0 / phase 0 / explicit collision fixture",
+        "start_seconds": 0.197876602,
+        "end_seconds": 1.191119701
+      },
+      {
+        "phase": 2,
+        "title": "variant 0 / case 0 / phase 1 / explicit collision fixture",
+        "start_seconds": 1.191119701,
+        "end_seconds": 1.470830601
+      },
+      {
+        "phase": 3,
+        "title": "variant 0 / case 0 / phase 2 / explicit collision fixture",
+        "start_seconds": 1.470830601,
+        "end_seconds": 1.799147502
+      },
+      {
+        "phase": 4,
+        "title": "variant 0 / case 0 / phase 3 / explicit collision fixture",
+        "start_seconds": 1.799147502,
+        "end_seconds": 2.096680902
+      },
+      {
+        "phase": 5,
+        "title": "variant 0 / case 0 / phase 4 / explicit collision fixture",
+        "start_seconds": 2.096680902,
+        "end_seconds": 2.391111903
+      },
+      {
+        "phase": 6,
+        "title": "variant 0 / case 0 / phase 10 / explicit collision fixture",
+        "start_seconds": 2.391111903,
+        "end_seconds": 3.223917302
+      },
+      {
+        "phase": 7,
+        "title": "variant 0 / case 0 / phase 11 / explicit collision fixture",
+        "start_seconds": 3.223917302,
+        "end_seconds": 4.1964681
+      },
+      {
+        "phase": 8,
+        "title": "variant 0 / case 0 / phase 12 / explicit collision fixture",
+        "start_seconds": 4.1964681,
+        "end_seconds": 4.354146101
+      },
+      {
+        "phase": 9,
+        "title": "variant 0 / case 0 / phase 15 / explicit collision fixture",
+        "start_seconds": 4.354146101,
+        "end_seconds": 4.635437302
+      },
+      {
+        "phase": 11,
+        "title": "variant 0 / case 0 / phase 14 / explicit collision fixture",
+        "start_seconds": 4.635437302,
+        "end_seconds": 4.874930102
+      },
+      {
+        "phase": 12,
+        "title": "variant 0 / case 1 / phase 12 / explicit collision fixture",
+        "start_seconds": 4.874930102,
+        "end_seconds": 5.033307601
+      },
+      {
+        "phase": 13,
+        "title": "variant 0 / case 1 / phase 15 / explicit collision fixture",
+        "start_seconds": 5.033307601,
+        "end_seconds": 5.300839201
+      },
+      {
+        "phase": 15,
+        "title": "variant 0 / case 1 / phase 14 / explicit collision fixture",
+        "start_seconds": 5.300839201,
+        "end_seconds": 5.561245803
+      },
+      {
+        "phase": 16,
+        "title": "variant 0 / case 2 / phase 12 / explicit collision fixture",
+        "start_seconds": 5.561245803,
+        "end_seconds": 5.725264899
+      },
+      {
+        "phase": 17,
+        "title": "variant 0 / case 2 / phase 15 / explicit collision fixture",
+        "start_seconds": 5.725264899,
+        "end_seconds": 5.981555101
+      },
+      {
+        "phase": 19,
+        "title": "variant 0 / case 2 / phase 14 / explicit collision fixture",
+        "start_seconds": 5.981555101,
+        "end_seconds": 6.2292374
+      },
+      {
+        "phase": 20,
+        "title": "variant 0 / case 3 / phase 12 / explicit collision fixture",
+        "start_seconds": 6.2292374,
+        "end_seconds": 6.392366901
+      },
+      {
+        "phase": 21,
+        "title": "variant 0 / case 3 / phase 15 / explicit collision fixture",
+        "start_seconds": 6.392366901,
+        "end_seconds": 6.634652302
+      },
+      {
+        "phase": 22,
+        "title": "variant 0 / case 3 / phase 13 / explicit collision fixture",
+        "start_seconds": 6.634652302,
+        "end_seconds": 6.6691401
+      },
+      {
+        "phase": 23,
+        "title": "variant 0 / case 3 / phase 14 / explicit collision fixture",
+        "start_seconds": 6.6691401,
+        "end_seconds": 6.908693202
+      },
+      {
+        "phase": 24,
+        "title": "variant 0 / case 4 / phase 12 / explicit collision fixture",
+        "start_seconds": 6.908693202,
+        "end_seconds": 7.078712203
+      },
+      {
+        "phase": 25,
+        "title": "variant 0 / case 4 / phase 15 / explicit collision fixture",
+        "start_seconds": 7.078712203,
+        "end_seconds": 7.319511503
+      },
+      {
+        "phase": 26,
+        "title": "variant 0 / case 4 / phase 13 / explicit collision fixture",
+        "start_seconds": 7.319511503,
+        "end_seconds": 7.3532441
+      },
+      {
+        "phase": 27,
+        "title": "variant 0 / case 4 / phase 14 / explicit collision fixture",
+        "start_seconds": 7.3532441,
+        "end_seconds": 7.592270602
+      },
+      {
+        "phase": 28,
+        "title": "variant 0 / case 5 / phase 12 / explicit collision fixture",
+        "start_seconds": 7.592270602,
+        "end_seconds": 7.7690529
+      },
+      {
+        "phase": 29,
+        "title": "variant 0 / case 5 / phase 15 / explicit collision fixture",
+        "start_seconds": 7.7690529,
+        "end_seconds": 8.016101699
+      },
+      {
+        "phase": 31,
+        "title": "variant 0 / case 5 / phase 14 / explicit collision fixture",
+        "start_seconds": 8.016101699,
+        "end_seconds": 8.293287102
+      },
+      {
+        "phase": 32,
+        "title": "variant 0 / case 6 / phase 12 / explicit collision fixture",
+        "start_seconds": 8.293287102,
+        "end_seconds": 8.4294069
+      },
+      {
+        "phase": 33,
+        "title": "variant 0 / case 6 / phase 15 / explicit collision fixture",
+        "start_seconds": 8.4294069,
+        "end_seconds": 8.704009801
+      },
+      {
+        "phase": 35,
+        "title": "variant 0 / case 6 / phase 14 / explicit collision fixture",
+        "start_seconds": 8.704009801,
+        "end_seconds": 8.9848946
+      },
+      {
+        "phase": 36,
+        "title": "variant 0 / case 7 / phase 12 / explicit collision fixture",
+        "start_seconds": 8.9848946,
+        "end_seconds": 9.1269724
+      },
+      {
+        "phase": 37,
+        "title": "variant 0 / case 7 / phase 15 / explicit collision fixture",
+        "start_seconds": 9.1269724,
+        "end_seconds": 9.384851102
+      },
+      {
+        "phase": 39,
+        "title": "variant 0 / case 7 / phase 14 / explicit collision fixture",
+        "start_seconds": 9.384851102,
+        "end_seconds": 9.653157599
+      },
+      {
+        "phase": 40,
+        "title": "variant 0 / case 8 / phase 12 / explicit collision fixture",
+        "start_seconds": 9.653157599,
+        "end_seconds": 9.817894001
+      },
+      {
+        "phase": 41,
+        "title": "variant 0 / case 8 / phase 15 / explicit collision fixture",
+        "start_seconds": 9.817894001,
+        "end_seconds": 10.0430145
+      },
+      {
+        "phase": 42,
+        "title": "variant 0 / case 8 / phase 13 / explicit collision fixture",
+        "start_seconds": 10.0430145,
+        "end_seconds": 10.084639803
+      },
+      {
+        "phase": 43,
+        "title": "variant 0 / case 8 / phase 14 / explicit collision fixture",
+        "start_seconds": 10.084639803,
+        "end_seconds": 10.342340302
+      },
+      {
+        "phase": 44,
+        "title": "variant 0 / case 9 / phase 12 / explicit collision fixture",
+        "start_seconds": 10.342340302,
+        "end_seconds": 10.500917602
+      },
+      {
+        "phase": 45,
+        "title": "variant 0 / case 9 / phase 15 / explicit collision fixture",
+        "start_seconds": 10.500917602,
+        "end_seconds": 10.741780803
+      },
+      {
+        "phase": 47,
+        "title": "variant 0 / case 9 / phase 14 / explicit collision fixture",
+        "start_seconds": 10.741780803,
+        "end_seconds": 11.0260306
+      },
+      {
+        "phase": 48,
+        "title": "variant 0 / case 10 / phase 12 / explicit collision fixture",
+        "start_seconds": 11.0260306,
+        "end_seconds": 11.176187102
+      },
+      {
+        "phase": 49,
+        "title": "variant 0 / case 10 / phase 15 / explicit collision fixture",
+        "start_seconds": 11.176187102,
+        "end_seconds": 11.409546301
+      },
+      {
+        "phase": 50,
+        "title": "variant 0 / case 10 / phase 13 / explicit collision fixture",
+        "start_seconds": 11.409546301,
+        "end_seconds": 11.442601901
+      },
+      {
+        "phase": 51,
+        "title": "variant 0 / case 10 / phase 14 / explicit collision fixture",
+        "start_seconds": 11.442601901,
+        "end_seconds": 11.691279002
+      },
+      {
+        "phase": 52,
+        "title": "variant 0 / case 11 / phase 12 / explicit collision fixture",
+        "start_seconds": 11.691279002,
+        "end_seconds": 11.840953
+      },
+      {
+        "phase": 53,
+        "title": "variant 0 / case 11 / phase 15 / explicit collision fixture",
+        "start_seconds": 11.840953,
+        "end_seconds": 12.126649503
+      },
+      {
+        "phase": 55,
+        "title": "variant 0 / case 11 / phase 14 / explicit collision fixture",
+        "start_seconds": 12.126649503,
+        "end_seconds": 12.363800302
+      },
+      {
+        "phase": 56,
+        "title": "variant 0 / case 12 / phase 12 / explicit collision fixture",
+        "start_seconds": 12.363800302,
+        "end_seconds": 12.539212503
+      },
+      {
+        "phase": 57,
+        "title": "variant 0 / case 12 / phase 15 / explicit collision fixture",
+        "start_seconds": 12.539212503,
+        "end_seconds": 12.764372602
+      },
+      {
+        "phase": 58,
+        "title": "variant 0 / case 12 / phase 13 / explicit collision fixture",
+        "start_seconds": 12.764372602,
+        "end_seconds": 12.7977539
+      },
+      {
+        "phase": 59,
+        "title": "variant 0 / case 12 / phase 14 / explicit collision fixture",
+        "start_seconds": 12.7977539,
+        "end_seconds": 13.042208903
+      },
+      {
+        "phase": 60,
+        "title": "variant 1 / case 0 / phase 10 / explicit collision fixture",
+        "start_seconds": 13.042208903,
+        "end_seconds": 13.858174402
+      },
+      {
+        "phase": 61,
+        "title": "variant 1 / case 0 / phase 11 / explicit collision fixture",
+        "start_seconds": 13.858174402,
+        "end_seconds": 14.838731401
+      },
+      {
+        "phase": 62,
+        "title": "variant 1 / case 0 / phase 12 / explicit collision fixture",
+        "start_seconds": 14.838731401,
+        "end_seconds": 15.030128703
+      },
+      {
+        "phase": 63,
+        "title": "variant 1 / case 0 / phase 15 / explicit collision fixture",
+        "start_seconds": 15.030128703,
+        "end_seconds": 15.255255502
+      },
+      {
+        "phase": 64,
+        "title": "variant 1 / case 0 / phase 13 / explicit collision fixture",
+        "start_seconds": 15.255255502,
+        "end_seconds": 15.296867203
+      },
+      {
+        "phase": 65,
+        "title": "variant 1 / case 0 / phase 14 / explicit collision fixture",
+        "start_seconds": 15.296867203,
+        "end_seconds": 15.514603402
+      },
+      {
+        "phase": 66,
+        "title": "variant 1 / case 1 / phase 12 / explicit collision fixture",
+        "start_seconds": 15.514603402,
+        "end_seconds": 15.690075003
+      },
+      {
+        "phase": 67,
+        "title": "variant 1 / case 1 / phase 15 / explicit collision fixture",
+        "start_seconds": 15.690075003,
+        "end_seconds": 15.9236231
+      },
+      {
+        "phase": 68,
+        "title": "variant 1 / case 1 / phase 13 / explicit collision fixture",
+        "start_seconds": 15.9236231,
+        "end_seconds": 15.957891401
+      },
+      {
+        "phase": 69,
+        "title": "variant 1 / case 1 / phase 14 / explicit collision fixture",
+        "start_seconds": 15.957891401,
+        "end_seconds": 16.208267402
+      },
+      {
+        "phase": 70,
+        "title": "variant 1 / case 2 / phase 12 / explicit collision fixture",
+        "start_seconds": 16.208267402,
+        "end_seconds": 16.3580405
+      },
+      {
+        "phase": 71,
+        "title": "variant 1 / case 2 / phase 15 / explicit collision fixture",
+        "start_seconds": 16.3580405,
+        "end_seconds": 16.600827001
+      },
+      {
+        "phase": 72,
+        "title": "variant 1 / case 2 / phase 13 / explicit collision fixture",
+        "start_seconds": 16.600827001,
+        "end_seconds": 16.634774603
+      },
+      {
+        "phase": 73,
+        "title": "variant 1 / case 2 / phase 14 / explicit collision fixture",
+        "start_seconds": 16.634774603,
+        "end_seconds": 16.879184902
+      },
+      {
+        "phase": 74,
+        "title": "variant 1 / case 3 / phase 12 / explicit collision fixture",
+        "start_seconds": 16.879184902,
+        "end_seconds": 17.015462503
+      },
+      {
+        "phase": 75,
+        "title": "variant 1 / case 3 / phase 15 / explicit collision fixture",
+        "start_seconds": 17.015462503,
+        "end_seconds": 17.286335602
+      },
+      {
+        "phase": 77,
+        "title": "variant 1 / case 3 / phase 14 / explicit collision fixture",
+        "start_seconds": 17.286335602,
+        "end_seconds": 17.564538602
+      },
+      {
+        "phase": 78,
+        "title": "variant 1 / case 4 / phase 12 / explicit collision fixture",
+        "start_seconds": 17.564538602,
+        "end_seconds": 17.699972801
+      },
+      {
+        "phase": 79,
+        "title": "variant 1 / case 4 / phase 15 / explicit collision fixture",
+        "start_seconds": 17.699972801,
+        "end_seconds": 17.965470001
+      },
+      {
+        "phase": 80,
+        "title": "variant 1 / case 4 / phase 13 / explicit collision fixture",
+        "start_seconds": 17.965470001,
+        "end_seconds": 17.998794001
+      },
+      {
+        "phase": 81,
+        "title": "variant 1 / case 4 / phase 14 / explicit collision fixture",
+        "start_seconds": 17.998794001,
+        "end_seconds": 18.2398501
+      },
+      {
+        "phase": 82,
+        "title": "variant 1 / case 5 / phase 12 / explicit collision fixture",
+        "start_seconds": 18.2398501,
+        "end_seconds": 18.397025201
+      },
+      {
+        "phase": 83,
+        "title": "variant 1 / case 5 / phase 15 / explicit collision fixture",
+        "start_seconds": 18.397025201,
+        "end_seconds": 18.663391702
+      },
+      {
+        "phase": 85,
+        "title": "variant 1 / case 5 / phase 14 / explicit collision fixture",
+        "start_seconds": 18.663391702,
+        "end_seconds": 18.947592501
+      },
+      {
+        "phase": 86,
+        "title": "variant 1 / case 6 / phase 12 / explicit collision fixture",
+        "start_seconds": 18.947592501,
+        "end_seconds": 19.083337501
+      },
+      {
+        "phase": 87,
+        "title": "variant 1 / case 6 / phase 15 / explicit collision fixture",
+        "start_seconds": 19.083337501,
+        "end_seconds": 19.357632
+      },
+      {
+        "phase": 89,
+        "title": "variant 1 / case 6 / phase 14 / explicit collision fixture",
+        "start_seconds": 19.357632,
+        "end_seconds": 19.639165401
+      },
+      {
+        "phase": 90,
+        "title": "variant 1 / case 7 / phase 12 / explicit collision fixture",
+        "start_seconds": 19.639165401,
+        "end_seconds": 19.7829802
+      },
+      {
+        "phase": 91,
+        "title": "variant 1 / case 7 / phase 15 / explicit collision fixture",
+        "start_seconds": 19.7829802,
+        "end_seconds": 20.030985299
+      },
+      {
+        "phase": 92,
+        "title": "variant 1 / case 7 / phase 13 / explicit collision fixture",
+        "start_seconds": 20.030985299,
+        "end_seconds": 20.065014999
+      },
+      {
+        "phase": 93,
+        "title": "variant 1 / case 7 / phase 14 / explicit collision fixture",
+        "start_seconds": 20.065014999,
+        "end_seconds": 20.3126169
+      },
+      {
+        "phase": 94,
+        "title": "variant 1 / case 8 / phase 12 / explicit collision fixture",
+        "start_seconds": 20.3126169,
+        "end_seconds": 20.448479801
+      },
+      {
+        "phase": 95,
+        "title": "variant 1 / case 8 / phase 15 / explicit collision fixture",
+        "start_seconds": 20.448479801,
+        "end_seconds": 20.720187001
+      },
+      {
+        "phase": 97,
+        "title": "variant 1 / case 8 / phase 14 / explicit collision fixture",
+        "start_seconds": 20.720187001,
+        "end_seconds": 20.972050503
+      },
+      {
+        "phase": 98,
+        "title": "variant 1 / case 9 / phase 12 / explicit collision fixture",
+        "start_seconds": 20.972050503,
+        "end_seconds": 21.141259801
+      },
+      {
+        "phase": 99,
+        "title": "variant 1 / case 9 / phase 15 / explicit collision fixture",
+        "start_seconds": 21.141259801,
+        "end_seconds": 21.374216702
+      },
+      {
+        "phase": 100,
+        "title": "variant 1 / case 9 / phase 13 / explicit collision fixture",
+        "start_seconds": 21.374216702,
+        "end_seconds": 21.407628901
+      },
+      {
+        "phase": 101,
+        "title": "variant 1 / case 9 / phase 14 / explicit collision fixture",
+        "start_seconds": 21.407628901,
+        "end_seconds": 21.643487699
+      },
+      {
+        "phase": 102,
+        "title": "variant 1 / case 10 / phase 12 / explicit collision fixture",
+        "start_seconds": 21.643487699,
+        "end_seconds": 21.827401701
+      },
+      {
+        "phase": 103,
+        "title": "variant 1 / case 10 / phase 15 / explicit collision fixture",
+        "start_seconds": 21.827401701,
+        "end_seconds": 22.0699769
+      },
+      {
+        "phase": 105,
+        "title": "variant 1 / case 10 / phase 14 / explicit collision fixture",
+        "start_seconds": 22.0699769,
+        "end_seconds": 22.335925203
+      },
+      {
+        "phase": 106,
+        "title": "variant 1 / case 11 / phase 12 / explicit collision fixture",
+        "start_seconds": 22.335925203,
+        "end_seconds": 22.494374402
+      },
+      {
+        "phase": 107,
+        "title": "variant 1 / case 11 / phase 15 / explicit collision fixture",
+        "start_seconds": 22.494374402,
+        "end_seconds": 22.753236502
+      },
+      {
+        "phase": 109,
+        "title": "variant 1 / case 11 / phase 14 / explicit collision fixture",
+        "start_seconds": 22.753236502,
+        "end_seconds": 23.003546901
+      },
+      {
+        "phase": 110,
+        "title": "variant 1 / case 12 / phase 12 / explicit collision fixture",
+        "start_seconds": 23.003546901,
+        "end_seconds": 23.1784168
+      },
+      {
+        "phase": 111,
+        "title": "variant 1 / case 12 / phase 15 / explicit collision fixture",
+        "start_seconds": 23.1784168,
+        "end_seconds": 23.405031502
+      },
+      {
+        "phase": 112,
+        "title": "variant 1 / case 12 / phase 13 / explicit collision fixture",
+        "start_seconds": 23.405031502,
+        "end_seconds": 23.439373501
+      },
+      {
+        "phase": 113,
+        "title": "variant 1 / case 12 / phase 14 / explicit collision fixture",
+        "start_seconds": 23.439373501,
+        "end_seconds": 23.680210702
+      },
+      {
+        "phase": 114,
+        "title": "variant 2 / case 0 / phase 10 / explicit collision fixture",
+        "start_seconds": 23.680210702,
+        "end_seconds": 24.488079403
+      },
+      {
+        "phase": 115,
+        "title": "variant 2 / case 0 / phase 11 / explicit collision fixture",
+        "start_seconds": 24.488079403,
+        "end_seconds": 25.510982201
+      },
+      {
+        "phase": 116,
+        "title": "variant 2 / case 0 / phase 12 / explicit collision fixture",
+        "start_seconds": 25.510982201,
+        "end_seconds": 25.674290601
+      },
+      {
+        "phase": 117,
+        "title": "variant 2 / case 0 / phase 15 / explicit collision fixture",
+        "start_seconds": 25.674290601,
+        "end_seconds": 25.921009202
+      },
+      {
+        "phase": 119,
+        "title": "variant 2 / case 0 / phase 14 / explicit collision fixture",
+        "start_seconds": 25.921009202,
+        "end_seconds": 26.169006001
+      },
+      {
+        "phase": 120,
+        "title": "variant 2 / case 1 / phase 12 / explicit collision fixture",
+        "start_seconds": 26.169006001,
+        "end_seconds": 26.3343255
+      },
+      {
+        "phase": 121,
+        "title": "variant 2 / case 1 / phase 15 / explicit collision fixture",
+        "start_seconds": 26.3343255,
+        "end_seconds": 26.608545501
+      },
+      {
+        "phase": 123,
+        "title": "variant 2 / case 1 / phase 14 / explicit collision fixture",
+        "start_seconds": 26.608545501,
+        "end_seconds": 26.8570708
+      },
+      {
+        "phase": 124,
+        "title": "variant 2 / case 2 / phase 12 / explicit collision fixture",
+        "start_seconds": 26.8570708,
+        "end_seconds": 27.015481401
+      },
+      {
+        "phase": 125,
+        "title": "variant 2 / case 2 / phase 15 / explicit collision fixture",
+        "start_seconds": 27.015481401,
+        "end_seconds": 27.266594
+      },
+      {
+        "phase": 126,
+        "title": "variant 2 / case 2 / phase 13 / explicit collision fixture",
+        "start_seconds": 27.266594,
+        "end_seconds": 27.308073603
+      },
+      {
+        "phase": 127,
+        "title": "variant 2 / case 2 / phase 14 / explicit collision fixture",
+        "start_seconds": 27.308073603,
+        "end_seconds": 27.533607103
+      },
+      {
+        "phase": 128,
+        "title": "variant 2 / case 3 / phase 12 / explicit collision fixture",
+        "start_seconds": 27.533607103,
+        "end_seconds": 27.683713499
+      },
+      {
+        "phase": 129,
+        "title": "variant 2 / case 3 / phase 15 / explicit collision fixture",
+        "start_seconds": 27.683713499,
+        "end_seconds": 27.959660999
+      },
+      {
+        "phase": 131,
+        "title": "variant 2 / case 3 / phase 14 / explicit collision fixture",
+        "start_seconds": 27.959660999,
+        "end_seconds": 28.235091001
+      },
+      {
+        "phase": 132,
+        "title": "variant 2 / case 4 / phase 12 / explicit collision fixture",
+        "start_seconds": 28.235091001,
+        "end_seconds": 28.3717237
+      },
+      {
+        "phase": 133,
+        "title": "variant 2 / case 4 / phase 15 / explicit collision fixture",
+        "start_seconds": 28.3717237,
+        "end_seconds": 28.645231701
+      },
+      {
+        "phase": 135,
+        "title": "variant 2 / case 4 / phase 14 / explicit collision fixture",
+        "start_seconds": 28.645231701,
+        "end_seconds": 28.917517301
+      },
+      {
+        "phase": 136,
+        "title": "variant 2 / case 5 / phase 12 / explicit collision fixture",
+        "start_seconds": 28.917517301,
+        "end_seconds": 29.065918103
+      },
+      {
+        "phase": 137,
+        "title": "variant 2 / case 5 / phase 15 / explicit collision fixture",
+        "start_seconds": 29.065918103,
+        "end_seconds": 29.3456208
+      },
+      {
+        "phase": 139,
+        "title": "variant 2 / case 5 / phase 14 / explicit collision fixture",
+        "start_seconds": 29.3456208,
+        "end_seconds": 29.584956899
+      },
+      {
+        "phase": 140,
+        "title": "variant 2 / case 6 / phase 12 / explicit collision fixture",
+        "start_seconds": 29.584956899,
+        "end_seconds": 29.7543285
+      },
+      {
+        "phase": 141,
+        "title": "variant 2 / case 6 / phase 15 / explicit collision fixture",
+        "start_seconds": 29.7543285,
+        "end_seconds": 30.0068965
+      },
+      {
+        "phase": 143,
+        "title": "variant 2 / case 6 / phase 14 / explicit collision fixture",
+        "start_seconds": 30.0068965,
+        "end_seconds": 30.283907801
+      },
+      {
+        "phase": 144,
+        "title": "variant 2 / case 7 / phase 12 / explicit collision fixture",
+        "start_seconds": 30.283907801,
+        "end_seconds": 30.4186594
+      },
+      {
+        "phase": 145,
+        "title": "variant 2 / case 7 / phase 15 / explicit collision fixture",
+        "start_seconds": 30.4186594,
+        "end_seconds": 30.691241503
+      },
+      {
+        "phase": 147,
+        "title": "variant 2 / case 7 / phase 14 / explicit collision fixture",
+        "start_seconds": 30.691241503,
+        "end_seconds": 30.957291301
+      },
+      {
+        "phase": 148,
+        "title": "variant 2 / case 8 / phase 12 / explicit collision fixture",
+        "start_seconds": 30.957291301,
+        "end_seconds": 31.120827001
+      },
+      {
+        "phase": 149,
+        "title": "variant 2 / case 8 / phase 15 / explicit collision fixture",
+        "start_seconds": 31.120827001,
+        "end_seconds": 31.369218901
+      },
+      {
+        "phase": 150,
+        "title": "variant 2 / case 8 / phase 13 / explicit collision fixture",
+        "start_seconds": 31.369218901,
+        "end_seconds": 31.4105043
+      },
+      {
+        "phase": 151,
+        "title": "variant 2 / case 8 / phase 14 / explicit collision fixture",
+        "start_seconds": 31.4105043,
+        "end_seconds": 31.652434502
+      },
+      {
+        "phase": 152,
+        "title": "variant 2 / case 9 / phase 12 / explicit collision fixture",
+        "start_seconds": 31.652434502,
+        "end_seconds": 31.809650302
+      },
+      {
+        "phase": 153,
+        "title": "variant 2 / case 9 / phase 15 / explicit collision fixture",
+        "start_seconds": 31.809650302,
+        "end_seconds": 32.058769003
+      },
+      {
+        "phase": 155,
+        "title": "variant 2 / case 9 / phase 14 / explicit collision fixture",
+        "start_seconds": 32.058769003,
+        "end_seconds": 32.324736502
+      },
+      {
+        "phase": 156,
+        "title": "variant 2 / case 10 / phase 12 / explicit collision fixture",
+        "start_seconds": 32.324736502,
+        "end_seconds": 32.482551701
+      },
+      {
+        "phase": 157,
+        "title": "variant 2 / case 10 / phase 15 / explicit collision fixture",
+        "start_seconds": 32.482551701,
+        "end_seconds": 32.729983702
+      },
+      {
+        "phase": 158,
+        "title": "variant 2 / case 10 / phase 13 / explicit collision fixture",
+        "start_seconds": 32.729983702,
+        "end_seconds": 32.763394803
+      },
+      {
+        "phase": 159,
+        "title": "variant 2 / case 10 / phase 14 / explicit collision fixture",
+        "start_seconds": 32.763394803,
+        "end_seconds": 33.0042344
+      },
+      {
+        "phase": 160,
+        "title": "variant 2 / case 11 / phase 12 / explicit collision fixture",
+        "start_seconds": 33.0042344,
+        "end_seconds": 33.170812301
+      },
+      {
+        "phase": 161,
+        "title": "variant 2 / case 11 / phase 15 / explicit collision fixture",
+        "start_seconds": 33.170812301,
+        "end_seconds": 33.438319802
+      },
+      {
+        "phase": 163,
+        "title": "variant 2 / case 11 / phase 14 / explicit collision fixture",
+        "start_seconds": 33.438319802,
+        "end_seconds": 33.696667101
+      },
+      {
+        "phase": 164,
+        "title": "variant 2 / case 12 / phase 12 / explicit collision fixture",
+        "start_seconds": 33.696667101,
+        "end_seconds": 33.854632802
+      },
+      {
+        "phase": 165,
+        "title": "variant 2 / case 12 / phase 15 / explicit collision fixture",
+        "start_seconds": 33.854632802,
+        "end_seconds": 34.107080299
+      },
+      {
+        "phase": 166,
+        "title": "variant 2 / case 12 / phase 13 / explicit collision fixture",
+        "start_seconds": 34.107080299,
+        "end_seconds": 34.141500302
+      },
+      {
+        "phase": 167,
+        "title": "variant 2 / case 12 / phase 14 / explicit collision fixture",
+        "start_seconds": 34.141500302,
+        "end_seconds": 34.377650101
+      },
+      {
+        "phase": 168,
+        "title": "variant 3 / case 0 / phase 10 / explicit collision fixture",
+        "start_seconds": 34.377650101,
+        "end_seconds": 35.189136103
+      },
+      {
+        "phase": 169,
+        "title": "variant 3 / case 0 / phase 11 / explicit collision fixture",
+        "start_seconds": 35.189136103,
+        "end_seconds": 36.2048035
+      },
+      {
+        "phase": 170,
+        "title": "variant 3 / case 0 / phase 12 / explicit collision fixture",
+        "start_seconds": 36.2048035,
+        "end_seconds": 36.362902902
+      },
+      {
+        "phase": 171,
+        "title": "variant 3 / case 0 / phase 15 / explicit collision fixture",
+        "start_seconds": 36.362902902,
+        "end_seconds": 36.621674303
+      },
+      {
+        "phase": 173,
+        "title": "variant 3 / case 0 / phase 14 / explicit collision fixture",
+        "start_seconds": 36.621674303,
+        "end_seconds": 36.888236601
+      },
+      {
+        "phase": 174,
+        "title": "variant 3 / case 1 / phase 12 / explicit collision fixture",
+        "start_seconds": 36.888236601,
+        "end_seconds": 37.0554423
+      },
+      {
+        "phase": 175,
+        "title": "variant 3 / case 1 / phase 15 / explicit collision fixture",
+        "start_seconds": 37.0554423,
+        "end_seconds": 37.288831901
+      },
+      {
+        "phase": 177,
+        "title": "variant 3 / case 1 / phase 14 / explicit collision fixture",
+        "start_seconds": 37.288831901,
+        "end_seconds": 37.546956003
+      },
+      {
+        "phase": 178,
+        "title": "variant 3 / case 2 / phase 12 / explicit collision fixture",
+        "start_seconds": 37.546956003,
+        "end_seconds": 37.723989602
+      },
+      {
+        "phase": 179,
+        "title": "variant 3 / case 2 / phase 15 / explicit collision fixture",
+        "start_seconds": 37.723989602,
+        "end_seconds": 37.964699402
+      },
+      {
+        "phase": 181,
+        "title": "variant 3 / case 2 / phase 14 / explicit collision fixture",
+        "start_seconds": 37.964699402,
+        "end_seconds": 38.247243501
+      },
+      {
+        "phase": 182,
+        "title": "variant 3 / case 3 / phase 12 / explicit collision fixture",
+        "start_seconds": 38.247243501,
+        "end_seconds": 38.385470401
+      },
+      {
+        "phase": 183,
+        "title": "variant 3 / case 3 / phase 15 / explicit collision fixture",
+        "start_seconds": 38.385470401,
+        "end_seconds": 38.660380002
+      },
+      {
+        "phase": 185,
+        "title": "variant 3 / case 3 / phase 14 / explicit collision fixture",
+        "start_seconds": 38.660380002,
+        "end_seconds": 38.936185502
+      },
+      {
+        "phase": 186,
+        "title": "variant 3 / case 4 / phase 12 / explicit collision fixture",
+        "start_seconds": 38.936185502,
+        "end_seconds": 39.073795702
+      },
+      {
+        "phase": 187,
+        "title": "variant 3 / case 4 / phase 15 / explicit collision fixture",
+        "start_seconds": 39.073795702,
+        "end_seconds": 39.3512582
+      },
+      {
+        "phase": 189,
+        "title": "variant 3 / case 4 / phase 14 / explicit collision fixture",
+        "start_seconds": 39.3512582,
+        "end_seconds": 39.601626802
+      },
+      {
+        "phase": 190,
+        "title": "variant 3 / case 5 / phase 12 / explicit collision fixture",
+        "start_seconds": 39.601626802,
+        "end_seconds": 39.751725301
+      },
+      {
+        "phase": 191,
+        "title": "variant 3 / case 5 / phase 15 / explicit collision fixture",
+        "start_seconds": 39.751725301,
+        "end_seconds": 40.0183708
+      },
+      {
+        "phase": 193,
+        "title": "variant 3 / case 5 / phase 14 / explicit collision fixture",
+        "start_seconds": 40.0183708,
+        "end_seconds": 40.293486401
+      },
+      {
+        "phase": 194,
+        "title": "variant 3 / case 6 / phase 12 / explicit collision fixture",
+        "start_seconds": 40.293486401,
+        "end_seconds": 40.465270501
+      },
+      {
+        "phase": 195,
+        "title": "variant 3 / case 6 / phase 15 / explicit collision fixture",
+        "start_seconds": 40.465270501,
+        "end_seconds": 40.7085905
+      },
+      {
+        "phase": 196,
+        "title": "variant 3 / case 6 / phase 13 / explicit collision fixture",
+        "start_seconds": 40.7085905,
+        "end_seconds": 40.744357701
+      },
+      {
+        "phase": 197,
+        "title": "variant 3 / case 6 / phase 14 / explicit collision fixture",
+        "start_seconds": 40.744357701,
+        "end_seconds": 40.9947199
+      },
+      {
+        "phase": 198,
+        "title": "variant 3 / case 7 / phase 12 / explicit collision fixture",
+        "start_seconds": 40.9947199,
+        "end_seconds": 41.134105399
+      },
+      {
+        "phase": 199,
+        "title": "variant 3 / case 7 / phase 15 / explicit collision fixture",
+        "start_seconds": 41.134105399,
+        "end_seconds": 41.412190102
+      },
+      {
+        "phase": 201,
+        "title": "variant 3 / case 7 / phase 14 / explicit collision fixture",
+        "start_seconds": 41.412190102,
+        "end_seconds": 41.664322101
+      },
+      {
+        "phase": 202,
+        "title": "variant 3 / case 8 / phase 12 / explicit collision fixture",
+        "start_seconds": 41.664322101,
+        "end_seconds": 41.822746001
+      },
+      {
+        "phase": 203,
+        "title": "variant 3 / case 8 / phase 15 / explicit collision fixture",
+        "start_seconds": 41.822746001,
+        "end_seconds": 42.081851102
+      },
+      {
+        "phase": 205,
+        "title": "variant 3 / case 8 / phase 14 / explicit collision fixture",
+        "start_seconds": 42.081851102,
+        "end_seconds": 42.314815301
+      },
+      {
+        "phase": 206,
+        "title": "variant 3 / case 9 / phase 12 / explicit collision fixture",
+        "start_seconds": 42.314815301,
+        "end_seconds": 42.464545202
+      },
+      {
+        "phase": 207,
+        "title": "variant 3 / case 9 / phase 15 / explicit collision fixture",
+        "start_seconds": 42.464545202,
+        "end_seconds": 42.723205801
+      },
+      {
+        "phase": 208,
+        "title": "variant 3 / case 9 / phase 13 / explicit collision fixture",
+        "start_seconds": 42.723205801,
+        "end_seconds": 42.756188102
+      },
+      {
+        "phase": 209,
+        "title": "variant 3 / case 9 / phase 14 / explicit collision fixture",
+        "start_seconds": 42.756188102,
+        "end_seconds": 43.0146893
+      },
+      {
+        "phase": 210,
+        "title": "variant 3 / case 10 / phase 12 / explicit collision fixture",
+        "start_seconds": 43.0146893,
+        "end_seconds": 43.1645693
+      },
+      {
+        "phase": 211,
+        "title": "variant 3 / case 10 / phase 15 / explicit collision fixture",
+        "start_seconds": 43.1645693,
+        "end_seconds": 43.415180501
+      },
+      {
+        "phase": 213,
+        "title": "variant 3 / case 10 / phase 14 / explicit collision fixture",
+        "start_seconds": 43.415180501,
+        "end_seconds": 43.655287299
+      },
+      {
+        "phase": 214,
+        "title": "variant 3 / case 11 / phase 12 / explicit collision fixture",
+        "start_seconds": 43.655287299,
+        "end_seconds": 43.831261601
+      },
+      {
+        "phase": 215,
+        "title": "variant 3 / case 11 / phase 15 / explicit collision fixture",
+        "start_seconds": 43.831261601,
+        "end_seconds": 44.064628702
+      },
+      {
+        "phase": 216,
+        "title": "variant 3 / case 11 / phase 13 / explicit collision fixture",
+        "start_seconds": 44.064628702,
+        "end_seconds": 44.098121002
+      },
+      {
+        "phase": 217,
+        "title": "variant 3 / case 11 / phase 14 / explicit collision fixture",
+        "start_seconds": 44.098121002,
+        "end_seconds": 44.323300302
+      },
+      {
+        "phase": 218,
+        "title": "variant 3 / case 12 / phase 12 / explicit collision fixture",
+        "start_seconds": 44.323300302,
+        "end_seconds": 44.474070102
+      },
+      {
+        "phase": 219,
+        "title": "variant 3 / case 12 / phase 15 / explicit collision fixture",
+        "start_seconds": 44.474070102,
+        "end_seconds": 44.744664401
+      },
+      {
+        "phase": 221,
+        "title": "variant 3 / case 12 / phase 14 / explicit collision fixture",
+        "start_seconds": 44.744664401,
+        "end_seconds": 45.0031817
+      },
+      {
+        "phase": 222,
+        "title": "variant 4 / case 0 / phase 10 / explicit collision fixture",
+        "start_seconds": 45.0031817,
+        "end_seconds": 45.8213517
+      },
+      {
+        "phase": 223,
+        "title": "variant 4 / case 0 / phase 11 / explicit collision fixture",
+        "start_seconds": 45.8213517,
+        "end_seconds": 46.802418202
+      },
+      {
+        "phase": 224,
+        "title": "variant 4 / case 0 / phase 12 / explicit collision fixture",
+        "start_seconds": 46.802418202,
+        "end_seconds": 46.992668301
+      },
+      {
+        "phase": 225,
+        "title": "variant 4 / case 0 / phase 15 / explicit collision fixture",
+        "start_seconds": 46.992668301,
+        "end_seconds": 47.238214001
+      },
+      {
+        "phase": 227,
+        "title": "variant 4 / case 0 / phase 14 / explicit collision fixture",
+        "start_seconds": 47.238214001,
+        "end_seconds": 48.015445802
+      },
+      {
+        "phase": 228,
+        "title": "variant 4 / case 1 / phase 12 / explicit collision fixture",
+        "start_seconds": 48.015445802,
+        "end_seconds": 48.180613503
+      },
+      {
+        "phase": 229,
+        "title": "variant 4 / case 1 / phase 15 / explicit collision fixture",
+        "start_seconds": 48.180613503,
+        "end_seconds": 48.4294388
+      },
+      {
+        "phase": 230,
+        "title": "variant 4 / case 1 / phase 13 / explicit collision fixture",
+        "start_seconds": 48.4294388,
+        "end_seconds": 48.4713521
+      },
+      {
+        "phase": 231,
+        "title": "variant 4 / case 1 / phase 14 / explicit collision fixture",
+        "start_seconds": 48.4713521,
+        "end_seconds": 49.239020903
+      },
+      {
+        "phase": 232,
+        "title": "variant 4 / case 2 / phase 12 / explicit collision fixture",
+        "start_seconds": 49.239020903,
+        "end_seconds": 49.402391899
+      },
+      {
+        "phase": 233,
+        "title": "variant 4 / case 2 / phase 15 / explicit collision fixture",
+        "start_seconds": 49.402391899,
+        "end_seconds": 49.677561101
+      },
+      {
+        "phase": 235,
+        "title": "variant 4 / case 2 / phase 14 / explicit collision fixture",
+        "start_seconds": 49.677561101,
+        "end_seconds": 50.470082901
+      },
+      {
+        "phase": 236,
+        "title": "variant 4 / case 3 / phase 12 / explicit collision fixture",
+        "start_seconds": 50.470082901,
+        "end_seconds": 50.640375402
+      },
+      {
+        "phase": 237,
+        "title": "variant 4 / case 3 / phase 15 / explicit collision fixture",
+        "start_seconds": 50.640375402,
+        "end_seconds": 50.885152802
+      },
+      {
+        "phase": 238,
+        "title": "variant 4 / case 3 / phase 13 / explicit collision fixture",
+        "start_seconds": 50.885152802,
+        "end_seconds": 50.919856202
+      },
+      {
+        "phase": 239,
+        "title": "variant 4 / case 3 / phase 14 / explicit collision fixture",
+        "start_seconds": 50.919856202,
+        "end_seconds": 51.696511101
+      },
+      {
+        "phase": 240,
+        "title": "variant 4 / case 4 / phase 12 / explicit collision fixture",
+        "start_seconds": 51.696511101,
+        "end_seconds": 51.8464595
+      },
+      {
+        "phase": 241,
+        "title": "variant 4 / case 4 / phase 15 / explicit collision fixture",
+        "start_seconds": 51.8464595,
+        "end_seconds": 52.126391999
+      },
+      {
+        "phase": 243,
+        "title": "variant 4 / case 4 / phase 14 / explicit collision fixture",
+        "start_seconds": 52.126391999,
+        "end_seconds": 52.910287101
+      },
+      {
+        "phase": 244,
+        "title": "variant 4 / case 5 / phase 12 / explicit collision fixture",
+        "start_seconds": 52.910287101,
+        "end_seconds": 53.052482802
+      },
+      {
+        "phase": 245,
+        "title": "variant 4 / case 5 / phase 15 / explicit collision fixture",
+        "start_seconds": 53.052482802,
+        "end_seconds": 53.332823802
+      },
+      {
+        "phase": 247,
+        "title": "variant 4 / case 5 / phase 14 / explicit collision fixture",
+        "start_seconds": 53.332823802,
+        "end_seconds": 54.1036065
+      },
+      {
+        "phase": 248,
+        "title": "variant 4 / case 6 / phase 12 / explicit collision fixture",
+        "start_seconds": 54.1036065,
+        "end_seconds": 54.279322799
+      },
+      {
+        "phase": 249,
+        "title": "variant 4 / case 6 / phase 15 / explicit collision fixture",
+        "start_seconds": 54.279322799,
+        "end_seconds": 54.5387813
+      },
+      {
+        "phase": 251,
+        "title": "variant 4 / case 6 / phase 14 / explicit collision fixture",
+        "start_seconds": 54.5387813,
+        "end_seconds": 55.337920099
+      },
+      {
+        "phase": 252,
+        "title": "variant 4 / case 7 / phase 12 / explicit collision fixture",
+        "start_seconds": 55.337920099,
+        "end_seconds": 55.480094101
+      },
+      {
+        "phase": 253,
+        "title": "variant 4 / case 7 / phase 15 / explicit collision fixture",
+        "start_seconds": 55.480094101,
+        "end_seconds": 55.752794202
+      },
+      {
+        "phase": 255,
+        "title": "variant 4 / case 7 / phase 14 / explicit collision fixture",
+        "start_seconds": 55.752794202,
+        "end_seconds": 56.553497002
+      },
+      {
+        "phase": 256,
+        "title": "variant 4 / case 8 / phase 12 / explicit collision fixture",
+        "start_seconds": 56.553497002,
+        "end_seconds": 56.718682401
+      },
+      {
+        "phase": 257,
+        "title": "variant 4 / case 8 / phase 15 / explicit collision fixture",
+        "start_seconds": 56.718682401,
+        "end_seconds": 56.967847701
+      },
+      {
+        "phase": 258,
+        "title": "variant 4 / case 8 / phase 13 / explicit collision fixture",
+        "start_seconds": 56.967847701,
+        "end_seconds": 57.002105903
+      },
+      {
+        "phase": 259,
+        "title": "variant 4 / case 8 / phase 14 / explicit collision fixture",
+        "start_seconds": 57.002105903,
+        "end_seconds": 57.7628677
+      },
+      {
+        "phase": 260,
+        "title": "variant 4 / case 9 / phase 12 / explicit collision fixture",
+        "start_seconds": 57.7628677,
+        "end_seconds": 57.9200157
+      },
+      {
+        "phase": 261,
+        "title": "variant 4 / case 9 / phase 15 / explicit collision fixture",
+        "start_seconds": 57.9200157,
+        "end_seconds": 58.205035001
+      },
+      {
+        "phase": 263,
+        "title": "variant 4 / case 9 / phase 14 / explicit collision fixture",
+        "start_seconds": 58.205035001,
+        "end_seconds": 59.0088236
+      },
+      {
+        "phase": 264,
+        "title": "variant 4 / case 10 / phase 12 / explicit collision fixture",
+        "start_seconds": 59.0088236,
+        "end_seconds": 59.133703101
+      },
+      {
+        "phase": 265,
+        "title": "variant 4 / case 10 / phase 15 / explicit collision fixture",
+        "start_seconds": 59.133703101,
+        "end_seconds": 59.4082123
+      },
+      {
+        "phase": 267,
+        "title": "variant 4 / case 10 / phase 14 / explicit collision fixture",
+        "start_seconds": 59.4082123,
+        "end_seconds": 60.1882618
+      },
+      {
+        "phase": 268,
+        "title": "variant 4 / case 11 / phase 12 / explicit collision fixture",
+        "start_seconds": 60.1882618,
+        "end_seconds": 60.345295701
+      },
+      {
+        "phase": 269,
+        "title": "variant 4 / case 11 / phase 15 / explicit collision fixture",
+        "start_seconds": 60.345295701,
+        "end_seconds": 60.630629603
+      },
+      {
+        "phase": 271,
+        "title": "variant 4 / case 11 / phase 14 / explicit collision fixture",
+        "start_seconds": 60.630629603,
+        "end_seconds": 61.421673801
+      },
+      {
+        "phase": 272,
+        "title": "variant 4 / case 12 / phase 12 / explicit collision fixture",
+        "start_seconds": 61.421673801,
+        "end_seconds": 61.546360303
+      },
+      {
+        "phase": 273,
+        "title": "variant 4 / case 12 / phase 15 / explicit collision fixture",
+        "start_seconds": 61.546360303,
+        "end_seconds": 61.8291726
+      },
+      {
+        "phase": 275,
+        "title": "variant 4 / case 12 / phase 14 / explicit collision fixture",
+        "start_seconds": 61.8291726,
+        "end_seconds": 62.616982702
+      },
+      {
+        "phase": 276,
+        "title": "variant 5 / case 0 / phase 10 / explicit collision fixture",
+        "start_seconds": 62.616982702,
+        "end_seconds": 63.3975842
+      },
+      {
+        "phase": 277,
+        "title": "variant 5 / case 0 / phase 11 / explicit collision fixture",
+        "start_seconds": 63.3975842,
+        "end_seconds": 64.4027359
+      },
+      {
+        "phase": 278,
+        "title": "variant 5 / case 0 / phase 12 / explicit collision fixture",
+        "start_seconds": 64.4027359,
+        "end_seconds": 64.559356
+      },
+      {
+        "phase": 279,
+        "title": "variant 5 / case 0 / phase 15 / explicit collision fixture",
+        "start_seconds": 64.559356,
+        "end_seconds": 64.8418842
+      },
+      {
+        "phase": 281,
+        "title": "variant 5 / case 0 / phase 14 / explicit collision fixture",
+        "start_seconds": 64.8418842,
+        "end_seconds": 65.522578202
+      },
+      {
+        "phase": 282,
+        "title": "variant 5 / case 1 / phase 12 / explicit collision fixture",
+        "start_seconds": 65.522578202,
+        "end_seconds": 65.688295901
+      },
+      {
+        "phase": 283,
+        "title": "variant 5 / case 1 / phase 15 / explicit collision fixture",
+        "start_seconds": 65.688295901,
+        "end_seconds": 65.929416601
+      },
+      {
+        "phase": 285,
+        "title": "variant 5 / case 1 / phase 14 / explicit collision fixture",
+        "start_seconds": 65.929416601,
+        "end_seconds": 66.636658002
+      },
+      {
+        "phase": 286,
+        "title": "variant 5 / case 2 / phase 12 / explicit collision fixture",
+        "start_seconds": 66.636658002,
+        "end_seconds": 66.785268601
+      },
+      {
+        "phase": 287,
+        "title": "variant 5 / case 2 / phase 15 / explicit collision fixture",
+        "start_seconds": 66.785268601,
+        "end_seconds": 67.068199903
+      },
+      {
+        "phase": 289,
+        "title": "variant 5 / case 2 / phase 14 / explicit collision fixture",
+        "start_seconds": 67.068199903,
+        "end_seconds": 67.770698301
+      },
+      {
+        "phase": 290,
+        "title": "variant 5 / case 3 / phase 12 / explicit collision fixture",
+        "start_seconds": 67.770698301,
+        "end_seconds": 67.906606503
+      },
+      {
+        "phase": 291,
+        "title": "variant 5 / case 3 / phase 15 / explicit collision fixture",
+        "start_seconds": 67.906606503,
+        "end_seconds": 68.178117
+      },
+      {
+        "phase": 293,
+        "title": "variant 5 / case 3 / phase 14 / explicit collision fixture",
+        "start_seconds": 68.178117,
+        "end_seconds": 68.897597402
+      },
+      {
+        "phase": 294,
+        "title": "variant 5 / case 4 / phase 12 / explicit collision fixture",
+        "start_seconds": 68.897597402,
+        "end_seconds": 69.049184702
+      },
+      {
+        "phase": 295,
+        "title": "variant 5 / case 4 / phase 15 / explicit collision fixture",
+        "start_seconds": 69.049184702,
+        "end_seconds": 69.306252003
+      },
+      {
+        "phase": 297,
+        "title": "variant 5 / case 4 / phase 14 / explicit collision fixture",
+        "start_seconds": 69.306252003,
+        "end_seconds": 69.9809343
+      },
+      {
+        "phase": 298,
+        "title": "variant 5 / case 5 / phase 12 / explicit collision fixture",
+        "start_seconds": 69.9809343,
+        "end_seconds": 70.146448202
+      },
+      {
+        "phase": 299,
+        "title": "variant 5 / case 5 / phase 15 / explicit collision fixture",
+        "start_seconds": 70.146448202,
+        "end_seconds": 70.394229103
+      },
+      {
+        "phase": 300,
+        "title": "variant 5 / case 5 / phase 13 / explicit collision fixture",
+        "start_seconds": 70.394229103,
+        "end_seconds": 70.435489003
+      },
+      {
+        "phase": 301,
+        "title": "variant 5 / case 5 / phase 14 / explicit collision fixture",
+        "start_seconds": 70.435489003,
+        "end_seconds": 71.1108317
+      },
+      {
+        "phase": 302,
+        "title": "variant 5 / case 6 / phase 12 / explicit collision fixture",
+        "start_seconds": 71.1108317,
+        "end_seconds": 71.246620201
+      },
+      {
+        "phase": 303,
+        "title": "variant 5 / case 6 / phase 15 / explicit collision fixture",
+        "start_seconds": 71.246620201,
+        "end_seconds": 71.5195814
+      },
+      {
+        "phase": 305,
+        "title": "variant 5 / case 6 / phase 14 / explicit collision fixture",
+        "start_seconds": 71.5195814,
+        "end_seconds": 72.223353799
+      },
+      {
+        "phase": 306,
+        "title": "variant 5 / case 7 / phase 12 / explicit collision fixture",
+        "start_seconds": 72.223353799,
+        "end_seconds": 72.372798901
+      },
+      {
+        "phase": 307,
+        "title": "variant 5 / case 7 / phase 15 / explicit collision fixture",
+        "start_seconds": 72.372798901,
+        "end_seconds": 72.652806401
+      },
+      {
+        "phase": 309,
+        "title": "variant 5 / case 7 / phase 14 / explicit collision fixture",
+        "start_seconds": 72.652806401,
+        "end_seconds": 73.351699002
+      },
+      {
+        "phase": 310,
+        "title": "variant 5 / case 8 / phase 12 / explicit collision fixture",
+        "start_seconds": 73.351699002,
+        "end_seconds": 73.493542202
+      },
+      {
+        "phase": 311,
+        "title": "variant 5 / case 8 / phase 15 / explicit collision fixture",
+        "start_seconds": 73.493542202,
+        "end_seconds": 73.752971303
+      },
+      {
+        "phase": 313,
+        "title": "variant 5 / case 8 / phase 14 / explicit collision fixture",
+        "start_seconds": 73.752971303,
+        "end_seconds": 74.432172
+      },
+      {
+        "phase": 314,
+        "title": "variant 5 / case 9 / phase 12 / explicit collision fixture",
+        "start_seconds": 74.432172,
+        "end_seconds": 74.589896601
+      },
+      {
+        "phase": 315,
+        "title": "variant 5 / case 9 / phase 15 / explicit collision fixture",
+        "start_seconds": 74.589896601,
+        "end_seconds": 74.844706699
+      },
+      {
+        "phase": 316,
+        "title": "variant 5 / case 9 / phase 13 / explicit collision fixture",
+        "start_seconds": 74.844706699,
+        "end_seconds": 74.878206
+      },
+      {
+        "phase": 317,
+        "title": "variant 5 / case 9 / phase 14 / explicit collision fixture",
+        "start_seconds": 74.878206,
+        "end_seconds": 75.549061202
+      },
+      {
+        "phase": 318,
+        "title": "variant 5 / case 10 / phase 12 / explicit collision fixture",
+        "start_seconds": 75.549061202,
+        "end_seconds": 75.6992158
+      },
+      {
+        "phase": 319,
+        "title": "variant 5 / case 10 / phase 15 / explicit collision fixture",
+        "start_seconds": 75.6992158,
+        "end_seconds": 75.9819129
+      },
+      {
+        "phase": 321,
+        "title": "variant 5 / case 10 / phase 14 / explicit collision fixture",
+        "start_seconds": 75.9819129,
+        "end_seconds": 76.665929101
+      },
+      {
+        "phase": 322,
+        "title": "variant 5 / case 11 / phase 12 / explicit collision fixture",
+        "start_seconds": 76.665929101,
+        "end_seconds": 76.808187101
+      },
+      {
+        "phase": 323,
+        "title": "variant 5 / case 11 / phase 15 / explicit collision fixture",
+        "start_seconds": 76.808187101,
+        "end_seconds": 77.082619701
+      },
+      {
+        "phase": 325,
+        "title": "variant 5 / case 11 / phase 14 / explicit collision fixture",
+        "start_seconds": 77.082619701,
+        "end_seconds": 77.785184901
+      },
+      {
+        "phase": 326,
+        "title": "variant 5 / case 12 / phase 12 / explicit collision fixture",
+        "start_seconds": 77.785184901,
+        "end_seconds": 77.928684
+      },
+      {
+        "phase": 327,
+        "title": "variant 5 / case 12 / phase 15 / explicit collision fixture",
+        "start_seconds": 77.928684,
+        "end_seconds": 78.204002701
+      },
+      {
+        "phase": 329,
+        "title": "variant 5 / case 12 / phase 14 / explicit collision fixture",
+        "start_seconds": 78.204002701,
+        "end_seconds": 79.12533333333333
+      }
+    ],
+    "timebase_limit": "audio_seconds is screenshot callback platform time minus the CPU timestamp immediately after StartRecordingOutput; audio render scheduling offset is not measured",
+    "frame_treatment": "First actual image held from audio time zero; subsequent actual images held by original callback timestamps; last image held to unmodified WAV endpoint. Millisecond concat timebase, CFR30 samples may duplicate/drop captured images; no generated pixels, crop, overlays, motion interpolation or retiming to hide stalls.",
+    "audio_treatment": "AAC transcode of the original engine WAV on its original timeline; no replacement, padding, tempo change or synthetic silence. Codec/container endpoint quantization requires separate output probing. This does not establish timbre/localization approval."
+  },
+  "probe": {
+    "tool": "PyAV",
+    "version": "17.1.0",
+    "method": "Container and stream metadata only; no PyAV frame decode.",
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "container_duration_seconds": 79.133333,
+    "container_start_seconds": 0.0,
+    "streams": [
+      {
+        "index": 0,
+        "type": "video",
+        "codec": "h264",
+        "time_base": "1/15360",
+        "duration_ticks": 1215488,
+        "duration_seconds": 79.13333333333334,
+        "start_seconds": 0.0,
+        "declared_frames": 2374,
+        "width": 1600,
+        "height": 900,
+        "average_rate": "30",
+        "pixel_format": "yuvj420p"
+      },
+      {
+        "index": 1,
+        "type": "audio",
+        "codec": "aac",
+        "time_base": "1/48000",
+        "duration_ticks": 3798000,
+        "duration_seconds": 79.125,
+        "start_seconds": 0.0,
+        "declared_frames": 3710,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "channel_layout": "stereo",
+        "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+      }
+    ]
+  },
+  "endpoint_tolerances_seconds": {
+    "video": 0.035333333333333335,
+    "audio": 0.02333333333333333,
+    "limit": "Codec/container endpoint checks do not measure perceived audiovisual synchronization or the capture clock start offset."
+  },
+  "decode": {
+    "status": "PASS",
+    "exit_code": 0,
+    "elapsed_seconds": 0.796,
+    "ffmpeg": {
+      "file": "ffmpeg-win-x86_64-v7.1.exe",
+      "bytes": 87638016,
+      "sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3"
+    },
+    "terminal_progress_end": true,
+    "terminal_video_frames": 2374,
+    "terminal_output_seconds": 79.125333,
+    "scope": "Both mapped streams fully decoded to null; no seek, duration or frame limit. Video frame passthrough.",
+    "private_logs": [
+      "decode_command.private.json",
+      "decode_progress.private.log",
+      "decode_stderr.private.log"
+    ]
+  },
+  "source_audio": {
+    "status": "MEASURED",
+    "metrics_file": {
+      "file": "source_audio_metrics.json",
+      "bytes": 621511,
+      "sha256": "2a0e8eb35eb7e8b96339dd169f3f781fae353a4921fc95f165726e46153f6e6b"
+    },
+    "format": {
+      "encoding": "integer PCM",
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "bits_per_sample": 16,
+      "frame_count": 3798016,
+      "duration_seconds": 79.12533333
+    },
+    "overall": {
+      "duration_seconds": 79.12533333,
+      "frame_count": 3798016,
+      "channel_sample_count": 7596032,
+      "sample_peak_normalized": 0.2397460938,
+      "sample_peak_dbfs": -12.404969,
+      "rms_normalized": 0.0121708285,
+      "rms_dbfs": -38.293597,
+      "crest_factor_db": 25.888628,
+      "sample_peak_headroom_db": 12.404969,
+      "full_scale_sample_count": 0,
+      "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+      "nonzero_sample_count": 7519814,
+      "nonzero_sample_percent": 98.996608,
+      "exact_zero_frame_count": 6644,
+      "longest_exact_zero_seconds": 0.12133333,
+      "silent_frame_count_at_threshold": 643728,
+      "silent_frame_percent_at_threshold": 16.94906,
+      "longest_silence_seconds_at_threshold": 0.144125,
+      "channels": [
+        {
+          "channel_index": 0,
+          "sample_peak_dbfs": -12.404969,
+          "rms_dbfs": -38.517753,
+          "dc_normalized": -7.8e-09,
+          "absolute_dc_dbfs": -162.173659,
+          "full_scale_sample_count": 0,
+          "nonzero_sample_count": 3764090
+        },
+        {
+          "channel_index": 1,
+          "sample_peak_dbfs": -12.449308,
+          "rms_dbfs": -38.080445,
+          "dc_normalized": -2e-09,
+          "absolute_dc_dbfs": -173.90666,
+          "full_scale_sample_count": 0,
+          "nonzero_sample_count": 3755724
+        }
+      ]
+    },
+    "warnings": [],
+    "perceptual_audio_review": false
+  }
+}

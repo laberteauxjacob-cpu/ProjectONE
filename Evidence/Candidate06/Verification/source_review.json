@@ -1,0 +1,265 @@
+{
+  "schema": "one06.source_review.v1",
+  "source_revision": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "compared_source_revision": "0890bb7d3b29d4718abc48b7c59b8299e64af49b",
+  "result": "SOURCE_REVIEW_COMPLETE_NO_ACTIONABLE_FINDING",
+  "review_kind": "Static committed-source inspection only",
+  "runtime_claims": {
+    "engine_run": false,
+    "build": false,
+    "screenshots_reviewed": false,
+    "native_input_test": false,
+    "visual_acceptance": false
+  },
+  "exact_diff": {
+    "files": 3,
+    "insertions": 12,
+    "deletions": 1,
+    "sha256": "6d9ea62d810284e2592521187fe87c375eeed1a7b2b5cbdae90bdf160264ca5b",
+    "format": "git diff --no-ext-diff --unified=3 S2 S3; SHA-256 of exact stdout bytes",
+    "changed_files": [
+      {
+        "before": {
+          "path": "ArtSource/Pickups/Candidate06/README.md",
+          "git_blob": "1ac351b4f8ef1c90605b91dfc8f7693a4459bebf",
+          "bytes": 2561,
+          "sha256": "6859fdcc47510199a114537c4b0e056167af929812c49b61ec651bad93a7071a"
+        },
+        "after": {
+          "path": "ArtSource/Pickups/Candidate06/README.md",
+          "git_blob": "ed21e596dd502ee4c0bbe3d85799a411974490a1",
+          "bytes": 2993,
+          "sha256": "c141800c89630b13d3b456b9efc276955aec9a265fd692e81b0680a9b2daaa1d"
+        }
+      },
+      {
+        "before": {
+          "path": "ArtSource/Pickups/Candidate06/design.json",
+          "git_blob": "d8649a89d8db18d2890d7c1fa1aa0c1c18304858",
+          "bytes": 2566,
+          "sha256": "4cb2b39588910c56d3a51c83a4c8dff8216a41170759d23d19a36e5ed7b8467c"
+        },
+        "after": {
+          "path": "ArtSource/Pickups/Candidate06/design.json",
+          "git_blob": "8c1deea40b56a9ef95cb308aedf642d47379c89b",
+          "bytes": 2885,
+          "sha256": "e29677e1a65d30d5c3200c4858caba53c9b4c9305d9a5b67e518e9e14ee363cb"
+        }
+      },
+      {
+        "before": {
+          "path": "Source/ProjectONE/ONE06PickupVisualComponent.cpp",
+          "git_blob": "0c338fc8a663e8da76ac7620d931506757d98493",
+          "bytes": 10156,
+          "sha256": "315195d88d1e067955246f448ef33b52b22c2903ad5e45227ee6578145055aff"
+        },
+        "after": {
+          "path": "Source/ProjectONE/ONE06PickupVisualComponent.cpp",
+          "git_blob": "78d3b7f1ab39dea19df6fde18636f213781d6715",
+          "bytes": 10356,
+          "sha256": "f9b97a8a0f4909981fadaa1d1dca509664b4fedc5e1571724606736b4edf2d3e"
+        }
+      }
+    ]
+  },
+  "unchanged_inspected_sources": [
+    {
+      "path": "Config/DefaultInput.ini",
+      "git_blob": "43419221bc553d2b6c2ecb76fc09eaafd164d733",
+      "bytes": 10703,
+      "sha256": "0fdced91a9bc7423fdc3d9da8e01698381b2cf9496fea5a0f8a186fa0d0defe3",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPlayer.cpp",
+      "git_blob": "c0c5a3f0130783ad1765cdc8ebd7ccd1637a36d5",
+      "bytes": 32597,
+      "sha256": "37384ab6054df6708d36cf03d0eee14f117c8f79d5c0b56ed0eb967e431e9ab2",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPlayer.h",
+      "git_blob": "4c8943c15a5469f56b1012602c114edf63a6a70c",
+      "bytes": 7535,
+      "sha256": "9cc96dfaac3c0a05c4fe86dcb88ef98c95b41e008b08f550729df370bdd93db5",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPlayerController.cpp",
+      "git_blob": "fb5d110f909cbc2b2c7d2faabe6ac92ba579b9c9",
+      "bytes": 11682,
+      "sha256": "66ab7b448e1b68c4f8021bfd006399c51d031ef7cb00b86379c042493439ea0c",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEAim.cpp",
+      "git_blob": "491e69bbf86900ef684458da59e5bd43995ebe95",
+      "bytes": 3241,
+      "sha256": "6f66428e8b27c89cbf242464fc85dce2ce8defa4c0dc4360604c5d17fa425a2a",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEWeaponComponent.cpp",
+      "git_blob": "7b08c18d9fdbbcef68d0ae0af45e9f224a8701b1",
+      "bytes": 39066,
+      "sha256": "4f89f4411c4dd983a7437cc302599a849b4b806483914ad44cb564aaafdc208e",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CameraModifier.cpp",
+      "git_blob": "52614b182882183032edea8c6de08e3fe95412e6",
+      "bytes": 1262,
+      "sha256": "4ead53df6ae2a26a128c7f64d18d3f181dc0f85dedd590ba90a0183019045c73",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPowerUpComponent.cpp",
+      "git_blob": "d7851a31f5c844bf71cbbdc72cbb16c5f87f1f60",
+      "bytes": 9121,
+      "sha256": "67bbe5b04ff649022fb94a8ea2e55719d40413c2f5161b565a98c8986c166654",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEPowerUpPickup.cpp",
+      "git_blob": "812a12fa9c0db2a781d2669023742946b69b324e",
+      "bytes": 3713,
+      "sha256": "7d27da15f93df0187a1f5979e62541b800b17a152577dacea2b3d1586f97c954",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Source/ProjectONE/ONEGameMode.cpp",
+      "git_blob": "192a27acd4f8a19a8d56891fa76e1536b718ed65",
+      "bytes": 22193,
+      "sha256": "a6bc574ac1bd3a2bb0100da1ec7c9ef5151428961ac7b55315812024446002f3",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Scripts/create_map.py",
+      "git_blob": "2d0f41f4c4fc56aa3e4e0a314b17b28151954f55",
+      "bytes": 7532,
+      "sha256": "7444f717e26ff75e741a42c4ae06e35111e5b945da8644445311840659a1e87a",
+      "unchanged_from_compared_source": true
+    },
+    {
+      "path": "Scripts/create_candidate06_portability_map.py",
+      "git_blob": "f35d8c81d15acdf72be8ed30bd7150d7debb9825",
+      "bytes": 8545,
+      "sha256": "835899008050006d88082b4f4b9b346442e675f477f8ebba69a18627dc8fa9a7",
+      "unchanged_from_compared_source": true
+    }
+  ],
+  "control_review": {
+    "conclusion": "S3 changes no input mapping, controller handling, player aim selection, trigger/cadence code or pickup mechanics; no control regression is introduced by this exact diff.",
+    "fire": {
+      "input": "LeftMouseButton",
+      "mapping": "+ActionMappings=(ActionName=\"Fire\",bShift=False,bCtrl=False,bAlt=False,bCmd=False,Key=LeftMouseButton)",
+      "path": [
+        "Config/DefaultInput.ini:80",
+        "Source/ProjectONE/ONEPlayer.cpp:159",
+        "Source/ProjectONE/ONEPlayer.cpp:172",
+        "Source/ProjectONE/ONEWeaponComponent.cpp:148"
+      ],
+      "source_behavior": "Fire IE_Pressed calls StartFire, which requests SetTrigger(true) for a live player; IE_Released calls StopFire/SetTrigger(false). RMB and LeftControl have no Fire mapping."
+    },
+    "aim_height": {
+      "default_torso_cm": 125,
+      "right_mouse_held_head_cm": 168,
+      "left_control_held_low_cm": 65,
+      "simultaneous_modifiers": "LeftControl wins",
+      "sources": [
+        "Source/ProjectONE/ONEPlayer.h:82",
+        "Source/ProjectONE/ONEPlayer.cpp:358"
+      ],
+      "source_behavior": "GetAimHeightCm reads held keys independently from firing and checks LeftControl first. Normal aim deprojects the logical cursor and intersects the selected floor-relative plane; no enemy region chooses the plane."
+    },
+    "guards": {
+      "sources": [
+        "Source/ProjectONE/ONEPlayerController.cpp:44",
+        "Source/ProjectONE/ONEPlayerController.cpp:125",
+        "Source/ProjectONE/ONEPlayerController.cpp:174",
+        "Source/ProjectONE/ONEPlayer.cpp:202"
+      ],
+      "source_behavior": "Pointer UI consumes LMB clicks and gameplay modifier keys; suppressed UI-held LMB requires release; LMB repeats are consumed. GuardGameplayInput flushes keys, and FlushPressedKeys releases held player/weapon/interaction input. Weapon trigger validation still rejects paused, dead, handoff, reload, pump and equip requests."
+    }
+  },
+  "orientation_review": {
+    "sources": [
+      "Source/ProjectONE/ONEPlayer.cpp:78",
+      "Source/ProjectONE/ONE06PickupVisualComponent.cpp:35",
+      "Source/ProjectONE/ONEPowerUpComponent.cpp:124",
+      "Source/ProjectONE/ONE06CameraModifier.cpp:25",
+      "Scripts/create_map.py:125",
+      "Scripts/create_candidate06_portability_map.py:135"
+    ],
+    "fixed_camera_degrees": {
+      "pitch": -58,
+      "yaw": -90,
+      "roll": 0,
+      "absolute_rotation": true
+    },
+    "camera_world_basis_rounded": {
+      "forward": [
+        0,
+        -0.529919264,
+        -0.848048096
+      ],
+      "right": [
+        1,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        -0.848048096,
+        0.529919264
+      ]
+    },
+    "basis_inference": "For the ordinary zero-roll camera, +X is screen right and -Y is screen up. Pickups spawn with zero actor rotation. Both authored maps use the normal game mode/player; player facing and map translation do not rotate the absolute camera. Presentation shake translates only.",
+    "applied_conversion": {
+      "position": "(X, -Y, Z)",
+      "local_yaw": "-Yaw",
+      "mesh_scale": "unchanged positive Scale",
+      "parent_hover_and_yaw_sway": "unchanged"
+    },
+    "reasoning": "Reflecting positions and local yaw preserves the shape orientation of the symmetric cube/sphere/cylinder primitives while reversing glyph vertical order only. X placement, Z-facing surface, thickness, light offset, collision and game state remain unchanged. A 180-degree yaw would also reverse the multiplication-mark/numeral order.",
+    "diagnostic_coordinates": {
+      "TwoTop": [
+        10,
+        -13,
+        0
+      ],
+      "TwoUpperRight": [
+        18,
+        -7,
+        0
+      ],
+      "TwoLowerLeft": [
+        2,
+        7,
+        0
+      ],
+      "TwoBase": [
+        10,
+        14,
+        0
+      ],
+      "SkullCranium": [
+        0,
+        -4,
+        0
+      ],
+      "SkullJaw": [
+        0,
+        11,
+        0
+      ]
+    },
+    "conclusion": "The source conversion corrects the upside-down skull and vertical-mirror 5-like numeral into upright skull and left-to-right multiplication-mark/2 layout for both current default-camera maps. This is a geometry/basis conclusion; actual rendered readability still requires new S3 images."
+  },
+  "limitations": [
+    "No engine, executable, renderer, build or native-input invocation was made for this review. No screenshots or audio were reviewed.",
+    "The review establishes the exact source delta and current binding/coordinate paths; it does not replace fresh build, runtime, input or pixel verification.",
+    "The orientation inference applies to the two current maps and their ordinary absolute camera. Arbitrary future camera yaw/roll or rotated pickup actors are outside this review.",
+    "Hashes are committed Git blob bytes (including their committed line endings), not working-tree CRLF conversions. The diff hash identifies the exact compared content."
+  ]
+}

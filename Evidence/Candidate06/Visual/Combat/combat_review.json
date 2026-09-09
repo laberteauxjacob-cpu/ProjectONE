@@ -1,0 +1,1444 @@
+{
+  "source_revision": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "capture_directory": "20260909_205408_80953E1D",
+  "run_directory": "20260909T205406_581763_combat_fbd327a0",
+  "run_result": {
+    "file": "result.json",
+    "bytes": 4599,
+    "sha256": "01933b7f46ccfe73c1b0d2d93ad143fe08622a17fdb75012e30e989237dd4365"
+  },
+  "run_binding": {
+    "state": "PASS",
+    "exit_code": 0,
+    "completion": {
+      "failures": 0,
+      "checks": 2110
+    },
+    "verification": {
+      "basename": "FreshBuildVerification_c2c422012f4f.json",
+      "bytes": 146040,
+      "sha256": "8f4e9e10c2171d9508f1ac0b10562733e9b955316b99954964710f2bbebe814f"
+    },
+    "runner": {
+      "basename": "run_packaged.py",
+      "sha256": "eb67008855c88e8729a18464b981240b27c1ca871332f154f5dc3acd74385aa2"
+    },
+    "runtime_files": [
+      {
+        "path": "ProjectONE.exe",
+        "bytes": 164864,
+        "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+        "bytes": 292697088,
+        "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+        "bytes": 10731021,
+        "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+        "bytes": 221414272,
+        "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+        "bytes": 240183,
+        "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+      },
+      {
+        "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+        "bytes": 25646504,
+        "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+      }
+    ],
+    "prelaunch_source_runtime_verified": true,
+    "postrun_source_runtime_verified": true,
+    "settings": {
+      "width": 1600,
+      "height": 900,
+      "max_fps": 120,
+      "vsync": 0,
+      "screen_percentage": 100
+    }
+  },
+  "source_binding_limit": "The hashed packaged-run result supplies exact source/runtime linkage. This review independently matches actor/capture artifact bytes to that result; it does not rebuild or repeat the executable hash audit.",
+  "capture_report": {
+    "width": 1600,
+    "height": 900,
+    "frames_written": 2095,
+    "audio_duration_seconds": 79.12533333333333
+  },
+  "inputs": [
+    {
+      "file": "capture.json",
+      "bytes": 35647,
+      "sha256": "a39f4b1514ada9f2f8254e380dd8c22a19101bbe421072e3439606abb10935a8"
+    },
+    {
+      "file": "frames.csv",
+      "bytes": 256551,
+      "sha256": "a20273753668a15afea84b4b51c80fa87ed633f2c2925b4dc70d91128bca457e"
+    },
+    {
+      "file": "rays.csv",
+      "bytes": 57574,
+      "sha256": "72bbbfee212c14594c8af5bc12047caffa777b24ece70c18b279cc499e98f9e1"
+    },
+    {
+      "file": "checks.txt",
+      "bytes": 203642,
+      "sha256": "33ccb76226adc0ccdc90b0a1a559671c63e35fd247c2487e15c60cf3e0780e81"
+    },
+    {
+      "file": "gameplay_master.wav",
+      "bytes": 15192108,
+      "sha256": "e98fd8ed83319124b4ae88bc63a36d7c6bc7dcd32a5528e936253863fdce8e5c"
+    }
+  ],
+  "crop_xyxy": [
+    710,
+    335,
+    1320,
+    655
+  ],
+  "method": "Five consecutive actual JPEG rows, from one row before the first captured phase13/14 through three rows after, restricted to the same case. Existing crop rectangle and label placement reused. No source pixel modification beyond cropping; no retiming or fabricated frames.",
+  "schema": "one06.combat_confirmatory_visual_review.v1",
+  "result": "REVIEWED_WITH_LIMITATIONS",
+  "confirmed_blocking_visual_findings": [],
+  "scope": {
+    "weapons": 6,
+    "head_and_low_cases_per_weapon": [
+      7,
+      8
+    ],
+    "additional_crowd_cases": [
+      {
+        "variant": 4,
+        "case": 12
+      },
+      {
+        "variant": 5,
+        "case": 12
+      }
+    ],
+    "actual_sheets_viewed": 14,
+    "consecutive_frame_entries": 70,
+    "full_original_views": 4,
+    "continuous_playback": false,
+    "audio_audition": false,
+    "native_input_evidence": false,
+    "performance_evidence": false
+  },
+  "general_visual_observations": [
+    "Head and low reticles/tracers meet the corresponding visible anatomical areas in all six variants. Cyan live-hit markers distinguish surviving pistol/rifle targets from the yellow markers in these lethal shotgun cases.",
+    "Player and target silhouettes remain distinct. Blood remains local and restrained in the selected windows. Pale base, violet Last Word, cyan Overcurrent and warm orange Gravebreaker tracers remain identifiable.",
+    "No obvious bent tracer, newly displaced blood burst, full-screen flash or stretched-limb geometry was identified in these selected images. Some red specks above the player predate the sampled shotgun shots and were not counted as their fresh impact effects.",
+    "Later crowd originals show locally folded bodies: one for Remington 870, two for Gravebreaker. The surviving targets remain upright."
+  ],
+  "windows": [
+    {
+      "variant": 0,
+      "weapon": "M1911",
+      "case": 7,
+      "title": "fresh standing head",
+      "sheet": {
+        "file": "variant0_case07.png",
+        "bytes": 414755,
+        "sha256": "f8c84c0bcc8a09e3deec72945a844d86cc87ae915a3e46ebd9b9301aafce6412"
+      },
+      "frames": [
+        {
+          "file": "frame_00240.jpg",
+          "bytes": 102899,
+          "sha256": "87a193ce5083fcf11da380a6d895b2df22e86324fdfb7ea798bd089207ed795a",
+          "audio_seconds": 9.350806899,
+          "world_seconds": 9.215092197,
+          "engine_frame": 857,
+          "label": "variant 0 / case 7 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 242
+        },
+        {
+          "file": "frame_00241.jpg",
+          "bytes": 104599,
+          "sha256": "5dc770bf18ff3b3ae67897294e0beed5da8c3ccaa2f8723bec3567e46e4e1c31",
+          "audio_seconds": 9.384851102,
+          "world_seconds": 9.248410899,
+          "engine_frame": 860,
+          "label": "variant 0 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 243
+        },
+        {
+          "file": "frame_00242.jpg",
+          "bytes": 103407,
+          "sha256": "033db3074db638fd455904a6e2b8de84c963cda54a6238127faec547ecbe0f8a",
+          "audio_seconds": 9.418086302,
+          "world_seconds": 9.2824573,
+          "engine_frame": 863,
+          "label": "variant 0 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 244
+        },
+        {
+          "file": "frame_00243.jpg",
+          "bytes": 103186,
+          "sha256": "32639a98b9459b04f20f8f73bc068bbc3e1149f2fcfb96f1ccc2ee64b5aa63a8",
+          "audio_seconds": 9.459706999,
+          "world_seconds": 9.3240196,
+          "engine_frame": 867,
+          "label": "variant 0 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 245
+        },
+        {
+          "file": "frame_00244.jpg",
+          "bytes": 103780,
+          "sha256": "77ef8b61e35f892350f5eb8a7cb633e89fd6c1158dc3ff517c9d44a29f1f0fcf",
+          "audio_seconds": 9.501044601,
+          "world_seconds": 9.365644298,
+          "engine_frame": 871,
+          "label": "variant 0 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 246
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Pale tracer passes through the head-height reticle; cyan marker and a small local blood fleck. The fresh target remains upright with an intact head silhouette.",
+      "ray_correspondence": {
+        "csv_rows": [
+          11
+        ],
+        "projectiles": 1,
+        "contact_rows": 1,
+        "region_row_counts": {
+          "Head": 1
+        },
+        "ordered_contact_index_counts": {
+          "0": 1
+        },
+        "raw_packet_damage_sum": 28.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 0,
+      "weapon": "M1911",
+      "case": 8,
+      "title": "low leg",
+      "sheet": {
+        "file": "variant0_case08.png",
+        "bytes": 400990,
+        "sha256": "ea53101fe4518f2d0178f18bb2f62eb12833486e2269abceac0c283c999f0c4a"
+      },
+      "frames": [
+        {
+          "file": "frame_00257.jpg",
+          "bytes": 102391,
+          "sha256": "e33dbdcb640a86fd0df5419609a40dc414deed7ff7b622727b0c66ec967807f4",
+          "audio_seconds": 10.001317102,
+          "world_seconds": 9.866205197,
+          "engine_frame": 918,
+          "label": "variant 0 / case 8 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 259
+        },
+        {
+          "file": "frame_00258.jpg",
+          "bytes": 102978,
+          "sha256": "5678d63fce9d858865b35982aafac53ae4f8f3ef280dbb6add2ba0bae1d8a74a",
+          "audio_seconds": 10.0430145,
+          "world_seconds": 9.907311797,
+          "engine_frame": 922,
+          "label": "variant 0 / case 8 / phase 13 / explicit collision fixture",
+          "frames_csv_row": 260
+        },
+        {
+          "file": "frame_00259.jpg",
+          "bytes": 102350,
+          "sha256": "f01125ece7ae93139817fe66a954102e0c304a3b82269608815f731bced5d42c",
+          "audio_seconds": 10.084639803,
+          "world_seconds": 9.948903397,
+          "engine_frame": 926,
+          "label": "variant 0 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 261
+        },
+        {
+          "file": "frame_00260.jpg",
+          "bytes": 103117,
+          "sha256": "25bcc51545111e8410eb0dab479225130fd2d3051459e0a3d319c4e87f7e8051",
+          "audio_seconds": 10.118155099,
+          "world_seconds": 9.982339598,
+          "engine_frame": 929,
+          "label": "variant 0 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 262
+        },
+        {
+          "file": "frame_00261.jpg",
+          "bytes": 102927,
+          "sha256": "92a868af8250b2fd801afe559255a8a16ab3f01b44e6d8b8b16ca42b465ef3b0",
+          "audio_seconds": 10.151356302,
+          "world_seconds": 10.015785299,
+          "engine_frame": 932,
+          "label": "variant 0 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 263
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Pale tracer slopes toward the lower-leg reticle; cyan marker at the leg. The target remains upright and the localized feedback does not obscure its silhouette.",
+      "ray_correspondence": {
+        "csv_rows": [
+          12
+        ],
+        "projectiles": 1,
+        "contact_rows": 1,
+        "region_row_counts": {
+          "LegLeft": 1
+        },
+        "ordered_contact_index_counts": {
+          "0": 1
+        },
+        "raw_packet_damage_sum": 28.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 1,
+      "weapon": "Last Word",
+      "case": 7,
+      "title": "fresh standing head",
+      "sheet": {
+        "file": "variant1_case07.png",
+        "bytes": 429375,
+        "sha256": "88258c547891940f17748e8d0634ea6ad0dca3b6c16cf904d2554b6e2ca50c39"
+      },
+      "frames": [
+        {
+          "file": "frame_00527.jpg",
+          "bytes": 104483,
+          "sha256": "172405ff934397728cd5e8b6471321a0845573c4f3406a5c3f902bfd3337a8c9",
+          "audio_seconds": 19.996920601,
+          "world_seconds": 19.860511098,
+          "engine_frame": 1836,
+          "label": "variant 1 / case 7 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 529
+        },
+        {
+          "file": "frame_00528.jpg",
+          "bytes": 105301,
+          "sha256": "644b32c5ff46d5621e1839d64a45edf559358b6c8b8a53b9165cd3a5cdf57cdf",
+          "audio_seconds": 20.030985299,
+          "world_seconds": 19.894598298,
+          "engine_frame": 1839,
+          "label": "variant 1 / case 7 / phase 13 / explicit collision fixture",
+          "frames_csv_row": 530
+        },
+        {
+          "file": "frame_00529.jpg",
+          "bytes": 105638,
+          "sha256": "9f51452d6c3e61cab7ba45801dd51a682867eebc50c2fae07d5bfe8fb2a5f6bc",
+          "audio_seconds": 20.065014999,
+          "world_seconds": 19.928662997,
+          "engine_frame": 1842,
+          "label": "variant 1 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 531
+        },
+        {
+          "file": "frame_00530.jpg",
+          "bytes": 105409,
+          "sha256": "49635bd0110afaf53414f21a2b68bb6b50f61e012d30acda68f05b945c1731f6",
+          "audio_seconds": 20.0992213,
+          "world_seconds": 19.962701097,
+          "engine_frame": 1845,
+          "label": "variant 1 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 532
+        },
+        {
+          "file": "frame_00531.jpg",
+          "bytes": 105085,
+          "sha256": "fc7cdfda80b7019cd33fd5a0f0a8020561584c03941472a13d767a56ad5746dd",
+          "audio_seconds": 20.132759701,
+          "world_seconds": 19.996870797,
+          "engine_frame": 1848,
+          "label": "variant 1 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 533
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Violet tracer crosses the head reticle with a cyan live-hit marker. Small local blood flecks appear; the fresh head remains intact and the target upright.",
+      "ray_correspondence": {
+        "csv_rows": [
+          29
+        ],
+        "projectiles": 1,
+        "contact_rows": 1,
+        "region_row_counts": {
+          "Head": 1
+        },
+        "ordered_contact_index_counts": {
+          "0": 1
+        },
+        "raw_packet_damage_sum": 56.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 1,
+      "weapon": "Last Word",
+      "case": 8,
+      "title": "low leg",
+      "sheet": {
+        "file": "variant1_case08.png",
+        "bytes": 408790,
+        "sha256": "83c4633d62679e25ce8ec22344919b8c58f3a389b05ebdd799ae25d03edbf7bb"
+      },
+      "frames": [
+        {
+          "file": "frame_00547.jpg",
+          "bytes": 103979,
+          "sha256": "ce62be48ee3135ccade990b568e12686a538a80c10334f50803a5b3f614e301c",
+          "audio_seconds": 20.686466001,
+          "world_seconds": 20.550256997,
+          "engine_frame": 1897,
+          "label": "variant 1 / case 8 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 549
+        },
+        {
+          "file": "frame_00548.jpg",
+          "bytes": 104486,
+          "sha256": "d7f19bbd2ea6f3ca81471b717e142069da00840acb0f2dd837dca666a4dcf905",
+          "audio_seconds": 20.720187001,
+          "world_seconds": 20.584076498,
+          "engine_frame": 1900,
+          "label": "variant 1 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 550
+        },
+        {
+          "file": "frame_00549.jpg",
+          "bytes": 104265,
+          "sha256": "db3b42367a9c0b86f6c039e0dbd4748bb2134fda258a7f90d81d0626c2dde4da",
+          "audio_seconds": 20.7537347,
+          "world_seconds": 20.617809899,
+          "engine_frame": 1903,
+          "label": "variant 1 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 551
+        },
+        {
+          "file": "frame_00550.jpg",
+          "bytes": 105251,
+          "sha256": "364b594437a0dda304b6cd94865efff0a109200a53a5e20a9c0aff8272e1ddf5",
+          "audio_seconds": 20.7869142,
+          "world_seconds": 20.651364896,
+          "engine_frame": 1906,
+          "label": "variant 1 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 552
+        },
+        {
+          "file": "frame_00551.jpg",
+          "bytes": 104911,
+          "sha256": "afc267972d9f2fb428bff337b6e4da543fcc42be905c77562d92609f1fde76c9",
+          "audio_seconds": 20.828612,
+          "world_seconds": 20.6928651,
+          "engine_frame": 1910,
+          "label": "variant 1 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 553
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Violet tracer slopes toward the leg reticle; cyan marker and restrained local leg feedback. The target remains upright.",
+      "ray_correspondence": {
+        "csv_rows": [
+          30
+        ],
+        "projectiles": 1,
+        "contact_rows": 1,
+        "region_row_counts": {
+          "LegLeft": 1
+        },
+        "ordered_contact_index_counts": {
+          "0": 1
+        },
+        "raw_packet_damage_sum": 56.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 2,
+      "weapon": "M4A1",
+      "case": 7,
+      "title": "fresh standing head",
+      "sheet": {
+        "file": "variant2_case07.png",
+        "bytes": 417180,
+        "sha256": "129827d45a14cc6692fddfdd3eca0baf02a0f5c4e4c471ed1ef1940c2abacd0a"
+      },
+      "frames": [
+        {
+          "file": "frame_00812.jpg",
+          "bytes": 104297,
+          "sha256": "dbb19891e38c058403434df53a636bf8ecb1808ad5d6d044ff52c58790023ab3",
+          "audio_seconds": 30.649027102,
+          "world_seconds": 30.513496898,
+          "engine_frame": 2827,
+          "label": "variant 2 / case 7 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 814
+        },
+        {
+          "file": "frame_00813.jpg",
+          "bytes": 105650,
+          "sha256": "81ec44215bf2fc11180348a2149c844941d0158f6af074e8abcbb75416bbee42",
+          "audio_seconds": 30.691241503,
+          "world_seconds": 30.555006798,
+          "engine_frame": 2831,
+          "label": "variant 2 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 815
+        },
+        {
+          "file": "frame_00814.jpg",
+          "bytes": 105031,
+          "sha256": "af840eb039efe3010f349058764eda7179ab165bf52e286e1fd526166e840ae1",
+          "audio_seconds": 30.724891301,
+          "world_seconds": 30.5888955,
+          "engine_frame": 2834,
+          "label": "variant 2 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 816
+        },
+        {
+          "file": "frame_00815.jpg",
+          "bytes": 104856,
+          "sha256": "84000287147cbc38d7d153d9d688ecd070c17c75399b7914ce1883167c8660db",
+          "audio_seconds": 30.758375801,
+          "world_seconds": 30.622619998,
+          "engine_frame": 2837,
+          "label": "variant 2 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 817
+        },
+        {
+          "file": "frame_00816.jpg",
+          "bytes": 105094,
+          "sha256": "3c45ac7429502694d7a93e77734195bcbd85923c0d2b9b1a9995741617a63e90",
+          "audio_seconds": 30.791607901,
+          "world_seconds": 30.655958198,
+          "engine_frame": 2840,
+          "label": "variant 2 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 818
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Pale tracer at head height, cyan marker and local head-level blood flecks. The fresh target remains upright with an intact head.",
+      "ray_correspondence": {
+        "csv_rows": [
+          48
+        ],
+        "projectiles": 1,
+        "contact_rows": 1,
+        "region_row_counts": {
+          "Head": 1
+        },
+        "ordered_contact_index_counts": {
+          "0": 1
+        },
+        "raw_packet_damage_sum": 32.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 2,
+      "weapon": "M4A1",
+      "case": 8,
+      "title": "low leg",
+      "sheet": {
+        "file": "variant2_case08.png",
+        "bytes": 403115,
+        "sha256": "f5e36cb9f5c1930ca92778c5c0546a7efa6d3eb8cf4ae6b31ea123e09d061d5b"
+      },
+      "frames": [
+        {
+          "file": "frame_00829.jpg",
+          "bytes": 103777,
+          "sha256": "488606198cc8007411080ec0d0a7fd6677af564143093d976b2355e28a8ea737",
+          "audio_seconds": 31.3274891,
+          "world_seconds": 31.192295197,
+          "engine_frame": 2892,
+          "label": "variant 2 / case 8 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 831
+        },
+        {
+          "file": "frame_00830.jpg",
+          "bytes": 104917,
+          "sha256": "560643dfc74166f28f1da9be283049b66b9cd8c6d48f1bb69dc6d472a9a66779",
+          "audio_seconds": 31.369218901,
+          "world_seconds": 31.233406097,
+          "engine_frame": 2896,
+          "label": "variant 2 / case 8 / phase 13 / explicit collision fixture",
+          "frames_csv_row": 832
+        },
+        {
+          "file": "frame_00831.jpg",
+          "bytes": 104660,
+          "sha256": "a2db4988ee064f70372afaffa9dc1ac0368bb61fc5a991b71135febed7f55cce",
+          "audio_seconds": 31.4105043,
+          "world_seconds": 31.2749766,
+          "engine_frame": 2900,
+          "label": "variant 2 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 833
+        },
+        {
+          "file": "frame_00832.jpg",
+          "bytes": 104830,
+          "sha256": "34f769da67398630412c5af30e2b7dbea46187e2b3eb36ce52a58f9af93338aa",
+          "audio_seconds": 31.451869503,
+          "world_seconds": 31.316474997,
+          "engine_frame": 2904,
+          "label": "variant 2 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 834
+        },
+        {
+          "file": "frame_00833.jpg",
+          "bytes": 104680,
+          "sha256": "79e687b1afceb0fb81bca21deeb232999505ae1a5e50538d10f65c16b9fc9289",
+          "audio_seconds": 31.4932569,
+          "world_seconds": 31.357805599,
+          "engine_frame": 2908,
+          "label": "variant 2 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 835
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Pale tracer slopes to the lower leg; cyan marker and small leg-height blood flecks. The target remains upright.",
+      "ray_correspondence": {
+        "csv_rows": [
+          49
+        ],
+        "projectiles": 1,
+        "contact_rows": 1,
+        "region_row_counts": {
+          "LegLeft": 1
+        },
+        "ordered_contact_index_counts": {
+          "0": 1
+        },
+        "raw_packet_damage_sum": 32.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 3,
+      "weapon": "Overcurrent",
+      "case": 7,
+      "title": "fresh standing head",
+      "sheet": {
+        "file": "variant3_case07.png",
+        "bytes": 424173,
+        "sha256": "ff0ffa0a9c35097ba5ea04e09d494dddd24d758d1a8105f5610d6ce9447ab543"
+      },
+      "frames": [
+        {
+          "file": "frame_01100.jpg",
+          "bytes": 108606,
+          "sha256": "c6061754a022c8ae8f269d7c1430663a757ef14d72ada99e6d62b861fd512527",
+          "audio_seconds": 41.377854601,
+          "world_seconds": 41.241127998,
+          "engine_frame": 3816,
+          "label": "variant 3 / case 7 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 1102
+        },
+        {
+          "file": "frame_01101.jpg",
+          "bytes": 107983,
+          "sha256": "7db2ad682d259478d1a1910b97ba0b60f32201276b8b05437d41c0a4fd2d1836",
+          "audio_seconds": 41.412190102,
+          "world_seconds": 41.275534298,
+          "engine_frame": 3819,
+          "label": "variant 3 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1103
+        },
+        {
+          "file": "frame_01102.jpg",
+          "bytes": 107328,
+          "sha256": "26cb5c0804ec8c12e80e98389e6cb49f8c31fc3aa1f5c60a2b387dfeeec9c5cd",
+          "audio_seconds": 41.4454416,
+          "world_seconds": 41.3098398,
+          "engine_frame": 3822,
+          "label": "variant 3 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1104
+        },
+        {
+          "file": "frame_01103.jpg",
+          "bytes": 107323,
+          "sha256": "a0d5d84ecf44436c55b0229e442fb7ce49677a29117d7b300c4af15f1d543a17",
+          "audio_seconds": 41.487151302,
+          "world_seconds": 41.351406597,
+          "engine_frame": 3826,
+          "label": "variant 3 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1105
+        },
+        {
+          "file": "frame_01104.jpg",
+          "bytes": 107307,
+          "sha256": "cdc56f6e39a2a614d90ee7693978d05a4acd5aab77a6a172c8fc76487cf1ba24",
+          "audio_seconds": 41.5201548,
+          "world_seconds": 41.384827498,
+          "engine_frame": 3829,
+          "label": "variant 3 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1106
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Cyan tracer crosses the head-height reticle; cyan marker and small local head blood flecks. The fresh head stays intact and the target upright.",
+      "ray_correspondence": {
+        "csv_rows": [
+          69
+        ],
+        "projectiles": 1,
+        "contact_rows": 1,
+        "region_row_counts": {
+          "Head": 1
+        },
+        "ordered_contact_index_counts": {
+          "0": 1
+        },
+        "raw_packet_damage_sum": 64.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 3,
+      "weapon": "Overcurrent",
+      "case": 8,
+      "title": "low leg",
+      "sheet": {
+        "file": "variant3_case08.png",
+        "bytes": 406199,
+        "sha256": "2be0b06b97151dbf14258a0d95c55b1fb42704fadeebc9b7e292ecf66809a090"
+      },
+      "frames": [
+        {
+          "file": "frame_01118.jpg",
+          "bytes": 107436,
+          "sha256": "0c912f13aa8538c5532f33026183a6a41ae64c8121ca88f0c0f647408b403b3a",
+          "audio_seconds": 42.048603702,
+          "world_seconds": 41.911744297,
+          "engine_frame": 3878,
+          "label": "variant 3 / case 8 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 1120
+        },
+        {
+          "file": "frame_01119.jpg",
+          "bytes": 107510,
+          "sha256": "773aa1e0fab7e38315d847414005fba891bf54af93f08acdc2d060a02372564c",
+          "audio_seconds": 42.081851102,
+          "world_seconds": 41.946258999,
+          "engine_frame": 3881,
+          "label": "variant 3 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1121
+        },
+        {
+          "file": "frame_01120.jpg",
+          "bytes": 106968,
+          "sha256": "24a2934d6a1e4de77774e7aecaf2335e88e90fd99a2cea144f49d7b1c2b00f45",
+          "audio_seconds": 42.1230134,
+          "world_seconds": 41.987766899,
+          "engine_frame": 3885,
+          "label": "variant 3 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1122
+        },
+        {
+          "file": "frame_01121.jpg",
+          "bytes": 106877,
+          "sha256": "7eae7aeb9b38a6c9140763cb7780ac60e5797477d388a233d984d8ca6f864e9c",
+          "audio_seconds": 42.1649107,
+          "world_seconds": 42.028990198,
+          "engine_frame": 3889,
+          "label": "variant 3 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1123
+        },
+        {
+          "file": "frame_01122.jpg",
+          "bytes": 106944,
+          "sha256": "fe93b98e759870f691910a514211671569dc0b54d6b2795fd13bc8d65f4cad6f",
+          "audio_seconds": 42.198544603,
+          "world_seconds": 42.062564697,
+          "engine_frame": 3892,
+          "label": "variant 3 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1124
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Cyan low tracer reaches the leg reticle. Local dark-red droplets and cyan marker remain readable against the standing target; full original context confirms the lower contact area.",
+      "ray_correspondence": {
+        "csv_rows": [
+          70
+        ],
+        "projectiles": 1,
+        "contact_rows": 1,
+        "region_row_counts": {
+          "LegLeft": 1
+        },
+        "ordered_contact_index_counts": {
+          "0": 1
+        },
+        "raw_packet_damage_sum": 64.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 4,
+      "weapon": "Remington 870",
+      "case": 7,
+      "title": "fresh standing head",
+      "sheet": {
+        "file": "variant4_case07.png",
+        "bytes": 452264,
+        "sha256": "624420702ac022c41e2dfcf27deb5d345a78319fcb6fa9494a5ca96fc3789c1c"
+      },
+      "frames": [
+        {
+          "file": "frame_01476.jpg",
+          "bytes": 106224,
+          "sha256": "b9f43318acd3464d65f5a4a23838c11f26ba631b0f20a7c1fcb84343dbacd6ae",
+          "audio_seconds": 55.710836601,
+          "world_seconds": 55.575600099,
+          "engine_frame": 5163,
+          "label": "variant 4 / case 7 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 1478
+        },
+        {
+          "file": "frame_01477.jpg",
+          "bytes": 108320,
+          "sha256": "b7ece52642ef9b17828e8c7def97d004876d244edd86e230804ac5952cb67088",
+          "audio_seconds": 55.752794202,
+          "world_seconds": 55.616758198,
+          "engine_frame": 5167,
+          "label": "variant 4 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1479
+        },
+        {
+          "file": "frame_01478.jpg",
+          "bytes": 105533,
+          "sha256": "64672c1542ab36bb683a263040dc640e45c39daf52c2778a1254db126cee292e",
+          "audio_seconds": 55.786616102,
+          "world_seconds": 55.650218498,
+          "engine_frame": 5170,
+          "label": "variant 4 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1480
+        },
+        {
+          "file": "frame_01479.jpg",
+          "bytes": 106190,
+          "sha256": "ee44f624463256b0bcdb00a14ed4f72778f67f68b49997dc5622450b3bcefdd2",
+          "audio_seconds": 55.820142001,
+          "world_seconds": 55.684225596,
+          "engine_frame": 5173,
+          "label": "variant 4 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1481
+        },
+        {
+          "file": "frame_01480.jpg",
+          "bytes": 106925,
+          "sha256": "60c2cf16de162b10d8c305d614ee33b82fe7bc4b226f1e48838a618d5c813043",
+          "audio_seconds": 55.8534871,
+          "world_seconds": 55.717803396,
+          "engine_frame": 5176,
+          "label": "variant 4 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1482
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Pale pellet lines converge around head height with a yellow kill marker. Head-height blood is local and the knees/body begin to buckle at the end of the short window.",
+      "ray_correspondence": {
+        "csv_rows": [
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156
+        ],
+        "projectiles": 8,
+        "contact_rows": 6,
+        "region_row_counts": {
+          "Head": 6
+        },
+        "ordered_contact_index_counts": {
+          "0": 6
+        },
+        "raw_packet_damage_sum": 90.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 4,
+      "weapon": "Remington 870",
+      "case": 8,
+      "title": "low leg",
+      "sheet": {
+        "file": "variant4_case08.png",
+        "bytes": 441428,
+        "sha256": "e2b32c3b73511c81d999478a309ce775325243f45c2c0aa2c0e3bccfdd92cfc8"
+      },
+      "frames": [
+        {
+          "file": "frame_01508.jpg",
+          "bytes": 105769,
+          "sha256": "67e3a84c86f5f5b7ebd8a0b4b3e552138fdd6375131e6c2472757648e00a3a3f",
+          "audio_seconds": 56.9242143,
+          "world_seconds": 56.788714599,
+          "engine_frame": 5277,
+          "label": "variant 4 / case 8 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 1510
+        },
+        {
+          "file": "frame_01509.jpg",
+          "bytes": 105676,
+          "sha256": "06fde2804eaa5673205df08869f608c0ff4d63f35a03cf20749fccac095560b6",
+          "audio_seconds": 56.967847701,
+          "world_seconds": 56.830137096,
+          "engine_frame": 5281,
+          "label": "variant 4 / case 8 / phase 13 / explicit collision fixture",
+          "frames_csv_row": 1511
+        },
+        {
+          "file": "frame_01510.jpg",
+          "bytes": 106947,
+          "sha256": "fa5024f9c7f058140cefe898c669e200e72420e79f2c86b55fe34a5626d076aa",
+          "audio_seconds": 57.002105903,
+          "world_seconds": 56.865381498,
+          "engine_frame": 5284,
+          "label": "variant 4 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1512
+        },
+        {
+          "file": "frame_01511.jpg",
+          "bytes": 105578,
+          "sha256": "1c14e98e5214d76c1e1a7e4e51b487bb4fad2272f3bd250262d00c1c8acbc1fe",
+          "audio_seconds": 57.035041001,
+          "world_seconds": 56.899695598,
+          "engine_frame": 5287,
+          "label": "variant 4 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1513
+        },
+        {
+          "file": "frame_01512.jpg",
+          "bytes": 106357,
+          "sha256": "bd56bc929c6a587b1ed3ce13344a62fceb189631bd6d7bf6cb93c4e8282948bc",
+          "audio_seconds": 57.077194501,
+          "world_seconds": 56.940997597,
+          "engine_frame": 5291,
+          "label": "variant 4 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1514
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Pale pellet cluster meets the lower-leg area, with yellow kill marker and low blood. The knees/body begin to buckle; this window does not establish a detached-limb trajectory.",
+      "ray_correspondence": {
+        "csv_rows": [
+          157,
+          158,
+          159,
+          160,
+          161,
+          162,
+          163,
+          164
+        ],
+        "projectiles": 8,
+        "contact_rows": 7,
+        "region_row_counts": {
+          "LegRight": 1,
+          "LegLeft": 6
+        },
+        "ordered_contact_index_counts": {
+          "0": 7
+        },
+        "raw_packet_damage_sum": 105.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 5,
+      "weapon": "Gravebreaker",
+      "case": 7,
+      "title": "fresh standing head",
+      "sheet": {
+        "file": "variant5_case07.png",
+        "bytes": 468343,
+        "sha256": "37c022a45a711ebfc3bf8b13545a5c88f0c4373d7b1d321d0a83ea998706404f"
+      },
+      "frames": [
+        {
+          "file": "frame_01923.jpg",
+          "bytes": 108728,
+          "sha256": "fc7fd778b3f1881497f3f64fad1c5e25bde1a4adf98f76ff2a2a09faf634c069",
+          "audio_seconds": 72.619172201,
+          "world_seconds": 72.478432197,
+          "engine_frame": 6732,
+          "label": "variant 5 / case 7 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 1925
+        },
+        {
+          "file": "frame_01924.jpg",
+          "bytes": 109706,
+          "sha256": "ad5ef954cc24a855aff68834f13e247beb87cf3e1cb2bf8b89e57b034f2d133c",
+          "audio_seconds": 72.652806401,
+          "world_seconds": 72.516600396,
+          "engine_frame": 6735,
+          "label": "variant 5 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1926
+        },
+        {
+          "file": "frame_01925.jpg",
+          "bytes": 106710,
+          "sha256": "badb0b046ed5da3599914aa63977d36ed78176cd6af0dede8a3ee6fe82a530f6",
+          "audio_seconds": 72.685793102,
+          "world_seconds": 72.550394099,
+          "engine_frame": 6738,
+          "label": "variant 5 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1927
+        },
+        {
+          "file": "frame_01926.jpg",
+          "bytes": 107057,
+          "sha256": "2c2093370fe308d2e25217a624d464a2e2cde1fdd83c3397c0d298cf4457b41e",
+          "audio_seconds": 72.7276746,
+          "world_seconds": 72.591704,
+          "engine_frame": 6742,
+          "label": "variant 5 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1928
+        },
+        {
+          "file": "frame_01927.jpg",
+          "bytes": 106514,
+          "sha256": "0c8844e6a5ff60f4b3e9f587d1484965231287951effda8fbcd17a0e3e5af44d",
+          "audio_seconds": 72.761003301,
+          "world_seconds": 72.6253183,
+          "engine_frame": 6745,
+          "label": "variant 5 / case 7 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1929
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Warm orange pellet lines cross the head-height reticle with yellow kill marker and local blood. The body begins to buckle in the last frames.",
+      "ray_correspondence": {
+        "csv_rows": [
+          293,
+          294,
+          295,
+          296,
+          297,
+          298,
+          299,
+          300
+        ],
+        "projectiles": 8,
+        "contact_rows": 6,
+        "region_row_counts": {
+          "Head": 6
+        },
+        "ordered_contact_index_counts": {
+          "0": 6
+        },
+        "raw_packet_damage_sum": 180.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 5,
+      "weapon": "Gravebreaker",
+      "case": 8,
+      "title": "low leg",
+      "sheet": {
+        "file": "variant5_case08.png",
+        "bytes": 436607,
+        "sha256": "4d2524eb03c835bb07b1165c879d7855e17368156b3375d4c5ad78834bd21c71"
+      },
+      "frames": [
+        {
+          "file": "frame_01953.jpg",
+          "bytes": 106135,
+          "sha256": "16aa2785fda16d32168a46c2f9d3d831c7afe68f41aed838f1f2c43b3d26320a",
+          "audio_seconds": 73.718979102,
+          "world_seconds": 73.583084598,
+          "engine_frame": 6833,
+          "label": "variant 5 / case 8 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 1955
+        },
+        {
+          "file": "frame_01954.jpg",
+          "bytes": 107061,
+          "sha256": "a6178d535d0be2d213d0c64ba8b0edf6afedba25adaed4e9f850f6ec759768cf",
+          "audio_seconds": 73.752971303,
+          "world_seconds": 73.616645999,
+          "engine_frame": 6836,
+          "label": "variant 5 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1956
+        },
+        {
+          "file": "frame_01955.jpg",
+          "bytes": 105294,
+          "sha256": "8ce1acbe00a694141f6096b25530a8459d0f093e4c2219c4bf78156c44e449f9",
+          "audio_seconds": 73.786298402,
+          "world_seconds": 73.650578298,
+          "engine_frame": 6839,
+          "label": "variant 5 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1957
+        },
+        {
+          "file": "frame_01956.jpg",
+          "bytes": 106284,
+          "sha256": "9e49369b61e106fdbf2b68602b5151e0843638cc1d57ea14d2ba04ad6bc36e18",
+          "audio_seconds": 73.8277467,
+          "world_seconds": 73.692240197,
+          "engine_frame": 6843,
+          "label": "variant 5 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1958
+        },
+        {
+          "file": "frame_01957.jpg",
+          "bytes": 106136,
+          "sha256": "2f468e635a8c413807b9ee040856a5d2559dbfc2ef6c4a8a209319e8f084105d",
+          "audio_seconds": 73.869717102,
+          "world_seconds": 73.733661897,
+          "engine_frame": 6847,
+          "label": "variant 5 / case 8 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1959
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Warm orange pellet cluster meets the low reticle, with yellow kill marker and localized leg blood. The knees/body begin to buckle; no complete detached-part trajectory is established.",
+      "ray_correspondence": {
+        "csv_rows": [
+          301,
+          302,
+          303,
+          304,
+          305,
+          306,
+          307,
+          308
+        ],
+        "projectiles": 8,
+        "contact_rows": 8,
+        "region_row_counts": {
+          "LegRight": 1,
+          "LegLeft": 7
+        },
+        "ordered_contact_index_counts": {
+          "0": 8
+        },
+        "raw_packet_damage_sum": 240.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 4,
+      "weapon": "Remington 870",
+      "case": 12,
+      "title": "three-target normal 112 HP crowd",
+      "sheet": {
+        "file": "variant4_case12.png",
+        "bytes": 501065,
+        "sha256": "1a24d366c227faa8936c0210ed76f641171fb22ff9366f5d64115057092c66d2"
+      },
+      "frames": [
+        {
+          "file": "frame_01634.jpg",
+          "bytes": 109554,
+          "sha256": "8815e00ccdd76a04784caa5e5e8386b46ff46f34e62607658e53ee680e5a1eef",
+          "audio_seconds": 61.794604301,
+          "world_seconds": 61.653508697,
+          "engine_frame": 5733,
+          "label": "variant 4 / case 12 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 1636
+        },
+        {
+          "file": "frame_01635.jpg",
+          "bytes": 108721,
+          "sha256": "60217b4ebc4f21cb1c8a052dbe32ff47c1c03feebf836abe8a8b771675b306c8",
+          "audio_seconds": 61.8291726,
+          "world_seconds": 61.692139696,
+          "engine_frame": 5736,
+          "label": "variant 4 / case 12 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1637
+        },
+        {
+          "file": "frame_01636.jpg",
+          "bytes": 109410,
+          "sha256": "e680886dd1152687573590aa6d3205b906c89ce106da2a64f1c29274f59e65c1",
+          "audio_seconds": 61.863818102,
+          "world_seconds": 61.7268194,
+          "engine_frame": 5739,
+          "label": "variant 4 / case 12 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1638
+        },
+        {
+          "file": "frame_01637.jpg",
+          "bytes": 109405,
+          "sha256": "6f86fe11300e6141cd2c3ce80be31eaaa3aac3b167aad2e938550649c8b3dab0",
+          "audio_seconds": 61.897311401,
+          "world_seconds": 61.761428598,
+          "engine_frame": 5742,
+          "label": "variant 4 / case 12 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1639
+        },
+        {
+          "file": "frame_01638.jpg",
+          "bytes": 110270,
+          "sha256": "5cdc919d25c8f73aff5b7e82ce8ee3314da2389634f4d10e5c4ec86070bdbe63",
+          "audio_seconds": 61.930775899,
+          "world_seconds": 61.794852898,
+          "engine_frame": 5745,
+          "label": "variant 4 / case 12 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 1640
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Pale pellet lines and upper-body blood appear at the first two lined targets. The first starts to buckle while the other two remain upright. Later full original shows one locally folded body and two standing targets, +120 HUD and two remaining.",
+      "ray_correspondence": {
+        "csv_rows": [
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200,
+          201,
+          202,
+          203,
+          204
+        ],
+        "projectiles": 8,
+        "contact_rows": 16,
+        "region_row_counts": {
+          "Body": 16
+        },
+        "ordered_contact_index_counts": {
+          "0": 8,
+          "1": 8
+        },
+        "raw_packet_damage_sum": 192.0,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    },
+    {
+      "variant": 5,
+      "weapon": "Gravebreaker",
+      "case": 12,
+      "title": "three-target normal 112 HP crowd",
+      "sheet": {
+        "file": "variant5_case12.png",
+        "bytes": 503674,
+        "sha256": "013294ed9ddfb39059c361c848adb2c19b9b85d0ab6ba1240c9db27977815cd8"
+      },
+      "frames": [
+        {
+          "file": "frame_02074.jpg",
+          "bytes": 109040,
+          "sha256": "b7cbd827df59f00938a6ceb91f53fd103da59698883b6d2efb9e3918969b57a1",
+          "audio_seconds": 78.161632102,
+          "world_seconds": 78.025999598,
+          "engine_frame": 7242,
+          "label": "variant 5 / case 12 / phase 15 / explicit collision fixture",
+          "frames_csv_row": 2076
+        },
+        {
+          "file": "frame_02075.jpg",
+          "bytes": 109327,
+          "sha256": "2b9b7163a6654022e07fb249641a671c9a17de22201aa51fc6adb9199190ad27",
+          "audio_seconds": 78.204002701,
+          "world_seconds": 78.067582097,
+          "engine_frame": 7246,
+          "label": "variant 5 / case 12 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 2077
+        },
+        {
+          "file": "frame_02076.jpg",
+          "bytes": 108422,
+          "sha256": "41533a2068664880d111bf509f1668256919222815aac0f19c9e5b31408c2d75",
+          "audio_seconds": 78.238568302,
+          "world_seconds": 78.101535298,
+          "engine_frame": 7249,
+          "label": "variant 5 / case 12 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 2078
+        },
+        {
+          "file": "frame_02077.jpg",
+          "bytes": 110036,
+          "sha256": "221160ce494f4135e550279a8613b32fbfe43bfffba613d4fc73713ddd131026",
+          "audio_seconds": 78.272788901,
+          "world_seconds": 78.136210598,
+          "engine_frame": 7252,
+          "label": "variant 5 / case 12 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 2079
+        },
+        {
+          "file": "frame_02078.jpg",
+          "bytes": 109131,
+          "sha256": "19a818c21eca513862f5d3c236cba9d6833bb5873ea6da12e8882b6e3d522631",
+          "audio_seconds": 78.3072965,
+          "world_seconds": 78.170399897,
+          "engine_frame": 7255,
+          "label": "variant 5 / case 12 / phase 14 / explicit collision fixture",
+          "frames_csv_row": 2080
+        }
+      ],
+      "actually_viewed": true,
+      "visual_observation": "Warm orange pellet lines cross the crowd and local upper-body blood appears at all three targets. The first two begin to buckle, while the third remains upright. Later full original shows two locally folded bodies and one standing target, +230 HUD and one remaining.",
+      "ray_correspondence": {
+        "csv_rows": [
+          333,
+          334,
+          335,
+          336,
+          337,
+          338,
+          339,
+          340,
+          341,
+          342,
+          343,
+          344,
+          345,
+          346,
+          347,
+          348,
+          349,
+          350,
+          351,
+          352,
+          353,
+          354,
+          355
+        ],
+        "projectiles": 8,
+        "contact_rows": 23,
+        "region_row_counts": {
+          "Body": 20,
+          "ArmRight": 3
+        },
+        "ordered_contact_index_counts": {
+          "0": 8,
+          "1": 8,
+          "2": 7
+        },
+        "raw_packet_damage_sum": 484.725023,
+        "limit": "Telemetry is separate from pixel observation. Raw packet damage precedes regional health/trauma handling; contact indexes repeat per projectile and are not independent victim identifiers."
+      }
+    }
+  ],
+  "full_originals": [
+    {
+      "file": "frame_00242.jpg",
+      "bytes": 103407,
+      "sha256": "033db3074db638fd455904a6e2b8de84c963cda54a6238127faec547ecbe0f8a",
+      "actually_viewed_full_original": true,
+      "width": 1600,
+      "height": 900,
+      "frames_csv_row": 244,
+      "audio_seconds": 9.418086302,
+      "world_seconds": 9.2824573,
+      "engine_frame": 863,
+      "label": "variant 0 / case 7 / phase 14 / explicit collision fixture",
+      "visual_observation": "M1911 fresh-head full viewport: upright intact target, head-height marker, player and target fully within frame. Existing +220 gain text is not assigned to this single head impact."
+    },
+    {
+      "file": "frame_01121.jpg",
+      "bytes": 106877,
+      "sha256": "7eae7aeb9b38a6c9140763cb7780ac60e5797477d388a233d984d8ca6f864e9c",
+      "actually_viewed_full_original": true,
+      "width": 1600,
+      "height": 900,
+      "frames_csv_row": 1123,
+      "audio_seconds": 42.1649107,
+      "world_seconds": 42.028990198,
+      "engine_frame": 3889,
+      "label": "variant 3 / case 8 / phase 14 / explicit collision fixture",
+      "visual_observation": "Overcurrent low-hit full viewport: local leg-height blood/marker, target still upright; +10 HUD."
+    },
+    {
+      "file": "frame_01655.jpg",
+      "bytes": 108768,
+      "sha256": "c76dcfa74b3552da77927e40a0f4e3a5d7aa966fba2527be32ead760ad44398d",
+      "actually_viewed_full_original": true,
+      "width": 1600,
+      "height": 900,
+      "frames_csv_row": 1657,
+      "audio_seconds": 62.5142559,
+      "world_seconds": 62.376761399,
+      "engine_frame": 5796,
+      "label": "variant 4 / case 12 / phase 14 / explicit collision fixture",
+      "visual_observation": "Remington 870 crowd later full viewport: first body folded locally, second and third standing; +120 HUD and two remaining."
+    },
+    {
+      "file": "frame_02092.jpg",
+      "bytes": 107863,
+      "sha256": "221ec1e2345d4681b673263c36632434be56b7d1ba2d79ecc6b12d1f92d71bca",
+      "actually_viewed_full_original": true,
+      "width": 1600,
+      "height": 900,
+      "frames_csv_row": 2094,
+      "audio_seconds": 78.795579702,
+      "world_seconds": 78.659089498,
+      "engine_frame": 7297,
+      "label": "variant 5 / case 12 / phase 14 / explicit collision fixture",
+      "visual_observation": "Gravebreaker crowd later full viewport: two bodies folded locally, third standing; +230 HUD and one remaining."
+    }
+  ],
+  "normal_crowd_diagnostics": [
+    {
+      "variant": 4,
+      "weapon": "Remington 870",
+      "before_hp": [
+        112,
+        112,
+        112
+      ],
+      "after_hp": [
+        0.0,
+        40.0,
+        112.0
+      ],
+      "dead": [
+        true,
+        false,
+        false
+      ],
+      "evidence": "Actual NORMAL_CROWD rows from the hashed checks.txt, emitted front-to-back. These numerical outcomes agree with the separately observed full-frame body postures."
+    },
+    {
+      "variant": 5,
+      "weapon": "Gravebreaker",
+      "before_hp": [
+        112,
+        112,
+        112
+      ],
+      "after_hp": [
+        0.0,
+        0.0,
+        46.09
+      ],
+      "dead": [
+        true,
+        true,
+        false
+      ],
+      "evidence": "Actual NORMAL_CROWD rows from the hashed checks.txt, emitted front-to-back. These numerical outcomes agree with the separately observed full-frame body postures."
+    }
+  ],
+  "limitations": [
+    "This is a smaller confirmatory S3 review, separate from the earlier S1 review. Every one of these 14 sheets and four full originals was actually opened. No earlier frame or observation is relabelled as S3 evidence.",
+    "Five consecutive JPEG rows per case cover roughly 0.13-0.17 seconds, not complete encounters. Two later crowd originals add aftermath context. Complete head/limb separation paths, settled ragdoll behavior over time and untested close/wounded-head cases are outside this review.",
+    "Sheets contain only an unscaled crop at [710,335,1320,655] with labels outside source pixels. Four full 1600x900 originals confirm context. All original captures are JPEG; no source image is modified.",
+    "Labels are assigned at asynchronous screenshot callback time. A row preceding phase13/14 can already contain a fired tracer, so the selection does not guarantee a pre-shot image for every case. Audio seconds are a CPU capture clock; exact render/audio synchronization is not measured.",
+    "The arranged targets use the explicit standing-pose fixture. This does not establish natural enemy pursuit/attack behavior or whole-match accumulation. A persistent HUD gain value can belong to a previous case.",
+    "No continuous playback, audio audition, native controls, performance measurement or user approval of the visual direction is claimed. Pickup-symbol review is separate.",
+    "The hashed packaged-run result supplies exact source/runtime linkage. This review independently matches actor/capture artifact bytes to that result; it does not rebuild or repeat the executable hash audit."
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "one06.grouping_plot.v1",
+  "status": "PASS",
+  "checks": 922,
+  "trials": 18,
+  "actual_projectiles": 234,
+  "groups": [
+    {
+      "pattern": "M4A1_short_3",
+      "distance_cm": "300.000000000",
+      "spread_seed": "606430",
+      "diagonal_span": "2.392558098",
+      "first_spread": "0.349999994",
+      "last_spread": "0.459999979",
+      "recovered_bloom": "0.000000000"
+    },
+    {
+      "pattern": "M4A1_short_3",
+      "distance_cm": "650.000000000",
+      "spread_seed": "606430",
+      "diagonal_span": "6.260411263",
+      "first_spread": "0.349999994",
+      "last_spread": "0.459999979",
+      "recovered_bloom": "0.000000000"
+    },
+    {
+      "pattern": "M4A1_short_3",
+      "distance_cm": "1000.000000000",
+      "spread_seed": "606430",
+      "diagonal_span": "10.128264427",
+      "first_spread": "0.349999994",
+      "last_spread": "0.459999979",
+      "recovered_bloom": "0.000000000"
+    },
+    {
+      "pattern": "M4A1_sustained_12",
+      "distance_cm": "300.000000000",
+      "spread_seed": "606431",
+      "diagonal_span": "5.339800835",
+      "first_spread": "0.349999994",
+      "last_spread": "0.955000043",
+      "recovered_bloom": "0.000000000"
+    },
+    {
+      "pattern": "M4A1_sustained_12",
+      "distance_cm": "650.000000000",
+      "spread_seed": "606431",
+      "diagonal_span": "13.972334862",
+      "first_spread": "0.349999994",
+      "last_spread": "0.955000043",
+      "recovered_bloom": "0.000000000"
+    },
+    {
+      "pattern": "M4A1_sustained_12",
+      "distance_cm": "1000.000000000",
+      "spread_seed": "606431",
+      "diagonal_span": "22.604869843",
+      "first_spread": "0.349999994",
+      "last_spread": "0.955000043",
+      "recovered_bloom": "0.000000000"
+    },
+    {
+      "pattern": "870_three_shells",
+      "distance_cm": "300.000000000",
+      "spread_seed": "606432",
+      "diagonal_span": "36.272361755",
+      "first_spread": "4.000000000",
+      "last_spread": "4.000000000",
+      "recovered_bloom": "0.000000000"
+    },
+    {
+      "pattern": "870_three_shells",
+      "distance_cm": "650.000000000",
+      "spread_seed": "606432",
+      "diagonal_span": "97.771377563",
+      "first_spread": "4.000000000",
+      "last_spread": "4.000000000",
+      "recovered_bloom": "0.000000000"
+    },
+    {
+      "pattern": "870_three_shells",
+      "distance_cm": "1000.000000000",
+      "spread_seed": "606432",
+      "diagonal_span": "159.270401001",
+      "first_spread": "4.000000000",
+      "last_spread": "4.000000000",
+      "recovered_bloom": "0.000000000"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "checks.csv",
+      "sha256": "5776e8f8890c1dccd9a00b5e2b820c437841d5b80a7c0a8ef7d4f44095c9b8e8"
+    },
+    {
+      "file": "observations.json",
+      "sha256": "473d94626e49243fba08e51614cacccb8c7edf5a88ec17d33a975ab7912380ac"
+    },
+    {
+      "file": "groups.csv",
+      "sha256": "bd4282092c717eb199bd6558cf8e9602cecfea738c785abcada4b11d957f6045"
+    },
+    {
+      "file": "rays.csv",
+      "sha256": "389d4e58fe1748a44637062ed97f2089b2fdbb14ac6eb202506e7b1f8e5ad85e"
+    }
+  ],
+  "method": "Actual projectile rows only. Contact rows excluded to avoid duplicated points. Shared empty-scene centre for each pair; variable panel scales. Not a fitted accuracy statistic."
+}

@@ -10,3 +10,13 @@ Evidence/Candidate04/Tools/** -text whitespace=blank-at-eol,blank-at-eof,space-b
 Evidence/Candidate05/Performance/** -text
 Evidence/Candidate05/UI/*.png filter=lfs diff=lfs merge=lfs -text
 Evidence/Candidate05/Tools/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+Evidence/Candidate06/Performance/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
+Evidence/Candidate06/Media/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
+Evidence/Candidate06/Verification/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
+Evidence/Candidate06/Visual/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
+Evidence/Candidate06/UI/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
+Evidence/Candidate06/Grouping/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
+Evidence/Candidate06/Grouping/*.png filter=lfs diff=lfs merge=lfs -text
+Evidence/Candidate06/Grouping/*.svg -whitespace
+Evidence/Candidate06/**/*.md whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+Evidence/Candidate06/UI/**/*.png filter=lfs diff=lfs merge=lfs -text

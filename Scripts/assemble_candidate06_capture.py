@@ -322,6 +322,7 @@ def main():
                     '-map_metadata:s:v', '-1', '-map_metadata:s:a', '-1',
                     '-map_chapters', '2' if summary['chapters'] else '-1',
                     '-c:v', 'libx264', '-crf', '20', '-preset', 'medium', '-pix_fmt', 'yuv420p',
+                    '-vf', 'tpad=stop_mode=clone:stop_duration=1,fps=30',
                     '-r', '30', '-fps_mode', 'cfr', '-c:a', 'aac', '-b:a', '192k',
                     '-t', f"{summary['audio_duration_seconds']:.9f}", '-movflags', '+faststart']
         output.parent.mkdir(parents=True, exist_ok=True)

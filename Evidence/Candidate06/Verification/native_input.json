@@ -1,0 +1,143 @@
+{
+  "schema": "one06.native_input_review.v1",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "status": "LIMITED_NATIVE_PASS",
+  "native_actions": [
+    {
+      "utc": "2026-09-09T20:52:22.289Z",
+      "action": "LMB gameplay click",
+      "before": "7/56 torso125"
+    },
+    {
+      "utc": "2026-09-09T20:52:31.591Z",
+      "action": "RMB alone",
+      "before": "6/56 after LMB shot"
+    },
+    {
+      "utc": "2026-09-09T20:52:37.471Z",
+      "action": "Left Ctrl alone",
+      "before": "6/56 unchanged after RMB"
+    },
+    {
+      "utc": "2026-09-09T20:52:42.877Z",
+      "action": "Open H tray",
+      "before": "6/56 unchanged after Ctrl"
+    },
+    {
+      "utc": "2026-09-09T20:52:48.441Z",
+      "action": "Force Double Points"
+    },
+    {
+      "utc": "2026-09-09T20:52:54.774Z",
+      "action": "Close tray for multiplier review"
+    },
+    {
+      "utc": "2026-09-09T20:53:01.673Z",
+      "action": "Open tray; gold times2 glyph now upright and readable with local glow"
+    },
+    {
+      "utc": "2026-09-09T20:53:06.953Z",
+      "action": "Force Insta-Kill"
+    },
+    {
+      "utc": "2026-09-09T20:53:12.231Z",
+      "action": "Close tray for skull review"
+    },
+    {
+      "utc": "2026-09-09T20:53:20.847Z",
+      "action": "Open tray; upright skull visually confirmed with eye sockets above nose and mouth"
+    },
+    {
+      "utc": "2026-09-09T20:53:26.247Z",
+      "action": "Force Max Ammo"
+    },
+    {
+      "utc": "2026-09-09T20:53:32.674Z",
+      "action": "Close tray for ammo crate review"
+    },
+    {
+      "utc": "2026-09-09T20:53:40.321Z",
+      "action": "Pause after teal crate with lid bands/cartridge marks and local floor glow confirmed"
+    },
+    {
+      "utc": "2026-09-09T20:53:57.239Z",
+      "action": "Q normal quit from Pause"
+    }
+  ],
+  "observations": [
+    "LMB fired one M1911 shot: 7/56 to 6/56.",
+    "RMB alone and Left Ctrl alone left ammunition at 6/56; released snapshots showed torso 125 cm.",
+    "H help/tray displays LMB fire and held RMB head / Left Ctrl low controls.",
+    "Three distinct force-drop buttons worked without firing; ammunition remained 6/56.",
+    "Final world emblems: upright orange-red skull with sockets above nose/mouth, gold multiplication mark to left of upright 2, teal ammunition crate with dark lid, bands and cartridge marks. Small local floor glows visible.",
+    "Escape opened pause; Q quit; game window disappeared and engine logged normal exit."
+  ],
+  "runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292697088,
+      "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10731021,
+      "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 221414272,
+      "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 240183,
+      "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "runtime_identity_unchanged_after_exit": true,
+  "engine_log": {
+    "bytes": 102999,
+    "sha256": "fa9831baa07a2e63a7743a1afc2f149904b56e1d982dabb6937ab6d84532a861"
+  },
+  "input_trace_events": [
+    "frame=7083 real=16953973.451550 key=LeftMouseButton event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=7 reserve=56",
+    "frame=7085 real=16953973.468224 key=LeftMouseButton event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=2 ammo=6 reserve=56",
+    "frame=8199 real=16953982.752422 key=RightMouseButton event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=0 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=8202 real=16953982.776781 key=RightMouseButton event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=8907 real=16953988.652234 key=LeftControl event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=0 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=8907 real=16953988.652303 key=LeftControl event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=9556 real=16953994.060342 key=H event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=0 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=9556 real=16953994.060467 key=H event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=10983 real=16954005.952452 key=H event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=0 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=10983 real=16954005.952526 key=H event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=11810 real=16954012.844267 key=H event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=0 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=11810 real=16954012.844352 key=H event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=13080 real=16954023.427829 key=H event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=0 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=13080 real=16954023.427900 key=H event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=14110 real=16954032.011380 key=H event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=0 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=14110 real=16954032.011450 key=H event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=15529 real=16954043.836611 key=H event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=0 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=15529 real=16954043.836698 key=H event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=16449 real=16954051.503459 key=Escape event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=16449 real=16954051.503528 key=Escape event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=0 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=18563 real=16954069.120868 key=Q event=0 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=0 paused=1 sprint=0 operation=0 ammo=6 reserve=56",
+    "frame=18563 real=16954069.120944 key=Q event=1 amount=1.000 processed_shift=0 processed_ctrl=0 processed_alt=0 processed_cmd=0 handled=1 paused=1 sprint=0 operation=0 ammo=6 reserve=56"
+  ],
+  "limits": [
+    "Windows firewall prompt was observed; no automated prompt input or security change occurred. Testing resumed only after a fresh snapshot showed the prompt gone and game accessible.",
+    "No desktop screenshot payload was saved or published. Observations refer to actual tool-displayed native game snapshots.",
+    "Native held-modifier plus LMB combinations were not exercised because the native API has no hold/down/up primitive. Engine-driven input checks are separate.",
+    "No continuous video playback, physical audio audition, native movement or native machine-approach claim.",
+    "Technical image review does not establish user approval of art direction."
+  ]
+}

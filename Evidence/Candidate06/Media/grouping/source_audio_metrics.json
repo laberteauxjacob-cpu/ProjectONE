@@ -1,0 +1,6747 @@
+{
+  "status": "MEASURED",
+  "source_sha256": "089d5aa8ce850f5ba8e256552abf0fdc5fe52afa7865b4ff3575378d781875b5",
+  "source_file_bytes": 8482860,
+  "format": {
+    "encoding": "integer PCM",
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "bits_per_sample": 16,
+    "frame_count": 2120704,
+    "duration_seconds": 44.18133333
+  },
+  "overall": {
+    "duration_seconds": 44.18133333,
+    "frame_count": 2120704,
+    "channel_sample_count": 4241408,
+    "sample_peak_normalized": 0.2241210938,
+    "sample_peak_dbfs": -12.990345,
+    "rms_normalized": 0.0120246427,
+    "rms_dbfs": -38.398556,
+    "crest_factor_db": 25.408211,
+    "sample_peak_headroom_db": 12.990345,
+    "full_scale_sample_count": 0,
+    "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+    "nonzero_sample_count": 4194405,
+    "nonzero_sample_percent": 98.891807,
+    "exact_zero_frame_count": 7242,
+    "longest_exact_zero_seconds": 0.14266667,
+    "silent_frame_count_at_threshold": 338036,
+    "silent_frame_percent_at_threshold": 15.939801,
+    "longest_silence_seconds_at_threshold": 0.164875,
+    "channels": [
+      {
+        "channel_index": 0,
+        "sample_peak_dbfs": -13.037783,
+        "rms_dbfs": -38.411071,
+        "dc_normalized": 4.97e-07,
+        "absolute_dc_dbfs": -126.072656,
+        "full_scale_sample_count": 0,
+        "nonzero_sample_count": 2099187
+      },
+      {
+        "channel_index": 1,
+        "sample_peak_dbfs": -12.990345,
+        "rms_dbfs": -38.386078,
+        "dc_normalized": 4.308e-07,
+        "absolute_dc_dbfs": -127.313564,
+        "full_scale_sample_count": 0,
+        "nonzero_sample_count": 2095218
+      }
+    ]
+  },
+  "phases": [
+    {
+      "name": "0: unlabelled",
+      "start_seconds": 0,
+      "end_seconds": 1.660286799,
+      "coverage": "complete",
+      "available_start_seconds": 0.0,
+      "available_end_seconds": 1.66029167,
+      "requested_duration_seconds": 1.660286799,
+      "covered_duration_seconds": 1.66029167,
+      "covered_fraction": 1.00000293,
+      "metrics": {
+        "duration_seconds": 1.66029167,
+        "frame_count": 79694,
+        "channel_sample_count": 159388,
+        "sample_peak_normalized": 0.0104980469,
+        "sample_peak_dbfs": -39.57783,
+        "rms_normalized": 0.0018565115,
+        "rms_dbfs": -54.626047,
+        "crest_factor_db": 15.048217,
+        "sample_peak_headroom_db": 39.57783,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 143412,
+        "nonzero_sample_percent": 89.976661,
+        "exact_zero_frame_count": 6898,
+        "longest_exact_zero_seconds": 0.14266667,
+        "silent_frame_count_at_threshold": 30264,
+        "silent_frame_percent_at_threshold": 37.975255,
+        "longest_silence_seconds_at_threshold": 0.164875,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -39.57783,
+            "rms_dbfs": -53.452982,
+            "dc_normalized": -5.541e-07,
+            "absolute_dc_dbfs": -125.128141,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 71853
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -42.596873,
+            "rms_dbfs": -56.238225,
+            "dc_normalized": 1.2767e-06,
+            "absolute_dc_dbfs": -117.878199,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 71559
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "1: M4A1_short_3 / 300 cm / wall only / phase 1",
+      "start_seconds": 1.660286799,
+      "end_seconds": 2.843826897,
+      "coverage": "complete",
+      "available_start_seconds": 1.66029167,
+      "available_end_seconds": 2.84383333,
+      "requested_duration_seconds": 1.183540098,
+      "covered_duration_seconds": 1.18354167,
+      "covered_fraction": 1.00000133,
+      "metrics": {
+        "duration_seconds": 1.18354167,
+        "frame_count": 56810,
+        "channel_sample_count": 113620,
+        "sample_peak_normalized": 0.0322265625,
+        "sample_peak_dbfs": -29.83572,
+        "rms_normalized": 0.0026369652,
+        "rms_dbfs": -51.577912,
+        "crest_factor_db": 21.742192,
+        "sample_peak_headroom_db": 29.83572,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 112377,
+        "nonzero_sample_percent": 98.906002,
+        "exact_zero_frame_count": 10,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 12137,
+        "silent_frame_percent_at_threshold": 21.364196,
+        "longest_silence_seconds_at_threshold": 0.000375,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -29.83572,
+            "rms_dbfs": -50.867642,
+            "dc_normalized": 2.831e-06,
+            "absolute_dc_dbfs": -110.961282,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 56294
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -30.060691,
+            "rms_dbfs": -52.4275,
+            "dc_normalized": -1.964e-06,
+            "absolute_dc_dbfs": -114.137371,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 56083
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "2: M4A1_short_3 / 300 cm / wall only / phase 2",
+      "start_seconds": 2.843826897,
+      "end_seconds": 3.209923796,
+      "coverage": "complete",
+      "available_start_seconds": 2.84383333,
+      "available_end_seconds": 3.20991667,
+      "requested_duration_seconds": 0.366096899,
+      "covered_duration_seconds": 0.36608333,
+      "covered_fraction": 0.99996295,
+      "metrics": {
+        "duration_seconds": 0.36608333,
+        "frame_count": 17572,
+        "channel_sample_count": 35144,
+        "sample_peak_normalized": 0.1480407715,
+        "sample_peak_dbfs": -16.592373,
+        "rms_normalized": 0.0077649625,
+        "rms_dbfs": -42.197213,
+        "crest_factor_db": 25.60484,
+        "sample_peak_headroom_db": 16.592373,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 34822,
+        "nonzero_sample_percent": 99.08377,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3269,
+        "silent_frame_percent_at_threshold": 18.60346,
+        "longest_silence_seconds_at_threshold": 0.00022917,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.676939,
+            "rms_dbfs": -42.116441,
+            "dc_normalized": 1.7296e-05,
+            "absolute_dc_dbfs": -95.241108,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17418
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.592373,
+            "rms_dbfs": -42.279515,
+            "dc_normalized": 2.25895e-05,
+            "absolute_dc_dbfs": -92.92188,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17404
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        0
+      ]
+    },
+    {
+      "name": "3: M4A1_short_3 / 300 cm / wall only / phase 3",
+      "start_seconds": 3.209923796,
+      "end_seconds": 3.436001197,
+      "coverage": "complete",
+      "available_start_seconds": 3.20991667,
+      "available_end_seconds": 3.436,
+      "requested_duration_seconds": 0.22607740099999996,
+      "covered_duration_seconds": 0.22608333,
+      "covered_fraction": 1.00002624,
+      "metrics": {
+        "duration_seconds": 0.22608333,
+        "frame_count": 10852,
+        "channel_sample_count": 21704,
+        "sample_peak_normalized": 0.1304626465,
+        "sample_peak_dbfs": -17.690276,
+        "rms_normalized": 0.0163423712,
+        "rms_dbfs": -35.733699,
+        "crest_factor_db": 18.043422,
+        "sample_peak_headroom_db": 17.690276,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 21628,
+        "nonzero_sample_percent": 99.649834,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 820,
+        "silent_frame_percent_at_threshold": 7.556211,
+        "longest_silence_seconds_at_threshold": 0.00016667,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -17.714692,
+            "rms_dbfs": -35.699218,
+            "dc_normalized": -1.67745e-05,
+            "absolute_dc_dbfs": -95.506985,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 10815
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -17.690276,
+            "rms_dbfs": -35.768456,
+            "dc_normalized": -1.35096e-05,
+            "absolute_dc_dbfs": -97.387134,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 10813
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        0
+      ]
+    },
+    {
+      "name": "4: M4A1_short_3 / 300 cm / wall only / phase 5",
+      "start_seconds": 3.436001197,
+      "end_seconds": 4.242497399,
+      "coverage": "complete",
+      "available_start_seconds": 3.436,
+      "available_end_seconds": 4.2425,
+      "requested_duration_seconds": 0.8064962020000004,
+      "covered_duration_seconds": 0.8065,
+      "covered_fraction": 1.00000471,
+      "metrics": {
+        "duration_seconds": 0.8065,
+        "frame_count": 38712,
+        "channel_sample_count": 77424,
+        "sample_peak_normalized": 0.0181274414,
+        "sample_peak_dbfs": -34.83327,
+        "rms_normalized": 0.0025148516,
+        "rms_dbfs": -51.989753,
+        "crest_factor_db": 17.156483,
+        "sample_peak_headroom_db": 34.83327,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 76637,
+        "nonzero_sample_percent": 98.983519,
+        "exact_zero_frame_count": 6,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 7632,
+        "silent_frame_percent_at_threshold": 19.714817,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -34.83327,
+            "rms_dbfs": -51.372627,
+            "dc_normalized": -1.18422e-05,
+            "absolute_dc_dbfs": -98.531356,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38357
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -35.314272,
+            "rms_dbfs": -52.709329,
+            "dc_normalized": -8.9057e-06,
+            "absolute_dc_dbfs": -101.006648,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38280
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "5: M4A1_short_3 / 300 cm / standing infected / phase 2",
+      "start_seconds": 4.242497399,
+      "end_seconds": 4.585424799,
+      "coverage": "complete",
+      "available_start_seconds": 4.2425,
+      "available_end_seconds": 4.58541667,
+      "requested_duration_seconds": 0.34292739999999977,
+      "covered_duration_seconds": 0.34291667,
+      "covered_fraction": 0.9999687,
+      "metrics": {
+        "duration_seconds": 0.34291667,
+        "frame_count": 16460,
+        "channel_sample_count": 32920,
+        "sample_peak_normalized": 0.153503418,
+        "sample_peak_dbfs": -16.277639,
+        "rms_normalized": 0.0069024079,
+        "rms_dbfs": -43.219988,
+        "crest_factor_db": 26.942349,
+        "sample_peak_headroom_db": 16.277639,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 32578,
+        "nonzero_sample_percent": 98.961118,
+        "exact_zero_frame_count": 6,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3016,
+        "silent_frame_percent_at_threshold": 18.323208,
+        "longest_silence_seconds_at_threshold": 0.00027083,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.277639,
+            "rms_dbfs": -43.10468,
+            "dc_normalized": 1.72315e-05,
+            "absolute_dc_dbfs": -95.273542,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16300
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.293194,
+            "rms_dbfs": -43.33844,
+            "dc_normalized": 2.54913e-05,
+            "absolute_dc_dbfs": -91.872173,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16278
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        1
+      ]
+    },
+    {
+      "name": "6: M4A1_short_3 / 300 cm / standing infected / phase 3",
+      "start_seconds": 4.585424799,
+      "end_seconds": 4.796430796,
+      "coverage": "complete",
+      "available_start_seconds": 4.58541667,
+      "available_end_seconds": 4.7964375,
+      "requested_duration_seconds": 0.211005997,
+      "covered_duration_seconds": 0.21102083,
+      "covered_fraction": 1.00007031,
+      "metrics": {
+        "duration_seconds": 0.21102083,
+        "frame_count": 10129,
+        "channel_sample_count": 20258,
+        "sample_peak_normalized": 0.15234375,
+        "sample_peak_dbfs": -16.343507,
+        "rms_normalized": 0.0241155652,
+        "rms_dbfs": -32.354051,
+        "crest_factor_db": 16.010544,
+        "sample_peak_headroom_db": 16.343507,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 20215,
+        "nonzero_sample_percent": 99.787738,
+        "exact_zero_frame_count": 0,
+        "longest_exact_zero_seconds": 0.0,
+        "silent_frame_count_at_threshold": 303,
+        "silent_frame_percent_at_threshold": 2.991411,
+        "longest_silence_seconds_at_threshold": 8.333e-05,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.343507,
+            "rms_dbfs": -32.434339,
+            "dc_normalized": -4.13339e-05,
+            "absolute_dc_dbfs": -87.673881,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 10104
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.355695,
+            "rms_dbfs": -32.275221,
+            "dc_normalized": -6.54551e-05,
+            "absolute_dc_dbfs": -83.681134,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 10111
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        1
+      ]
+    },
+    {
+      "name": "7: M4A1_short_3 / 300 cm / standing infected / phase 5",
+      "start_seconds": 4.796430796,
+      "end_seconds": 5.624238599,
+      "coverage": "complete",
+      "available_start_seconds": 4.7964375,
+      "available_end_seconds": 5.62422917,
+      "requested_duration_seconds": 0.8278078029999998,
+      "covered_duration_seconds": 0.82779167,
+      "covered_fraction": 0.99998051,
+      "metrics": {
+        "duration_seconds": 0.82779167,
+        "frame_count": 39734,
+        "channel_sample_count": 79468,
+        "sample_peak_normalized": 0.0313110352,
+        "sample_peak_dbfs": -30.086051,
+        "rms_normalized": 0.0026841201,
+        "rms_dbfs": -51.423961,
+        "crest_factor_db": 21.33791,
+        "sample_peak_headroom_db": 30.086051,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 78545,
+        "nonzero_sample_percent": 98.838526,
+        "exact_zero_frame_count": 14,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 9453,
+        "silent_frame_percent_at_threshold": 23.790708,
+        "longest_silence_seconds_at_threshold": 0.00035417,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -30.086051,
+            "rms_dbfs": -51.03813,
+            "dc_normalized": 1.02288e-05,
+            "absolute_dc_dbfs": -99.803464,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 39316
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -30.265677,
+            "rms_dbfs": -51.847442,
+            "dc_normalized": 1.18609e-05,
+            "absolute_dc_dbfs": -98.517611,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 39229
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        1
+      ]
+    },
+    {
+      "name": "8: M4A1_short_3 / 650 cm / wall only / phase 2",
+      "start_seconds": 5.624238599,
+      "end_seconds": 5.971240297,
+      "coverage": "complete",
+      "available_start_seconds": 5.62422917,
+      "available_end_seconds": 5.97125,
+      "requested_duration_seconds": 0.3470016979999997,
+      "covered_duration_seconds": 0.34702083,
+      "covered_fraction": 1.00005514,
+      "metrics": {
+        "duration_seconds": 0.34702083,
+        "frame_count": 16657,
+        "channel_sample_count": 33314,
+        "sample_peak_normalized": 0.1428527832,
+        "sample_peak_dbfs": -16.902226,
+        "rms_normalized": 0.0122345608,
+        "rms_dbfs": -38.248232,
+        "crest_factor_db": 21.346006,
+        "sample_peak_headroom_db": 16.902226,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 32957,
+        "nonzero_sample_percent": 98.928378,
+        "exact_zero_frame_count": 5,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3659,
+        "silent_frame_percent_at_threshold": 21.966741,
+        "longest_silence_seconds_at_threshold": 0.00029167,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.915225,
+            "rms_dbfs": -38.216287,
+            "dc_normalized": 1.29146e-05,
+            "absolute_dc_dbfs": -97.778384,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16521
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.902226,
+            "rms_dbfs": -38.280414,
+            "dc_normalized": 1.7588e-06,
+            "absolute_dc_dbfs": -115.09551,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16436
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        2
+      ]
+    },
+    {
+      "name": "9: M4A1_short_3 / 650 cm / wall only / phase 3",
+      "start_seconds": 5.971240297,
+      "end_seconds": 6.176550698,
+      "coverage": "complete",
+      "available_start_seconds": 5.97125,
+      "available_end_seconds": 6.17654167,
+      "requested_duration_seconds": 0.2053104010000002,
+      "covered_duration_seconds": 0.20529167,
+      "covered_fraction": 0.99990875,
+      "metrics": {
+        "duration_seconds": 0.20529167,
+        "frame_count": 9854,
+        "channel_sample_count": 19708,
+        "sample_peak_normalized": 0.1257019043,
+        "sample_peak_dbfs": -18.013163,
+        "rms_normalized": 0.0122953218,
+        "rms_dbfs": -38.205202,
+        "crest_factor_db": 20.192039,
+        "sample_peak_headroom_db": 18.013163,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 19597,
+        "nonzero_sample_percent": 99.436777,
+        "exact_zero_frame_count": 0,
+        "longest_exact_zero_seconds": 0.0,
+        "silent_frame_count_at_threshold": 1062,
+        "silent_frame_percent_at_threshold": 10.777349,
+        "longest_silence_seconds_at_threshold": 0.0001875,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -18.025825,
+            "rms_dbfs": -38.180436,
+            "dc_normalized": -1.4091e-06,
+            "absolute_dc_dbfs": -117.021022,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 9794
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -18.013163,
+            "rms_dbfs": -38.23011,
+            "dc_normalized": -4.398e-07,
+            "absolute_dc_dbfs": -127.135483,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 9803
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        2
+      ]
+    },
+    {
+      "name": "10: M4A1_short_3 / 650 cm / wall only / phase 5",
+      "start_seconds": 6.176550698,
+      "end_seconds": 6.980581298,
+      "coverage": "complete",
+      "available_start_seconds": 6.17654167,
+      "available_end_seconds": 6.98058333,
+      "requested_duration_seconds": 0.8040305999999999,
+      "covered_duration_seconds": 0.80404167,
+      "covered_fraction": 1.00001376,
+      "metrics": {
+        "duration_seconds": 0.80404167,
+        "frame_count": 38594,
+        "channel_sample_count": 77188,
+        "sample_peak_normalized": 0.0087280273,
+        "sample_peak_dbfs": -41.181678,
+        "rms_normalized": 0.0019879357,
+        "rms_dbfs": -54.031954,
+        "crest_factor_db": 12.850275,
+        "sample_peak_headroom_db": 41.181678,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 76212,
+        "nonzero_sample_percent": 98.735555,
+        "exact_zero_frame_count": 9,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 9951,
+        "silent_frame_percent_at_threshold": 25.783801,
+        "longest_silence_seconds_at_threshold": 0.00033333,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -41.181678,
+            "rms_dbfs": -52.822541,
+            "dc_normalized": 4.6116e-06,
+            "absolute_dc_dbfs": -106.723044,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38186
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -43.539869,
+            "rms_dbfs": -55.714004,
+            "dc_normalized": 7.7191e-06,
+            "absolute_dc_dbfs": -102.248618,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38026
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "11: M4A1_short_3 / 650 cm / standing infected / phase 2",
+      "start_seconds": 6.980581298,
+      "end_seconds": 7.333136696,
+      "coverage": "complete",
+      "available_start_seconds": 6.98058333,
+      "available_end_seconds": 7.33314583,
+      "requested_duration_seconds": 0.3525553980000007,
+      "covered_duration_seconds": 0.3525625,
+      "covered_fraction": 1.00002014,
+      "metrics": {
+        "duration_seconds": 0.3525625,
+        "frame_count": 16923,
+        "channel_sample_count": 33846,
+        "sample_peak_normalized": 0.1641235352,
+        "sample_peak_dbfs": -15.696583,
+        "rms_normalized": 0.0156215387,
+        "rms_dbfs": -36.125524,
+        "crest_factor_db": 20.428941,
+        "sample_peak_headroom_db": 15.696583,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 33598,
+        "nonzero_sample_percent": 99.267269,
+        "exact_zero_frame_count": 3,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2797,
+        "silent_frame_percent_at_threshold": 16.527802,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.728945,
+            "rms_dbfs": -36.094911,
+            "dc_normalized": -2.84059e-05,
+            "absolute_dc_dbfs": -90.931832,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16802
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.696583,
+            "rms_dbfs": -36.156354,
+            "dc_normalized": -3.57165e-05,
+            "absolute_dc_dbfs": -88.94261,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16796
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        3
+      ]
+    },
+    {
+      "name": "12: M4A1_short_3 / 650 cm / standing infected / phase 3",
+      "start_seconds": 7.333136696,
+      "end_seconds": 7.558088198,
+      "coverage": "complete",
+      "available_start_seconds": 7.33314583,
+      "available_end_seconds": 7.55808333,
+      "requested_duration_seconds": 0.2249515019999997,
+      "covered_duration_seconds": 0.2249375,
+      "covered_fraction": 0.99993776,
+      "metrics": {
+        "duration_seconds": 0.2249375,
+        "frame_count": 10797,
+        "channel_sample_count": 21594,
+        "sample_peak_normalized": 0.1655578613,
+        "sample_peak_dbfs": -15.621004,
+        "rms_normalized": 0.0183272,
+        "rms_dbfs": -34.738078,
+        "crest_factor_db": 19.117074,
+        "sample_peak_headroom_db": 15.621004,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 21536,
+        "nonzero_sample_percent": 99.731407,
+        "exact_zero_frame_count": 0,
+        "longest_exact_zero_seconds": 0.0,
+        "silent_frame_count_at_threshold": 553,
+        "silent_frame_percent_at_threshold": 5.121793,
+        "longest_silence_seconds_at_threshold": 0.0001875,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.680447,
+            "rms_dbfs": -34.912606,
+            "dc_normalized": 1.90251e-05,
+            "absolute_dc_dbfs": -94.413469,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 10762
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.621004,
+            "rms_dbfs": -34.570293,
+            "dc_normalized": 9.9549e-06,
+            "absolute_dc_dbfs": -100.039274,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 10774
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        3
+      ]
+    },
+    {
+      "name": "13: M4A1_short_3 / 650 cm / standing infected / phase 5",
+      "start_seconds": 7.558088198,
+      "end_seconds": 8.356353197,
+      "coverage": "complete",
+      "available_start_seconds": 7.55808333,
+      "available_end_seconds": 8.35635417,
+      "requested_duration_seconds": 0.7982649990000006,
+      "covered_duration_seconds": 0.79827083,
+      "covered_fraction": 1.00000731,
+      "metrics": {
+        "duration_seconds": 0.79827083,
+        "frame_count": 38317,
+        "channel_sample_count": 76634,
+        "sample_peak_normalized": 0.0171813965,
+        "sample_peak_dbfs": -35.298831,
+        "rms_normalized": 0.0019561148,
+        "rms_dbfs": -54.172113,
+        "crest_factor_db": 18.873283,
+        "sample_peak_headroom_db": 35.298831,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 75589,
+        "nonzero_sample_percent": 98.636375,
+        "exact_zero_frame_count": 6,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 10681,
+        "silent_frame_percent_at_threshold": 27.875356,
+        "longest_silence_seconds_at_threshold": 0.00035417,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -35.298831,
+            "rms_dbfs": -53.151025,
+            "dc_normalized": -4.9906e-06,
+            "absolute_dc_dbfs": -106.037021,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37852
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -36.260388,
+            "rms_dbfs": -55.509555,
+            "dc_normalized": 1.943e-07,
+            "absolute_dc_dbfs": -134.229032,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37737
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "14: M4A1_short_3 / 1000 cm / wall only / phase 2",
+      "start_seconds": 8.356353197,
+      "end_seconds": 8.719069999,
+      "coverage": "complete",
+      "available_start_seconds": 8.35635417,
+      "available_end_seconds": 8.7190625,
+      "requested_duration_seconds": 0.36271680199999956,
+      "covered_duration_seconds": 0.36270833,
+      "covered_fraction": 0.99997665,
+      "metrics": {
+        "duration_seconds": 0.36270833,
+        "frame_count": 17410,
+        "channel_sample_count": 34820,
+        "sample_peak_normalized": 0.1427612305,
+        "sample_peak_dbfs": -16.907794,
+        "rms_normalized": 0.0086202492,
+        "rms_dbfs": -41.289604,
+        "crest_factor_db": 24.381809,
+        "sample_peak_headroom_db": 16.907794,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 34425,
+        "nonzero_sample_percent": 98.865594,
+        "exact_zero_frame_count": 5,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3879,
+        "silent_frame_percent_at_threshold": 22.280299,
+        "longest_silence_seconds_at_threshold": 0.00039583,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.930104,
+            "rms_dbfs": -41.189437,
+            "dc_normalized": 4.5925e-06,
+            "absolute_dc_dbfs": -106.758948,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17273
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.907794,
+            "rms_dbfs": -41.392135,
+            "dc_normalized": 8.6189e-06,
+            "absolute_dc_dbfs": -101.29097,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17152
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        4,
+        5
+      ]
+    },
+    {
+      "name": "15: M4A1_short_3 / 1000 cm / wall only / phase 3",
+      "start_seconds": 8.719069999,
+      "end_seconds": 8.924063697,
+      "coverage": "complete",
+      "available_start_seconds": 8.7190625,
+      "available_end_seconds": 8.9240625,
+      "requested_duration_seconds": 0.2049936979999991,
+      "covered_duration_seconds": 0.205,
+      "covered_fraction": 1.00003074,
+      "metrics": {
+        "duration_seconds": 0.205,
+        "frame_count": 9840,
+        "channel_sample_count": 19680,
+        "sample_peak_normalized": 0.1347351074,
+        "sample_peak_dbfs": -17.410385,
+        "rms_normalized": 0.0147737684,
+        "rms_dbfs": -36.610174,
+        "crest_factor_db": 19.19979,
+        "sample_peak_headroom_db": 17.410385,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 19584,
+        "nonzero_sample_percent": 99.512195,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 820,
+        "silent_frame_percent_at_threshold": 8.333333,
+        "longest_silence_seconds_at_threshold": 0.00014583,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -17.410385,
+            "rms_dbfs": -36.581354,
+            "dc_normalized": 8.41963e-05,
+            "absolute_dc_dbfs": -81.494144,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 9804
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -17.467626,
+            "rms_dbfs": -36.639187,
+            "dc_normalized": 6.97345e-05,
+            "absolute_dc_dbfs": -83.131043,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 9780
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        5,
+        6
+      ]
+    },
+    {
+      "name": "16: M4A1_short_3 / 1000 cm / wall only / phase 5",
+      "start_seconds": 8.924063697,
+      "end_seconds": 9.735632699,
+      "coverage": "complete",
+      "available_start_seconds": 8.9240625,
+      "available_end_seconds": 9.735625,
+      "requested_duration_seconds": 0.8115690020000006,
+      "covered_duration_seconds": 0.8115625,
+      "covered_fraction": 0.99999199,
+      "metrics": {
+        "duration_seconds": 0.8115625,
+        "frame_count": 38955,
+        "channel_sample_count": 77910,
+        "sample_peak_normalized": 0.0590209961,
+        "sample_peak_dbfs": -24.579869,
+        "rms_normalized": 0.0035698256,
+        "rms_dbfs": -48.94706,
+        "crest_factor_db": 24.367191,
+        "sample_peak_headroom_db": 24.579869,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 76974,
+        "nonzero_sample_percent": 98.798614,
+        "exact_zero_frame_count": 7,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 9224,
+        "silent_frame_percent_at_threshold": 23.678604,
+        "longest_silence_seconds_at_threshold": 0.00104167,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -24.78436,
+            "rms_dbfs": -48.497197,
+            "dc_normalized": -2.14222e-05,
+            "absolute_dc_dbfs": -93.382704,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38568
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -24.579869,
+            "rms_dbfs": -49.448964,
+            "dc_normalized": -1.8895e-05,
+            "absolute_dc_dbfs": -94.473077,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38406
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        6
+      ]
+    },
+    {
+      "name": "17: M4A1_short_3 / 1000 cm / standing infected / phase 2",
+      "start_seconds": 9.735632699,
+      "end_seconds": 10.0979748,
+      "coverage": "complete",
+      "available_start_seconds": 9.735625,
+      "available_end_seconds": 10.09797917,
+      "requested_duration_seconds": 0.3623421009999994,
+      "covered_duration_seconds": 0.36235417,
+      "covered_fraction": 1.0000333,
+      "metrics": {
+        "duration_seconds": 0.36235417,
+        "frame_count": 17393,
+        "channel_sample_count": 34786,
+        "sample_peak_normalized": 0.1691589355,
+        "sample_peak_dbfs": -15.434101,
+        "rms_normalized": 0.0160688055,
+        "rms_dbfs": -35.880328,
+        "crest_factor_db": 20.446227,
+        "sample_peak_headroom_db": 15.434101,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 34520,
+        "nonzero_sample_percent": 99.235325,
+        "exact_zero_frame_count": 7,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2696,
+        "silent_frame_percent_at_threshold": 15.500489,
+        "longest_silence_seconds_at_threshold": 0.00022917,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.434101,
+            "rms_dbfs": -35.94142,
+            "dc_normalized": -3.15721e-05,
+            "absolute_dc_dbfs": -90.013934,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17295
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.468644,
+            "rms_dbfs": -35.820084,
+            "dc_normalized": -3.65744e-05,
+            "absolute_dc_dbfs": -88.736451,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17225
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        7
+      ]
+    },
+    {
+      "name": "18: M4A1_short_3 / 1000 cm / standing infected / phase 3",
+      "start_seconds": 10.0979748,
+      "end_seconds": 10.322682597,
+      "coverage": "complete",
+      "available_start_seconds": 10.09797917,
+      "available_end_seconds": 10.3226875,
+      "requested_duration_seconds": 0.22470779700000065,
+      "covered_duration_seconds": 0.22470833,
+      "covered_fraction": 1.00000239,
+      "metrics": {
+        "duration_seconds": 0.22470833,
+        "frame_count": 10786,
+        "channel_sample_count": 21572,
+        "sample_peak_normalized": 0.1637268066,
+        "sample_peak_dbfs": -15.717604,
+        "rms_normalized": 0.0154271627,
+        "rms_dbfs": -36.234279,
+        "crest_factor_db": 20.516675,
+        "sample_peak_headroom_db": 15.717604,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 21463,
+        "nonzero_sample_percent": 99.494715,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 1008,
+        "silent_frame_percent_at_threshold": 9.345448,
+        "longest_silence_seconds_at_threshold": 0.0001875,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.717604,
+            "rms_dbfs": -36.258519,
+            "dc_normalized": 9.30495e-05,
+            "absolute_dc_dbfs": -80.625722,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 10738
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.81038,
+            "rms_dbfs": -36.210173,
+            "dc_normalized": 9.0271e-05,
+            "absolute_dc_dbfs": -80.889032,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 10725
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        7
+      ]
+    },
+    {
+      "name": "19: M4A1_short_3 / 1000 cm / standing infected / phase 5",
+      "start_seconds": 10.322682597,
+      "end_seconds": 11.124466997,
+      "coverage": "complete",
+      "available_start_seconds": 10.3226875,
+      "available_end_seconds": 11.12445833,
+      "requested_duration_seconds": 0.8017844000000007,
+      "covered_duration_seconds": 0.80177083,
+      "covered_fraction": 0.99998308,
+      "metrics": {
+        "duration_seconds": 0.80177083,
+        "frame_count": 38485,
+        "channel_sample_count": 76970,
+        "sample_peak_normalized": 0.0138244629,
+        "sample_peak_dbfs": -37.187035,
+        "rms_normalized": 0.0023219968,
+        "rms_dbfs": -52.682768,
+        "crest_factor_db": 15.495733,
+        "sample_peak_headroom_db": 37.187035,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 76134,
+        "nonzero_sample_percent": 98.913863,
+        "exact_zero_frame_count": 3,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 8421,
+        "silent_frame_percent_at_threshold": 21.881252,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -39.402856,
+            "rms_dbfs": -52.002152,
+            "dc_normalized": -1.26368e-05,
+            "absolute_dc_dbfs": -97.967242,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38157
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -37.187035,
+            "rms_dbfs": -53.490235,
+            "dc_normalized": -1.33188e-05,
+            "absolute_dc_dbfs": -97.510711,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37977
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "20: M4A1_sustained_12 / 300 cm / wall only / phase 1",
+      "start_seconds": 11.124466997,
+      "end_seconds": 12.315835297,
+      "coverage": "complete",
+      "available_start_seconds": 11.12445833,
+      "available_end_seconds": 12.31583333,
+      "requested_duration_seconds": 1.1913682999999988,
+      "covered_duration_seconds": 1.191375,
+      "covered_fraction": 1.00000562,
+      "metrics": {
+        "duration_seconds": 1.191375,
+        "frame_count": 57186,
+        "channel_sample_count": 114372,
+        "sample_peak_normalized": 0.0344848633,
+        "sample_peak_dbfs": -29.24743,
+        "rms_normalized": 0.0028884472,
+        "rms_dbfs": -50.786711,
+        "crest_factor_db": 21.539282,
+        "sample_peak_headroom_db": 29.24743,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 113132,
+        "nonzero_sample_percent": 98.915819,
+        "exact_zero_frame_count": 9,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 11941,
+        "silent_frame_percent_at_threshold": 20.880985,
+        "longest_silence_seconds_at_threshold": 0.00035417,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -29.24743,
+            "rms_dbfs": -50.144848,
+            "dc_normalized": 2.2803e-06,
+            "absolute_dc_dbfs": -112.840135,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 56626
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -29.860431,
+            "rms_dbfs": -51.54017,
+            "dc_normalized": 6.1002e-06,
+            "absolute_dc_dbfs": -104.293109,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 56506
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "21: M4A1_sustained_12 / 300 cm / wall only / phase 2",
+      "start_seconds": 12.315835297,
+      "end_seconds": 12.691253297,
+      "coverage": "complete",
+      "available_start_seconds": 12.31583333,
+      "available_end_seconds": 12.69125,
+      "requested_duration_seconds": 0.3754179999999998,
+      "covered_duration_seconds": 0.37541667,
+      "covered_fraction": 0.99999645,
+      "metrics": {
+        "duration_seconds": 0.37541667,
+        "frame_count": 18020,
+        "channel_sample_count": 36040,
+        "sample_peak_normalized": 0.1454162598,
+        "sample_peak_dbfs": -16.747741,
+        "rms_normalized": 0.0112959589,
+        "rms_dbfs": -38.941538,
+        "crest_factor_db": 22.193797,
+        "sample_peak_headroom_db": 16.747741,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 35669,
+        "nonzero_sample_percent": 98.970588,
+        "exact_zero_frame_count": 3,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3246,
+        "silent_frame_percent_at_threshold": 18.013319,
+        "longest_silence_seconds_at_threshold": 0.00025,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.857806,
+            "rms_dbfs": -38.882364,
+            "dc_normalized": 3.01602e-05,
+            "absolute_dc_dbfs": -90.411304,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17871
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.747741,
+            "rms_dbfs": -39.001529,
+            "dc_normalized": 9.6244e-06,
+            "absolute_dc_dbfs": -100.332541,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17798
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        8
+      ]
+    },
+    {
+      "name": "22: M4A1_sustained_12 / 300 cm / wall only / phase 3",
+      "start_seconds": 12.691253297,
+      "end_seconds": 13.800220497,
+      "coverage": "complete",
+      "available_start_seconds": 12.69125,
+      "available_end_seconds": 13.80022917,
+      "requested_duration_seconds": 1.1089672000000004,
+      "covered_duration_seconds": 1.10897917,
+      "covered_fraction": 1.00001079,
+      "metrics": {
+        "duration_seconds": 1.10897917,
+        "frame_count": 53231,
+        "channel_sample_count": 106462,
+        "sample_peak_normalized": 0.1519470215,
+        "sample_peak_dbfs": -16.366156,
+        "rms_normalized": 0.0157811018,
+        "rms_dbfs": -36.037254,
+        "crest_factor_db": 19.671097,
+        "sample_peak_headroom_db": 16.366156,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 105988,
+        "nonzero_sample_percent": 99.554771,
+        "exact_zero_frame_count": 4,
+        "longest_exact_zero_seconds": 4.167e-05,
+        "silent_frame_count_at_threshold": 4868,
+        "silent_frame_percent_at_threshold": 9.145047,
+        "longest_silence_seconds_at_threshold": 0.00029167,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.490908,
+            "rms_dbfs": -36.010344,
+            "dc_normalized": -8.9613e-06,
+            "absolute_dc_dbfs": -100.952556,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 53027
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.366156,
+            "rms_dbfs": -36.064331,
+            "dc_normalized": -5.0021e-06,
+            "absolute_dc_dbfs": -106.016982,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 52961
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "23: M4A1_sustained_12 / 300 cm / wall only / phase 5",
+      "start_seconds": 13.800220497,
+      "end_seconds": 14.608834498,
+      "coverage": "complete",
+      "available_start_seconds": 13.80022917,
+      "available_end_seconds": 14.60883333,
+      "requested_duration_seconds": 0.8086140010000005,
+      "covered_duration_seconds": 0.80860417,
+      "covered_fraction": 0.99998784,
+      "metrics": {
+        "duration_seconds": 0.80860417,
+        "frame_count": 38813,
+        "channel_sample_count": 77626,
+        "sample_peak_normalized": 0.0085449219,
+        "sample_peak_dbfs": -41.365838,
+        "rms_normalized": 0.0019911511,
+        "rms_dbfs": -54.017916,
+        "crest_factor_db": 12.652078,
+        "sample_peak_headroom_db": 41.365838,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 76707,
+        "nonzero_sample_percent": 98.816118,
+        "exact_zero_frame_count": 13,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 9089,
+        "silent_frame_percent_at_threshold": 23.417412,
+        "longest_silence_seconds_at_threshold": 0.000375,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -41.365838,
+            "rms_dbfs": -53.193487,
+            "dc_normalized": 1.1487e-06,
+            "absolute_dc_dbfs": -118.795539,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38399
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -43.782281,
+            "rms_dbfs": -55.036404,
+            "dc_normalized": -6.856e-07,
+            "absolute_dc_dbfs": -123.278213,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38308
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "24: M4A1_sustained_12 / 300 cm / standing infected / phase 2",
+      "start_seconds": 14.608834498,
+      "end_seconds": 14.959185299,
+      "coverage": "complete",
+      "available_start_seconds": 14.60883333,
+      "available_end_seconds": 14.9591875,
+      "requested_duration_seconds": 0.3503508009999994,
+      "covered_duration_seconds": 0.35035417,
+      "covered_fraction": 1.00000961,
+      "metrics": {
+        "duration_seconds": 0.35035417,
+        "frame_count": 16817,
+        "channel_sample_count": 33634,
+        "sample_peak_normalized": 0.1719055176,
+        "sample_peak_dbfs": -15.294204,
+        "rms_normalized": 0.0168131203,
+        "rms_dbfs": -35.487034,
+        "crest_factor_db": 20.19283,
+        "sample_peak_headroom_db": 15.294204,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 33321,
+        "nonzero_sample_percent": 99.069394,
+        "exact_zero_frame_count": 7,
+        "longest_exact_zero_seconds": 4.167e-05,
+        "silent_frame_count_at_threshold": 3008,
+        "silent_frame_percent_at_threshold": 17.886662,
+        "longest_silence_seconds_at_threshold": 0.0004375,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.294204,
+            "rms_dbfs": -35.552545,
+            "dc_normalized": 2.67993e-05,
+            "absolute_dc_dbfs": -91.437536,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16659
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.30346,
+            "rms_dbfs": -35.422496,
+            "dc_normalized": 2.98498e-05,
+            "absolute_dc_dbfs": -90.501179,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16662
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        11
+      ]
+    },
+    {
+      "name": "25: M4A1_sustained_12 / 300 cm / standing infected / phase 3",
+      "start_seconds": 14.959185299,
+      "end_seconds": 16.071957897,
+      "coverage": "complete",
+      "available_start_seconds": 14.9591875,
+      "available_end_seconds": 16.07195833,
+      "requested_duration_seconds": 1.1127725980000012,
+      "covered_duration_seconds": 1.11277083,
+      "covered_fraction": 0.99999841,
+      "metrics": {
+        "duration_seconds": 1.11277083,
+        "frame_count": 53413,
+        "channel_sample_count": 106826,
+        "sample_peak_normalized": 0.1667175293,
+        "sample_peak_dbfs": -15.560375,
+        "rms_normalized": 0.021056342,
+        "rms_dbfs": -33.532341,
+        "crest_factor_db": 17.971967,
+        "sample_peak_headroom_db": 15.560375,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 106426,
+        "nonzero_sample_percent": 99.625559,
+        "exact_zero_frame_count": 7,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3662,
+        "silent_frame_percent_at_threshold": 6.856009,
+        "longest_silence_seconds_at_threshold": 0.00025,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.656299,
+            "rms_dbfs": -33.568496,
+            "dc_normalized": 3.1727e-06,
+            "absolute_dc_dbfs": -109.971385,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 53223
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.560375,
+            "rms_dbfs": -33.496486,
+            "dc_normalized": 4.5919e-06,
+            "absolute_dc_dbfs": -106.760059,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 53203
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        11
+      ]
+    },
+    {
+      "name": "26: M4A1_sustained_12 / 300 cm / standing infected / phase 5",
+      "start_seconds": 16.071957897,
+      "end_seconds": 16.880145997,
+      "coverage": "complete",
+      "available_start_seconds": 16.07195833,
+      "available_end_seconds": 16.88014583,
+      "requested_duration_seconds": 0.8081880999999989,
+      "covered_duration_seconds": 0.8081875,
+      "covered_fraction": 0.99999926,
+      "metrics": {
+        "duration_seconds": 0.8081875,
+        "frame_count": 38793,
+        "channel_sample_count": 77586,
+        "sample_peak_normalized": 0.0083007812,
+        "sample_peak_dbfs": -41.617621,
+        "rms_normalized": 0.0019482424,
+        "rms_dbfs": -54.20714,
+        "crest_factor_db": 12.58952,
+        "sample_peak_headroom_db": 41.617621,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 76635,
+        "nonzero_sample_percent": 98.774263,
+        "exact_zero_frame_count": 15,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 9629,
+        "silent_frame_percent_at_threshold": 24.821488,
+        "longest_silence_seconds_at_threshold": 0.00041667,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -41.617621,
+            "rms_dbfs": -53.135632,
+            "dc_normalized": -7.678e-07,
+            "absolute_dc_dbfs": -122.29507,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38386
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -44.116395,
+            "rms_dbfs": -55.632763,
+            "dc_normalized": -4.9317e-06,
+            "absolute_dc_dbfs": -106.140101,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38249
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "27: M4A1_sustained_12 / 650 cm / wall only / phase 2",
+      "start_seconds": 16.880145997,
+      "end_seconds": 17.221416499,
+      "coverage": "complete",
+      "available_start_seconds": 16.88014583,
+      "available_end_seconds": 17.22141667,
+      "requested_duration_seconds": 0.3412705020000004,
+      "covered_duration_seconds": 0.34127083,
+      "covered_fraction": 1.00000097,
+      "metrics": {
+        "duration_seconds": 0.34127083,
+        "frame_count": 16381,
+        "channel_sample_count": 32762,
+        "sample_peak_normalized": 0.134979248,
+        "sample_peak_dbfs": -17.39466,
+        "rms_normalized": 0.0124460762,
+        "rms_dbfs": -38.099351,
+        "crest_factor_db": 20.704691,
+        "sample_peak_headroom_db": 17.39466,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 32458,
+        "nonzero_sample_percent": 99.072096,
+        "exact_zero_frame_count": 7,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3176,
+        "silent_frame_percent_at_threshold": 19.388316,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -17.39466,
+            "rms_dbfs": -38.095009,
+            "dc_normalized": 1.38029e-05,
+            "absolute_dc_dbfs": -97.200615,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16253
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -17.491423,
+            "rms_dbfs": -38.103697,
+            "dc_normalized": 2.19106e-05,
+            "absolute_dc_dbfs": -93.186922,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16205
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        12
+      ]
+    },
+    {
+      "name": "28: M4A1_sustained_12 / 650 cm / wall only / phase 3",
+      "start_seconds": 17.221416499,
+      "end_seconds": 18.326922197,
+      "coverage": "complete",
+      "available_start_seconds": 17.22141667,
+      "available_end_seconds": 18.32691667,
+      "requested_duration_seconds": 1.1055056979999982,
+      "covered_duration_seconds": 1.1055,
+      "covered_fraction": 0.99999485,
+      "metrics": {
+        "duration_seconds": 1.1055,
+        "frame_count": 53064,
+        "channel_sample_count": 106128,
+        "sample_peak_normalized": 0.1499023438,
+        "sample_peak_dbfs": -16.483832,
+        "rms_normalized": 0.0159368154,
+        "rms_dbfs": -35.951969,
+        "crest_factor_db": 19.468138,
+        "sample_peak_headroom_db": 16.483832,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 105553,
+        "nonzero_sample_percent": 99.458201,
+        "exact_zero_frame_count": 11,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 5553,
+        "silent_frame_percent_at_threshold": 10.464722,
+        "longest_silence_seconds_at_threshold": 0.000375,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.554853,
+            "rms_dbfs": -35.938974,
+            "dc_normalized": 3.014e-07,
+            "absolute_dc_dbfs": -130.418373,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 52805
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.483832,
+            "rms_dbfs": -35.965004,
+            "dc_normalized": -4.3317e-06,
+            "absolute_dc_dbfs": -107.266792,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 52748
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        12
+      ]
+    },
+    {
+      "name": "29: M4A1_sustained_12 / 650 cm / wall only / phase 5",
+      "start_seconds": 18.326922197,
+      "end_seconds": 19.144726198,
+      "coverage": "complete",
+      "available_start_seconds": 18.32691667,
+      "available_end_seconds": 19.14472917,
+      "requested_duration_seconds": 0.8178040010000025,
+      "covered_duration_seconds": 0.8178125,
+      "covered_fraction": 1.00001039,
+      "metrics": {
+        "duration_seconds": 0.8178125,
+        "frame_count": 39255,
+        "channel_sample_count": 78510,
+        "sample_peak_normalized": 0.0102844238,
+        "sample_peak_dbfs": -39.756401,
+        "rms_normalized": 0.0021551706,
+        "rms_dbfs": -53.330367,
+        "crest_factor_db": 13.573966,
+        "sample_peak_headroom_db": 39.756401,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 77608,
+        "nonzero_sample_percent": 98.851102,
+        "exact_zero_frame_count": 18,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 9306,
+        "silent_frame_percent_at_threshold": 23.706534,
+        "longest_silence_seconds_at_threshold": 0.00035417,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -39.756401,
+            "rms_dbfs": -51.992766,
+            "dc_normalized": -1.28671e-05,
+            "absolute_dc_dbfs": -97.810414,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38866
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -43.619924,
+            "rms_dbfs": -55.273272,
+            "dc_normalized": -6.5311e-06,
+            "absolute_dc_dbfs": -103.700279,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38742
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "30: M4A1_sustained_12 / 650 cm / standing infected / phase 2",
+      "start_seconds": 19.144726198,
+      "end_seconds": 19.493538998,
+      "coverage": "complete",
+      "available_start_seconds": 19.14472917,
+      "available_end_seconds": 19.49354167,
+      "requested_duration_seconds": 0.3488127999999975,
+      "covered_duration_seconds": 0.3488125,
+      "covered_fraction": 0.99999914,
+      "metrics": {
+        "duration_seconds": 0.3488125,
+        "frame_count": 16743,
+        "channel_sample_count": 33486,
+        "sample_peak_normalized": 0.1628112793,
+        "sample_peak_dbfs": -15.76631,
+        "rms_normalized": 0.0161506933,
+        "rms_dbfs": -35.836177,
+        "crest_factor_db": 20.069866,
+        "sample_peak_headroom_db": 15.76631,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 33180,
+        "nonzero_sample_percent": 99.086185,
+        "exact_zero_frame_count": 6,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2791,
+        "silent_frame_percent_at_threshold": 16.669653,
+        "longest_silence_seconds_at_threshold": 0.00029167,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.785869,
+            "rms_dbfs": -35.874113,
+            "dc_normalized": 8.44934e-05,
+            "absolute_dc_dbfs": -81.463545,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16619
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.76631,
+            "rms_dbfs": -35.798568,
+            "dc_normalized": 8.17156e-05,
+            "absolute_dc_dbfs": -81.753902,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16561
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        13
+      ]
+    },
+    {
+      "name": "31: M4A1_sustained_12 / 650 cm / standing infected / phase 3",
+      "start_seconds": 19.493538998,
+      "end_seconds": 20.6102142,
+      "coverage": "complete",
+      "available_start_seconds": 19.49354167,
+      "available_end_seconds": 20.61020833,
+      "requested_duration_seconds": 1.1166752020000033,
+      "covered_duration_seconds": 1.11666667,
+      "covered_fraction": 0.99999236,
+      "metrics": {
+        "duration_seconds": 1.11666667,
+        "frame_count": 53600,
+        "channel_sample_count": 107200,
+        "sample_peak_normalized": 0.1747741699,
+        "sample_peak_dbfs": -15.150455,
+        "rms_normalized": 0.0210299486,
+        "rms_dbfs": -33.543236,
+        "crest_factor_db": 18.392781,
+        "sample_peak_headroom_db": 15.150455,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 106818,
+        "nonzero_sample_percent": 99.643657,
+        "exact_zero_frame_count": 4,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3372,
+        "silent_frame_percent_at_threshold": 6.291045,
+        "longest_silence_seconds_at_threshold": 0.00016667,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.179319,
+            "rms_dbfs": -33.590868,
+            "dc_normalized": -8.9674e-06,
+            "absolute_dc_dbfs": -100.946683,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 53395
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.150455,
+            "rms_dbfs": -33.49612,
+            "dc_normalized": -1.10404e-05,
+            "absolute_dc_dbfs": -99.14029,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 53423
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        13
+      ]
+    },
+    {
+      "name": "32: M4A1_sustained_12 / 650 cm / standing infected / phase 5",
+      "start_seconds": 20.6102142,
+      "end_seconds": 21.419267897,
+      "coverage": "complete",
+      "available_start_seconds": 20.61020833,
+      "available_end_seconds": 21.41927083,
+      "requested_duration_seconds": 0.8090536969999995,
+      "covered_duration_seconds": 0.8090625,
+      "covered_fraction": 1.00001088,
+      "metrics": {
+        "duration_seconds": 0.8090625,
+        "frame_count": 38835,
+        "channel_sample_count": 77670,
+        "sample_peak_normalized": 0.0096435547,
+        "sample_peak_dbfs": -40.315257,
+        "rms_normalized": 0.0021386408,
+        "rms_dbfs": -53.397243,
+        "crest_factor_db": 13.081986,
+        "sample_peak_headroom_db": 40.315257,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 76780,
+        "nonzero_sample_percent": 98.854126,
+        "exact_zero_frame_count": 10,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 9230,
+        "silent_frame_percent_at_threshold": 23.76722,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -40.315257,
+            "rms_dbfs": -52.154518,
+            "dc_normalized": 8.5129e-06,
+            "absolute_dc_dbfs": -101.39849,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38464
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -44.031654,
+            "rms_dbfs": -55.144862,
+            "dc_normalized": 8.663e-06,
+            "absolute_dc_dbfs": -101.246681,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38316
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "33: M4A1_sustained_12 / 1000 cm / wall only / phase 2",
+      "start_seconds": 21.419267897,
+      "end_seconds": 21.772535399,
+      "coverage": "complete",
+      "available_start_seconds": 21.41927083,
+      "available_end_seconds": 21.77254167,
+      "requested_duration_seconds": 0.3532675019999978,
+      "covered_duration_seconds": 0.35327083,
+      "covered_fraction": 1.00000943,
+      "metrics": {
+        "duration_seconds": 0.35327083,
+        "frame_count": 16957,
+        "channel_sample_count": 33914,
+        "sample_peak_normalized": 0.1411132812,
+        "sample_peak_dbfs": -17.008642,
+        "rms_normalized": 0.0109477024,
+        "rms_dbfs": -39.21354,
+        "crest_factor_db": 22.204898,
+        "sample_peak_headroom_db": 17.008642,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 33584,
+        "nonzero_sample_percent": 99.026951,
+        "exact_zero_frame_count": 4,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3254,
+        "silent_frame_percent_at_threshold": 19.189715,
+        "longest_silence_seconds_at_threshold": 0.000375,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -17.118281,
+            "rms_dbfs": -39.150857,
+            "dc_normalized": 1.19284e-05,
+            "absolute_dc_dbfs": -98.468329,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16831
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -17.008642,
+            "rms_dbfs": -39.277142,
+            "dc_normalized": 2.13211e-05,
+            "absolute_dc_dbfs": -93.423811,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16753
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        14
+      ]
+    },
+    {
+      "name": "34: M4A1_sustained_12 / 1000 cm / wall only / phase 3",
+      "start_seconds": 21.772535399,
+      "end_seconds": 22.906045999,
+      "coverage": "complete",
+      "available_start_seconds": 21.77254167,
+      "available_end_seconds": 22.90604167,
+      "requested_duration_seconds": 1.133510600000001,
+      "covered_duration_seconds": 1.1335,
+      "covered_fraction": 0.99999065,
+      "metrics": {
+        "duration_seconds": 1.1335,
+        "frame_count": 54408,
+        "channel_sample_count": 108816,
+        "sample_peak_normalized": 0.1509399414,
+        "sample_peak_dbfs": -16.423916,
+        "rms_normalized": 0.0161062516,
+        "rms_dbfs": -35.86011,
+        "crest_factor_db": 19.436194,
+        "sample_peak_headroom_db": 16.423916,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 108295,
+        "nonzero_sample_percent": 99.52121,
+        "exact_zero_frame_count": 4,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 4942,
+        "silent_frame_percent_at_threshold": 9.083223,
+        "longest_silence_seconds_at_threshold": 0.00025,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.469697,
+            "rms_dbfs": -35.838538,
+            "dc_normalized": 5.0997e-06,
+            "absolute_dc_dbfs": -105.849065,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 54171
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.423916,
+            "rms_dbfs": -35.881791,
+            "dc_normalized": 4.9045e-06,
+            "absolute_dc_dbfs": -106.188051,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 54124
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        14
+      ]
+    },
+    {
+      "name": "35: M4A1_sustained_12 / 1000 cm / wall only / phase 5",
+      "start_seconds": 22.906045999,
+      "end_seconds": 23.686188199,
+      "coverage": "complete",
+      "available_start_seconds": 22.90604167,
+      "available_end_seconds": 23.6861875,
+      "requested_duration_seconds": 0.7801422000000002,
+      "covered_duration_seconds": 0.78014583,
+      "covered_fraction": 1.00000466,
+      "metrics": {
+        "duration_seconds": 0.78014583,
+        "frame_count": 37447,
+        "channel_sample_count": 74894,
+        "sample_peak_normalized": 0.010345459,
+        "sample_peak_dbfs": -39.705005,
+        "rms_normalized": 0.0020967068,
+        "rms_dbfs": -53.569246,
+        "crest_factor_db": 13.864241,
+        "sample_peak_headroom_db": 39.705005,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 74097,
+        "nonzero_sample_percent": 98.935829,
+        "exact_zero_frame_count": 9,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 8571,
+        "silent_frame_percent_at_threshold": 22.888349,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -39.705005,
+            "rms_dbfs": -52.328619,
+            "dc_normalized": -6.963e-06,
+            "absolute_dc_dbfs": -103.144115,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37080
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -42.850759,
+            "rms_dbfs": -55.31269,
+            "dc_normalized": -9.9873e-06,
+            "absolute_dc_dbfs": -100.011073,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37017
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "36: M4A1_sustained_12 / 1000 cm / standing infected / phase 2",
+      "start_seconds": 23.686188199,
+      "end_seconds": 24.069153897,
+      "coverage": "complete",
+      "available_start_seconds": 23.6861875,
+      "available_end_seconds": 24.06914583,
+      "requested_duration_seconds": 0.3829656979999996,
+      "covered_duration_seconds": 0.38295833,
+      "covered_fraction": 0.99998077,
+      "metrics": {
+        "duration_seconds": 0.38295833,
+        "frame_count": 18382,
+        "channel_sample_count": 36764,
+        "sample_peak_normalized": 0.2035827637,
+        "sample_peak_dbfs": -13.82518,
+        "rms_normalized": 0.0163858365,
+        "rms_dbfs": -35.710628,
+        "crest_factor_db": 21.885448,
+        "sample_peak_headroom_db": 13.82518,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 36444,
+        "nonzero_sample_percent": 99.129583,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3276,
+        "silent_frame_percent_at_threshold": 17.821782,
+        "longest_silence_seconds_at_threshold": 0.000375,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -13.835602,
+            "rms_dbfs": -35.774213,
+            "dc_normalized": 7.3779e-06,
+            "absolute_dc_dbfs": -102.641373,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 18231
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -13.82518,
+            "rms_dbfs": -35.64796,
+            "dc_normalized": 1.08776e-05,
+            "absolute_dc_dbfs": -99.269376,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 18213
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        15
+      ]
+    },
+    {
+      "name": "37: M4A1_sustained_12 / 1000 cm / standing infected / phase 3",
+      "start_seconds": 24.069153897,
+      "end_seconds": 25.1743658,
+      "coverage": "complete",
+      "available_start_seconds": 24.06914583,
+      "available_end_seconds": 25.174375,
+      "requested_duration_seconds": 1.1052119030000007,
+      "covered_duration_seconds": 1.10522917,
+      "covered_fraction": 1.00001562,
+      "metrics": {
+        "duration_seconds": 1.10522917,
+        "frame_count": 53051,
+        "channel_sample_count": 106102,
+        "sample_peak_normalized": 0.2102661133,
+        "sample_peak_dbfs": -13.544614,
+        "rms_normalized": 0.0206889837,
+        "rms_dbfs": -33.685217,
+        "crest_factor_db": 20.140603,
+        "sample_peak_headroom_db": 13.544614,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 105727,
+        "nonzero_sample_percent": 99.646567,
+        "exact_zero_frame_count": 0,
+        "longest_exact_zero_seconds": 0.0,
+        "silent_frame_count_at_threshold": 3345,
+        "silent_frame_percent_at_threshold": 6.305253,
+        "longest_silence_seconds_at_threshold": 0.00020833,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -13.544614,
+            "rms_dbfs": -33.721443,
+            "dc_normalized": 9.5693e-06,
+            "absolute_dc_dbfs": -100.382414,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 52860
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -13.544614,
+            "rms_dbfs": -33.64929,
+            "dc_normalized": 8.6828e-06,
+            "absolute_dc_dbfs": -101.226783,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 52867
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        15
+      ]
+    },
+    {
+      "name": "38: M4A1_sustained_12 / 1000 cm / standing infected / phase 5",
+      "start_seconds": 25.1743658,
+      "end_seconds": 25.999045398,
+      "coverage": "complete",
+      "available_start_seconds": 25.174375,
+      "available_end_seconds": 25.99904167,
+      "requested_duration_seconds": 0.8246795979999995,
+      "covered_duration_seconds": 0.82466667,
+      "covered_fraction": 0.99998432,
+      "metrics": {
+        "duration_seconds": 0.82466667,
+        "frame_count": 39584,
+        "channel_sample_count": 79168,
+        "sample_peak_normalized": 0.0090637207,
+        "sample_peak_dbfs": -40.85387,
+        "rms_normalized": 0.0019187486,
+        "rms_dbfs": -54.339639,
+        "crest_factor_db": 13.485769,
+        "sample_peak_headroom_db": 40.85387,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 78165,
+        "nonzero_sample_percent": 98.733074,
+        "exact_zero_frame_count": 15,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 9959,
+        "silent_frame_percent_at_threshold": 25.159155,
+        "longest_silence_seconds_at_threshold": 0.000375,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -40.85387,
+            "rms_dbfs": -53.238336,
+            "dc_normalized": 5.8516e-06,
+            "absolute_dc_dbfs": -104.654557,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 39148
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -44.463877,
+            "rms_dbfs": -55.818721,
+            "dc_normalized": 9.7048e-06,
+            "absolute_dc_dbfs": -100.260258,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 39017
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "39: 870_three_shells / 300 cm / wall only / phase 1",
+      "start_seconds": 25.999045398,
+      "end_seconds": 27.178806197,
+      "coverage": "complete",
+      "available_start_seconds": 25.99904167,
+      "available_end_seconds": 27.1788125,
+      "requested_duration_seconds": 1.1797607990000003,
+      "covered_duration_seconds": 1.17977083,
+      "covered_fraction": 1.00000851,
+      "metrics": {
+        "duration_seconds": 1.17977083,
+        "frame_count": 56629,
+        "channel_sample_count": 113258,
+        "sample_peak_normalized": 0.0306396484,
+        "sample_peak_dbfs": -30.274324,
+        "rms_normalized": 0.0027933977,
+        "rms_dbfs": -51.077344,
+        "crest_factor_db": 20.80302,
+        "sample_peak_headroom_db": 30.274324,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 111921,
+        "nonzero_sample_percent": 98.819509,
+        "exact_zero_frame_count": 13,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 13217,
+        "silent_frame_percent_at_threshold": 23.339632,
+        "longest_silence_seconds_at_threshold": 0.00158333,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -30.528906,
+            "rms_dbfs": -50.629801,
+            "dc_normalized": -1.45687e-05,
+            "absolute_dc_dbfs": -96.73157,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 56070
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -30.274324,
+            "rms_dbfs": -51.576363,
+            "dc_normalized": -1.78771e-05,
+            "absolute_dc_dbfs": -94.954082,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 55851
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "40: 870_three_shells / 300 cm / wall only / phase 2",
+      "start_seconds": 27.178806197,
+      "end_seconds": 27.552291397,
+      "coverage": "complete",
+      "available_start_seconds": 27.1788125,
+      "available_end_seconds": 27.55229167,
+      "requested_duration_seconds": 0.37348520000000107,
+      "covered_duration_seconds": 0.37347917,
+      "covered_fraction": 0.99998385,
+      "metrics": {
+        "duration_seconds": 0.37347917,
+        "frame_count": 17927,
+        "channel_sample_count": 35854,
+        "sample_peak_normalized": 0.1778869629,
+        "sample_peak_dbfs": -14.997118,
+        "rms_normalized": 0.0107085868,
+        "rms_dbfs": -39.405357,
+        "crest_factor_db": 24.408239,
+        "sample_peak_headroom_db": 14.997118,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 35520,
+        "nonzero_sample_percent": 99.068444,
+        "exact_zero_frame_count": 7,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3587,
+        "silent_frame_percent_at_threshold": 20.008925,
+        "longest_silence_seconds_at_threshold": 0.00035417,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.037444,
+            "rms_dbfs": -39.3638,
+            "dc_normalized": 2.10373e-05,
+            "absolute_dc_dbfs": -93.540187,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17783
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -14.997118,
+            "rms_dbfs": -39.447315,
+            "dc_normalized": 1.80174e-05,
+            "absolute_dc_dbfs": -94.886154,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17737
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        16
+      ]
+    },
+    {
+      "name": "42: 870_three_shells / 300 cm / wall only / phase 4",
+      "start_seconds": 27.552291397,
+      "end_seconds": 28.3652847,
+      "coverage": "complete",
+      "available_start_seconds": 27.55229167,
+      "available_end_seconds": 28.36529167,
+      "requested_duration_seconds": 0.812993302999999,
+      "covered_duration_seconds": 0.813,
+      "covered_fraction": 1.00000824,
+      "metrics": {
+        "duration_seconds": 0.813,
+        "frame_count": 39024,
+        "channel_sample_count": 78048,
+        "sample_peak_normalized": 0.1679992676,
+        "sample_peak_dbfs": -15.493852,
+        "rms_normalized": 0.0145189211,
+        "rms_dbfs": -36.761313,
+        "crest_factor_db": 21.267461,
+        "sample_peak_headroom_db": 15.493852,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 77709,
+        "nonzero_sample_percent": 99.565652,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3132,
+        "silent_frame_percent_at_threshold": 8.02583,
+        "longest_silence_seconds_at_threshold": 0.00025,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.512807,
+            "rms_dbfs": -36.72795,
+            "dc_normalized": 6.1725e-06,
+            "absolute_dc_dbfs": -104.190792,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38854
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.493852,
+            "rms_dbfs": -36.794935,
+            "dc_normalized": 4.7555e-06,
+            "absolute_dc_dbfs": -106.456134,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38855
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        16,
+        17
+      ]
+    },
+    {
+      "name": "44: 870_three_shells / 300 cm / wall only / phase 4",
+      "start_seconds": 28.3652847,
+      "end_seconds": 29.181199297,
+      "coverage": "complete",
+      "available_start_seconds": 28.36529167,
+      "available_end_seconds": 29.18120833,
+      "requested_duration_seconds": 0.815914596999999,
+      "covered_duration_seconds": 0.81591667,
+      "covered_fraction": 1.00000254,
+      "metrics": {
+        "duration_seconds": 0.81591667,
+        "frame_count": 39164,
+        "channel_sample_count": 78328,
+        "sample_peak_normalized": 0.177154541,
+        "sample_peak_dbfs": -15.032954,
+        "rms_normalized": 0.0135530509,
+        "rms_dbfs": -37.359259,
+        "crest_factor_db": 22.326304,
+        "sample_peak_headroom_db": 15.032954,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 77952,
+        "nonzero_sample_percent": 99.519967,
+        "exact_zero_frame_count": 3,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3639,
+        "silent_frame_percent_at_threshold": 9.291696,
+        "longest_silence_seconds_at_threshold": 0.00029167,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.032954,
+            "rms_dbfs": -37.323817,
+            "dc_normalized": -1.3808e-06,
+            "absolute_dc_dbfs": -117.197465,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38997
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.055427,
+            "rms_dbfs": -37.394991,
+            "dc_normalized": 2.0852e-06,
+            "absolute_dc_dbfs": -113.617017,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38955
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        17,
+        18
+      ]
+    },
+    {
+      "name": "46: 870_three_shells / 300 cm / wall only / phase 5",
+      "start_seconds": 29.181199297,
+      "end_seconds": 29.995822899,
+      "coverage": "complete",
+      "available_start_seconds": 29.18120833,
+      "available_end_seconds": 29.9958125,
+      "requested_duration_seconds": 0.8146236020000011,
+      "covered_duration_seconds": 0.81460417,
+      "covered_fraction": 0.99997614,
+      "metrics": {
+        "duration_seconds": 0.81460417,
+        "frame_count": 39101,
+        "channel_sample_count": 78202,
+        "sample_peak_normalized": 0.0747680664,
+        "sample_peak_dbfs": -22.525677,
+        "rms_normalized": 0.0080894303,
+        "rms_dbfs": -41.841641,
+        "crest_factor_db": 19.315964,
+        "sample_peak_headroom_db": 22.525677,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 77751,
+        "nonzero_sample_percent": 99.423288,
+        "exact_zero_frame_count": 5,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 4993,
+        "silent_frame_percent_at_threshold": 12.769494,
+        "longest_silence_seconds_at_threshold": 0.00029167,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -22.525677,
+            "rms_dbfs": -41.751206,
+            "dc_normalized": -1.2175e-06,
+            "absolute_dc_dbfs": -118.290264,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38897
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -22.636281,
+            "rms_dbfs": -41.934,
+            "dc_normalized": -1.5719e-06,
+            "absolute_dc_dbfs": -116.071567,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38854
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        18
+      ]
+    },
+    {
+      "name": "47: 870_three_shells / 300 cm / standing infected / phase 2",
+      "start_seconds": 29.995822899,
+      "end_seconds": 30.344918899,
+      "coverage": "complete",
+      "available_start_seconds": 29.9958125,
+      "available_end_seconds": 30.34491667,
+      "requested_duration_seconds": 0.3490959999999994,
+      "covered_duration_seconds": 0.34910417,
+      "covered_fraction": 1.00002339,
+      "metrics": {
+        "duration_seconds": 0.34910417,
+        "frame_count": 16757,
+        "channel_sample_count": 33514,
+        "sample_peak_normalized": 0.0903930664,
+        "sample_peak_dbfs": -20.877298,
+        "rms_normalized": 0.0098647288,
+        "rms_dbfs": -40.118297,
+        "crest_factor_db": 19.240999,
+        "sample_peak_headroom_db": 20.877298,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 33246,
+        "nonzero_sample_percent": 99.200334,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2116,
+        "silent_frame_percent_at_threshold": 12.627559,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -20.877298,
+            "rms_dbfs": -40.361233,
+            "dc_normalized": -2.95487e-05,
+            "absolute_dc_dbfs": -90.58923,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16628
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -21.052058,
+            "rms_dbfs": -39.888233,
+            "dc_normalized": -3.51124e-05,
+            "absolute_dc_dbfs": -89.090784,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16618
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        19
+      ]
+    },
+    {
+      "name": "48: 870_three_shells / 300 cm / standing infected / phase 3",
+      "start_seconds": 30.344918899,
+      "end_seconds": 30.3782885,
+      "coverage": "complete",
+      "available_start_seconds": 30.34491667,
+      "available_end_seconds": 30.37829167,
+      "requested_duration_seconds": 0.033369601000000415,
+      "covered_duration_seconds": 0.033375,
+      "covered_fraction": 1.00016179,
+      "metrics": {
+        "duration_seconds": 0.033375,
+        "frame_count": 1602,
+        "channel_sample_count": 3204,
+        "sample_peak_normalized": 0.1869506836,
+        "sample_peak_dbfs": -14.565459,
+        "rms_normalized": 0.0411066611,
+        "rms_dbfs": -27.721756,
+        "crest_factor_db": 13.156297,
+        "sample_peak_headroom_db": 14.565459,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 3202,
+        "nonzero_sample_percent": 99.937578,
+        "exact_zero_frame_count": 0,
+        "longest_exact_zero_seconds": 0.0,
+        "silent_frame_count_at_threshold": 19,
+        "silent_frame_percent_at_threshold": 1.186017,
+        "longest_silence_seconds_at_threshold": 0.00010417,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -14.646656,
+            "rms_dbfs": -27.799368,
+            "dc_normalized": 0.0013083507,
+            "absolute_dc_dbfs": -57.665517,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 1602
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -14.565459,
+            "rms_dbfs": -27.645506,
+            "dc_normalized": 0.0014757021,
+            "absolute_dc_dbfs": -56.620026,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 1600
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        19
+      ]
+    },
+    {
+      "name": "49: 870_three_shells / 300 cm / standing infected / phase 4",
+      "start_seconds": 30.3782885,
+      "end_seconds": 31.168990199,
+      "coverage": "complete",
+      "available_start_seconds": 30.37829167,
+      "available_end_seconds": 31.169,
+      "requested_duration_seconds": 0.7907016989999995,
+      "covered_duration_seconds": 0.79070833,
+      "covered_fraction": 1.00000839,
+      "metrics": {
+        "duration_seconds": 0.79070833,
+        "frame_count": 37954,
+        "channel_sample_count": 75908,
+        "sample_peak_normalized": 0.1821594238,
+        "sample_peak_dbfs": -14.790967,
+        "rms_normalized": 0.0154753925,
+        "rms_dbfs": -36.207167,
+        "crest_factor_db": 21.416199,
+        "sample_peak_headroom_db": 14.790967,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 75581,
+        "nonzero_sample_percent": 99.569215,
+        "exact_zero_frame_count": 7,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2816,
+        "silent_frame_percent_at_threshold": 7.419508,
+        "longest_silence_seconds_at_threshold": 0.0001875,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -14.825962,
+            "rms_dbfs": -36.295798,
+            "dc_normalized": -2.78529e-05,
+            "absolute_dc_dbfs": -91.102592,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37802
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -14.790967,
+            "rms_dbfs": -36.120308,
+            "dc_normalized": -2.90936e-05,
+            "absolute_dc_dbfs": -90.724058,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37779
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        19,
+        20
+      ]
+    },
+    {
+      "name": "51: 870_three_shells / 300 cm / standing infected / phase 4",
+      "start_seconds": 31.168990199,
+      "end_seconds": 31.978919797,
+      "coverage": "complete",
+      "available_start_seconds": 31.169,
+      "available_end_seconds": 31.97891667,
+      "requested_duration_seconds": 0.8099295980000001,
+      "covered_duration_seconds": 0.80991667,
+      "covered_fraction": 0.99998403,
+      "metrics": {
+        "duration_seconds": 0.80991667,
+        "frame_count": 38876,
+        "channel_sample_count": 77752,
+        "sample_peak_normalized": 0.2012329102,
+        "sample_peak_dbfs": -13.92602,
+        "rms_normalized": 0.0175499003,
+        "rms_dbfs": -35.114507,
+        "crest_factor_db": 21.188487,
+        "sample_peak_headroom_db": 13.92602,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 77439,
+        "nonzero_sample_percent": 99.597438,
+        "exact_zero_frame_count": 2,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2820,
+        "silent_frame_percent_at_threshold": 7.253833,
+        "longest_silence_seconds_at_threshold": 0.00022917,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -13.974895,
+            "rms_dbfs": -35.179553,
+            "dc_normalized": -3.02413e-05,
+            "absolute_dc_dbfs": -90.388003,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38738
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -13.92602,
+            "rms_dbfs": -35.050421,
+            "dc_normalized": -3.34393e-05,
+            "absolute_dc_dbfs": -89.514846,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38701
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        20,
+        21
+      ]
+    },
+    {
+      "name": "53: 870_three_shells / 300 cm / standing infected / phase 5",
+      "start_seconds": 31.978919797,
+      "end_seconds": 32.779417899,
+      "coverage": "complete",
+      "available_start_seconds": 31.97891667,
+      "available_end_seconds": 32.77941667,
+      "requested_duration_seconds": 0.8004981020000024,
+      "covered_duration_seconds": 0.8005,
+      "covered_fraction": 1.00000237,
+      "metrics": {
+        "duration_seconds": 0.8005,
+        "frame_count": 38424,
+        "channel_sample_count": 76848,
+        "sample_peak_normalized": 0.0714416504,
+        "sample_peak_dbfs": -22.92097,
+        "rms_normalized": 0.0072875836,
+        "rms_dbfs": -42.748329,
+        "crest_factor_db": 19.827359,
+        "sample_peak_headroom_db": 22.92097,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 76341,
+        "nonzero_sample_percent": 99.340256,
+        "exact_zero_frame_count": 4,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 5025,
+        "silent_frame_percent_at_threshold": 13.077764,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -23.051813,
+            "rms_dbfs": -42.804921,
+            "dc_normalized": -5.9639e-06,
+            "absolute_dc_dbfs": -104.489408,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38206
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -22.92097,
+            "rms_dbfs": -42.692465,
+            "dc_normalized": -7.1648e-06,
+            "absolute_dc_dbfs": -102.895957,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38135
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        21
+      ]
+    },
+    {
+      "name": "54: 870_three_shells / 650 cm / wall only / phase 2",
+      "start_seconds": 32.779417899,
+      "end_seconds": 33.128434896,
+      "coverage": "complete",
+      "available_start_seconds": 32.77941667,
+      "available_end_seconds": 33.1284375,
+      "requested_duration_seconds": 0.34901699699999966,
+      "covered_duration_seconds": 0.34902083,
+      "covered_fraction": 1.00001099,
+      "metrics": {
+        "duration_seconds": 0.34902083,
+        "frame_count": 16753,
+        "channel_sample_count": 33506,
+        "sample_peak_normalized": 0.1921386719,
+        "sample_peak_dbfs": -14.327704,
+        "rms_normalized": 0.0146077087,
+        "rms_dbfs": -36.708358,
+        "crest_factor_db": 22.380654,
+        "sample_peak_headroom_db": 14.327704,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 33212,
+        "nonzero_sample_percent": 99.122545,
+        "exact_zero_frame_count": 3,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3261,
+        "silent_frame_percent_at_threshold": 19.46517,
+        "longest_silence_seconds_at_threshold": 0.00033333,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -14.329084,
+            "rms_dbfs": -36.682749,
+            "dc_normalized": -7.3867e-06,
+            "absolute_dc_dbfs": -102.631033,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16610
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -14.327704,
+            "rms_dbfs": -36.734119,
+            "dc_normalized": -4.2589e-06,
+            "absolute_dc_dbfs": -107.41396,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16602
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        22
+      ]
+    },
+    {
+      "name": "55: 870_three_shells / 650 cm / wall only / phase 3",
+      "start_seconds": 33.128434896,
+      "end_seconds": 33.1620197,
+      "coverage": "complete",
+      "available_start_seconds": 33.1284375,
+      "available_end_seconds": 33.16202083,
+      "requested_duration_seconds": 0.03358480400000019,
+      "covered_duration_seconds": 0.03358333,
+      "covered_fraction": 0.99995621,
+      "metrics": {
+        "duration_seconds": 0.03358333,
+        "frame_count": 1612,
+        "channel_sample_count": 3224,
+        "sample_peak_normalized": 0.0302734375,
+        "sample_peak_dbfs": -30.378765,
+        "rms_normalized": 0.0089572241,
+        "rms_dbfs": -40.956531,
+        "crest_factor_db": 10.577766,
+        "sample_peak_headroom_db": 30.378765,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 3217,
+        "nonzero_sample_percent": 99.782878,
+        "exact_zero_frame_count": 0,
+        "longest_exact_zero_seconds": 0.0,
+        "silent_frame_count_at_threshold": 83,
+        "silent_frame_percent_at_threshold": 5.148883,
+        "longest_silence_seconds_at_threshold": 6.25e-05,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -30.502222,
+            "rms_dbfs": -40.910161,
+            "dc_normalized": -3.78062e-05,
+            "absolute_dc_dbfs": -88.448738,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 1608
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -30.378765,
+            "rms_dbfs": -41.003402,
+            "dc_normalized": -2.07868e-05,
+            "absolute_dc_dbfs": -93.644253,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 1609
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "56: 870_three_shells / 650 cm / wall only / phase 4",
+      "start_seconds": 33.1620197,
+      "end_seconds": 33.969585598,
+      "coverage": "complete",
+      "available_start_seconds": 33.16202083,
+      "available_end_seconds": 33.96958333,
+      "requested_duration_seconds": 0.807565898,
+      "covered_duration_seconds": 0.8075625,
+      "covered_fraction": 0.99999579,
+      "metrics": {
+        "duration_seconds": 0.8075625,
+        "frame_count": 38763,
+        "channel_sample_count": 77526,
+        "sample_peak_normalized": 0.1734924316,
+        "sample_peak_dbfs": -15.214389,
+        "rms_normalized": 0.0130122738,
+        "rms_dbfs": -37.712936,
+        "crest_factor_db": 22.498547,
+        "sample_peak_headroom_db": 15.214389,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 77158,
+        "nonzero_sample_percent": 99.525321,
+        "exact_zero_frame_count": 3,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3540,
+        "silent_frame_percent_at_threshold": 9.13242,
+        "longest_silence_seconds_at_threshold": 0.00025,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.295746,
+            "rms_dbfs": -37.680472,
+            "dc_normalized": 9.68e-08,
+            "absolute_dc_dbfs": -140.279244,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38579
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.214389,
+            "rms_dbfs": -37.745645,
+            "dc_normalized": -4.369e-07,
+            "absolute_dc_dbfs": -127.191487,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38579
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        23
+      ]
+    },
+    {
+      "name": "58: 870_three_shells / 650 cm / wall only / phase 4",
+      "start_seconds": 33.969585598,
+      "end_seconds": 34.7398315,
+      "coverage": "complete",
+      "available_start_seconds": 33.96958333,
+      "available_end_seconds": 34.73983333,
+      "requested_duration_seconds": 0.7702459019999992,
+      "covered_duration_seconds": 0.77025,
+      "covered_fraction": 1.00000532,
+      "metrics": {
+        "duration_seconds": 0.77025,
+        "frame_count": 36972,
+        "channel_sample_count": 73944,
+        "sample_peak_normalized": 0.1540527344,
+        "sample_peak_dbfs": -16.246612,
+        "rms_normalized": 0.0100775274,
+        "rms_dbfs": -39.93292,
+        "crest_factor_db": 23.686308,
+        "sample_peak_headroom_db": 16.246612,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 73561,
+        "nonzero_sample_percent": 99.48204,
+        "exact_zero_frame_count": 4,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3732,
+        "silent_frame_percent_at_threshold": 10.094125,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.329599,
+            "rms_dbfs": -39.873058,
+            "dc_normalized": -2.67124e-05,
+            "absolute_dc_dbfs": -91.465751,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 36803
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.246612,
+            "rms_dbfs": -39.993619,
+            "dc_normalized": -2.7466e-05,
+            "absolute_dc_dbfs": -91.224096,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 36758
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        24
+      ]
+    },
+    {
+      "name": "59: 870_three_shells / 650 cm / wall only / phase 3",
+      "start_seconds": 34.7398315,
+      "end_seconds": 34.773496799,
+      "coverage": "complete",
+      "available_start_seconds": 34.73983333,
+      "available_end_seconds": 34.7735,
+      "requested_duration_seconds": 0.03366529899999904,
+      "covered_duration_seconds": 0.03366667,
+      "covered_fraction": 1.00004063,
+      "metrics": {
+        "duration_seconds": 0.03366667,
+        "frame_count": 1616,
+        "channel_sample_count": 3232,
+        "sample_peak_normalized": 0.1430664062,
+        "sample_peak_dbfs": -16.889247,
+        "rms_normalized": 0.0335297632,
+        "rms_dbfs": -29.49139,
+        "crest_factor_db": 12.602144,
+        "sample_peak_headroom_db": 16.889247,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 3229,
+        "nonzero_sample_percent": 99.907178,
+        "exact_zero_frame_count": 0,
+        "longest_exact_zero_seconds": 0.0,
+        "silent_frame_count_at_threshold": 27,
+        "silent_frame_percent_at_threshold": 1.670792,
+        "longest_silence_seconds_at_threshold": 4.167e-05,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.889247,
+            "rms_dbfs": -29.477954,
+            "dc_normalized": 0.0010002816,
+            "absolute_dc_dbfs": -59.997554,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 1615
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -17.03498,
+            "rms_dbfs": -29.504868,
+            "dc_normalized": 0.0010865089,
+            "absolute_dc_dbfs": -59.279334,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 1614
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        24
+      ]
+    },
+    {
+      "name": "60: 870_three_shells / 650 cm / wall only / phase 5",
+      "start_seconds": 34.773496799,
+      "end_seconds": 35.582238097,
+      "coverage": "complete",
+      "available_start_seconds": 34.7735,
+      "available_end_seconds": 35.58222917,
+      "requested_duration_seconds": 0.808741298000001,
+      "covered_duration_seconds": 0.80872917,
+      "covered_fraction": 0.999985,
+      "metrics": {
+        "duration_seconds": 0.80872917,
+        "frame_count": 38819,
+        "channel_sample_count": 77638,
+        "sample_peak_normalized": 0.0721435547,
+        "sample_peak_dbfs": -22.836049,
+        "rms_normalized": 0.0079517361,
+        "rms_dbfs": -41.990761,
+        "crest_factor_db": 19.154712,
+        "sample_peak_headroom_db": 22.836049,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 77124,
+        "nonzero_sample_percent": 99.337953,
+        "exact_zero_frame_count": 4,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 5077,
+        "silent_frame_percent_at_threshold": 13.078647,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -22.87287,
+            "rms_dbfs": -41.932249,
+            "dc_normalized": -1.32293e-05,
+            "absolute_dc_dbfs": -97.569236,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38587
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -22.836049,
+            "rms_dbfs": -42.050071,
+            "dc_normalized": -1.14511e-05,
+            "absolute_dc_dbfs": -98.823079,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38537
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        24
+      ]
+    },
+    {
+      "name": "61: 870_three_shells / 650 cm / standing infected / phase 2",
+      "start_seconds": 35.582238097,
+      "end_seconds": 35.945847098,
+      "coverage": "complete",
+      "available_start_seconds": 35.58222917,
+      "available_end_seconds": 35.94585417,
+      "requested_duration_seconds": 0.3636090010000004,
+      "covered_duration_seconds": 0.363625,
+      "covered_fraction": 1.000044,
+      "metrics": {
+        "duration_seconds": 0.363625,
+        "frame_count": 17454,
+        "channel_sample_count": 34908,
+        "sample_peak_normalized": 0.2241210938,
+        "sample_peak_dbfs": -12.990345,
+        "rms_normalized": 0.017554076,
+        "rms_dbfs": -35.112441,
+        "crest_factor_db": 22.122095,
+        "sample_peak_headroom_db": 12.990345,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 34664,
+        "nonzero_sample_percent": 99.30102,
+        "exact_zero_frame_count": 3,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2735,
+        "silent_frame_percent_at_threshold": 15.669761,
+        "longest_silence_seconds_at_threshold": 0.00027083,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -13.037783,
+            "rms_dbfs": -35.20782,
+            "dc_normalized": 2.94003e-05,
+            "absolute_dc_dbfs": -90.632961,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17352
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -12.990345,
+            "rms_dbfs": -35.019111,
+            "dc_normalized": 2.1548e-05,
+            "absolute_dc_dbfs": -93.331864,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17312
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        25
+      ]
+    },
+    {
+      "name": "63: 870_three_shells / 650 cm / standing infected / phase 4",
+      "start_seconds": 35.945847098,
+      "end_seconds": 36.763771798,
+      "coverage": "complete",
+      "available_start_seconds": 35.94585417,
+      "available_end_seconds": 36.76377083,
+      "requested_duration_seconds": 0.817924699999999,
+      "covered_duration_seconds": 0.81791667,
+      "covered_fraction": 0.99999018,
+      "metrics": {
+        "duration_seconds": 0.81791667,
+        "frame_count": 39260,
+        "channel_sample_count": 78520,
+        "sample_peak_normalized": 0.2054748535,
+        "sample_peak_dbfs": -13.744826,
+        "rms_normalized": 0.0148408674,
+        "rms_dbfs": -36.570814,
+        "crest_factor_db": 22.825988,
+        "sample_peak_headroom_db": 13.744826,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 78161,
+        "nonzero_sample_percent": 99.542792,
+        "exact_zero_frame_count": 5,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3382,
+        "silent_frame_percent_at_threshold": 8.614366,
+        "longest_silence_seconds_at_threshold": 0.00029167,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -13.799178,
+            "rms_dbfs": -36.64402,
+            "dc_normalized": -2.1089e-06,
+            "absolute_dc_dbfs": -113.519009,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 39086
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -13.744826,
+            "rms_dbfs": -36.498822,
+            "dc_normalized": -1.3712e-06,
+            "absolute_dc_dbfs": -117.258033,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 39075
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        26
+      ]
+    },
+    {
+      "name": "65: 870_three_shells / 650 cm / standing infected / phase 4",
+      "start_seconds": 36.763771798,
+      "end_seconds": 37.561573997,
+      "coverage": "complete",
+      "available_start_seconds": 36.76377083,
+      "available_end_seconds": 37.56158333,
+      "requested_duration_seconds": 0.797802199000003,
+      "covered_duration_seconds": 0.7978125,
+      "covered_fraction": 1.00001291,
+      "metrics": {
+        "duration_seconds": 0.7978125,
+        "frame_count": 38295,
+        "channel_sample_count": 76590,
+        "sample_peak_normalized": 0.1974182129,
+        "sample_peak_dbfs": -14.092256,
+        "rms_normalized": 0.0141508073,
+        "rms_dbfs": -36.984376,
+        "crest_factor_db": 22.89212,
+        "sample_peak_headroom_db": 14.092256,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 76291,
+        "nonzero_sample_percent": 99.60961,
+        "exact_zero_frame_count": 5,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2850,
+        "silent_frame_percent_at_threshold": 7.442225,
+        "longest_silence_seconds_at_threshold": 0.00020833,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -14.092256,
+            "rms_dbfs": -37.107179,
+            "dc_normalized": -2.09332e-05,
+            "absolute_dc_dbfs": -93.5833,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38150
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -14.129933,
+            "rms_dbfs": -36.86495,
+            "dc_normalized": -2.24258e-05,
+            "absolute_dc_dbfs": -92.98505,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38141
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        26,
+        27
+      ]
+    },
+    {
+      "name": "67: 870_three_shells / 650 cm / standing infected / phase 5",
+      "start_seconds": 37.561573997,
+      "end_seconds": 38.379286699,
+      "coverage": "complete",
+      "available_start_seconds": 37.56158333,
+      "available_end_seconds": 38.37929167,
+      "requested_duration_seconds": 0.8177127019999944,
+      "covered_duration_seconds": 0.81770833,
+      "covered_fraction": 0.99999466,
+      "metrics": {
+        "duration_seconds": 0.81770833,
+        "frame_count": 39250,
+        "channel_sample_count": 78500,
+        "sample_peak_normalized": 0.0728759766,
+        "sample_peak_dbfs": -22.748312,
+        "rms_normalized": 0.0074457418,
+        "rms_dbfs": -42.561841,
+        "crest_factor_db": 19.813528,
+        "sample_peak_headroom_db": 22.748312,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 78038,
+        "nonzero_sample_percent": 99.411465,
+        "exact_zero_frame_count": 3,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 4345,
+        "silent_frame_percent_at_threshold": 11.070064,
+        "longest_silence_seconds_at_threshold": 0.00035417,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -22.748312,
+            "rms_dbfs": -42.645111,
+            "dc_normalized": 5.621e-07,
+            "absolute_dc_dbfs": -125.003026,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 39049
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -22.773811,
+            "rms_dbfs": -42.480137,
+            "dc_normalized": -3.95e-07,
+            "absolute_dc_dbfs": -128.068518,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38989
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        27
+      ]
+    },
+    {
+      "name": "68: 870_three_shells / 1000 cm / wall only / phase 2",
+      "start_seconds": 38.379286699,
+      "end_seconds": 38.741395898,
+      "coverage": "complete",
+      "available_start_seconds": 38.37929167,
+      "available_end_seconds": 38.74139583,
+      "requested_duration_seconds": 0.3621091990000025,
+      "covered_duration_seconds": 0.36210417,
+      "covered_fraction": 0.9999861,
+      "metrics": {
+        "duration_seconds": 0.36210417,
+        "frame_count": 17381,
+        "channel_sample_count": 34762,
+        "sample_peak_normalized": 0.1719970703,
+        "sample_peak_dbfs": -15.289579,
+        "rms_normalized": 0.0188491961,
+        "rms_dbfs": -34.494143,
+        "crest_factor_db": 19.204564,
+        "sample_peak_headroom_db": 15.289579,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 34480,
+        "nonzero_sample_percent": 99.188769,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2680,
+        "silent_frame_percent_at_threshold": 15.419136,
+        "longest_silence_seconds_at_threshold": 0.00027083,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.315818,
+            "rms_dbfs": -34.482395,
+            "dc_normalized": -9.8746e-06,
+            "absolute_dc_dbfs": -100.109588,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17263
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.289579,
+            "rms_dbfs": -34.505924,
+            "dc_normalized": -1.83218e-05,
+            "absolute_dc_dbfs": -94.740645,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 17217
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        28
+      ]
+    },
+    {
+      "name": "70: 870_three_shells / 1000 cm / wall only / phase 4",
+      "start_seconds": 38.741395898,
+      "end_seconds": 39.524348598,
+      "coverage": "complete",
+      "available_start_seconds": 38.74139583,
+      "available_end_seconds": 39.52435417,
+      "requested_duration_seconds": 0.7829527000000027,
+      "covered_duration_seconds": 0.78295833,
+      "covered_fraction": 1.00000719,
+      "metrics": {
+        "duration_seconds": 0.78295833,
+        "frame_count": 37582,
+        "channel_sample_count": 75164,
+        "sample_peak_normalized": 0.150970459,
+        "sample_peak_dbfs": -16.42216,
+        "rms_normalized": 0.0130866883,
+        "rms_dbfs": -37.663405,
+        "crest_factor_db": 21.241244,
+        "sample_peak_headroom_db": 16.42216,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 74761,
+        "nonzero_sample_percent": 99.463839,
+        "exact_zero_frame_count": 5,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3805,
+        "silent_frame_percent_at_threshold": 10.124528,
+        "longest_silence_seconds_at_threshold": 0.00022917,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -16.42216,
+            "rms_dbfs": -37.622194,
+            "dc_normalized": -3.6582e-06,
+            "absolute_dc_dbfs": -108.734701,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37413
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -16.460874,
+            "rms_dbfs": -37.70501,
+            "dc_normalized": 3.1076e-06,
+            "absolute_dc_dbfs": -110.151427,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37348
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        29
+      ]
+    },
+    {
+      "name": "72: 870_three_shells / 1000 cm / wall only / phase 4",
+      "start_seconds": 39.524348598,
+      "end_seconds": 40.316052899,
+      "coverage": "complete",
+      "available_start_seconds": 39.52435417,
+      "available_end_seconds": 40.3160625,
+      "requested_duration_seconds": 0.7917043009999958,
+      "covered_duration_seconds": 0.79170833,
+      "covered_fraction": 1.00000509,
+      "metrics": {
+        "duration_seconds": 0.79170833,
+        "frame_count": 38002,
+        "channel_sample_count": 76004,
+        "sample_peak_normalized": 0.1877441406,
+        "sample_peak_dbfs": -14.528672,
+        "rms_normalized": 0.0139677939,
+        "rms_dbfs": -37.097444,
+        "crest_factor_db": 22.568771,
+        "sample_peak_headroom_db": 14.528672,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 75662,
+        "nonzero_sample_percent": 99.550024,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3437,
+        "silent_frame_percent_at_threshold": 9.044261,
+        "longest_silence_seconds_at_threshold": 0.00022917,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -14.528672,
+            "rms_dbfs": -37.066873,
+            "dc_normalized": 5.5282e-06,
+            "absolute_dc_dbfs": -105.148311,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37837
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -14.59244,
+            "rms_dbfs": -37.128231,
+            "dc_normalized": 5.4792e-06,
+            "absolute_dc_dbfs": -105.22562,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37825
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        30
+      ]
+    },
+    {
+      "name": "73: 870_three_shells / 1000 cm / wall only / phase 3",
+      "start_seconds": 40.316052899,
+      "end_seconds": 40.3497658,
+      "coverage": "complete",
+      "available_start_seconds": 40.3160625,
+      "available_end_seconds": 40.34977083,
+      "requested_duration_seconds": 0.03371290100000124,
+      "covered_duration_seconds": 0.03370833,
+      "covered_fraction": 0.99986451,
+      "metrics": {
+        "duration_seconds": 0.03370833,
+        "frame_count": 1618,
+        "channel_sample_count": 3236,
+        "sample_peak_normalized": 0.0383911133,
+        "sample_peak_dbfs": -28.315386,
+        "rms_normalized": 0.010042746,
+        "rms_dbfs": -39.96295,
+        "crest_factor_db": 11.647565,
+        "sample_peak_headroom_db": 28.315386,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 3230,
+        "nonzero_sample_percent": 99.814586,
+        "exact_zero_frame_count": 0,
+        "longest_exact_zero_seconds": 0.0,
+        "silent_frame_count_at_threshold": 71,
+        "silent_frame_percent_at_threshold": 4.388133,
+        "longest_silence_seconds_at_threshold": 6.25e-05,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -28.631783,
+            "rms_dbfs": -39.935964,
+            "dc_normalized": -0.0001311049,
+            "absolute_dc_dbfs": -77.647623,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 1616
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -28.315386,
+            "rms_dbfs": -39.990105,
+            "dc_normalized": -0.0002283537,
+            "absolute_dc_dbfs": -72.827838,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 1614
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "74: 870_three_shells / 1000 cm / wall only / phase 5",
+      "start_seconds": 40.3497658,
+      "end_seconds": 41.125437196,
+      "coverage": "complete",
+      "available_start_seconds": 40.34977083,
+      "available_end_seconds": 41.1254375,
+      "requested_duration_seconds": 0.7756713959999999,
+      "covered_duration_seconds": 0.77566667,
+      "covered_fraction": 0.9999939,
+      "metrics": {
+        "duration_seconds": 0.77566667,
+        "frame_count": 37232,
+        "channel_sample_count": 74464,
+        "sample_peak_normalized": 0.0861206055,
+        "sample_peak_dbfs": -21.297859,
+        "rms_normalized": 0.0068607327,
+        "rms_dbfs": -43.27259,
+        "crest_factor_db": 21.974732,
+        "sample_peak_headroom_db": 21.297859,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 73927,
+        "nonzero_sample_percent": 99.278846,
+        "exact_zero_frame_count": 10,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 5307,
+        "silent_frame_percent_at_threshold": 14.253868,
+        "longest_silence_seconds_at_threshold": 0.000375,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -21.297859,
+            "rms_dbfs": -43.159411,
+            "dc_normalized": -3.5426e-06,
+            "absolute_dc_dbfs": -109.013631,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37007
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -21.328692,
+            "rms_dbfs": -43.388798,
+            "dc_normalized": -5.0983e-06,
+            "absolute_dc_dbfs": -105.851518,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 36920
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "75: 870_three_shells / 1000 cm / standing infected / phase 2",
+      "start_seconds": 41.125437196,
+      "end_seconds": 41.478375997,
+      "coverage": "complete",
+      "available_start_seconds": 41.1254375,
+      "available_end_seconds": 41.478375,
+      "requested_duration_seconds": 0.3529388010000005,
+      "covered_duration_seconds": 0.3529375,
+      "covered_fraction": 0.99999631,
+      "metrics": {
+        "duration_seconds": 0.3529375,
+        "frame_count": 16941,
+        "channel_sample_count": 33882,
+        "sample_peak_normalized": 0.1783447266,
+        "sample_peak_dbfs": -14.974795,
+        "rms_normalized": 0.0194832253,
+        "rms_dbfs": -34.206783,
+        "crest_factor_db": 19.231988,
+        "sample_peak_headroom_db": 14.974795,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 33552,
+        "nonzero_sample_percent": 99.026032,
+        "exact_zero_frame_count": 7,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3327,
+        "silent_frame_percent_at_threshold": 19.638746,
+        "longest_silence_seconds_at_threshold": 0.00027083,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.212862,
+            "rms_dbfs": -34.290554,
+            "dc_normalized": 4.32787e-05,
+            "absolute_dc_dbfs": -87.274512,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16816
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -14.974795,
+            "rms_dbfs": -34.124597,
+            "dc_normalized": 3.86077e-05,
+            "absolute_dc_dbfs": -88.266526,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 16736
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        31
+      ]
+    },
+    {
+      "name": "76: 870_three_shells / 1000 cm / standing infected / phase 3",
+      "start_seconds": 41.478375997,
+      "end_seconds": 41.512411099,
+      "coverage": "complete",
+      "available_start_seconds": 41.478375,
+      "available_end_seconds": 41.51241667,
+      "requested_duration_seconds": 0.03403510199999715,
+      "covered_duration_seconds": 0.03404167,
+      "covered_fraction": 1.00019288,
+      "metrics": {
+        "duration_seconds": 0.03404167,
+        "frame_count": 1634,
+        "channel_sample_count": 3268,
+        "sample_peak_normalized": 0.0500183105,
+        "sample_peak_dbfs": -26.01742,
+        "rms_normalized": 0.0140926615,
+        "rms_dbfs": -37.02014,
+        "crest_factor_db": 11.00272,
+        "sample_peak_headroom_db": 26.01742,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 3265,
+        "nonzero_sample_percent": 99.908201,
+        "exact_zero_frame_count": 0,
+        "longest_exact_zero_seconds": 0.0,
+        "silent_frame_count_at_threshold": 51,
+        "silent_frame_percent_at_threshold": 3.121175,
+        "longest_silence_seconds_at_threshold": 4.167e-05,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -26.758269,
+            "rms_dbfs": -37.531988,
+            "dc_normalized": -0.0002392847,
+            "absolute_dc_dbfs": -72.421701,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 1631
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -26.01742,
+            "rms_dbfs": -36.562306,
+            "dc_normalized": -0.0002026786,
+            "absolute_dc_dbfs": -73.863844,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 1634
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        31
+      ]
+    },
+    {
+      "name": "77: 870_three_shells / 1000 cm / standing infected / phase 4",
+      "start_seconds": 41.512411099,
+      "end_seconds": 42.300452799,
+      "coverage": "complete",
+      "available_start_seconds": 41.51241667,
+      "available_end_seconds": 42.30045833,
+      "requested_duration_seconds": 0.7880417000000008,
+      "covered_duration_seconds": 0.78804167,
+      "covered_fraction": 0.99999996,
+      "metrics": {
+        "duration_seconds": 0.78804167,
+        "frame_count": 37826,
+        "channel_sample_count": 75652,
+        "sample_peak_normalized": 0.1911315918,
+        "sample_peak_dbfs": -14.37335,
+        "rms_normalized": 0.0156413235,
+        "rms_dbfs": -36.11453,
+        "crest_factor_db": 21.74118,
+        "sample_peak_headroom_db": 14.37335,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 75324,
+        "nonzero_sample_percent": 99.566436,
+        "exact_zero_frame_count": 2,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3512,
+        "silent_frame_percent_at_threshold": 9.284619,
+        "longest_silence_seconds_at_threshold": 0.00027083,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -14.399741,
+            "rms_dbfs": -36.188283,
+            "dc_normalized": 6.0783e-06,
+            "absolute_dc_dbfs": -104.324295,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37671
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -14.37335,
+            "rms_dbfs": -36.042009,
+            "dc_normalized": 1.20171e-05,
+            "absolute_dc_dbfs": -98.403997,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 37653
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        32
+      ]
+    },
+    {
+      "name": "79: 870_three_shells / 1000 cm / standing infected / phase 4",
+      "start_seconds": 42.300452799,
+      "end_seconds": 43.100412697,
+      "coverage": "complete",
+      "available_start_seconds": 42.30045833,
+      "available_end_seconds": 43.10041667,
+      "requested_duration_seconds": 0.7999598980000044,
+      "covered_duration_seconds": 0.79995833,
+      "covered_fraction": 0.99999804,
+      "metrics": {
+        "duration_seconds": 0.79995833,
+        "frame_count": 38398,
+        "channel_sample_count": 76796,
+        "sample_peak_normalized": 0.1721191406,
+        "sample_peak_dbfs": -15.283417,
+        "rms_normalized": 0.0144567397,
+        "rms_dbfs": -36.798593,
+        "crest_factor_db": 21.515176,
+        "sample_peak_headroom_db": 15.283417,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 76502,
+        "nonzero_sample_percent": 99.617168,
+        "exact_zero_frame_count": 2,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3119,
+        "silent_frame_percent_at_threshold": 8.122819,
+        "longest_silence_seconds_at_threshold": 0.00020833,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -15.349893,
+            "rms_dbfs": -36.876434,
+            "dc_normalized": -1.2555e-05,
+            "absolute_dc_dbfs": -98.023678,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38272
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -15.283417,
+            "rms_dbfs": -36.722123,
+            "dc_normalized": -1.52969e-05,
+            "absolute_dc_dbfs": -96.30791,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 38230
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        33
+      ]
+    },
+    {
+      "name": "81: 870_three_shells / 1000 cm / standing infected / phase 5",
+      "start_seconds": 43.100412697,
+      "end_seconds": 44.181333333333335,
+      "coverage": "complete",
+      "available_start_seconds": 43.10041667,
+      "available_end_seconds": 44.18133333,
+      "requested_duration_seconds": 1.0809206363333317,
+      "covered_duration_seconds": 1.08091667,
+      "covered_fraction": 0.99999633,
+      "metrics": {
+        "duration_seconds": 1.08091667,
+        "frame_count": 51884,
+        "channel_sample_count": 103768,
+        "sample_peak_normalized": 0.0698242188,
+        "sample_peak_dbfs": -23.119878,
+        "rms_normalized": 0.0064928599,
+        "rms_dbfs": -43.751279,
+        "crest_factor_db": 20.631401,
+        "sample_peak_headroom_db": 23.119878,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 102995,
+        "nonzero_sample_percent": 99.255069,
+        "exact_zero_frame_count": 11,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 8468,
+        "silent_frame_percent_at_threshold": 16.321024,
+        "longest_silence_seconds_at_threshold": 0.0003125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -23.119878,
+            "rms_dbfs": -43.760469,
+            "dc_normalized": 1.1187e-06,
+            "absolute_dc_dbfs": -119.025457,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 51522
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -23.280804,
+            "rms_dbfs": -43.742109,
+            "dc_normalized": 1.7281e-06,
+            "absolute_dc_dbfs": -115.248632,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 51473
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    }
+  ],
+  "phase_comparison": null,
+  "energy_events": [
+    {
+      "start_seconds": 3.2,
+      "end_seconds": 3.4,
+      "peak_window_start_seconds": 3.2,
+      "peak_window_rms_dbfs": -33.981761,
+      "sample_peak_dbfs": -17.690276,
+      "active_window_count": 2,
+      "duration_seconds": 0.2
+    },
+    {
+      "start_seconds": 4.5,
+      "end_seconds": 4.8,
+      "peak_window_start_seconds": 4.6,
+      "peak_window_rms_dbfs": -31.203036,
+      "sample_peak_dbfs": -16.277639,
+      "active_window_count": 3,
+      "duration_seconds": 0.3
+    },
+    {
+      "start_seconds": 5.9,
+      "end_seconds": 6.1,
+      "peak_window_start_seconds": 5.9,
+      "peak_window_rms_dbfs": -32.912367,
+      "sample_peak_dbfs": -16.902226,
+      "active_window_count": 2,
+      "duration_seconds": 0.2
+    },
+    {
+      "start_seconds": 7.2,
+      "end_seconds": 7.5,
+      "peak_window_start_seconds": 7.4,
+      "peak_window_rms_dbfs": -32.135849,
+      "sample_peak_dbfs": -15.621004,
+      "active_window_count": 3,
+      "duration_seconds": 0.3
+    },
+    {
+      "start_seconds": 8.5,
+      "end_seconds": 8.6,
+      "peak_window_start_seconds": 8.5,
+      "peak_window_rms_dbfs": -36.574374,
+      "sample_peak_dbfs": -16.907794,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 8.7,
+      "end_seconds": 8.8,
+      "peak_window_start_seconds": 8.7,
+      "peak_window_rms_dbfs": -35.622247,
+      "sample_peak_dbfs": -17.583254,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 8.9,
+      "end_seconds": 9.0,
+      "peak_window_start_seconds": 8.9,
+      "peak_window_rms_dbfs": -37.131424,
+      "sample_peak_dbfs": -17.410385,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 9.9,
+      "end_seconds": 10.2,
+      "peak_window_start_seconds": 10.0,
+      "peak_window_rms_dbfs": -32.922295,
+      "sample_peak_dbfs": -15.434101,
+      "active_window_count": 3,
+      "duration_seconds": 0.3
+    },
+    {
+      "start_seconds": 12.5,
+      "end_seconds": 13.0,
+      "peak_window_start_seconds": 12.7,
+      "peak_window_rms_dbfs": -35.616414,
+      "sample_peak_dbfs": -16.738631,
+      "active_window_count": 5,
+      "duration_seconds": 0.5
+    },
+    {
+      "start_seconds": 13.1,
+      "end_seconds": 13.2,
+      "peak_window_start_seconds": 13.1,
+      "peak_window_rms_dbfs": -32.666786,
+      "sample_peak_dbfs": -17.541211,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 13.3,
+      "end_seconds": 13.7,
+      "peak_window_start_seconds": 13.3,
+      "peak_window_rms_dbfs": -33.922296,
+      "sample_peak_dbfs": -16.366156,
+      "active_window_count": 4,
+      "duration_seconds": 0.4
+    },
+    {
+      "start_seconds": 14.8,
+      "end_seconds": 16.0,
+      "peak_window_start_seconds": 15.3,
+      "peak_window_rms_dbfs": -32.236041,
+      "sample_peak_dbfs": -15.294204,
+      "active_window_count": 12,
+      "duration_seconds": 1.2
+    },
+    {
+      "start_seconds": 17.1,
+      "end_seconds": 18.3,
+      "peak_window_start_seconds": 17.1,
+      "peak_window_rms_dbfs": -34.230044,
+      "sample_peak_dbfs": -16.483832,
+      "active_window_count": 12,
+      "duration_seconds": 1.2
+    },
+    {
+      "start_seconds": 19.3,
+      "end_seconds": 20.5,
+      "peak_window_start_seconds": 20.3,
+      "peak_window_rms_dbfs": -30.600661,
+      "sample_peak_dbfs": -15.150455,
+      "active_window_count": 12,
+      "duration_seconds": 1.2
+    },
+    {
+      "start_seconds": 21.6,
+      "end_seconds": 22.8,
+      "peak_window_start_seconds": 21.8,
+      "peak_window_rms_dbfs": -35.003083,
+      "sample_peak_dbfs": -16.423916,
+      "active_window_count": 12,
+      "duration_seconds": 1.2
+    },
+    {
+      "start_seconds": 23.9,
+      "end_seconds": 25.1,
+      "peak_window_start_seconds": 24.0,
+      "peak_window_rms_dbfs": -32.225443,
+      "sample_peak_dbfs": -13.544614,
+      "active_window_count": 12,
+      "duration_seconds": 1.2
+    },
+    {
+      "start_seconds": 27.5,
+      "end_seconds": 27.6,
+      "peak_window_start_seconds": 27.5,
+      "peak_window_rms_dbfs": -31.744994,
+      "sample_peak_dbfs": -14.997118,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 28.3,
+      "end_seconds": 28.4,
+      "peak_window_start_seconds": 28.3,
+      "peak_window_rms_dbfs": -29.37526,
+      "sample_peak_dbfs": -15.493852,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 29.1,
+      "end_seconds": 29.2,
+      "peak_window_start_seconds": 29.1,
+      "peak_window_rms_dbfs": -30.501905,
+      "sample_peak_dbfs": -15.032954,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 30.2,
+      "end_seconds": 30.5,
+      "peak_window_start_seconds": 30.3,
+      "peak_window_rms_dbfs": -30.925986,
+      "sample_peak_dbfs": -14.565459,
+      "active_window_count": 3,
+      "duration_seconds": 0.3
+    },
+    {
+      "start_seconds": 31.0,
+      "end_seconds": 31.3,
+      "peak_window_start_seconds": 31.1,
+      "peak_window_rms_dbfs": -29.409037,
+      "sample_peak_dbfs": -14.790967,
+      "active_window_count": 3,
+      "duration_seconds": 0.3
+    },
+    {
+      "start_seconds": 31.8,
+      "end_seconds": 32.0,
+      "peak_window_start_seconds": 31.8,
+      "peak_window_rms_dbfs": -28.564495,
+      "sample_peak_dbfs": -13.92602,
+      "active_window_count": 2,
+      "duration_seconds": 0.2
+    },
+    {
+      "start_seconds": 33.0,
+      "end_seconds": 33.1,
+      "peak_window_start_seconds": 33.0,
+      "peak_window_rms_dbfs": -31.693883,
+      "sample_peak_dbfs": -14.327704,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 33.8,
+      "end_seconds": 33.9,
+      "peak_window_start_seconds": 33.8,
+      "peak_window_rms_dbfs": -30.132574,
+      "sample_peak_dbfs": -15.214389,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 34.7,
+      "end_seconds": 34.8,
+      "peak_window_start_seconds": 34.7,
+      "peak_window_rms_dbfs": -30.689901,
+      "sample_peak_dbfs": -16.246612,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 35.8,
+      "end_seconds": 35.9,
+      "peak_window_start_seconds": 35.8,
+      "peak_window_rms_dbfs": -30.148467,
+      "sample_peak_dbfs": -12.990345,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 36.6,
+      "end_seconds": 36.8,
+      "peak_window_start_seconds": 36.6,
+      "peak_window_rms_dbfs": -29.534087,
+      "sample_peak_dbfs": -13.744826,
+      "active_window_count": 2,
+      "duration_seconds": 0.2
+    },
+    {
+      "start_seconds": 37.4,
+      "end_seconds": 37.6,
+      "peak_window_start_seconds": 37.4,
+      "peak_window_rms_dbfs": -30.230006,
+      "sample_peak_dbfs": -14.092256,
+      "active_window_count": 2,
+      "duration_seconds": 0.2
+    },
+    {
+      "start_seconds": 38.6,
+      "end_seconds": 38.7,
+      "peak_window_start_seconds": 38.6,
+      "peak_window_rms_dbfs": -29.141051,
+      "sample_peak_dbfs": -15.289579,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 39.4,
+      "end_seconds": 39.5,
+      "peak_window_start_seconds": 39.4,
+      "peak_window_rms_dbfs": -30.193742,
+      "sample_peak_dbfs": -16.42216,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 40.2,
+      "end_seconds": 40.3,
+      "peak_window_start_seconds": 40.2,
+      "peak_window_rms_dbfs": -29.396063,
+      "sample_peak_dbfs": -14.528672,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 41.3,
+      "end_seconds": 41.5,
+      "peak_window_start_seconds": 41.3,
+      "peak_window_rms_dbfs": -30.363124,
+      "sample_peak_dbfs": -14.974795,
+      "active_window_count": 2,
+      "duration_seconds": 0.2
+    },
+    {
+      "start_seconds": 42.1,
+      "end_seconds": 42.3,
+      "peak_window_start_seconds": 42.1,
+      "peak_window_rms_dbfs": -29.524051,
+      "sample_peak_dbfs": -14.37335,
+      "active_window_count": 2,
+      "duration_seconds": 0.2
+    },
+    {
+      "start_seconds": 42.9,
+      "end_seconds": 43.1,
+      "peak_window_start_seconds": 42.9,
+      "peak_window_rms_dbfs": -31.01408,
+      "sample_peak_dbfs": -15.283417,
+      "active_window_count": 2,
+      "duration_seconds": 0.2
+    }
+  ],
+  "energy_event_count": 34,
+  "envelope": {
+    "window_columns": [
+      "start_seconds",
+      "end_seconds",
+      "rms_dbfs_all_channels",
+      "maximum_sample_peak_dbfs"
+    ],
+    "actual_window_frames": 4800,
+    "actual_window_ms": 100.0,
+    "windows": [
+      [
+        0.0,
+        0.1,
+        null,
+        null
+      ],
+      [
+        0.1,
+        0.2,
+        -68.89489,
+        -54.602402
+      ],
+      [
+        0.2,
+        0.3,
+        -61.056431,
+        -48.510896
+      ],
+      [
+        0.3,
+        0.4,
+        -59.584639,
+        -47.963573
+      ],
+      [
+        0.4,
+        0.5,
+        -57.599764,
+        -45.649076
+      ],
+      [
+        0.5,
+        0.6,
+        -56.55938,
+        -45.107571
+      ],
+      [
+        0.6,
+        0.7,
+        -54.578382,
+        -43.036759
+      ],
+      [
+        0.7,
+        0.8,
+        -53.477188,
+        -42.561202
+      ],
+      [
+        0.8,
+        0.9,
+        -52.733106,
+        -41.031139
+      ],
+      [
+        0.9,
+        1.0,
+        -52.453437,
+        -39.57783
+      ],
+      [
+        1.0,
+        1.1,
+        -52.199796,
+        -40.737669
+      ],
+      [
+        1.1,
+        1.2,
+        -52.301215,
+        -40.315257
+      ],
+      [
+        1.2,
+        1.3,
+        -52.842037,
+        -42.110336
+      ],
+      [
+        1.3,
+        1.4,
+        -53.593289,
+        -41.811366
+      ],
+      [
+        1.4,
+        1.5,
+        -53.62995,
+        -41.490817
+      ],
+      [
+        1.5,
+        1.6,
+        -54.117869,
+        -40.260456
+      ],
+      [
+        1.6,
+        1.7,
+        -53.791749,
+        -41.617621
+      ],
+      [
+        1.7,
+        1.8,
+        -52.83583,
+        -39.402856
+      ],
+      [
+        1.8,
+        1.9,
+        -44.626202,
+        -29.83572
+      ],
+      [
+        1.9,
+        2.0,
+        -53.750495,
+        -40.315257
+      ],
+      [
+        2.0,
+        2.1,
+        -52.97773,
+        -41.031139
+      ],
+      [
+        2.1,
+        2.2,
+        -52.846803,
+        -42.009532
+      ],
+      [
+        2.2,
+        2.3,
+        -53.603153,
+        -41.585746
+      ],
+      [
+        2.3,
+        2.4,
+        -54.072502,
+        -42.45506
+      ],
+      [
+        2.4,
+        2.5,
+        -53.954142,
+        -42.212324
+      ],
+      [
+        2.5,
+        2.6,
+        -54.254341,
+        -42.632691
+      ],
+      [
+        2.6,
+        2.7,
+        -53.699931,
+        -42.525677
+      ],
+      [
+        2.7,
+        2.8,
+        -53.43535,
+        -42.596873
+      ],
+      [
+        2.8,
+        2.9,
+        -52.870334,
+        -41.649613
+      ],
+      [
+        2.9,
+        3.0,
+        -52.832729,
+        -40.453791
+      ],
+      [
+        3.0,
+        3.1,
+        -52.820047,
+        -41.061039
+      ],
+      [
+        3.1,
+        3.2,
+        -38.910239,
+        -16.592373
+      ],
+      [
+        3.2,
+        3.3,
+        -33.981761,
+        -17.690276
+      ],
+      [
+        3.3,
+        3.4,
+        -36.627576,
+        -18.432205
+      ],
+      [
+        3.4,
+        3.5,
+        -41.448184,
+        -25.29572
+      ],
+      [
+        3.5,
+        3.6,
+        -53.778969,
+        -42.009532
+      ],
+      [
+        3.6,
+        3.7,
+        -53.512084,
+        -41.844081
+      ],
+      [
+        3.7,
+        3.8,
+        -53.369786,
+        -40.912558
+      ],
+      [
+        3.8,
+        3.9,
+        -50.589907,
+        -37.579241
+      ],
+      [
+        3.9,
+        4.0,
+        -50.26245,
+        -38.782172
+      ],
+      [
+        4.0,
+        4.1,
+        -52.601521,
+        -40.233185
+      ],
+      [
+        4.1,
+        4.2,
+        -52.627663,
+        -41.459403
+      ],
+      [
+        4.2,
+        4.3,
+        -52.748234,
+        -41.212101
+      ],
+      [
+        4.3,
+        4.4,
+        -53.996639,
+        -42.246588
+      ],
+      [
+        4.4,
+        4.5,
+        -44.743259,
+        -28.834632
+      ],
+      [
+        4.5,
+        4.6,
+        -34.594508,
+        -16.277639
+      ],
+      [
+        4.6,
+        4.7,
+        -31.203036,
+        -16.343507
+      ],
+      [
+        4.7,
+        4.8,
+        -36.010936,
+        -23.100918
+      ],
+      [
+        4.8,
+        4.9,
+        -45.678624,
+        -30.93934
+      ],
+      [
+        4.9,
+        5.0,
+        -53.58683,
+        -41.811366
+      ],
+      [
+        5.0,
+        5.1,
+        -53.57576,
+        -42.385012
+      ],
+      [
+        5.1,
+        5.2,
+        -53.359572,
+        -42.178195
+      ],
+      [
+        5.2,
+        5.3,
+        -54.432799,
+        -43.539869
+      ],
+      [
+        5.3,
+        5.4,
+        -55.457179,
+        -42.814032
+      ],
+      [
+        5.4,
+        5.5,
+        -55.06283,
+        -42.632691
+      ],
+      [
+        5.5,
+        5.6,
+        -55.663961,
+        -44.159078
+      ],
+      [
+        5.6,
+        5.7,
+        -55.202123,
+        -42.212324
+      ],
+      [
+        5.7,
+        5.8,
+        -55.264724,
+        -43.864613
+      ],
+      [
+        5.8,
+        5.9,
+        -43.737799,
+        -29.713209
+      ],
+      [
+        5.9,
+        6.0,
+        -32.912367,
+        -16.902226
+      ],
+      [
+        6.0,
+        6.1,
+        -35.762376,
+        -18.013163
+      ],
+      [
+        6.1,
+        6.2,
+        -51.834859,
+        -37.187035
+      ],
+      [
+        6.2,
+        6.3,
+        -53.986069,
+        -42.887641
+      ],
+      [
+        6.3,
+        6.4,
+        -54.680906,
+        -42.596873
+      ],
+      [
+        6.4,
+        6.5,
+        -54.221402,
+        -41.681723
+      ],
+      [
+        6.5,
+        6.6,
+        -54.543697,
+        -43.22683
+      ],
+      [
+        6.6,
+        6.7,
+        -54.349993,
+        -42.144199
+      ],
+      [
+        6.7,
+        6.8,
+        -53.809259,
+        -41.553987
+      ],
+      [
+        6.8,
+        6.9,
+        -53.173597,
+        -41.181678
+      ],
+      [
+        6.9,
+        7.0,
+        -53.344554,
+        -42.385012
+      ],
+      [
+        7.0,
+        7.1,
+        -53.32099,
+        -40.824673
+      ],
+      [
+        7.1,
+        7.2,
+        -53.054339,
+        -42.144199
+      ],
+      [
+        7.2,
+        7.3,
+        -34.226225,
+        -15.696583
+      ],
+      [
+        7.3,
+        7.4,
+        -32.217493,
+        -17.958508
+      ],
+      [
+        7.4,
+        7.5,
+        -32.135849,
+        -15.621004
+      ],
+      [
+        7.5,
+        7.6,
+        -46.899823,
+        -32.290737
+      ],
+      [
+        7.6,
+        7.7,
+        -54.959058,
+        -43.074442
+      ],
+      [
+        7.7,
+        7.8,
+        -55.075291,
+        -43.906073
+      ],
+      [
+        7.8,
+        7.9,
+        -54.324526,
+        -42.741041
+      ],
+      [
+        7.9,
+        8.0,
+        -54.603008,
+        -42.814032
+      ],
+      [
+        8.0,
+        8.1,
+        -54.344275,
+        -41.909884
+      ],
+      [
+        8.1,
+        8.2,
+        -54.507215,
+        -43.074442
+      ],
+      [
+        8.2,
+        8.3,
+        -54.68566,
+        -42.076605
+      ],
+      [
+        8.3,
+        8.4,
+        -55.371525,
+        -43.782281
+      ],
+      [
+        8.4,
+        8.5,
+        -55.364275,
+        -42.814032
+      ],
+      [
+        8.5,
+        8.6,
+        -36.574374,
+        -16.907794
+      ],
+      [
+        8.6,
+        8.7,
+        -43.564482,
+        -26.124062
+      ],
+      [
+        8.7,
+        8.8,
+        -35.622247,
+        -17.583254
+      ],
+      [
+        8.8,
+        8.9,
+        -42.684593,
+        -26.569872
+      ],
+      [
+        8.9,
+        9.0,
+        -37.131424,
+        -17.410385
+      ],
+      [
+        9.0,
+        9.1,
+        -53.186566,
+        -41.334872
+      ],
+      [
+        9.1,
+        9.2,
+        -54.359185,
+        -42.144199
+      ],
+      [
+        9.2,
+        9.3,
+        -53.312072,
+        -41.151361
+      ],
+      [
+        9.3,
+        9.4,
+        -53.931363,
+        -42.490297
+      ],
+      [
+        9.4,
+        9.5,
+        -54.14931,
+        -41.334872
+      ],
+      [
+        9.5,
+        9.6,
+        -54.494367,
+        -43.074442
+      ],
+      [
+        9.6,
+        9.7,
+        -53.478168,
+        -42.668658
+      ],
+      [
+        9.7,
+        9.8,
+        -53.455317,
+        -41.942973
+      ],
+      [
+        9.8,
+        9.9,
+        -53.175399,
+        -41.121149
+      ],
+      [
+        9.9,
+        10.0,
+        -33.752594,
+        -17.461687
+      ],
+      [
+        10.0,
+        10.1,
+        -32.922295,
+        -15.434101
+      ],
+      [
+        10.1,
+        10.2,
+        -33.342374,
+        -15.717604
+      ],
+      [
+        10.2,
+        10.3,
+        -41.745957,
+        -24.989071
+      ],
+      [
+        10.3,
+        10.4,
+        -53.728171,
+        -41.396915
+      ],
+      [
+        10.4,
+        10.5,
+        -53.517302,
+        -41.428103
+      ],
+      [
+        10.5,
+        10.6,
+        -53.976161,
+        -40.566231
+      ],
+      [
+        10.6,
+        10.7,
+        -53.689759,
+        -41.617621
+      ],
+      [
+        10.7,
+        10.8,
+        -53.496139,
+        -40.912558
+      ],
+      [
+        10.8,
+        10.9,
+        -50.725095,
+        -37.187035
+      ],
+      [
+        10.9,
+        11.0,
+        -51.113453,
+        -39.603116
+      ],
+      [
+        11.0,
+        11.1,
+        -52.560096,
+        -40.85387
+      ],
+      [
+        11.1,
+        11.2,
+        -51.984628,
+        -37.700441
+      ],
+      [
+        11.2,
+        11.3,
+        -43.150326,
+        -29.24743
+      ],
+      [
+        11.3,
+        11.4,
+        -53.723602,
+        -40.151881
+      ],
+      [
+        11.4,
+        11.5,
+        -54.44881,
+        -42.561202
+      ],
+      [
+        11.5,
+        11.6,
+        -54.574996,
+        -42.45506
+      ],
+      [
+        11.6,
+        11.7,
+        -54.091758,
+        -42.632691
+      ],
+      [
+        11.7,
+        11.8,
+        -53.731971,
+        -42.043003
+      ],
+      [
+        11.8,
+        11.9,
+        -53.105216,
+        -41.942973
+      ],
+      [
+        11.9,
+        12.0,
+        -52.988563,
+        -41.031139
+      ],
+      [
+        12.0,
+        12.1,
+        -53.106613,
+        -40.481765
+      ],
+      [
+        12.1,
+        12.2,
+        -52.677652,
+        -41.061039
+      ],
+      [
+        12.2,
+        12.3,
+        -52.777549,
+        -40.260456
+      ],
+      [
+        12.3,
+        12.4,
+        -53.476928,
+        -40.912558
+      ],
+      [
+        12.4,
+        12.5,
+        -53.709023,
+        -41.746303
+      ],
+      [
+        12.5,
+        12.6,
+        -35.811121,
+        -18.149182
+      ],
+      [
+        12.6,
+        12.7,
+        -36.439252,
+        -16.747741
+      ],
+      [
+        12.7,
+        12.8,
+        -35.616414,
+        -16.950605
+      ],
+      [
+        12.8,
+        12.9,
+        -36.009696,
+        -16.738631
+      ],
+      [
+        12.9,
+        13.0,
+        -36.302948,
+        -17.659853
+      ],
+      [
+        13.0,
+        13.1,
+        -42.497663,
+        -22.198657
+      ],
+      [
+        13.1,
+        13.2,
+        -32.666786,
+        -17.541211
+      ],
+      [
+        13.2,
+        13.3,
+        -38.098777,
+        -17.682153
+      ],
+      [
+        13.3,
+        13.4,
+        -33.922296,
+        -18.570505
+      ],
+      [
+        13.4,
+        13.5,
+        -35.883426,
+        -16.366156
+      ],
+      [
+        13.5,
+        13.6,
+        -35.429179,
+        -18.624636
+      ],
+      [
+        13.6,
+        13.7,
+        -35.679505,
+        -17.15259
+      ],
+      [
+        13.7,
+        13.8,
+        -49.346353,
+        -32.312589
+      ],
+      [
+        13.8,
+        13.9,
+        -53.348706,
+        -41.365838
+      ],
+      [
+        13.9,
+        14.0,
+        -53.504185,
+        -41.778773
+      ],
+      [
+        14.0,
+        14.1,
+        -53.507756,
+        -41.811366
+      ],
+      [
+        14.1,
+        14.2,
+        -53.194345,
+        -42.280988
+      ],
+      [
+        14.2,
+        14.3,
+        -54.219346,
+        -43.539869
+      ],
+      [
+        14.3,
+        14.4,
+        -55.089523,
+        -42.110336
+      ],
+      [
+        14.4,
+        14.5,
+        -54.722609,
+        -42.924682
+      ],
+      [
+        14.5,
+        14.6,
+        -55.101545,
+        -43.82335
+      ],
+      [
+        14.6,
+        14.7,
+        -54.955654,
+        -41.909884
+      ],
+      [
+        14.7,
+        14.8,
+        -54.678698,
+        -43.500116
+      ],
+      [
+        14.8,
+        14.9,
+        -32.939088,
+        -15.294204
+      ],
+      [
+        14.9,
+        15.0,
+        -32.653609,
+        -15.360763
+      ],
+      [
+        15.0,
+        15.1,
+        -33.1759,
+        -15.656299
+      ],
+      [
+        15.1,
+        15.2,
+        -34.125993,
+        -15.674001
+      ],
+      [
+        15.2,
+        15.3,
+        -33.418101,
+        -16.503305
+      ],
+      [
+        15.3,
+        15.4,
+        -32.236041,
+        -16.630056
+      ],
+      [
+        15.4,
+        15.5,
+        -32.876033,
+        -16.494448
+      ],
+      [
+        15.5,
+        15.6,
+        -33.736819,
+        -16.492678
+      ],
+      [
+        15.6,
+        15.7,
+        -32.883715,
+        -16.45206
+      ],
+      [
+        15.7,
+        15.8,
+        -33.123327,
+        -16.544163
+      ],
+      [
+        15.8,
+        15.9,
+        -32.526144,
+        -15.560375
+      ],
+      [
+        15.9,
+        16.0,
+        -33.675363,
+        -16.345247
+      ],
+      [
+        16.0,
+        16.1,
+        -47.355175,
+        -30.361271
+      ],
+      [
+        16.1,
+        16.2,
+        -52.799609,
+        -42.043003
+      ],
+      [
+        16.2,
+        16.3,
+        -53.551606,
+        -42.77746
+      ],
+      [
+        16.3,
+        16.4,
+        -54.584809,
+        -41.617621
+      ],
+      [
+        16.4,
+        16.5,
+        -54.500532,
+        -43.304038
+      ],
+      [
+        16.5,
+        16.6,
+        -54.925686,
+        -42.043003
+      ],
+      [
+        16.6,
+        16.7,
+        -54.664394,
+        -42.850759
+      ],
+      [
+        16.7,
+        16.8,
+        -54.60877,
+        -42.924682
+      ],
+      [
+        16.8,
+        16.9,
+        -54.123649,
+        -43.265348
+      ],
+      [
+        16.9,
+        17.0,
+        -54.552422,
+        -43.342901
+      ],
+      [
+        17.0,
+        17.1,
+        -54.100904,
+        -41.778773
+      ],
+      [
+        17.1,
+        17.2,
+        -34.230044,
+        -17.39466
+      ],
+      [
+        17.2,
+        17.3,
+        -37.383448,
+        -19.852292
+      ],
+      [
+        17.3,
+        17.4,
+        -36.001331,
+        -17.465646
+      ],
+      [
+        17.4,
+        17.5,
+        -35.854265,
+        -16.483832
+      ],
+      [
+        17.5,
+        17.6,
+        -35.677331,
+        -17.860573
+      ],
+      [
+        17.6,
+        17.7,
+        -35.222172,
+        -18.638222
+      ],
+      [
+        17.7,
+        17.8,
+        -35.770308,
+        -18.023713
+      ],
+      [
+        17.8,
+        17.9,
+        -35.043936,
+        -18.724763
+      ],
+      [
+        17.9,
+        18.0,
+        -36.284263,
+        -17.835745
+      ],
+      [
+        18.0,
+        18.1,
+        -35.417731,
+        -17.515285
+      ],
+      [
+        18.1,
+        18.2,
+        -34.725933,
+        -17.661878
+      ],
+      [
+        18.2,
+        18.3,
+        -36.064755,
+        -17.952224
+      ],
+      [
+        18.3,
+        18.4,
+        -53.738275,
+        -42.525677
+      ],
+      [
+        18.4,
+        18.5,
+        -54.001969,
+        -40.85387
+      ],
+      [
+        18.5,
+        18.6,
+        -54.157587,
+        -43.265348
+      ],
+      [
+        18.6,
+        18.7,
+        -53.435421,
+        -41.87692
+      ],
+      [
+        18.7,
+        18.8,
+        -53.313634,
+        -41.778773
+      ],
+      [
+        18.8,
+        18.9,
+        -53.133151,
+        -41.242632
+      ],
+      [
+        18.9,
+        19.0,
+        -52.881264,
+        -39.756401
+      ],
+      [
+        19.0,
+        19.1,
+        -52.619744,
+        -40.737669
+      ],
+      [
+        19.1,
+        19.2,
+        -52.777846,
+        -40.766574
+      ],
+      [
+        19.2,
+        19.3,
+        -53.275802,
+        -42.490297
+      ],
+      [
+        19.3,
+        19.4,
+        -33.119682,
+        -15.76631
+      ],
+      [
+        19.4,
+        19.5,
+        -33.286342,
+        -16.476761
+      ],
+      [
+        19.5,
+        19.6,
+        -33.539554,
+        -15.150455
+      ],
+      [
+        19.6,
+        19.7,
+        -34.791304,
+        -16.653466
+      ],
+      [
+        19.7,
+        19.8,
+        -32.714962,
+        -15.196074
+      ],
+      [
+        19.8,
+        19.9,
+        -36.853728,
+        -21.061039
+      ],
+      [
+        19.9,
+        20.0,
+        -30.899639,
+        -15.200649
+      ],
+      [
+        20.0,
+        20.1,
+        -32.543349,
+        -15.659515
+      ],
+      [
+        20.1,
+        20.2,
+        -33.150303,
+        -16.637252
+      ],
+      [
+        20.2,
+        20.3,
+        -37.121064,
+        -22.614764
+      ],
+      [
+        20.3,
+        20.4,
+        -30.600661,
+        -15.356102
+      ],
+      [
+        20.4,
+        20.5,
+        -34.178067,
+        -15.269567
+      ],
+      [
+        20.5,
+        20.6,
+        -41.742019,
+        -25.59843
+      ],
+      [
+        20.6,
+        20.7,
+        -54.026263,
+        -41.976189
+      ],
+      [
+        20.7,
+        20.8,
+        -53.696687,
+        -42.561202
+      ],
+      [
+        20.8,
+        20.9,
+        -53.197988,
+        -41.811366
+      ],
+      [
+        20.9,
+        21.0,
+        -53.390451,
+        -41.396915
+      ],
+      [
+        21.0,
+        21.1,
+        -53.311615,
+        -41.27327
+      ],
+      [
+        21.1,
+        21.2,
+        -52.769247,
+        -41.522345
+      ],
+      [
+        21.2,
+        21.3,
+        -53.120209,
+        -40.315257
+      ],
+      [
+        21.3,
+        21.4,
+        -53.765891,
+        -41.212101
+      ],
+      [
+        21.4,
+        21.5,
+        -54.01062,
+        -41.617621
+      ],
+      [
+        21.5,
+        21.6,
+        -53.969714,
+        -42.178195
+      ],
+      [
+        21.6,
+        21.7,
+        -36.215981,
+        -17.53123
+      ],
+      [
+        21.7,
+        21.8,
+        -35.869322,
+        -17.008642
+      ],
+      [
+        21.8,
+        21.9,
+        -35.003083,
+        -18.846923
+      ],
+      [
+        21.9,
+        22.0,
+        -35.484554,
+        -17.76988
+      ],
+      [
+        22.0,
+        22.1,
+        -36.021017,
+        -18.577253
+      ],
+      [
+        22.1,
+        22.2,
+        -35.017551,
+        -18.185672
+      ],
+      [
+        22.2,
+        22.3,
+        -36.207632,
+        -16.423916
+      ],
+      [
+        22.3,
+        22.4,
+        -35.637121,
+        -16.837523
+      ],
+      [
+        22.4,
+        22.5,
+        -35.327099,
+        -18.884142
+      ],
+      [
+        22.5,
+        22.6,
+        -35.62237,
+        -17.036865
+      ],
+      [
+        22.6,
+        22.7,
+        -35.125915,
+        -16.969284
+      ],
+      [
+        22.7,
+        22.8,
+        -36.482565,
+        -18.674556
+      ],
+      [
+        22.8,
+        22.9,
+        -40.807755,
+        -25.169836
+      ],
+      [
+        22.9,
+        23.0,
+        -53.428147,
+        -41.713953
+      ],
+      [
+        23.0,
+        23.1,
+        -53.614894,
+        -42.315524
+      ],
+      [
+        23.1,
+        23.2,
+        -53.419601,
+        -42.561202
+      ],
+      [
+        23.2,
+        23.3,
+        -54.468812,
+        -43.539869
+      ],
+      [
+        23.3,
+        23.4,
+        -53.165555,
+        -39.705005
+      ],
+      [
+        23.4,
+        23.5,
+        -52.486689,
+        -39.705005
+      ],
+      [
+        23.5,
+        23.6,
+        -53.903776,
+        -42.178195
+      ],
+      [
+        23.6,
+        23.7,
+        -54.602906,
+        -41.909884
+      ],
+      [
+        23.7,
+        23.8,
+        -54.917144,
+        -43.074442
+      ],
+      [
+        23.8,
+        23.9,
+        -53.965273,
+        -42.490297
+      ],
+      [
+        23.9,
+        24.0,
+        -33.058135,
+        -13.82518
+      ],
+      [
+        24.0,
+        24.1,
+        -32.225443,
+        -16.143981
+      ],
+      [
+        24.1,
+        24.2,
+        -33.229842,
+        -13.544614
+      ],
+      [
+        24.2,
+        24.3,
+        -33.337203,
+        -15.086988
+      ],
+      [
+        24.3,
+        24.4,
+        -33.478529,
+        -15.311182
+      ],
+      [
+        24.4,
+        24.5,
+        -32.547678,
+        -15.812017
+      ],
+      [
+        24.5,
+        24.6,
+        -32.768941,
+        -15.520717
+      ],
+      [
+        24.6,
+        24.7,
+        -33.382903,
+        -15.595424
+      ],
+      [
+        24.7,
+        24.8,
+        -34.418357,
+        -16.255219
+      ],
+      [
+        24.8,
+        24.9,
+        -32.986329,
+        -17.479516
+      ],
+      [
+        24.9,
+        25.0,
+        -33.912427,
+        -15.859611
+      ],
+      [
+        25.0,
+        25.1,
+        -33.528169,
+        -16.132086
+      ],
+      [
+        25.1,
+        25.2,
+        -48.836785,
+        -34.951046
+      ],
+      [
+        25.2,
+        25.3,
+        -53.473949,
+        -42.490297
+      ],
+      [
+        25.3,
+        25.4,
+        -54.468993,
+        -40.85387
+      ],
+      [
+        25.4,
+        25.5,
+        -54.731573,
+        -43.421153
+      ],
+      [
+        25.5,
+        25.6,
+        -54.967074,
+        -41.811366
+      ],
+      [
+        25.6,
+        25.7,
+        -54.81989,
+        -42.924682
+      ],
+      [
+        25.7,
+        25.8,
+        -54.653741,
+        -43.539869
+      ],
+      [
+        25.8,
+        25.9,
+        -54.016311,
+        -42.246588
+      ],
+      [
+        25.9,
+        26.0,
+        -54.269562,
+        -42.45506
+      ],
+      [
+        26.0,
+        26.1,
+        -48.110634,
+        -30.274324
+      ],
+      [
+        26.1,
+        26.2,
+        -43.970662,
+        -32.139298
+      ],
+      [
+        26.2,
+        26.3,
+        -54.376429,
+        -42.668658
+      ],
+      [
+        26.3,
+        26.4,
+        -54.960222,
+        -43.500116
+      ],
+      [
+        26.4,
+        26.5,
+        -55.150369,
+        -42.850759
+      ],
+      [
+        26.5,
+        26.6,
+        -55.044462,
+        -43.036759
+      ],
+      [
+        26.6,
+        26.7,
+        -54.764974,
+        -43.265348
+      ],
+      [
+        26.7,
+        26.8,
+        -54.310144,
+        -42.419965
+      ],
+      [
+        26.8,
+        26.9,
+        -53.848784,
+        -43.150302
+      ],
+      [
+        26.9,
+        27.0,
+        -53.551583,
+        -41.304017
+      ],
+      [
+        27.0,
+        27.1,
+        -53.132626,
+        -41.365838
+      ],
+      [
+        27.1,
+        27.2,
+        -54.124417,
+        -42.525677
+      ],
+      [
+        27.2,
+        27.3,
+        -53.202271,
+        -41.811366
+      ],
+      [
+        27.3,
+        27.4,
+        -53.742136,
+        -42.144199
+      ],
+      [
+        27.4,
+        27.5,
+        -42.859971,
+        -27.318458
+      ],
+      [
+        27.5,
+        27.6,
+        -31.744994,
+        -14.997118
+      ],
+      [
+        27.6,
+        27.7,
+        -41.348106,
+        -26.666414
+      ],
+      [
+        27.7,
+        27.8,
+        -42.703629,
+        -24.124915
+      ],
+      [
+        27.8,
+        27.9,
+        -43.938865,
+        -32.545409
+      ],
+      [
+        27.9,
+        28.0,
+        -44.236873,
+        -28.239766
+      ],
+      [
+        28.0,
+        28.1,
+        -41.788011,
+        -29.762007
+      ],
+      [
+        28.1,
+        28.2,
+        -39.500533,
+        -22.984276
+      ],
+      [
+        28.2,
+        28.3,
+        -40.861837,
+        -25.563152
+      ],
+      [
+        28.3,
+        28.4,
+        -29.37526,
+        -15.493852
+      ],
+      [
+        28.4,
+        28.5,
+        -38.228461,
+        -24.271044
+      ],
+      [
+        28.5,
+        28.6,
+        -43.523438,
+        -32.761572
+      ],
+      [
+        28.6,
+        28.7,
+        -45.381547,
+        -28.539189
+      ],
+      [
+        28.7,
+        28.8,
+        -43.201249,
+        -29.340163
+      ],
+      [
+        28.8,
+        28.9,
+        -41.718626,
+        -30.727141
+      ],
+      [
+        28.9,
+        29.0,
+        -39.542985,
+        -21.522345
+      ],
+      [
+        29.0,
+        29.1,
+        -43.609396,
+        -29.347935
+      ],
+      [
+        29.1,
+        29.2,
+        -30.501905,
+        -15.032954
+      ],
+      [
+        29.2,
+        29.3,
+        -38.746072,
+        -24.397657
+      ],
+      [
+        29.3,
+        29.4,
+        -43.6332,
+        -32.075196
+      ],
+      [
+        29.4,
+        29.5,
+        -45.137731,
+        -28.805362
+      ],
+      [
+        29.5,
+        29.6,
+        -42.552402,
+        -28.703686
+      ],
+      [
+        29.6,
+        29.7,
+        -40.414198,
+        -24.94212
+      ],
+      [
+        29.7,
+        29.8,
+        -41.203203,
+        -22.525677
+      ],
+      [
+        29.8,
+        29.9,
+        -53.508391,
+        -42.315524
+      ],
+      [
+        29.9,
+        30.0,
+        -53.437351,
+        -41.121149
+      ],
+      [
+        30.0,
+        30.1,
+        -50.308845,
+        -38.267799
+      ],
+      [
+        30.1,
+        30.2,
+        -51.111778,
+        -38.577253
+      ],
+      [
+        30.2,
+        30.3,
+        -36.015806,
+        -20.877298
+      ],
+      [
+        30.3,
+        30.4,
+        -30.925986,
+        -14.565459
+      ],
+      [
+        30.4,
+        30.5,
+        -36.647157,
+        -22.215745
+      ],
+      [
+        30.5,
+        30.6,
+        -43.321644,
+        -32.022136
+      ],
+      [
+        30.6,
+        30.7,
+        -43.685732,
+        -29.095042
+      ],
+      [
+        30.7,
+        30.8,
+        -41.660025,
+        -30.171125
+      ],
+      [
+        30.8,
+        30.9,
+        -40.674851,
+        -24.706541
+      ],
+      [
+        30.9,
+        31.0,
+        -41.955882,
+        -22.939542
+      ],
+      [
+        31.0,
+        31.1,
+        -34.820138,
+        -20.031335
+      ],
+      [
+        31.1,
+        31.2,
+        -29.409037,
+        -14.790967
+      ],
+      [
+        31.2,
+        31.3,
+        -35.740329,
+        -22.322448
+      ],
+      [
+        31.3,
+        31.4,
+        -42.964303,
+        -30.672627
+      ],
+      [
+        31.4,
+        31.5,
+        -44.677641,
+        -28.510896
+      ],
+      [
+        31.5,
+        31.6,
+        -41.510185,
+        -29.608413
+      ],
+      [
+        31.6,
+        31.7,
+        -40.385685,
+        -25.074228
+      ],
+      [
+        31.7,
+        31.8,
+        -41.980232,
+        -23.40937
+      ],
+      [
+        31.8,
+        31.9,
+        -28.564495,
+        -13.92602
+      ],
+      [
+        31.9,
+        32.0,
+        -35.591436,
+        -22.191831
+      ],
+      [
+        32.0,
+        32.1,
+        -40.047006,
+        -24.180498
+      ],
+      [
+        32.1,
+        32.2,
+        -43.388241,
+        -32.830967
+      ],
+      [
+        32.2,
+        32.3,
+        -45.24972,
+        -28.674853
+      ],
+      [
+        32.3,
+        32.4,
+        -42.223071,
+        -28.81267
+      ],
+      [
+        32.4,
+        32.5,
+        -40.261446,
+        -24.775168
+      ],
+      [
+        32.5,
+        32.6,
+        -41.944811,
+        -22.92097
+      ],
+      [
+        32.6,
+        32.7,
+        -55.084206,
+        -42.076605
+      ],
+      [
+        32.7,
+        32.8,
+        -54.957905,
+        -43.700723
+      ],
+      [
+        32.8,
+        32.9,
+        -54.050061,
+        -42.178195
+      ],
+      [
+        32.9,
+        33.0,
+        -54.068494,
+        -41.778773
+      ],
+      [
+        33.0,
+        33.1,
+        -31.693883,
+        -14.327704
+      ],
+      [
+        33.1,
+        33.2,
+        -40.184871,
+        -26.308413
+      ],
+      [
+        33.2,
+        33.3,
+        -42.387741,
+        -24.044313
+      ],
+      [
+        33.3,
+        33.4,
+        -43.442297,
+        -27.963573
+      ],
+      [
+        33.4,
+        33.5,
+        -44.977839,
+        -29.095042
+      ],
+      [
+        33.5,
+        33.6,
+        -41.547218,
+        -30.07759
+      ],
+      [
+        33.6,
+        33.7,
+        -41.04296,
+        -24.477182
+      ],
+      [
+        33.7,
+        33.8,
+        -42.112504,
+        -23.366303
+      ],
+      [
+        33.8,
+        33.9,
+        -30.132574,
+        -15.214389
+      ],
+      [
+        33.9,
+        34.0,
+        -43.20897,
+        -28.805362
+      ],
+      [
+        34.0,
+        34.1,
+        -43.119598,
+        -24.271044
+      ],
+      [
+        34.1,
+        34.2,
+        -43.699409,
+        -31.906532
+      ],
+      [
+        34.2,
+        34.3,
+        -43.119192,
+        -28.930446
+      ],
+      [
+        34.3,
+        34.4,
+        -41.244385,
+        -29.860431
+      ],
+      [
+        34.4,
+        34.5,
+        -41.393995,
+        -24.597853
+      ],
+      [
+        34.5,
+        34.6,
+        -42.062031,
+        -23.059349
+      ],
+      [
+        34.6,
+        34.7,
+        -43.764155,
+        -28.754375
+      ],
+      [
+        34.7,
+        34.8,
+        -30.689901,
+        -16.246612
+      ],
+      [
+        34.8,
+        34.9,
+        -39.180962,
+        -22.836049
+      ],
+      [
+        34.9,
+        35.0,
+        -43.034061,
+        -28.090474
+      ],
+      [
+        35.0,
+        35.1,
+        -44.91287,
+        -29.140478
+      ],
+      [
+        35.1,
+        35.2,
+        -41.481676,
+        -30.28298
+      ],
+      [
+        35.2,
+        35.3,
+        -40.974943,
+        -25.160227
+      ],
+      [
+        35.3,
+        35.4,
+        -42.025357,
+        -23.078219
+      ],
+      [
+        35.4,
+        35.5,
+        -55.060134,
+        -42.668658
+      ],
+      [
+        35.5,
+        35.6,
+        -55.079967,
+        -43.579804
+      ],
+      [
+        35.6,
+        35.7,
+        -54.747423,
+        -43.619924
+      ],
+      [
+        35.7,
+        35.8,
+        -40.753125,
+        -15.990602
+      ],
+      [
+        35.8,
+        35.9,
+        -30.148467,
+        -12.990345
+      ],
+      [
+        35.9,
+        36.0,
+        -39.820069,
+        -26.626532
+      ],
+      [
+        36.0,
+        36.1,
+        -41.60855,
+        -24.17621
+      ],
+      [
+        36.1,
+        36.2,
+        -43.016423,
+        -28.754375
+      ],
+      [
+        36.2,
+        36.3,
+        -44.426716,
+        -28.725374
+      ],
+      [
+        36.3,
+        36.4,
+        -40.949986,
+        -30.257039
+      ],
+      [
+        36.4,
+        36.5,
+        -42.031044,
+        -24.886112
+      ],
+      [
+        36.5,
+        36.6,
+        -42.089577,
+        -22.939542
+      ],
+      [
+        36.6,
+        36.7,
+        -29.534087,
+        -13.744826
+      ],
+      [
+        36.7,
+        36.8,
+        -34.362027,
+        -21.412495
+      ],
+      [
+        36.8,
+        36.9,
+        -39.167264,
+        -21.681723
+      ],
+      [
+        36.9,
+        37.0,
+        -43.432787,
+        -31.885678
+      ],
+      [
+        37.0,
+        37.1,
+        -43.395906,
+        -28.517961
+      ],
+      [
+        37.1,
+        37.2,
+        -40.988273,
+        -29.544546
+      ],
+      [
+        37.2,
+        37.3,
+        -41.59345,
+        -25.022089
+      ],
+      [
+        37.3,
+        37.4,
+        -42.158317,
+        -23.417224
+      ],
+      [
+        37.4,
+        37.5,
+        -30.230006,
+        -14.092256
+      ],
+      [
+        37.5,
+        37.6,
+        -37.088694,
+        -23.108497
+      ],
+      [
+        37.6,
+        37.7,
+        -40.397264,
+        -23.864613
+      ],
+      [
+        37.7,
+        37.8,
+        -43.654822,
+        -31.885678
+      ],
+      [
+        37.8,
+        37.9,
+        -45.273406,
+        -27.392644
+      ],
+      [
+        37.9,
+        38.0,
+        -41.554307,
+        -28.322293
+      ],
+      [
+        38.0,
+        38.1,
+        -39.948525,
+        -24.570892
+      ],
+      [
+        38.1,
+        38.2,
+        -41.789934,
+        -22.748312
+      ],
+      [
+        38.2,
+        38.3,
+        -53.517929,
+        -41.061039
+      ],
+      [
+        38.3,
+        38.4,
+        -54.083219,
+        -42.385012
+      ],
+      [
+        38.4,
+        38.5,
+        -54.205102,
+        -42.280988
+      ],
+      [
+        38.5,
+        38.6,
+        -54.52377,
+        -42.212324
+      ],
+      [
+        38.6,
+        38.7,
+        -29.141051,
+        -15.289579
+      ],
+      [
+        38.7,
+        38.8,
+        -41.25376,
+        -27.599985
+      ],
+      [
+        38.8,
+        38.9,
+        -42.109347,
+        -24.701985
+      ],
+      [
+        38.9,
+        39.0,
+        -43.026686,
+        -28.043505
+      ],
+      [
+        39.0,
+        39.1,
+        -45.716105,
+        -29.102598
+      ],
+      [
+        39.1,
+        39.2,
+        -41.190457,
+        -29.371295
+      ],
+      [
+        39.2,
+        39.3,
+        -38.816732,
+        -21.304017
+      ],
+      [
+        39.3,
+        39.4,
+        -53.458009,
+        -41.212101
+      ],
+      [
+        39.4,
+        39.5,
+        -30.193742,
+        -16.42216
+      ],
+      [
+        39.5,
+        39.6,
+        -44.21654,
+        -29.457488
+      ],
+      [
+        39.6,
+        39.7,
+        -41.937181,
+        -24.099381
+      ],
+      [
+        39.7,
+        39.8,
+        -43.467103,
+        -28.510896
+      ],
+      [
+        39.8,
+        39.9,
+        -45.227442,
+        -28.674853
+      ],
+      [
+        39.9,
+        40.0,
+        -40.944465,
+        -29.64857
+      ],
+      [
+        40.0,
+        40.1,
+        -39.225156,
+        -23.025486
+      ],
+      [
+        40.1,
+        40.2,
+        -51.44827,
+        -36.089736
+      ],
+      [
+        40.2,
+        40.3,
+        -29.396063,
+        -14.528672
+      ],
+      [
+        40.3,
+        40.4,
+        -40.989392,
+        -27.606346
+      ],
+      [
+        40.4,
+        40.5,
+        -42.251708,
+        -24.380083
+      ],
+      [
+        40.5,
+        40.6,
+        -43.05734,
+        -28.158016
+      ],
+      [
+        40.6,
+        40.7,
+        -45.703296,
+        -29.24743
+      ],
+      [
+        40.7,
+        40.8,
+        -41.289759,
+        -30.069136
+      ],
+      [
+        40.8,
+        40.9,
+        -38.824338,
+        -21.297859
+      ],
+      [
+        40.9,
+        41.0,
+        -53.790372,
+        -41.001342
+      ],
+      [
+        41.0,
+        41.1,
+        -54.15572,
+        -42.45506
+      ],
+      [
+        41.1,
+        41.2,
+        -54.04289,
+        -42.385012
+      ],
+      [
+        41.2,
+        41.3,
+        -54.882,
+        -43.036759
+      ],
+      [
+        41.3,
+        41.4,
+        -30.363124,
+        -14.974795
+      ],
+      [
+        41.4,
+        41.5,
+        -33.432138,
+        -18.933234
+      ],
+      [
+        41.5,
+        41.6,
+        -38.847049,
+        -23.13888
+      ],
+      [
+        41.6,
+        41.7,
+        -43.802171,
+        -33.126233
+      ],
+      [
+        41.7,
+        41.8,
+        -44.738774,
+        -28.638946
+      ],
+      [
+        41.8,
+        41.9,
+        -43.082464,
+        -29.057359
+      ],
+      [
+        41.9,
+        42.0,
+        -41.812856,
+        -29.600404
+      ],
+      [
+        42.0,
+        42.1,
+        -39.600282,
+        -23.215308
+      ],
+      [
+        42.1,
+        42.2,
+        -29.524051,
+        -14.37335
+      ],
+      [
+        42.2,
+        42.3,
+        -33.916975,
+        -21.694601
+      ],
+      [
+        42.3,
+        42.4,
+        -42.094604,
+        -28.130936
+      ],
+      [
+        42.4,
+        42.5,
+        -41.594515,
+        -24.821223
+      ],
+      [
+        42.5,
+        42.6,
+        -43.684303,
+        -28.253466
+      ],
+      [
+        42.6,
+        42.7,
+        -41.930499,
+        -29.355715
+      ],
+      [
+        42.7,
+        42.8,
+        -40.195903,
+        -24.881461
+      ],
+      [
+        42.8,
+        42.9,
+        -41.221211,
+        -23.335115
+      ],
+      [
+        42.9,
+        43.0,
+        -31.01408,
+        -15.283417
+      ],
+      [
+        43.0,
+        43.1,
+        -33.237611,
+        -19.410283
+      ],
+      [
+        43.1,
+        43.2,
+        -40.567576,
+        -27.202278
+      ],
+      [
+        43.2,
+        43.3,
+        -41.455686,
+        -24.375695
+      ],
+      [
+        43.3,
+        43.4,
+        -43.242999,
+        -28.482696
+      ],
+      [
+        43.4,
+        43.5,
+        -42.565843,
+        -28.893469
+      ],
+      [
+        43.5,
+        43.6,
+        -41.886061,
+        -29.84395
+      ],
+      [
+        43.6,
+        43.7,
+        -39.521939,
+        -23.119878
+      ],
+      [
+        43.7,
+        43.8,
+        -54.801064,
+        -43.500116
+      ],
+      [
+        43.8,
+        43.9,
+        -54.275462,
+        -41.942973
+      ],
+      [
+        43.9,
+        44.0,
+        -54.562086,
+        -43.112289
+      ],
+      [
+        44.0,
+        44.1,
+        -54.028416,
+        -42.043003
+      ],
+      [
+        44.1,
+        44.18133333,
+        -54.592184,
+        -43.421153
+      ]
+    ]
+  },
+  "warnings": [],
+  "measurement_limits": [
+    "No perceptual audition is performed by this script.",
+    "Sample peaks are not oversampled true peaks, LUFS, or a guarantee against intersample clipping.",
+    "Full-scale sample counts use signed PCM endpoint values; near-full-scale counts use -0.1 dBFS.",
+    "Silence uses the maximum absolute channel sample per frame at the configured threshold; exact-zero counts are separate.",
+    "Energy events group RMS-threshold windows with the configured merge gap; they are not verified shot or animation event counts.",
+    "Phase labels are supplied capture annotations; no automatic identification of weapon type or event synchrony is claimed.",
+    "Null dBFS means exactly zero measured amplitude, mathematically negative infinity."
+  ],
+  "silence_threshold_dbfs": -60,
+  "wholly_quiet_100ms_window_ranges": [
+    {
+      "start_seconds": 0.0,
+      "end_seconds": 0.1,
+      "windows": 1
+    }
+  ],
+  "quiet_window_limit": "These merged windows remain entirely at or below -60 dBFS sample peak. Silence, including pause/death phases, is measured without an automatic audible-phase pass requirement."
+}

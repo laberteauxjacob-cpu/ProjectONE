@@ -1,0 +1,1127 @@
+{
+  "schema": "one06.packaged_checks.v1",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "result": "PASS",
+  "run_count": 15,
+  "assertion_count": 4084,
+  "failures": 0,
+  "required_runtime_identity": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292697088,
+      "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10731021,
+      "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 221414272,
+      "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 240183,
+      "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "runs": [
+    {
+      "mode": "combat",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE06CombatCheck",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE06CombatVariants=6",
+        "-ONE03InputTrace",
+        "-ONE06Capture"
+      ],
+      "exit_code": 0,
+      "seconds": 83.922,
+      "completion": {
+        "failures": 0,
+        "checks": 2110
+      },
+      "capture_requested": true,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/CombatCheck/20260909_205408_80953E1D",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/CombatCheck/20260909_205408_80953E1D/checks.txt",
+          "bytes": 203642,
+          "sha256": "33ccb76226adc0ccdc90b0a1a559671c63e35fd247c2487e15c60cf3e0780e81"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/CombatCheck/20260909_205408_80953E1D/rays.csv",
+          "bytes": 57574,
+          "sha256": "72bbbfee212c14594c8af5bc12047caffa777b24ece70c18b279cc499e98f9e1"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4599,
+        "sha256": "01933b7f46ccfe73c1b0d2d93ad143fe08622a17fdb75012e30e989237dd4365"
+      },
+      "capture": {
+        "captured_frames": 2095,
+        "metadata": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/CombatCheck/20260909_205408_80953E1D/Media/capture.json",
+          "bytes": 35647,
+          "sha256": "a39f4b1514ada9f2f8254e380dd8c22a19101bbe421072e3439606abb10935a8"
+        },
+        "frames_csv": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/CombatCheck/20260909_205408_80953E1D/Media/frames.csv",
+          "bytes": 256551,
+          "sha256": "a20273753668a15afea84b4b51c80fa87ed633f2c2925b4dc70d91128bca457e"
+        },
+        "audio": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/CombatCheck/20260909_205408_80953E1D/Media/gameplay_master.wav",
+          "bytes": 15192108,
+          "sha256": "e98fd8ed83319124b4ae88bc63a36d7c6bc7dcd32a5528e936253863fdce8e5c"
+        },
+        "frame_files_exist": true,
+        "frame_image_bytes_not_individually_hashed_or_reviewed": true
+      }
+    },
+    {
+      "mode": "grouping",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE06GroupingCheck",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE06Capture"
+      ],
+      "exit_code": 0,
+      "seconds": 48.875,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 922,
+        "trials": 18,
+        "frames": 1135
+      },
+      "capture_requested": true,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/GroupingCheck/20260909_205534_5089B217",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/GroupingCheck/20260909_205534_5089B217/checks.csv",
+          "bytes": 99111,
+          "sha256": "5776e8f8890c1dccd9a00b5e2b820c437841d5b80a7c0a8ef7d4f44095c9b8e8"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/GroupingCheck/20260909_205534_5089B217/checks.txt",
+          "bytes": 60,
+          "sha256": "17a858b7f6e2a5d3db93429ab3c9e7099f77f72d6d24688afed045f69ed2374c"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/GroupingCheck/20260909_205534_5089B217/groups.csv",
+          "bytes": 4245,
+          "sha256": "bd4282092c717eb199bd6558cf8e9602cecfea738c785abcada4b11d957f6045"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/GroupingCheck/20260909_205534_5089B217/observations.json",
+          "bytes": 941,
+          "sha256": "473d94626e49243fba08e51614cacccb8c7edf5a88ec17d33a975ab7912380ac"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/GroupingCheck/20260909_205534_5089B217/rays.csv",
+          "bytes": 124385,
+          "sha256": "389d4e58fe1748a44637062ed97f2089b2fdbb14ac6eb202506e7b1f8e5ad85e"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 5363,
+        "sha256": "9d272110024f6d806d9b7c631cc61888355d3e9ae2d607cd5003bd5e23862200"
+      },
+      "capture": {
+        "captured_frames": 1135,
+        "metadata": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/GroupingCheck/20260909_205534_5089B217/Media/capture.json",
+          "bytes": 9444,
+          "sha256": "5f956641c4236c6fb4effbb80296c316cfa761ea3c18130721e436e8f5e1277e"
+        },
+        "frames_csv": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/GroupingCheck/20260909_205534_5089B217/Media/frames.csv",
+          "bytes": 127496,
+          "sha256": "a3bff3cb1e228a10629458a2c0ce1f34cc9d237367e66cbb7edaac647c52fddc"
+        },
+        "audio": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/GroupingCheck/20260909_205534_5089B217/Media/gameplay_master.wav",
+          "bytes": 8482860,
+          "sha256": "089d5aa8ce850f5ba8e256552abf0fdc5fe52afa7865b4ff3575378d781875b5"
+        },
+        "frame_files_exist": true,
+        "frame_image_bytes_not_individually_hashed_or_reviewed": true
+      }
+    },
+    {
+      "mode": "survival",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE06SurvivalCheck",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE06Capture"
+      ],
+      "exit_code": 0,
+      "seconds": 71.797,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 100,
+        "frames": 1735
+      },
+      "capture_requested": true,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/SurvivalCheck/20260909_205625_616B23A3",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/SurvivalCheck/20260909_205625_616B23A3/checks.csv",
+          "bytes": 7940,
+          "sha256": "e80696869d2dc845a12eda085e531b82f36966874579930da89ef2d278a3f3c5"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/SurvivalCheck/20260909_205625_616B23A3/checks.txt",
+          "bytes": 49,
+          "sha256": "8997e3f8284907f12aa0d480b910fa4783a09245d039f54edee31cc0031cfe24"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/SurvivalCheck/20260909_205625_616B23A3/observations.json",
+          "bytes": 450263,
+          "sha256": "f2b7cc289b8c011e40b0bbfde10c34f370e8958f9094e77109c3f655acab2351"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4853,
+        "sha256": "3f8322e750c17632d2a629bca40086d78ba35823fb8a2c8265af8f22e008919b"
+      },
+      "capture": {
+        "captured_frames": 1735,
+        "metadata": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/SurvivalCheck/20260909_205625_616B23A3/Media/capture.json",
+          "bytes": 3579,
+          "sha256": "bc511cdd69fd37d80ffc17f651d4d6f2cf4572d8d63ed5fd9c751208af3969b9"
+        },
+        "frames_csv": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/SurvivalCheck/20260909_205625_616B23A3/Media/frames.csv",
+          "bytes": 192290,
+          "sha256": "efb73c1c2905f65d6839c212f008d8a963fa793bf681ff2c9a43bbf3e91475ae"
+        },
+        "audio": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/SurvivalCheck/20260909_205625_616B23A3/Media/gameplay_master.wav",
+          "bytes": 12804140,
+          "sha256": "ee711ad993e10973d1e1eb8c9ee3199048e5798fc4db7644cb4492ad5efdec67"
+        },
+        "frame_files_exist": true,
+        "frame_image_bytes_not_individually_hashed_or_reviewed": true
+      }
+    },
+    {
+      "mode": "portability",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "/Game/ONE/Maps/Portability06",
+        "-ONE06PortabilityCheck",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE06Capture"
+      ],
+      "exit_code": 0,
+      "seconds": 49.938,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 35,
+        "observed_frames": 4145
+      },
+      "capture_requested": true,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/Portability/20260909_205739_F6C9B1B4",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/Portability/20260909_205739_F6C9B1B4/checks.json",
+          "bytes": 7393,
+          "sha256": "7325de76809c3e34f3cb1576d9a658f586b9efa7627793a76835ceda4ab0680d"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/Portability/20260909_205739_F6C9B1B4/timeline.csv",
+          "bytes": 485382,
+          "sha256": "1c8f2a8a8e931f6d5dd534ab4fb62c7b99b3e7d3770bdeb45987265c9629d09c"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4645,
+        "sha256": "e1f0b759a692671994ef36ab547c73bd63b3c439a2818447e1e0d8760b2d84fc"
+      },
+      "capture": {
+        "captured_frames": 1131,
+        "metadata": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/Portability/20260909_205739_F6C9B1B4/Media/capture.json",
+          "bytes": 3292,
+          "sha256": "57a9e3d63bb368f55c7b8bb39fa79ed081ba7672d0b4368de28729f589720253"
+        },
+        "frames_csv": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/Portability/20260909_205739_F6C9B1B4/Media/frames.csv",
+          "bytes": 121568,
+          "sha256": "7c29d463041200475480a7fd861ae4a9f5bd4a12fce825a16564b324cfc6e55b"
+        },
+        "audio": {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate06/Portability/20260909_205739_F6C9B1B4/Media/gameplay_master.wav",
+          "bytes": 8609836,
+          "sha256": "66ca3b57fc982fba7695d7ff38c4276fa2b3e398f9037073ea2952b271ad2c21"
+        },
+        "frame_files_exist": true,
+        "frame_image_bytes_not_individually_hashed_or_reviewed": true
+      }
+    },
+    {
+      "mode": "weapon05",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 30,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05WeaponCheck",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 30,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE05Rate=30"
+      ],
+      "exit_code": 0,
+      "seconds": 91.875,
+      "completion": {
+        "failures": 0,
+        "checks": 197,
+        "rate": 30
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Weapon30",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Weapon30/checks.json",
+          "bytes": 39118,
+          "sha256": "d4ef9c60a51276bb842c0df49f2bd8d8d453c4a80338da44a6635b326e121df6"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Weapon30/timeline.csv",
+          "bytes": 130008,
+          "sha256": "247e717a85e011745c5cbe372a051e08c3a140d2dfcf51d2bc2af519796556be"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 3526,
+        "sha256": "e7d580a209c62188e218ddebd2a08191aeb4f5f2a310dd345b870b3596864e6c"
+      }
+    },
+    {
+      "mode": "weapon05",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 60,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05WeaponCheck",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 60,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE05Rate=60"
+      ],
+      "exit_code": 0,
+      "seconds": 89.859,
+      "completion": {
+        "failures": 0,
+        "checks": 197,
+        "rate": 60
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Weapon60",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Weapon60/checks.json",
+          "bytes": 39114,
+          "sha256": "bd7186d242d403eaed2d0cd874672c78783a4f142d29425acf6e31feb859009e"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Weapon60/timeline.csv",
+          "bytes": 253526,
+          "sha256": "d5a791d54146e24b1b2045393f2102f621b4a0146ccee3208df25d3b1886fb51"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 3526,
+        "sha256": "0fe48ff6854f03b2ebb74bf7361b49cbb506c2400de039ebd392fae6af4d7249"
+      }
+    },
+    {
+      "mode": "weapon05",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05WeaponCheck",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE05Rate=120"
+      ],
+      "exit_code": 0,
+      "seconds": 88.875,
+      "completion": {
+        "failures": 0,
+        "checks": 197,
+        "rate": 120
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Weapon120",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Weapon120/checks.json",
+          "bytes": 39123,
+          "sha256": "c48f49744dcb0234dd49992da51c8e41c52867cf636ac06f45aba56f2007ccc6"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Weapon120/timeline.csv",
+          "bytes": 502371,
+          "sha256": "65cdec098b130ebe8a07aee7d9f8adae28a835e78cee61e005ac4f9eb1972d39"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 3532,
+        "sha256": "59a8d8ffab394fdbd0888054eb9cd4af74c14179e99d7c0f3a1622b1af25eaec"
+      }
+    },
+    {
+      "mode": "ui",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05UICheck",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage"
+      ],
+      "exit_code": 0,
+      "seconds": 12.86,
+      "completion": {
+        "failures": 0,
+        "checks": 49,
+        "width": 1600,
+        "height": 900
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1600x900",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1600x900/01_starter_0_7_56.png",
+          "bytes": 1218299,
+          "sha256": "931c229872964b3feed74a037d787dab167186a2527473a75dd9b492bf53d52c"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1600x900/02_expanded_tools.png",
+          "bytes": 610048,
+          "sha256": "841ab6e043c4121fbcf6ec87c38d5eab40f9744c93bab16ca1e328f1b1d4178d"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1600x900/03_compact_1500.png",
+          "bytes": 1219683,
+          "sha256": "0d1969704375184c3972d717768f668290545ab79a56ff1be091bca43aa5b3e5"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1600x900/04_pause.png",
+          "bytes": 475105,
+          "sha256": "a2a8ae585dc9f8d544f7b82427410a8d1d72c9fcd045f14c06357ab8372ab668"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1600x900/05_death.png",
+          "bytes": 533510,
+          "sha256": "d9628b062f4515cb5231094d8e57e014abb39913324e868fae363c329526982f"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1600x900/06_restarted_starter.png",
+          "bytes": 1218678,
+          "sha256": "308a256cac5452b5aa726520d363e470c430abfe22dd5729132210a478afc3ab"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1600x900/checks.json",
+          "bytes": 11168,
+          "sha256": "c8f32398308c335299c02f91f5ca1825e828988e1853a6d4150fcaf7f8a76144"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1600x900/input.csv",
+          "bytes": 1192,
+          "sha256": "2bec372532bd5838d992e7f565d8c8ac818bfbe15c6e501ccb8f92bdf38a616e"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4890,
+        "sha256": "78a567c6e3745299fabb4f3bd9daff77704c445a5f8965af2e2982ad768894cf"
+      }
+    },
+    {
+      "mode": "ui",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1280,
+        "height": 720,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05UICheck",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1280",
+        "-ResY=720",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage"
+      ],
+      "exit_code": 0,
+      "seconds": 11.797,
+      "completion": {
+        "failures": 0,
+        "checks": 49,
+        "width": 1280,
+        "height": 720
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1280x720",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1280x720/01_starter_0_7_56.png",
+          "bytes": 811948,
+          "sha256": "0a863e4257ee0f5f117114b26fba7be37e910d442b4cc65eb6b1a6ecdee69c32"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1280x720/02_expanded_tools.png",
+          "bytes": 418121,
+          "sha256": "874a8fa283091cd3f4648c5bca8e53a952e2e435be414c5fa33bf63b3067cd9a"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1280x720/03_compact_1500.png",
+          "bytes": 814428,
+          "sha256": "4ef53b5d007a317a68eaa5f24b51b4dc15740820dd7c9623d3b3ed86757b1b3b"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1280x720/04_pause.png",
+          "bytes": 328415,
+          "sha256": "633a9b3fafd26a50988e8b01038e65b9febd07c1bd54e1d8b08558d29c297989"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1280x720/05_death.png",
+          "bytes": 367235,
+          "sha256": "b59e5ebecebbe84180c456781987b3afd1187a92196a88eda36212167babeaf7"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1280x720/06_restarted_starter.png",
+          "bytes": 815096,
+          "sha256": "245e1ebf960988d2f7bc21cb6191644e3cf4930507f583f7c2b319b6019a4b91"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1280x720/checks.json",
+          "bytes": 11563,
+          "sha256": "98defc77c728357677b28ce43bf2a83af334a718f8c678a210d273af9a38a365"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/UI1280x720/input.csv",
+          "bytes": 1192,
+          "sha256": "e1cb08f0439a135d2c7d0dcd59ffec37ede419d4566f041a3ebcd3c3ce0eb690"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4888,
+        "sha256": "08b34af06e4eef700dd9e69e80a53511597ddd4f544a1a0150698aa88516b34c"
+      }
+    },
+    {
+      "mode": "profile",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05Profile",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE05ProfileWeapon=M4A1",
+        "-ONE05ProfileEnemies=6"
+      ],
+      "exit_code": 0,
+      "seconds": 57.141,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210332_C1FFDCAA",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210332_C1FFDCAA/chapters.csv",
+          "bytes": 1189,
+          "sha256": "0dbc5acc83a04967c88a921eba8e5a8a57fb1bff03c9ec7d46dbc13deb7c9e13"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210332_C1FFDCAA/checks.txt",
+          "bytes": 4372,
+          "sha256": "3db97b91cf8fbaa624ab16ddf15fee2848881f08e9768556591c739f9ea4ed8f"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210332_C1FFDCAA/frames.csv",
+          "bytes": 69,
+          "sha256": "f2982f8ae5b9f306e8531ae120e9d50f050584e10eab0c9ce77bc88b43d4f716"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210332_C1FFDCAA/input_events.csv",
+          "bytes": 1829,
+          "sha256": "e9d23e476d7cf2f370d8272808883c6a92b354c47ce3b04d68f556fd7c2ba12a"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210332_C1FFDCAA/observations.csv",
+          "bytes": 92707,
+          "sha256": "cd27ade27a58866cc8d8fe3313c6530f8c76ca897fe01768e978f9dc9e1c230c"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4404,
+        "sha256": "39795679cf771317e1a57a4369c11721fd39881a25b10fc31b9dd19c6093ecd9"
+      }
+    },
+    {
+      "mode": "profile",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05Profile",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE05ProfileWeapon=M4A1",
+        "-ONE05ProfileEnemies=12"
+      ],
+      "exit_code": 0,
+      "seconds": 57.937,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210430_0CBC3460",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210430_0CBC3460/chapters.csv",
+          "bytes": 1189,
+          "sha256": "6e526eeb1d904e37e4358cb27b521f4784c86449b2c11be41d80bbe9ae669d80"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210430_0CBC3460/checks.txt",
+          "bytes": 4375,
+          "sha256": "84e5d7ae96a55bb2e18ba338c33d7df27ac05ffa5620118ca92242e24aec4b3b"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210430_0CBC3460/frames.csv",
+          "bytes": 69,
+          "sha256": "f2982f8ae5b9f306e8531ae120e9d50f050584e10eab0c9ce77bc88b43d4f716"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210430_0CBC3460/input_events.csv",
+          "bytes": 1829,
+          "sha256": "f6e0b9adc5065450645b245337d4723248fd4f7c9eaf43f34ee8b01abaf4ed4f"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210430_0CBC3460/observations.csv",
+          "bytes": 93248,
+          "sha256": "da057c60706e87b889286d4e2783aae4638157c5bbc4093d7ed8c02c89b28b7c"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4405,
+        "sha256": "a74085df488858b39579e9bc6ec2d871c1027a94f00b2c2bcf1851aa03c694ea"
+      }
+    },
+    {
+      "mode": "profile",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05Profile",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE05ProfileWeapon=M4A1",
+        "-ONE05ProfileEnemies=18"
+      ],
+      "exit_code": 0,
+      "seconds": 56.969,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210530_E925F27F",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210530_E925F27F/chapters.csv",
+          "bytes": 1189,
+          "sha256": "0b7311f9e6367889b1be7951d99a3bf8ca8fba06bd733c749bfef25896041312"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210530_E925F27F/checks.txt",
+          "bytes": 4375,
+          "sha256": "4243f735fe19a2043d7adb2fb5c658f7a56b07befeb954589f226bd275da2b47"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210530_E925F27F/frames.csv",
+          "bytes": 69,
+          "sha256": "f2982f8ae5b9f306e8531ae120e9d50f050584e10eab0c9ce77bc88b43d4f716"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210530_E925F27F/input_events.csv",
+          "bytes": 1829,
+          "sha256": "34934c3bcfedd5536c867682662170e2930b4a47d30097565494283c7510e9a7"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210530_E925F27F/observations.csv",
+          "bytes": 93030,
+          "sha256": "8617b1916b5a9cee4d64f8cba7172bc8f76d0ff82d3d1b30014dc2fe49c96c1d"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4406,
+        "sha256": "02b07d3d81744caa1cb9c93e7e4d30f29554037797712c4665e3da6ae0adfc12"
+      }
+    },
+    {
+      "mode": "profile",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05Profile",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE05ProfileWeapon=870",
+        "-ONE05ProfileEnemies=6"
+      ],
+      "exit_code": 0,
+      "seconds": 56.89,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210629_F3DB908D",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210629_F3DB908D/chapters.csv",
+          "bytes": 1189,
+          "sha256": "cfada4e70d01294e0df78ab2d95a3b253c4a3ddb0859b594ffb4b85d59fc61d1"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210629_F3DB908D/checks.txt",
+          "bytes": 4371,
+          "sha256": "a4cf4d06a260915fabf37867975de50f219617d047714422a90b02cba1a1791c"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210629_F3DB908D/frames.csv",
+          "bytes": 69,
+          "sha256": "f2982f8ae5b9f306e8531ae120e9d50f050584e10eab0c9ce77bc88b43d4f716"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210629_F3DB908D/input_events.csv",
+          "bytes": 2719,
+          "sha256": "db94bb15753ac251e79cb22f54b62e1c9e7a7473639408e6f38288328bc2c2e6"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210629_F3DB908D/observations.csv",
+          "bytes": 92595,
+          "sha256": "cfcbc0f8f68970d1f08f3469ba2aefe8cb04e9e7052055b31a178955492a0b46"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4403,
+        "sha256": "61751ace1387dfd2dba06d23d6a851891a1ab8a9695f046edf938fb582656249"
+      }
+    },
+    {
+      "mode": "profile",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05Profile",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE05ProfileWeapon=870",
+        "-ONE05ProfileEnemies=12"
+      ],
+      "exit_code": 0,
+      "seconds": 57.938,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210728_95E01DFA",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210728_95E01DFA/chapters.csv",
+          "bytes": 1189,
+          "sha256": "b7d951ccab479fcbe0b0237b28fad4a70819749559f68b6207ba8651d11faf06"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210728_95E01DFA/checks.txt",
+          "bytes": 4373,
+          "sha256": "454b1aa3c58a5e4946c802138a6e5f4203cd6be56faea0fcaef1e2a91ca56307"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210728_95E01DFA/frames.csv",
+          "bytes": 69,
+          "sha256": "f2982f8ae5b9f306e8531ae120e9d50f050584e10eab0c9ce77bc88b43d4f716"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210728_95E01DFA/input_events.csv",
+          "bytes": 2719,
+          "sha256": "6b671bd26afe93eeec479c50e92020e1c0356e5e7498da9da4a07d65e014db51"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210728_95E01DFA/observations.csv",
+          "bytes": 92925,
+          "sha256": "ba2b4043b9aabd51745f6d9202725b064ec3675c7740e6c711871b7235a87d45"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4405,
+        "sha256": "6baa0427f0c33b49f0c1da2ba65ddcf673d52af787973203ada8ae949149be51"
+      }
+    },
+    {
+      "mode": "profile",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "state": "PASS",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "arguments": [
+        "-ONE05Profile",
+        "-d3d12",
+        "-RenderOffScreen",
+        "-windowed",
+        "-ResX=1600",
+        "-ResY=900",
+        "-ForceRes",
+        "-unattended",
+        "-nosplash",
+        "-ini:Engine:[Audio]:UnfocusedVolumeMultiplier=1.0",
+        "-ExecCmds=t.MaxFPS 120,r.VSync 0,r.ScreenPercentage 100,t.MaxFPS,r.VSync,r.ScreenPercentage",
+        "-ONE05ProfileWeapon=870",
+        "-ONE05ProfileEnemies=18"
+      ],
+      "exit_code": 0,
+      "seconds": 56.875,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "fixture_folder": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210827_39C2DCF8",
+      "actor_files": [
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210827_39C2DCF8/chapters.csv",
+          "bytes": 1189,
+          "sha256": "006934c9d4e07d61bb2beb59c8066d1af09afe3971fdd608f758486579de8e30"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210827_39C2DCF8/checks.txt",
+          "bytes": 4373,
+          "sha256": "991cc5514a5cd949a43d329009e753d2ec07af847d83a37cc97c4d1596cd2d5d"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210827_39C2DCF8/frames.csv",
+          "bytes": 69,
+          "sha256": "f2982f8ae5b9f306e8531ae120e9d50f050584e10eab0c9ce77bc88b43d4f716"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210827_39C2DCF8/input_events.csv",
+          "bytes": 2719,
+          "sha256": "b7cb7ccbea064b4401df0c5ae49d6183ec6790acd8b99a32b574bdff8ef05872"
+        },
+        {
+          "path": "Packaged/Candidate06/Windows/ProjectONE/Saved/Candidate05/Profile/20260909_210827_39C2DCF8/observations.csv",
+          "bytes": 93101,
+          "sha256": "cbba8dd75069986d0d7f57f51bf34b1a8823c1f74c29e293c2f86320a2b1545e"
+        }
+      ],
+      "prelaunch_source_runtime_verified": true,
+      "postrun_source_runtime_verified": true,
+      "raw_result": {
+        "file": "result.json",
+        "bytes": 4404,
+        "sha256": "e9466d482122d13a9688cac6baf979d349cb0496cca0b0eab6b99da75e9ed463"
+      }
+    }
+  ],
+  "scope": "Current exact-source package fixtures, including six non-recording profile runs. Assertions are not independent gameplay scenarios. Engine-simulated input and frozen/granted fixture states are not native or uninterrupted human play."
+}

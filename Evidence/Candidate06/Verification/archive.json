@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "archive": {
+    "name": "ProjectONE-Candidate06-Windows.zip",
+    "bytes": 409889719,
+    "sha256": "4dd954cdeb894d2be371fa78df0f640ef7a623685c40aa5cf0261c804f1c8b0a"
+  },
+  "entries": 1217,
+  "all_entry_crcs_verified": true,
+  "embedded_source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "embedded_payload_hashes_verified": 1215,
+  "external_summary_and_checksum_match": true,
+  "required_six_runtime_files_present": true,
+  "local_extract": "Packaged/Candidate06/Windows",
+  "all_extracted_manifest_payloads_verified": true,
+  "runtime_identity": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292697088,
+      "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10731021,
+      "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 221414272,
+      "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 240183,
+      "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "required_runtime_identical_to_fresh_build": true,
+  "candidate05_archive_hash_unchanged": true,
+  "limit": "Local archive and first extraction verification. Actual public downloads and native launch are separate."
+}

@@ -1,0 +1,3846 @@
+{
+  "status": "MEASURED",
+  "source_sha256": "66ca3b57fc982fba7695d7ff38c4276fa2b3e398f9037073ea2952b271ad2c21",
+  "source_file_bytes": 8609836,
+  "format": {
+    "encoding": "integer PCM",
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "bits_per_sample": 16,
+    "frame_count": 2152448,
+    "duration_seconds": 44.84266667
+  },
+  "overall": {
+    "duration_seconds": 44.84266667,
+    "frame_count": 2152448,
+    "channel_sample_count": 4304896,
+    "sample_peak_normalized": 0.1296081543,
+    "sample_peak_dbfs": -17.747353,
+    "rms_normalized": 0.0090004467,
+    "rms_dbfs": -40.914719,
+    "crest_factor_db": 23.167365,
+    "sample_peak_headroom_db": 17.747353,
+    "full_scale_sample_count": 0,
+    "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+    "nonzero_sample_count": 4253843,
+    "nonzero_sample_percent": 98.814071,
+    "exact_zero_frame_count": 7824,
+    "longest_exact_zero_seconds": 0.14266667,
+    "silent_frame_count_at_threshold": 501174,
+    "silent_frame_percent_at_threshold": 23.283907,
+    "longest_silence_seconds_at_threshold": 0.15514583,
+    "channels": [
+      {
+        "channel_index": 0,
+        "sample_peak_dbfs": -17.747353,
+        "rms_dbfs": -40.896225,
+        "dc_normalized": 5.7483e-06,
+        "absolute_dc_dbfs": -104.809249,
+        "full_scale_sample_count": 0,
+        "nonzero_sample_count": 2127430
+      },
+      {
+        "channel_index": 1,
+        "sample_peak_dbfs": -17.755538,
+        "rms_dbfs": -40.933291,
+        "dc_normalized": 5.8802e-06,
+        "absolute_dc_dbfs": -104.612175,
+        "full_scale_sample_count": 0,
+        "nonzero_sample_count": 2126413
+      }
+    ]
+  },
+  "phases": [
+    {
+      "name": "1: Second-map warmup and authored fixture discovery",
+      "start_seconds": 0,
+      "end_seconds": 1.166339599,
+      "coverage": "complete",
+      "available_start_seconds": 0.0,
+      "available_end_seconds": 1.16633333,
+      "requested_duration_seconds": 1.166339599,
+      "covered_duration_seconds": 1.16633333,
+      "covered_fraction": 0.99999463,
+      "metrics": {
+        "duration_seconds": 1.16633333,
+        "frame_count": 55984,
+        "channel_sample_count": 111968,
+        "sample_peak_normalized": 0.0063171387,
+        "sample_peak_dbfs": -43.989592,
+        "rms_normalized": 0.0018171445,
+        "rms_dbfs": -54.812211,
+        "crest_factor_db": 10.822619,
+        "sample_peak_headroom_db": 43.989592,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 97053,
+        "nonzero_sample_percent": 86.67923,
+        "exact_zero_frame_count": 6888,
+        "longest_exact_zero_seconds": 0.14266667,
+        "silent_frame_count_at_threshold": 24268,
+        "silent_frame_percent_at_threshold": 43.348099,
+        "longest_silence_seconds_at_threshold": 0.15514583,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -43.989592,
+            "rms_dbfs": -54.48898,
+            "dc_normalized": 3.0712e-06,
+            "absolute_dc_dbfs": -110.25394,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 48601
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -44.031654,
+            "rms_dbfs": -55.161446,
+            "dc_normalized": 4.5315e-06,
+            "absolute_dc_dbfs": -106.875122,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 48452
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "2: Registered standing target and real pistol aim",
+      "start_seconds": 1.166339599,
+      "end_seconds": 1.5706947,
+      "coverage": "complete",
+      "available_start_seconds": 1.16633333,
+      "available_end_seconds": 1.5706875,
+      "requested_duration_seconds": 0.40435510099999994,
+      "covered_duration_seconds": 0.40435417,
+      "covered_fraction": 0.99999769,
+      "metrics": {
+        "duration_seconds": 0.40435417,
+        "frame_count": 19409,
+        "channel_sample_count": 38818,
+        "sample_peak_normalized": 0.1296081543,
+        "sample_peak_dbfs": -17.747353,
+        "rms_normalized": 0.0106605836,
+        "rms_dbfs": -39.44438,
+        "crest_factor_db": 21.697027,
+        "sample_peak_headroom_db": 17.747353,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 38380,
+        "nonzero_sample_percent": 98.871657,
+        "exact_zero_frame_count": 19,
+        "longest_exact_zero_seconds": 0.00010417,
+        "silent_frame_count_at_threshold": 5946,
+        "silent_frame_percent_at_threshold": 30.635272,
+        "longest_silence_seconds_at_threshold": 0.0071875,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -17.747353,
+            "rms_dbfs": -39.429688,
+            "dc_normalized": 1.9942e-05,
+            "absolute_dc_dbfs": -94.004622,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 19249
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -17.755538,
+            "rms_dbfs": -39.459123,
+            "dc_normalized": 2.1365e-05,
+            "absolute_dc_dbfs": -93.405951,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 19131
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        0
+      ]
+    },
+    {
+      "name": "3: Pistol discharge and impact scoring",
+      "start_seconds": 1.5706947,
+      "end_seconds": 1.870589398,
+      "coverage": "complete",
+      "available_start_seconds": 1.5706875,
+      "available_end_seconds": 1.87058333,
+      "requested_duration_seconds": 0.2998946979999999,
+      "covered_duration_seconds": 0.29989583,
+      "covered_fraction": 1.00000379,
+      "metrics": {
+        "duration_seconds": 0.29989583,
+        "frame_count": 14395,
+        "channel_sample_count": 28790,
+        "sample_peak_normalized": 0.0655822754,
+        "sample_peak_dbfs": -23.66427,
+        "rms_normalized": 0.0144839765,
+        "rms_dbfs": -36.782244,
+        "crest_factor_db": 13.117973,
+        "sample_peak_headroom_db": 23.66427,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 28556,
+        "nonzero_sample_percent": 99.187218,
+        "exact_zero_frame_count": 3,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 3401,
+        "silent_frame_percent_at_threshold": 23.626259,
+        "longest_silence_seconds_at_threshold": 0.00814583,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -23.680453,
+            "rms_dbfs": -36.77826,
+            "dc_normalized": 3.1101e-06,
+            "absolute_dc_dbfs": -110.14463,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 14289
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -23.66427,
+            "rms_dbfs": -36.786232,
+            "dc_normalized": -6.4067e-06,
+            "absolute_dc_dbfs": -103.867343,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 14267
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "4: Manager-created Max Ammo overlap",
+      "start_seconds": 1.870589398,
+      "end_seconds": 2.395241201,
+      "coverage": "complete",
+      "available_start_seconds": 1.87058333,
+      "available_end_seconds": 2.39525,
+      "requested_duration_seconds": 0.5246518030000002,
+      "covered_duration_seconds": 0.52466667,
+      "covered_fraction": 1.00002833,
+      "metrics": {
+        "duration_seconds": 0.52466667,
+        "frame_count": 25184,
+        "channel_sample_count": 50368,
+        "sample_peak_normalized": 0.0903625488,
+        "sample_peak_dbfs": -20.880231,
+        "rms_normalized": 0.0249103876,
+        "rms_dbfs": -32.07239,
+        "crest_factor_db": 11.19216,
+        "sample_peak_headroom_db": 20.880231,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 50246,
+        "nonzero_sample_percent": 99.757783,
+        "exact_zero_frame_count": 4,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 1274,
+        "silent_frame_percent_at_threshold": 5.058767,
+        "longest_silence_seconds_at_threshold": 0.00047917,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -20.880231,
+            "rms_dbfs": -32.072519,
+            "dc_normalized": -2.67744e-05,
+            "absolute_dc_dbfs": -91.445613,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 25113
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -20.933193,
+            "rms_dbfs": -32.072261,
+            "dc_normalized": -2.66641e-05,
+            "absolute_dc_dbfs": -91.48146,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 25133
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        1
+      ]
+    },
+    {
+      "name": "5: Held F purchases relocated Mystery Box",
+      "start_seconds": 2.395241201,
+      "end_seconds": 3.041897498,
+      "coverage": "complete",
+      "available_start_seconds": 2.39525,
+      "available_end_seconds": 3.04189583,
+      "requested_duration_seconds": 0.6466562969999998,
+      "covered_duration_seconds": 0.64664583,
+      "covered_fraction": 0.99998382,
+      "metrics": {
+        "duration_seconds": 0.64664583,
+        "frame_count": 31039,
+        "channel_sample_count": 62078,
+        "sample_peak_normalized": 0.1089477539,
+        "sample_peak_dbfs": -19.255634,
+        "rms_normalized": 0.0161406161,
+        "rms_dbfs": -35.841598,
+        "crest_factor_db": 16.585963,
+        "sample_peak_headroom_db": 19.255634,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 61542,
+        "nonzero_sample_percent": 99.13657,
+        "exact_zero_frame_count": 17,
+        "longest_exact_zero_seconds": 4.167e-05,
+        "silent_frame_count_at_threshold": 6337,
+        "silent_frame_percent_at_threshold": 20.416251,
+        "longest_silence_seconds_at_threshold": 0.00641667,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -19.255634,
+            "rms_dbfs": -35.532367,
+            "dc_normalized": 5.02367e-05,
+            "absolute_dc_dbfs": -85.979585,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 30712
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -19.81848,
+            "rms_dbfs": -36.174546,
+            "dc_normalized": 4.35057e-05,
+            "absolute_dc_dbfs": -87.229084,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 30830
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        2
+      ]
+    },
+    {
+      "name": "6: Normal five-second Box reel",
+      "start_seconds": 3.041897498,
+      "end_seconds": 7.776569001,
+      "coverage": "complete",
+      "available_start_seconds": 3.04189583,
+      "available_end_seconds": 7.7765625,
+      "requested_duration_seconds": 4.734671503,
+      "covered_duration_seconds": 4.73466667,
+      "covered_fraction": 0.99999898,
+      "metrics": {
+        "duration_seconds": 4.73466667,
+        "frame_count": 227264,
+        "channel_sample_count": 454528,
+        "sample_peak_normalized": 0.1098937988,
+        "sample_peak_dbfs": -19.180536,
+        "rms_normalized": 0.0140609754,
+        "rms_dbfs": -37.039691,
+        "crest_factor_db": 17.859155,
+        "sample_peak_headroom_db": 19.180536,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 450602,
+        "nonzero_sample_percent": 99.136247,
+        "exact_zero_frame_count": 138,
+        "longest_exact_zero_seconds": 0.00014583,
+        "silent_frame_count_at_threshold": 47076,
+        "silent_frame_percent_at_threshold": 20.714235,
+        "longest_silence_seconds_at_threshold": 0.01527083,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -19.180536,
+            "rms_dbfs": -36.72797,
+            "dc_normalized": 3.15593e-05,
+            "absolute_dc_dbfs": -90.017441,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 225103
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -19.826271,
+            "rms_dbfs": -37.375528,
+            "dc_normalized": 2.93352e-05,
+            "absolute_dc_dbfs": -90.652213,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 225499
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "7: Held F collects carbine into second slot",
+      "start_seconds": 7.776569001,
+      "end_seconds": 8.4549831,
+      "coverage": "complete",
+      "available_start_seconds": 7.7765625,
+      "available_end_seconds": 8.45497917,
+      "requested_duration_seconds": 0.6784140989999994,
+      "covered_duration_seconds": 0.67841667,
+      "covered_fraction": 1.00000378,
+      "metrics": {
+        "duration_seconds": 0.67841667,
+        "frame_count": 32564,
+        "channel_sample_count": 65128,
+        "sample_peak_normalized": 0.1116638184,
+        "sample_peak_dbfs": -19.041751,
+        "rms_normalized": 0.0335224009,
+        "rms_dbfs": -29.493298,
+        "crest_factor_db": 10.451547,
+        "sample_peak_headroom_db": 19.041751,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 65081,
+        "nonzero_sample_percent": 99.927834,
+        "exact_zero_frame_count": 5,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 564,
+        "silent_frame_percent_at_threshold": 1.731974,
+        "longest_silence_seconds_at_threshold": 0.00022917,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -19.041751,
+            "rms_dbfs": -29.175386,
+            "dc_normalized": -3.29598e-05,
+            "absolute_dc_dbfs": -89.640306,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 32542
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -19.676866,
+            "rms_dbfs": -29.836332,
+            "dc_normalized": -3.0302e-05,
+            "absolute_dc_dbfs": -90.370565,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 32539
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        12
+      ]
+    },
+    {
+      "name": "8: Original pistol selection and accepted injury",
+      "start_seconds": 8.4549831,
+      "end_seconds": 9.052920401,
+      "coverage": "complete",
+      "available_start_seconds": 8.45497917,
+      "available_end_seconds": 9.05291667,
+      "requested_duration_seconds": 0.597937301,
+      "covered_duration_seconds": 0.5979375,
+      "covered_fraction": 1.00000033,
+      "metrics": {
+        "duration_seconds": 0.5979375,
+        "frame_count": 28701,
+        "channel_sample_count": 57402,
+        "sample_peak_normalized": 0.0717163086,
+        "sample_peak_dbfs": -22.887641,
+        "rms_normalized": 0.0115208598,
+        "rms_dbfs": -38.770302,
+        "crest_factor_db": 15.882661,
+        "sample_peak_headroom_db": 22.887641,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 57203,
+        "nonzero_sample_percent": 99.653322,
+        "exact_zero_frame_count": 3,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2608,
+        "silent_frame_percent_at_threshold": 9.086791,
+        "longest_silence_seconds_at_threshold": 0.00047917,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -22.887641,
+            "rms_dbfs": -38.476301,
+            "dc_normalized": 1.78846e-05,
+            "absolute_dc_dbfs": -94.950419,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 28610
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -23.59182,
+            "rms_dbfs": -39.08566,
+            "dc_normalized": 1.73253e-05,
+            "absolute_dc_dbfs": -95.226385,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 28593
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        12,
+        13
+      ]
+    },
+    {
+      "name": "9: Tap F deposits original pistol",
+      "start_seconds": 9.052920401,
+      "end_seconds": 9.201608598,
+      "coverage": "complete",
+      "available_start_seconds": 9.05291667,
+      "available_end_seconds": 9.20160417,
+      "requested_duration_seconds": 0.14868819700000024,
+      "covered_duration_seconds": 0.1486875,
+      "covered_fraction": 0.99999531,
+      "metrics": {
+        "duration_seconds": 0.1486875,
+        "frame_count": 7137,
+        "channel_sample_count": 14274,
+        "sample_peak_normalized": 0.016784668,
+        "sample_peak_dbfs": -35.501745,
+        "rms_normalized": 0.0064862177,
+        "rms_dbfs": -43.76017,
+        "crest_factor_db": 8.258425,
+        "sample_peak_headroom_db": 35.501745,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 14235,
+        "nonzero_sample_percent": 99.726776,
+        "exact_zero_frame_count": 0,
+        "longest_exact_zero_seconds": 0.0,
+        "silent_frame_count_at_threshold": 254,
+        "silent_frame_percent_at_threshold": 3.558918,
+        "longest_silence_seconds_at_threshold": 0.00014583,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -36.225988,
+            "rms_dbfs": -44.441414,
+            "dc_normalized": -8.63617e-05,
+            "absolute_dc_dbfs": -81.273575,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 7119
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -35.501745,
+            "rms_dbfs": -43.171438,
+            "dc_normalized": -8.47839e-05,
+            "absolute_dc_dbfs": -81.433734,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 7116
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "10: Nine-second pistol processing while remaining in reach",
+      "start_seconds": 9.201608598,
+      "end_seconds": 18.065468401,
+      "coverage": "complete",
+      "available_start_seconds": 9.20160417,
+      "available_end_seconds": 18.06545833,
+      "requested_duration_seconds": 8.863859803,
+      "covered_duration_seconds": 8.86385417,
+      "covered_fraction": 0.99999936,
+      "metrics": {
+        "duration_seconds": 8.86385417,
+        "frame_count": 425465,
+        "channel_sample_count": 850930,
+        "sample_peak_normalized": 0.108581543,
+        "sample_peak_dbfs": -19.28488,
+        "rms_normalized": 0.0056605665,
+        "rms_dbfs": -44.942802,
+        "crest_factor_db": 25.657922,
+        "sample_peak_headroom_db": 19.28488,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 846648,
+        "nonzero_sample_percent": 99.496786,
+        "exact_zero_frame_count": 108,
+        "longest_exact_zero_seconds": 8.333e-05,
+        "silent_frame_count_at_threshold": 55376,
+        "silent_frame_percent_at_threshold": 13.015407,
+        "longest_silence_seconds_at_threshold": 0.0088125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -20.149184,
+            "rms_dbfs": -45.335176,
+            "dc_normalized": 5.6634e-06,
+            "absolute_dc_dbfs": -104.938463,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 423345
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -19.28488,
+            "rms_dbfs": -44.58296,
+            "dc_normalized": 6.7284e-06,
+            "absolute_dc_dbfs": -103.441756,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 423303
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        14
+      ]
+    },
+    {
+      "name": "11: Automatic exact-slot Last Word return without F",
+      "start_seconds": 18.065468401,
+      "end_seconds": 19.066205699,
+      "coverage": "complete",
+      "available_start_seconds": 18.06545833,
+      "available_end_seconds": 19.06620833,
+      "requested_duration_seconds": 1.0007372980000007,
+      "covered_duration_seconds": 1.00075,
+      "covered_fraction": 1.00001269,
+      "metrics": {
+        "duration_seconds": 1.00075,
+        "frame_count": 48036,
+        "channel_sample_count": 96072,
+        "sample_peak_normalized": 0.0985412598,
+        "sample_peak_dbfs": -20.127638,
+        "rms_normalized": 0.0210552631,
+        "rms_dbfs": -33.532787,
+        "crest_factor_db": 13.405149,
+        "sample_peak_headroom_db": 20.127638,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 95890,
+        "nonzero_sample_percent": 99.810559,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 2132,
+        "silent_frame_percent_at_threshold": 4.438338,
+        "longest_silence_seconds_at_threshold": 0.0008125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -20.877298,
+            "rms_dbfs": -34.012703,
+            "dc_normalized": 2.0124e-05,
+            "absolute_dc_dbfs": -93.925729,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 47949
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -20.127638,
+            "rms_dbfs": -33.100665,
+            "dc_normalized": 2.48055e-05,
+            "absolute_dc_dbfs": -92.109027,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 47941
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        14
+      ]
+    },
+    {
+      "name": "12: Select second owned carbine",
+      "start_seconds": 19.066205699,
+      "end_seconds": 19.5581536,
+      "coverage": "complete",
+      "available_start_seconds": 19.06620833,
+      "available_end_seconds": 19.55814583,
+      "requested_duration_seconds": 0.49194790099999963,
+      "covered_duration_seconds": 0.4919375,
+      "covered_fraction": 0.99997886,
+      "metrics": {
+        "duration_seconds": 0.4919375,
+        "frame_count": 23613,
+        "channel_sample_count": 47226,
+        "sample_peak_normalized": 0.0345458984,
+        "sample_peak_dbfs": -29.23207,
+        "rms_normalized": 0.0046652729,
+        "rms_dbfs": -46.622459,
+        "crest_factor_db": 17.390389,
+        "sample_peak_headroom_db": 29.23207,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 46897,
+        "nonzero_sample_percent": 99.30335,
+        "exact_zero_frame_count": 4,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 4018,
+        "silent_frame_percent_at_threshold": 17.01605,
+        "longest_silence_seconds_at_threshold": 0.00233333,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -29.23207,
+            "rms_dbfs": -46.688692,
+            "dc_normalized": -2.9725e-06,
+            "absolute_dc_dbfs": -110.537465,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 23460
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -29.347935,
+            "rms_dbfs": -46.557221,
+            "dc_normalized": -1.79515e-05,
+            "absolute_dc_dbfs": -94.917977,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 23437
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "13: Tap F deposits carbine",
+      "start_seconds": 19.5581536,
+      "end_seconds": 19.707304399,
+      "coverage": "complete",
+      "available_start_seconds": 19.55814583,
+      "available_end_seconds": 19.7073125,
+      "requested_duration_seconds": 0.14915079900000094,
+      "covered_duration_seconds": 0.14916667,
+      "covered_fraction": 1.00010639,
+      "metrics": {
+        "duration_seconds": 0.14916667,
+        "frame_count": 7160,
+        "channel_sample_count": 14320,
+        "sample_peak_normalized": 0.0151367188,
+        "sample_peak_dbfs": -36.399365,
+        "rms_normalized": 0.006810336,
+        "rms_dbfs": -43.336629,
+        "crest_factor_db": 6.937264,
+        "sample_peak_headroom_db": 36.399365,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 14307,
+        "nonzero_sample_percent": 99.909218,
+        "exact_zero_frame_count": 1,
+        "longest_exact_zero_seconds": 2.083e-05,
+        "silent_frame_count_at_threshold": 191,
+        "silent_frame_percent_at_threshold": 2.667598,
+        "longest_silence_seconds_at_threshold": 0.000125,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -36.922661,
+            "rms_dbfs": -43.771135,
+            "dc_normalized": 7.52454e-05,
+            "absolute_dc_dbfs": -82.470397,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 7153
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -36.399365,
+            "rms_dbfs": -42.941669,
+            "dc_normalized": 9.0078e-05,
+            "absolute_dc_dbfs": -80.907625,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 7154
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "14: Carbine handoff before leaving reach",
+      "start_seconds": 19.707304399,
+      "end_seconds": 20.542800099,
+      "coverage": "complete",
+      "available_start_seconds": 19.7073125,
+      "available_end_seconds": 20.54279167,
+      "requested_duration_seconds": 0.8354956999999992,
+      "covered_duration_seconds": 0.83547917,
+      "covered_fraction": 0.99998021,
+      "metrics": {
+        "duration_seconds": 0.83547917,
+        "frame_count": 40103,
+        "channel_sample_count": 80206,
+        "sample_peak_normalized": 0.0594787598,
+        "sample_peak_dbfs": -24.512762,
+        "rms_normalized": 0.0076115201,
+        "rms_dbfs": -42.370572,
+        "crest_factor_db": 17.85781,
+        "sample_peak_headroom_db": 24.512762,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 80013,
+        "nonzero_sample_percent": 99.75937,
+        "exact_zero_frame_count": 4,
+        "longest_exact_zero_seconds": 4.167e-05,
+        "silent_frame_count_at_threshold": 2519,
+        "silent_frame_percent_at_threshold": 6.281326,
+        "longest_silence_seconds_at_threshold": 0.00420833,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -25.393812,
+            "rms_dbfs": -42.827316,
+            "dc_normalized": 1.17191e-05,
+            "absolute_dc_dbfs": -98.622122,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 39998
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -24.512762,
+            "rms_dbfs": -41.957325,
+            "dc_normalized": 1.45438e-05,
+            "absolute_dc_dbfs": -96.746413,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 40015
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    },
+    {
+      "name": "15: Carbine processing while away; normal health recovery",
+      "start_seconds": 20.542800099,
+      "end_seconds": 28.5621964,
+      "coverage": "complete",
+      "available_start_seconds": 20.54279167,
+      "available_end_seconds": 28.5621875,
+      "requested_duration_seconds": 8.019396301,
+      "covered_duration_seconds": 8.01939583,
+      "covered_fraction": 0.99999994,
+      "metrics": {
+        "duration_seconds": 8.01939583,
+        "frame_count": 384931,
+        "channel_sample_count": 769862,
+        "sample_peak_normalized": 0.0867919922,
+        "sample_peak_dbfs": -21.230407,
+        "rms_normalized": 0.0046829217,
+        "rms_dbfs": -46.589662,
+        "crest_factor_db": 25.359255,
+        "sample_peak_headroom_db": 21.230407,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 764774,
+        "nonzero_sample_percent": 99.339102,
+        "exact_zero_frame_count": 101,
+        "longest_exact_zero_seconds": 6.25e-05,
+        "silent_frame_count_at_threshold": 64078,
+        "silent_frame_percent_at_threshold": 16.64662,
+        "longest_silence_seconds_at_threshold": 0.01041667,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -22.571888,
+            "rms_dbfs": -47.154712,
+            "dc_normalized": 2.42e-06,
+            "absolute_dc_dbfs": -112.323828,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 382328
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -21.230407,
+            "rms_dbfs": -46.089737,
+            "dc_normalized": 3.4287e-06,
+            "absolute_dc_dbfs": -109.297537,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 382446
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        15
+      ]
+    },
+    {
+      "name": "16: Fifteen-second uncollected ready deadline",
+      "start_seconds": 28.5621964,
+      "end_seconds": 43.581861801,
+      "coverage": "complete",
+      "available_start_seconds": 28.5621875,
+      "available_end_seconds": 43.58185417,
+      "requested_duration_seconds": 15.019665401000001,
+      "covered_duration_seconds": 15.01966667,
+      "covered_fraction": 1.00000008,
+      "metrics": {
+        "duration_seconds": 15.01966667,
+        "frame_count": 720944,
+        "channel_sample_count": 1441888,
+        "sample_peak_normalized": 0.073638916,
+        "sample_peak_dbfs": -22.657852,
+        "rms_normalized": 0.0041464596,
+        "rms_dbfs": -47.646451,
+        "crest_factor_db": 24.988599,
+        "sample_peak_headroom_db": 22.657852,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 1422580,
+        "nonzero_sample_percent": 98.660922,
+        "exact_zero_frame_count": 495,
+        "longest_exact_zero_seconds": 0.0001875,
+        "silent_frame_count_at_threshold": 265864,
+        "silent_frame_percent_at_threshold": 36.877205,
+        "longest_silence_seconds_at_threshold": 0.01085417,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -24.06122,
+            "rms_dbfs": -48.182795,
+            "dc_normalized": -8.002e-07,
+            "absolute_dc_dbfs": -121.936415,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 711894
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -22.657852,
+            "rms_dbfs": -47.169123,
+            "dc_normalized": -5.287e-07,
+            "absolute_dc_dbfs": -125.535781,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 710686
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": [
+        15
+      ]
+    },
+    {
+      "name": "17: Permanent carbine loss and closed receipt; pistol retained",
+      "start_seconds": 43.581861801,
+      "end_seconds": 44.842666666666666,
+      "coverage": "complete",
+      "available_start_seconds": 43.58185417,
+      "available_end_seconds": 44.84266667,
+      "requested_duration_seconds": 1.260804865666664,
+      "covered_duration_seconds": 1.2608125,
+      "covered_fraction": 1.00000606,
+      "metrics": {
+        "duration_seconds": 1.2608125,
+        "frame_count": 60519,
+        "channel_sample_count": 121038,
+        "sample_peak_normalized": 0.0248413086,
+        "sample_peak_dbfs": -32.096511,
+        "rms_normalized": 0.0033294539,
+        "rms_dbfs": -49.55254,
+        "crest_factor_db": 17.456029,
+        "sample_peak_headroom_db": 32.096511,
+        "full_scale_sample_count": 0,
+        "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+        "nonzero_sample_count": 119836,
+        "nonzero_sample_percent": 99.006923,
+        "exact_zero_frame_count": 33,
+        "longest_exact_zero_seconds": 8.333e-05,
+        "silent_frame_count_at_threshold": 15268,
+        "silent_frame_percent_at_threshold": 25.228441,
+        "longest_silence_seconds_at_threshold": 0.0081875,
+        "channels": [
+          {
+            "channel_index": 0,
+            "sample_peak_dbfs": -33.43189,
+            "rms_dbfs": -50.075088,
+            "dc_normalized": 3.6141e-06,
+            "absolute_dc_dbfs": -108.840085,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 59965
+          },
+          {
+            "channel_index": 1,
+            "sample_peak_dbfs": -32.096511,
+            "rms_dbfs": -49.086167,
+            "dc_normalized": 5.345e-07,
+            "absolute_dc_dbfs": -125.440716,
+            "full_scale_sample_count": 0,
+            "nonzero_sample_count": 59871
+          }
+        ]
+      },
+      "overlapping_energy_event_indices": []
+    }
+  ],
+  "phase_comparison": null,
+  "energy_events": [
+    {
+      "start_seconds": 1.5,
+      "end_seconds": 1.6,
+      "peak_window_start_seconds": 1.5,
+      "peak_window_rms_dbfs": -33.173993,
+      "sample_peak_dbfs": -17.747353,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 1.8,
+      "end_seconds": 2.2,
+      "peak_window_start_seconds": 2.0,
+      "peak_window_rms_dbfs": -29.347901,
+      "sample_peak_dbfs": -20.880231,
+      "active_window_count": 4,
+      "duration_seconds": 0.4
+    },
+    {
+      "start_seconds": 2.7,
+      "end_seconds": 4.6,
+      "peak_window_start_seconds": 2.9,
+      "peak_window_rms_dbfs": -31.885955,
+      "sample_peak_dbfs": -19.255634,
+      "active_window_count": 19,
+      "duration_seconds": 1.9
+    },
+    {
+      "start_seconds": 4.7,
+      "end_seconds": 4.8,
+      "peak_window_start_seconds": 4.7,
+      "peak_window_rms_dbfs": -36.139572,
+      "sample_peak_dbfs": -26.357874,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 4.9,
+      "end_seconds": 5.0,
+      "peak_window_start_seconds": 4.9,
+      "peak_window_rms_dbfs": -35.631778,
+      "sample_peak_dbfs": -26.827803,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 5.1,
+      "end_seconds": 5.2,
+      "peak_window_start_seconds": 5.1,
+      "peak_window_rms_dbfs": -35.163147,
+      "sample_peak_dbfs": -26.787174,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 5.4,
+      "end_seconds": 5.5,
+      "peak_window_start_seconds": 5.4,
+      "peak_window_rms_dbfs": -36.412188,
+      "sample_peak_dbfs": -27.79287,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 5.6,
+      "end_seconds": 5.7,
+      "peak_window_start_seconds": 5.6,
+      "peak_window_rms_dbfs": -35.811252,
+      "sample_peak_dbfs": -26.502365,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 5.9,
+      "end_seconds": 6.1,
+      "peak_window_start_seconds": 5.9,
+      "peak_window_rms_dbfs": -36.523043,
+      "sample_peak_dbfs": -26.598156,
+      "active_window_count": 2,
+      "duration_seconds": 0.2
+    },
+    {
+      "start_seconds": 6.3,
+      "end_seconds": 6.4,
+      "peak_window_start_seconds": 6.3,
+      "peak_window_rms_dbfs": -35.707583,
+      "sample_peak_dbfs": -26.324869,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 6.7,
+      "end_seconds": 6.8,
+      "peak_window_start_seconds": 6.7,
+      "peak_window_rms_dbfs": -36.214367,
+      "sample_peak_dbfs": -26.792966,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 7.1,
+      "end_seconds": 7.3,
+      "peak_window_start_seconds": 7.1,
+      "peak_window_rms_dbfs": -36.212213,
+      "sample_peak_dbfs": -26.440941,
+      "active_window_count": 2,
+      "duration_seconds": 0.2
+    },
+    {
+      "start_seconds": 7.7,
+      "end_seconds": 8.6,
+      "peak_window_start_seconds": 8.1,
+      "peak_window_rms_dbfs": -28.234594,
+      "sample_peak_dbfs": -19.041751,
+      "active_window_count": 9,
+      "duration_seconds": 0.9
+    },
+    {
+      "start_seconds": 8.7,
+      "end_seconds": 8.8,
+      "peak_window_start_seconds": 8.7,
+      "peak_window_rms_dbfs": -36.48172,
+      "sample_peak_dbfs": -22.887641,
+      "active_window_count": 1,
+      "duration_seconds": 0.1
+    },
+    {
+      "start_seconds": 18.0,
+      "end_seconds": 18.7,
+      "peak_window_start_seconds": 18.1,
+      "peak_window_rms_dbfs": -29.816774,
+      "sample_peak_dbfs": -19.28488,
+      "active_window_count": 7,
+      "duration_seconds": 0.7
+    },
+    {
+      "start_seconds": 28.4,
+      "end_seconds": 29.0,
+      "peak_window_start_seconds": 28.7,
+      "peak_window_rms_dbfs": -32.715123,
+      "sample_peak_dbfs": -21.230407,
+      "active_window_count": 6,
+      "duration_seconds": 0.6
+    }
+  ],
+  "energy_event_count": 16,
+  "envelope": {
+    "window_columns": [
+      "start_seconds",
+      "end_seconds",
+      "rms_dbfs_all_channels",
+      "maximum_sample_peak_dbfs"
+    ],
+    "actual_window_frames": 4800,
+    "actual_window_ms": 100.0,
+    "windows": [
+      [
+        0.0,
+        0.1,
+        null,
+        null
+      ],
+      [
+        0.1,
+        0.2,
+        -66.756493,
+        -57.844013
+      ],
+      [
+        0.2,
+        0.3,
+        -57.638505,
+        -49.560469
+      ],
+      [
+        0.3,
+        0.4,
+        -55.924398,
+        -47.202278
+      ],
+      [
+        0.4,
+        0.5,
+        -54.693188,
+        -43.989592
+      ],
+      [
+        0.5,
+        0.6,
+        -53.407883,
+        -44.91874
+      ],
+      [
+        0.6,
+        0.7,
+        -52.970045,
+        -45.95932
+      ],
+      [
+        0.7,
+        0.8,
+        -53.20405,
+        -44.419674
+      ],
+      [
+        0.8,
+        0.9,
+        -53.271484,
+        -43.989592
+      ],
+      [
+        0.9,
+        1.0,
+        -54.051975,
+        -44.419674
+      ],
+      [
+        1.0,
+        1.1,
+        -53.64108,
+        -45.251938
+      ],
+      [
+        1.1,
+        1.2,
+        -53.737846,
+        -45.751265
+      ],
+      [
+        1.2,
+        1.3,
+        -53.99067,
+        -45.548077
+      ],
+      [
+        1.3,
+        1.4,
+        -55.757991,
+        -46.845273
+      ],
+      [
+        1.4,
+        1.5,
+        -56.061428,
+        -44.688331
+      ],
+      [
+        1.5,
+        1.6,
+        -33.173993,
+        -17.747353
+      ],
+      [
+        1.6,
+        1.7,
+        -41.147971,
+        -29.672753
+      ],
+      [
+        1.7,
+        1.8,
+        -51.367087,
+        -31.916978
+      ],
+      [
+        1.8,
+        1.9,
+        -31.169254,
+        -23.66427
+      ],
+      [
+        1.9,
+        2.0,
+        -29.545605,
+        -21.27327
+      ],
+      [
+        2.0,
+        2.1,
+        -29.347901,
+        -20.880231
+      ],
+      [
+        2.1,
+        2.2,
+        -32.280086,
+        -23.848084
+      ],
+      [
+        2.2,
+        2.3,
+        -38.963037,
+        -27.838499
+      ],
+      [
+        2.3,
+        2.4,
+        -48.346164,
+        -39.255634
+      ],
+      [
+        2.4,
+        2.5,
+        -52.133509,
+        -40.623002
+      ],
+      [
+        2.5,
+        2.6,
+        -53.91833,
+        -43.381939
+      ],
+      [
+        2.6,
+        2.7,
+        -54.903754,
+        -45.498014
+      ],
+      [
+        2.7,
+        2.8,
+        -36.848963,
+        -19.255634
+      ],
+      [
+        2.8,
+        2.9,
+        -32.651344,
+        -22.708394
+      ],
+      [
+        2.9,
+        3.0,
+        -31.885955,
+        -21.801575
+      ],
+      [
+        3.0,
+        3.1,
+        -32.041707,
+        -22.229439
+      ],
+      [
+        3.1,
+        3.2,
+        -35.024898,
+        -22.799384
+      ],
+      [
+        3.2,
+        3.3,
+        -34.511985,
+        -25.518004
+      ],
+      [
+        3.3,
+        3.4,
+        -34.11809,
+        -24.027439
+      ],
+      [
+        3.4,
+        3.5,
+        -34.515435,
+        -24.446169
+      ],
+      [
+        3.5,
+        3.6,
+        -34.223975,
+        -24.26238
+      ],
+      [
+        3.6,
+        3.7,
+        -34.594984,
+        -24.023225
+      ],
+      [
+        3.7,
+        3.8,
+        -35.024969,
+        -23.215308
+      ],
+      [
+        3.8,
+        3.9,
+        -35.665048,
+        -25.638923
+      ],
+      [
+        3.9,
+        4.0,
+        -34.96501,
+        -25.29572
+      ],
+      [
+        4.0,
+        4.1,
+        -36.596137,
+        -26.536053
+      ],
+      [
+        4.1,
+        4.2,
+        -35.950516,
+        -26.998177
+      ],
+      [
+        4.2,
+        4.3,
+        -35.272324,
+        -26.385475
+      ],
+      [
+        4.3,
+        4.4,
+        -35.714669,
+        -26.054596
+      ],
+      [
+        4.4,
+        4.5,
+        -36.454495,
+        -27.838499
+      ],
+      [
+        4.5,
+        4.6,
+        -34.845595,
+        -26.706481
+      ],
+      [
+        4.6,
+        4.7,
+        -39.084244,
+        -29.656623
+      ],
+      [
+        4.7,
+        4.8,
+        -36.139572,
+        -26.357874
+      ],
+      [
+        4.8,
+        4.9,
+        -38.476165,
+        -28.923038
+      ],
+      [
+        4.9,
+        5.0,
+        -35.631778,
+        -26.827803
+      ],
+      [
+        5.0,
+        5.1,
+        -38.928162,
+        -28.871359
+      ],
+      [
+        5.1,
+        5.2,
+        -35.163147,
+        -26.787174
+      ],
+      [
+        5.2,
+        5.3,
+        -39.288576,
+        -29.778333
+      ],
+      [
+        5.3,
+        5.4,
+        -39.063296,
+        -26.440941
+      ],
+      [
+        5.4,
+        5.5,
+        -36.412188,
+        -27.79287
+      ],
+      [
+        5.5,
+        5.6,
+        -44.982848,
+        -31.498669
+      ],
+      [
+        5.6,
+        5.7,
+        -35.811252,
+        -26.502365
+      ],
+      [
+        5.7,
+        5.8,
+        -38.607035,
+        -28.747116
+      ],
+      [
+        5.8,
+        5.9,
+        -60.616969,
+        -50.663574
+      ],
+      [
+        5.9,
+        6.0,
+        -36.523043,
+        -26.598156
+      ],
+      [
+        6.0,
+        6.1,
+        -36.896655,
+        -27.904103
+      ],
+      [
+        6.1,
+        6.2,
+        -56.403404,
+        -35.191502
+      ],
+      [
+        6.2,
+        6.3,
+        -42.2138,
+        -26.435378
+      ],
+      [
+        6.3,
+        6.4,
+        -35.707583,
+        -26.324869
+      ],
+      [
+        6.4,
+        6.5,
+        -42.425089,
+        -30.564614
+      ],
+      [
+        6.5,
+        6.6,
+        -58.370046,
+        -48.653291
+      ],
+      [
+        6.6,
+        6.7,
+        -38.867556,
+        -27.015994
+      ],
+      [
+        6.7,
+        6.8,
+        -36.214367,
+        -26.792966
+      ],
+      [
+        6.8,
+        6.9,
+        -44.598159,
+        -31.598853
+      ],
+      [
+        6.9,
+        7.0,
+        -58.760524,
+        -48.945281
+      ],
+      [
+        7.0,
+        7.1,
+        -57.882788,
+        -49.481145
+      ],
+      [
+        7.1,
+        7.2,
+        -36.212213,
+        -26.440941
+      ],
+      [
+        7.2,
+        7.3,
+        -37.289296,
+        -29.11773
+      ],
+      [
+        7.3,
+        7.4,
+        -60.870188,
+        -51.823413
+      ],
+      [
+        7.4,
+        7.5,
+        -61.202526,
+        -48.871359
+      ],
+      [
+        7.5,
+        7.6,
+        -60.836793,
+        -51.033242
+      ],
+      [
+        7.6,
+        7.7,
+        -56.200171,
+        -47.766903
+      ],
+      [
+        7.7,
+        7.8,
+        -30.541081,
+        -19.180536
+      ],
+      [
+        7.8,
+        7.9,
+        -29.482071,
+        -19.870554
+      ],
+      [
+        7.9,
+        8.0,
+        -29.3975,
+        -19.628477
+      ],
+      [
+        8.0,
+        8.1,
+        -28.868675,
+        -20.21143
+      ],
+      [
+        8.1,
+        8.2,
+        -28.234594,
+        -19.041751
+      ],
+      [
+        8.2,
+        8.3,
+        -28.857849,
+        -20.002121
+      ],
+      [
+        8.3,
+        8.4,
+        -31.439115,
+        -21.400028
+      ],
+      [
+        8.4,
+        8.5,
+        -34.046174,
+        -23.91023
+      ],
+      [
+        8.5,
+        8.6,
+        -36.197998,
+        -26.161698
+      ],
+      [
+        8.6,
+        8.7,
+        -38.500181,
+        -27.141749
+      ],
+      [
+        8.7,
+        8.8,
+        -36.48172,
+        -22.887641
+      ],
+      [
+        8.8,
+        8.9,
+        -44.506546,
+        -32.995078
+      ],
+      [
+        8.9,
+        9.0,
+        -51.068262,
+        -40.453791
+      ],
+      [
+        9.0,
+        9.1,
+        -46.798184,
+        -35.501745
+      ],
+      [
+        9.1,
+        9.2,
+        -43.481234,
+        -35.938965
+      ],
+      [
+        9.2,
+        9.3,
+        -43.26938,
+        -35.629013
+      ],
+      [
+        9.3,
+        9.4,
+        -43.207383,
+        -36.123599
+      ],
+      [
+        9.4,
+        9.5,
+        -43.437891,
+        -35.130761
+      ],
+      [
+        9.5,
+        9.6,
+        -43.403071,
+        -35.872786
+      ],
+      [
+        9.6,
+        9.7,
+        -43.090999,
+        -36.277639
+      ],
+      [
+        9.7,
+        9.8,
+        -39.088472,
+        -24.530607
+      ],
+      [
+        9.8,
+        9.9,
+        -39.788943,
+        -25.896378
+      ],
+      [
+        9.9,
+        10.0,
+        -43.079719,
+        -34.077499
+      ],
+      [
+        10.0,
+        10.1,
+        -45.028012,
+        -35.407503
+      ],
+      [
+        10.1,
+        10.2,
+        -56.266601,
+        -45.906837
+      ],
+      [
+        10.2,
+        10.3,
+        -52.756457,
+        -43.22683
+      ],
+      [
+        10.3,
+        10.4,
+        -50.711252,
+        -41.746303
+      ],
+      [
+        10.4,
+        10.5,
+        -49.902167,
+        -41.181678
+      ],
+      [
+        10.5,
+        10.6,
+        -49.583371,
+        -41.746303
+      ],
+      [
+        10.6,
+        10.7,
+        -49.16406,
+        -41.304017
+      ],
+      [
+        10.7,
+        10.8,
+        -49.507794,
+        -41.553987
+      ],
+      [
+        10.8,
+        10.9,
+        -49.531604,
+        -41.031139
+      ],
+      [
+        10.9,
+        11.0,
+        -49.365895,
+        -41.242632
+      ],
+      [
+        11.0,
+        11.1,
+        -48.666562,
+        -40.795575
+      ],
+      [
+        11.1,
+        11.2,
+        -48.231132,
+        -41.909884
+      ],
+      [
+        11.2,
+        11.3,
+        -48.841006,
+        -40.795575
+      ],
+      [
+        11.3,
+        11.4,
+        -49.754395,
+        -41.459403
+      ],
+      [
+        11.4,
+        11.5,
+        -49.657469,
+        -41.181678
+      ],
+      [
+        11.5,
+        11.6,
+        -49.518363,
+        -41.811366
+      ],
+      [
+        11.6,
+        11.7,
+        -49.632973,
+        -41.585746
+      ],
+      [
+        11.7,
+        11.8,
+        -50.392984,
+        -42.96188
+      ],
+      [
+        11.8,
+        11.9,
+        -50.755546,
+        -43.906073
+      ],
+      [
+        11.9,
+        12.0,
+        -50.692431,
+        -42.246588
+      ],
+      [
+        12.0,
+        12.1,
+        -50.275758,
+        -42.212324
+      ],
+      [
+        12.1,
+        12.2,
+        -50.3303,
+        -44.463877
+      ],
+      [
+        12.2,
+        12.3,
+        -50.694054,
+        -42.419965
+      ],
+      [
+        12.3,
+        12.4,
+        -51.276112,
+        -42.246588
+      ],
+      [
+        12.4,
+        12.5,
+        -50.935017,
+        -43.381939
+      ],
+      [
+        12.5,
+        12.6,
+        -49.92855,
+        -41.522345
+      ],
+      [
+        12.6,
+        12.7,
+        -49.445849,
+        -40.651527
+      ],
+      [
+        12.7,
+        12.8,
+        -50.138713,
+        -42.212324
+      ],
+      [
+        12.8,
+        12.9,
+        -50.090563,
+        -42.419965
+      ],
+      [
+        12.9,
+        13.0,
+        -49.609496,
+        -41.522345
+      ],
+      [
+        13.0,
+        13.1,
+        -48.47981,
+        -40.481765
+      ],
+      [
+        13.1,
+        13.2,
+        -48.043338,
+        -41.844081
+      ],
+      [
+        13.2,
+        13.3,
+        -48.035044,
+        -39.182949
+      ],
+      [
+        13.3,
+        13.4,
+        -47.415495,
+        -38.782172
+      ],
+      [
+        13.4,
+        13.5,
+        -46.970583,
+        -37.906278
+      ],
+      [
+        13.5,
+        13.6,
+        -46.891761,
+        -39.182949
+      ],
+      [
+        13.6,
+        13.7,
+        -46.501206,
+        -39.063141
+      ],
+      [
+        13.7,
+        13.8,
+        -46.681375,
+        -39.182949
+      ],
+      [
+        13.8,
+        13.9,
+        -46.655012,
+        -38.138478
+      ],
+      [
+        13.9,
+        14.0,
+        -46.426945,
+        -38.355095
+      ],
+      [
+        14.0,
+        14.1,
+        -45.854644,
+        -38.095795
+      ],
+      [
+        14.1,
+        14.2,
+        -45.422259,
+        -39.086971
+      ],
+      [
+        14.2,
+        14.3,
+        -45.944911,
+        -38.159898
+      ],
+      [
+        14.3,
+        14.4,
+        -46.683816,
+        -38.599784
+      ],
+      [
+        14.4,
+        14.5,
+        -46.703021,
+        -38.355095
+      ],
+      [
+        14.5,
+        14.6,
+        -46.689386,
+        -38.851567
+      ],
+      [
+        14.6,
+        14.7,
+        -46.88671,
+        -39.304432
+      ],
+      [
+        14.7,
+        14.8,
+        -47.57948,
+        -40.566231
+      ],
+      [
+        14.8,
+        14.9,
+        -47.997153,
+        -41.396915
+      ],
+      [
+        14.9,
+        15.0,
+        -48.047306,
+        -39.756401
+      ],
+      [
+        15.0,
+        15.1,
+        -47.919382,
+        -40.098098
+      ],
+      [
+        15.1,
+        15.2,
+        -48.082841,
+        -42.144199
+      ],
+      [
+        15.2,
+        15.3,
+        -48.572365,
+        -40.566231
+      ],
+      [
+        15.3,
+        15.4,
+        -49.073624,
+        -39.991522
+      ],
+      [
+        15.4,
+        15.5,
+        -48.839808,
+        -40.85387
+      ],
+      [
+        15.5,
+        15.6,
+        -47.961339,
+        -39.653911
+      ],
+      [
+        15.6,
+        15.7,
+        -47.476539,
+        -38.944964
+      ],
+      [
+        15.7,
+        15.8,
+        -48.170986,
+        -41.151361
+      ],
+      [
+        15.8,
+        15.9,
+        -48.018014,
+        -40.315257
+      ],
+      [
+        15.9,
+        16.0,
+        -47.457043,
+        -39.860114
+      ],
+      [
+        16.0,
+        16.1,
+        -46.434457,
+        -38.736214
+      ],
+      [
+        16.1,
+        16.2,
+        -45.943066,
+        -40.018044
+      ],
+      [
+        16.2,
+        16.3,
+        -45.805688,
+        -37.129702
+      ],
+      [
+        16.3,
+        16.4,
+        -44.969105,
+        -36.469697
+      ],
+      [
+        16.4,
+        16.5,
+        -44.576021,
+        -35.629013
+      ],
+      [
+        16.5,
+        16.6,
+        -44.579855,
+        -36.775127
+      ],
+      [
+        16.6,
+        16.7,
+        -46.773748,
+        -39.808103
+      ],
+      [
+        16.7,
+        16.8,
+        -45.254857,
+        -35.790766
+      ],
+      [
+        16.8,
+        16.9,
+        -42.994429,
+        -35.100549
+      ],
+      [
+        16.9,
+        17.0,
+        -43.380553,
+        -35.709513
+      ],
+      [
+        17.0,
+        17.1,
+        -43.18564,
+        -34.995628
+      ],
+      [
+        17.1,
+        17.2,
+        -43.194214,
+        -35.889284
+      ],
+      [
+        17.2,
+        17.3,
+        -43.238332,
+        -36.243171
+      ],
+      [
+        17.3,
+        17.4,
+        -43.233563,
+        -36.005652
+      ],
+      [
+        17.4,
+        17.5,
+        -43.163604,
+        -35.345238
+      ],
+      [
+        17.5,
+        17.6,
+        -43.244994,
+        -36.005652
+      ],
+      [
+        17.6,
+        17.7,
+        -43.418889,
+        -35.709513
+      ],
+      [
+        17.7,
+        17.8,
+        -38.051207,
+        -23.852213
+      ],
+      [
+        17.8,
+        17.9,
+        -43.941187,
+        -35.115642
+      ],
+      [
+        17.9,
+        18.0,
+        -55.624476,
+        -44.872167
+      ],
+      [
+        18.0,
+        18.1,
+        -30.475192,
+        -19.28488
+      ],
+      [
+        18.1,
+        18.2,
+        -29.816774,
+        -20.127638
+      ],
+      [
+        18.2,
+        18.3,
+        -31.148425,
+        -20.373172
+      ],
+      [
+        18.3,
+        18.4,
+        -30.21376,
+        -20.304269
+      ],
+      [
+        18.4,
+        18.5,
+        -31.794394,
+        -22.315524
+      ],
+      [
+        18.5,
+        18.6,
+        -34.604589,
+        -25.141043
+      ],
+      [
+        18.6,
+        18.7,
+        -36.814773,
+        -25.237393
+      ],
+      [
+        18.7,
+        18.8,
+        -40.844795,
+        -30.827981
+      ],
+      [
+        18.8,
+        18.9,
+        -43.892687,
+        -36.005652
+      ],
+      [
+        18.9,
+        19.0,
+        -46.681379,
+        -38.011054
+      ],
+      [
+        19.0,
+        19.1,
+        -48.925202,
+        -39.756401
+      ],
+      [
+        19.1,
+        19.2,
+        -43.566047,
+        -29.23207
+      ],
+      [
+        19.2,
+        19.3,
+        -47.749358,
+        -31.449007
+      ],
+      [
+        19.3,
+        19.4,
+        -54.42472,
+        -44.597853
+      ],
+      [
+        19.4,
+        19.5,
+        -49.589552,
+        -37.885473
+      ],
+      [
+        19.5,
+        19.6,
+        -43.238864,
+        -36.123599
+      ],
+      [
+        19.6,
+        19.7,
+        -43.2388,
+        -36.399365
+      ],
+      [
+        19.7,
+        19.8,
+        -43.466114,
+        -36.277639
+      ],
+      [
+        19.8,
+        19.9,
+        -43.425331,
+        -35.725703
+      ],
+      [
+        19.9,
+        20.0,
+        -43.09223,
+        -35.774455
+      ],
+      [
+        20.0,
+        20.1,
+        -43.394689,
+        -35.709513
+      ],
+      [
+        20.1,
+        20.2,
+        -40.593101,
+        -24.512762
+      ],
+      [
+        20.2,
+        20.3,
+        -39.025646,
+        -25.912071
+      ],
+      [
+        20.3,
+        20.4,
+        -41.967466,
+        -25.508003
+      ],
+      [
+        20.4,
+        20.5,
+        -46.123012,
+        -37.579241
+      ],
+      [
+        20.5,
+        20.6,
+        -57.558623,
+        -44.073921
+      ],
+      [
+        20.6,
+        20.7,
+        -58.373213,
+        -50.136995
+      ],
+      [
+        20.7,
+        20.8,
+        -55.838617,
+        -46.012122
+      ],
+      [
+        20.8,
+        20.9,
+        -52.88232,
+        -44.597853
+      ],
+      [
+        20.9,
+        21.0,
+        -52.110178,
+        -42.814032
+      ],
+      [
+        21.0,
+        21.1,
+        -51.135622,
+        -44.419674
+      ],
+      [
+        21.1,
+        21.2,
+        -50.881342,
+        -43.700723
+      ],
+      [
+        21.2,
+        21.3,
+        -51.034627,
+        -41.976189
+      ],
+      [
+        21.3,
+        21.4,
+        -51.544957,
+        -42.741041
+      ],
+      [
+        21.4,
+        21.5,
+        -50.882801,
+        -43.500116
+      ],
+      [
+        21.5,
+        21.6,
+        -49.912391,
+        -43.265348
+      ],
+      [
+        21.6,
+        21.7,
+        -49.842133,
+        -41.091042
+      ],
+      [
+        21.7,
+        21.8,
+        -50.945328,
+        -42.009532
+      ],
+      [
+        21.8,
+        21.9,
+        -51.148113,
+        -41.428103
+      ],
+      [
+        21.9,
+        22.0,
+        -50.951553,
+        -41.844081
+      ],
+      [
+        22.0,
+        22.1,
+        -50.512209,
+        -43.579804
+      ],
+      [
+        22.1,
+        22.2,
+        -50.947253,
+        -43.906073
+      ],
+      [
+        22.2,
+        22.3,
+        -51.596186,
+        -42.419965
+      ],
+      [
+        22.3,
+        22.4,
+        -52.429445,
+        -44.073921
+      ],
+      [
+        22.4,
+        22.5,
+        -52.361154,
+        -44.597853
+      ],
+      [
+        22.5,
+        22.6,
+        -52.00083,
+        -45.398745
+      ],
+      [
+        22.6,
+        22.7,
+        -52.05682,
+        -43.741407
+      ],
+      [
+        22.7,
+        22.8,
+        -53.040488,
+        -44.419674
+      ],
+      [
+        22.8,
+        22.9,
+        -52.998107,
+        -43.381939
+      ],
+      [
+        22.9,
+        23.0,
+        -52.674856,
+        -44.288399
+      ],
+      [
+        23.0,
+        23.1,
+        -51.760745,
+        -43.989592
+      ],
+      [
+        23.1,
+        23.2,
+        -52.057835,
+        -45.203549
+      ],
+      [
+        23.2,
+        23.3,
+        -52.205642,
+        -43.460545
+      ],
+      [
+        23.3,
+        23.4,
+        -52.346225,
+        -43.947732
+      ],
+      [
+        23.4,
+        23.5,
+        -51.537583,
+        -44.331937
+      ],
+      [
+        23.5,
+        23.6,
+        -50.69353,
+        -43.539869
+      ],
+      [
+        23.6,
+        23.7,
+        -50.152242,
+        -41.844081
+      ],
+      [
+        23.7,
+        23.8,
+        -49.465309,
+        -41.585746
+      ],
+      [
+        23.8,
+        23.9,
+        -49.029216,
+        -40.018044
+      ],
+      [
+        23.9,
+        24.0,
+        -49.112931,
+        -39.886237
+      ],
+      [
+        24.0,
+        24.1,
+        -48.361389,
+        -41.909884
+      ],
+      [
+        24.1,
+        24.2,
+        -48.084721,
+        -41.304017
+      ],
+      [
+        24.2,
+        24.3,
+        -48.170347,
+        -39.134827
+      ],
+      [
+        24.3,
+        24.4,
+        -48.512634,
+        -40.071331
+      ],
+      [
+        24.4,
+        24.5,
+        -47.982931,
+        -40.342788
+      ],
+      [
+        24.5,
+        24.6,
+        -47.168446,
+        -40.883164
+      ],
+      [
+        24.6,
+        24.7,
+        -47.174908,
+        -38.759163
+      ],
+      [
+        24.7,
+        24.8,
+        -48.215809,
+        -40.124948
+      ],
+      [
+        24.8,
+        24.9,
+        -48.525367,
+        -38.968471
+      ],
+      [
+        24.9,
+        25.0,
+        -48.423901,
+        -39.20711
+      ],
+      [
+        25.0,
+        25.1,
+        -48.178258,
+        -41.304017
+      ],
+      [
+        25.1,
+        25.2,
+        -48.693884,
+        -41.811366
+      ],
+      [
+        25.2,
+        25.3,
+        -49.381659,
+        -40.70886
+      ],
+      [
+        25.3,
+        25.4,
+        -50.061005,
+        -41.844081
+      ],
+      [
+        25.4,
+        25.5,
+        -50.127914,
+        -43.150302
+      ],
+      [
+        25.5,
+        25.6,
+        -49.995913,
+        -42.999239
+      ],
+      [
+        25.6,
+        25.7,
+        -50.095116,
+        -42.144199
+      ],
+      [
+        25.7,
+        25.8,
+        -50.951855,
+        -43.421153
+      ],
+      [
+        25.8,
+        25.9,
+        -50.806468,
+        -41.181678
+      ],
+      [
+        25.9,
+        26.0,
+        -50.408699,
+        -42.043003
+      ],
+      [
+        26.0,
+        26.1,
+        -49.525028,
+        -41.617621
+      ],
+      [
+        26.1,
+        26.2,
+        -49.848556,
+        -43.036759
+      ],
+      [
+        26.2,
+        26.3,
+        -49.837311,
+        -41.27327
+      ],
+      [
+        26.3,
+        26.4,
+        -49.815826,
+        -41.681723
+      ],
+      [
+        26.4,
+        26.5,
+        -49.076128,
+        -41.811366
+      ],
+      [
+        26.5,
+        26.6,
+        -48.321028,
+        -41.490817
+      ],
+      [
+        26.6,
+        26.7,
+        -47.826938,
+        -39.730665
+      ],
+      [
+        26.7,
+        26.8,
+        -47.02556,
+        -39.063141
+      ],
+      [
+        26.8,
+        26.9,
+        -46.596957,
+        -37.80275
+      ],
+      [
+        26.9,
+        27.0,
+        -46.798482,
+        -37.619453
+      ],
+      [
+        27.0,
+        27.1,
+        -46.140738,
+        -39.603116
+      ],
+      [
+        27.1,
+        27.2,
+        -46.086557,
+        -36.576273
+      ],
+      [
+        27.2,
+        27.3,
+        -44.361813,
+        -36.243171
+      ],
+      [
+        27.3,
+        27.4,
+        -44.94021,
+        -37.225468
+      ],
+      [
+        27.4,
+        27.5,
+        -44.997238,
+        -36.75686
+      ],
+      [
+        27.5,
+        27.6,
+        -44.786093,
+        -37.187035
+      ],
+      [
+        27.6,
+        27.7,
+        -44.694975,
+        -37.110675
+      ],
+      [
+        27.7,
+        27.8,
+        -44.833505,
+        -37.20623
+      ],
+      [
+        27.8,
+        27.9,
+        -45.023347,
+        -37.380924
+      ],
+      [
+        27.9,
+        28.0,
+        -44.746241,
+        -36.94128
+      ],
+      [
+        28.0,
+        28.1,
+        -44.635266,
+        -36.648058
+      ],
+      [
+        28.1,
+        28.2,
+        -40.13679,
+        -25.59843
+      ],
+      [
+        28.2,
+        28.3,
+        -44.129673,
+        -33.878728
+      ],
+      [
+        28.3,
+        28.4,
+        -50.391803,
+        -39.134827
+      ],
+      [
+        28.4,
+        28.5,
+        -33.817188,
+        -21.230407
+      ],
+      [
+        28.5,
+        28.6,
+        -33.321308,
+        -23.460545
+      ],
+      [
+        28.6,
+        28.7,
+        -33.164149,
+        -24.124915
+      ],
+      [
+        28.7,
+        28.8,
+        -32.715123,
+        -22.657852
+      ],
+      [
+        28.8,
+        28.9,
+        -33.311563,
+        -24.876813
+      ],
+      [
+        28.9,
+        29.0,
+        -36.348397,
+        -28.077028
+      ],
+      [
+        29.0,
+        29.1,
+        -39.432444,
+        -31.080577
+      ],
+      [
+        29.1,
+        29.2,
+        -42.392875,
+        -33.222878
+      ],
+      [
+        29.2,
+        29.3,
+        -45.386914,
+        -36.94128
+      ],
+      [
+        29.3,
+        29.4,
+        -48.322559,
+        -40.342788
+      ],
+      [
+        29.4,
+        29.5,
+        -51.015808,
+        -41.844081
+      ],
+      [
+        29.5,
+        29.6,
+        -53.157899,
+        -43.906073
+      ],
+      [
+        29.6,
+        29.7,
+        -54.653823,
+        -46.012122
+      ],
+      [
+        29.7,
+        29.8,
+        -56.006804,
+        -46.446507
+      ],
+      [
+        29.8,
+        29.9,
+        -56.641728,
+        -47.963573
+      ],
+      [
+        29.9,
+        30.0,
+        -57.876721,
+        -47.963573
+      ],
+      [
+        30.0,
+        30.1,
+        -56.588155,
+        -47.511417
+      ],
+      [
+        30.1,
+        30.2,
+        -56.008191,
+        -48.030132
+      ],
+      [
+        30.2,
+        30.3,
+        -55.12062,
+        -47.141749
+      ],
+      [
+        30.3,
+        30.4,
+        -56.080482,
+        -47.574587
+      ],
+      [
+        30.4,
+        30.5,
+        -55.738019,
+        -44.419674
+      ],
+      [
+        30.5,
+        30.6,
+        -54.600279,
+        -45.95932
+      ],
+      [
+        30.6,
+        30.7,
+        -54.028648,
+        -46.787174
+      ],
+      [
+        30.7,
+        30.8,
+        -54.31293,
+        -45.398745
+      ],
+      [
+        30.8,
+        30.9,
+        -54.630658,
+        -44.965564
+      ],
+      [
+        30.9,
+        31.0,
+        -55.629609,
+        -45.398745
+      ],
+      [
+        31.0,
+        31.1,
+        -54.939349,
+        -45.95932
+      ],
+      [
+        31.1,
+        31.2,
+        -54.877878,
+        -46.787174
+      ],
+      [
+        31.2,
+        31.3,
+        -55.199306,
+        -46.672127
+      ],
+      [
+        31.3,
+        31.4,
+        -56.932757,
+        -48.097204
+      ],
+      [
+        31.4,
+        31.5,
+        -57.211645,
+        -45.906837
+      ],
+      [
+        31.5,
+        31.6,
+        -56.512078,
+        -47.574587
+      ],
+      [
+        31.6,
+        31.7,
+        -56.352708,
+        -48.440565
+      ],
+      [
+        31.7,
+        31.8,
+        -57.063563,
+        -47.766903
+      ],
+      [
+        31.8,
+        31.9,
+        -57.160208,
+        -47.324616
+      ],
+      [
+        31.9,
+        32.0,
+        -58.189966,
+        -47.963573
+      ],
+      [
+        32.0,
+        32.1,
+        -57.121322,
+        -48.232924
+      ],
+      [
+        32.1,
+        32.2,
+        -56.745554,
+        -49.095042
+      ],
+      [
+        32.2,
+        32.3,
+        -56.387626,
+        -48.510896
+      ],
+      [
+        32.3,
+        32.4,
+        -57.395606,
+        -48.945281
+      ],
+      [
+        32.4,
+        32.5,
+        -56.859754,
+        -45.906837
+      ],
+      [
+        32.5,
+        32.6,
+        -56.109407,
+        -47.702323
+      ],
+      [
+        32.6,
+        32.7,
+        -55.466902,
+        -48.798059
+      ],
+      [
+        32.7,
+        32.8,
+        -55.643805,
+        -46.672127
+      ],
+      [
+        32.8,
+        32.9,
+        -55.979395,
+        -46.391006
+      ],
+      [
+        32.9,
+        33.0,
+        -56.930254,
+        -47.081639
+      ],
+      [
+        33.0,
+        33.1,
+        -55.994694,
+        -47.141749
+      ],
+      [
+        33.1,
+        33.2,
+        -55.883293,
+        -47.766903
+      ],
+      [
+        33.2,
+        33.3,
+        -55.733143,
+        -47.638221
+      ],
+      [
+        33.3,
+        33.4,
+        -57.124203,
+        -48.301588
+      ],
+      [
+        33.4,
+        33.5,
+        -57.037034,
+        -45.70002
+      ],
+      [
+        33.5,
+        33.6,
+        -55.967417,
+        -46.72946
+      ],
+      [
+        33.6,
+        33.7,
+        -55.409385,
+        -47.831966
+      ],
+      [
+        33.7,
+        33.8,
+        -55.724677,
+        -46.446507
+      ],
+      [
+        33.8,
+        33.9,
+        -55.565606,
+        -45.95932
+      ],
+      [
+        33.9,
+        34.0,
+        -56.289359,
+        -46.012122
+      ],
+      [
+        34.0,
+        34.1,
+        -55.398929,
+        -46.281056
+      ],
+      [
+        34.1,
+        34.2,
+        -55.049923,
+        -47.081639
+      ],
+      [
+        34.2,
+        34.3,
+        -54.701979,
+        -46.335857
+      ],
+      [
+        34.3,
+        34.4,
+        -55.961581,
+        -47.448703
+      ],
+      [
+        34.4,
+        34.5,
+        -55.85195,
+        -44.642974
+      ],
+      [
+        34.5,
+        34.6,
+        -54.990806,
+        -46.672127
+      ],
+      [
+        34.6,
+        34.7,
+        -54.691056,
+        -47.574587
+      ],
+      [
+        34.7,
+        34.8,
+        -55.232713,
+        -46.391006
+      ],
+      [
+        34.8,
+        34.9,
+        -55.756665,
+        -46.118698
+      ],
+      [
+        34.9,
+        35.0,
+        -57.110742,
+        -47.202278
+      ],
+      [
+        35.0,
+        35.1,
+        -56.482253,
+        -47.963573
+      ],
+      [
+        35.1,
+        35.2,
+        -56.531934,
+        -48.653291
+      ],
+      [
+        35.2,
+        35.3,
+        -57.172923,
+        -49.170902
+      ],
+      [
+        35.3,
+        35.4,
+        -58.870887,
+        -50.052254
+      ],
+      [
+        35.4,
+        35.5,
+        -58.811737,
+        -47.324616
+      ],
+      [
+        35.5,
+        35.6,
+        -58.142934,
+        -49.170902
+      ],
+      [
+        35.6,
+        35.7,
+        -57.450277,
+        -50.052254
+      ],
+      [
+        35.7,
+        35.8,
+        -57.653866,
+        -48.581802
+      ],
+      [
+        35.8,
+        35.9,
+        -57.482091,
+        -47.574587
+      ],
+      [
+        35.9,
+        36.0,
+        -57.975258,
+        -47.89752
+      ],
+      [
+        36.0,
+        36.1,
+        -56.569031,
+        -47.448703
+      ],
+      [
+        36.1,
+        36.2,
+        -56.020521,
+        -48.097204
+      ],
+      [
+        36.2,
+        36.3,
+        -55.14525,
+        -47.021942
+      ],
+      [
+        36.3,
+        36.4,
+        -56.090202,
+        -47.638221
+      ],
+      [
+        36.4,
+        36.5,
+        -55.752337,
+        -44.508306
+      ],
+      [
+        36.5,
+        36.6,
+        -54.61426,
+        -46.118698
+      ],
+      [
+        36.6,
+        36.7,
+        -54.020156,
+        -46.845273
+      ],
+      [
+        36.7,
+        36.8,
+        -54.292135,
+        -45.349533
+      ],
+      [
+        36.8,
+        36.9,
+        -54.609707,
+        -44.965564
+      ],
+      [
+        36.9,
+        37.0,
+        -55.625089,
+        -45.498014
+      ],
+      [
+        37.0,
+        37.1,
+        -54.935519,
+        -46.012122
+      ],
+      [
+        37.1,
+        37.2,
+        -54.888232,
+        -46.845273
+      ],
+      [
+        37.2,
+        37.3,
+        -55.206418,
+        -46.672127
+      ],
+      [
+        37.3,
+        37.4,
+        -56.929897,
+        -48.030132
+      ],
+      [
+        37.4,
+        37.5,
+        -57.218743,
+        -45.906837
+      ],
+      [
+        37.5,
+        37.6,
+        -56.497491,
+        -47.574587
+      ],
+      [
+        37.6,
+        37.7,
+        -56.36156,
+        -48.510896
+      ],
+      [
+        37.7,
+        37.8,
+        -57.088042,
+        -47.89752
+      ],
+      [
+        37.8,
+        37.9,
+        -57.189519,
+        -47.263232
+      ],
+      [
+        37.9,
+        38.0,
+        -58.206648,
+        -48.030132
+      ],
+      [
+        38.0,
+        38.1,
+        -57.132932,
+        -48.370798
+      ],
+      [
+        38.1,
+        38.2,
+        -56.714477,
+        -48.871359
+      ],
+      [
+        38.2,
+        38.3,
+        -56.370808,
+        -48.653291
+      ],
+      [
+        38.3,
+        38.4,
+        -57.382748,
+        -49.019839
+      ],
+      [
+        38.4,
+        38.5,
+        -56.851066,
+        -45.95932
+      ],
+      [
+        38.5,
+        38.6,
+        -56.103712,
+        -47.702323
+      ],
+      [
+        38.6,
+        38.7,
+        -55.472987,
+        -49.019839
+      ],
+      [
+        38.7,
+        38.8,
+        -55.661584,
+        -46.787174
+      ],
+      [
+        38.8,
+        38.9,
+        -55.99202,
+        -46.391006
+      ],
+      [
+        38.9,
+        39.0,
+        -56.948485,
+        -47.141749
+      ],
+      [
+        39.0,
+        39.1,
+        -56.018311,
+        -47.263232
+      ],
+      [
+        39.1,
+        39.2,
+        -55.877161,
+        -47.89752
+      ],
+      [
+        39.2,
+        39.3,
+        -55.700347,
+        -47.448703
+      ],
+      [
+        39.3,
+        39.4,
+        -57.106717,
+        -48.232924
+      ],
+      [
+        39.4,
+        39.5,
+        -57.033174,
+        -45.751265
+      ],
+      [
+        39.5,
+        39.6,
+        -55.968781,
+        -46.787174
+      ],
+      [
+        39.6,
+        39.7,
+        -55.438371,
+        -47.89752
+      ],
+      [
+        39.7,
+        39.8,
+        -55.787202,
+        -46.672127
+      ],
+      [
+        39.8,
+        39.9,
+        -55.613787,
+        -46.012122
+      ],
+      [
+        39.9,
+        40.0,
+        -56.3322,
+        -46.012122
+      ],
+      [
+        40.0,
+        40.1,
+        -55.402814,
+        -46.391006
+      ],
+      [
+        40.1,
+        40.2,
+        -55.028748,
+        -47.021942
+      ],
+      [
+        40.2,
+        40.3,
+        -54.660325,
+        -46.335857
+      ],
+      [
+        40.3,
+        40.4,
+        -55.942931,
+        -47.448703
+      ],
+      [
+        40.4,
+        40.5,
+        -55.84554,
+        -44.642974
+      ],
+      [
+        40.5,
+        40.6,
+        -54.984113,
+        -46.502365
+      ],
+      [
+        40.6,
+        40.7,
+        -54.708996,
+        -47.511417
+      ],
+      [
+        40.7,
+        40.8,
+        -55.256126,
+        -46.335857
+      ],
+      [
+        40.8,
+        40.9,
+        -55.783537,
+        -46.281056
+      ],
+      [
+        40.9,
+        41.0,
+        -57.109576,
+        -47.263232
+      ],
+      [
+        41.0,
+        41.1,
+        -56.485162,
+        -48.030132
+      ],
+      [
+        41.1,
+        41.2,
+        -56.539017,
+        -48.510896
+      ],
+      [
+        41.2,
+        41.3,
+        -57.136512,
+        -49.095042
+      ],
+      [
+        41.3,
+        41.4,
+        -58.870076,
+        -50.136995
+      ],
+      [
+        41.4,
+        41.5,
+        -58.827185,
+        -47.324616
+      ],
+      [
+        41.5,
+        41.6,
+        -58.116597,
+        -49.095042
+      ],
+      [
+        41.6,
+        41.7,
+        -57.463475,
+        -50.136995
+      ],
+      [
+        41.7,
+        41.8,
+        -57.67221,
+        -48.370798
+      ],
+      [
+        41.8,
+        41.9,
+        -57.514625,
+        -47.638221
+      ],
+      [
+        41.9,
+        42.0,
+        -57.987928,
+        -47.89752
+      ],
+      [
+        42.0,
+        42.1,
+        -56.590589,
+        -47.386438
+      ],
+      [
+        42.1,
+        42.2,
+        -55.991874,
+        -48.097204
+      ],
+      [
+        42.2,
+        42.3,
+        -55.120003,
+        -47.021942
+      ],
+      [
+        42.3,
+        42.4,
+        -56.077012,
+        -47.511417
+      ],
+      [
+        42.4,
+        42.5,
+        -55.743126,
+        -44.597853
+      ],
+      [
+        42.5,
+        42.6,
+        -54.615205,
+        -46.065247
+      ],
+      [
+        42.6,
+        42.7,
+        -54.021072,
+        -46.72946
+      ],
+      [
+        42.7,
+        42.8,
+        -54.284926,
+        -45.349533
+      ],
+      [
+        42.8,
+        42.9,
+        -54.604221,
+        -44.965564
+      ],
+      [
+        42.9,
+        43.0,
+        -55.610007,
+        -45.398745
+      ],
+      [
+        43.0,
+        43.1,
+        -54.934668,
+        -46.012122
+      ],
+      [
+        43.1,
+        43.2,
+        -54.911084,
+        -46.72946
+      ],
+      [
+        43.2,
+        43.3,
+        -55.227784,
+        -46.61517
+      ],
+      [
+        43.3,
+        43.4,
+        -56.95638,
+        -48.097204
+      ],
+      [
+        43.4,
+        43.5,
+        -55.195511,
+        -44.91874
+      ],
+      [
+        43.5,
+        43.6,
+        -47.164115,
+        -38.622374
+      ],
+      [
+        43.6,
+        43.7,
+        -47.060376,
+        -39.134827
+      ],
+      [
+        43.7,
+        43.8,
+        -47.017613,
+        -38.443277
+      ],
+      [
+        43.8,
+        43.9,
+        -46.949254,
+        -38.690499
+      ],
+      [
+        43.9,
+        44.0,
+        -47.886992,
+        -39.402856
+      ],
+      [
+        44.0,
+        44.1,
+        -45.02751,
+        -32.096511
+      ],
+      [
+        44.1,
+        44.2,
+        -48.884759,
+        -37.885473
+      ],
+      [
+        44.2,
+        44.3,
+        -56.359475,
+        -48.653291
+      ],
+      [
+        44.3,
+        44.4,
+        -57.384118,
+        -48.945281
+      ],
+      [
+        44.4,
+        44.5,
+        -56.836593,
+        -45.906837
+      ],
+      [
+        44.5,
+        44.6,
+        -56.105276,
+        -47.702323
+      ],
+      [
+        44.6,
+        44.7,
+        -55.474841,
+        -48.871359
+      ],
+      [
+        44.7,
+        44.8,
+        -55.621358,
+        -46.72946
+      ],
+      [
+        44.8,
+        44.84266667,
+        -58.575674,
+        -51.72062
+      ]
+    ]
+  },
+  "warnings": [],
+  "measurement_limits": [
+    "No perceptual audition is performed by this script.",
+    "Sample peaks are not oversampled true peaks, LUFS, or a guarantee against intersample clipping.",
+    "Full-scale sample counts use signed PCM endpoint values; near-full-scale counts use -0.1 dBFS.",
+    "Silence uses the maximum absolute channel sample per frame at the configured threshold; exact-zero counts are separate.",
+    "Energy events group RMS-threshold windows with the configured merge gap; they are not verified shot or animation event counts.",
+    "Phase labels are supplied capture annotations; no automatic identification of weapon type or event synchrony is claimed.",
+    "Null dBFS means exactly zero measured amplitude, mathematically negative infinity."
+  ],
+  "silence_threshold_dbfs": -60,
+  "wholly_quiet_100ms_window_ranges": [
+    {
+      "start_seconds": 0.0,
+      "end_seconds": 0.1,
+      "windows": 1
+    }
+  ],
+  "quiet_window_limit": "These merged windows remain entirely at or below -60 dBFS sample peak. Silence, including pause/death phases, is measured without an automatic audible-phase pass requirement."
+}

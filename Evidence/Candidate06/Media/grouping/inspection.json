@@ -1,0 +1,715 @@
+{
+  "schema": "one06.movie_inspection.v1",
+  "status": "PASS",
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "generated_utc": "2026-09-09T21:12:49.741489+00:00",
+  "checks": [
+    {
+      "check": "Actual nonempty MP4 input exists",
+      "status": "PASS"
+    },
+    {
+      "check": "Inspection output is separate from original capture inputs",
+      "status": "PASS"
+    },
+    {
+      "check": "Explicit FFmpeg binary exists",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly sidecar records successful Candidate06 encoding",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly operator-supplied source is the requested exact packaged commit",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly render mode is explicit",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual capture metadata, ordered JPEG bytes, timestamps and WAV match the assembly sidecar",
+      "status": "PASS"
+    },
+    {
+      "check": "Source capture is 1600x900 with 48 kHz stereo master audio",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual MP4 bytes match the completed assembly sidecar",
+      "status": "PASS"
+    },
+    {
+      "check": "Container has exactly one video and one audio stream",
+      "status": "PASS"
+    },
+    {
+      "check": "Video metadata is H.264 1600x900 planar 8-bit 4:2:0 (including full-range yuvj420p) 30 fps with a declared frame count",
+      "status": "PASS"
+    },
+    {
+      "check": "Audio metadata is AAC 48 kHz stereo",
+      "status": "PASS"
+    },
+    {
+      "check": "video endpoint differs from the original WAV by no more than one codec frame plus 2 ms",
+      "status": "PASS"
+    },
+    {
+      "check": "video start remains at the original time origin within declared codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "audio endpoint differs from the original WAV by no more than one codec frame plus 2 ms",
+      "status": "PASS"
+    },
+    {
+      "check": "audio start remains at the original time origin within declared codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Container duration agrees with the original WAV within combined endpoint tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Complete FFmpeg decode exits zero with strict errors enabled",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode emits terminal progress=end",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode reports a positive terminal video frame count",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual decoded video frame count equals the MP4 declared video count",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode reaches the original timeline endpoint within codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Numerical PCM audit reads the exact original bound master WAV",
+      "status": "PASS"
+    },
+    {
+      "check": "Movie, sidecar and capture inputs remain unchanged throughout inspection",
+      "status": "PASS"
+    }
+  ],
+  "tools": [
+    {
+      "file": "inspect_media.py",
+      "bytes": 17788,
+      "sha256": "6ea06cc1067b7084a86c2b51b4e3a3e68bf89994f7908eea3dc5c19ed4953631"
+    },
+    {
+      "file": "assemble_candidate06_capture.py",
+      "bytes": 22470,
+      "sha256": "ebc3259e83cbe0886a42c61ee819d04b7c26ca926e18ddf250d0187baa1ef96a"
+    },
+    {
+      "file": "audit_gameplay_audio.py",
+      "bytes": 16284,
+      "sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d"
+    }
+  ],
+  "limits": [
+    "The exact source label is bound to the assembler record, not independently derived from game binaries; use the separate package/runtime verification.",
+    "Format, byte identity and full decode completion are separate from visual gameplay review, perceptual audio audition, native input and performance.",
+    "Source WAV measurements describe original PCM. Encoded AAC audio is fully decoded for errors but not compared sample-for-sample with lossy source audio.",
+    "Existing outputs and originals are preserved. Path-bearing command, error and progress diagnostics remain private."
+  ],
+  "movie": {
+    "file": "candidate06_grouping.mp4",
+    "bytes": 7895868,
+    "sha256": "cecd87d46c13c8c63caa3898a85efbc0293a4391b2ec0bdd8f460da87e378d22"
+  },
+  "assembly": {
+    "file": "candidate06_grouping.assembly.json",
+    "bytes": 16481,
+    "sha256": "9cd7bab62b0df506ed5f9585ecf1c73676a93b2a858c6396ad3f139ab5ad46db"
+  },
+  "source_capture": {
+    "frames": 1135,
+    "dimensions": [
+      1600,
+      900
+    ],
+    "first_frame_audio_seconds": 0.154061198,
+    "last_frame_audio_seconds": 43.883445099,
+    "audio_duration_seconds": 44.181333333333335,
+    "audio_sample_frames": 2120704,
+    "actual_real_stop_tail_seconds": 0.4080689996480942,
+    "recorded_audio_after_last_callback_seconds": 0.29788823433333533,
+    "input_files": [
+      {
+        "file": "capture.json",
+        "sha256": "5f956641c4236c6fb4effbb80296c316cfa761ea3c18130721e436e8f5e1277e",
+        "bytes": 9444
+      },
+      {
+        "file": "frames.csv",
+        "sha256": "a3bff3cb1e228a10629458a2c0ce1f34cc9d237367e66cbb7edaac647c52fddc",
+        "bytes": 127496
+      },
+      {
+        "file": "gameplay_master.wav",
+        "sha256": "089d5aa8ce850f5ba8e256552abf0fdc5fe52afa7865b4ff3575378d781875b5",
+        "bytes": 8482860
+      }
+    ],
+    "ordered_frame_identity_sha256": "bb5618326d924fc627512d7c8836156d083e081e30740f7e06d0d7e2c07943ea",
+    "source_wav_layout": {
+      "header_block_align": 2,
+      "computed_frame_bytes": 4,
+      "unreal_block_align_quirk": true,
+      "pcm_bytes": 8482816,
+      "channels": 2,
+      "rate": 48000
+    },
+    "chapters": [
+      {
+        "phase": 0,
+        "title": "unlabelled",
+        "start_seconds": 0,
+        "end_seconds": 1.660286799
+      },
+      {
+        "phase": 1,
+        "title": "M4A1_short_3 / 300 cm / wall only / phase 1",
+        "start_seconds": 1.660286799,
+        "end_seconds": 2.843826897
+      },
+      {
+        "phase": 2,
+        "title": "M4A1_short_3 / 300 cm / wall only / phase 2",
+        "start_seconds": 2.843826897,
+        "end_seconds": 3.209923796
+      },
+      {
+        "phase": 3,
+        "title": "M4A1_short_3 / 300 cm / wall only / phase 3",
+        "start_seconds": 3.209923796,
+        "end_seconds": 3.436001197
+      },
+      {
+        "phase": 4,
+        "title": "M4A1_short_3 / 300 cm / wall only / phase 5",
+        "start_seconds": 3.436001197,
+        "end_seconds": 4.242497399
+      },
+      {
+        "phase": 5,
+        "title": "M4A1_short_3 / 300 cm / standing infected / phase 2",
+        "start_seconds": 4.242497399,
+        "end_seconds": 4.585424799
+      },
+      {
+        "phase": 6,
+        "title": "M4A1_short_3 / 300 cm / standing infected / phase 3",
+        "start_seconds": 4.585424799,
+        "end_seconds": 4.796430796
+      },
+      {
+        "phase": 7,
+        "title": "M4A1_short_3 / 300 cm / standing infected / phase 5",
+        "start_seconds": 4.796430796,
+        "end_seconds": 5.624238599
+      },
+      {
+        "phase": 8,
+        "title": "M4A1_short_3 / 650 cm / wall only / phase 2",
+        "start_seconds": 5.624238599,
+        "end_seconds": 5.971240297
+      },
+      {
+        "phase": 9,
+        "title": "M4A1_short_3 / 650 cm / wall only / phase 3",
+        "start_seconds": 5.971240297,
+        "end_seconds": 6.176550698
+      },
+      {
+        "phase": 10,
+        "title": "M4A1_short_3 / 650 cm / wall only / phase 5",
+        "start_seconds": 6.176550698,
+        "end_seconds": 6.980581298
+      },
+      {
+        "phase": 11,
+        "title": "M4A1_short_3 / 650 cm / standing infected / phase 2",
+        "start_seconds": 6.980581298,
+        "end_seconds": 7.333136696
+      },
+      {
+        "phase": 12,
+        "title": "M4A1_short_3 / 650 cm / standing infected / phase 3",
+        "start_seconds": 7.333136696,
+        "end_seconds": 7.558088198
+      },
+      {
+        "phase": 13,
+        "title": "M4A1_short_3 / 650 cm / standing infected / phase 5",
+        "start_seconds": 7.558088198,
+        "end_seconds": 8.356353197
+      },
+      {
+        "phase": 14,
+        "title": "M4A1_short_3 / 1000 cm / wall only / phase 2",
+        "start_seconds": 8.356353197,
+        "end_seconds": 8.719069999
+      },
+      {
+        "phase": 15,
+        "title": "M4A1_short_3 / 1000 cm / wall only / phase 3",
+        "start_seconds": 8.719069999,
+        "end_seconds": 8.924063697
+      },
+      {
+        "phase": 16,
+        "title": "M4A1_short_3 / 1000 cm / wall only / phase 5",
+        "start_seconds": 8.924063697,
+        "end_seconds": 9.735632699
+      },
+      {
+        "phase": 17,
+        "title": "M4A1_short_3 / 1000 cm / standing infected / phase 2",
+        "start_seconds": 9.735632699,
+        "end_seconds": 10.0979748
+      },
+      {
+        "phase": 18,
+        "title": "M4A1_short_3 / 1000 cm / standing infected / phase 3",
+        "start_seconds": 10.0979748,
+        "end_seconds": 10.322682597
+      },
+      {
+        "phase": 19,
+        "title": "M4A1_short_3 / 1000 cm / standing infected / phase 5",
+        "start_seconds": 10.322682597,
+        "end_seconds": 11.124466997
+      },
+      {
+        "phase": 20,
+        "title": "M4A1_sustained_12 / 300 cm / wall only / phase 1",
+        "start_seconds": 11.124466997,
+        "end_seconds": 12.315835297
+      },
+      {
+        "phase": 21,
+        "title": "M4A1_sustained_12 / 300 cm / wall only / phase 2",
+        "start_seconds": 12.315835297,
+        "end_seconds": 12.691253297
+      },
+      {
+        "phase": 22,
+        "title": "M4A1_sustained_12 / 300 cm / wall only / phase 3",
+        "start_seconds": 12.691253297,
+        "end_seconds": 13.800220497
+      },
+      {
+        "phase": 23,
+        "title": "M4A1_sustained_12 / 300 cm / wall only / phase 5",
+        "start_seconds": 13.800220497,
+        "end_seconds": 14.608834498
+      },
+      {
+        "phase": 24,
+        "title": "M4A1_sustained_12 / 300 cm / standing infected / phase 2",
+        "start_seconds": 14.608834498,
+        "end_seconds": 14.959185299
+      },
+      {
+        "phase": 25,
+        "title": "M4A1_sustained_12 / 300 cm / standing infected / phase 3",
+        "start_seconds": 14.959185299,
+        "end_seconds": 16.071957897
+      },
+      {
+        "phase": 26,
+        "title": "M4A1_sustained_12 / 300 cm / standing infected / phase 5",
+        "start_seconds": 16.071957897,
+        "end_seconds": 16.880145997
+      },
+      {
+        "phase": 27,
+        "title": "M4A1_sustained_12 / 650 cm / wall only / phase 2",
+        "start_seconds": 16.880145997,
+        "end_seconds": 17.221416499
+      },
+      {
+        "phase": 28,
+        "title": "M4A1_sustained_12 / 650 cm / wall only / phase 3",
+        "start_seconds": 17.221416499,
+        "end_seconds": 18.326922197
+      },
+      {
+        "phase": 29,
+        "title": "M4A1_sustained_12 / 650 cm / wall only / phase 5",
+        "start_seconds": 18.326922197,
+        "end_seconds": 19.144726198
+      },
+      {
+        "phase": 30,
+        "title": "M4A1_sustained_12 / 650 cm / standing infected / phase 2",
+        "start_seconds": 19.144726198,
+        "end_seconds": 19.493538998
+      },
+      {
+        "phase": 31,
+        "title": "M4A1_sustained_12 / 650 cm / standing infected / phase 3",
+        "start_seconds": 19.493538998,
+        "end_seconds": 20.6102142
+      },
+      {
+        "phase": 32,
+        "title": "M4A1_sustained_12 / 650 cm / standing infected / phase 5",
+        "start_seconds": 20.6102142,
+        "end_seconds": 21.419267897
+      },
+      {
+        "phase": 33,
+        "title": "M4A1_sustained_12 / 1000 cm / wall only / phase 2",
+        "start_seconds": 21.419267897,
+        "end_seconds": 21.772535399
+      },
+      {
+        "phase": 34,
+        "title": "M4A1_sustained_12 / 1000 cm / wall only / phase 3",
+        "start_seconds": 21.772535399,
+        "end_seconds": 22.906045999
+      },
+      {
+        "phase": 35,
+        "title": "M4A1_sustained_12 / 1000 cm / wall only / phase 5",
+        "start_seconds": 22.906045999,
+        "end_seconds": 23.686188199
+      },
+      {
+        "phase": 36,
+        "title": "M4A1_sustained_12 / 1000 cm / standing infected / phase 2",
+        "start_seconds": 23.686188199,
+        "end_seconds": 24.069153897
+      },
+      {
+        "phase": 37,
+        "title": "M4A1_sustained_12 / 1000 cm / standing infected / phase 3",
+        "start_seconds": 24.069153897,
+        "end_seconds": 25.1743658
+      },
+      {
+        "phase": 38,
+        "title": "M4A1_sustained_12 / 1000 cm / standing infected / phase 5",
+        "start_seconds": 25.1743658,
+        "end_seconds": 25.999045398
+      },
+      {
+        "phase": 39,
+        "title": "870_three_shells / 300 cm / wall only / phase 1",
+        "start_seconds": 25.999045398,
+        "end_seconds": 27.178806197
+      },
+      {
+        "phase": 40,
+        "title": "870_three_shells / 300 cm / wall only / phase 2",
+        "start_seconds": 27.178806197,
+        "end_seconds": 27.552291397
+      },
+      {
+        "phase": 42,
+        "title": "870_three_shells / 300 cm / wall only / phase 4",
+        "start_seconds": 27.552291397,
+        "end_seconds": 28.3652847
+      },
+      {
+        "phase": 44,
+        "title": "870_three_shells / 300 cm / wall only / phase 4",
+        "start_seconds": 28.3652847,
+        "end_seconds": 29.181199297
+      },
+      {
+        "phase": 46,
+        "title": "870_three_shells / 300 cm / wall only / phase 5",
+        "start_seconds": 29.181199297,
+        "end_seconds": 29.995822899
+      },
+      {
+        "phase": 47,
+        "title": "870_three_shells / 300 cm / standing infected / phase 2",
+        "start_seconds": 29.995822899,
+        "end_seconds": 30.344918899
+      },
+      {
+        "phase": 48,
+        "title": "870_three_shells / 300 cm / standing infected / phase 3",
+        "start_seconds": 30.344918899,
+        "end_seconds": 30.3782885
+      },
+      {
+        "phase": 49,
+        "title": "870_three_shells / 300 cm / standing infected / phase 4",
+        "start_seconds": 30.3782885,
+        "end_seconds": 31.168990199
+      },
+      {
+        "phase": 51,
+        "title": "870_three_shells / 300 cm / standing infected / phase 4",
+        "start_seconds": 31.168990199,
+        "end_seconds": 31.978919797
+      },
+      {
+        "phase": 53,
+        "title": "870_three_shells / 300 cm / standing infected / phase 5",
+        "start_seconds": 31.978919797,
+        "end_seconds": 32.779417899
+      },
+      {
+        "phase": 54,
+        "title": "870_three_shells / 650 cm / wall only / phase 2",
+        "start_seconds": 32.779417899,
+        "end_seconds": 33.128434896
+      },
+      {
+        "phase": 55,
+        "title": "870_three_shells / 650 cm / wall only / phase 3",
+        "start_seconds": 33.128434896,
+        "end_seconds": 33.1620197
+      },
+      {
+        "phase": 56,
+        "title": "870_three_shells / 650 cm / wall only / phase 4",
+        "start_seconds": 33.1620197,
+        "end_seconds": 33.969585598
+      },
+      {
+        "phase": 58,
+        "title": "870_three_shells / 650 cm / wall only / phase 4",
+        "start_seconds": 33.969585598,
+        "end_seconds": 34.7398315
+      },
+      {
+        "phase": 59,
+        "title": "870_three_shells / 650 cm / wall only / phase 3",
+        "start_seconds": 34.7398315,
+        "end_seconds": 34.773496799
+      },
+      {
+        "phase": 60,
+        "title": "870_three_shells / 650 cm / wall only / phase 5",
+        "start_seconds": 34.773496799,
+        "end_seconds": 35.582238097
+      },
+      {
+        "phase": 61,
+        "title": "870_three_shells / 650 cm / standing infected / phase 2",
+        "start_seconds": 35.582238097,
+        "end_seconds": 35.945847098
+      },
+      {
+        "phase": 63,
+        "title": "870_three_shells / 650 cm / standing infected / phase 4",
+        "start_seconds": 35.945847098,
+        "end_seconds": 36.763771798
+      },
+      {
+        "phase": 65,
+        "title": "870_three_shells / 650 cm / standing infected / phase 4",
+        "start_seconds": 36.763771798,
+        "end_seconds": 37.561573997
+      },
+      {
+        "phase": 67,
+        "title": "870_three_shells / 650 cm / standing infected / phase 5",
+        "start_seconds": 37.561573997,
+        "end_seconds": 38.379286699
+      },
+      {
+        "phase": 68,
+        "title": "870_three_shells / 1000 cm / wall only / phase 2",
+        "start_seconds": 38.379286699,
+        "end_seconds": 38.741395898
+      },
+      {
+        "phase": 70,
+        "title": "870_three_shells / 1000 cm / wall only / phase 4",
+        "start_seconds": 38.741395898,
+        "end_seconds": 39.524348598
+      },
+      {
+        "phase": 72,
+        "title": "870_three_shells / 1000 cm / wall only / phase 4",
+        "start_seconds": 39.524348598,
+        "end_seconds": 40.316052899
+      },
+      {
+        "phase": 73,
+        "title": "870_three_shells / 1000 cm / wall only / phase 3",
+        "start_seconds": 40.316052899,
+        "end_seconds": 40.3497658
+      },
+      {
+        "phase": 74,
+        "title": "870_three_shells / 1000 cm / wall only / phase 5",
+        "start_seconds": 40.3497658,
+        "end_seconds": 41.125437196
+      },
+      {
+        "phase": 75,
+        "title": "870_three_shells / 1000 cm / standing infected / phase 2",
+        "start_seconds": 41.125437196,
+        "end_seconds": 41.478375997
+      },
+      {
+        "phase": 76,
+        "title": "870_three_shells / 1000 cm / standing infected / phase 3",
+        "start_seconds": 41.478375997,
+        "end_seconds": 41.512411099
+      },
+      {
+        "phase": 77,
+        "title": "870_three_shells / 1000 cm / standing infected / phase 4",
+        "start_seconds": 41.512411099,
+        "end_seconds": 42.300452799
+      },
+      {
+        "phase": 79,
+        "title": "870_three_shells / 1000 cm / standing infected / phase 4",
+        "start_seconds": 42.300452799,
+        "end_seconds": 43.100412697
+      },
+      {
+        "phase": 81,
+        "title": "870_three_shells / 1000 cm / standing infected / phase 5",
+        "start_seconds": 43.100412697,
+        "end_seconds": 44.181333333333335
+      }
+    ],
+    "timebase_limit": "audio_seconds is screenshot callback platform time minus the CPU timestamp immediately after StartRecordingOutput; audio render scheduling offset is not measured",
+    "frame_treatment": "First actual image held from audio time zero; subsequent actual images held by original callback timestamps; last image held to unmodified WAV endpoint. Millisecond concat timebase, CFR30 samples may duplicate/drop captured images; no generated pixels, crop, overlays, motion interpolation or retiming to hide stalls.",
+    "audio_treatment": "AAC transcode of the original engine WAV on its original timeline; no replacement, padding, tempo change or synthetic silence. Codec/container endpoint quantization requires separate output probing. This does not establish timbre/localization approval."
+  },
+  "probe": {
+    "tool": "PyAV",
+    "version": "17.1.0",
+    "method": "Container and stream metadata only; no PyAV frame decode.",
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "container_duration_seconds": 44.181,
+    "container_start_seconds": 0.0,
+    "streams": [
+      {
+        "index": 0,
+        "type": "video",
+        "codec": "h264",
+        "time_base": "1/15360",
+        "duration_ticks": 678400,
+        "duration_seconds": 44.166666666666664,
+        "start_seconds": 0.0,
+        "declared_frames": 1325,
+        "width": 1600,
+        "height": 900,
+        "average_rate": "30",
+        "pixel_format": "yuvj420p"
+      },
+      {
+        "index": 1,
+        "type": "audio",
+        "codec": "aac",
+        "time_base": "1/48000",
+        "duration_ticks": 2120688,
+        "duration_seconds": 44.181,
+        "start_seconds": 0.0,
+        "declared_frames": 2072,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "channel_layout": "stereo",
+        "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+      }
+    ]
+  },
+  "endpoint_tolerances_seconds": {
+    "video": 0.035333333333333335,
+    "audio": 0.02333333333333333,
+    "limit": "Codec/container endpoint checks do not measure perceived audiovisual synchronization or the capture clock start offset."
+  },
+  "decode": {
+    "status": "PASS",
+    "exit_code": 0,
+    "elapsed_seconds": 0.422,
+    "ffmpeg": {
+      "file": "ffmpeg-win-x86_64-v7.1.exe",
+      "bytes": 87638016,
+      "sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3"
+    },
+    "terminal_progress_end": true,
+    "terminal_video_frames": 1325,
+    "terminal_output_seconds": 44.166667,
+    "scope": "Both mapped streams fully decoded to null; no seek, duration or frame limit. Video frame passthrough.",
+    "private_logs": [
+      "decode_command.private.json",
+      "decode_progress.private.log",
+      "decode_stderr.private.log"
+    ]
+  },
+  "source_audio": {
+    "status": "MEASURED",
+    "metrics_file": {
+      "file": "source_audio_metrics.json",
+      "bytes": 181465,
+      "sha256": "7c597608545d2d4619215fce0ae96ead7090ceca003804fb0ff5bf5878896aa6"
+    },
+    "format": {
+      "encoding": "integer PCM",
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "bits_per_sample": 16,
+      "frame_count": 2120704,
+      "duration_seconds": 44.18133333
+    },
+    "overall": {
+      "duration_seconds": 44.18133333,
+      "frame_count": 2120704,
+      "channel_sample_count": 4241408,
+      "sample_peak_normalized": 0.2241210938,
+      "sample_peak_dbfs": -12.990345,
+      "rms_normalized": 0.0120246427,
+      "rms_dbfs": -38.398556,
+      "crest_factor_db": 25.408211,
+      "sample_peak_headroom_db": 12.990345,
+      "full_scale_sample_count": 0,
+      "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+      "nonzero_sample_count": 4194405,
+      "nonzero_sample_percent": 98.891807,
+      "exact_zero_frame_count": 7242,
+      "longest_exact_zero_seconds": 0.14266667,
+      "silent_frame_count_at_threshold": 338036,
+      "silent_frame_percent_at_threshold": 15.939801,
+      "longest_silence_seconds_at_threshold": 0.164875,
+      "channels": [
+        {
+          "channel_index": 0,
+          "sample_peak_dbfs": -13.037783,
+          "rms_dbfs": -38.411071,
+          "dc_normalized": 4.97e-07,
+          "absolute_dc_dbfs": -126.072656,
+          "full_scale_sample_count": 0,
+          "nonzero_sample_count": 2099187
+        },
+        {
+          "channel_index": 1,
+          "sample_peak_dbfs": -12.990345,
+          "rms_dbfs": -38.386078,
+          "dc_normalized": 4.308e-07,
+          "absolute_dc_dbfs": -127.313564,
+          "full_scale_sample_count": 0,
+          "nonzero_sample_count": 2095218
+        }
+      ]
+    },
+    "warnings": [],
+    "perceptual_audio_review": false
+  }
+}
