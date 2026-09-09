@@ -1,0 +1,481 @@
+{
+  "schema": 1,
+  "candidate": "Candidate05",
+  "result": "PASS",
+  "scope": "Fresh public-source build, native automation and packaged runtime identity/privacy verification. Gameplay, visual review, audio, native controls, performance and final publication are separate records.",
+  "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+  "source_state": "exact-commit",
+  "remote": "https://github.com/laberteauxjacob-cpu/ProjectONE",
+  "branch": "codex/candidate05",
+  "toolchain": {
+    "engine_version": "5.7.2",
+    "engine_changelist": 49658320,
+    "platform": "Win64",
+    "configuration": "Development"
+  },
+  "checkout_method": "Public remote checkout in a neutral build path, clean before and after verification, without local Git object alternates.",
+  "source_reports": [
+    {
+      "file": "FreshBuildVerification_6b8621cef9d2.json",
+      "bytes": 137494,
+      "sha256": "21ed5056465e28a7554580f500618ee3e56aaf441eae4f7bc5b93497ec30358b"
+    },
+    {
+      "file": "FreshReleaseAudit_6b8621cef9d2.json",
+      "bytes": 25985,
+      "sha256": "95edf9438079484bd47c68f6feabe73ead16e9086e3ada236d9b423d1981e031"
+    }
+  ],
+  "source_checks": {
+    "lfs_hashes_and_sizes_match": true,
+    "clean_worktree_before_build": true,
+    "private_original_history_absent": true,
+    "tracked_source_unchanged_after_build": true,
+    "native_prerequisite_installers_staged": true,
+    "native_prerequisite_installer_bytes_match_engine": true,
+    "required_runtime_bytes_bound_to_source_commit": true,
+    "tracked_source_unchanged_after_verification": true,
+    "tracked_file_count": 1129,
+    "lfs_file_count": 648,
+    "lfs_total_bytes": 297457501
+  },
+  "source_verification_steps": [
+    {
+      "command": "git fetch origin codex/candidate05",
+      "exit_code": 0,
+      "elapsed_seconds": 0.875
+    },
+    {
+      "command": "git merge-base --is-ancestor <source-commit> origin/codex/candidate05",
+      "exit_code": 0,
+      "elapsed_seconds": 0.047
+    },
+    {
+      "command": "git merge --ff-only <source-commit>",
+      "exit_code": 0,
+      "elapsed_seconds": 0.594
+    },
+    {
+      "command": "git lfs pull",
+      "exit_code": 0,
+      "elapsed_seconds": 0.75
+    },
+    {
+      "command": "git lfs fsck",
+      "exit_code": 0,
+      "elapsed_seconds": 1.141
+    }
+  ],
+  "build_steps": [
+    {
+      "target": "editor",
+      "exit_code": 0,
+      "elapsed_seconds": 21.828
+    },
+    {
+      "target": "game",
+      "exit_code": 0,
+      "elapsed_seconds": 22.969
+    },
+    {
+      "target": "package",
+      "exit_code": 0,
+      "elapsed_seconds": 21.75
+    },
+    {
+      "target": "native_tests",
+      "exit_code": 0,
+      "elapsed_seconds": 13.391
+    }
+  ],
+  "native_tests": {
+    "passed": 17,
+    "without_warnings": 14,
+    "with_warnings": 3,
+    "warning_count": 5,
+    "failed": 0,
+    "not_run": 0,
+    "in_process": 0,
+    "total_duration_seconds": 0.2657173275947571,
+    "tests": [
+      {
+        "name": "ProjectONE.Aim.CloseCursorFullCircle",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.007907800376415253
+      },
+      {
+        "name": "ProjectONE.Aim.RegionConvergenceAndObstructionSegments",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.008277799934148788
+      },
+      {
+        "name": "ProjectONE.Candidate05.Attacks.BoundedStepAndLimbMasks",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.008200399577617645
+      },
+      {
+        "name": "ProjectONE.Candidate05.Attacks.ThreeFamiliesOneContact",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.05822879821062088
+      },
+      {
+        "name": "ProjectONE.Candidate05.Attacks.WallHeadingLimbAndDeathCancel",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.024619396775960922
+      },
+      {
+        "name": "ProjectONE.Candidate05.Feedback.LiveKillCorpseAndMinorContinuity",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.010163698345422745
+      },
+      {
+        "name": "ProjectONE.Combat.AnatomicalSidesAndCorpseTransactions",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 1,
+        "duration_seconds": 0.009696699678897858
+      },
+      {
+        "name": "ProjectONE.Combat.DamageAndDeathAreMonotonic",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.008288096636533737
+      },
+      {
+        "name": "ProjectONE.Combat.RegionalPelletsKeepSpatialData",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.008572198450565338
+      },
+      {
+        "name": "ProjectONE.Combat.RegionalTraumaBoundaries",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 3,
+        "duration_seconds": 0.009933199733495712
+      },
+      {
+        "name": "ProjectONE.Combat.WeaponPacketsAreIdempotent",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 1,
+        "duration_seconds": 0.009624999016523361
+      },
+      {
+        "name": "ProjectONE.Inventory.AcquisitionPlansAndUpgradeRefill",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.05875319987535477
+      },
+      {
+        "name": "ProjectONE.Inventory.ExactInstanceReservationAndRollback",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.009247299283742905
+      },
+      {
+        "name": "ProjectONE.Inventory.ResetRejectsOldMachineCallbacks",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.009242396801710129
+      },
+      {
+        "name": "ProjectONE.Inventory.SixIndependentVariantsAndTiming",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.008359398692846298
+      },
+      {
+        "name": "ProjectONE.Weapons.Candidate05.AutomaticPhaseAndHitch",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.00830879807472229
+      },
+      {
+        "name": "ProjectONE.Weapons.Candidate05.CatalogCadenceAndUpgradeBanks",
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0,
+        "duration_seconds": 0.008293099701404572
+      }
+    ]
+  },
+  "runtime_audit": {
+    "read_only": true,
+    "unclassified_personal_path_findings": 0,
+    "retained_file_count": 45,
+    "retained_bytes": 666304586,
+    "omitted_debug_or_private_file_count": 4,
+    "required_six_runtime_identities_match_build": true,
+    "upstream_engine_diagnostic": {
+      "source": "Engine/Source/Runtime/D3D12RHI/Private/Windows/WindowsD3D12Device.cpp",
+      "line": 1357,
+      "matched_occurrences": 1,
+      "classification": "Verified unchanged Unreal Engine diagnostic example; not a project or validation-host path."
+    }
+  },
+  "prerequisites": [
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.arm64.exe",
+      "bytes": 11733072,
+      "sha256": "0423f7d1c765afea32a414eb156478d694924ea948ac21a4565a4fb1025b258f"
+    }
+  ],
+  "runtime_files": [
+    {
+      "path": "Engine/Binaries/ThirdParty/DbgHelp/dbghelp.dll",
+      "bytes": 2232712,
+      "sha256": "c61402133c5a961be61cf8fc651cca42be2232f502549d239150b855fab173d2"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/MsQuic/v220/win64/msquic.dll",
+      "bytes": 2547104,
+      "sha256": "f71b5f857abe1509756947a4f4863f293e583ea6050583e6942843694d8d9938"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/NVIDIA/NVaftermath/Win64/GFSDK_Aftermath_Lib.x64.dll",
+      "bytes": 5442616,
+      "sha256": "99e10fd351e3154fd7f0b819c8ad39b16ee01223a61c1994bd24bcdb82972430"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Ogg/Win64/VS2015/libogg_64.dll",
+      "bytes": 59856,
+      "sha256": "77bfe5db8b9b2227dd25a02de2947a7cce3afd7e520cde3cc019b5b568e3c925"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vorbis/Win64/VS2015/libvorbis_64.dll",
+      "bytes": 1724880,
+      "sha256": "b67768dd12b0895833f306f5ae12d28964830e00f2b431135425f5b24077915d"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vorbis/Win64/VS2015/libvorbisfile_64.dll",
+      "bytes": 48592,
+      "sha256": "b8610a446acbe9e553cff7290cf9b0f3e190800ad4c08d9eea90c06aa382f680"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_api_dump.dll",
+      "bytes": 11001096,
+      "sha256": "377cefcb66f5f018d55641083c32404de5658a1e86d484b92f57f25b74c54ff9"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_api_dump.json",
+      "bytes": 12828,
+      "sha256": "281669fdf39baf7e49e0507387645997451187be2f7d444b0c169ef078004e46"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_crash_diagnostic.dll",
+      "bytes": 2029320,
+      "sha256": "c6586cbec5d6de0daed5d2452914d099b8e63c86bf0970df6dca38c7c3129590"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_crash_diagnostic.json",
+      "bytes": 9527,
+      "sha256": "3601109840469aea0b9008512157e043c89500705cb346270fb019d7ed6f724e"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_gfxreconstruct.dll",
+      "bytes": 5603072,
+      "sha256": "e519bb52d80c40fba7dc474331d39ecf66aacf7486bc9019e46c60941711f399"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_gfxreconstruct.json",
+      "bytes": 27234,
+      "sha256": "a6c78d253715f260a0fe7c8e1b0ce3e153aa8a802a2ba89b0dd46561e686b636"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_profiles.dll",
+      "bytes": 1776392,
+      "sha256": "92701f48cc945f4d30602aead362dc9f77729a0a9efbcceb378a8f61877d0277"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_profiles.json",
+      "bytes": 70320,
+      "sha256": "8c9d6e4bf6d38c2cf223b598aaf86a08242a1a07d62b24236cca3e64e0daf91c"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_shader_object.dll",
+      "bytes": 371464,
+      "sha256": "8f037a67ffa89af0fca90d91393e7854265bb515de7bffbe01513ed514a4fdf2"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_shader_object.json",
+      "bytes": 4455,
+      "sha256": "98b9a12a5723665abab2eadfcab700a5785172adad22e5ca1364ab466268185f"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_synchronization2.dll",
+      "bytes": 341768,
+      "sha256": "8707201541cec52165828c92b494022567ae97d42245bf272a656f6965dbfd5e"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_synchronization2.json",
+      "bytes": 1910,
+      "sha256": "80a014d0b4337ea6ab05b8295fe6d1ba7f4cc0cf6bfe918873a0d30960973696"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_validation.dll",
+      "bytes": 17958152,
+      "sha256": "c6bdf73e611635a22b00981ebfb3117a05b3384b4a1d9e115d5fdc7fdc85db8f"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Vulkan/Win64/VkLayer_khronos_validation.json",
+      "bytes": 82965,
+      "sha256": "be1722a7a84efca54cd0bd1625f37016b556dd696586620f81ff5fa1c155a198"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64/WinPixEventRuntime.dll",
+      "bytes": 69080,
+      "sha256": "283c554d3b72142041bb5680739b39b96b58162c6b7a9e968dc2a76235150da1"
+    },
+    {
+      "path": "Engine/Binaries/ThirdParty/Windows/XAudio2_9/x64/xaudio2_9redist.dll",
+      "bytes": 858176,
+      "sha256": "bbd9bec2356aa0b03ca6b02d6fb107e63ff2d5975f4217c5b79fba14c5b913df"
+    },
+    {
+      "path": "Engine/Config/StagedBuild_ProjectONE.ini",
+      "bytes": 3,
+      "sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    },
+    {
+      "path": "Engine/Content/Renderer/TessellationTable.bin",
+      "bytes": 259568,
+      "sha256": "edc4f3b628a139c5e185bbaeca661c95c1f427368d3b92892c5cff36c56dd941"
+    },
+    {
+      "path": "Engine/Content/Slate/Cursor/invisible.cur",
+      "bytes": 326,
+      "sha256": "fef3980fa567e9c45d5d8dcaa432a2c1a3f3bb17fe67d7ab198164f56c142aa1"
+    },
+    {
+      "path": "Engine/Content/SlateDebug/Fonts/LastResort.tps",
+      "bytes": 930,
+      "sha256": "0f775fa99d05e21d43d2d06d55982b23dcdccdb512a9a5a07aff674f212c41b8"
+    },
+    {
+      "path": "Engine/Content/SlateDebug/Fonts/LastResort.ttf",
+      "bytes": 5395052,
+      "sha256": "fff0f8de0b868b964950fe97c9b60f893e9bc85a4f90b3629c5693db058b97b9"
+    },
+    {
+      "path": "Engine/Extras/GPUDumpViewer/GPUDumpViewer.html",
+      "bytes": 187194,
+      "sha256": "15966544a010b56930a7389b5e9cbeee7a9ae545d132906e983ac954a839df67"
+    },
+    {
+      "path": "Engine/Extras/GPUDumpViewer/OpenGPUDumpViewer.bat",
+      "bytes": 879,
+      "sha256": "e8f7ef9c88697041bd87902b76e52558979ca866c7450b1da108a94a027f441b"
+    },
+    {
+      "path": "Engine/Extras/GPUDumpViewer/OpenGPUDumpViewer.sh",
+      "bytes": 2165,
+      "sha256": "1b222b5d5aad6dd9b5b9f0a1c72d38635149540f2c7a368600ec76c1d304390a"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.arm64.exe",
+      "bytes": 11733072,
+      "sha256": "0423f7d1c765afea32a414eb156478d694924ea948ac21a4565a4fb1025b258f"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    },
+    {
+      "path": "Engine/Plugins/NNE/NNERuntimeORT/Binaries/ThirdParty/Onnxruntime/Win64/onnxruntime.dll",
+      "bytes": 14692896,
+      "sha256": "8ba79c4cb4809413348fca0d5f4d1b7a2d529d8b32de0f9ca514c6f2488b4223"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/D3D12/x64/D3D12Core.dll",
+      "bytes": 4544032,
+      "sha256": "ecfc9f71a15739d69a246fcc7b737789392793496a073c0ffc6d3127c3183e56"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/D3D12/x64/d3d12SDKLayers.dll",
+      "bytes": 5104656,
+      "sha256": "4dee11053a4082c5c9e3d6fba9b9c49e076dda28679601792a81f57a09dac614"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/DML/x64/DirectML.dll",
+      "bytes": 18537992,
+      "sha256": "30a8a708b05eafe25e6a4d1e66554c92d5e63da6a5d8faa3fae1e39226c10b49"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292325888,
+      "sha256": "4bd0a468603f566b6904f0726b3d9160e0feb224b6cd1b5d7836d0adfa6be602"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/tbb12.dll",
+      "bytes": 331728,
+      "sha256": "0278433e085de109e2be36b4e0027116c53bf46a83d82d08b6c95ba2a5e98eb3"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/tbbmalloc.dll",
+      "bytes": 117712,
+      "sha256": "58535cfe511f13e074d460f146123880cac25268560527ad5e248cbce897adc9"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/global.ucas",
+      "bytes": 2643536,
+      "sha256": "1bf6d2ff7284be73daedcc4ceb00dcbbc2ebcb516b4ffe70a3747d5ef43bf187"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/global.utoc",
+      "bytes": 686,
+      "sha256": "204b3ddaaf427365dd3d166155aea1a4230be1c1bb98458d479b3466374d4970"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10726921,
+      "sha256": "1ee89ad12c67c8c16df0c3431f019b672cb0e32dbba72c0ad4a8fc0fc35d4bbe"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 221375168,
+      "sha256": "d8fd2b69d493ea336e1c53120cbef03af268ad4f14691e69ce9cbfb9d4b4e342"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 239295,
+      "sha256": "e25195803d2b7f8e422a3414cd22b62d562167e67c1eb657e5f867218924e751"
+    },
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    }
+  ],
+  "limitations": [
+    "Verification used the validation host, not a clean Windows installation without development prerequisites.",
+    "Raw build logs, absolute local paths and debug/private package files are excluded from this portable record.",
+    "Raw runtime bytes were scanned for ASCII/UTF16 user-root strings and PE debug metadata. Compressed cooked data also requires the separate source/LFS publication audit.",
+    "A successful build is not a successful packaged gameplay suite or a completed release."
+  ]
+}

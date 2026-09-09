@@ -1,0 +1,751 @@
+{
+  "schema": 1,
+  "candidate": "Candidate05",
+  "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+  "source_state": "exact-commit",
+  "capture_kind": "packaged",
+  "result": "PASS",
+  "runs": [
+    {
+      "requested_fps": 30,
+      "checks": 191,
+      "failures": 0,
+      "timeline_rows": 2613,
+      "positive_shot_transitions": 160,
+      "restart_counter_resets_excluded": 1,
+      "max_positive_counter_increment": 1,
+      "source_records": [
+        {
+          "path": "Weapon30/checks.json",
+          "bytes": 37622,
+          "sha256": "f8438b18f2852b2b0415b8a58bd7c4f707b37607d1e0191ff68649b8a86b303b"
+        },
+        {
+          "path": "Weapon30/timeline.csv",
+          "bytes": 130116,
+          "sha256": "b0da4b3ee6612e70c9b348d3fcc9ed7c32a37cd7e2001f0133ad17342e99a97c"
+        },
+        {
+          "path": "Weapon30/engine.log",
+          "bytes": 126073,
+          "sha256": "e5dfc7999f2da9f38d928ea4d21a3ef12d5022d04ee8813bada0008c3f265e9a"
+        }
+      ],
+      "cadence": [
+        {
+          "weapon": "M4A1",
+          "variant": 2,
+          "stage": 21,
+          "section": "established_held_burst",
+          "shots": 18,
+          "intervals": 17,
+          "configured_interval_seconds": 0.1,
+          "configured_rpm": 600.0,
+          "first_to_last_seconds": 1.7000080000000004,
+          "mean_interval_ms": 100.00047058823532,
+          "observed_rpm": 599.9971764838753,
+          "shot_interval_ms": {
+            "samples": 17,
+            "minimum": 99.99999999999787,
+            "median": 100.00000000000142,
+            "mean": 100.00047058823532,
+            "maximum": 100.00199999999992
+          },
+          "observation_frame_gap_values": [
+            3
+          ],
+          "phase_error_ms": {
+            "minimum": -3.552713678800501e-12,
+            "maximum": 0.008000000001118224,
+            "maximum_absolute": 0.008000000001118224
+          },
+          "actual_game_frame_ms": {
+            "samples": 53,
+            "minimum": 33.33299999999895,
+            "median": 33.3330000000025,
+            "mean": 33.33347169811317,
+            "maximum": 33.33400000000353
+          }
+        },
+        {
+          "weapon": "M4A1",
+          "variant": 2,
+          "stage": 31,
+          "section": "full_magazine",
+          "shots": 24,
+          "intervals": 23,
+          "configured_interval_seconds": 0.1,
+          "configured_rpm": 600.0,
+          "first_to_last_seconds": 2.300010999999998,
+          "mean_interval_ms": 100.00047826086947,
+          "observed_rpm": 599.9971304485072,
+          "shot_interval_ms": {
+            "samples": 23,
+            "minimum": 99.99799999999937,
+            "median": 100.00199999999637,
+            "mean": 100.00047826086947,
+            "maximum": 100.00300000000095
+          },
+          "observation_frame_gap_values": [
+            3
+          ],
+          "phase_error_ms": {
+            "minimum": -0.00100000000458067,
+            "maximum": 0.01100000000064938,
+            "maximum_absolute": 0.01100000000064938
+          },
+          "actual_game_frame_ms": {
+            "samples": 73,
+            "minimum": 33.33299999999895,
+            "median": 33.33300000000605,
+            "mean": 33.33347945205477,
+            "maximum": 33.33400000000353
+          }
+        },
+        {
+          "weapon": "Overcurrent",
+          "variant": 3,
+          "stage": 21,
+          "section": "established_held_burst",
+          "shots": 21,
+          "intervals": 20,
+          "configured_interval_seconds": 0.08695652173913045,
+          "configured_rpm": 689.9999999999999,
+          "first_to_last_seconds": 1.7666740000000019,
+          "mean_interval_ms": 88.33370000000009,
+          "observed_rpm": 679.2424635218488,
+          "shot_interval_ms": {
+            "samples": 20,
+            "minimum": 66.66500000000042,
+            "median": 99.99799999999937,
+            "mean": 88.33370000000009,
+            "maximum": 100.00300000000095
+          },
+          "observation_frame_gap_values": [
+            2,
+            3
+          ],
+          "phase_error_ms": {
+            "minimum": 0.0,
+            "maximum": 31.884391304352278,
+            "maximum_absolute": 31.884391304352278
+          },
+          "actual_game_frame_ms": {
+            "samples": 53,
+            "minimum": 33.33299999999895,
+            "median": 33.33300000000605,
+            "mean": 33.333490566037725,
+            "maximum": 33.33400000000353
+          }
+        },
+        {
+          "weapon": "Overcurrent",
+          "variant": 3,
+          "stage": 31,
+          "section": "full_magazine",
+          "shots": 36,
+          "intervals": 35,
+          "configured_interval_seconds": 0.08695652173913045,
+          "configured_rpm": 689.9999999999999,
+          "first_to_last_seconds": 3.0666769999999985,
+          "mean_interval_ms": 87.61934285714283,
+          "observed_rpm": 684.7803012837677,
+          "shot_interval_ms": {
+            "samples": 35,
+            "minimum": 66.66500000000042,
+            "median": 99.99799999999937,
+            "mean": 87.61934285714281,
+            "maximum": 100.00300000000095
+          },
+          "observation_frame_gap_values": [
+            2,
+            3
+          ],
+          "phase_error_ms": {
+            "minimum": 0.0,
+            "maximum": 31.892391304353396,
+            "maximum_absolute": 31.892391304353396
+          },
+          "actual_game_frame_ms": {
+            "samples": 95,
+            "minimum": 33.33299999999895,
+            "median": 33.33300000000605,
+            "mean": 33.333473684210524,
+            "maximum": 33.33400000000353
+          }
+        }
+      ],
+      "deliberate_hitches": [
+        {
+          "weapon": "M4A1",
+          "variant": 2,
+          "stages": [
+            220,
+            221,
+            222
+          ],
+          "injected_stall_ms": 320,
+          "observed_long_game_frame_ms": 321.4320000000015,
+          "recovery_shots": 1,
+          "immediate_catchup_shots": 0,
+          "guard_until_deliberate_key_flush_ms": 99.99900000000395
+        },
+        {
+          "weapon": "Overcurrent",
+          "variant": 3,
+          "stages": [
+            220,
+            221,
+            222
+          ],
+          "injected_stall_ms": 320,
+          "observed_long_game_frame_ms": 321.50399999999735,
+          "recovery_shots": 1,
+          "immediate_catchup_shots": 0,
+          "guard_until_deliberate_key_flush_ms": 100.00000000000142
+        }
+      ],
+      "eligible_taps": [
+        {
+          "assertion": "Eligible same-frame press/release produces exactly one post-pose discharge",
+          "passed_assertions": 6,
+          "dispatch_frame_relation": "request engine frame",
+          "frame_relation_evidence": "Production assertion compares GetLastShotFrame with actual PressFrame.",
+          "game_time_request_to_discharge_ms": {
+            "samples": 6,
+            "minimum": -0.003000000006636583,
+            "median": 0.0,
+            "mean": -0.0003333333348602234,
+            "maximum": 0.0009999999974752427
+          }
+        },
+        {
+          "assertion": "Eligible post-actor-tick tap gets exactly the next pose dispatch and is not lost",
+          "passed_assertions": 6,
+          "dispatch_frame_relation": "next engine frame",
+          "frame_relation_evidence": "Production assertion compares GetLastShotFrame with actual PressFrame.",
+          "game_time_request_to_discharge_ms": {
+            "samples": 6,
+            "minimum": 33.33200000000147,
+            "median": 33.333999999999975,
+            "mean": 33.33366666666778,
+            "maximum": 33.335000000001
+          }
+        }
+      ],
+      "render_mode": "offscreen",
+      "exit_code_from_runner": 0
+    },
+    {
+      "requested_fps": 60,
+      "checks": 191,
+      "failures": 0,
+      "timeline_rows": 5079,
+      "positive_shot_transitions": 160,
+      "restart_counter_resets_excluded": 1,
+      "max_positive_counter_increment": 1,
+      "source_records": [
+        {
+          "path": "Weapon60/checks.json",
+          "bytes": 37624,
+          "sha256": "8bb5597f88080de4ffd4688cafeeedcaf74e12bf5d317a3745eef884cad3e3b5"
+        },
+        {
+          "path": "Weapon60/timeline.csv",
+          "bytes": 253824,
+          "sha256": "410f6169246b4b3c2c64a36af080a56fa2c03c1d0ad76da6a55f124acffea657"
+        },
+        {
+          "path": "Weapon60/engine.log",
+          "bytes": 126072,
+          "sha256": "7c6abc0fdc01fe8e88ff9ad20047606b7997967036736453e99016b24fdfdb49"
+        }
+      ],
+      "cadence": [
+        {
+          "weapon": "M4A1",
+          "variant": 2,
+          "stage": 21,
+          "section": "established_held_burst",
+          "shots": 18,
+          "intervals": 17,
+          "configured_interval_seconds": 0.1,
+          "configured_rpm": 600.0,
+          "first_to_last_seconds": 1.7000139999999995,
+          "mean_interval_ms": 100.00082352941173,
+          "observed_rpm": 599.9950588642213,
+          "shot_interval_ms": {
+            "samples": 17,
+            "minimum": 99.99999999999787,
+            "median": 100.0009999999989,
+            "mean": 100.00082352941173,
+            "maximum": 100.00300000000095
+          },
+          "observation_frame_gap_values": [
+            6
+          ],
+          "phase_error_ms": {
+            "minimum": -3.552713678800501e-12,
+            "maximum": 0.014000000000180535,
+            "maximum_absolute": 0.014000000000180535
+          },
+          "actual_game_frame_ms": {
+            "samples": 107,
+            "minimum": 16.665999999997183,
+            "median": 16.66699999999821,
+            "mean": 16.666803738317757,
+            "maximum": 16.669000000000267
+          }
+        },
+        {
+          "weapon": "M4A1",
+          "variant": 2,
+          "stage": 31,
+          "section": "full_magazine",
+          "shots": 24,
+          "intervals": 23,
+          "configured_interval_seconds": 0.1,
+          "configured_rpm": 600.0,
+          "first_to_last_seconds": 2.300014999999995,
+          "mean_interval_ms": 100.00065217391283,
+          "observed_rpm": 599.9960869820428,
+          "shot_interval_ms": {
+            "samples": 23,
+            "minimum": 99.99799999999937,
+            "median": 100.00199999999637,
+            "mean": 100.00065217391281,
+            "maximum": 100.00300000000095
+          },
+          "observation_frame_gap_values": [
+            6
+          ],
+          "phase_error_ms": {
+            "minimum": -0.00100000000458067,
+            "maximum": 0.01599999999513102,
+            "maximum_absolute": 0.01599999999513102
+          },
+          "actual_game_frame_ms": {
+            "samples": 144,
+            "minimum": 16.66599999999363,
+            "median": 16.66699999999821,
+            "mean": 16.66678472222221,
+            "maximum": 16.667000000005316
+          }
+        },
+        {
+          "weapon": "Overcurrent",
+          "variant": 3,
+          "stage": 21,
+          "section": "established_held_burst",
+          "shots": 21,
+          "intervals": 20,
+          "configured_interval_seconds": 0.08695652173913045,
+          "configured_rpm": 689.9999999999999,
+          "first_to_last_seconds": 1.7500150000000048,
+          "mean_interval_ms": 87.50075000000024,
+          "observed_rpm": 685.708408213642,
+          "shot_interval_ms": {
+            "samples": 20,
+            "minimum": 83.33199999999863,
+            "median": 83.33550000000045,
+            "mean": 87.50075000000024,
+            "maximum": 100.00300000000095
+          },
+          "observation_frame_gap_values": [
+            5,
+            6
+          ],
+          "phase_error_ms": {
+            "minimum": 0.0,
+            "maximum": 15.949695652174967,
+            "maximum_absolute": 15.949695652174967
+          },
+          "actual_game_frame_ms": {
+            "samples": 107,
+            "minimum": 16.66599999999363,
+            "median": 16.66699999999821,
+            "mean": 16.666785046728986,
+            "maximum": 16.667000000005316
+          }
+        },
+        {
+          "weapon": "Overcurrent",
+          "variant": 3,
+          "stage": 31,
+          "section": "full_magazine",
+          "shots": 36,
+          "intervals": 35,
+          "configured_interval_seconds": 0.08695652173913045,
+          "configured_rpm": 689.9999999999999,
+          "first_to_last_seconds": 3.0500219999999985,
+          "mean_interval_ms": 87.14348571428567,
+          "observed_rpm": 688.519623792878,
+          "shot_interval_ms": {
+            "samples": 35,
+            "minimum": 83.33199999999863,
+            "median": 83.33599999999564,
+            "mean": 87.14348571428567,
+            "maximum": 100.00299999999385
+          },
+          "observation_frame_gap_values": [
+            5,
+            6
+          ],
+          "phase_error_ms": {
+            "minimum": 0.0,
+            "maximum": 15.949695652174967,
+            "maximum_absolute": 15.949695652174967
+          },
+          "actual_game_frame_ms": {
+            "samples": 189,
+            "minimum": 16.66599999999363,
+            "median": 16.66699999999821,
+            "mean": 16.666777777777753,
+            "maximum": 16.667000000005316
+          }
+        }
+      ],
+      "deliberate_hitches": [
+        {
+          "weapon": "M4A1",
+          "variant": 2,
+          "stages": [
+            220,
+            221,
+            222
+          ],
+          "injected_stall_ms": 320,
+          "observed_long_game_frame_ms": 321.44200000000114,
+          "recovery_shots": 1,
+          "immediate_catchup_shots": 0,
+          "guard_until_deliberate_key_flush_ms": 83.33500000000171
+        },
+        {
+          "weapon": "Overcurrent",
+          "variant": 3,
+          "stages": [
+            220,
+            221,
+            222
+          ],
+          "injected_stall_ms": 320,
+          "observed_long_game_frame_ms": 321.59599999999955,
+          "recovery_shots": 1,
+          "immediate_catchup_shots": 0,
+          "guard_until_deliberate_key_flush_ms": 66.66799999999995
+        }
+      ],
+      "eligible_taps": [
+        {
+          "assertion": "Eligible same-frame press/release produces exactly one post-pose discharge",
+          "passed_assertions": 6,
+          "dispatch_frame_relation": "request engine frame",
+          "frame_relation_evidence": "Production assertion compares GetLastShotFrame with actual PressFrame.",
+          "game_time_request_to_discharge_ms": {
+            "samples": 6,
+            "minimum": -0.003000000006636583,
+            "median": 0.0,
+            "mean": -0.0005000000011060971,
+            "maximum": 0.0009999999974752427
+          }
+        },
+        {
+          "assertion": "Eligible post-actor-tick tap gets exactly the next pose dispatch and is not lost",
+          "passed_assertions": 6,
+          "dispatch_frame_relation": "next engine frame",
+          "frame_relation_evidence": "Production assertion compares GetLastShotFrame with actual PressFrame.",
+          "game_time_request_to_discharge_ms": {
+            "samples": 6,
+            "minimum": 16.666000000000736,
+            "median": 16.667000000002652,
+            "mean": 16.667333333333072,
+            "maximum": 16.66899999999316
+          }
+        }
+      ],
+      "render_mode": "offscreen",
+      "exit_code_from_runner": 0
+    },
+    {
+      "requested_fps": 120,
+      "checks": 191,
+      "failures": 0,
+      "timeline_rows": 10037,
+      "positive_shot_transitions": 160,
+      "restart_counter_resets_excluded": 1,
+      "max_positive_counter_increment": 1,
+      "source_records": [
+        {
+          "path": "Weapon120/checks.json",
+          "bytes": 37623,
+          "sha256": "0896dc8ae1ada9d7fc623eaebc9b8acb8cc6790625ee8ba05661f8192a5c467e"
+        },
+        {
+          "path": "Weapon120/timeline.csv",
+          "bytes": 502556,
+          "sha256": "b04a486c00cf32f34c3727323f72348fdae97bef96968ea8c94757ed95bd42af"
+        },
+        {
+          "path": "Weapon120/engine.log",
+          "bytes": 126084,
+          "sha256": "a37ff0cffeb292e73a6eaba77621de3c927f3b66c5096649109a14f73ae8a488"
+        }
+      ],
+      "cadence": [
+        {
+          "weapon": "M4A1",
+          "variant": 2,
+          "stage": 21,
+          "section": "established_held_burst",
+          "shots": 18,
+          "intervals": 17,
+          "configured_interval_seconds": 0.1,
+          "configured_rpm": 600.0,
+          "first_to_last_seconds": 1.7000370000000018,
+          "mean_interval_ms": 100.00217647058834,
+          "observed_rpm": 599.9869414606852,
+          "shot_interval_ms": {
+            "samples": 17,
+            "minimum": 99.99999999999787,
+            "median": 100.00199999999992,
+            "mean": 100.00217647058834,
+            "maximum": 100.00799999999899
+          },
+          "observation_frame_gap_values": [
+            12
+          ],
+          "phase_error_ms": {
+            "minimum": 0.0,
+            "maximum": 0.03700000000250725,
+            "maximum_absolute": 0.03700000000250725
+          },
+          "actual_game_frame_ms": {
+            "samples": 215,
+            "minimum": 8.332999999996815,
+            "median": 8.333000000000368,
+            "mean": 8.333511627906978,
+            "maximum": 8.340000000000458
+          }
+        },
+        {
+          "weapon": "M4A1",
+          "variant": 2,
+          "stage": 31,
+          "section": "full_magazine",
+          "shots": 24,
+          "intervals": 23,
+          "configured_interval_seconds": 0.1,
+          "configured_rpm": 600.0,
+          "first_to_last_seconds": 2.3000450000000043,
+          "mean_interval_ms": 100.00195652173932,
+          "observed_rpm": 599.9882610992382,
+          "shot_interval_ms": {
+            "samples": 23,
+            "minimum": 99.99799999999937,
+            "median": 100.00200000000348,
+            "mean": 100.00195652173932,
+            "maximum": 100.00300000000095
+          },
+          "observation_frame_gap_values": [
+            12
+          ],
+          "phase_error_ms": {
+            "minimum": 0.0,
+            "maximum": 0.04500000000717819,
+            "maximum_absolute": 0.04500000000717819
+          },
+          "actual_game_frame_ms": {
+            "samples": 288,
+            "minimum": 8.332999999993262,
+            "median": 8.333000000000368,
+            "mean": 8.33349652777778,
+            "maximum": 8.335999999999899
+          }
+        },
+        {
+          "weapon": "Overcurrent",
+          "variant": 3,
+          "stage": 21,
+          "section": "established_held_burst",
+          "shots": 21,
+          "intervals": 20,
+          "configured_interval_seconds": 0.08695652173913045,
+          "configured_rpm": 689.9999999999999,
+          "first_to_last_seconds": 1.741698999999997,
+          "mean_interval_ms": 87.08494999999985,
+          "observed_rpm": 688.9824246325009,
+          "shot_interval_ms": {
+            "samples": 20,
+            "minimum": 83.33199999999863,
+            "median": 83.33749999999895,
+            "mean": 87.08494999999985,
+            "maximum": 91.67099999999806
+          },
+          "observation_frame_gap_values": [
+            10,
+            11
+          ],
+          "phase_error_ms": {
+            "minimum": 0.0,
+            "maximum": 7.980347826084255,
+            "maximum_absolute": 7.980347826084255
+          },
+          "actual_game_frame_ms": {
+            "samples": 215,
+            "minimum": 8.332999999993262,
+            "median": 8.333000000000368,
+            "mean": 8.333488372093017,
+            "maximum": 8.335999999999899
+          }
+        },
+        {
+          "weapon": "Overcurrent",
+          "variant": 3,
+          "stage": 31,
+          "section": "full_magazine",
+          "shots": 36,
+          "intervals": 35,
+          "configured_interval_seconds": 0.08695652173913045,
+          "configured_rpm": 689.9999999999999,
+          "first_to_last_seconds": 3.050055999999998,
+          "mean_interval_ms": 87.14445714285708,
+          "observed_rpm": 688.5119486330748,
+          "shot_interval_ms": {
+            "samples": 35,
+            "minimum": 83.33199999999863,
+            "median": 83.33600000000274,
+            "mean": 87.14445714285708,
+            "maximum": 91.67100000000517
+          },
+          "observation_frame_gap_values": [
+            10,
+            11
+          ],
+          "phase_error_ms": {
+            "minimum": 0.0,
+            "maximum": 8.01834782608779,
+            "maximum_absolute": 8.01834782608779
+          },
+          "actual_game_frame_ms": {
+            "samples": 377,
+            "minimum": 8.332999999993262,
+            "median": 8.333000000000368,
+            "mean": 8.33348806366048,
+            "maximum": 8.334000000004949
+          }
+        }
+      ],
+      "deliberate_hitches": [
+        {
+          "weapon": "M4A1",
+          "variant": 2,
+          "stages": [
+            220,
+            221,
+            222
+          ],
+          "injected_stall_ms": 320,
+          "observed_long_game_frame_ms": 322.1039999999995,
+          "recovery_shots": 1,
+          "immediate_catchup_shots": 0,
+          "guard_until_deliberate_key_flush_ms": 58.333999999998554
+        },
+        {
+          "weapon": "Overcurrent",
+          "variant": 3,
+          "stages": [
+            220,
+            221,
+            222
+          ],
+          "injected_stall_ms": 320,
+          "observed_long_game_frame_ms": 322.2080000000034,
+          "recovery_shots": 1,
+          "immediate_catchup_shots": 0,
+          "guard_until_deliberate_key_flush_ms": 58.333999999995
+        }
+      ],
+      "eligible_taps": [
+        {
+          "assertion": "Eligible same-frame press/release produces exactly one post-pose discharge",
+          "passed_assertions": 6,
+          "dispatch_frame_relation": "request engine frame",
+          "frame_relation_evidence": "Production assertion compares GetLastShotFrame with actual PressFrame.",
+          "game_time_request_to_discharge_ms": {
+            "samples": 6,
+            "minimum": 0.0,
+            "median": 0.0,
+            "mean": 0.0010000000010279564,
+            "maximum": 0.0040000000041118255
+          }
+        },
+        {
+          "assertion": "Eligible post-actor-tick tap gets exactly the next pose dispatch and is not lost",
+          "passed_assertions": 6,
+          "dispatch_frame_relation": "next engine frame",
+          "frame_relation_evidence": "Production assertion compares GetLastShotFrame with actual PressFrame.",
+          "game_time_request_to_discharge_ms": {
+            "samples": 6,
+            "minimum": 8.332999999996815,
+            "median": 8.333999999998953,
+            "mean": 8.333833333333743,
+            "maximum": 8.335000000002424
+          }
+        }
+      ],
+      "render_mode": "offscreen",
+      "exit_code_from_runner": 0
+    }
+  ],
+  "manifest_binding": {
+    "bytes": 4209,
+    "sha256": "7a0aa4421f1a51650e88a512f7b49cc88ae132a65336633060ebd1b056ab2b4d"
+  },
+  "fresh_build_record_binding": {
+    "bytes": 137494,
+    "sha256": "21ed5056465e28a7554580f500618ee3e56aaf441eae4f7bc5b93497ec30358b"
+  },
+  "runtime_identity_from_build_record": [
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    },
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292325888,
+      "sha256": "4bd0a468603f566b6904f0726b3d9160e0feb224b6cd1b5d7836d0adfa6be602"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10726921,
+      "sha256": "1ee89ad12c67c8c16df0c3431f019b672cb0e32dbba72c0ad4a8fc0fc35d4bbe"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 221375168,
+      "sha256": "d8fd2b69d493ea336e1c53120cbef03af268ad4f14691e69ce9cbfb9d4b4e342"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 239295,
+      "sha256": "e25195803d2b7f8e422a3414cd22b62d562167e67c1eb657e5f867218924e751"
+    }
+  ],
+  "current_runtime_files_hashed_by_this_analysis": 0,
+  "limits": [
+    "Positive shot-counter transitions define shots; last_shot_time defines discharge time. The actual restart counter reset is excluded.",
+    "Stage21 is established held fire; stage31 uses N-1 intervals between N full-magazine shots. Phase error is measured from the first actual discharge.",
+    "Frame gaps refer to observation frames; pre-weapon-tick observation occurs after the preceding frame discharge. Eligible frame scheduling is independently asserted in production.",
+    "CSV decimal rounding can produce a few microseconds of negative or positive same-frame time difference; raw differences are retained.",
+    "Stages220-222 inject320ms; the guard ends at a deliberate key flush. No prolonged post-hitch burst is inferred.",
+    "Frame caps are runner declarations; actual game-frame intervals and finite-window RPM are reported. These are functional scheduling results, not native OS input or performance measurements.",
+    "Source identity is checked against the clean build record and neutral package log location. Current runtime bytes are verified separately; this analyzer does not rehash binaries.",
+    "No visual, perceptual audio or mouse-to-photon approval is inferred."
+  ]
+}

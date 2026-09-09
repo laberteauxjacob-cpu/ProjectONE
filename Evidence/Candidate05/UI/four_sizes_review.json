@@ -1,0 +1,765 @@
+{
+  "schema": "projectone.candidate05.ui_four_sizes_visual_review.v1",
+  "source_revision": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+  "session": "S4_FinalChecks_20260909",
+  "reviewed_utc": "2026-09-09T18:20:01Z",
+  "status": "REVIEWED_NO_BLOCKING_UI_DEFECT_OBSERVED",
+  "reviewer": "Codex release_evidence",
+  "method": "Independently opened every one of the 24 original full PNGs with view_image, checked visible values and layout against each attempt's checks.json, and read actual PNG IHDR dimensions and SHA-256 hashes. No image was edited or replaced. First ultrawide preview was resized by transport; all six ultrawide images were then opened with original detail explicitly forwarded.",
+  "capture_method": "Packaged production Controller InputKey and SetMouseLocation fixtures, with press/release on separate real frames. Not native OS input. Sandbox grant/spend, safe-contact teleport to an existing box, and explicit fatal-damage fixtures are disclosed by the source checks.",
+  "automated_totals": {
+    "attempts": 4,
+    "checks": 196,
+    "failures": 0,
+    "zero_exit_attempts": 4,
+    "pngs_viewed": 24
+  },
+  "bindings": {
+    "build_record": {
+      "file": "FreshBuildVerification_6b8621cef9d2.json",
+      "bytes": 137494,
+      "sha256": "21ed5056465e28a7554580f500618ee3e56aaf441eae4f7bc5b93497ec30358b"
+    },
+    "default_suite": {
+      "file": "packaged_suite.json",
+      "bytes": 43379,
+      "sha256": "e25af67065209583da8c949f39a5ef53ebb46acafbaf3be22373695e3230e807"
+    },
+    "runtime_identity": [
+      {
+        "path": "ProjectONE.exe",
+        "bytes": 164864,
+        "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+        "bytes": 292325888,
+        "sha256": "4bd0a468603f566b6904f0726b3d9160e0feb224b6cd1b5d7836d0adfa6be602"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+        "bytes": 10726921,
+        "sha256": "1ee89ad12c67c8c16df0c3431f019b672cb0e32dbba72c0ad4a8fc0fc35d4bbe"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+        "bytes": 221375168,
+        "sha256": "d8fd2b69d493ea336e1c53120cbef03af268ad4f14691e69ce9cbfb9d4b4e342"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+        "bytes": 239295,
+        "sha256": "e25195803d2b7f8e422a3414cd22b62d562167e67c1eb657e5f867218924e751"
+      },
+      {
+        "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+        "bytes": 25646504,
+        "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+      }
+    ]
+  },
+  "observations_by_frame": [
+    {
+      "file": "01_starter_0_7_56.png",
+      "observation": "Round 0 / 0 LEFT, H SANDBOX, unpadded 0 Points, +100 health, 7 / 56 ammo, M1911 image/name, selected slot 1 and Empty slot 2 are visible. Compact panels remain separated."
+    },
+    {
+      "file": "02_expanded_tools.png",
+      "observation": "HELP + SANDBOX shows the movement/weapon/menu control legend; Return to rounds; Enemies; Weapons + Points; Next box: RANDOM; Scene + Reset; Back to game. Button labels and key badges fit; the central tray stays clear of corner HUD panels."
+    },
+    {
+      "file": "03_compact_1500.png",
+      "observation": "Compact HUD displays 1500 Points without padding, +100 health, 7 / 56 ammo, selected M1911 and Empty slot 2. The tools tray is closed and the points label stays clear of health."
+    },
+    {
+      "file": "04_pause.png",
+      "observation": "PAUSED panel reads Round 0, 0 kills, 1500 Points and Survived 0m 3s. Resume/Esc, Restart/Enter and Quit/Q fit within their buttons; dimmed gameplay remains visible behind the panel."
+    },
+    {
+      "file": "05_death.png",
+      "observation": "GAME OVER panel reads Round 0, 0 kills, 550 Points and Survived 0m 4s. Try again/Enter and Quit/Q fit. Background HUD agrees on 550 points and zero health; the fixture's real 950-point box spend explains the change from 1500."
+    },
+    {
+      "file": "06_restarted_starter.png",
+      "observation": "Restarted compact gameplay returns to 0 Points, +100 health, 7 / 56 ammo, selected M1911 and Empty slot 2. Pause/death/tool overlays are absent."
+    }
+  ],
+  "attempts": [
+    {
+      "id": "ui1280x720_20260909_181329_078099_eb35e560",
+      "step": "ui1280x720",
+      "source_revision": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+      "automated_status": "PASS",
+      "exit_code": 0,
+      "checks": 49,
+      "failures": 0,
+      "quit_requested_via_button": true,
+      "engine_completion_and_normal_shutdown_observed": true,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "layout_observation": "Smallest tested image: tool legend and Enter badges are small but legible in the original pixels. All six states remain in bounds, with no missing required glyphs or unintended overlap observed.",
+      "metadata_files": [
+        {
+          "name": "checks.json",
+          "bytes": 11556,
+          "sha256": "70a0363e19327f8566df154c8741e8321cb8af2df3dfa6cd488df59eaad6478d"
+        },
+        {
+          "name": "input.csv",
+          "bytes": 1192,
+          "sha256": "9f941a7eb8c6e2726ddba424bd7cffd8a24635f0deb865be54c305e9072f207a"
+        }
+      ],
+      "attempt_record_files": [
+        {
+          "name": "console.log",
+          "bytes": 23534,
+          "sha256": "ada253646a47198defaae7e5e7a2c05133672b5a679d81a3f08661398cb8c6a4"
+        },
+        {
+          "name": "engine.log",
+          "bytes": 104585,
+          "sha256": "ef28debb928607ff4e1428752d4337b0376ca92abb4642d3a69b61e6570a23a7"
+        },
+        {
+          "name": "local_state.json",
+          "bytes": 119,
+          "sha256": "2ed9cf6c952dab793e6fcc9eb55e7f55d1a874c02714fda0cb64888a1c01c372"
+        }
+      ],
+      "images": [
+        {
+          "file": "01_starter_0_7_56.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 0.6959192007780075,
+          "frame": 82,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "01_starter_0_7_56.png",
+          "bytes": 813448,
+          "sha256": "19f749d94bbb2427d13ca1aaff01d0eb0c62e58e282a2fe1617fcbf08faeeb4b",
+          "actual_png_width": 1280,
+          "actual_png_height": 720,
+          "viewed": true,
+          "observation_ref": "01_starter_0_7_56.png"
+        },
+        {
+          "file": "02_expanded_tools.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 1.235208097845316,
+          "frame": 137,
+          "points": 0,
+          "paused": false,
+          "tools": true,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "02_expanded_tools.png",
+          "bytes": 424797,
+          "sha256": "ddc09ac6087c85b96e990cb4479f1fd586d23e05cf9e3b0543c52f8cbe6ae777",
+          "actual_png_width": 1280,
+          "actual_png_height": 720,
+          "viewed": true,
+          "observation_ref": "02_expanded_tools.png"
+        },
+        {
+          "file": "03_compact_1500.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 2.1495635993778706,
+          "frame": 242,
+          "points": 1500,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "03_compact_1500.png",
+          "bytes": 815042,
+          "sha256": "488e1fe001b7c0c3c25dd7485f8d286d1ce07a04537dbdc35a0ca8032afb2952",
+          "actual_png_width": 1280,
+          "actual_png_height": 720,
+          "viewed": true,
+          "observation_ref": "03_compact_1500.png"
+        },
+        {
+          "file": "04_pause.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 3.025696098804474,
+          "frame": 376,
+          "points": 1500,
+          "paused": true,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "04_pause.png",
+          "bytes": 328242,
+          "sha256": "0ab51d358639fcb76992ce0ee40ec47f4a7024d591c678acc81001520c68e73e",
+          "actual_png_width": 1280,
+          "actual_png_height": 720,
+          "viewed": true,
+          "observation_ref": "04_pause.png"
+        },
+        {
+          "file": "05_death.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 4.850729499012232,
+          "frame": 694,
+          "points": 550,
+          "paused": false,
+          "tools": false,
+          "dead": true,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "05_death.png",
+          "bytes": 367403,
+          "sha256": "bf0edf031bf77b6edf5e2c26d4de54d5fe4150059c0803f676dc056ff1622d8a",
+          "actual_png_width": 1280,
+          "actual_png_height": 720,
+          "viewed": true,
+          "observation_ref": "05_death.png"
+        },
+        {
+          "file": "06_restarted_starter.png",
+          "width": 1280,
+          "height": 720,
+          "world_seconds": 0.9366200007498264,
+          "frame": 884,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "06_restarted_starter.png",
+          "bytes": 812727,
+          "sha256": "cb62023e4428b94ba6ceca05f4063a05f0f64fd9a5e06a7bbd2d94aa50a868a5",
+          "actual_png_width": 1280,
+          "actual_png_height": 720,
+          "viewed": true,
+          "observation_ref": "06_restarted_starter.png"
+        }
+      ]
+    },
+    {
+      "id": "ui1600x900_20260909_181341_690276_59dec0cd",
+      "step": "ui1600x900",
+      "source_revision": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+      "automated_status": "PASS",
+      "exit_code": 0,
+      "checks": 49,
+      "failures": 0,
+      "quit_requested_via_button": true,
+      "engine_completion_and_normal_shutdown_observed": true,
+      "viewport": {
+        "width": 1600,
+        "height": 900
+      },
+      "layout_observation": "All six states remain legible and within bounds. No missing required glyphs, clipped menu labels or unintended panel overlap observed.",
+      "metadata_files": [
+        {
+          "name": "checks.json",
+          "bytes": 11164,
+          "sha256": "f2faca11567478a65571eccdf1c2f23374e7265cba034cafddc559a3edc3525c"
+        },
+        {
+          "name": "input.csv",
+          "bytes": 1192,
+          "sha256": "c582e760dfdf786d78881cd27bf3c708ab873f02fbad6ace9cc2d04aa6437eb3"
+        }
+      ],
+      "attempt_record_files": [
+        {
+          "name": "console.log",
+          "bytes": 23674,
+          "sha256": "c46ced0f6b0f8c561040e7c1b26a283603ffe984501be6697a04fe6bf5863f4e"
+        },
+        {
+          "name": "engine.log",
+          "bytes": 104785,
+          "sha256": "b185dde75f26e6d278da06b3bbfb22c9739286bc99043a3a346ef3cdd8e872f8"
+        },
+        {
+          "name": "local_state.json",
+          "bytes": 119,
+          "sha256": "2ed9cf6c952dab793e6fcc9eb55e7f55d1a874c02714fda0cb64888a1c01c372"
+        }
+      ],
+      "images": [
+        {
+          "file": "01_starter_0_7_56.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 0.7057115994393826,
+          "frame": 83,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "01_starter_0_7_56.png",
+          "bytes": 1217827,
+          "sha256": "51784f229d3a6b9b82d0ebbb5210c42272cd412a0555d994a4ac1ac6712dd743",
+          "actual_png_width": 1600,
+          "actual_png_height": 900,
+          "viewed": true,
+          "observation_ref": "01_starter_0_7_56.png"
+        },
+        {
+          "file": "02_expanded_tools.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 1.2328439019620419,
+          "frame": 132,
+          "points": 0,
+          "paused": false,
+          "tools": true,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "02_expanded_tools.png",
+          "bytes": 617406,
+          "sha256": "569233007609c5dd5bb7d60f9ab3776f82337ea255a78cbcd6027b844641cd94",
+          "actual_png_width": 1600,
+          "actual_png_height": 900,
+          "viewed": true,
+          "observation_ref": "02_expanded_tools.png"
+        },
+        {
+          "file": "03_compact_1500.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 2.151959400624037,
+          "frame": 235,
+          "points": 1500,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "03_compact_1500.png",
+          "bytes": 1219380,
+          "sha256": "8b9510dcb47fac524e448cd368fff20766efabf06c08b1634f311211ff228c2b",
+          "actual_png_width": 1600,
+          "actual_png_height": 900,
+          "viewed": true,
+          "observation_ref": "03_compact_1500.png"
+        },
+        {
+          "file": "04_pause.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 3.0183321982622147,
+          "frame": 364,
+          "points": 1500,
+          "paused": true,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "04_pause.png",
+          "bytes": 474561,
+          "sha256": "3d6d3c8baa69588d6f5809ee47035ece898f69eeba89bbf37a7733ec79b843e1",
+          "actual_png_width": 1600,
+          "actual_png_height": 900,
+          "viewed": true,
+          "observation_ref": "04_pause.png"
+        },
+        {
+          "file": "05_death.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 4.843379195779562,
+          "frame": 680,
+          "points": 550,
+          "paused": false,
+          "tools": false,
+          "dead": true,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "05_death.png",
+          "bytes": 533074,
+          "sha256": "54f70976b841292eec382f31fa871bbfbadb1d097eb970d02a55f8162ed0ba72",
+          "actual_png_width": 1600,
+          "actual_png_height": 900,
+          "viewed": true,
+          "observation_ref": "05_death.png"
+        },
+        {
+          "file": "06_restarted_starter.png",
+          "width": 1600,
+          "height": 900,
+          "world_seconds": 0.9303953051567078,
+          "frame": 869,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "06_restarted_starter.png",
+          "bytes": 1217813,
+          "sha256": "10c9d4f2de5f69cf60f265fa81fc493f9323cb42c4f7ef33cb0f7396d67af3cf",
+          "actual_png_width": 1600,
+          "actual_png_height": 900,
+          "viewed": true,
+          "observation_ref": "06_restarted_starter.png"
+        }
+      ]
+    },
+    {
+      "id": "ui1920x1080_20260909_181354_386083_28008fea",
+      "step": "ui1920x1080",
+      "source_revision": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+      "automated_status": "PASS",
+      "exit_code": 0,
+      "checks": 49,
+      "failures": 0,
+      "quit_requested_via_button": true,
+      "engine_completion_and_normal_shutdown_observed": true,
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "layout_observation": "All six states remain legible and within bounds. No missing required glyphs, clipped menu labels or unintended panel overlap observed.",
+      "metadata_files": [
+        {
+          "name": "checks.json",
+          "bytes": 11599,
+          "sha256": "35182acff67eeef3d34c920e4ece1e33032110356ce50c464d7087c3cb264df3"
+        },
+        {
+          "name": "input.csv",
+          "bytes": 1194,
+          "sha256": "4cb985e27d73ce88d79e7cd657cf20e621e9215bf85fad8a79a0f44625c702ba"
+        }
+      ],
+      "attempt_record_files": [
+        {
+          "name": "console.log",
+          "bytes": 23676,
+          "sha256": "4910be7711068ab95325467b893ce4d41a5904166fcb1a4d71bcabb322031846"
+        },
+        {
+          "name": "engine.log",
+          "bytes": 104791,
+          "sha256": "c037e68689b54e350687ad275016e8893ee3ad61abe24010c297cb42d556d3ca"
+        },
+        {
+          "name": "local_state.json",
+          "bytes": 119,
+          "sha256": "2ed9cf6c952dab793e6fcc9eb55e7f55d1a874c02714fda0cb64888a1c01c372"
+        }
+      ],
+      "images": [
+        {
+          "file": "01_starter_0_7_56.png",
+          "width": 1920,
+          "height": 1080,
+          "world_seconds": 0.7108546979725361,
+          "frame": 83,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "01_starter_0_7_56.png",
+          "bytes": 1694904,
+          "sha256": "006addf5ec202265e0b8a5974d3d5f9f0d4eb9a9c072ac0377fca26263a28510",
+          "actual_png_width": 1920,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "01_starter_0_7_56.png"
+        },
+        {
+          "file": "02_expanded_tools.png",
+          "width": 1920,
+          "height": 1080,
+          "world_seconds": 1.2519310973584652,
+          "frame": 127,
+          "points": 0,
+          "paused": false,
+          "tools": true,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "02_expanded_tools.png",
+          "bytes": 850626,
+          "sha256": "d9452d404773f61873aa43073ce2d1d8a6e347bf99dfc24d4bd6e12d1107f430",
+          "actual_png_width": 1920,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "02_expanded_tools.png"
+        },
+        {
+          "file": "03_compact_1500.png",
+          "width": 1920,
+          "height": 1080,
+          "world_seconds": 2.155498694628477,
+          "frame": 225,
+          "points": 1500,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "03_compact_1500.png",
+          "bytes": 1698456,
+          "sha256": "43a687503d5f1bb926165be6d836a02acb5a61b4caf34cff6fd08f6373e9da5f",
+          "actual_png_width": 1920,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "03_compact_1500.png"
+        },
+        {
+          "file": "04_pause.png",
+          "width": 1920,
+          "height": 1080,
+          "world_seconds": 3.0147399976849556,
+          "frame": 347,
+          "points": 1500,
+          "paused": true,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "04_pause.png",
+          "bytes": 647841,
+          "sha256": "9d2142a31696f4ec8b2e59284f24a0cb14fe29cea5df23fa80523e9b15d4e743",
+          "actual_png_width": 1920,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "04_pause.png"
+        },
+        {
+          "file": "05_death.png",
+          "width": 1920,
+          "height": 1080,
+          "world_seconds": 4.839775696396828,
+          "frame": 660,
+          "points": 550,
+          "paused": false,
+          "tools": false,
+          "dead": true,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "05_death.png",
+          "bytes": 724279,
+          "sha256": "7daf65956ac520446c04e865ce947d401c44aa368913a55a59995b2142c09321",
+          "actual_png_width": 1920,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "05_death.png"
+        },
+        {
+          "file": "06_restarted_starter.png",
+          "width": 1920,
+          "height": 1080,
+          "world_seconds": 0.9333718083798885,
+          "frame": 846,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "06_restarted_starter.png",
+          "bytes": 1695777,
+          "sha256": "0d0b3ae6822e4009c41d595f27bf5693c65da32d7115b8d7e3f7f2d3e89d1f87",
+          "actual_png_width": 1920,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "06_restarted_starter.png"
+        }
+      ]
+    },
+    {
+      "id": "ui2560x1080_20260909_181407_104848_3d9f452a",
+      "step": "ui2560x1080",
+      "source_revision": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+      "automated_status": "PASS",
+      "exit_code": 0,
+      "checks": 49,
+      "failures": 0,
+      "quit_requested_via_button": true,
+      "engine_completion_and_normal_shutdown_observed": true,
+      "viewport": {
+        "width": 2560,
+        "height": 1080
+      },
+      "layout_observation": "The world extends across the ultrawide image; HUD anchors retain a centered safe region and menus remain centered. No edge clipping, missing required glyphs or unintended panel overlap observed in any of its six PNGs.",
+      "metadata_files": [
+        {
+          "name": "checks.json",
+          "bytes": 11568,
+          "sha256": "20bed350451634ab52dbdfa559fe8ce2a58a7848fc9bbcd2dfa57818f4797d31"
+        },
+        {
+          "name": "input.csv",
+          "bytes": 1211,
+          "sha256": "9180f7371cfa4dc13b35d6f9d253a63ca2d593b374623574dff967542f5ad4e8"
+        }
+      ],
+      "attempt_record_files": [
+        {
+          "name": "console.log",
+          "bytes": 23616,
+          "sha256": "26040a598670b8db02eb39183574dd194b025a127e4a6f2ad17bb890cf8ab3ee"
+        },
+        {
+          "name": "engine.log",
+          "bytes": 104701,
+          "sha256": "d308b127c7f23876491326e2e7515c5d5aa51002faae73d8d9273ffaf172395f"
+        },
+        {
+          "name": "local_state.json",
+          "bytes": 119,
+          "sha256": "2ed9cf6c952dab793e6fcc9eb55e7f55d1a874c02714fda0cb64888a1c01c372"
+        }
+      ],
+      "images": [
+        {
+          "file": "01_starter_0_7_56.png",
+          "width": 2560,
+          "height": 1080,
+          "world_seconds": 0.6991441026329994,
+          "frame": 82,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "01_starter_0_7_56.png",
+          "bytes": 2249456,
+          "sha256": "f87797220a9319546d437bcc516278466646bc025a260edd173049676c238610",
+          "actual_png_width": 2560,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "01_starter_0_7_56.png"
+        },
+        {
+          "file": "02_expanded_tools.png",
+          "width": 2560,
+          "height": 1080,
+          "world_seconds": 1.2657329961657524,
+          "frame": 123,
+          "points": 0,
+          "paused": false,
+          "tools": true,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "02_expanded_tools.png",
+          "bytes": 1169501,
+          "sha256": "ac572f4d440f786a125a682d6795b7bcbf10b8b9b81b20c837451ab89d97316c",
+          "actual_png_width": 2560,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "02_expanded_tools.png"
+        },
+        {
+          "file": "03_compact_1500.png",
+          "width": 2560,
+          "height": 1080,
+          "world_seconds": 2.180782001465559,
+          "frame": 218,
+          "points": 1500,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "03_compact_1500.png",
+          "bytes": 2251517,
+          "sha256": "b984898d2bfce7072feb2b133845979ef0f3f57afc154d6fded813b678aefdd2",
+          "actual_png_width": 2560,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "03_compact_1500.png"
+        },
+        {
+          "file": "04_pause.png",
+          "width": 2560,
+          "height": 1080,
+          "world_seconds": 3.083694603294134,
+          "frame": 338,
+          "points": 1500,
+          "paused": true,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "04_pause.png",
+          "bytes": 837757,
+          "sha256": "92af10b1a45e04cd79b69984408310d1e2308bcc7e512675707b396195c43d14",
+          "actual_png_width": 2560,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "04_pause.png"
+        },
+        {
+          "file": "05_death.png",
+          "width": 2560,
+          "height": 1080,
+          "world_seconds": 4.900393605232239,
+          "frame": 647,
+          "points": 550,
+          "paused": false,
+          "tools": false,
+          "dead": true,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "05_death.png",
+          "bytes": 978316,
+          "sha256": "99d32ff369b3760819e90bd8b75c9a1693e23e50d1035ff21adfc9598a44a951",
+          "actual_png_width": 2560,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "05_death.png"
+        },
+        {
+          "file": "06_restarted_starter.png",
+          "width": 2560,
+          "height": 1080,
+          "world_seconds": 0.9406680949032307,
+          "frame": 830,
+          "points": 0,
+          "paused": false,
+          "tools": false,
+          "dead": false,
+          "ammo": 7,
+          "reserve": 56,
+          "name": "06_restarted_starter.png",
+          "bytes": 2250260,
+          "sha256": "ed0515fdc880e8300c1755a2244d09b7f78e69884e42a020532a7d4e54e35a41",
+          "actual_png_width": 2560,
+          "actual_png_height": 1080,
+          "viewed": true,
+          "observation_ref": "06_restarted_starter.png"
+        }
+      ]
+    }
+  ],
+  "context": "The thin cyan horizontal line and gold range marks visible in compact sandbox views are world debug range rulers, not HUD clipping. Review conclusions come from these new supplemental files; the earlier default-suite review remains separate.",
+  "limits": [
+    "These are six sparse states at each of four viewport sizes, not a full animation, combat, native keyboard/mouse, performance or whole-game acceptance review.",
+    "Image review cannot certify physical monitor readability, OS DPI scaling, arbitrary resolutions, larger values, localization or accessibility.",
+    "No active mystery-box reel, Ready/Hold F prompt, upgrade aura sequence or handoff transition is visually established by these UI PNGs.",
+    "Audio was not auditioned; no timbre, mix or localization approval is implied.",
+    "Review is an agent observation, not user perceptual approval. Archive publication, final media/performance checks and native retry are separate evidence."
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "schema": 2,
+  "candidate": "Candidate05",
+  "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+  "status": "LIMITED_NATIVE_DISCRETE_CONTROLS_VERIFIED",
+  "package_kind": "Local extraction of the audited Candidate05 archive",
+  "user_reported_prior_security_prompt_handled": true,
+  "attempts": [
+    {
+      "schema": 1,
+      "candidate": "Candidate05",
+      "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+      "attempted_utc": "2026-09-09T07:14:34Z",
+      "package_kind": "Local extraction of the audited Candidate05 archive",
+      "ordinary_launch_verified": true,
+      "fixture_requested": false,
+      "actual_client_resolution": [
+        1600,
+        900
+      ],
+      "native_window_capture_succeeded": true,
+      "status": "BLOCKED_BY_OBSERVED_WINDOWS_SECURITY_PROMPT",
+      "observation": "Windows Security asked whether public and private networks may access Project ONE and stated that Windows Firewall had blocked some features. The ordinary game rendered and reached Round 1, then Game Over while unattended behind the prompt.",
+      "native_input_actions_sent": 0,
+      "security_prompt_actions_sent": 0,
+      "security_settings_changed": false,
+      "held_input_test_performed": false,
+      "user_handling_requested": true,
+      "limits": [
+        "Launch and rendering are verified; native controls are not.",
+        "Scripted production-input tests are reported separately.",
+        "No desktop security screenshot is included in public evidence.",
+        "No security permission decision was made or inferred."
+      ]
+    },
+    {
+      "attempted_utc": "2026-09-09T18:20:29.2574352Z",
+      "completed_utc": "2026-09-09T18:22:59.794127+00:00",
+      "status": "LIMITED_NATIVE_DISCRETE_CONTROLS_VERIFIED",
+      "ordinary_launch_verified": true,
+      "fixture_requested_at_launch": false,
+      "manual_sandbox_transition": "Native F1 after observing ordinary Round 1",
+      "actual_client_resolution": [
+        1600,
+        900
+      ],
+      "native_window_capture_succeeded": true,
+      "security_prompt_recurred": false,
+      "native_input_actions_sent": 13,
+      "security_prompt_actions_sent": 0,
+      "security_settings_changed": false,
+      "held_input_test_performed": false,
+      "actions": [
+        {
+          "action": "F1",
+          "observed": "Ordinary Round 1 with six infected changed to the visible sandbox, Round 0 and zero enemies; starter ammo remained 7/56."
+        },
+        {
+          "action": "World mouse click",
+          "observed": "One pistol discharge; ammo 7 to 6, reserve 56. Aim visibly turned toward the clicked floor position."
+        },
+        {
+          "action": "R",
+          "observed": "RELOADING label and magazine action appeared; completed ammo 7/55."
+        },
+        {
+          "action": "H",
+          "observed": "Help and sandbox tray opened."
+        },
+        {
+          "action": "Click Add 10000 Points",
+          "observed": "Points changed from 0 to 10000; ammo remained 7/55."
+        },
+        {
+          "action": "Click Back to Game",
+          "observed": "Tray closed; points 10000 and ammo 7/55 remained."
+        },
+        {
+          "action": "W tap",
+          "observed": "A discrete key press/release was sent. Sustained displacement was not established by the observed frames; this is not a held-movement pass."
+        },
+        {
+          "action": "Escape",
+          "observed": "Pause showed Round 0, zero kills, 10000 points and the real scene dimmed behind it."
+        },
+        {
+          "action": "Click Resume",
+          "observed": "Gameplay returned; ammo remained 7/55 with no additional observed shot."
+        },
+        {
+          "action": "Escape",
+          "observed": "Pause reopened."
+        },
+        {
+          "action": "Click Restart",
+          "observed": "Run reset to zero points, health 100, M1911 7/56 and empty slot two; sandbox remained selected."
+        },
+        {
+          "action": "Escape",
+          "observed": "Pause displayed reset statistics and the Quit button."
+        },
+        {
+          "action": "Click Quit",
+          "observed": "Game shut down normally in its log; subsequent process check found no ProjectONE process."
+        }
+      ],
+      "observed_engine_input_trace": [
+        {
+          "frame": 1098,
+          "key": "F1",
+          "event": 0,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 56,
+          "elapsed_from_first_trace_seconds": 0.0
+        },
+        {
+          "frame": 1098,
+          "key": "F1",
+          "event": 1,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 56,
+          "elapsed_from_first_trace_seconds": 8.1e-05
+        },
+        {
+          "frame": 2009,
+          "key": "LeftMouseButton",
+          "event": 0,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 56,
+          "elapsed_from_first_trace_seconds": 7.766209
+        },
+        {
+          "frame": 2011,
+          "key": "LeftMouseButton",
+          "event": 1,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 2,
+          "ammo": 6,
+          "reserve": 56,
+          "elapsed_from_first_trace_seconds": 7.782716
+        },
+        {
+          "frame": 3813,
+          "key": "R",
+          "event": 0,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 6,
+          "reserve": 56,
+          "elapsed_from_first_trace_seconds": 22.800292
+        },
+        {
+          "frame": 3813,
+          "key": "R",
+          "event": 1,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 6,
+          "reserve": 56,
+          "elapsed_from_first_trace_seconds": 22.800335
+        },
+        {
+          "frame": 4493,
+          "key": "H",
+          "event": 0,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 55,
+          "elapsed_from_first_trace_seconds": 28.467857
+        },
+        {
+          "frame": 4493,
+          "key": "H",
+          "event": 1,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 55,
+          "elapsed_from_first_trace_seconds": 28.467906
+        },
+        {
+          "frame": 6805,
+          "key": "W",
+          "event": 0,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 55,
+          "elapsed_from_first_trace_seconds": 47.735418
+        },
+        {
+          "frame": 6805,
+          "key": "W",
+          "event": 1,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 55,
+          "elapsed_from_first_trace_seconds": 47.735474
+        },
+        {
+          "frame": 7483,
+          "key": "Escape",
+          "event": 0,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 55,
+          "elapsed_from_first_trace_seconds": 53.386118
+        },
+        {
+          "frame": 7483,
+          "key": "Escape",
+          "event": 1,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 55,
+          "elapsed_from_first_trace_seconds": 53.386164
+        },
+        {
+          "frame": 8560,
+          "key": "Escape",
+          "event": 0,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 55,
+          "elapsed_from_first_trace_seconds": 62.362235
+        },
+        {
+          "frame": 8560,
+          "key": "Escape",
+          "event": 1,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 55,
+          "elapsed_from_first_trace_seconds": 62.362276
+        },
+        {
+          "frame": 9606,
+          "key": "Escape",
+          "event": 0,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 56,
+          "elapsed_from_first_trace_seconds": 71.252091
+        },
+        {
+          "frame": 9606,
+          "key": "Escape",
+          "event": 1,
+          "paused": 0,
+          "sprint": 0,
+          "operation": 0,
+          "ammo": 7,
+          "reserve": 56,
+          "elapsed_from_first_trace_seconds": 71.252139
+        }
+      ],
+      "trace_identity": {
+        "bytes": 112523,
+        "sha256": "0b81874ac1d4120f5deb96daa18fb979e8b3fa0a3fb8c063773bdcd836ba60a0"
+      },
+      "runtime_identity_rechecked": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292325888,
+          "sha256": "4bd0a468603f566b6904f0726b3d9160e0feb224b6cd1b5d7836d0adfa6be602"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10726921,
+          "sha256": "1ee89ad12c67c8c16df0c3431f019b672cb0e32dbba72c0ad4a8fc0fc35d4bbe"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221375168,
+          "sha256": "d8fd2b69d493ea336e1c53120cbef03af268ad4f14691e69ce9cbfb9d4b4e342"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 239295,
+          "sha256": "e25195803d2b7f8e422a3414cd22b62d562167e67c1eb657e5f867218924e751"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "quit_via_game_menu": true,
+      "normal_shutdown_logged": true,
+      "owned_processes_absent_after_quit": true,
+      "limits": [
+        "Window captures were inspected live but are not included in public evidence.",
+        "The native API provides discrete press/release and clicks; no key-down duration or held-fire test was performed.",
+        "The W tap did not establish sustained movement. Hold-F machines and automatic bursts are covered by separate scripted production-input tests.",
+        "No native-input movie or perceptual audio listening was performed."
+      ]
+    }
+  ]
+}

@@ -1,57 +1,430 @@
 {
-  "candidate": "05",
-  "status": "PASS",
-  "checkpoint": "During Candidate05 implementation, before final Candidate05 publication. This is not final post-publication preservation verification.",
-  "verified_utc": "2026-09-05T21:15:48.225989+00:00",
-  "method": "Read-only SHA256/size checks of the six preserved Candidate04 payloads; local git rev-parse and explicit public git ls-remote for baseline refs. No asset downloads or ref mutations.",
-  "files": [
+  "schema": 2,
+  "candidate": "Candidate05",
+  "status": "PRIOR_CANDIDATES_PRESERVED_PRE_RELEASE",
+  "preservation_checks_passed": true,
+  "candidate05_publication_verified": false,
+  "checked_utc": "2026-09-09T06:48:57.546144+00:00",
+  "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+  "scope": "Candidate01 through Candidate04 preservation checked before Candidate05 release. Candidate01-04 annotated and peeled tags were checked; Candidate04 payloads, release artifacts, notes, evidence and public release metadata were checked. This is not Candidate05 publication verification.",
+  "private_input_binding": {
+    "file": "PreservationS4PreRelease.json",
+    "bytes": 41843,
+    "sha256": "b39ee4909003bffddc2b5a5eeb5e7a1e12c1b723ab5f4be2f9873cea8b893c26"
+  },
+  "preserved_candidate04_documentation_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+  "baseline_inputs": [
+    {
+      "file": "preserved_candidate04.json",
+      "bytes": 1490,
+      "sha256": "e56c9b4e12a861dc8f6292bdb35202558c0c7a7e44b8aff0e91c421afb16e8e2",
+      "matches_prior_checkpoint": true
+    },
+    {
+      "file": "public_refs.txt",
+      "bytes": 653,
+      "sha256": "ecf1587dc399be6aaeeed0f197d7e9f922e9376232c67f1fc0d682e248a35089",
+      "matches_prior_checkpoint": true
+    }
+  ],
+  "candidate04_baseline_payloads": [
     {
       "path": "Packaged/Candidate04/Windows/ProjectONE.exe",
-      "expected_bytes": 164864,
-      "actual_bytes": 164864,
-      "expected_sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
-      "actual_sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
-      "unchanged": true
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7",
+      "matches_preserved_baseline": true
     },
     {
       "path": "Packaged/Candidate04/Windows/ProjectONE/Binaries/Win64/ProjectONE.exe",
-      "expected_bytes": 292024832,
-      "actual_bytes": 292024832,
-      "expected_sha256": "6da13b06b2428e817a43ad78a5136967313fbccfbab8b509094134544907038e",
-      "actual_sha256": "6da13b06b2428e817a43ad78a5136967313fbccfbab8b509094134544907038e",
-      "unchanged": true
+      "bytes": 292024832,
+      "sha256": "6da13b06b2428e817a43ad78a5136967313fbccfbab8b509094134544907038e",
+      "matches_preserved_baseline": true
     },
     {
       "path": "Packaged/Candidate04/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.pak",
-      "expected_bytes": 10724873,
-      "actual_bytes": 10724873,
-      "expected_sha256": "6c930025402f035da1b11d9e422cbf8a50c1d3c030214ec897ec4164254b7181",
-      "actual_sha256": "6c930025402f035da1b11d9e422cbf8a50c1d3c030214ec897ec4164254b7181",
-      "unchanged": true
+      "bytes": 10724873,
+      "sha256": "6c930025402f035da1b11d9e422cbf8a50c1d3c030214ec897ec4164254b7181",
+      "matches_preserved_baseline": true
     },
     {
       "path": "Packaged/Candidate04/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
-      "expected_bytes": 219283440,
-      "actual_bytes": 219283440,
-      "expected_sha256": "c0bfd0205456d7dae91860c33869eb06fe65c40283093aca68f4acd98383a107",
-      "actual_sha256": "c0bfd0205456d7dae91860c33869eb06fe65c40283093aca68f4acd98383a107",
-      "unchanged": true
+      "bytes": 219283440,
+      "sha256": "c0bfd0205456d7dae91860c33869eb06fe65c40283093aca68f4acd98383a107",
+      "matches_preserved_baseline": true
     },
     {
       "path": "Packaged/Candidate04/Windows/ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
-      "expected_bytes": 223633,
-      "actual_bytes": 223633,
-      "expected_sha256": "66ecd5d2e0659baa6c79f6c4f113f2193de698168a053de3a4dedb600e338785",
-      "actual_sha256": "66ecd5d2e0659baa6c79f6c4f113f2193de698168a053de3a4dedb600e338785",
-      "unchanged": true
+      "bytes": 223633,
+      "sha256": "66ecd5d2e0659baa6c79f6c4f113f2193de698168a053de3a4dedb600e338785",
+      "matches_preserved_baseline": true
     },
     {
       "path": "Releases/ProjectONE-Candidate04-Windows.zip",
-      "expected_bytes": 407635789,
-      "actual_bytes": 407635789,
-      "expected_sha256": "1ad1a3258f16fccf12451fff829aa9124321491a457232b88efa871826ba783c",
-      "actual_sha256": "1ad1a3258f16fccf12451fff829aa9124321491a457232b88efa871826ba783c",
-      "unchanged": true
+      "bytes": 407635789,
+      "sha256": "1ad1a3258f16fccf12451fff829aa9124321491a457232b88efa871826ba783c",
+      "matches_preserved_baseline": true
+    }
+  ],
+  "candidate04_original_release_artifacts": [
+    {
+      "path": "Releases/ProjectONE-Candidate04-Windows.zip",
+      "bytes": 407635789,
+      "sha256": "1ad1a3258f16fccf12451fff829aa9124321491a457232b88efa871826ba783c",
+      "matches_preserved_baseline": true
+    },
+    {
+      "path": "Releases/ProjectONE-Candidate04-Windows.json",
+      "bytes": 358,
+      "sha256": "f17a9011d9e226891220e659cfc55ad0aa6ee2cedd2471e2cc25cbf7f5f0d6a6",
+      "matches_preserved_baseline": true
+    },
+    {
+      "path": "Releases/ProjectONE-Candidate04-Windows.sha256",
+      "bytes": 102,
+      "sha256": "758ff4f0853a3669e35a092b9300cb0298861e3800482ec8d23a71fdd25491bb",
+      "matches_preserved_baseline": true
+    },
+    {
+      "path": "Evidence/Candidate04/progression_loop.mp4",
+      "bytes": 30033564,
+      "sha256": "537495bf1692ef74f321a25108799818d05626fcbec731b89d3146093280801b",
+      "matches_preserved_baseline": true
+    },
+    {
+      "path": "Evidence/Candidate04/progression_loop.json",
+      "bytes": 19419,
+      "sha256": "54ded29009ca97a1078a0bc07e7477ba1b4eb42d69806f2a65c7ecf0c793c19f",
+      "matches_preserved_baseline": true
+    },
+    {
+      "path": "Evidence/Candidate04/weapon_comparison.mp4",
+      "bytes": 7949954,
+      "sha256": "e3b4c6e5535ad06d788fec4a13cad965d89b8773d6cbd10901c57b07b1b9947d",
+      "matches_preserved_baseline": true
+    },
+    {
+      "path": "Evidence/Candidate04/weapon_comparison.json",
+      "bytes": 16653,
+      "sha256": "017b6e678fe3fba4c894e3b6b5ec11fe7bcdc5f5683803dc25bd071d32bb9f6e",
+      "matches_preserved_baseline": true
+    },
+    {
+      "path": "Evidence/Candidate04/native_controls.json",
+      "bytes": 2309,
+      "sha256": "fd0070e5af43e106864fe5beb39a7bd15d9ec20fdc9011f4332ea34a4be84fe0",
+      "matches_preserved_baseline": true
+    }
+  ],
+  "candidate04_publication_verification_artifact": {
+    "path": "Releases/Candidate04-PublicationVerification.json",
+    "bytes": 10521,
+    "sha256": "b8cd3f3531e18ee9fb9b96addc925284efbe34c2efdf0d63a94f9ba3c4803a27",
+    "matches_preserved_baseline": true
+  },
+  "candidate04_notes_and_evidence": [
+    {
+      "path": "Docs/Passes/Candidate04.md",
+      "bytes": 23502,
+      "sha256": "0c89d5d3845d1e32f25643aa33bd3a70284d8f886d1e4be1a41f113af2ea15b7",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/.gitattributes",
+      "bytes": 218,
+      "sha256": "5d18ad11ac5664d80c76841828bd01f43eaad9ffc756bd764bcc6dc108a0f672",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/AudioImport.json",
+      "bytes": 11336,
+      "sha256": "55513061e9c1f8d8e439ad21d62c887d9ec2545063a63e0514f5807c62bca84b",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/README.md",
+      "bytes": 5271,
+      "sha256": "cdd4f1d682df454f156fd4d4813e87c1c9f86a4e97dabd3b8ab396d17915a626",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/comparison.json",
+      "bytes": 11486,
+      "sha256": "d98d7d74d268b896054e59021b8c766d837b87fb34b7ec098cfa98612460d1d6",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/inventory.json",
+      "bytes": 2584,
+      "sha256": "11c32d1df5443e30f3cd180cc54a890f1f91c5014d509d51cdc95c4cc0256c39",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines12_10to20.json",
+      "bytes": 35966,
+      "sha256": "0076dd581d69862c69d510df8160506ed43a69d793229fe7d5b67eba738e26a6",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines12_both_active.json",
+      "bytes": 35710,
+      "sha256": "84d2af22c23b6f380d7e2e1b56abccf4492bf3b761e33a0d541f34d7b7086fc1",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines12_full.csv",
+      "bytes": 8649346,
+      "sha256": "3a1f41cd4100f037751b4a149c9d4a0cc7d75ce2d3881495dbe3d855c6dba120",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines12_full.json",
+      "bytes": 35491,
+      "sha256": "5b430dd5461a36464409ec1e79eb8fef0eca676b0d15326c6faee039af37d668",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines18_10to20.json",
+      "bytes": 35905,
+      "sha256": "1124cb0cea86bfd52f3eb8dd64eb025c762adefb046cd2a11f61eeef91853536",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines18_both_active.json",
+      "bytes": 35832,
+      "sha256": "0a84cb111b4916d40e86af81bbae905edfe58742abb8c2c72ac05bdfa1df8f94",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines18_full.csv",
+      "bytes": 8576283,
+      "sha256": "c06bfc4524a5a6910670f43e4887dd7779fb3cd5bb26593263c6fe137359c156",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines18_full.json",
+      "bytes": 35620,
+      "sha256": "cb0f283b444ca8f7812db26601a1994c2bede1138937c80af3890f48b8551d57",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines6_10to20.json",
+      "bytes": 35886,
+      "sha256": "0d73d1aeddc7c083714231b6c7f967b247305340247953fe1a8d180e9b1c71f2",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines6_both_active.json",
+      "bytes": 35740,
+      "sha256": "b93e2fd62050f3554c9a29959accb10c0e1549a43b2c2d74a6a73b8cab05a586",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines6_full.csv",
+      "bytes": 8615764,
+      "sha256": "a433aec919a22903a0b5dcac2f581ecf13b9125099117e034cc588542b60cafe",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/machines6_full.json",
+      "bytes": 35358,
+      "sha256": "b7bebad4d666e1128846800a69eb92d97267fddcee896735f435c887405494eb",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Performance/summary.json",
+      "bytes": 27736,
+      "sha256": "65083e2b86f3a0c9775cf55aa2d17957e05aa35d8a4fbc2a6974264359bc82eb",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/README.md",
+      "bytes": 9398,
+      "sha256": "8c49e538fdb4168a067e0cafe82b53e1a2bfa2666a505ed5b5790adb24ef26cb",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Tools/README.md",
+      "bytes": 5297,
+      "sha256": "f96c128e67e41f3d622abb22d0f33686ca5cf15ad754b7b6fd62f165d43697ac",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Tools/assemble_candidate04_evidence.py",
+      "bytes": 24663,
+      "sha256": "f14070e273479770082a05f3ed84cb3f61ea5033e0a67f056a5f87103a7d617f",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Tools/repair_movie_chapters.py",
+      "bytes": 9879,
+      "sha256": "3e45d13b06ccddcea9b16fc7bdf0de8fd0b57067a8d2fa29c84b28759c64fbf8",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Tools/test_terminal_idle_policy.py",
+      "bytes": 5880,
+      "sha256": "23a410ec66ab9154aedef4aa6e2301c313052f8bef19e2a9c23daffb69a50447",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Verification/archive.json",
+      "bytes": 2969,
+      "sha256": "7551f3a26fcd53f2f4e4bc1b697371f0cdd189a718bd27ce34d2359cca5980fc",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Verification/audio_metrics.json",
+      "bytes": 1476213,
+      "sha256": "0737c5acef5ed206e84f5506338845a0d19ae2ef43d655c40d2ce50461c6db30",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Verification/fresh_build.json",
+      "bytes": 10554,
+      "sha256": "95ba66579e668c70f00eb31e211ed568a15d2ad00e7d104f105789b04c97caf8",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Verification/packaged_suite.json",
+      "bytes": 16040,
+      "sha256": "7f4b484ca36590167082212cf324238cc1c553770e9efa5a3fe4a2579474f5f5",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Verification/preservation.json",
+      "bytes": 3385,
+      "sha256": "0eeb1c6bef7d4603a5ebb2df2d9d665f6bed27a9355830919a851c75fa095d58",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Verification/source_privacy.json",
+      "bytes": 7196,
+      "sha256": "bd8cf0406b0852de290d64bf8141e60bad17613d26d44a5926d88773f61143a5",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/Verification/visual_review.json",
+      "bytes": 46446,
+      "sha256": "f202c36b5481c883f2a81504781adf40a83045e4285f3c1166cb2cd544f52470",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/editor_preflight.json",
+      "bytes": 2310,
+      "sha256": "8c3873dbb27fa2cddefbcb8d166e696b24a583443d29dc78b866967f2f937653",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/native_controls.json",
+      "bytes": 2309,
+      "sha256": "fd0070e5af43e106864fe5beb39a7bd15d9ec20fdc9011f4332ea34a4be84fe0",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/progression_loop.json",
+      "bytes": 19419,
+      "sha256": "54ded29009ca97a1078a0bc07e7477ba1b4eb42d69806f2a65c7ecf0c793c19f",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/progression_loop.mp4",
+      "bytes": 30033564,
+      "sha256": "537495bf1692ef74f321a25108799818d05626fcbec731b89d3146093280801b",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Hydrated bytes match the exact Candidate04 Git LFS pointer"
+    },
+    {
+      "path": "Evidence/Candidate04/source_imports.json",
+      "bytes": 153409,
+      "sha256": "ef620b35d3186a1333258dc1810b58c969de2c34aadf1e8f3ea4e9fb567e7184",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/weapon_comparison.json",
+      "bytes": 16653,
+      "sha256": "017b6e678fe3fba4c894e3b6b5ec11fe7bcdc5f5683803dc25bd071d32bb9f6e",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Exact Git source content with CRLF/LF checkout normalization"
+    },
+    {
+      "path": "Evidence/Candidate04/weapon_comparison.mp4",
+      "bytes": 7949954,
+      "sha256": "e3b4c6e5535ad06d788fec4a13cad965d89b8773d6cbd10901c57b07b1b9947d",
+      "source_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
+      "matches_source_content": true,
+      "comparison": "Hydrated bytes match the exact Candidate04 Git LFS pointer"
     }
   ],
   "candidate01_through04_tags": [
@@ -59,28 +432,28 @@
       "tag": "candidate01",
       "annotated_object": "0a37781dc39461c846dac55f33cac7d3334b3ea0",
       "peeled_commit": "02c590a75141b48564715d130018f0cbe9a8a092",
-      "matches_baseline_and_public": true
+      "matches_baseline_locally_and_publicly": true
     },
     {
       "tag": "candidate02",
       "annotated_object": "869c3a139be372804efd6b0bfeb3175528888704",
       "peeled_commit": "aa4d55d04bf375bbef41362af77eec10d9ea224f",
-      "matches_baseline_and_public": true
+      "matches_baseline_locally_and_publicly": true
     },
     {
       "tag": "candidate03",
       "annotated_object": "20c1be9b3cf7c659789e731f759f23f4b91ec434",
       "peeled_commit": "4aded688bbdb1a8bcfdc3ba1d6a6e3eb698c909a",
-      "matches_baseline_and_public": true
+      "matches_baseline_locally_and_publicly": true
     },
     {
       "tag": "candidate04",
       "annotated_object": "7691030eadbe2c6f4bc41f2b9d84f30f774d7c6d",
       "peeled_commit": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
-      "matches_baseline_and_public": true
+      "matches_baseline_locally_and_publicly": true
     }
   ],
-  "public_refs": {
+  "public_refs_at_check": {
     "refs/heads/codex/candidate04": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
     "refs/heads/main": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
     "refs/tags/candidate01": "0a37781dc39461c846dac55f33cac7d3334b3ea0",
@@ -92,12 +465,106 @@
     "refs/tags/candidate04": "7691030eadbe2c6f4bc41f2b9d84f30f774d7c6d",
     "refs/tags/candidate04^{}": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d"
   },
-  "expected_public_main": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d",
-  "baseline_records_unchanged": true,
-  "baseline_record_sha256": {
-    "preserved_candidate04.json": "e56c9b4e12a861dc8f6292bdb35202558c0c7a7e44b8aff0e91c421afb16e8e2",
-    "public_refs.txt": "ecf1587dc399be6aaeeed0f197d7e9f922e9376232c67f1fc0d682e248a35089"
+  "candidate04_public_release": {
+    "url": "https://github.com/laberteauxjacob-cpu/ProjectONE/releases/tag/candidate04",
+    "release_identity_unchanged": true,
+    "release_body_exactly_unchanged": true,
+    "body_sha256": "fee6156c1d334ec393d6b98b35a98655184e69490c3d24eb759759372fa2636d",
+    "asset_count": 9,
+    "expected_asset_set_unchanged": true,
+    "assets": [
+      {
+        "file": "native_controls.json",
+        "bytes": 2309,
+        "sha256": "fd0070e5af43e106864fe5beb39a7bd15d9ec20fdc9011f4332ea34a4be84fe0",
+        "original_public_identity_unchanged": true
+      },
+      {
+        "file": "progression_loop.json",
+        "bytes": 19419,
+        "sha256": "54ded29009ca97a1078a0bc07e7477ba1b4eb42d69806f2a65c7ecf0c793c19f",
+        "original_public_identity_unchanged": true
+      },
+      {
+        "file": "progression_loop.mp4",
+        "bytes": 30033564,
+        "sha256": "537495bf1692ef74f321a25108799818d05626fcbec731b89d3146093280801b",
+        "original_public_identity_unchanged": true
+      },
+      {
+        "file": "ProjectONE-Candidate04-Windows.json",
+        "bytes": 358,
+        "sha256": "f17a9011d9e226891220e659cfc55ad0aa6ee2cedd2471e2cc25cbf7f5f0d6a6",
+        "original_public_identity_unchanged": true
+      },
+      {
+        "file": "ProjectONE-Candidate04-Windows.sha256",
+        "bytes": 102,
+        "sha256": "758ff4f0853a3669e35a092b9300cb0298861e3800482ec8d23a71fdd25491bb",
+        "original_public_identity_unchanged": true
+      },
+      {
+        "file": "ProjectONE-Candidate04-Windows.zip",
+        "bytes": 407635789,
+        "sha256": "1ad1a3258f16fccf12451fff829aa9124321491a457232b88efa871826ba783c",
+        "original_public_identity_unchanged": true
+      },
+      {
+        "file": "weapon_comparison.json",
+        "bytes": 16653,
+        "sha256": "017b6e678fe3fba4c894e3b6b5ec11fe7bcdc5f5683803dc25bd071d32bb9f6e",
+        "original_public_identity_unchanged": true
+      },
+      {
+        "file": "weapon_comparison.mp4",
+        "bytes": 7949954,
+        "sha256": "e3b4c6e5535ad06d788fec4a13cad965d89b8773d6cbd10901c57b07b1b9947d",
+        "original_public_identity_unchanged": true
+      },
+      {
+        "file": "Candidate04-PublicationVerification.json",
+        "bytes": 10521,
+        "sha256": "b8cd3f3531e18ee9fb9b96addc925284efbe34c2efdf0d63a94f9ba3c4803a27",
+        "matches_preserved_publication_record": true
+      }
+    ],
+    "binary_assets_redownloaded": false,
+    "method": "Current read-only GitHub API identity, size and digest checks against the preserved publication metadata."
   },
-  "working_branch": "codex/candidate05",
-  "local_head_at_check": "2a75a4a5c09f52dacf289ced1b91d548ce3f2a3d"
+  "candidate04_local_release_notes": {
+    "file": "ReleaseNotes.md",
+    "bytes": 7537,
+    "sha256": "fee6156c1d334ec393d6b98b35a98655184e69490c3d24eb759759372fa2636d",
+    "matches_saved_original_public_body_with_newline_normalization": true,
+    "saved_original_public_body_sha256": "fee6156c1d334ec393d6b98b35a98655184e69490c3d24eb759759372fa2636d"
+  },
+  "candidate04_archive": {
+    "path": "Releases/ProjectONE-Candidate04-Windows.zip",
+    "entries": 1217,
+    "whole_archive_matches_preserved_sha256": true,
+    "crc_reread_performed": false,
+    "method": "Whole ZIP byte size and SHA256 match the preserved CRC-verified archive. Central directory entry count was read without extraction."
+  },
+  "summary": {
+    "baseline_payloads_unchanged": 6,
+    "baseline_payload_count": 6,
+    "candidate04_notes_and_evidence_unchanged": 38,
+    "candidate04_notes_and_evidence_count": 38,
+    "release_artifacts_unchanged": 8,
+    "release_artifact_count": 8,
+    "named_public_refs_unchanged": 10,
+    "named_public_ref_count": 10,
+    "publication_verification_artifacts_unchanged": 1,
+    "public_release_assets_unchanged": 9,
+    "prior_tags_unchanged": 4
+  },
+  "limits": [
+    "This checkpoint predates Candidate05 release. Candidate05 publication and downloaded-archive verification are separate final checks.",
+    "The recorded public main value is its pre-release state and is expected to change during authorized Candidate05 publication. Candidate01-04 tags and the Candidate04 review branch must remain preserved.",
+    "Candidate01-03 verification here covers public/local tag identities, not a new full audit of their releases or local packages.",
+    "Candidate04 regular tracked content uses documented CRLF/LF checkout normalization; Git LFS files and release artifacts use exact byte hashes.",
+    "The original release snapshot contains eight assets. Its later publication-verification asset was checked separately against its preserved byte digest.",
+    "This portable summary derives from the bound completed private audit. Creating this draft performed no new payload hashes, network requests, runtime operations or publication.",
+    "The final publication verifier must recheck prior public refs and release assets; this checkpoint does not stand in for that later verification."
+  ]
 }

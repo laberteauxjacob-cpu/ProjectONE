@@ -1,0 +1,108 @@
+{
+  "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+  "files": [
+    {
+      "filename": "m4a1_12_analysis.json",
+      "bytes": 178195,
+      "sha256": "936c4a18494ccd3abd75cb24b33bb90fabe67af97a6359d72d6fc15b4024cc55"
+    },
+    {
+      "filename": "m4a1_12_full.csv",
+      "bytes": 8698161,
+      "sha256": "2e216415a892bcf69fe70979f559c4ac5891d375a4f680a0f2759b235b465379"
+    },
+    {
+      "filename": "m4a1_18_analysis.json",
+      "bytes": 177987,
+      "sha256": "cbf9487f082503e29d6c950580277e843fb2377eb232305f2437640e67eeb1bf"
+    },
+    {
+      "filename": "m4a1_18_full.csv",
+      "bytes": 8540375,
+      "sha256": "bca2578dadd81ceb6ad9f51f79eba4fa2eca2c99da0cc4239027aec62a488194"
+    },
+    {
+      "filename": "overcurrent_12_analysis.json",
+      "bytes": 178272,
+      "sha256": "c8d56be49ff924558a139a3df293aff5607deda685a5103daaeb078b484a5465"
+    },
+    {
+      "filename": "overcurrent_12_full.csv",
+      "bytes": 8763249,
+      "sha256": "af0ea1ff1ee7a76e66e42bc89dfa6635c6ee5489af97d772c0de7257b4ee1469"
+    },
+    {
+      "filename": "overcurrent_18_analysis.json",
+      "bytes": 178337,
+      "sha256": "1050abe465242b3319b18126c5648d3ab3d08eef230616e5cbd210977a9c4967"
+    },
+    {
+      "filename": "overcurrent_18_full.csv",
+      "bytes": 8682618,
+      "sha256": "a9447c02ec4cbc504cac45e4849f12e931b88c0e8f509badeff9d3b5f37b0392"
+    },
+    {
+      "filename": "README.md",
+      "bytes": 3092,
+      "sha256": "2efde3d85517644ea123817c26e6501719d3a1bdd82a8a8c639e20d2f27d249e"
+    },
+    {
+      "filename": "summary.json",
+      "bytes": 4153,
+      "sha256": "65f8f5ede1b61054bdc0892f860e696da37bb1a80429811a2daf33e2622de166"
+    }
+  ],
+  "workloads": [
+    {
+      "weapon": "M4A1",
+      "requested_alive": 12,
+      "full_timeline": "m4a1_12_full.csv",
+      "analysis": "m4a1_12_analysis.json",
+      "raw_frame_rows": 3760,
+      "retained_frame_rows": 3760,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 18,
+      "full_timeline": "m4a1_18_full.csv",
+      "analysis": "m4a1_18_analysis.json",
+      "raw_frame_rows": 3684,
+      "retained_frame_rows": 3684,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "Overcurrent",
+      "requested_alive": 12,
+      "full_timeline": "overcurrent_12_full.csv",
+      "analysis": "overcurrent_12_analysis.json",
+      "raw_frame_rows": 3759,
+      "retained_frame_rows": 3759,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "Overcurrent",
+      "requested_alive": 18,
+      "full_timeline": "overcurrent_18_full.csv",
+      "analysis": "overcurrent_18_analysis.json",
+      "raw_frame_rows": 3734,
+      "retained_frame_rows": 3734,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    }
+  ],
+  "baseline_comparable": false,
+  "isolated_host": false,
+  "host_condition": "ambient_processes_recorded_no_isolation_claim",
+  "full_numeric_timelines": 4,
+  "analysis_reports": 4,
+  "inventory_note": "Root manifest lists every payload file; it does not self-hash.",
+  "raw_capture_files": "Remain private; only full numeric timelines and measured reports are curated."
+}

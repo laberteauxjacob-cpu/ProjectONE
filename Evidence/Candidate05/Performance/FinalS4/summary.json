@@ -1,0 +1,117 @@
+{
+  "schema": "projectone.candidate05.performance.v1",
+  "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+  "capture_kind": "packaged",
+  "baseline_comparable": false,
+  "isolated_host": false,
+  "host_condition": "ambient_processes_recorded_no_isolation_claim",
+  "host": {
+    "host_condition": "ambient_processes_recorded_no_isolation_claim",
+    "isolated_host": false,
+    "baseline_comparable": false,
+    "anonymous_observations": [],
+    "basis": "Host condition is explicitly supplied by the runner/operator. Raw identities, PID, window title and executable paths are omitted.",
+    "limitation": "A preserved game or other ambient processes may compete for CPU/GPU resources. Boundary accounting cannot rule out unsampled bursts. No isolated cost, matched-baseline improvement or identical background workload is inferred."
+  },
+  "runtime_identity": [
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 292325888,
+      "sha256": "4bd0a468603f566b6904f0726b3d9160e0feb224b6cd1b5d7836d0adfa6be602"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10726921,
+      "sha256": "1ee89ad12c67c8c16df0c3431f019b672cb0e32dbba72c0ad4a8fc0fc35d4bbe"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 221375168,
+      "sha256": "d8fd2b69d493ea336e1c53120cbef03af268ad4f14691e69ce9cbfb9d4b4e342"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 239295,
+      "sha256": "e25195803d2b7f8e422a3414cd22b62d562167e67c1eb657e5f867218924e751"
+    }
+  ],
+  "parser": {
+    "filename": "analyze_candidate03_performance.py",
+    "bytes": 18885,
+    "sha256": "e7c3f57d61865c81af882e2f00342cd5c22c8462944c4a25c0ab5ed9543ae5e2"
+  },
+  "curator": {
+    "filename": "curate_performance.py",
+    "bytes": 37440,
+    "sha256": "ba40fd62a301b3ecdcbaea13cd6554dc97af8446ef383cc3c77df1407dfdee54"
+  },
+  "manifest": {
+    "filename": "performance_manifest.json",
+    "bytes": 3277,
+    "sha256": "0ae8e6ddddf031aded917cc811c34f1c154e00962910653bac20918d00dc97e9"
+  },
+  "settings_supplied_by_runner": {
+    "resolution": "1600x900",
+    "max_fps": 120,
+    "vsync": 0
+  },
+  "workloads": [
+    {
+      "weapon": "M4A1",
+      "requested_alive": 12,
+      "full_timeline": "m4a1_12_full.csv",
+      "analysis": "m4a1_12_analysis.json",
+      "raw_frame_rows": 3760,
+      "retained_frame_rows": 3760,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 18,
+      "full_timeline": "m4a1_18_full.csv",
+      "analysis": "m4a1_18_analysis.json",
+      "raw_frame_rows": 3684,
+      "retained_frame_rows": 3684,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "Overcurrent",
+      "requested_alive": 12,
+      "full_timeline": "overcurrent_12_full.csv",
+      "analysis": "overcurrent_12_analysis.json",
+      "raw_frame_rows": 3759,
+      "retained_frame_rows": 3759,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "Overcurrent",
+      "requested_alive": 18,
+      "full_timeline": "overcurrent_18_full.csv",
+      "analysis": "overcurrent_18_analysis.json",
+      "raw_frame_rows": 3734,
+      "retained_frame_rows": 3734,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    }
+  ],
+  "method": {
+    "percentile": "Linear interpolation at(n\u22121)*p",
+    "spike_thresholds_ms": [
+      16.7,
+      33.3,
+      50,
+      100
+    ],
+    "frame_policy": "All source numeric rows and every spike retained once. Raw event text omitted; source CSV hash retained.",
+    "setup": "Actual acquisition and any rifle upgrade finish before CSV. Setup is not a measured startup benchmark.",
+    "scope_policy": "Inclusive project scopes and individual overlapping physics scopes are never summed or subtracted.",
+    "baseline": "No cross-candidate matched-baseline comparison is made."
+  }
+}

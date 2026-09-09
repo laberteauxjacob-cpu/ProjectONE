@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "candidate": "Candidate05",
+  "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+  "source_state": "exact-commit",
+  "review_date_utc": "2026-09-09",
+  "mode": "ONE05UICheck",
+  "suite_run": "20260908_234549_947",
+  "scope": "Bounded visual inspection of six original packaged UI stills at 1600x900. Separate from automation, native input, moving review and overall release acceptance.",
+  "method": "All six images were opened individually at original resolution through view_image. No earlier-source images, edits, crops or replacement pixels were used.",
+  "viewed_files": [
+    {
+      "file": "01_starter_0_7_56.png", "bytes": 1218432,
+      "sha256": "17d73a4ffacc4362e4a2b40fc886a8484fcec8309cc0c28b47ee688da3cf3c90",
+      "width": 1600, "height": 900,
+      "observation": "Round 0/0 LEFT, yellow unpadded 0 POINTS, health +100, large M1911 7 / 56, highlighted slot 1 and slot 2 EMPTY are readable within separated panels. H SANDBOX is visible."
+    },
+    {
+      "file": "02_expanded_tools.png", "bytes": 618908,
+      "sha256": "b5a01531c774d4e0b7bf7ef6b98232e03d91158c06527d13976bccff73354c9f",
+      "width": 1600, "height": 900,
+      "observation": "HELP + SANDBOX, control lines, enemy/weapon/points/scene groups and hotkey badges fit within the centered tray. Next box: RANDOM and the separated Back to game button are complete over the dimmed arena/HUD."
+    },
+    {
+      "file": "03_compact_1500.png", "bytes": 1218935,
+      "sha256": "395b63e74797abf7ea448d63b45c25cb75ce172a7db83a2d5b1a22aa563074b8",
+      "width": 1600, "height": 900,
+      "observation": "The tray is closed. Yellow 1500 POINTS has no leading zeros; points, health +100, M1911 7 / 56 and two slots retain separate regions."
+    },
+    {
+      "file": "04_pause.png", "bytes": 475306,
+      "sha256": "64fd69be41edba592ff48a8ae2c5ed74941576a10aaac03405338a3a1cbd8d8d",
+      "width": 1600, "height": 900,
+      "observation": "PAUSED, Round 0, 0 KILLS, 1500 Points and Survived 0m 3s are complete. Resume/Esc, Restart/Enter and Quit/Q fit in separate aligned rows over the dimmed scene."
+    },
+    {
+      "file": "05_death.png", "bytes": 532654,
+      "sha256": "cd33b785f2cc1b8e81daeef8c7747ceb2e25e232beb24978dcdb6f7df4c977db",
+      "width": 1600, "height": 900,
+      "observation": "GAME OVER, Round 0, 0 KILLS, 550 Points and Survived 0m 4s are complete. Try again/Enter and Quit/Q remain separated; background health is zero. The 550 points agrees with the companion report's 950-point box activation after 1500."
+    },
+    {
+      "file": "06_restarted_starter.png", "bytes": 1217384,
+      "sha256": "b6f43969c8a3b3887c0ee98e2678e20c1310e7c1c8cc4b9c8a6c261525329f8b",
+      "width": 1600, "height": 900,
+      "observation": "Menus and dimming are gone. Round 0, 0 points, health +100, M1911 7 / 56 and empty slot 2 return; previous 1500/550-point values and the death panel are absent visually."
+    }
+  ],
+  "public_evidence_copies": [
+    {"original_file": "01_starter_0_7_56.png", "path": "Evidence/Candidate05/UI/starter.png", "bytes": 1218432, "sha256": "17d73a4ffacc4362e4a2b40fc886a8484fcec8309cc0c28b47ee688da3cf3c90"},
+    {"original_file": "02_expanded_tools.png", "path": "Evidence/Candidate05/UI/sandbox_tools.png", "bytes": 618908, "sha256": "b5a01531c774d4e0b7bf7ef6b98232e03d91158c06527d13976bccff73354c9f"},
+    {"original_file": "04_pause.png", "path": "Evidence/Candidate05/UI/pause.png", "bytes": 475306, "sha256": "64fd69be41edba592ff48a8ae2c5ed74941576a10aaac03405338a3a1cbd8d8d"},
+    {"original_file": "05_death.png", "path": "Evidence/Candidate05/UI/game_over.png", "bytes": 532654, "sha256": "cd33b785f2cc1b8e81daeef8c7747ceb2e25e232beb24978dcdb6f7df4c977db"}
+  ],
+  "public_copy_verification": "Each of the four repository PNG copies was hashed and confirmed byte-identical to its named original capture. Repository preparation does not itself establish commit, remote LFS upload or public release completion.",
+  "companion_records": [
+    {"file": "checks.json", "bytes": 11148, "sha256": "9e996075ae254db2c3bd49747e156f6428e6abbbd8029c89fefb249c8000157a"},
+    {"file": "input.csv", "bytes": 1192, "sha256": "a625b1464b3873de2174dd7f20c70a136fd2a5298a21f922a65f1a265cce961c"}
+  ],
+  "companion_automation": {"checks": 49, "failures": 0, "quit_requested_via_button": true},
+  "conclusion": "No visible clipping, omitted required glyphs, padded point values or unintended panel overlap was observed in these six stills.",
+  "actionable_visual_findings_in_scope": [],
+  "fixture_disclosure": "Production Controller InputKey and cursor targeting are scripted, not native OS input. The tools grant 10000 points; an explicit 8500 spend exposes 1500. A safe-contact teleport and actual Hold F start a paid 950-point box roll before an explicit fatal-damage fixture. This review introduces no new gameplay or images.",
+  "limits": [
+    "Six static views at 1600x900 only; other viewports, dim gameplay, high/long values and smaller physical displays need separate review.",
+    "Small control/hotkey labels remain subordinate to the primary values. Physical-display readability was not established.",
+    "No consecutive animation frames, active reel, Ready reward or Hold F prompt are shown; their timing and readability are outside this review.",
+    "Automation checks and source binding do not substitute for native control testing, auditory review, performance measurement or user approval of art/game feel.",
+    "Only in-engine PNG identities and portable record names are included; no desktop or operating-system security image is part of this evidence."
+  ]
+}

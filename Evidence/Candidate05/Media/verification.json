@@ -1,0 +1,482 @@
+{
+  "schema": 1,
+  "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+  "created_utc": "2026-09-09T18:32:06.022Z",
+  "status": "VERIFIED_MEDIA_ARTIFACTS_WITH_DISCLOSED_ENDPOINT_BEHAVIOR",
+  "scope": "Final packaged S4 movie identity, source capture provenance, encode records, recorded full-decode completion and actual container/stream metadata. This is separate from visual gameplay review, perceptual audio audition, native input validation and stress profiles.",
+  "completed_capture_session_binding": {
+    "file": "session.json",
+    "bytes": 2259885,
+    "sha256": "9c22de212ec3edcd548d8601c983f2ca424e3a6aba30730e15e8af60a1d95d04"
+  },
+  "method": "Read-only hashing of current movies, encode reports, capture CSV/check/WAV records and existing logs; comparison of every source-frame ledger entry to the completed runner; recomputation of ordered frame-ledger digests; direct MP4 atom and WAV-header parsing. No encoder, decoder, game, build or Git process was launched by this summary.",
+  "movies": [
+    {
+      "mode": "motion",
+      "movie": {
+        "path": "Releases/Candidate05/motion_review.mp4",
+        "bytes": 15982534,
+        "sha256": "e92e0d8bfc15dde401609d5e9b41bcfc4351a6e07b8b7f7304856928b4afdaed"
+      },
+      "encode_report": {
+        "path": "Releases/Candidate05/motion_review.json",
+        "bytes": 288841,
+        "sha256": "26f23112030664e7a961a851373beb015dd4459a7e4504821069b294c1f72e6c"
+      },
+      "source": {
+        "capture_kind": "packaged",
+        "capture_mode": "motion",
+        "render_mode": "offscreen",
+        "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+        "source_state": "exact-commit",
+        "capture_folder_basename": "20260909_181512_75878284",
+        "source": "Actual gameplay JPEG screenshot callbacks plus Unreal master-output WAV",
+        "input_provenance": "Recorder observation/input_events.csv distinguish scripted production dispatch from passive native input; this assembler does not infer human operation.",
+        "source_callback_count": 1389,
+        "first_callback_audio_seconds": 0.015879899,
+        "last_callback_audio_seconds": 50.765058599,
+        "capture_span_seconds": 50.7491787,
+        "actual_callback_rate_per_second": 27.35019630967939,
+        "completion_counters": {
+          "Complete": 1,
+          "Checks": 80,
+          "Failures": 0,
+          "Frames": 1389,
+          "Headless cursor fallback calls": 0
+        },
+        "raw_capture_records": [
+          {
+            "file": "frames.csv",
+            "sha256": "ae5ca426c6a670af1847305f0245462ec00c8c4fb0e06131f36ad114e2411859",
+            "bytes": 76668
+          },
+          {
+            "file": "gameplay_master.wav",
+            "sha256": "7b26c8817f3ae3024e7aea37ed731a7a0d3c9a647df172edbe33a19f86a813b6",
+            "bytes": 9826348
+          },
+          {
+            "file": "checks.txt",
+            "sha256": "7586e0a2ded51d1ab40b19974f3a53de4f503eaa44a13cf0c753622de9fb447d",
+            "bytes": 8118
+          },
+          {
+            "file": "input_events.csv",
+            "sha256": "d4c0d9e95ea531ae2954ffdb7046ccc58d5386de6ff938dc4202d2a629e4af63",
+            "bytes": 2653
+          },
+          {
+            "file": "poses.csv",
+            "sha256": "ef2c99a64e4a9bbc5c9efcc7db504d049404852e084d1fbad4c8fcd607ff6bfd",
+            "bytes": 1724919
+          },
+          {
+            "file": "chapters.csv",
+            "sha256": "250816cb652f847cab627bc9ee5f481432679ce6ea2738d0bdc930308714b17c",
+            "bytes": 1457
+          }
+        ],
+        "ordered_frame_identity_sha256": "98108e96b0db39d52ef203834e4e715cd8547844ca7119695982a6a246a3d0b8",
+        "ordered_frame_identity_method": "SHA256 of UTF-8 JSON lines [relative filename, original audio_seconds string, JPEG SHA256] in CSV order",
+        "all_frame_ledger_entries_match_completed_capture_runner": true,
+        "current_raw_record_files_rehashed": true,
+        "current_JPEG_payloads_rehashed_by_this_summary": false
+      },
+      "encode": {
+        "encoded": true,
+        "encoder_exit_code": 0,
+        "exit_code_evidence": "Both actual portable sidecar and completed assembly log record encoded=true and encoder_exit_code=0. Current movie byte count and SHA256 match the sidecar.",
+        "assembly_log": {
+          "file": "MotionS4Assembly.log",
+          "bytes": 289012,
+          "sha256": "1bad3a430e6187d2395d767daf23443263be6a3da4596ad1569c338c61401902"
+        },
+        "source_images_treatment": "Captured images held according to callback timestamps; first image held from audio time zero. CFR output duplicates or drops captured frames on the 30fps grid; no generated pixels, motion interpolation or retiming to hide stalls.",
+        "audio_treatment": "AAC transcode of the supplied engine WAV at original duration; this assembler does not replace, pad, stretch or synthesize audio. The source gameplay may itself use provisional synthesized sound assets.",
+        "chapters_embedded": false,
+        "sidecar_chapters": [],
+        "chapter_note": "Raw chapters.csv is retained and hash-bound as capture provenance; no MP4 chapter tracks/references or chapter list were present, and the assembler was not given its optional chapter flag.",
+        "warnings": [
+          "FFmpeg guessed stereo channel layout; actual WAV header and MP4 audio entry both independently confirm two channels.",
+          "FFmpeg swscaler reported use of a deprecated pixel format; the completed decode log describes full-range yuvj420p. This summary does not claim a perceptual color review."
+        ]
+      },
+      "streams": {
+        "video": {
+          "codec": "H.264 High",
+          "codec_evidence": "avc1 MP4 sample entry and H.264 High in the completed full decode log",
+          "width": 1600,
+          "height": 900,
+          "constant_frames_per_second": 30,
+          "encoded_frame_count": 1523,
+          "sample_duration_seconds": 50.766666666666666,
+          "track_duration_seconds": 50.767
+        },
+        "audio": {
+          "codec": "AAC LC",
+          "codec_evidence": "mp4a MP4 sample entry and AAC LC in the completed full decode log",
+          "sample_rate": 48000,
+          "channels": 2,
+          "coded_AAC_packet_count": 2400,
+          "coded_media_duration_seconds": 51.2,
+          "track_duration_seconds": 51.179,
+          "edit_duration_seconds": 51.178,
+          "priming_edit_start_samples": 1024
+        },
+        "container_duration_seconds": 51.179,
+        "raw_MP4_timing_metadata": {
+          "container_clock": {
+            "timescale": 1000,
+            "duration_ticks": 51179,
+            "duration_seconds": 51.179
+          },
+          "tracks": [
+            {
+              "handler": "vide",
+              "codec_sample_entry": "avc1",
+              "media_clock": {
+                "timescale": 15360,
+                "duration_ticks": 779776,
+                "duration_seconds": 50.766666666666666
+              },
+              "track_duration_seconds": 50.767,
+              "sample_count": 1523,
+              "time_to_sample_entries": [
+                {
+                  "count": 1523,
+                  "delta": 512
+                }
+              ],
+              "display_width": 1600,
+              "display_height": 900,
+              "constant_sample_rate_fps": 30,
+              "edits": [
+                {
+                  "segment_duration_seconds": 50.767,
+                  "media_start_ticks": 1024,
+                  "rate_integer": 1,
+                  "rate_fraction": 0
+                }
+              ]
+            },
+            {
+              "handler": "soun",
+              "codec_sample_entry": "mp4a",
+              "media_clock": {
+                "timescale": 48000,
+                "duration_ticks": 2457600,
+                "duration_seconds": 51.2
+              },
+              "track_duration_seconds": 51.179,
+              "sample_count": 2400,
+              "time_to_sample_entries": [
+                {
+                  "count": 2400,
+                  "delta": 1024
+                }
+              ],
+              "display_width": 0,
+              "display_height": 0,
+              "sample_rate": 48000,
+              "channels": 2,
+              "edits": [
+                {
+                  "segment_duration_seconds": 51.178,
+                  "media_start_ticks": 1024,
+                  "rate_integer": 1,
+                  "rate_fraction": 0
+                }
+              ]
+            }
+          ],
+          "chapter_track_or_chapter_list_present": false,
+          "method": "Read-only MP4 mvhd/tkhd/mdhd/stts/stsz/stsd/elst metadata; no media decoder/encoder launched."
+        }
+      },
+      "timing": {
+        "source_WAV": {
+          "sample_rate": 48000,
+          "channels": 2,
+          "sample_width_bytes": 2,
+          "sample_frames": 2456576,
+          "duration_seconds": 51.178666666666665
+        },
+        "source_callback_to_WAV_endpoint_hold_seconds": 0.41360806766666514,
+        "source_maximum_callback_hold_seconds": 0.41360806766666514,
+        "source_endpoint_policy_satisfied": true,
+        "source_endpoint_policy_scope": "The final source callback precedes the unmodified recorded WAV endpoint by a positive interval no greater than0.5s. This source assembly policy does not assert equal encoded video/audio stream durations.",
+        "container_minus_video_track_seconds": 0.41199999999999903,
+        "source_WAV_minus_video_sample_duration_seconds": 0.41199999999999903,
+        "final_image_display": "Video samples end before the audio/container. A player may retain the last decoded image during the remaining audio; that implicit final-image display was not verified by continuous playback here. No additional encoded terminal frames are invented or claimed.",
+        "AAC_duration_note": "Raw AAC media duration includes1024 priming samples. The audio edit starts at sample1024. Track/container/edit durations use the1000Hz movie timebase and differ from the exact WAV endpoint by less than1ms.",
+        "CFR_conversion": {
+          "source_callback_frames": 1389,
+          "encoded_video_frames": 1523,
+          "net_output_frame_count_increase": 134,
+          "individual_duplicate_frame_count": null,
+          "individual_dropped_callback_count": null,
+          "note": "The assembler resamples timestamp-held JPEGs onto a30fps grid, where duplication or dropping is expected. The net frame-count increase is measured; individual duplicate/drop counts were not recorded by these warning-level encode logs. No motion interpolation or generated intermediate pixels is claimed."
+        }
+      },
+      "decode_verification": {
+        "full_decode_performed_by_root": true,
+        "full_decode_exit_code": 0,
+        "exit_code_provenance": "Root observed both completed FFmpeg process exit codes as0. The FFmpeg text logs themselves do not store a numeric process exit code.",
+        "decode_log": {
+          "file": "MotionS4Decode.log",
+          "bytes": 1926,
+          "sha256": "08a22b61ab32fa9e3fe6230c9baf1c60f81503369ac759b9e55c0b8362f03e18"
+        },
+        "decoded_video_frame_count": 1523,
+        "decoded_count_matches_actual_MP4_sample_count": true,
+        "terminal_summary": "frame= 1523 fps=0.0 q=-0.0 Lsize=N/A time=00:00:50.76 bitrate=N/A speed= 112x",
+        "terminal_video_and_audio_summary_present": true,
+        "error_terms_found_in_decode_log": false,
+        "decoder_process_launched_by_this_summary": false
+      },
+      "current_movie_and_report_hashes_verified": true,
+      "perceptual_audio_audition_performed": false,
+      "continuous_playback_review_performed": false,
+      "visual_gameplay_validation_included": false,
+      "performance_profile_validation_included": false
+    },
+    {
+      "mode": "presentation",
+      "movie": {
+        "path": "Releases/Candidate05/presentation_review.mp4",
+        "bytes": 41201372,
+        "sha256": "a9a6b381d14231d025272a3365ddf25a2e1d41a9ee0bc4bd733e29eb3b9bdcf1"
+      },
+      "encode_report": {
+        "path": "Releases/Candidate05/presentation_review.json",
+        "bytes": 1073441,
+        "sha256": "3325cc8487a82f76654e32c6b8e9a7deac3d678a6421694187fc2b948cdfc82e"
+      },
+      "source": {
+        "capture_kind": "packaged",
+        "capture_mode": "presentation",
+        "render_mode": "offscreen",
+        "source_commit": "6b8621cef9d2a87de6e6eabc1743359c6274da5a",
+        "source_state": "exact-commit",
+        "capture_folder_basename": "20260909_181613_A8BEFEC8",
+        "source": "Actual gameplay JPEG screenshot callbacks plus Unreal master-output WAV",
+        "input_provenance": "Recorder observation/input_events.csv distinguish scripted production dispatch from passive native input; this assembler does not infer human operation.",
+        "source_callback_count": 5257,
+        "first_callback_audio_seconds": 0.01602,
+        "last_callback_audio_seconds": 196.547163,
+        "capture_span_seconds": 196.53114300000001,
+        "actual_callback_rate_per_second": 26.7438530085789,
+        "completion_counters": {
+          "Complete": 1,
+          "Checks": 93,
+          "Failures": 0,
+          "Frames": 5257,
+          "Profile actual frames": 0
+        },
+        "raw_capture_records": [
+          {
+            "file": "frames.csv",
+            "sha256": "05516077d535b6496b89ee5d1de3b141eab2d5c4bd2401a1b86ac4cb7b67cdae",
+            "bytes": 261732
+          },
+          {
+            "file": "gameplay_master.wav",
+            "sha256": "8d6c27b93ac0723c6a85c37644fca28e4543523dda8a7a10d283d6ce618d5550",
+            "bytes": 37814316
+          },
+          {
+            "file": "checks.txt",
+            "sha256": "c7ab8fac6d86c25b7bfc3f335eaf3c28bcabbf09e58622e66a394db2243e8cc7",
+            "bytes": 6833
+          },
+          {
+            "file": "input_events.csv",
+            "sha256": "87abf900333826aad8fecf9e0cfff9ddbc47f611f461735b57b7d381f0c1a984",
+            "bytes": 10887
+          },
+          {
+            "file": "observations.csv",
+            "sha256": "eb74316d27b787fe58b9d66569d228abe22932d4acd6171c0089b0e2a5416c15",
+            "bytes": 280766
+          },
+          {
+            "file": "chapters.csv",
+            "sha256": "be17dc2865e1cc67b701cb98288d664563bf9d987200eb3604e620f1e295c9b3",
+            "bytes": 5723
+          }
+        ],
+        "ordered_frame_identity_sha256": "a1348717618e4438455de71997dee5d3da50302af89fd65de5b0a7efc03a97cd",
+        "ordered_frame_identity_method": "SHA256 of UTF-8 JSON lines [relative filename, original audio_seconds string, JPEG SHA256] in CSV order",
+        "all_frame_ledger_entries_match_completed_capture_runner": true,
+        "current_raw_record_files_rehashed": true,
+        "current_JPEG_payloads_rehashed_by_this_summary": false
+      },
+      "encode": {
+        "encoded": true,
+        "encoder_exit_code": 0,
+        "exit_code_evidence": "Both actual portable sidecar and completed assembly log record encoded=true and encoder_exit_code=0. Current movie byte count and SHA256 match the sidecar.",
+        "assembly_log": {
+          "file": "PresentationS4Assembly.log",
+          "bytes": 1073612,
+          "sha256": "c9f97478f52e766eaa81b0f850369e79b85875f35b3e673aeb54e1e4ccab27b5"
+        },
+        "source_images_treatment": "Captured images held according to callback timestamps; first image held from audio time zero. CFR output duplicates or drops captured frames on the 30fps grid; no generated pixels, motion interpolation or retiming to hide stalls.",
+        "audio_treatment": "AAC transcode of the supplied engine WAV at original duration; this assembler does not replace, pad, stretch or synthesize audio. The source gameplay may itself use provisional synthesized sound assets.",
+        "chapters_embedded": false,
+        "sidecar_chapters": [],
+        "chapter_note": "Raw chapters.csv is retained and hash-bound as capture provenance; no MP4 chapter tracks/references or chapter list were present, and the assembler was not given its optional chapter flag.",
+        "warnings": [
+          "FFmpeg guessed stereo channel layout; actual WAV header and MP4 audio entry both independently confirm two channels.",
+          "FFmpeg swscaler reported use of a deprecated pixel format; the completed decode log describes full-range yuvj420p. This summary does not claim a perceptual color review."
+        ]
+      },
+      "streams": {
+        "video": {
+          "codec": "H.264 High",
+          "codec_evidence": "avc1 MP4 sample entry and H.264 High in the completed full decode log",
+          "width": 1600,
+          "height": 900,
+          "constant_frames_per_second": 30,
+          "encoded_frame_count": 5897,
+          "sample_duration_seconds": 196.56666666666666,
+          "track_duration_seconds": 196.567
+        },
+        "audio": {
+          "codec": "AAC LC",
+          "codec_evidence": "mp4a MP4 sample entry and AAC LC in the completed full decode log",
+          "sample_rate": 48000,
+          "channels": 2,
+          "coded_AAC_packet_count": 9233,
+          "coded_media_duration_seconds": 196.97066666666666,
+          "track_duration_seconds": 196.95,
+          "edit_duration_seconds": 196.949,
+          "priming_edit_start_samples": 1024
+        },
+        "container_duration_seconds": 196.95,
+        "raw_MP4_timing_metadata": {
+          "container_clock": {
+            "timescale": 1000,
+            "duration_ticks": 196950,
+            "duration_seconds": 196.95
+          },
+          "tracks": [
+            {
+              "handler": "vide",
+              "codec_sample_entry": "avc1",
+              "media_clock": {
+                "timescale": 15360,
+                "duration_ticks": 3019264,
+                "duration_seconds": 196.56666666666666
+              },
+              "track_duration_seconds": 196.567,
+              "sample_count": 5897,
+              "time_to_sample_entries": [
+                {
+                  "count": 5897,
+                  "delta": 512
+                }
+              ],
+              "display_width": 1600,
+              "display_height": 900,
+              "constant_sample_rate_fps": 30,
+              "edits": [
+                {
+                  "segment_duration_seconds": 196.567,
+                  "media_start_ticks": 1024,
+                  "rate_integer": 1,
+                  "rate_fraction": 0
+                }
+              ]
+            },
+            {
+              "handler": "soun",
+              "codec_sample_entry": "mp4a",
+              "media_clock": {
+                "timescale": 48000,
+                "duration_ticks": 9454592,
+                "duration_seconds": 196.97066666666666
+              },
+              "track_duration_seconds": 196.95,
+              "sample_count": 9233,
+              "time_to_sample_entries": [
+                {
+                  "count": 9233,
+                  "delta": 1024
+                }
+              ],
+              "display_width": 0,
+              "display_height": 0,
+              "sample_rate": 48000,
+              "channels": 2,
+              "edits": [
+                {
+                  "segment_duration_seconds": 196.949,
+                  "media_start_ticks": 1024,
+                  "rate_integer": 1,
+                  "rate_fraction": 0
+                }
+              ]
+            }
+          ],
+          "chapter_track_or_chapter_list_present": false,
+          "method": "Read-only MP4 mvhd/tkhd/mdhd/stts/stsz/stsd/elst metadata; no media decoder/encoder launched."
+        }
+      },
+      "timing": {
+        "source_WAV": {
+          "sample_rate": 48000,
+          "channels": 2,
+          "sample_width_bytes": 2,
+          "sample_frames": 9453568,
+          "duration_seconds": 196.94933333333333
+        },
+        "source_callback_to_WAV_endpoint_hold_seconds": 0.4021703333333164,
+        "source_maximum_callback_hold_seconds": 0.4021703333333164,
+        "source_endpoint_policy_satisfied": true,
+        "source_endpoint_policy_scope": "The final source callback precedes the unmodified recorded WAV endpoint by a positive interval no greater than0.5s. This source assembly policy does not assert equal encoded video/audio stream durations.",
+        "container_minus_video_track_seconds": 0.38299999999998136,
+        "source_WAV_minus_video_sample_duration_seconds": 0.3826666666666654,
+        "final_image_display": "Video samples end before the audio/container. A player may retain the last decoded image during the remaining audio; that implicit final-image display was not verified by continuous playback here. No additional encoded terminal frames are invented or claimed.",
+        "AAC_duration_note": "Raw AAC media duration includes1024 priming samples. The audio edit starts at sample1024. Track/container/edit durations use the1000Hz movie timebase and differ from the exact WAV endpoint by less than1ms.",
+        "CFR_conversion": {
+          "source_callback_frames": 5257,
+          "encoded_video_frames": 5897,
+          "net_output_frame_count_increase": 640,
+          "individual_duplicate_frame_count": null,
+          "individual_dropped_callback_count": null,
+          "note": "The assembler resamples timestamp-held JPEGs onto a30fps grid, where duplication or dropping is expected. The net frame-count increase is measured; individual duplicate/drop counts were not recorded by these warning-level encode logs. No motion interpolation or generated intermediate pixels is claimed."
+        }
+      },
+      "decode_verification": {
+        "full_decode_performed_by_root": true,
+        "full_decode_exit_code": 0,
+        "exit_code_provenance": "Root observed both completed FFmpeg process exit codes as0. The FFmpeg text logs themselves do not store a numeric process exit code.",
+        "decode_log": {
+          "file": "PresentationS4Decode.log",
+          "bytes": 2183,
+          "sha256": "36d08c6ab5c07504bf4d9b8000a0fe042950138d15592ec36fbb0eae1043993a"
+        },
+        "decoded_video_frame_count": 5897,
+        "decoded_count_matches_actual_MP4_sample_count": true,
+        "terminal_summary": "frame= 5897 fps=3398 q=-0.0 Lsize=N/A time=00:03:16.56 bitrate=N/A speed= 113x",
+        "terminal_video_and_audio_summary_present": true,
+        "error_terms_found_in_decode_log": false,
+        "decoder_process_launched_by_this_summary": false
+      },
+      "current_movie_and_report_hashes_verified": true,
+      "perceptual_audio_audition_performed": false,
+      "continuous_playback_review_performed": false,
+      "visual_gameplay_validation_included": false,
+      "performance_profile_validation_included": false
+    }
+  ],
+  "limitations": [
+    "No continuous movie playback or perceptual audio audition was performed for this verification; full decode tests codec readability, not perceived gameplay/audio quality.",
+    "Source callbacks run at approximately27.35 and26.74 per second in these recordings. The30fps MP4s do not demonstrate a30fps game-performance result or every rendered engine frame.",
+    "Current source JPEG payloads were not all rehashed during this summary; their complete ordered hash ledgers match the final capture runner, and actual current raw records/WAVs/movie payloads were checked.",
+    "Video and audio do not end at identical times. Measured MP4 timing and the distinction between source endpoint hold and implicit player display are recorded explicitly.",
+    "Existing full decode logs and root's observed exit codes are reused. No new full decode was launched during the separate profiling work.",
+    "Chapter timing CSVs remain source provenance; the final movies contain no embedded chapters.",
+    "This report does not establish human OS input, a survival playthrough, environmental isolation, stress-profile performance, visual approval, audio-phase coverage or final publication approval."
+  ]
+}
