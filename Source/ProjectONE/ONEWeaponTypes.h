@@ -44,6 +44,17 @@ struct FONEWeaponOperationDefinition
     UPROPERTY(EditAnywhere) TArray<FONEWeaponTimedEvent> Events;
 };
 USTRUCT(BlueprintType)
+struct FONEPenetrationProfile
+{
+    GENERATED_BODY()
+    // Counts total distinct living bodies, including the first victim.
+    UPROPERTY(EditAnywhere,meta=(ClampMin="1",ClampMax="5")) int32 MaximumBodies=3;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="1")) float DamageRetainedPerBody=.65f;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0.01")) float MinimumDamage=2.f;
+    // Zero means no extra restriction. Range/falloff still use the original ray.
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0")) float AdditionalBodyRange=0.f;
+};
+USTRUCT(BlueprintType)
 struct FONEWeaponDefinition
 {
     GENERATED_BODY()
@@ -62,6 +73,13 @@ struct FONEWeaponDefinition
     UPROPERTY(EditAnywhere,meta=(ClampMin="0")) float Damage=32.f;
     UPROPERTY(EditAnywhere,meta=(ClampMin="0.04")) float FireInterval=.10f;
     UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="15")) float SpreadDegrees=.35f;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="10")) float MovingSpreadDegrees=.30f;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="5")) float SpreadGrowthPerShot=.055f;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="15")) float MaximumSpreadDegrees=1.15f;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0")) float SpreadRecoveryDelay=.16f;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0.01")) float SpreadRecoveryPerSecond=2.5f;
+    UPROPERTY(EditAnywhere) FONEPenetrationProfile Penetration;
+    UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="2")) float CameraShakeImpulse=.32f;
     UPROPERTY(EditAnywhere) float Range=2800.f;
     UPROPERTY(EditAnywhere) float FalloffStart=1400.f;
     UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="1")) float MinimumDamageFraction=.65f;
@@ -82,8 +100,6 @@ struct FONEWeaponDefinition
     UPROPERTY(EditAnywhere) FLinearColor FlashLightColor=FLinearColor(1.f,.63f,.28f);
     UPROPERTY(EditAnywhere) FLinearColor TraceColor=FLinearColor(1.f,.75f,.3f);
     UPROPERTY(EditAnywhere) FLinearColor AuraColor=FLinearColor::Transparent;
-    UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="1")) int32 AdditionalVictims=0;
-    UPROPERTY(EditAnywhere,meta=(ClampMin="0",ClampMax="1")) float PenetrationDamageFraction=.60f;
     UPROPERTY(EditAnywhere) float MagazineFreshTime=.74f;
     UPROPERTY(EditAnywhere) FVector MagazineHandOffset=FVector(-10.5f,0,0);
     UPROPERTY(EditAnywhere) FVector ShellHandOffset=FVector(6,0,2.8f);
@@ -124,6 +140,14 @@ struct FONECarriedWeaponState
     // a canceled reload cannot emit the same old magazine for a second time.
     UPROPERTY(VisibleAnywhere) bool bMagazinePresent=true;
     UPROPERTY(VisibleAnywhere) int32 MagazineDropCount=0;
+    float SpreadBloom=0.f,LastSpreadShot=-100.f,LastSpreadUpdate=0.f;
+};
+struct FONEWeaponOperationSnapshot
+{
+    EONEWeaponOperation Operation=EONEWeaponOperation::Ready;
+    float Elapsed=0.f;
+    int32 NextEvent=0;
+    bool bReloadStartedEmpty=false;
 };
 /** Opaque identity plus inspectable snapshot; the component keeps its own
  *  authoritative copy and never restores caller-edited snapshot values. */
@@ -132,7 +156,8 @@ struct FONEWeaponReservation
     uint64 RunId=0,ReservationId=0,InstanceId=0;
     int32 Slot=INDEX_NONE;
     FONECarriedWeaponState Before;
-    bool IsValid() const { return RunId!=0 && ReservationId!=0 && InstanceId!=0 && Slot>=0 && Slot<2; }
+    FONEWeaponOperationSnapshot BeforeOperation;
+    bool IsValid() const { return RunId!=0 && ReservationId!=0 && InstanceId!=0 && Slot>=0; }
 };
 struct FONEWeaponAcquisitionPlan
 {
@@ -183,6 +208,7 @@ struct FONEWeaponDamagePacket
 {
     static constexpr int32 RegionCount=static_cast<int32>(EONEHitRegion::Invalid);
     uint64 ShotId=0;
+    bool bForceLethal=false;
     float HeavyStaggerThreshold=10000.f;
     FONEWeaponRegionDamage Regions[RegionCount];
     static bool IsValidRegion(EONEHitRegion Region) { return static_cast<int32>(Region)>=0 && static_cast<int32>(Region)<RegionCount; }

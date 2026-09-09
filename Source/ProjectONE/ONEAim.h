@@ -5,6 +5,7 @@
  * remains the weapon's shoulder/muzzle traces, including point-blank targets. */
 namespace ONEAim
 {
+    bool IntersectCursorPlane(const FVector& RayOrigin,const FVector& RayDirection,double PlaneZ,FVector& OutPoint);
     FVector ResolveIntent(const FVector& Origin, const FVector& CursorPoint,
         const FVector& PreviousDirection, float CenterRadius=4.f);
     FVector ResolveShotDirection(const FVector& Origin, const FVector& CursorPoint,

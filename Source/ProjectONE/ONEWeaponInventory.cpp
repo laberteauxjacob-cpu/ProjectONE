@@ -39,9 +39,10 @@ void UONEWeaponComponent::InstallWeapon(int32 Slot,EONEWeaponFamily Family,bool 
 }
 void UONEWeaponComponent::ResetStarterLoadout()
 {
-    CancelAllOperations(); ClearEjectedCases(); ActiveReservation=FONEWeaponReservation(); bHandoffLocked=false;
+    CancelAllOperations(); ClearEjectedCases(); ActiveReservation=FONEWeaponReservation(); RestoredOperations.Reset(); bHandoffLocked=false;
     RunId=++ONEInventoryIds::NextRun; Carried.Reset(); Carried.SetNum(2);
     InstallWeapon(0,EONEWeaponFamily::Pistol); EquippedIndex=0; OperationIndex=0;
+    ResetSpreadStream(SpreadSeed);
     LastShot=-100; LastEmpty=-100; ++InventoryRevision; RefreshEquippedPresentation();
 }
 void UONEWeaponComponent::GiveTestLoadout()
@@ -55,11 +56,16 @@ void UONEWeaponComponent::SetHandoffLocked(bool bLocked)
     if (bHandoffLocked==bLocked) return;
     if (bLocked) { if (IsReloading()) CancelReload(); CancelAllOperations(); }
     bHandoffLocked=bLocked; ++InventoryRevision;
+    // Technical recovery may restore the only carried gun while intake still
+    // owns the hands. Select it when that lock ends, without cancelling another
+    // weapon's equip/reload or replaying its earned magazine/pump events.
+    if (!bLocked && !HasUsableWeapon() && Operation==EONEWeaponOperation::Ready && !bTrigger)
+    { ChooseAvailableAfterRemoval(); ResumeRestoredOperation(); }
 }
 void UONEWeaponComponent::ChooseAvailableAfterRemoval()
 {
     EquippedIndex=INDEX_NONE;
-    for (int32 I=0;I<2;++I) if (IsSlotAvailable(I)) { EquippedIndex=I; break; }
+    for (int32 I=0;I<Carried.Num();++I) if (IsSlotAvailable(I)) { EquippedIndex=I; break; }
     OperationIndex=EquippedIndex; RefreshEquippedPresentation();
     // The handoff owner releases the lock before gameplay resumes; Tick then
     // resumes any legitimate pump obligation on this remaining weapon.
@@ -68,13 +74,24 @@ bool UONEWeaponComponent::ReserveEquippedForUpgrade(FONEWeaponReservation& Out)
 {
     Out=FONEWeaponReservation();
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || ActiveReservation.IsValid() || !HasUsableWeapon() || !CanChangeInventory()) return false;
+    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || bHandoffLocked || ActiveReservation.IsValid() || !HasUsableWeapon()) return false;
     const auto* D=GetDefinitionForWeapon(EquippedIndex); if (!D || D->bUpgraded || !GetCatalogDefinition(D->Family,true)) return false;
-    if (IsReloading()) CancelReload();
-    CancelAllOperations();
+    const int32 ExpectedSlot=EquippedIndex;
+    const uint64 ExpectedInstance=Carried[ExpectedSlot].InstanceId;
+    // This is the accepted machine-transfer exception, never an ordinary
+    // reload cancellation. Settle only already-earned events before snapshot.
+    AdvanceOperationEvents();
+    if (EquippedIndex!=ExpectedSlot || !Carried.IsValidIndex(ExpectedSlot) || Carried[ExpectedSlot].InstanceId!=ExpectedInstance) return false;
+    D=GetDefinitionForWeapon(EquippedIndex);
+    if (!HasUsableWeapon() || !D || D->bUpgraded || !GetCatalogDefinition(D->Family,true)) return false;
     ActiveReservation.RunId=RunId; ActiveReservation.ReservationId=++ONEInventoryIds::NextReservation;
     ActiveReservation.Slot=EquippedIndex; ActiveReservation.InstanceId=Carried[EquippedIndex].InstanceId;
-    ActiveReservation.Before=Carried[EquippedIndex]; Out=ActiveReservation;
+    ActiveReservation.Before=Carried[EquippedIndex];
+    if (OperationIndex==EquippedIndex && Operation!=EONEWeaponOperation::Equip)
+        ActiveReservation.BeforeOperation={Operation,GetOperationElapsed(),NextEvent,bReloadStartedEmpty};
+    Out=ActiveReservation;
+    RestoredOperations.Remove(ActiveReservation.InstanceId);
+    CancelAllOperations();
     Carried[EquippedIndex].Status=EONEWeaponSlotStatus::MachineReserved;
     ++InventoryRevision; ChooseAvailableAfterRemoval(); return true;
 }
@@ -94,52 +111,69 @@ bool UONEWeaponComponent::MarkUpgradeReady(const FONEWeaponReservation& Token)
 bool UONEWeaponComponent::CollectUpgrade(const FONEWeaponReservation& Token)
 {
     const auto* P=Cast<AONEPlayer>(GetOwner());
-    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !CanChangeInventory() || !MatchesReservation(Token) || Carried[Token.Slot].Status!=EONEWeaponSlotStatus::ReadyToCollect) return false;
+    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !MatchesReservation(Token) || Carried[Token.Slot].Status!=EONEWeaponSlotStatus::ReadyToCollect) return false;
     if (!GetCatalogDefinition(Carried[Token.Slot].Family,true)) return false;
-    if (IsReloading()) CancelReload(); CancelAllOperations();
     const int32 Slot=Token.Slot;
     auto& S=Carried[Slot]; S.bUpgraded=true; S.Status=EONEWeaponSlotStatus::Available;
     RefillSlot(Slot,true); ActiveReservation=FONEWeaponReservation(); ++InventoryRevision;
-    // Always pass through the normal equip operation, including return to the
-    // previously unarmed slot. Its midpoint installs the visible assembly.
-    PendingIndex=Slot; StartOperation(EONEWeaponOperation::Equip,Slot); return true;
+    // Ownership return never waits for or interrupts the other gun. Cosmetic
+    // equipping is optional; a busy/held other weapon remains usable as-is.
+    if (Operation==EONEWeaponOperation::Ready && !bTrigger && !bHandoffLocked)
+    { ClearHeldInput(); PendingIndex=Slot; StartOperation(EONEWeaponOperation::Equip,Slot); }
+    return true;
+}
+bool UONEWeaponComponent::ExpireUpgrade(const FONEWeaponReservation& Token)
+{
+    if (!MatchesReservation(Token) || Carried[Token.Slot].Status!=EONEWeaponSlotStatus::ReadyToCollect) return false;
+    RestoredOperations.Remove(Token.InstanceId);
+    Carried[Token.Slot]=FONECarriedWeaponState(); ActiveReservation=FONEWeaponReservation(); ++InventoryRevision;
+    return true;
 }
 bool UONEWeaponComponent::RollbackUpgrade(const FONEWeaponReservation& Token)
 {
     if (!MatchesReservation(Token)) return false;
     const int32 Slot=Token.Slot;
-    Carried[Slot]=ActiveReservation.Before; ActiveReservation=FONEWeaponReservation(); ++InventoryRevision;
-    if (!HasUsableWeapon()) { EquippedIndex=Slot; OperationIndex=EquippedIndex; RefreshEquippedPresentation(); }
+    Carried[Slot]=ActiveReservation.Before;
+    RestoredOperations.Add(Token.InstanceId,ActiveReservation.BeforeOperation);
+    ActiveReservation=FONEWeaponReservation(); ++InventoryRevision;
+    if (Operation==EONEWeaponOperation::Ready && !bTrigger && !bHandoffLocked)
+    { EquippedIndex=Slot; OperationIndex=EquippedIndex; RefreshEquippedPresentation(); ResumeRestoredOperation(); }
     return true;
+}
+void UONEWeaponComponent::ResumeRestoredOperation()
+{
+    if (!HasUsableWeapon() || bHandoffLocked || Operation!=EONEWeaponOperation::Ready) return;
+    const uint64 Instance=Carried[EquippedIndex].InstanceId;
+    const auto* Saved=RestoredOperations.Find(Instance); if (!Saved) return;
+    const FONEWeaponOperationSnapshot Snapshot=*Saved; RestoredOperations.Remove(Instance);
+    if (Snapshot.Operation==EONEWeaponOperation::Ready || !FindOperation(EquippedIndex,Snapshot.Operation)) return;
+    // Restore phase and next unearned event without replaying zero-time events.
+    DisarmFiring(); StopOperationAudio(); Operation=Snapshot.Operation; OperationIndex=EquippedIndex;
+    OperationStart=GetWorld()->GetTimeSeconds()-FMath::Max(0.f,Snapshot.Elapsed);
+    NextEvent=FMath::Max(0,Snapshot.NextEvent); bReloadStartedEmpty=Snapshot.bReloadStartedEmpty; ++OperationSerial;
 }
 void UONEWeaponComponent::InvalidateMachineTransactions()
 {
     CancelAllOperations();
     if (ActiveReservation.IsValid()) RollbackUpgrade(ActiveReservation);
-    ActiveReservation=FONEWeaponReservation(); bHandoffLocked=false; RunId=++ONEInventoryIds::NextRun; ++InventoryRevision;
+    ActiveReservation=FONEWeaponReservation(); RestoredOperations.Reset(); bHandoffLocked=false; RunId=++ONEInventoryIds::NextRun; ++InventoryRevision;
 }
 void UONEWeaponComponent::CycleWeapon()
 {
     const int32 From=PendingIndex>=0 ? PendingIndex : EquippedIndex;
-    for (int32 Step=1;Step<=2;++Step)
-    { const int32 Slot=(FMath::Max(-1,From)+Step)%2; if (IsSlotAvailable(Slot) && Slot!=From) { SelectWeapon(Slot); return; } }
+    for (int32 Step=1;Step<=Carried.Num();++Step)
+    { const int32 Slot=(FMath::Max(-1,From)+Step)%Carried.Num(); if (IsSlotAvailable(Slot) && Slot!=From) { SelectWeapon(Slot); return; } }
 }
 bool UONEWeaponComponent::IsFamilyRollEligible(EONEWeaponFamily Family) const
 {
     if (!GetCatalogDefinition(Family,false)) return false;
-    for (const auto& S:Carried) if (S.Family==Family && (S.Status==EONEWeaponSlotStatus::MachineReserved || S.Status==EONEWeaponSlotStatus::ReadyToCollect)) return false;
+    for (const auto& S:Carried) if (S.Family==Family && S.Status!=EONEWeaponSlotStatus::Empty && S.InstanceId!=0) return false;
     return true;
 }
 FONEWeaponAcquisitionPlan UONEWeaponComponent::BuildAcquisitionPlan(EONEWeaponFamily Family) const
 {
     FONEWeaponAcquisitionPlan Plan; Plan.Family=Family; Plan.RunId=RunId; Plan.Revision=InventoryRevision;
     if (bHandoffLocked || !CanChangeInventory() || !IsFamilyRollEligible(Family)) return Plan;
-    for (int32 I=0;I<Carried.Num();++I) if (IsSlotAvailable(I) && Carried[I].Family==Family)
-    {
-        Plan.Slot=I; Plan.ExpectedInstanceId=Carried[I].InstanceId; const auto& D=*GetDefinitionForWeapon(I);
-        Plan.Kind=Carried[I].Ammo>=D.Capacity && Carried[I].Reserve>=D.ReserveLimit ? EONEWeaponAcquisitionKind::AlreadyFull : EONEWeaponAcquisitionKind::Refill;
-        return Plan;
-    }
     for (int32 I=0;I<Carried.Num();++I) if (Carried[I].Status==EONEWeaponSlotStatus::Empty)
     { Plan.Slot=I; Plan.Kind=EONEWeaponAcquisitionKind::FillEmpty; return Plan; }
     if (HasUsableWeapon()) { Plan.Slot=EquippedIndex; Plan.ExpectedInstanceId=Carried[EquippedIndex].InstanceId; Plan.Kind=EONEWeaponAcquisitionKind::Replace; }
@@ -150,8 +184,7 @@ bool UONEWeaponComponent::ApplyAcquisitionPlan(const FONEWeaponAcquisitionPlan& 
     const auto* P=Cast<AONEPlayer>(GetOwner());
     if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || !Plan.IsValid() || BuildAcquisitionPlan(Plan.Family)!=Plan) return false;
     if (IsReloading()) CancelReload(); CancelAllOperations();
-    if (Plan.Kind==EONEWeaponAcquisitionKind::Refill || Plan.Kind==EONEWeaponAcquisitionKind::AlreadyFull) RefillSlot(Plan.Slot,true);
-    else InstallWeapon(Plan.Slot,Plan.Family);
+    InstallWeapon(Plan.Slot,Plan.Family);
     ++InventoryRevision;
     // An acquired/refilled reward is readied visibly, never silently replaces
     // the index before the authored equip midpoint.

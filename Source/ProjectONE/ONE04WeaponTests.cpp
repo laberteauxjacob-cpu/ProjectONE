@@ -4,6 +4,7 @@
 #include "ONEPlayer.h"
 #include "ONEHealthComponent.h"
 #include "Engine/World.h"
+#include "Engine/Engine.h"
 #include "Engine/SkeletalMesh.h"
 #include "Components/SkeletalMeshComponent.h"
 #if WITH_DEV_AUTOMATION_TESTS
@@ -16,8 +17,10 @@ namespace ONE04InventoryTest
         UONEWeaponComponent* Weapon=nullptr;
         FFixture()
         {
+            FWorldContext& Context=GEngine->CreateNewWorldContext(EWorldType::Game);
             const auto Options=UWorld::InitializationValues().AllowAudioPlayback(false).CreateNavigation(false).CreateAISystem(false);
             World=UWorld::CreateWorld(EWorldType::Game,false,NAME_None,nullptr,true,ERHIFeatureLevel::Num,&Options);
+            Context.SetCurrentWorld(World);
             FActorSpawnParameters Spawn; Spawn.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
             USkeletalMesh* FixtureMesh=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/SK_Response.SK_Response"));
             if (!FixtureMesh) return;
@@ -27,9 +30,24 @@ namespace ONE04InventoryTest
             Spawn.CustomPreSpawnInitalization=[FixtureMesh](AActor* Actor)
             { if (auto* Pawn=Cast<AONEPlayer>(Actor)) Pawn->GetMesh()->SetSkeletalMesh(FixtureMesh); };
             Player=World ? World->SpawnActor<AONEPlayer>(FVector(0,0,100),FRotator::ZeroRotator,Spawn) : nullptr;
-            if (Player) { Player->Health->Restore(); Weapon=Player->GetWeaponComponent(); Weapon->ResetStarterLoadout(); }
+            if (Player)
+            {
+                Player->Health->Restore(); Weapon=Player->GetWeaponComponent(); Weapon->ResetStarterLoadout();
+                Player->SetActorTickEnabled(false);
+                TInlineComponentArray<UActorComponent*> Components(Player);
+                for (auto* Component:Components) Component->SetComponentTickEnabled(false);
+            }
         }
-        ~FFixture() { if (World) World->DestroyWorld(false); }
+        void Advance(float Seconds)
+        {
+            for (int32 N=0;N<FMath::CeilToInt(Seconds*120.f);++N)
+            { World->Tick(LEVELTICK_All,1.f/120.f); Weapon->TickComponent(1.f/120.f,LEVELTICK_All,nullptr); }
+        }
+        ~FFixture()
+        {
+            if (World)
+            { GEngine->ShutdownWorldNetDriver(World); World->DestroyWorld(false); World->SetPhysicsScene(nullptr); GEngine->DestroyWorldContext(World); }
+        }
     };
 }
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FONE04CatalogTimingTest,"ProjectONE.Inventory.SixIndependentVariantsAndTiming",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
@@ -58,8 +76,13 @@ bool FONE04CatalogTimingTest::RunTest(const FString& Parameters)
             for (int32 I=0;I<O.Events.Num();++I)
             { TestTrue(TEXT("Event phase remains coherent with operation rate"),FMath::IsNearlyEqual(U->Events[I].Time*Rate,O.Events[I].Time)); TestTrue(TEXT("Event occurs inside operation"),U->Events[I].Time<=U->Duration); }
         }
-        TestEqual(TEXT("Only Last Word gets exactly one extra victim"),Upgrade->AdditionalVictims,Family==EONEWeaponFamily::Pistol ? 1 : 0);
-        TestEqual(TEXT("No base penetration"),Base->AdditionalVictims,0);
+        const int32 BaseBodies=Family==EONEWeaponFamily::Carbine?3:2;
+        TestEqual(TEXT("Candidate06 profile counts total distinct bodies including first"),Base->Penetration.MaximumBodies,BaseBodies);
+        TestEqual(TEXT("Upgrade supports one additional bounded body"),Upgrade->Penetration.MaximumBodies,BaseBodies+1);
+        TestTrue(TEXT("Per-body damage declines and minimum continuation damage is positive"),
+            Base->Penetration.DamageRetainedPerBody>0 && Base->Penetration.DamageRetainedPerBody<1 && Base->Penetration.MinimumDamage>0);
+        TestTrue(TEXT("Only pellet profile imposes close-range additional-body limit"),
+            Family==EONEWeaponFamily::Shotgun ? Base->Penetration.AdditionalBodyRange>0 : Base->Penetration.AdditionalBodyRange==0);
     }
     return true;
 }
@@ -71,8 +94,9 @@ bool FONE04ReservationTest::RunTest(const FString& Parameters)
     TestEqual(TEXT("Pistol starts7/56"),W->GetAmmo(),7); TestEqual(TEXT("Pistol reserve56"),W->GetReserveAmmo(),56);
     TestNull(TEXT("Empty second slot has no definition"),W->GetDefinitionForWeapon(1));
     W->AddReserveAmmo(-10); const auto Original=*W->GetSlotState(0);
-    W->SetHandoffLocked(true); FONEWeaponReservation Token;
-    TestTrue(TEXT("Accepted handoff reserves despite input lock"),W->ReserveEquippedForUpgrade(Token));
+    FONEWeaponReservation Token;
+    TestTrue(TEXT("Accepted deposit reserves before presentation handoff lock"),W->ReserveEquippedForUpgrade(Token));
+    W->SetHandoffLocked(true);
     TestFalse(TEXT("Only weapon deposit leaves unarmed"),W->HasUsableWeapon());
     TestEqual(TEXT("Unarmed selected index is safe sentinel"),W->GetEquippedIndex(),INDEX_NONE);
     TestEqual(TEXT("Safe unarmed damage is zero"),W->GetDefinition().Damage,0.f);
@@ -84,6 +108,8 @@ bool FONE04ReservationTest::RunTest(const FString& Parameters)
     TestFalse(TEXT("Wrong instance cannot release reservation"),W->RollbackUpgrade(Forged));
     Token.Before.Ammo=999; Token.Before.Reserve=999;
     TestTrue(TEXT("Valid identity rolls back once"),W->RollbackUpgrade(Token));
+    W->SetHandoffLocked(false);
+    TestTrue(TEXT("Releasing failed only-weapon handoff restores usable original slot"),W->HasUsableWeapon() && W->GetEquippedIndex()==Token.Slot);
     TestEqual(TEXT("Rollback restores authoritative snapshot, not caller mutation"),W->GetAmmoForWeapon(0),Original.Ammo);
     TestEqual(TEXT("Rollback preserves exact predeposit reserve"),W->GetReserveAmmoForWeapon(0),Original.Reserve);
     TestEqual(TEXT("Rollback keeps exact owned instance"),W->GetSlotState(0)->InstanceId,Original.InstanceId);
@@ -116,9 +142,10 @@ bool FONE04AcquisitionTest::RunTest(const FString& Parameters)
     TestEqual(TEXT("Last Word maximum reserve awarded once"),W->GetReserveAmmoForWeapon(0),168);
     TestFalse(TEXT("Duplicate collection cannot refill again"),W->CollectUpgrade(Token));
     const auto Duplicate=W->BuildAcquisitionPlan(EONEWeaponFamily::Pistol);
-    TestTrue(TEXT("Full duplicate is explicit rather than a replacement"),Duplicate.Kind==EONEWeaponAcquisitionKind::AlreadyFull && Duplicate.Slot==0);
-    TestTrue(TEXT("Full duplicate may be consumed without downgrade"),W->ApplyAcquisitionPlan(Duplicate));
-    TestTrue(TEXT("Duplicate retains upgraded instance"),W->GetSlotState(0)->bUpgraded && W->GetSlotState(0)->InstanceId==Token.InstanceId);
+    TestFalse(TEXT("Owned upgraded family is excluded from base-family box pool"),W->IsFamilyRollEligible(EONEWeaponFamily::Pistol));
+    TestFalse(TEXT("Owned-family acquisition never offers a refill"),Duplicate.IsValid());
+    TestFalse(TEXT("Owned-family plan cannot be consumed"),W->ApplyAcquisitionPlan(Duplicate));
+    TestTrue(TEXT("Rejected duplicate preserves upgraded instance"),W->GetSlotState(0)->bUpgraded && W->GetSlotState(0)->InstanceId==Token.InstanceId);
     TestEqual(TEXT("New base catalog remains seven rounds"),W->GetCatalogDefinition(EONEWeaponFamily::Pistol,false)->Capacity,7);
     return true;
 }
@@ -138,6 +165,49 @@ bool FONE04RunBoundaryTest::RunTest(const FString& Parameters)
     TestFalse(TEXT("Old refund recovery cannot restore a prior weapon"),W->RollbackUpgrade(Old));
     TestEqual(TEXT("Restart retains exactly two slots"),W->GetWeaponCount(),2);
     TestTrue(TEXT("Restart slot1 Empty"),W->GetSlotState(1)->Status==EONEWeaponSlotStatus::Empty);
+    return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FONE06TransferMechanicsTest,"ProjectONE.Candidate06.Inventory.EmptyReloadAndPumpTransfer",
+    EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FONE06TransferMechanicsTest::RunTest(const FString&)
+{
+    ONE04InventoryTest::FFixture F; auto* W=F.Weapon;
+    if (!TestNotNull(TEXT("Real-world transfer fixture"),W)) return false;
+    // Explicit state arrangement isolates empty-ammo and pending spent-case
+    // boundaries. All reload/pump timing, transfer and restoration below use
+    // real component APIs; this is not a shot-direction or damage test.
+    auto* Empty=const_cast<FONECarriedWeaponState*>(W->GetSlotState(0)); Empty->Ammo=0;
+    W->BeginReload(); F.Advance(.4f);
+    TestTrue(TEXT("Empty-with-reserve reload reached real magazine-out before insertion"),W->IsMagazineReloadCommitted() && !W->GetSlotState(0)->bMagazinePresent);
+    const int32 Drops=W->GetMagazineDropCount(),Transfers=W->GetMagazineCommitCount();
+    FONEWeaponReservation Reload;
+    TestTrue(TEXT("Empty magazine with reserve accepts the transfer exception"),W->ReserveEquippedForUpgrade(Reload));
+    TestTrue(TEXT("Snapshot retains zero ammo, reserve and already-earned absent magazine"),Reload.Before.Ammo==0 && Reload.Before.Reserve==56 && !Reload.Before.bMagazinePresent);
+    W->SetHandoffLocked(true);
+    W->ApplyMaxAmmoPowerUp();
+    TestTrue(TEXT("Max Ammo cannot alter machine-reserved rollback snapshot"),W->GetAmmoForWeapon(0)==0 && W->GetReserveAmmoForWeapon(0)==56);
+    TestTrue(TEXT("Technical recovery restores original empty-reload state"),W->RollbackUpgrade(Reload));
+    W->SetHandoffLocked(false);
+    TestTrue(TEXT("Only-weapon rollback resumes its saved reload after handoff unlock"),W->HasUsableWeapon() && W->IsMagazineReloadCommitted());
+    F.Advance(1.6f);
+    TestTrue(TEXT("Restored reload completes one transfer without another dropped magazine"),W->GetAmmo()==7 && W->GetReserveAmmo()==49 &&
+        W->GetMagazineDropCount()==Drops && W->GetMagazineCommitCount()==Transfers+1 && !W->IsBusy());
+
+    W->ResetStarterLoadout();
+    TestTrue(TEXT("Shotgun acquired through production inventory API"),W->ApplyAcquisitionPlan(W->BuildAcquisitionPlan(EONEWeaponFamily::Shotgun)));
+    F.Advance(.45f);
+    auto* Pump=const_cast<FONECarriedWeaponState*>(W->GetSlotState(W->GetEquippedIndex()));
+    Pump->Ammo=5; Pump->bNeedsPump=true; Pump->bCaseEjected=false; Pump->PendingCaseShotId=7300601;
+    W->TickComponent(0,LEVELTICK_All,nullptr); F.Advance(.1f);
+    TestTrue(TEXT("Actual pump starts before its shell-ejection event"),W->GetOperation()==EONEWeaponOperation::Pump && !Pump->bCaseEjected);
+    FONEWeaponReservation PumpToken; const int32 Ejections=W->GetEjectionCount();
+    TestTrue(TEXT("Required pump operation accepts deposit"),W->ReserveEquippedForUpgrade(PumpToken));
+    TestTrue(TEXT("Pump obligation and exact pending case identity are snapshotted"),PumpToken.Before.bNeedsPump && !PumpToken.Before.bCaseEjected && PumpToken.Before.PendingCaseShotId==7300601);
+    TestTrue(TEXT("Pump rollback restores the original available slot"),W->RollbackUpgrade(PumpToken));
+    F.Advance(.55f);
+    TestTrue(TEXT("Restored pump ejects the original case once and locks safely"),W->GetEjectionCount()==Ejections+1 && !W->NeedsPump(PumpToken.Slot));
+    W->ApplyMaxAmmoPowerUp(); F.Advance(.2f);
+    TestEqual(TEXT("Later Max Ammo cannot eject that case again"),W->GetEjectionCount(),Ejections+1);
     return true;
 }
 #endif

@@ -19,6 +19,9 @@
 #include "ONE05Audio.h"
 #include "ONEAim.h"
 #include "ONEWeaponTiming.h"
+#include "ONE06Ballistics.h"
+#include "ONE06ImpactSubsystem.h"
+#include "ONEGameMode.h"
 
 namespace
 {
@@ -254,6 +257,35 @@ void UONEWeaponComponent::RefillAllAmmo()
     for (int32 I=0;I<Carried.Num();++I) RefillSlot(I,false);
     LastShot=-100; LastEmpty=-100; RefreshEquippedPresentation();
 }
+void UONEWeaponComponent::ApplyMaxAmmoPowerUp()
+{
+    const auto* P=Cast<AONEPlayer>(GetOwner());
+    if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this)) return;
+    AdvanceOperationEvents(); // Never lose or replay an already-earned event.
+    ClearHeldInput();
+    for (int32 I=0;I<Carried.Num();++I) if (IsSlotAvailable(I))
+    {
+        auto& S=Carried[I]; const auto& D=*GetDefinitionForWeapon(I);
+        S.Ammo=D.Capacity; S.Reserve=D.ReserveLimit; S.bMagazinePresent=true;
+        // A live spent case and pump remain the same mechanical obligation.
+        RestoredOperations.Remove(S.InstanceId);
+    }
+    if (Operation==EONEWeaponOperation::MagazineReload && IsSlotAvailable(OperationIndex))
+    {
+        // The resupply transaction installs the magazine once; continue the
+        // authored closing phase, skipping out/commit events already reconciled.
+        const auto* O=FindOperation(OperationIndex,Operation);
+        const float Seat=FindEventTime(EONEWeaponEvent::MagazineCommit,GetOperationElapsed());
+        const float Resume=FMath::Max(GetOperationElapsed(),Seat+.001f);
+        OperationStart=GetWorld()->GetTimeSeconds()-Resume;
+        if (O) while (NextEvent<O->Events.Num() && O->Events[NextEvent].Time<=Resume) ++NextEvent;
+        if (auto* Player=Cast<AONEPlayer>(GetOwner())) Player->ClearReloadPresentation();
+    }
+    else if (Operation==EONEWeaponOperation::ShellStart || Operation==EONEWeaponOperation::ShellInsert)
+        StartOperation(EONEWeaponOperation::ShellEnd);
+    ++InventoryRevision;
+    RefreshEquippedPresentation();
+}
 void UONEWeaponComponent::AddReserveAmmo(int32 Count)
 { if (HasUsableWeapon() && !bHandoffLocked) Carried[EquippedIndex].Reserve=static_cast<int32>(FMath::Clamp(static_cast<int64>(GetReserveAmmo())+Count,static_cast<int64>(0),static_cast<int64>(GetDefinition().ReserveLimit))); }
 void UONEWeaponComponent::GrantRoundAmmo()
@@ -384,6 +416,7 @@ void UONEWeaponComponent::TickComponent(float Dt,ELevelTick Tick,FActorComponent
 {
     Super::TickComponent(Dt,Tick,ThisTick);
     LastWeaponTickFrame=GFrameCounter;
+    RecoverSpread();
     const auto* P=Cast<AONEPlayer>(GetOwner());
     if (!P || P->IsDead() || UGameplayStatics::IsGamePaused(this) || (bHandoffLocked && Operation!=EONEWeaponOperation::Equip))
     { DisarmFiring(); return; }
@@ -394,6 +427,7 @@ void UONEWeaponComponent::TickComponent(float Dt,ELevelTick Tick,FActorComponent
         if (Serial==OperationSerial && GetOperationElapsed()>=GetOperationDuration()) FinishOperation();
     }
     if (!HasUsableWeapon() || bHandoffLocked) { DisarmFiring(); return; }
+    ResumeRestoredOperation();
     if (Operation==EONEWeaponOperation::Ready && NeedsPump(EquippedIndex)) StartOperation(EONEWeaponOperation::Pump);
     // Pump/equip/fire completion comes first. Only the empty equipped weapon may
     // reload automatically; a held trigger is never required to enter this path.
@@ -450,10 +484,38 @@ float UONEWeaponComponent::FindEventTime(EONEWeaponEvent Type,float Fallback) co
 void UONEWeaponComponent::ClearEjectedCases()
 { for (auto& C:Cases) if (C.IsValid()) C->Destroy(); Cases.Reset(); for (auto& M:Magazines) if (M.IsValid()) M->Destroy(); Magazines.Reset(); }
 
+void UONEWeaponComponent::ResetSpreadStream(int32 Seed,bool bResetBloom)
+{
+    SpreadRandom.Initialize(Seed);
+    if (bResetBloom) for (auto& S:Carried)
+    { S.SpreadBloom=0.f; S.LastSpreadShot=-100.f; S.LastSpreadUpdate=GetWorld()?GetWorld()->GetTimeSeconds():0.f; }
+}
+void UONEWeaponComponent::RecoverSpread()
+{
+    const float Now=GetWorld()->GetTimeSeconds();
+    for (int32 I=0;I<Carried.Num();++I) if (const auto* D=GetDefinitionForWeapon(I))
+    {
+        auto& S=Carried[I];
+        const float Eligible=FMath::Max(0.f,Now-FMath::Max(S.LastSpreadUpdate,S.LastSpreadShot+FMath::Max(0.f,D->SpreadRecoveryDelay)));
+        S.SpreadBloom=FMath::Max(0.f,S.SpreadBloom-Eligible*FMath::Max(.01f,D->SpreadRecoveryPerSecond));
+        S.LastSpreadUpdate=Now;
+    }
+}
+float UONEWeaponComponent::GetCurrentSpreadDegrees() const
+{
+    if (!HasUsableWeapon()) return 0.f;
+    const auto& D=GetDefinition(); const auto* P=Cast<AONEPlayer>(GetOwner());
+    const float Moving=P ? FMath::Clamp(float(P->GetVelocity().Size2D())/FMath::Max(1.f,P->WalkSpeed),0.f,1.5f) : 0.f;
+    return FMath::Clamp(D.SpreadDegrees+Moving*D.MovingSpreadDegrees+Carried[EquippedIndex].SpreadBloom,0.f,
+        FMath::Clamp(FMath::Max(D.SpreadDegrees,D.MaximumSpreadDegrees),0.f,15.f));
+}
 void UONEWeaponComponent::Fire(bool bContinuingBurst)
 {
     auto* P=Cast<AONEPlayer>(GetOwner()); if (!P || !CanFire()) return;
     const auto& D=GetDefinition(); auto& State=Carried[EquippedIndex];
+    RecoverSpread(); const float ShotSpread=GetCurrentSpreadDegrees();
+    State.SpreadBloom=FMath::Clamp(State.SpreadBloom+FMath::Max(0.f,D.SpreadGrowthPerShot),0.f,FMath::Max(0.f,D.MaximumSpreadDegrees-D.SpreadDegrees));
+    State.LastSpreadShot=GetWorld()->GetTimeSeconds();
     --State.Ammo; State.bNeedsPump=D.bPumpAction; State.bCaseEjected=false;
     LastShot=GetWorld()->GetTimeSeconds(); LastShotId=++NextDischargeId; ++ShotsFired;
     // Carry only fractional tick phase in a healthy established burst. Missing
@@ -474,55 +536,74 @@ void UONEWeaponComponent::Fire(bool bContinuingBurst)
         { A->bIsUISound=false; ShotAudio.Add(A); }
     const FVector Direction=P->GetShotDirection(Start);
     LastShotDirection=Direction; LastShotForwardTracers=0; LastShotContactPellets=0;
+    LastProjectilePaths.Reset();
+    auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>();
+    const FONECombatDischargeContext AwardContext=GM ? GM->BeginCombatDischarge() : FONECombatDischargeContext();
     FCollisionQueryParams Params(SCENE_QUERY_STAT(ONEWeapon),false,P);
     FHitResult Obstruction; const FVector Shoulder=P->GetAimOrigin();
-    const bool bObstructed=GetWorld()->LineTraceSingleByChannel(Obstruction,Shoulder,Start,ECC_Visibility,Params);
+    // The physical weapon cannot reach through solid cover. Infected are tested
+    // only on each projectile's immutable line, never on this separate body path.
+    bool bObstructed=false;
+    FCollisionQueryParams ReachParams=Params;
+    for (int32 Query=0;Query<ONE06Ballistics::MaximumContactsPerProjectile;++Query)
+    {
+        if (!GetWorld()->LineTraceSingleByChannel(Obstruction,Shoulder,Start,ECC_Visibility,ReachParams)) break;
+        if (auto* Z=Cast<AONEZombie>(Obstruction.GetActor()))
+        { ReachParams.AddIgnoredActor(Z); if (Query==ONE06Ballistics::MaximumContactsPerProjectile-1) bObstructed=true; }
+        else { bObstructed=true; break; }
+    }
     bLastShotMuzzleObstructed=bObstructed;
-    // Contact fire covers only the space before the actual barrel plane. It
-    // follows selected region height and uses world collision, never a radius
-    // search. The physical shoulder-to-barrel obstruction remains authoritative.
     const FVector Intent=P->GetIntendedAimDirection();
-    const FVector ContactDirection=ONEAim::ResolveShotDirection(Shoulder,P->GetAimPoint(),Intent,Shoulder,
-        P->AimConvergenceAhead,P->AimMaximumPitch);
-    const double BarrelDepth=FVector::DotProduct(Start-Shoulder,Intent);
     TMap<AONEZombie*,FONEWeaponDamagePacket> Victims;
     TArray<FHitResult> SurfaceHits;
     auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>();
+    auto* Marks=GetWorld()->GetSubsystem<UONE06ImpactSubsystem>();
+    if (bObstructed && !Cast<AONEZombie>(Obstruction.GetActor()))
+    { SurfaceHits.Add(Obstruction); if (Marks) Marks->AddImpact(Obstruction,false); }
     // Trace every pellet against one scene snapshot. Resolve each victim only once afterward.
     for (int32 I=0;I<D.Pellets;++I)
     {
-        const FVector Ray=FMath::VRandCone(Direction,FMath::DegreesToRadians(D.SpreadDegrees));
-        FHitResult Hit=Obstruction;
-        const FVector ContactRay=FQuat::FindBetweenNormals(Direction,ContactDirection).RotateVector(Ray).GetSafeNormal();
-        const double ContactForward=FVector::DotProduct(ContactRay,Intent);
-        bool bContact=false;
-        if (!bObstructed && BarrelDepth>.1 && ContactForward>.5)
-            bContact=GetWorld()->LineTraceSingleByChannel(Hit,Shoulder,Shoulder+ContactRay*(BarrelDepth/ContactForward),ECC_Visibility,Params);
-        const bool bPrefixHit=bObstructed || bContact;
-        if (bContact) ++LastShotContactPellets;
-        const FVector ImpactRay=bContact ? ContactRay : Ray;
-        FVector TraceStart=Start,TraceEnd=Start+Ray*D.Range,LastEnd=TraceEnd;
+        const FVector Ray=ONE06Ballistics::SampleDirection(SpreadRandom,Direction,ShotSpread);
+        auto& Path=LastProjectilePaths.AddDefaulted_GetRef(); Path.Direction=Ray; Path.SpreadDegrees=ShotSpread;
+        // A single collinear extension reaches shoulder depth for point-blank
+        // contact. Range begins here and never restarts; there is no rotated
+        // prefix ray, retarget, radius search or second damage path.
+        const float ContactLength=FMath::Clamp(float(FVector::DotProduct(Start-Shoulder,Ray)),0.f,float(FVector::Dist(Start,Shoulder)));
+        Path.Origin=Start-Ray*ContactLength;
+        FVector TraceStart=Path.Origin; const FVector TraceEnd=Path.Origin+Ray*FMath::Max(0.f,D.Range);
+        FVector LastEnd=bObstructed ? Start : TraceEnd;
         FCollisionQueryParams PelletParams=Params;
-        // The single extra victim is bounded independently of the pellet count.
-        // Ignore the entire previous actor, not just one of its region shapes.
-        const int32 Extra=FMath::Clamp(D.AdditionalVictims,0,1);
-        for (int32 Depth=0;Depth<=Extra;++Depth)
+        int32 LivingBodies=0;
+        for (int32 Query=0;!bObstructed && Query<ONE06Ballistics::MaximumContactsPerProjectile;++Query)
         {
-            const bool bHit=(Depth==0 && bPrefixHit) || GetWorld()->LineTraceSingleByChannel(Hit,TraceStart,TraceEnd,ECC_Visibility,PelletParams);
+            FHitResult Hit; ++Path.SceneQueries;
+            const bool bHit=GetWorld()->LineTraceSingleByChannel(Hit,TraceStart,TraceEnd,ECC_Visibility,PelletParams);
             LastEnd=bHit ? Hit.ImpactPoint : TraceEnd;
             if (!bHit) break;
             if (auto* Z=Cast<AONEZombie>(Hit.GetActor()))
             {
-                const EONEHitRegion Region=Z->GetHitRegion(Hit); if (Region==EONEHitRegion::Invalid) break;
-                const float Falloff=FMath::Clamp((FVector::Distance(Start,LastEnd)-D.FalloffStart)/FMath::Max(1.f,D.Range-D.FalloffStart),0.f,1.f);
-                const float HitDamage=D.Damage*FMath::Lerp(1.f,D.MinimumDamageFraction,Falloff)*(Depth==0 ? 1.f : FMath::Clamp(D.PenetrationDamageFraction,0.f,1.f));
-                auto& Packet=Victims.FindOrAdd(Z); Packet.ShotId=LastShotId; Packet.HeavyStaggerThreshold=D.HeavyStaggerThreshold;
-                float TraumaScale=0.f;
-                if (Region==EONEHitRegion::Head) TraumaScale=D.HeadTraumaScale;
-                else if (Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight) TraumaScale=D.ArmTraumaScale;
-                else if (Region==EONEHitRegion::LegLeft || Region==EONEHitRegion::LegRight) TraumaScale=D.LegTraumaScale;
-                Packet.Get(Region).AddPellet(HitDamage,HitDamage*TraumaScale,LastEnd,ImpactRay,Hit.ImpactNormal,RegionalImpactBone(Z,Region,Hit));
-                if (Depth>=Extra || bPrefixHit) break;
+                const EONEHitRegion Region=Z->GetHitRegion(Hit);
+                const bool Corpse=Z->IsDead();
+                const float Travel=FMath::Clamp(float(FVector::DotProduct(LastEnd-Path.Origin,Ray)),0.f,D.Range);
+                if (!Corpse && !ONE06Ballistics::CanDamageBody(D,Travel,LivingBodies)) break;
+                if (Region!=EONEHitRegion::Invalid)
+                {
+                    const float HitDamage=ONE06Ballistics::DamageAtDistance(D,Travel,LivingBodies);
+                    if (HitDamage<FMath::Max(.01f,D.Penetration.MinimumDamage)) break;
+                    auto& Contact=Path.Contacts.AddDefaulted_GetRef(); Contact.Victim=Z; Contact.Distance=Travel;
+                    Contact.Damage=HitDamage; Contact.Region=Region; Contact.bCorpse=Corpse; Contact.Position=LastEnd;
+                    auto& Packet=Victims.FindOrAdd(Z); Packet.ShotId=LastShotId; Packet.HeavyStaggerThreshold=D.HeavyStaggerThreshold;
+                    Packet.bForceLethal=AwardContext.bInstaKill;
+                    float TraumaScale=0.f;
+                    if (Region==EONEHitRegion::Head) TraumaScale=D.HeadTraumaScale;
+                    else if (Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight) TraumaScale=D.ArmTraumaScale;
+                    else if (Region==EONEHitRegion::LegLeft || Region==EONEHitRegion::LegRight) TraumaScale=D.LegTraumaScale;
+                    Packet.Get(Region).AddPellet(HitDamage,HitDamage*TraumaScale,LastEnd,Ray,Hit.ImpactNormal,RegionalImpactBone(Z,Region,Hit));
+                    if (Travel<ContactLength) ++LastShotContactPellets;
+                    if (!Corpse && ++LivingBodies>=FMath::Clamp(D.Penetration.MaximumBodies,1,5)) break;
+                }
+                // Corpse contact remains cosmetic, consumes no living-body
+                // allowance, and cannot form an unlimited shield or award source.
                 PelletParams.AddIgnoredActor(Z);
                 TraceStart=LastEnd+Ray*.05f;
                 if (FVector::DotProduct(TraceEnd-TraceStart,Ray)<=0.f) break;
@@ -530,12 +611,12 @@ void UONEWeaponComponent::Fire(bool bContinuingBurst)
             else
             {
                 if (SurfaceHits.Num()<2 && !SurfaceHits.ContainsByPredicate([&Hit](const auto& Previous){ return Previous.GetComponent()==Hit.GetComponent(); })) SurfaceHits.Add(Hit);
+                if (Marks) Marks->AddImpact(Hit,D.Pellets>1);
                 break; // World cover always stops penetration; range endpoint never extends.
             }
         }
-        // A shoulder-to-muzzle hit still damages the close actor or blocks cover.
-        // It must not draw a world-space tracer backwards from the barrel.
-        if (Blood && (D.Pellets==1 || I<3) && ONEAim::IsForwardSegment(Start,LastEnd,P->GetIntendedAimDirection()))
+        Path.End=LastEnd;
+        if (Blood && (D.Pellets==1 || I<3) && ONEAim::IsForwardSegment(Start,LastEnd,Intent))
         { Blood->Shot(Start,LastEnd,D.TraceColor); ++LastShotForwardTracers; }
     }
     LastShotVictimCount=0; LastShotLiveHits=0; LastShotNewKills=0; LastShotCorpseHits=0; LastShotRejected=0;
@@ -545,6 +626,7 @@ void UONEWeaponComponent::Fire(bool bContinuingBurst)
     {
         auto& Packet=Pair.Value; Packet.Finalize();
         const EONEWeaponHitOutcome Outcome=Pair.Key->ReceiveWeaponDamageOutcome(Packet);
+        if (GM) GM->RecordCombatAward(AwardContext,Pair.Key,Outcome,Outcome==EONEWeaponHitOutcome::NewKill && Pair.Key->WasLastKillHeadshot());
         if (Outcome!=EONEWeaponHitOutcome::Rejected)
         {
             ++LastShotVictimCount;
@@ -560,6 +642,9 @@ void UONEWeaponComponent::Fire(bool bContinuingBurst)
         LastShotCorpseHits>0 ? EONEWeaponHitOutcome::CorpseHit : EONEWeaponHitOutcome::Rejected;
     if (LastShotNewKills+LastShotLiveHits>0)
     { LastHit=GetWorld()->GetTimeSeconds(); bLastHitKill=LastShotNewKills>0; }
+    if (GM) GM->EndCombatDischarge(AwardContext);
+    const float Accent=LastShotNewKills>=2 ? .25f : LastShotLiveHits>0 && D.Damage*D.Pellets>=D.HeavyStaggerThreshold ? .12f : 0.f;
+    P->AddPresentationShake(D.CameraShakeImpulse+Accent);
     TraceInput(TEXT("DISCHARGE"));
     for (const auto& Hit:SurfaceHits)
     {

@@ -46,7 +46,7 @@ void AONE04PresentationCheck::BeginPlay()
     Folder=FPaths::ProjectSavedDir()/TEXT("Candidate04")/(bManual?TEXT("Manual"):bProfile?TEXT("Profile"):TEXT("PresentationCapture"));
     Folder/=FDateTime::UtcNow().ToString(TEXT("%Y%m%d_%H%M%S"))+TEXT("_")+FGuid::NewGuid().ToString(EGuidFormats::Digits).Left(8);
     IFileManager::Get().MakeDirectory(*Folder,true);
-    Report=TEXT("Candidate04 machine/inventory presentation\n");
+    Report=TEXT("Candidate06 machine/inventory presentation via legacy ONE04 driver; current tap-deposit, automatic-return and ready-expiry rules. Historical output mode names do not identify an old candidate build.\n");
     Report+=bManual?TEXT("Passive native-input recorder: no scripted keys, cursor, movement, health, ammo or transactions.\n"):
         TEXT("Scripted production PlayerController key dispatch and projected mouse cursor over real frames; not native human input. No teleports, camera overrides, direct inventory installs or direct machine commits. T/X/C are the disclosed ordinary sandbox grant/forced-roll controls.\n");
     if (bProfile) Report+=TEXT("Profile: no screenshots/audio capture. Production-input acquisition and pistol-upgrade setup plus initial actor/asset construction precede CSV and are not measured by this scenario. Setup combat can leave a real corpse/blood or survivor. CSV includes M4 deposit/Overcurrent machine preview, both-machine overlap, actual carried Last Word combat and ready-state tail without removal of spikes. It does not measure carried Overcurrent or Gravebreaker fire. Registered sandbox enemies are replenished toward the requested live count; actual counts are recorded. Player health is restored during this stress fixture only. This is not an ordinary survival claim or an identical workload to older stationary living-only profiles.\n");
@@ -100,16 +100,17 @@ void AONE04PresentationCheck::Plan()
     auto UpgradeGun=[&](EONEWeaponFamily F)
     {
         Walk(1,TEXT("WASD THROUGH CENTER AISLE TO PACK-A-PUNCH"));
-        Hold(1,TEXT("HOLD F / PHYSICAL HANDOFF / PAY 5000"));
+        Tap(EKeys::F,TEXT("TAP F / ACCEPTED TRANSFER / PHYSICAL HANDOFF / PAY 5000"));
         State(1,EONEMachineState::Active,TEXT("HANDOFF ACCEPTANCE / RESERVED INSTANCE"),2.f);
         Add(EStep::Wait,TEXT("REMAINING HANDOFF / RETURN MOVEMENT CONTROL"),.28f);
         Add(EStep::Retreat,TEXT("WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING"),3.f).Machine=1;
         Tap(EKeys::F2,TEXT("DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT"));
         Add(EStep::Fire,TEXT("FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING"),4.5f);
         State(1,EONEMachineState::Ready,TEXT("NINE-SECOND PROCESS / PHYSICAL OUTPUT"),11.f);
-        Add(EStep::Wait,TEXT("READY UPGRADE WAITS / NO AUTOMATIC PICKUP"),1.3f);
+        Add(EStep::Wait,TEXT("READY UPGRADE / FIFTEEN-SECOND RETURN DEADLINE WHILE AWAY"),1.3f);
         Walk(1,TEXT("RETURN TO OUTPUT CONTACT POSITION"));
-        Hold(1,TEXT("FRESH HOLD F / RETRIEVE THE SAME UPGRADED INSTANCE"));
+        auto& Returned=Add(EStep::WaitOwned,TEXT("AUTOMATIC SAME-INSTANCE RETURN / NO F REQUIRED"),2.f);
+        Returned.Machine=1; Returned.Family=F;
         Add(EStep::Wait,TEXT("HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP"),1.f);
         Select(F,TEXT("SELECT RETURNED UPGRADED SLOT"));
     };
@@ -127,7 +128,7 @@ void AONE04PresentationCheck::Plan()
         Select(EONEWeaponFamily::Carbine,TEXT("PROFILE SETUP / SELECT M4 FOR MEASURED DEPOSIT"));
         Walk(1,TEXT("PROFILE SETUP / WALK TO UPGRADE CONTACT"));
         Add(EStep::StartProfile,TEXT("CSV START / REGISTERED COMBAT FIXTURE"),12.f);
-        Hold(1,TEXT("PROFILE / PHYSICAL DEPOSIT AND INTAKE"));
+        Tap(EKeys::F,TEXT("PROFILE / TAP F DEPOSIT AND PHYSICAL INTAKE"));
         State(1,EONEMachineState::Active,TEXT("PROFILE / NINE-SECOND PROCESS START"),2.f);
         Tap(EKeys::C,TEXT("PROFILE / DISCLOSED NEXT SHOTGUN REWARD"));
         Walk(0,TEXT("PROFILE / WALK TO SECOND MACHINE WHILE PROCESSING"));
@@ -199,6 +200,7 @@ void AONE04PresentationCheck::EnterStep()
     ShotsAtStep=Player->GetWeaponComponent()->GetTotalShotsFired();
     DropsAtStep=Player->GetWeaponComponent()->GetMagazineDropCount();
     HoldCountAtStep=Player->GetInteractionComponent()->GetCompletedHolds();
+    TapCountAtStep=Player->GetInteractionComponent()->GetCompletedTaps();
     WalkLeg=0; FirePulses=0; NextFire=0;
     RetreatStart=Player->GetActorLocation();
     ChaptersCsv+=FString::Printf(TEXT("%d,%.6f,%s\n"),Phase,Elapsed,*Segment);
@@ -242,7 +244,16 @@ void AONE04PresentationCheck::RunStep(float Dt)
     switch (S.Kind)
     {
     case EStep::Wait: if (T>=S.Seconds) Advance(); break;
-    case EStep::Tap: if (T>=S.Seconds) Advance(); break;
+    case EStep::Tap: if (T>=S.Seconds)
+        {
+            if (S.Key==EKeys::F)
+            {
+                CapturedUpgrade=Upgrade->GetReservation();
+                Check(Player->GetInteractionComponent()->GetCompletedTaps()==TapCountAtStep+1 && CapturedUpgrade.IsValid() &&
+                    Upgrade->GetState()==EONEMachineState::Active,TEXT("One production F tap paid and reserved the exact instance without a hold"));
+            }
+            if (Failures) Finish(false); else Advance();
+        } break;
     case EStep::Walk:
         if (WalkTo(Machine(S.Machine)))
         {
@@ -279,6 +290,15 @@ void AONE04PresentationCheck::RunStep(float Dt)
         if (int32(Machine(S.Machine)->GetState())==S.State)
         { Check(true,TEXT("Observed expected actual machine state")); Advance(); }
         break;
+    case EStep::WaitOwned:
+    {
+        const auto* Slot=W->GetSlotState(CapturedUpgrade.Slot);
+        if (CapturedUpgrade.IsValid() && W->GetRunId()==CapturedUpgrade.RunId && Slot &&
+            Slot->InstanceId==CapturedUpgrade.InstanceId && Slot->Family==S.Family && Slot->bUpgraded &&
+            Slot->Status==EONEWeaponSlotStatus::Available)
+        { Check(true,TEXT("Approach restored the reserved upgraded instance to its original slot without F")); Advance(); }
+        break;
+    }
     case EStep::Select:
     {
         const auto* Selected=W->GetSlotState(W->GetEquippedIndex());
@@ -424,7 +444,7 @@ bool AONE04PresentationCheck::StartProfile()
             Check(P->EnableCategoryByString(C),FString(TEXT("Required CSV category enabled: "))+C);
         if (Failures) { Finish(false); return false; }
         CsvFolder=FPaths::ConvertRelativePathToFull(Folder/TEXT("CSV")); IFileManager::Get().MakeDirectory(*CsvFolder,true);
-        CSV_METADATA(TEXT("one_scenario"),TEXT("candidate04_two_machines_production_input_combat"));
+        CSV_METADATA(TEXT("one_scenario"),TEXT("candidate06_legacy04_two_machines_production_input_combat"));
         CSV_METADATA(TEXT("one_media_capture"),TEXT("none"));
         CSV_METADATA(TEXT("one_requested_enemies"),*FString::FromInt(EnemyCount));
         P->BeginCapture(-1,CsvFolder); bCsvRequested=true; CsvRequestAt=FPlatformTime::Seconds(); return false;

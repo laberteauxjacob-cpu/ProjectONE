@@ -49,6 +49,9 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
     Shotgun.Capacity=6; Shotgun.InitialReserve=36; Shotgun.ReserveLimit=60;
     Shotgun.RoundReserveReward=8;
     Shotgun.Pellets=8; Shotgun.Damage=15.f; Shotgun.FireInterval=.78f; Shotgun.SpreadDegrees=4.f;
+    Shotgun.MovingSpreadDegrees=.4f; Shotgun.SpreadGrowthPerShot=.10f; Shotgun.MaximumSpreadDegrees=4.7f;
+    Shotgun.SpreadRecoveryDelay=.25f; Shotgun.SpreadRecoveryPerSecond=3.f; Shotgun.CameraShakeImpulse=1.15f;
+    Shotgun.Penetration.MaximumBodies=2; Shotgun.Penetration.DamageRetainedPerBody=.60f; Shotgun.Penetration.AdditionalBodyRange=650.f;
     Shotgun.Range=1400.f; Shotgun.FalloffStart=500.f; Shotgun.MinimumDamageFraction=.2f;
     Shotgun.HeadTraumaScale=1.f; Shotgun.HeavyStaggerThreshold=70.f;
     Shotgun.FlashDuration=.065f; Shotgun.FlashIntensity=27000.f;
@@ -80,6 +83,9 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
     Pistol.Id=TEXT("P1911"); Pistol.Family=EONEWeaponFamily::Pistol; Pistol.DisplayName=FText::FromString(TEXT("M1911"));
     Pistol.bAutomatic=false; Pistol.Capacity=7; Pistol.InitialReserve=56; Pistol.ReserveLimit=84; Pistol.RoundReserveReward=14;
     Pistol.Damage=28.f; Pistol.FireInterval=.24f; Pistol.SpreadDegrees=.25f;
+    Pistol.MovingSpreadDegrees=.25f; Pistol.SpreadGrowthPerShot=.035f; Pistol.MaximumSpreadDegrees=.65f;
+    Pistol.SpreadRecoveryDelay=.15f; Pistol.SpreadRecoveryPerSecond=2.f; Pistol.CameraShakeImpulse=.55f;
+    Pistol.Penetration.MaximumBodies=2; Pistol.Penetration.DamageRetainedPerBody=.60f;
     Pistol.Range=2400.f; Pistol.FalloffStart=1000.f; Pistol.MinimumDamageFraction=.55f;
     Pistol.Muzzle=FVector(16.5f,0,5.5f); Pistol.EjectionPoint=FVector(5.7f,-1.5f,5.5f);
     Pistol.MagazineFreshTime=.64f;
@@ -120,7 +126,10 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
         D.Capacity=I==0 ? 36 : I==1 ? 8 : 14;
         if (I==0) D.SpreadDegrees=.25f;
         if (I==1) D.HeavyStaggerThreshold=60.f;
-        if (I==2) D.AdditionalVictims=1;
+        D.Penetration.MaximumBodies+=1;
+        D.Penetration.DamageRetainedPerBody=FMath::Min(.8f,D.Penetration.DamageRetainedPerBody+.05f);
+        if (I==1) D.Penetration.AdditionalBodyRange=800.f;
+        D.CameraShakeImpulse*=1.15f;
         D.PumpRearTime/=1.15f; D.PumpForwardTime/=1.15f;
         for (auto& O:D.Operations) if (O.Operation==EONEWeaponOperation::Fire || O.Operation==EONEWeaponOperation::Pump)
         { O.Duration/=1.15f; for (auto& E:O.Events) E.Time/=1.15f; }

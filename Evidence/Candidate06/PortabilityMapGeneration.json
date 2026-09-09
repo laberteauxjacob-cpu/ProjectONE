@@ -1,0 +1,74 @@
+{
+  "candidate": "06",
+  "status": "MAP_GENERATED_NAVIGATION_BUILT_AND_SAVED",
+  "map": "/Game/ONE/Maps/Portability06",
+  "origin_cm": [
+    3200.0,
+    -1700.0,
+    0.0
+  ],
+  "floor_dimensions_cm": [
+    1200,
+    1200
+  ],
+  "game_mode": "/Script/ProjectONE.ONEGameMode",
+  "generated_actor_count": 24,
+  "player_start_cm": [
+    3200.0,
+    -1800.0,
+    105.0
+  ],
+  "spawn_fixture_cm": [
+    3200.0,
+    -1390.0,
+    98.0
+  ],
+  "pickup_fixture_cm": [
+    3325.0,
+    -1645.0,
+    12.0
+  ],
+  "machines": [
+    {
+      "class": "ONEMysteryBox",
+      "actor_position_cm": [
+        2857.457456132867,
+        -1968.2792706909468,
+        54.0
+      ],
+      "ground_position_cm": [
+        2855.0,
+        -1970.0,
+        2.0
+      ],
+      "yaw_degrees": 35.0
+    },
+    {
+      "class": "ONEUpgradeMachine",
+      "actor_position_cm": [
+        3513.702046848486,
+        -1935.0870126548728,
+        112.0
+      ],
+      "ground_position_cm": [
+        3535.0,
+        -1950.0,
+        2.0
+      ],
+      "yaw_degrees": 145.0
+    }
+  ],
+  "navigation_extent_cm": [
+    620.0,
+    620.0,
+    300.0
+  ],
+  "source": "Scripts/create_candidate06_portability_map.py",
+  "source_sha256": "835899008050006d88082b4f4b9b346442e675f477f8ebba69a18627dc8fa9a7",
+  "functional_validation_performed": false,
+  "limits": [
+    "Developer-only dependency fixture; visible spawn marker is not production hidden-entry design.",
+    "Runtime checks must create the pickup through the normal manager at ONE06_PickupFixture.",
+    "Generation and navigation save do not establish health, scoring, return/expiry or visual validation."
+  ]
+}

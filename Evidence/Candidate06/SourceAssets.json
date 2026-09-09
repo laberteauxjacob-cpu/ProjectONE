@@ -1,0 +1,115 @@
+{
+  "schema": "one06.source_assets.v1",
+  "candidate": "06",
+  "status": "SOURCE_PAYLOADS_RECORDED",
+  "scope": "Eight new Candidate06 asset payloads at the current source checkpoint. This is not a fresh-build, gameplay, outgoing-history or publication audit.",
+  "payload_count": 8,
+  "external_asset_inputs_added": [],
+  "project_zero_inputs": false,
+  "source_wave_manifest": "ArtSource/Audio/Candidate06/manifest.json",
+  "source_wave_manifest_sha256_matches": true,
+  "soundwave_import_correspondence": {
+    "assets_checked": 3,
+    "serialized_records_per_asset": 2,
+    "all_repeated_relative_paths_agree": true,
+    "all_paths_resolve_to_listed_repository_sources": true,
+    "all_serialized_md5_values_match_source_bytes": true
+  },
+  "metadata_path_scan": {
+    "payloads_checked": 8,
+    "encodings": ["UTF-8", "UTF-16LE", "UTF-16BE"],
+    "windows_absolute_path_matches": 0,
+    "user_directory_path_matches": 0,
+    "unc_path_matches": 0,
+    "method": "Read-only byte/string scan for drive-qualified absolute paths, user/home/OneDrive/.codex directory paths and UNC shares; repeated SoundWave import records inspected separately.",
+    "limits": "A bounded visible-metadata scan of these payloads, not a parser for every engine serialization field or a scan of repository history."
+  },
+  "editable_sources": [
+    "Scripts/create_candidate06_pickup_audio.py",
+    "Scripts/create_candidate03_audio.py",
+    "Scripts/create_candidate05_audio.py",
+    "Scripts/import_candidate06_pickup_audio.py",
+    "ArtSource/Audio/Candidate06/manifest.json",
+    "Scripts/create_candidate06_pickup_art.py",
+    "ArtSource/Pickups/Candidate06/design.json",
+    "Source/ProjectONE/ONE06PickupVisualComponent.cpp",
+    "Source/ProjectONE/ONEHUD.cpp",
+    "Scripts/create_candidate06_portability_map.py"
+  ],
+  "engine_primitive_references": ["/Engine/BasicShapes/Cube", "/Engine/BasicShapes/Sphere", "/Engine/BasicShapes/Cylinder"],
+  "retained_project_inputs": "Portability06 reuses the accepted Project ONE floor, palette and two machine classes/assets. The new emblem composition and parameter material are authored by the listed source files.",
+  "payloads": [
+    {
+      "path": "ArtSource/Audio/Candidate06/S_Pickup06_InstaKill.wav",
+      "kind": "original_pcm_source",
+      "bytes": 82604,
+      "sha256": "25d5b27d2bcc03c9cdfe876ee308ab8555c1d0ada0a53b0ade6725c02d1a4d9f",
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "sample_frames": 41280,
+      "duration_seconds": 0.86,
+      "riff_chunks": ["fmt ", "data"]
+    },
+    {
+      "path": "ArtSource/Audio/Candidate06/S_Pickup06_DoublePoints.wav",
+      "kind": "original_pcm_source",
+      "bytes": 71084,
+      "sha256": "64047ffa926f3726249ca57a32b485cd2d43eada05ed44caff2fd7b7126adb45",
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "sample_frames": 35520,
+      "duration_seconds": 0.74,
+      "riff_chunks": ["fmt ", "data"]
+    },
+    {
+      "path": "ArtSource/Audio/Candidate06/S_Pickup06_MaxAmmo.wav",
+      "kind": "original_pcm_source",
+      "bytes": 84524,
+      "sha256": "aaa57ee5d30ef7540b4ce0b66ac96d92191c53cb18c2abcdc76c436f811df084",
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "sample_frames": 42240,
+      "duration_seconds": 0.88,
+      "riff_chunks": ["fmt ", "data"]
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate06/S_Pickup06_InstaKill.uasset",
+      "kind": "sound_wave",
+      "bytes": 37107,
+      "sha256": "b47d0b6975755ff0169282a4fc20d02e4900ba46d35964768e3e9bd5cf436123",
+      "source": "ArtSource/Audio/Candidate06/S_Pickup06_InstaKill.wav"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate06/S_Pickup06_DoublePoints.uasset",
+      "kind": "sound_wave",
+      "bytes": 43248,
+      "sha256": "58223628c2e05b79a6f52c178c1541e4291087ff198c630bcbc7368e918f4b47",
+      "source": "ArtSource/Audio/Candidate06/S_Pickup06_DoublePoints.wav"
+    },
+    {
+      "path": "Content/ONE/Audio/Candidate06/S_Pickup06_MaxAmmo.uasset",
+      "kind": "sound_wave",
+      "bytes": 45846,
+      "sha256": "7047f5b9419d964c782169d13d74358da4ce64d5681bd56cb50865c302af2474",
+      "source": "ArtSource/Audio/Candidate06/S_Pickup06_MaxAmmo.wav"
+    },
+    {
+      "path": "Content/ONE/Pickups/Candidate06/M_Pickup06.uasset",
+      "kind": "pickup_material",
+      "bytes": 10075,
+      "sha256": "d1988993d66cbe561e5aadd3e7d2ea2f81871cdd7a9052d4d3ade80229141f3a"
+    },
+    {
+      "path": "Content/ONE/Maps/Portability06.umap",
+      "kind": "portability_map",
+      "bytes": 75163,
+      "sha256": "dacd728044ead397a3bb54d4495f9cd9208b5944e100b9b2027af9dfeff34333"
+    }
+  ],
+  "visual_approval": false,
+  "perceptual_audio_review": false,
+  "new_broad_license_selected": false
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "ONE06CombatAwards.h"
 #include "ONEGameMode.generated.h"
 
 class AONEZombie;
@@ -8,6 +9,7 @@ class AONEPlayer;
 enum class EONEWeaponFamily : uint8;
 class ULightComponent;
 class UONEAmbientAudioComponent;
+class UONEPowerUpComponent;
 UCLASS()
 class PROJECTONE_API AONEGameMode : public AGameModeBase
 {
@@ -16,11 +18,20 @@ public:
     AONEGameMode();
     virtual void BeginPlay() override;
     virtual void Tick(float DeltaSeconds) override;
+    virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+    bool RegisterZombie(AONEZombie* Zombie);
     void NotifyZombieKilled(AONEZombie* Zombie, int32 Reward = 100);
+    FONECombatDischargeContext BeginCombatDischarge();
+    void EndCombatDischarge(const FONECombatDischargeContext& Context);
+    int32 RecordCombatAward(const FONECombatDischargeContext& Context,AONEZombie* Victim,EONEWeaponHitOutcome Outcome,bool HeadshotQualified);
+    UONEPowerUpComponent* GetPowerUps() const { return PowerUps; }
+    uint64 GetCombatGainSerial() const { return CombatGainSerial; }
+    int32 GetLastCombatGain() const { return LastCombatGain; }
     void PlayerDied();
     uint64 NewMachineReceipt() { return ++NextMachineReceipt; }
     bool TrySpendPoints(int32 Cost,uint64 Receipt);
     bool RefundPointsOnce(uint64 Receipt);
+    bool CloseMachineReceipt(uint64 Receipt);
     void CancelUnacceptedMachineActions(AONEPlayer* Player);
     void GrantSandboxPoints();
     void SetForcedBoxReward(EONEWeaponFamily Family);
@@ -49,6 +60,7 @@ public:
     float GetSurvivalSeconds() const { return SurvivalSeconds; }
     UONEAmbientAudioComponent* GetAmbientAudio() const { return AmbientAudio; }
     UPROPERTY(VisibleAnywhere) TObjectPtr<UONEAmbientAudioComponent> AmbientAudio;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UONEPowerUpComponent> PowerUps;
     UPROPERTY(EditAnywhere, Category="Rounds") float IntermissionSeconds = 7.f;
     UPROPERTY(EditAnywhere, Category="Rounds") float SpawnInterval = 1.3f;
     UPROPERTY(EditAnywhere, Category="Rounds") int32 MaximumActive = 18;
@@ -69,4 +81,9 @@ private:
     TMap<uint64,int32> MachineReceipts;
     int32 SandboxGrantedPoints=0;
     EONEWeaponFamily ForcedBoxReward;
+    FONECombatAwardLedger CombatAwards;
+    int32 PendingCombatGain=0,LastCombatGain=0;
+    uint64 CombatGainSerial=0;
+    float CombatGainBatchSeconds=0.f;
+    void InvalidateCombatRun();
 };

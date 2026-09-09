@@ -2,6 +2,9 @@
 #include "ONEGameMode.h"
 #include "ONEPlayer.h"
 #include "ONEHUD.h"
+#include "ONE06CameraModifier.h"
+#include "ONEPowerUpComponent.h"
+#include "Camera/PlayerCameraManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Components/InputComponent.h"
@@ -19,6 +22,7 @@ AONEPlayerController::AONEPlayerController()
 void AONEPlayerController::BeginPlay()
 {
     Super::BeginPlay();
+    if (PlayerCameraManager) PlayerCameraManager->AddNewCameraModifier(UONE06CameraModifier::StaticClass());
     bTraceInput=FParse::Param(FCommandLine::Get(),TEXT("ONE03InputTrace"));
     RefreshPointerStyle();
     FInputModeGameAndUI Mode;
@@ -65,7 +69,8 @@ bool AONEPlayerController::InputKey(const FInputKeyEventArgs& Params)
     {
         const bool GameplayKey=Params.Key==EKeys::W || Params.Key==EKeys::A || Params.Key==EKeys::S || Params.Key==EKeys::D ||
             Params.Key==EKeys::LeftShift || Params.Key==EKeys::R || Params.Key==EKeys::F || Params.Key==EKeys::One ||
-            Params.Key==EKeys::Two || Params.Key==EKeys::Tab || Params.Key==EKeys::MouseScrollUp || Params.Key==EKeys::MouseScrollDown;
+            Params.Key==EKeys::Two || Params.Key==EKeys::Tab || Params.Key==EKeys::MouseScrollUp || Params.Key==EKeys::MouseScrollDown ||
+            Params.Key==EKeys::RightMouseButton || Params.Key==EKeys::LeftControl;
         if (GameplayKey) return true;
     }
     const bool bHandled=Super::InputKey(Params);
@@ -149,6 +154,18 @@ void AONEPlayerController::ExecuteUIAction(EONEUIAction Action)
         case EONEUIAction::ForceCarbine: ForceCarbine(); break;
         case EONEUIAction::ForceShotgun: ForceShotgun(); break;
         case EONEUIAction::RandomBox: RandomBox(); break;
+        case EONEUIAction::CycleShakeStrength:
+            if (auto* HUD=Cast<AONEHUD>(GetHUD())) HUD->CycleShakeStrength();
+            break;
+        case EONEUIAction::ForceInstaKill:
+        case EONEUIAction::ForceDoublePoints:
+        case EONEUIAction::ForceMaxAmmo:
+            if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>();GM && GM->IsSandbox())
+                if (const auto* P=Cast<AONEPlayer>(GetPawn()))
+                    GM->GetPowerUps()->ForceDrop(Action==EONEUIAction::ForceInstaKill ? EONEPowerUpType::InstaKill :
+                        Action==EONEUIAction::ForceDoublePoints ? EONEPowerUpType::DoublePoints : EONEPowerUpType::MaxAmmo,
+                        P->GetActorLocation()+P->GetActorForwardVector()*170.f);
+            break;
         case EONEUIAction::CloseTools: if (auto* HUD=Cast<AONEHUD>(GetHUD())) HUD->CloseTools(); break;
         default: break;
     }

@@ -6,6 +6,21 @@
 class UAudioComponent;
 class AONEWeaponCase;
 class AONEWeaponMagazine;
+struct FONEProjectileContact
+{
+    TWeakObjectPtr<AActor> Victim;
+    float Distance=0.f,Damage=0.f;
+    EONEHitRegion Region=EONEHitRegion::Invalid;
+    bool bCorpse=false;
+    FVector Position=FVector::ZeroVector;
+};
+struct FONEProjectilePath
+{
+    FVector Origin=FVector::ZeroVector,Direction=FVector::ForwardVector,End=FVector::ZeroVector;
+    float SpreadDegrees=0.f;
+    int32 SceneQueries=0;
+    TArray<FONEProjectileContact> Contacts;
+};
 UCLASS(ClassGroup=(ONE), meta=(BlueprintSpawnableComponent))
 class PROJECTONE_API UONEWeaponComponent : public UActorComponent
 {
@@ -36,6 +51,7 @@ public:
     bool ReserveEquippedForUpgrade(FONEWeaponReservation& Out);
     bool MarkUpgradeReady(const FONEWeaponReservation& Token);
     bool CollectUpgrade(const FONEWeaponReservation& Token);
+    bool ExpireUpgrade(const FONEWeaponReservation& Token);
     bool RollbackUpgrade(const FONEWeaponReservation& Token);
     void InvalidateMachineTransactions();
     void ResetStarterLoadout();
@@ -44,6 +60,7 @@ public:
     FONEWeaponAcquisitionPlan BuildAcquisitionPlan(EONEWeaponFamily Family) const;
     bool ApplyAcquisitionPlan(const FONEWeaponAcquisitionPlan& Plan);
     void RefillAllAmmo();
+    void ApplyMaxAmmoPowerUp();
     void ClearEjectedCases();
     void RefreshEquippedPresentation();
     int32 GetAmmo() const { return GetAmmoForWeapon(EquippedIndex); }
@@ -52,7 +69,7 @@ public:
     int32 GetReserveAmmoForWeapon(int32 Index) const;
     int32 GetEquippedIndex() const { return EquippedIndex; }
     int32 GetPendingWeaponIndex() const { return PendingIndex; }
-    int32 GetWeaponCount() const { return 2; }
+    int32 GetWeaponCount() const { return Carried.Num(); }
     FText GetWeaponName() const;
     bool IsReloading() const;
     bool IsBusy() const { return Operation!=EONEWeaponOperation::Ready; }
@@ -94,6 +111,9 @@ public:
     int32 GetLastShotVictimCount() const { return LastShotVictimCount; }
     FVector GetLastShotMuzzle() const { return LastShotMuzzle; }
     FVector GetLastShotDirection() const { return LastShotDirection; }
+    const TArray<FONEProjectilePath>& GetLastProjectilePaths() const { return LastProjectilePaths; }
+    float GetCurrentSpreadDegrees() const;
+    void ResetSpreadStream(int32 Seed,bool bResetBloom=true);
     int32 GetLastShotForwardTracerCount() const { return LastShotForwardTracers; }
     int32 GetLastShotContactPelletCount() const { return LastShotContactPellets; }
     bool WasLastShotMuzzleObstructed() const { return bLastShotMuzzleObstructed; }
@@ -121,6 +141,7 @@ public:
     int32 GetLiveMagazineCount() const;
     AONEWeaponMagazine* GetLastDroppedMagazine() const;
     UPROPERTY(EditAnywhere,EditFixedSize,Category="Weapons") TArray<FONEWeaponDefinition> WeaponDefinitions;
+    UPROPERTY(EditAnywhere,Category="Weapons|Spread") int32 SpreadSeed=16387;
     UPROPERTY(EditAnywhere,Category="Cases",meta=(ClampMin="1",ClampMax="64")) int32 MaximumCases=32;
     UPROPERTY(EditAnywhere,Category="Cases",meta=(ClampMin="1",ClampMax="15")) float CaseLifetime=6.f;
     UPROPERTY(EditAnywhere,Category="Audio",meta=(ClampMin="1",ClampMax="16")) int32 MaximumShotVoices=8;
@@ -134,6 +155,7 @@ public:
     UPROPERTY(VisibleAnywhere,Category="Current Weapon") float Range=2800.f;
 private:
     void Fire(bool bContinuingBurst=false);
+    void RecoverSpread();
     void DisarmFiring();
     void RejectTrigger(EONEWeaponInputResult Reason);
     void TraceInput(const TCHAR* Event) const;
@@ -144,6 +166,7 @@ private:
     void RefillSlot(int32 Slot,bool bMaximumReserve);
     void InstallWeapon(int32 Slot,EONEWeaponFamily Family,bool bUpgraded=false);
     void ChooseAvailableAfterRemoval();
+    void ResumeRestoredOperation();
     USoundBase* ChooseShotSound(int32 Index);
     void StartOperation(EONEWeaponOperation Next,int32 DefinitionIndex=-1);
     void FinishOperation();
@@ -159,6 +182,9 @@ private:
     TArray<TWeakObjectPtr<AONEWeaponCase>> Cases;
     TArray<TWeakObjectPtr<AONEWeaponMagazine>> Magazines;
     FONEWeaponReservation ActiveReservation;
+    TMap<uint64,FONEWeaponOperationSnapshot> RestoredOperations;
+    FRandomStream SpreadRandom;
+    TArray<FONEProjectilePath> LastProjectilePaths;
     uint64 RunId=0,InventoryRevision=0;
     bool bHandoffLocked=false,bReloadStartedEmpty=false;
     EONEWeaponOperation Operation=EONEWeaponOperation::Ready;

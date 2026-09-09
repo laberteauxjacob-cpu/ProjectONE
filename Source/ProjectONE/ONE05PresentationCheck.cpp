@@ -12,6 +12,8 @@
 #include "ONEUITypes.h"
 #include "ONEAmbientAudioComponent.h"
 #include "ONEZombieAudioComponent.h"
+#include "ONEPowerUpComponent.h"
+#include "ONE06CaptureComponent.h"
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
 #include "InputKeyEventArgs.h"
@@ -45,27 +47,34 @@ void AONE05PresentationCheck::BeginPlay()
     LastDriverTime=FPlatformTime::Seconds();
     bManual=FParse::Value(FCommandLine::Get(),TEXT("ONE05ManualCapture="),ManualDuration);
     bProfile=FParse::Param(FCommandLine::Get(),TEXT("ONE05Profile"));
-    FString ProfileWeapon=TEXT("M4A1");
     FParse::Value(FCommandLine::Get(),TEXT("ONE05ProfileWeapon="),ProfileWeapon);
-    bProfileUpgraded=ProfileWeapon==TEXT("Overcurrent");
+    bProfileUpgraded=ProfileWeapon==TEXT("Overcurrent")||ProfileWeapon==TEXT("Gravebreaker");
+    ProfileFamily=(ProfileWeapon==TEXT("870")||ProfileWeapon==TEXT("Gravebreaker"))?EONEWeaponFamily::Shotgun:EONEWeaponFamily::Carbine;
     bCapture=bManual || FParse::Param(FCommandLine::Get(),TEXT("ONE05PresentationCapture"));
     ManualDuration=FMath::Clamp(ManualDuration,15.f,300.f);
     FParse::Value(FCommandLine::Get(),TEXT("ONE05ProfileEnemies="),EnemyCount);
     Folder=FPaths::ProjectSavedDir()/TEXT("Candidate05")/(bManual?TEXT("Manual"):bProfile?TEXT("Profile"):TEXT("PresentationCapture"));
     Folder/=FDateTime::UtcNow().ToString(TEXT("%Y%m%d_%H%M%S"))+TEXT("_")+FGuid::NewGuid().ToString(EGuidFormats::Digits).Left(8);
     IFileManager::Get().MakeDirectory(*Folder,true);
-    Report=TEXT("Candidate05 machine/inventory presentation\n");
+    Report=TEXT("Candidate06 machine/inventory presentation via legacy ONE05 driver; current tap-deposit, automatic-return and ready-expiry rules. Historical output mode names do not identify an old candidate build.\n");
     Report+=bManual?TEXT("Passive native-input recorder: no scripted keys, cursor, movement, health, ammo or transactions.\n"):
         TEXT("Scripted production PlayerController key dispatch and projected mouse cursor over real frames; not native human input. No teleports, camera overrides, direct inventory installs or direct machine commits. T/X/C are the disclosed ordinary sandbox grant/forced-roll controls.\n");
-    if (bProfile) Report+=TEXT("Profile: recording disabled. Real production-input M4A1/Overcurrent acquisition precedes CSV. The measured window includes pistol deposit, both-machine overlap, carried rifle held bursts, committed reloads and the ready tail. Registered sandbox enemies replenish toward the requested count; health restoration is an explicit stress-fixture exception. Setup actors/assets are warm. All measured spikes remain.\n");
+    if (bProfile) Report+=TEXT("Profile: recording disabled. Real production-input M4A1/Overcurrent or 870/Gravebreaker acquisition precedes CSV. The measured window includes pistol deposit, both-machine overlap, the requested carried weapon's production fire/reload input and the ready tail. Registered sandbox enemies replenish toward the requested count; health restoration and five forced pickup placements are explicit stress-fixture exceptions. Two pickups activate Insta-Kill and Double Points through actual player overlap before CSV, and three additional world drops begin present. Timers and drop lifetimes then expire normally; actual per-frame counters establish their occupancy. Setup actors/assets are warm. All measured spikes remain.\n");
     else if (!bManual) Report+=TEXT("Final game-over presentation uses one declared fatal damage fixture after ordinary acquisition/fire; it is not a survival or natural-death claim. Near-aim cursor uses projected real world points and actual evaluated muzzle traces.\n");
     FramesCsv=TEXT("file,audio_seconds,world_seconds,phase,weapon,ammo,reserve,operation\n");
     InputCsv=TEXT("world_seconds,frame,phase,key,event,handled\n");
     ObservationCsv=TEXT("world_seconds,phase,profile_seconds,live,box_state,upgrade_state,box_previews,upgrade_previews,box_loops,upgrade_loops,weapon,family,upgraded,ammo,reserve,operation,shots,magazine_drops,live_magazines,cases,points,health,x,y,z,interaction_progress,dim,cursor_x,cursor_y,aim_x,aim_y,aim_z,body_yaw\n");
+    if (bProfile)
+    {
+        ObservationCsv.RemoveAt(ObservationCsv.Len()-1);
+        ObservationCsv+=TEXT(",world_drops,insta_kill_seconds,double_points_seconds,last_shot_live_hits,last_shot_corpse_hits,last_shot_contacts,shell_inserts,magazine_commits\n");
+    }
     ChaptersCsv=TEXT("phase,world_seconds,label\n");
     Check(!(bProfile && bCapture),TEXT("Profile and media capture modes are mutually exclusive"));
     Check(!bProfile || EnemyCount==6 || EnemyCount==12 || EnemyCount==18,TEXT("Profile count is exactly 6, 12 or 18"));
-    Check(!bProfile || ProfileWeapon==TEXT("M4A1") || bProfileUpgraded,TEXT("Profile explicitly selects carried M4A1 or Overcurrent"));
+    Check(!bProfile || ProfileWeapon==TEXT("M4A1") || ProfileWeapon==TEXT("Overcurrent") ||
+        ProfileWeapon==TEXT("870") || ProfileWeapon==TEXT("Gravebreaker"),TEXT("Profile explicitly selects M4A1, Overcurrent, 870 or Gravebreaker"));
+    if (bProfile) Check(!UONE06CaptureComponent::IsAnyCaptureActive(),TEXT("No Candidate06 viewport/audio capture owns the profile process"));
     if (Failures) { Finish(false); return; }
     if (bCapture)
     {
@@ -115,16 +124,17 @@ void AONE05PresentationCheck::Plan()
     auto UpgradeGun=[&](EONEWeaponFamily F)
     {
         Walk(1,TEXT("WASD THROUGH CENTER AISLE TO PACK-A-PUNCH"));
-        Hold(1,TEXT("HOLD F / PHYSICAL HANDOFF / PAY 5000"));
+        Tap(EKeys::F,TEXT("TAP F / ACCEPTED TRANSFER / PHYSICAL HANDOFF / PAY 5000"));
         State(1,EONEMachineState::Active,TEXT("HANDOFF ACCEPTANCE / RESERVED INSTANCE"),2.f);
         Add(EStep::Wait,TEXT("REMAINING HANDOFF / RETURN MOVEMENT CONTROL"),.28f);
         Add(EStep::Retreat,TEXT("WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING"),3.f).Machine=1;
         Tap(EKeys::F2,TEXT("DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT"));
         Add(EStep::Fire,TEXT("FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING"),4.5f);
         State(1,EONEMachineState::Ready,TEXT("NINE-SECOND PROCESS / PHYSICAL OUTPUT"),11.f);
-        Add(EStep::Wait,TEXT("READY UPGRADE WAITS / NO AUTOMATIC PICKUP"),1.3f);
+        Add(EStep::Wait,TEXT("READY UPGRADE / FIFTEEN-SECOND RETURN DEADLINE WHILE AWAY"),1.3f);
         Walk(1,TEXT("RETURN TO OUTPUT CONTACT POSITION"));
-        Hold(1,TEXT("FRESH HOLD F / RETRIEVE THE SAME UPGRADED INSTANCE"));
+        auto& Returned=Add(EStep::WaitOwned,TEXT("AUTOMATIC SAME-INSTANCE RETURN / NO F REQUIRED"),2.f);
+        Returned.Machine=1; Returned.Family=F;
         Add(EStep::Wait,TEXT("HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP"),1.f);
         Select(F,TEXT("SELECT RETURNED UPGRADED SLOT"));
     };
@@ -133,21 +143,21 @@ void AONE05PresentationCheck::Plan()
     Add(EStep::Wait,TEXT("RELEASED T / SEPARATE INPUT FRAME"),.2f);
     Tap(EKeys::T,TEXT("DISCLOSED SANDBOX +10000 POINTS"));
     if (!bProfile) Gun(EONEWeaponFamily::Pistol,false,TEXT("M1911 / BASE SEMIAUTOMATIC FIRE AND RELOAD"));
-    Buy(EONEWeaponFamily::Carbine);
+    Buy(bProfile?ProfileFamily:EONEWeaponFamily::Carbine);
     if (bProfile)
     {
-        if (bProfileUpgraded) UpgradeGun(EONEWeaponFamily::Carbine);
-        auto& VerifiedRifle=Add(EStep::Verify,TEXT("PROFILE SETUP / ACTUAL REQUESTED RIFLE ACQUIRED"),.2f);
-        VerifiedRifle.Family=EONEWeaponFamily::Carbine; VerifiedRifle.bUpgraded=bProfileUpgraded;
+        if (bProfileUpgraded) UpgradeGun(ProfileFamily);
+        auto& VerifiedWeapon=Add(EStep::Verify,TEXT("PROFILE SETUP / ACTUAL REQUESTED WEAPON ACQUIRED"),.2f);
+        VerifiedWeapon.Family=ProfileFamily; VerifiedWeapon.bUpgraded=bProfileUpgraded;
         Select(EONEWeaponFamily::Pistol,TEXT("PROFILE SETUP / ORIGINAL PISTOL FOR MEASURED DEPOSIT"));
         Walk(1,TEXT("PROFILE SETUP / WALK TO UPGRADE CONTACT"));
         Add(EStep::StartProfile,TEXT("CSV START / REGISTERED COMBAT FIXTURE"),12.f);
-        Hold(1,TEXT("PROFILE / PHYSICAL DEPOSIT AND INTAKE"));
+        Tap(EKeys::F,TEXT("PROFILE / TAP F DEPOSIT AND PHYSICAL INTAKE"));
         State(1,EONEMachineState::Active,TEXT("PROFILE / NINE-SECOND PROCESS START"),2.f);
-        Tap(EKeys::C,TEXT("PROFILE / DISCLOSED NEXT SHOTGUN REWARD"));
+        Tap(ProfileFamily==EONEWeaponFamily::Carbine?EKeys::C:EKeys::X,TEXT("PROFILE / DISCLOSED ELIGIBLE OTHER-FAMILY BOX REWARD"));
         Walk(0,TEXT("PROFILE / WALK TO SECOND MACHINE WHILE PROCESSING"));
         Hold(0,TEXT("PROFILE / START SECOND MACHINE DURING UPGRADE"));
-        Add(EStep::Combat,TEXT("PROFILE / CARRIED RIFLE HELD BURSTS WITH BOTH MACHINES PRESENT"),25.f);
+        Add(EStep::Combat,TEXT("PROFILE / REQUESTED CARRIED WEAPON FIRE AND RELOAD WITH BOTH MACHINES PRESENT"),25.f);
         return;
     }
     Gun(EONEWeaponFamily::Carbine,false,TEXT("M4A1 / BASE AUTOMATIC FIRE AND MAGAZINE RELOAD"));
@@ -224,6 +234,7 @@ void AONE05PresentationCheck::EnterStep()
     for (int32& Count:NearBandShots) Count=0;
     DropsAtStep=Player->GetWeaponComponent()->GetMagazineDropCount();
     HoldCountAtStep=Player->GetInteractionComponent()->GetCompletedHolds();
+    TapCountAtStep=Player->GetInteractionComponent()->GetCompletedTaps();
     WalkLeg=0; FirePulses=0; NextFire=0;
     RetreatStart=Player->GetActorLocation();
     ChaptersCsv+=FString::Printf(TEXT("%d,%.6f,%s\n"),Phase,Elapsed,*Segment);
@@ -232,7 +243,7 @@ void AONE05PresentationCheck::EnterStep()
     if (S.Kind==EStep::Combat)
     {
         const auto* D=Player->GetWeaponComponent()->GetDefinitionForWeapon(Player->GetWeaponComponent()->GetEquippedIndex());
-        Check(D && D->Family==EONEWeaponFamily::Carbine && D->bUpgraded==bProfileUpgraded,TEXT("Measured combat starts with requested actually carried rifle"));
+        Check(D && D->Family==ProfileFamily && D->bUpgraded==bProfileUpgraded,TEXT("Measured combat starts with the requested actually carried weapon"));
         if (Failures) { Finish(false); return; }
         CSV_EVENT(ONECandidate05Presentation,TEXT("ONE05_UPGRADED_COMBAT_BEGIN phase=%d shots=%d"),Phase,ShotsAtStep);
     }
@@ -274,7 +285,16 @@ void AONE05PresentationCheck::RunStep(float Dt)
     switch (S.Kind)
     {
     case EStep::Wait: if (T>=S.Seconds) Advance(); break;
-    case EStep::Tap: if (T>=S.Seconds) Advance(); break;
+    case EStep::Tap: if (T>=S.Seconds)
+        {
+            if (S.Key==EKeys::F)
+            {
+                CapturedUpgrade=Upgrade->GetReservation();
+                Check(Player->GetInteractionComponent()->GetCompletedTaps()==TapCountAtStep+1 && CapturedUpgrade.IsValid() &&
+                    Upgrade->GetState()==EONEMachineState::Active,TEXT("One production F tap paid and reserved the exact instance without a hold"));
+            }
+            if (Failures) Finish(false); else Advance();
+        } break;
     case EStep::Walk:
         if (WalkTo(Machine(S.Machine)))
         {
@@ -311,6 +331,15 @@ void AONE05PresentationCheck::RunStep(float Dt)
         if (int32(Machine(S.Machine)->GetState())==S.State)
         { Check(true,TEXT("Observed expected actual machine state")); Advance(); }
         break;
+    case EStep::WaitOwned:
+    {
+        const auto* Slot=W->GetSlotState(CapturedUpgrade.Slot);
+        if (CapturedUpgrade.IsValid() && W->GetRunId()==CapturedUpgrade.RunId && Slot &&
+            Slot->InstanceId==CapturedUpgrade.InstanceId && Slot->Family==S.Family && Slot->bUpgraded &&
+            Slot->Status==EONEWeaponSlotStatus::Available)
+        { Check(true,TEXT("Approach restored the reserved upgraded instance to its original slot without F")); Advance(); }
+        break;
+    }
     case EStep::Select:
     {
         const auto* Selected=W->GetSlotState(W->GetEquippedIndex());
@@ -394,8 +423,9 @@ void AONE05PresentationCheck::RunStep(float Dt)
         {
             const auto* D=W->GetDefinitionForWeapon(W->GetEquippedIndex());
             const int32 Committed=W->GetTotalShotsFired()-ShotsAtStep;
-            Check(D && D->Family==EONEWeaponFamily::Carbine && D->bUpgraded==bProfileUpgraded,TEXT("Measured combat ends with the requested carried rifle"));
-            Check(Committed>=60,TEXT("Measured rifle combat committed at least sixty actual discharges across bursts and reloads"));
+            Check(D && D->Family==ProfileFamily && D->bUpgraded==bProfileUpgraded,TEXT("Measured combat ends with the requested carried weapon"));
+            const int32 MinimumDischarges=ProfileFamily==EONEWeaponFamily::Shotgun?10:60;
+            Check(Committed>=MinimumDischarges,FString::Printf(TEXT("Measured requested-weapon combat committed at least %d actual discharges across fire and reloads"),MinimumDischarges));
             CSV_EVENT(ONECandidate05Presentation,TEXT("ONE05_UPGRADED_COMBAT_END phase=%d shots_committed=%d"),Phase,Committed);
             if (Failures) Finish(false); else Advance();
         }
@@ -439,6 +469,12 @@ void AONE05PresentationCheck::Observe(float Dt)
         ProfileSeconds+=Dt;
         ProfileMaximumLive=FMath::Max(ProfileMaximumLive,Live);
         ++ProfileSamples; if (Live==EnemyCount) ++ExactCountSamples;
+        auto* PowerUps=Mode->GetPowerUps();
+        const int32 WorldDrops=PowerUps?PowerUps->GetActiveDropCount():0;
+        const float InstaSeconds=PowerUps?PowerUps->GetRemainingSeconds(EONEPowerUpType::InstaKill):0.f;
+        const float DoubleSeconds=PowerUps?PowerUps->GetRemainingSeconds(EONEPowerUpType::DoublePoints):0.f;
+        if (InstaSeconds>0.f&&DoubleSeconds>0.f) ++ProfilePowerUpSamples;
+        if (WorldDrops>=3) ++ProfileThreeDropSamples;
         if (Box->GetState()==EONEMachineState::Active && Upgrade->GetState()==EONEMachineState::Active) BothActiveSeconds+=Dt;
         // Deliberate stress-fixture protection, never used by either recording mode.
         Player->GetHealthComponent()->Restore();
@@ -449,12 +485,29 @@ void AONE05PresentationCheck::Observe(float Dt)
         }
         CSV_CUSTOM_STAT(ONECandidate05Presentation,Live,Live,ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONECandidate05Presentation,RequestedLive,EnemyCount,ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,WorldDrops,WorldDrops,ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,InstaKillSeconds,InstaSeconds,ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,DoublePointsSeconds,DoubleSeconds,ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,PickupCollections,PowerUps?int32(PowerUps->GetDropStats().Collected):0,ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,PickupExpiries,PowerUps?int32(PowerUps->GetDropStats().Expired):0,ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONECandidate05Presentation,BoxState,int32(Box->GetState()),ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONECandidate05Presentation,UpgradeState,int32(Upgrade->GetState()),ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONECandidate05Presentation,Phase,Phase,ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONECandidate05Presentation,ProfileSeconds,ProfileSeconds,ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONECandidate05Presentation,LiveMagazines,Player->GetWeaponComponent()->GetLiveMagazineCount(),ECsvCustomStatOp::Set);
         const auto* Effective=Player->GetWeaponComponent()->GetDefinitionForWeapon(Player->GetWeaponComponent()->GetEquippedIndex());
+        const auto* ProfileWeaponComponent=Player->GetWeaponComponent();
+        int32 LastContacts=0;
+        for (const auto& Path:ProfileWeaponComponent->GetLastProjectilePaths()) LastContacts+=Path.Contacts.Num();
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,EffectiveFamily,Effective?int32(Effective->Family):-1,ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,LastShotContacts,LastContacts,ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,LastShotLiveHits,ProfileWeaponComponent->GetLastShotLiveHitCount(),ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,LastShotCorpseHits,ProfileWeaponComponent->GetLastShotCorpseHitCount(),ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,LastShotNewKills,ProfileWeaponComponent->GetLastShotNewKillCount(),ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,LastShotProjectiles,ProfileWeaponComponent->GetLastProjectilePaths().Num(),ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,LastShotPelletContacts,ProfileWeaponComponent->GetLastShotContactPelletCount(),ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,ShellInserts,ProfileWeaponComponent->GetShellInsertCount(),ECsvCustomStatOp::Set);
+        CSV_CUSTOM_STAT(ONECandidate05Presentation,MagazineCommits,ProfileWeaponComponent->GetMagazineCommitCount(),ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONECandidate05Presentation,EffectiveUpgraded,Effective && Effective->bUpgraded?1:0,ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONECandidate05Presentation,Shots,Player->GetWeaponComponent()->GetTotalShotsFired(),ECsvCustomStatOp::Set);
         CSV_CUSTOM_STAT(ONECandidate05Presentation,HeldAura,Player->IsHeldAuraVisible()?1:0,ECsvCustomStatOp::Set);
@@ -476,6 +529,16 @@ void AONE05PresentationCheck::Observe(float Dt)
         W->GetEquippedIndex(),D?int32(D->Family):-1,D?D->bUpgraded:false,W->GetAmmo(),W->GetReserveAmmo(),int32(W->GetOperation()),
         W->GetTotalShotsFired(),W->GetMagazineDropCount(),W->GetLiveMagazineCount(),W->GetLiveCaseCount(),Mode->GetPoints(),Player->GetHealth(),P.X,P.Y,P.Z,
         Player->GetInteractionComponent()->GetProgress(),Mode->IsSandboxDimLighting(),MouseX,MouseY,Aim.X,Aim.Y,Aim.Z,Player->GetBodyFacingYaw());
+    if (bProfile)
+    {
+        const auto* PowerUps=Mode->GetPowerUps();
+        int32 Contacts=0;for (const auto& Path:W->GetLastProjectilePaths()) Contacts+=Path.Contacts.Num();
+        ObservationCsv.RemoveAt(ObservationCsv.Len()-1);
+        ObservationCsv+=FString::Printf(TEXT(",%d,%.6f,%.6f,%d,%d,%d,%d,%d\n"),
+            PowerUps?PowerUps->GetActiveDropCount():0,PowerUps?PowerUps->GetRemainingSeconds(EONEPowerUpType::InstaKill):0.f,
+            PowerUps?PowerUps->GetRemainingSeconds(EONEPowerUpType::DoublePoints):0.f,W->GetLastShotLiveHitCount(),
+            W->GetLastShotCorpseHitCount(),Contacts,W->GetShellInsertCount(),W->GetMagazineCommitCount());
+    }
 }
 void AONE05PresentationCheck::Capture()
 {
@@ -496,20 +559,65 @@ void AONE05PresentationCheck::Screenshot(int32 Width,int32 Height,const TArray<F
     PendingFrame.Empty();
     if (bFinishRequested) Finish(bRequestedComplete);
 }
+bool AONE05PresentationCheck::PrepareProfilePickups()
+{
+    auto* PowerUps=Mode->GetPowerUps();
+    if (!PowerUps) { Check(false,TEXT("Profile pickup authority is present"));Finish(false);return false; }
+    if (ProfilePickupSetupStage==0)
+    {
+        ProfilePickupSetupAt=FPlatformTime::Seconds();
+        Check(PowerUps->ForceDrop(EONEPowerUpType::InstaKill,Player->GetActorLocation())==EONEPowerUpDropResult::Spawned,
+            TEXT("Profile setup placed an actual Insta-Kill pickup at player overlap"));
+        if (Failures) { Finish(false);return false; }
+        ProfilePickupSetupStage=1;return false;
+    }
+    if (FPlatformTime::Seconds()-ProfilePickupSetupAt>5.0&&ProfilePickupSetupStage<4)
+    { Check(false,TEXT("Profile timed pickups collected through real overlap within five seconds"));Finish(false);return false; }
+    if (ProfilePickupSetupStage==1)
+    {
+        if (!PowerUps->IsActive(EONEPowerUpType::InstaKill)) return false;
+        Check(PowerUps->ForceDrop(EONEPowerUpType::DoublePoints,Player->GetActorLocation())==EONEPowerUpDropResult::Spawned,
+            TEXT("Profile setup placed an actual Double Points pickup at player overlap"));
+        if (Failures) { Finish(false);return false; }
+        ProfilePickupSetupStage=2;return false;
+    }
+    if (ProfilePickupSetupStage==2)
+    {
+        if (!PowerUps->IsActive(EONEPowerUpType::DoublePoints)) return false;
+        const EONEPowerUpType Types[]={EONEPowerUpType::InstaKill,EONEPowerUpType::DoublePoints,EONEPowerUpType::MaxAmmo};
+        for (int32 I=0;I<3;++I)
+            Check(PowerUps->ForceDrop(Types[I],FVector(-220.f+220.f*I,120.f,98.f))==EONEPowerUpDropResult::Spawned,
+                FString::Printf(TEXT("Profile setup placed visible world pickup type %d through the real authority"),int32(Types[I])));
+        if (Failures) { Finish(false);return false; }
+        ProfilePickupSetupStage=3;return false;
+    }
+    if (ProfilePickupSetupStage==3)
+    {
+        Check(PowerUps->IsActive(EONEPowerUpType::InstaKill)&&PowerUps->IsActive(EONEPowerUpType::DoublePoints)&&
+            PowerUps->GetDropStats().Collected>=2&&PowerUps->GetActiveDropCount()>=3,
+            TEXT("Profile begins with both overlap-collected timed effects and at least three actual world pickups"));
+        if (Failures) { Finish(false);return false; }
+        ProfilePickupSetupStage=4;
+    }
+    return true;
+}
 bool AONE05PresentationCheck::StartProfile()
 {
 #if CSV_PROFILER
     auto* P=FCsvProfiler::Get();
     if (!bCsvRequested)
     {
-        if (P->IsCapturing() || P->IsWritingFile() || P->IsEndCapturePending())
+        if (UONE06CaptureComponent::IsAnyCaptureActive() || P->IsCapturing() || P->IsWritingFile() || P->IsEndCapturePending())
         { Check(false,TEXT("Scenario requires exclusive ownership of an idle CSV profiler")); Finish(false); return false; }
+        if (!PrepareProfilePickups()) return false;
         for (const TCHAR* C:{TEXT("Chaos"),TEXT("PhysicsVerbose"),TEXT("PhysicsCounters"),TEXT("ONEPhysicality"),TEXT("ONECandidate05Presentation")})
             Check(P->EnableCategoryByString(C),FString(TEXT("Required CSV category enabled: "))+C);
         if (Failures) { Finish(false); return false; }
         CsvFolder=FPaths::ConvertRelativePathToFull(Folder/TEXT("CSV")); IFileManager::Get().MakeDirectory(*CsvFolder,true);
-        CSV_METADATA(TEXT("one_scenario"),TEXT("candidate05_two_machines_production_input_combat"));
-        CSV_METADATA(TEXT("one_carried_rifle"),bProfileUpgraded?TEXT("Overcurrent"):TEXT("M4A1"));
+        CSV_METADATA(TEXT("one_scenario"),TEXT("candidate06_legacy05_two_machines_production_input_combat"));
+        CSV_METADATA(TEXT("one_carried_weapon"),*ProfileWeapon);
+        CSV_METADATA(TEXT("one_carried_family"),ProfileFamily==EONEWeaponFamily::Shotgun?TEXT("Shotgun"):TEXT("Carbine"));
+        CSV_METADATA(TEXT("one_pickup_fixture"),TEXT("Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay"));
         CSV_METADATA(TEXT("one_media_capture"),TEXT("none"));
         CSV_METADATA(TEXT("one_requested_enemies"),*FString::FromInt(EnemyCount));
         P->BeginCapture(-1,CsvFolder); bCsvRequested=true; CsvRequestAt=FPlatformTime::Seconds(); return false;
@@ -569,6 +677,7 @@ void AONE05PresentationCheck::Finish(bool Complete)
         Check(BothActiveSeconds>=.5f,TEXT("Both machines actually processed concurrently for at least half a second"));
         Check(ProfileSeconds>=25.f && ProfileSamples>0,TEXT("Profile retained at least 25 seconds of actual scenario frames"));
         Check(ProfileMaximumLive==EnemyCount && ExactCountSamples>0,TEXT("Requested live count was actually achieved and recorded"));
+        Check(ProfilePowerUpSamples>0&&ProfileThreeDropSamples>0,TEXT("Measured frames include both timed effects and at least three world drops"));
 #if CSV_PROFILER
         CSV_EVENT(ONECandidate05Presentation,TEXT("ONE05_PROFILE_END samples=%d overlap=%.6f"),ProfileSamples,BothActiveSeconds);
         CsvCompletion=FCsvProfiler::Get()->EndCapture();
@@ -588,6 +697,7 @@ void AONE05PresentationCheck::WriteResults()
         FFileHelper::SaveStringToFile(ChaptersCsv,*(Folder/TEXT("chapters.csv")));
     Check(DataWritten,TEXT("Scenario timestamp and input records were written"));
     Report+=FString::Printf(TEXT("\nComplete: %d\nChecks: %d\nFailures: %d\nFrames: %d\nProfile requested live: %d\nProfile actual maximum live: %d\nProfile actual frames: %d\nFrames at exact requested count: %d\nBoth active seconds: %.6f\nSuccessful registered spawns: %d\n"),bComplete,Checks,Failures,Frames,EnemyCount,ProfileMaximumLive,ProfileSamples,ExactCountSamples,BothActiveSeconds,Spawned);
+    if (bProfile) Report+=FString::Printf(TEXT("Requested carried weapon: %s\nFrames with both timed power-ups active: %d\nFrames with at least three world drops: %d\nLast-shot contact fields are snapshots repeated until the next shot, not cumulative event totals.\n"),*ProfileWeapon,ProfilePowerUpSamples,ProfileThreeDropSamples);
     if (!FFileHelper::SaveStringToFile(Report,*(Folder/TEXT("checks.txt"))))
         Check(false,TEXT("Scenario report could not be written"));
     UE_LOG(LogTemp,Display,TEXT("ONE05_PRESENTATION_COMPLETE complete=%d failures=%d checks=%d frames=%d profile=%d"),bComplete,Failures,Checks,Frames,bProfile);

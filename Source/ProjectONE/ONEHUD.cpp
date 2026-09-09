@@ -12,6 +12,8 @@
 #include "ONE04PresentationCheck.h"
 #include "ONE05PresentationCheck.h"
 #include "ONE05MotionCheck.h"
+#include "ONEPowerUpComponent.h"
+#include "HAL/IConsoleManager.h"
 #include "EngineUtils.h"
 #include "Engine/Canvas.h"
 #include "Engine/Texture2D.h"
@@ -51,6 +53,14 @@ int32 AONEHUD::UIContext() const
 bool AONEHUD::IsPointerUIActive() const { return UIContext()!=0; }
 void AONEHUD::ToggleTools() { if (UIContext()<2) bTools=!bTools; PressedAction=EONEUIAction::None; Buttons.Reset(); }
 void AONEHUD::CloseTools() { bTools=false; PressedAction=EONEUIAction::None; Buttons.Reset(); }
+void AONEHUD::CycleShakeStrength()
+{
+    if (auto* Setting=IConsoleManager::Get().FindConsoleVariable(TEXT("one.CameraShake.Strength")))
+    {
+        const float Current=FMath::Clamp(Setting->GetFloat(),0.f,1.f);
+        Setting->Set(Current>.75f?.5f:Current>.01f?0.f:1.f,ECVF_SetByGameSetting);
+    }
+}
 bool AONEHUD::HandlePointerPressed(const FVector2D& Position)
 {
     PressedAction=EONEUIAction::None; PressedContext=UIContext();
@@ -160,6 +170,152 @@ TArray<FString> AONEHUD::Wrap(const FString& Value,float Width,float Height) con
     if (!Line.IsEmpty()) Lines.Add(Line);
     return Lines;
 }
+void AONEHUD::UpdateSurvivalPresentation(const AONEPlayer* Player,const AONEGameMode* GM)
+{
+    const double Now=GetWorld()->GetTimeSeconds();
+    const auto* Effects=GM->GetPowerUps();
+    const FGuid Run=Effects?Effects->GetRunId():FGuid();
+    if (VisualPlayer.Get()!=Player || VisualRun!=Run)
+    {
+        VisualPlayer=const_cast<AONEPlayer*>(Player); VisualRun=Run; VisualTime=Now;
+        ObservedCombatGainSerial=ObservedPickupSerial=0;
+        DisplayedCombatGain=0; GainUpdatedAt=PickupPresentedAt=-10.; LastPickupType=EONEPowerUpType::Count;
+        HealthEdgeSeverity=0.f; DamagePulseStrength=0.f;
+    }
+    const float Dt=FMath::Clamp(float(Now-VisualTime),0.f,.1f); VisualTime=Now;
+    if (GM->IsGameOver() || Player->GetHealth()<=0.f)
+    {
+        HealthEdgeSeverity=DamagePulseStrength=0.f; DisplayedCombatGain=0;
+        LastPickupType=EONEPowerUpType::Count; return;
+    }
+    const float Missing=1.f-FMath::Clamp(Player->GetHealth()/FMath::Max(1.f,Player->GetMaxHealth()),0.f,1.f);
+    // Gameplay time freezes in pause. Full health always clears both layers,
+    // including reset/restore; there is no persistent full-screen red fill.
+    HealthEdgeSeverity=Missing<=KINDA_SMALL_NUMBER?0.f:FMath::FInterpTo(HealthEdgeSeverity,Missing,Dt,12.f);
+    DamagePulseStrength=Missing<=KINDA_SMALL_NUMBER?0.f:FMath::Clamp((.38f-Player->GetDamageReactionAge())/.38f,0.f,1.f);
+    const uint64 GainSerial=GM->GetCombatGainSerial();
+    if (GainSerial!=ObservedCombatGainSerial)
+    {
+        ObservedCombatGainSerial=GainSerial;
+        const int32 Gain=FMath::Max(0,GM->GetLastCombatGain());
+        if (Gain>0)
+        {
+            const int64 Carry=Now-GainUpdatedAt<.45?DisplayedCombatGain:0;
+            DisplayedCombatGain=int32(FMath::Min<int64>(999999,Carry+Gain)); GainUpdatedAt=Now;
+        }
+    }
+    if (Now-GainUpdatedAt>1.15) DisplayedCombatGain=0;
+    if (Effects && Effects->GetPickupNotificationSerial()!=ObservedPickupSerial)
+    {
+        ObservedPickupSerial=Effects->GetPickupNotificationSerial();
+        LastPickupType=Effects->GetLastCollectedType(); PickupPresentedAt=Now;
+    }
+}
+void AONEHUD::DrawHealthEdges(float W,float H)
+{
+    const float Severity=FMath::Clamp(HealthEdgeSeverity,0.f,1.f),Pulse=DamagePulseStrength;
+    if (Severity<=KINDA_SMALL_NUMBER && Pulse<=KINDA_SMALL_NUMBER) return;
+    const float Depth=FMath::Min(FMath::Min(W,H)*.14f,(18.f+90.f*Severity+18.f*Pulse)*K);
+    const float Alpha=FMath::Clamp(.30f*FMath::Pow(Severity,1.25f)+.14f*Pulse,0.f,.42f);
+    constexpr int32 Bands=20;
+    for (int32 I=0;I<Bands;++I)
+    {
+        const float T=(I+.5f)/Bands,Inset=Depth*I/Bands,Thickness=Depth/Bands+.25f;
+        const FLinearColor C(.80f-.28f*Severity,.025f-.017f*Severity,.010f,Alpha*FMath::Square(1.f-T));
+        DrawRect(C,0,Inset,W,Thickness); DrawRect(C,0,H-Inset-Thickness,W,Thickness);
+        DrawRect(C,Inset,Depth,Thickness,FMath::Max(0.f,H-2.f*Depth));
+        DrawRect(C,W-Inset-Thickness,Depth,Thickness,FMath::Max(0.f,H-2.f*Depth));
+    }
+}
+void AONEHUD::PowerUpIcon(EONEPowerUpType Type,float X,float Y,float Size,FLinearColor Color)
+{
+    const float U=Size/32.f; FLinearColor Cut=Ink; Cut.A=Color.A;
+    if (Type==EONEPowerUpType::InstaKill)
+    {
+        Rounded(X+3*U,Y,26*U,24*U,Color,8*U/K);
+        Rounded(X+8*U,Y+20*U,16*U,10*U,Color,2*U/K);
+        Rounded(X+7*U,Y+8*U,7*U,7*U,Cut,2*U/K); Rounded(X+18*U,Y+8*U,7*U,7*U,Cut,2*U/K);
+        DrawRect(Cut,X+15*U,Y+17*U,3*U,5*U);
+        for (int32 I=0;I<3;++I) DrawRect(Cut,X+(11+I*4)*U,Y+25*U,2*U,5*U);
+    }
+    else if (Type==EONEPowerUpType::DoublePoints)
+    {
+        DrawLine(X+2*U,Y+11*U,X+12*U,Y+23*U,Color,3*U); DrawLine(X+2*U,Y+23*U,X+12*U,Y+11*U,Color,3*U);
+        Text(TEXT("2"),X+14*U,Y,32*U,Color);
+    }
+    else
+    {
+        Rounded(X,Y+6*U,32*U,24*U,Color,3*U/K);
+        DrawRect(Cut,X+2*U,Y+10*U,28*U,4*U); DrawRect(Cut,X+5*U,Y+6*U,3*U,24*U); DrawRect(Cut,X+24*U,Y+6*U,3*U,24*U);
+        for (int32 I=0;I<3;++I) DrawRect(Cut,X+(11+I*4)*U,Y+18*U,2*U,8*U);
+    }
+}
+void AONEHUD::DrawPowerUps(const AONEGameMode* GM,float Left,float Top,float W)
+{
+    VisiblePowerUpTimers=0; if (GM->IsGameOver()) return;
+    const auto* Effects=GM->GetPowerUps(); if (!Effects) return;
+    for (const auto Type:{EONEPowerUpType::InstaKill,EONEPowerUpType::DoublePoints})
+    {
+        const float Remaining=Effects->GetRemainingSeconds(Type); if (Remaining<=0.f) continue;
+        const float Y=Top+(104+VisiblePowerUpTimers*49)*K;
+        const FLinearColor Color=Type==EONEPowerUpType::InstaKill?Red:Gold;
+        Rounded(Left,Y,186*K,43*K,Ink,10);
+        RecordPanel(Type==EONEPowerUpType::InstaKill?TEXT("InstaKillTimer"):TEXT("DoublePointsTimer"),Left,Y,186*K,43*K);
+        PowerUpIcon(Type,Left+9*K,Y+7*K,28*K,Color);
+        Text(Type==EONEPowerUpType::InstaKill?TEXT("INSTA-KILL"):TEXT("DOUBLE POINTS"),Left+46*K,Y+6*K,12*K,Color);
+        Text(FString::Printf(TEXT("%ds"),FMath::CeilToInt(Remaining)),Left+46*K,Y+21*K,18*K,Remaining<=5.f?Gold:Paper);
+        ++VisiblePowerUpTimers;
+    }
+    const float Age=float(GetWorld()->GetTimeSeconds()-PickupPresentedAt);
+    if (LastPickupType!=EONEPowerUpType::Count && Age>=0.f && Age<2.3f)
+    {
+        const FLinearColor Color=LastPickupType==EONEPowerUpType::InstaKill?Red:LastPickupType==EONEPowerUpType::DoublePoints?Gold:Teal;
+        const FString Label=LastPickupType==EONEPowerUpType::InstaKill?
+            FString::Printf(TEXT("INSTA-KILL - %ds"),FMath::CeilToInt(Effects->GetRemainingSeconds(LastPickupType))):
+            LastPickupType==EONEPowerUpType::DoublePoints?
+            FString::Printf(TEXT("DOUBLE POINTS - %ds"),FMath::CeilToInt(Effects->GetRemainingSeconds(LastPickupType))):TEXT("MAX AMMO");
+        const float X=W*.5f-179*K,Y=Top+258*K;
+        FLinearColor Fill=Ink; Fill.A*=FMath::Clamp((2.3f-Age)/.25f,0.f,1.f);
+        Rounded(X,Y,358*K,48*K,Fill,12); RecordPanel(TEXT("PickupNotice"),X,Y,358*K,48*K);
+        PowerUpIcon(LastPickupType,X+13*K,Y+10*K,28*K,Color); Text(Label,X+56*K,Y+14*K,21*K,Color);
+    }
+}
+void AONEHUD::DrawUpgradeStatus(const AONEPlayer* Player,float W,float Top)
+{
+    if (UIContext()>=2) return;
+    for (TActorIterator<AONEProgressionMachine> It(GetWorld());It;++It)
+    {
+        if (It->IsBox()) continue;
+        const bool Lost=It->WasLastLossFor(Player) && It->GetTimeSinceWeaponLost()<=4.f;
+        const bool Owned=It->IsOwnedBy(Player);
+        const auto State=It->GetState();
+        if (!Lost && !(Owned && (State==EONEMachineState::Active || State==EONEMachineState::Handoff || State==EONEMachineState::Ready || State==EONEMachineState::Collecting))) continue;
+        const float X=W*.5f-225*K,Y=Top+166*K;
+        const bool Ready=State==EONEMachineState::Ready && !Lost,Warn=Ready && It->IsExpiryWarning();
+        Rounded(X,Y,450*K,76*K,Ink,13); RecordPanel(TEXT("UpgradeStatus"),X,Y,450*K,76*K);
+        if (Lost)
+        {
+            CenterText(TEXT("WEAPON LOST"),W*.5f,Y+10*K,23*K,Red);
+            CenterText(FamilyName(It->GetLastLostFamily())+TEXT(" expired - no refund"),W*.5f,Y+43*K,18*K,Paper);
+        }
+        else if (Ready)
+        {
+            CenterText(FString::Printf(TEXT("%s %ds"),Warn?TEXT("WEAPON EXPIRES IN"):TEXT("UPGRADE READY -"),FMath::CeilToInt(It->GetReadySecondsRemaining())),W*.5f,Y+10*K,23*K,Warn?Red:Gold);
+            CenterText(TEXT("Approach to receive - no F"),W*.5f,Y+43*K,18*K,Paper);
+        }
+        else if (State==EONEMachineState::Collecting)
+        {
+            CenterText(TEXT("UPGRADE RETURNED"),W*.5f,Y+10*K,23*K,Teal);
+            CenterText(TEXT("Restored to its reserved slot"),W*.5f,Y+43*K,18*K,Paper);
+        }
+        else
+        {
+            CenterText(FString::Printf(TEXT("PACK-A-PUNCH - %ds"),FMath::CeilToInt(FMath::Max(0.f,It->ProcessingDuration-It->GetStateElapsed()))),W*.5f,Y+10*K,23*K,Teal);
+            CenterText(FString::Printf(TEXT("Return nearby - ready lasts %ds"),FMath::CeilToInt(It->ReadyLifetime)),W*.5f,Y+43*K,18*K,Paper);
+        }
+        break; // Bounded compact banner; the focused offer remains independent.
+    }
+}
 bool AONEHUD::DrawBoxReel(const AONEPlayer* Player,float W,float Top)
 {
     AONEProgressionMachine* Box=nullptr;
@@ -207,30 +363,39 @@ bool AONEHUD::DrawBoxReel(const AONEPlayer* Player,float W,float Top)
 void AONEHUD::DrawTools(const AONEGameMode* GM,float W,float H)
 {
     DrawRect(FLinearColor(.007f,.013f,.018f,.62f),0,0,W,H);
-    const float X=W*.5f-365*K,Y=H*.5f-324*K;
-    Rounded(X,Y,730*K,648*K,Ink,20);
+    const float X=W*.5f-365*K,Y=H*.5f-388*K;
+    Rounded(X,Y,730*K,776*K,Ink,20);
     Text(TEXT("HELP + SANDBOX"),X+28*K,Y+24*K,32*K,Paper);
-    Text(TEXT("WASD move   Shift run   Mouse aim + fire"),X+28*K,Y+72*K,21*K,Muted);
-    Text(TEXT("R reload   1 / 2 slots   Tab / wheel switch"),X+28*K,Y+100*K,21*K,Muted);
-    Text(TEXT("F interact   Esc pause   H close tools"),X+28*K,Y+128*K,21*K,Muted);
-    Button(EONEUIAction::ToggleSandbox,GM->IsSandbox()?TEXT("Return to rounds"):TEXT("Enter sandbox"),TEXT("F1"),X+28*K,Y+168*K,674*K,44*K);
+    Text(TEXT("WASD move   Shift run   Mouse aim   LMB fire"),X+28*K,Y+72*K,19*K,Muted);
+    Text(TEXT("R reload   1 / 2 slots   Tab / wheel switch"),X+28*K,Y+98*K,19*K,Muted);
+    Text(TEXT("Hold RMB head / Left Ctrl low   Esc pause"),X+28*K,Y+124*K,19*K,Muted);
+    Text(TEXT("Box: hold F   Upgrade: tap F / auto-return"),X+28*K,Y+150*K,19*K,Muted);
+    Button(EONEUIAction::ToggleSandbox,GM->IsSandbox()?TEXT("Return to rounds"):TEXT("Enter sandbox"),TEXT("F1"),X+28*K,Y+188*K,425*K,42*K);
+    const auto* Shake=IConsoleManager::Get().FindConsoleVariable(TEXT("one.CameraShake.Strength"));
+    const int32 ShakePercent=FMath::RoundToInt(FMath::Clamp(Shake?Shake->GetFloat():1.f,0.f,1.f)*100.f);
+    Button(EONEUIAction::CycleShakeStrength,ShakePercent>0?FString::Printf(TEXT("Shake %d%%"),ShakePercent):TEXT("Shake Off"),TEXT(""),X+468*K,Y+188*K,234*K,42*K);
     const bool Enabled=GM->IsSandbox();
-    Text(TEXT("ENEMIES"),X+28*K,Y+230*K,19*K,Teal);
-    Button(EONEUIAction::SpawnOne,TEXT("Spawn one"),TEXT("F2"),X+28*K,Y+258*K,329*K,44*K,false,Enabled);
-    Button(EONEUIAction::SpawnSix,TEXT("Spawn six"),TEXT("F3"),X+373*K,Y+258*K,329*K,44*K,false,Enabled);
-    Text(TEXT("WEAPONS + POINTS"),X+28*K,Y+318*K,19*K,Teal);
-    Button(EONEUIAction::Refill,TEXT("Refill ammo"),TEXT("F4"),X+28*K,Y+346*K,329*K,44*K,false,Enabled);
-    Button(EONEUIAction::GrantPoints,TEXT("Add 10000 Points"),TEXT("T"),X+373*K,Y+346*K,329*K,44*K,false,Enabled);
+    Text(TEXT("ENEMIES"),X+28*K,Y+248*K,19*K,Teal);
+    Button(EONEUIAction::SpawnOne,TEXT("Spawn one"),TEXT("F2"),X+28*K,Y+276*K,329*K,42*K,false,Enabled);
+    Button(EONEUIAction::SpawnSix,TEXT("Spawn six"),TEXT("F3"),X+373*K,Y+276*K,329*K,42*K,false,Enabled);
+    Text(TEXT("WEAPONS + POINTS"),X+28*K,Y+332*K,19*K,Teal);
+    Button(EONEUIAction::Refill,TEXT("Refill ammo"),TEXT("F4"),X+28*K,Y+360*K,329*K,42*K,false,Enabled);
+    Button(EONEUIAction::GrantPoints,TEXT("Add 10000 Points"),TEXT("T"),X+373*K,Y+360*K,329*K,42*K,false,Enabled);
     const TCHAR* Labels[4]={TEXT("M1911"),TEXT("M4A1"),TEXT("870"),TEXT("Random")};
     const TCHAR* Keys[4]={TEXT("Z"),TEXT("X"),TEXT("C"),TEXT("V")};
     const EONEUIAction Actions[4]={EONEUIAction::ForcePistol,EONEUIAction::ForceCarbine,EONEUIAction::ForceShotgun,EONEUIAction::RandomBox};
-    for (int32 I=0;I<4;++I) Button(Actions[I],Labels[I],Keys[I],X+(28+I*173)*K,Y+402*K,155*K,42*K,false,Enabled);
-    Text(TEXT("Next box: ")+GM->GetForcedBoxRewardLabel(),X+28*K,Y+450*K,18*K,Gold);
-    Text(TEXT("SCENE + RESET"),X+28*K,Y+482*K,19*K,Teal);
-    Button(EONEUIAction::ToggleLighting,GM->IsSandboxDimLighting()?TEXT("Bright"):TEXT("Dim"),TEXT("F7"),X+28*K,Y+510*K,213*K,44*K,false,Enabled);
-    Button(EONEUIAction::ClearGore,TEXT("Clean up"),TEXT("F6"),X+258*K,Y+510*K,213*K,44*K,false,Enabled);
-    Button(EONEUIAction::ResetSandbox,TEXT("Reset"),TEXT("F5"),X+489*K,Y+510*K,213*K,44*K,false,Enabled);
-    Button(EONEUIAction::CloseTools,TEXT("Back to game"),TEXT("H"),X+28*K,Y+580*K,674*K,44*K,true);
+    for (int32 I=0;I<4;++I) Button(Actions[I],Labels[I],Keys[I],X+(28+I*173)*K,Y+414*K,155*K,40*K,false,Enabled);
+    Text(TEXT("Next box: ")+GM->GetForcedBoxRewardLabel(),X+28*K,Y+464*K,18*K,Gold);
+    Text(TEXT("SCENE + RESET"),X+28*K,Y+494*K,19*K,Teal);
+    Button(EONEUIAction::ToggleLighting,GM->IsSandboxDimLighting()?TEXT("Bright"):TEXT("Dim"),TEXT("F7"),X+28*K,Y+522*K,213*K,42*K,false,Enabled);
+    Button(EONEUIAction::ClearGore,TEXT("Clean up"),TEXT("F6"),X+258*K,Y+522*K,213*K,42*K,false,Enabled);
+    Button(EONEUIAction::ResetSandbox,TEXT("Reset"),TEXT("F5"),X+489*K,Y+522*K,213*K,42*K,false,Enabled);
+    Text(TEXT("FORCED PICKUPS - SANDBOX ONLY"),X+28*K,Y+582*K,19*K,Teal);
+    Button(EONEUIAction::ForceInstaKill,TEXT("Drop Insta-Kill"),TEXT(""),X+28*K,Y+610*K,213*K,42*K,false,Enabled);
+    Button(EONEUIAction::ForceDoublePoints,TEXT("Drop Double Points"),TEXT(""),X+258*K,Y+610*K,213*K,42*K,false,Enabled);
+    Button(EONEUIAction::ForceMaxAmmo,TEXT("Drop Max Ammo"),TEXT(""),X+489*K,Y+610*K,213*K,42*K,false,Enabled);
+    Text(TEXT("Forced drops do not consume normal death rolls."),X+28*K,Y+664*K,17*K,Muted);
+    Button(EONEUIAction::CloseTools,TEXT("Back to game"),TEXT("H"),X+28*K,Y+710*K,674*K,44*K,true);
 }
 void AONEHUD::DrawMenu(const AONEGameMode* GM,float W,float H)
 {
@@ -270,6 +435,7 @@ void AONEHUD::DrawHUD()
     const float W=Canvas->SizeX,H=Canvas->SizeY;
     K=FMath::Min(W/1600.f,H/900.f);
     const float SafeWidth=FMath::Min(W,1600*K),Left=(W-SafeWidth)*.5f+28*K,Right=W-Left,Bottom=H-28*K,Top=24*K;
+    UpdateSurvivalPresentation(P,GM); DrawHealthEdges(W,H);
     Rounded(Left,Top,186*K,91*K,Ink,16); RecordPanel(TEXT("Round"),Left,Top,186*K,91*K);
     Text(TEXT("ROUND"),Left+18*K,Top+12*K,18*K,Muted);
     const int32 RoundValue=FMath::Max(0,GM->GetRound());
@@ -285,6 +451,12 @@ void AONEHUD::DrawHUD()
     const float PointWidth=Number(GM->GetPoints(),Left-5*K,Bottom-123*K,PointHeight,Gold);
     Text(TEXT("Points"),Left+PointWidth+7*K,Bottom-108*K,22*K,Gold);
     RecordPanel(TEXT("Points"),Left-5*K,Bottom-123*K,PointWidth+100*K,43*K);
+    if (DisplayedCombatGain>0 && !IsPointerUIActive())
+    {
+        const float Age=float(GetWorld()->GetTimeSeconds()-GainUpdatedAt);
+        FLinearColor GainColor=Gold; GainColor.A=FMath::Clamp((1.15f-Age)/.35f,0.f,1.f);
+        Text(FString::Printf(TEXT("+%d"),DisplayedCombatGain),Left+1*K,Bottom-(154+FMath::Min(Age,.5f)*7)*K,22*K,GainColor);
+    }
     Rounded(Left,Bottom-65*K,241*K,65*K,Ink,13); RecordPanel(TEXT("Health"),Left,Bottom-65*K,241*K,65*K);
     const float Health=FMath::Clamp(P->GetHealth()/FMath::Max(1.f,P->GetMaxHealth()),0.f,1.f);
     const FLinearColor HealthColor=Health>.3f?Teal:Red;
@@ -311,16 +483,18 @@ void AONEHUD::DrawHUD()
             Rounded(X+137*K,Y+138*K,194*K*Weapon->GetOperationProgress(),3*K,Gold,2);
         }
         else if (Armed && Weapon->GetAmmo()==0) Text(Weapon->GetReserveAmmo()==0?TEXT("NO RESERVE"):TEXT("RELOAD"),X+17*K,Y+132*K,13*K,Gold);
-        for (int32 Slot=0;Slot<2;++Slot)
+        const int32 SlotCount=FMath::Max(1,Weapon->GetWeaponCount());
+        const float SlotPitch=336.f/SlotCount;
+        for (int32 Slot=0;Slot<SlotCount;++Slot)
         {
             const auto* State=Weapon->GetSlotState(Slot); const auto* D=Weapon->GetDefinitionForWeapon(Slot);
-            const float SX=X+(12+Slot*168)*K,SY=Y+146*K; const bool Selected=Weapon->GetEquippedIndex()==Slot;
-            Rounded(SX,SY,158*K,25*K,Selected?FLinearColor(.13f,.26f,.26f):FLinearColor(.08f,.12f,.14f),6);
+            const float SX=X+(12+Slot*SlotPitch)*K,SY=Y+146*K; const bool Selected=Weapon->GetEquippedIndex()==Slot;
+            Rounded(SX,SY,(SlotPitch-10)*K,25*K,Selected?FLinearColor(.13f,.26f,.26f):FLinearColor(.08f,.12f,.14f),6);
             Text(FString::FromInt(Slot+1),SX+4*K,SY+3*K,18*K,Selected?Teal:Muted);
             FString Name=D ? D->DisplayName.ToString() : TEXT("Empty"); FLinearColor Color=Selected?Paper:Muted;
             if (State && State->Status==EONEWeaponSlotStatus::MachineReserved) { Name=TEXT("Upgrading"); Color=Gold; }
-            else if (State && State->Status==EONEWeaponSlotStatus::ReadyToCollect) { Name=TEXT("Collect"); Color=Gold; }
-            Text(Name,SX+25*K,SY+4*K,FMath::Min(16.f,126.f/FMath::Max(1,Name.Len())/.57f)*K,Color);
+            else if (State && State->Status==EONEWeaponSlotStatus::ReadyToCollect) { Name=TEXT("Return nearby"); Color=Gold; }
+            Text(Name,SX+25*K,SY+4*K,FMath::Min(16.f,(SlotPitch-42.f)/FMath::Max(1,Name.Len())/.57f)*K,Color);
         }
         if (!IsPointerUIActive())
         {
@@ -330,6 +504,10 @@ void AONEHUD::DrawHUD()
                 for (int32 S:{-1,1})
                 { DrawLine(MX+S*5*K,MY,MX+S*11*K,MY,Paper,1.4f*K); DrawLine(MX,MY+S*5*K,MX,MY+S*11*K,Paper,1.4f*K); }
                 DrawRect(Paper,MX-K,MY-K,2*K,2*K);
+                const FString AimLabel=FString::Printf(TEXT("%s %d cm"),*P->GetAimHeightLabel(),FMath::RoundToInt(P->GetAimHeightCm()));
+                const float AimX=FMath::Clamp(MX+17*K,4*K,FMath::Max(4*K,W-145*K));
+                const float AimY=FMath::Clamp(MY+17*K,4*K,FMath::Max(4*K,H-22*K));
+                Text(AimLabel,AimX,AimY,14*K,P->IsAdjustingAimHeight()?Gold:Muted);
                 const bool Kill=Weapon->WasLastHitKill(); const float Duration=Kill?.42f:.30f,Age=Weapon->GetTimeSinceHit();
                 if (Age<Duration)
                 {
@@ -345,6 +523,8 @@ void AONEHUD::DrawHUD()
         }
     }
     const bool Overlay=IsPointerUIActive(); bool Reel=false;
+    DrawPowerUps(GM,Left,Top,W);
+    if (!GM->IsGameOver()) DrawUpgradeStatus(P,W,Top);
     if (!GM->IsGameOver()) Reel=DrawBoxReel(P,W,Top); else { ReelMachine.Reset(); ReelFamily=EONEWeaponFamily::Invalid; }
     if (!Overlay)
     {
@@ -356,10 +536,23 @@ void AONEHUD::DrawHUD()
             Rounded(X,Y,CardWidth,CH,Ink,14); RecordPanel(TEXT("Context"),X,Y,CardWidth,CH);
             Text(Offer.Title,X+17*K,Y+12*K,23*K,Offer.bEnabled?Teal:Muted);
             for (int32 Row=0;Row<Lines.Num();++Row) Text(Lines[Row],X+17*K,Y+(44+Row*23)*K,Font,Paper);
-            Keycap(TEXT("F"),X+17*K,Y+CH-34*K,28);
-            Text(I->RequiresRelease()?TEXT("Release F"):Offer.bEnabled?TEXT("Hold to interact"):TEXT("Unavailable"),X+54*K,Y+CH-30*K,18*K,Offer.bEnabled?Gold:Muted);
-            Rounded(X+267*K,Y+CH-22*K,214*K,4*K,FLinearColor(.14f,.20f,.22f),2);
-            Rounded(X+267*K,Y+CH-22*K,214*K*FMath::Clamp(I->GetProgress(),0.f,1.f),4*K,Gold,2);
+            if (Offer.Input==EONEInteractionInput::Automatic)
+            {
+                Text(TEXT("Approach to receive - no F"),X+17*K,Y+CH-30*K,18*K,Offer.bExpiryWarning?Red:Gold);
+                Text(FString::Printf(TEXT("%ds"),FMath::CeilToInt(Offer.ReadySecondsRemaining)),X+414*K,Y+CH-32*K,21*K,Offer.bExpiryWarning?Red:Gold);
+            }
+            else if (Offer.Input==EONEInteractionInput::Hold || Offer.Input==EONEInteractionInput::Tap)
+            {
+                Keycap(TEXT("F"),X+17*K,Y+CH-34*K,28);
+                Text(I->RequiresRelease()?TEXT("Release F"):Offer.bEnabled?
+                    (Offer.Input==EONEInteractionInput::Tap?TEXT("Tap to deposit"):TEXT("Hold to interact")):TEXT("Unavailable"),
+                    X+54*K,Y+CH-30*K,18*K,Offer.bEnabled?Gold:Muted);
+                if (Offer.Input==EONEInteractionInput::Hold)
+                {
+                    Rounded(X+267*K,Y+CH-22*K,214*K,4*K,FLinearColor(.14f,.20f,.22f),2);
+                    Rounded(X+267*K,Y+CH-22*K,214*K*FMath::Clamp(I->GetProgress(),0.f,1.f),4*K,Gold,2);
+                }
+            }
         }
         if (!Reel && GM->IsIntermission())
         {
@@ -371,7 +564,6 @@ void AONEHUD::DrawHUD()
         if (DamageAge<.45f)
         {
             FLinearColor C=Red; C.A=.65f*FMath::Clamp((.45f-DamageAge)/.25f,0.f,1.f);
-            DrawRect(C,0,0,W,3*K); DrawRect(C,0,H-3*K,W,3*K); DrawRect(C,0,0,3*K,H); DrawRect(C,W-3*K,0,3*K,H);
             FVector2D Center,From;
             if (PlayerOwner->ProjectWorldLocationToScreen(P->GetActorLocation(),Center) && PlayerOwner->ProjectWorldLocationToScreen(P->GetActorLocation()-P->GetDamageReactionDirection()*100,From))
             {

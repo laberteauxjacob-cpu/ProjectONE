@@ -215,3 +215,42 @@ registry-tag and export copies; no imported content was rewritten for that fix.
 Held weapon auras and hit/menu animation are native presentation code. Their
 captured appearance and gameplay behavior require the separate Candidate05
 runtime review. No new broad license or paid service was added.
+
+## Candidate06 pickup sources and portability map
+
+Candidate06 adds exactly three original collection cues in
+[ArtSource/Audio/Candidate06](../ArtSource/Audio/Candidate06/README.md).
+`Scripts/create_candidate06_pickup_audio.py` combines Project ONE's existing
+mathematical signal utilities into distinct Insta-Kill, Double Points and Max
+Ammo motifs. Their editable generator, seeds and source manifest are retained.
+The WAVs are mono 48 kHz, 16-bit PCM, with only format/data chunks; no recording,
+external sample or Project Zero input was used. The targeted importer creates
+three SoundWaves. Both serialized import records in each asset use the same
+repository-relative source path and match the source WAV's MD5. Actual source
+SHA-256 values also match the audio manifest. These facts establish source
+correspondence, not perceptual listening or mix approval.
+
+The three pickup emblems are original compositions of Unreal's engine cube,
+sphere and cylinder primitives. Editable dimensions, colors and bounds are in
+[ArtSource/Pickups/Candidate06](../ArtSource/Pickups/Candidate06/README.md);
+`ONE06PickupVisualComponent.cpp` supplies their world geometry and `ONEHUD.cpp`
+their Canvas counterparts. `Scripts/create_candidate06_pickup_art.py` authors
+the single new `M_Pickup06` parameter material. Engine primitives remain engine
+content; the emblem arrangement and material graph are Project ONE work. No
+external mesh, texture, font or generated bitmap was introduced.
+
+`Scripts/create_candidate06_portability_map.py` assembles the separate
+`Portability06` developer fixture from the accepted Project ONE floor, palette
+and machine assets, engine primitive edge/grouping surfaces, lights, navigation
+and tagged test locations. Its authored layout is editable and deliberately
+relocated; it does not replace Containment or introduce map-specific production
+gameplay. The script owns only its tagged generated actors in that map. The new
+material and map were authored within this project without Project Zero or
+external asset inputs.
+
+[SourceAssets.json](../Evidence/Candidate06/SourceAssets.json) records the exact
+sizes and SHA-256 values of the three WAVs, three SoundWaves, one material and
+one map at this source checkpoint. Its bounded metadata scan found no absolute
+machine paths or user-directory strings in those payloads. It is separate from
+runtime validation, outgoing-history checks and release-publication verification.
+No new broad license is selected by this provenance entry.

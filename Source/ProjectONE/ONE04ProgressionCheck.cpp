@@ -103,8 +103,8 @@ void AONE04ProgressionCheck::Finish()
     Key(EKeys::F,IE_Released); Key(EKeys::W,IE_Released); Key(EKeys::LeftMouseButton,IE_Released);
     if (Player) { Player->ReleaseHeldInputs(); Player->SetAimOverride(false,FVector::ZeroVector); }
     bFinished=true; FinishedReal=FPlatformTime::Seconds();
-    auto Root=MakeShared<FJsonObject>(); Root->SetStringField(TEXT("candidate"),TEXT("04"));
-    Root->SetStringField(TEXT("scope"),TEXT("Production PlayerController InputKey dispatch with frame-spaced holds; actual machine actors, operation timers, inventory and centralized points. Forward approach teleports and explicit sandbox point grants/spends are declared fixtures. This is not OS input, motion/art approval, audio audition or performance proof."));
+    auto Root=MakeShared<FJsonObject>(); Root->SetStringField(TEXT("candidate"),TEXT("06"));
+    Root->SetStringField(TEXT("scope"),TEXT("Candidate06 production PlayerController action-specific tap/hold dispatch; actual machines, ownership, reload exception, automatic return/deadline and centralized receipts. Approach teleports and sandbox point grants/spends are declared fixtures. The legacy ONE04 mode/output name remains for runner compatibility; this is not the preserved Candidate04 result, OS input, art/audio approval or performance proof."));
     Root->SetNumberField(TEXT("checks"),Checks); Root->SetNumberField(TEXT("failures"),Failures); Root->SetArrayField(TEXT("assertions"),Records);
     Root->SetBoolField(TEXT("real_level_restart"),Stage==99);
     FString Json; FJsonSerializer::Serialize(Root,TJsonWriterFactory<>::Create(&Json));
@@ -116,12 +116,12 @@ void AONE04ProgressionCheck::Tick(float Dt)
 {
     Super::Tick(Dt); const double Now=FPlatformTime::Seconds();
     if (bFinished) { if (Now-FinishedReal>.4) FPlatformMisc::RequestExit(false); return; }
-    if (Now-StartReal>135 || Now-StageReal>18) { Check(false,FString::Printf(TEXT("Bounded progression timeout stage %d"),Stage)); Finish(); return; }
+    if (Now-StartReal>175 || Now-StageReal>18) { Check(false,FString::Printf(TEXT("Bounded progression timeout stage %d"),Stage)); Finish(); return; }
     if (!Player) Player=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0));
     if (!GM) GM=GetWorld()->GetAuthGameMode<AONEGameMode>();
     if (!Player || !GM || !Player->GetController()) return;
     auto* W=Player->GetWeaponComponent();
-    if (Stage<90) Player->Health->Restore();
+    if (Stage!=90 && Stage!=98 && Stage!=99) Player->Health->Restore();
     const float T=GetWorld()->GetTimeSeconds()-StageStart;
     const double RealT=Now-StageReal;
     if (GetWorld()->GetTimeSeconds()-LastTrace>=.1f) { LastTrace=GetWorld()->GetTimeSeconds(); Trace(); }
@@ -197,14 +197,19 @@ void AONE04ProgressionCheck::Tick(float Dt)
         Key(EKeys::F,IE_Released); SetPoints(5000); Instance=W->GetSlotState(0)->InstanceId; Next(20);
     } break;
     case 20: if (T>.1f) { Key(EKeys::F,IE_Pressed); Next(21); } break;
-    case 21: if (Upgrade->GetState()==EONEMachineState::Handoff)
+    case 21: if (T>.03f)
     {
+        Check(Upgrade->GetState()==EONEMachineState::Active && Upgrade->GetAcceptedCount()==1 && GM->GetPoints()==0 &&
+            W->GetSlotState(0)->Status==EONEWeaponSlotStatus::MachineReserved,
+            TEXT("One short F press atomically charges and reserves before the hold threshold"));
         Player->SetActorLocation(Player->GetActorLocation()+Upgrade->GetActorForwardVector()*500.f); Key(EKeys::F,IE_Released); Next(22);
     } break;
     case 22: if (T>.6f)
     {
-        Check(Upgrade->GetState()==EONEMachineState::Idle && Upgrade->GetAcceptedCount()==0 && GM->GetPoints()==5000 && W->HasUsableWeapon() && W->GetSlotState(0)->InstanceId==Instance,TEXT("Leaving during preaccept handoff restores usable original gun with no charge"));
-        if (!Approach(Upgrade)) break; Key(EKeys::F,IE_Pressed); Next(23);
+        Check(Upgrade->GetState()==EONEMachineState::Active && Upgrade->GetAcceptedCount()==1 && GM->GetPoints()==0 &&
+            !W->HasUsableWeapon() && W->GetSlotState(0)->InstanceId==Instance,
+            TEXT("Leaving after accepted tap does not undo payment or lose the exact reserved instance"));
+        if (!Approach(Upgrade)) break; Next(23);
     } break;
     case 23: if (Upgrade->GetState()==EONEMachineState::Active)
     {
@@ -247,12 +252,16 @@ void AONE04ProgressionCheck::Tick(float Dt)
     } break;
     case 31: if (T>2.f)
     {
-        Check(Upgrade->GetState()==EONEMachineState::Ready && Upgrade->GetDeliveredCount()==0 && W->GetSlotState(0)->Status==EONEWeaponSlotStatus::ReadyToCollect && W->GetEquippedIndex()==1,TEXT("Ready output waits without auto-delivery or expiry; other weapon stays available"));
-        if (!Approach(Upgrade)) break; Key(EKeys::F,IE_Pressed); Next(70);
+        Check(Upgrade->GetState()==EONEMachineState::Ready && Upgrade->GetDeliveredCount()==0 &&
+            Upgrade->GetReadySecondsRemaining()>12.7f && Upgrade->GetReadySecondsRemaining()<13.1f &&
+            W->GetSlotState(0)->Status==EONEWeaponSlotStatus::ReadyToCollect && W->GetEquippedIndex()==1,
+            TEXT("Ready deadline starts at completion; after two seconds away about thirteen remain"));
+        Player->SetAimOverride(true,Player->GetActorLocation()+FVector(0,1500,20));
+        ShotCount=W->GetTotalShotsFired(); Key(EKeys::LeftMouseButton,IE_Pressed); Next(70);
     } break;
     case 32: if (T>1.2f)
     {
-        Check(Upgrade->GetDeliveredCount()==1 && W->GetEquippedIndex()==0 && W->GetSlotState(0)->InstanceId==Instance && W->GetDefinition().Id==TEXT("P1911_UP") && W->GetAmmo()==14 && W->GetReserveAmmo()==168 && GM->GetPoints()==0,TEXT("Fresh F retrieval returns Last Word into same slot/instance and refills its effective capacities exactly once"));
+        Check(Upgrade->GetDeliveredCount()==1 && W->GetEquippedIndex()==0 && W->GetSlotState(0)->InstanceId==Instance && W->GetDefinition().Id==TEXT("P1911_UP") && W->GetAmmo()==14 && W->GetReserveAmmo()==168 && GM->GetPoints()==0,TEXT("Automatic ownership return preserves Last Word slot/instance and refills once; later deliberate selection works"));
         Key(EKeys::F,IE_Released); ShotCount=W->GetTotalShotsFired();
         Player->SetAimOverride(true,Player->GetActorLocation()+FVector(0,1500,20)); Key(EKeys::LeftMouseButton,IE_Pressed); Next(33);
     } break;
@@ -263,18 +272,52 @@ void AONE04ProgressionCheck::Tick(float Dt)
         W->AddReserveAmmo(-10); if (!Approach(Box)) break; SetPoints(950); GM->SetForcedBoxReward(EONEWeaponFamily::Pistol); Next(35);
     } break;
     case 35: if (Box->GetState()==EONEMachineState::Idle && T>.1f) { Key(EKeys::F,IE_Pressed); Next(36); } break;
-    case 36: if (Box->GetState()==EONEMachineState::Ready)
+    case 36: if (T>.6f)
     {
         const auto Offer=Box->BuildOffer(Player);
-        Check(Offer.Acquisition.Kind==EONEWeaponAcquisitionKind::Refill && Offer.Acquisition.Slot==0 && Offer.Detail.Contains(TEXT("REFILL")),TEXT("Duplicate base pistol reward is visibly an ammo refill for owned Last Word"));
+        Check(Box->GetState()==EONEMachineState::Idle && GM->GetPoints()==950 && !Offer.bEnabled &&
+            Offer.Detail.Contains(TEXT("Forced test reward")) && !W->IsFamilyRollEligible(EONEWeaponFamily::Pistol),
+            TEXT("Forced base pistol is rejected while Last Word owns that family; no payment or refill"));
+        GM->SetForcedBoxReward(EONEWeaponFamily::Invalid); Box->RollWeights=FVector(1,0,0);
         Key(EKeys::F,IE_Released); Next(37);
     } break;
     case 37: if (T>.1f) { Key(EKeys::F,IE_Pressed); Next(38); } break;
     case 38: if (T>.95f)
     {
-        Check(W->GetSlotState(0)->InstanceId==Instance && W->GetSlotState(0)->bUpgraded && W->GetAmmoForWeapon(0)==14 && W->GetReserveAmmoForWeapon(0)==168 && W->GetSlotState(1)->Family==EONEWeaponFamily::Carbine,TEXT("Duplicate refill neither downgrades nor duplicates upgraded ownership"));
-        Key(EKeys::F,IE_Released); if (!Approach(Upgrade)) break; SetPoints(5000); Next(39);
+        Check(Box->GetState()==EONEMachineState::Idle && GM->GetPoints()==950 && !Box->BuildOffer(Player).bEnabled &&
+            Box->BuildOffer(Player).Detail.Contains(TEXT("All available weapon types")),
+            TEXT("Constrained pistol-only catalog has no eligible reward and charges nothing with two runtime slots"));
+        Check(W->GetSlotState(0)->InstanceId==Instance && W->GetSlotState(0)->bUpgraded && W->GetAmmoForWeapon(0)==13 &&
+            W->GetReserveAmmoForWeapon(0)==158 && W->GetSlotState(1)->Family==EONEWeaponFamily::Carbine,
+            TEXT("Rejected owned-family rolls neither refill nor downgrade or duplicate ownership"));
+        Box->RollWeights=FVector(1,1,1);
+        Key(EKeys::F,IE_Released); GM->SetForcedBoxReward(EONEWeaponFamily::Shotgun);
+        Key(EKeys::Two,IE_Pressed); Key(EKeys::Two,IE_Released); Next(380);
     } break;
+    case 380: if (T>.65f) { Key(EKeys::F,IE_Pressed); Next(381); } break;
+    case 381: if (Box->GetState()==EONEMachineState::Ready)
+    {
+        Key(EKeys::F,IE_Released); Receipt=Box->GetPaymentReceipt();
+        Check(Box->GetRewardFamily()==EONEWeaponFamily::Shotgun && GM->GetPoints()==0,
+            TEXT("Race fixture pays once for a fixed initially unowned shotgun result"));
+        const auto Plan=W->BuildAcquisitionPlan(EONEWeaponFamily::Shotgun);
+        Check(Plan.Slot==1 && W->ApplyAcquisitionPlan(Plan),
+            TEXT("Declared developer race acquires the paid family through production inventory API before Box collection"));
+        Next(382);
+    } break;
+    case 382: if (T>.2f)
+    {
+        Check(Box->GetInvalidBoxDeliveryCount()==1 && GM->GetPoints()==950 &&
+            W->GetSlotState(1)->Family==EONEWeaponFamily::Shotgun && !GM->RefundPointsOnce(Receipt),
+            TEXT("Owned-family race refunds failed delivery once, without reroll or duplicate acquisition")); Next(383);
+    } break;
+    case 383: if (T>.65f)
+    {
+        const auto Plan=W->BuildAcquisitionPlan(EONEWeaponFamily::Carbine);
+        Check(Plan.Slot==1 && W->ApplyAcquisitionPlan(Plan),TEXT("Declared race-fixture cleanup restores base rifle in same available slot")); Next(384);
+    } break;
+    case 384: if (T>.65f) { Key(EKeys::One,IE_Pressed); Key(EKeys::One,IE_Released); Next(385); } break;
+    case 385: if (T>.65f) { if (!Approach(Upgrade)) break; SetPoints(5000); Next(39); } break;
     case 39: if (Upgrade->GetState()==EONEMachineState::Idle && T>.1f)
     {
         Check(!Upgrade->BuildOffer(Player).bEnabled && Upgrade->BuildOffer(Player).Detail.Contains(TEXT("Already upgraded")),TEXT("Already-upgraded effective weapon cannot be charged for another tier"));
@@ -282,42 +325,141 @@ void AONE04ProgressionCheck::Tick(float Dt)
     } break;
     case 40: if (T>.06f) { Key(EKeys::Two,IE_Released); Next(41); } break;
     case 41: if (T>.55f)
-    { Instance=W->GetSlotState(1)->InstanceId; Check(W->GetEquippedIndex()==1 && !W->GetDefinition().bUpgraded,TEXT("Independent M4A1 instance remains base after pistol upgrade")); Key(EKeys::F,IE_Pressed); Next(42); } break;
+    {
+        Instance=W->GetSlotState(1)->InstanceId;
+        Check(W->GetEquippedIndex()==1 && !W->GetDefinition().bUpgraded,TEXT("Independent M4A1 instance remains base after pistol upgrade"));
+        Player->SetAimOverride(true,Player->GetActorLocation()+FVector(0,1500,20));
+        Key(EKeys::LeftMouseButton,IE_Pressed); Next(410);
+    } break;
+    case 410: if (T>.04f) { Key(EKeys::LeftMouseButton,IE_Released); Next(411); } break;
+    case 411: if (T>.2f) { Key(EKeys::R,IE_Pressed); Key(EKeys::R,IE_Released); Next(412); } break;
+    case 412: if (T>.65f)
+    {
+        const auto* S=W->GetSlotState(1);
+        Check(W->IsMagazineReloadCommitted() && !S->bMagazinePresent && S->Ammo<24,
+            TEXT("Deposit fixture is a real partial-ammo reload after magazine removal but before insertion"));
+        Check(Upgrade->BuildOffer(Player).bEnabled && Upgrade->BuildOffer(Player).Input==EONEInteractionInput::Tap,
+            TEXT("Tap deposit remains available during a committed magazine reload"));
+        Key(EKeys::F,IE_Pressed); Key(EKeys::F,IE_Released); Next(42);
+    } break;
     case 42: if (Upgrade->GetState()==EONEMachineState::Active)
     {
         Token=Upgrade->GetReservation(); Receipt=Upgrade->GetPaymentReceipt();
-        Check(GM->GetPoints()==0 && Token.InstanceId==Instance && Token.Slot==1,TEXT("Second accepted purchase binds the exact M4A1 slot1 instance"));
+        Check(GM->GetPoints()==0 && Token.InstanceId==Instance && Token.Slot==1 &&
+            !Token.Before.bMagazinePresent && Token.Before.Ammo<24,
+            TEXT("Reload-transfer exception snapshots the exact partial-ammo M4A1 without granting insertion ammunition"));
         Key(EKeys::F,IE_Released); Upgrade->Destroy(); Upgrade=nullptr; Next(43);
     } break;
     case 43: if (T>.3f)
     {
         Check(GM->GetPoints()==5000 && W->GetSlotState(1)->InstanceId==Instance && W->GetSlotState(1)->Status==EONEWeaponSlotStatus::Available && !W->GetSlotState(1)->bUpgraded,TEXT("Destroyed processing machine restores original weapon and refunds exactly once"));
+        Check(W->GetAmmoForWeapon(1)==Token.Before.Ammo && W->GetReserveAmmoForWeapon(1)==Token.Before.Reserve,
+            TEXT("Technical rollback preserves earned partial reload ammunition without a free refill"));
         Check(!GM->RefundPointsOnce(Receipt) && GM->GetPoints()==5000 && !W->CollectUpgrade(Token),TEXT("Technical recovery receipt/token cannot replay refund or delivery"));
         FActorSpawnParameters Spawn; Spawn.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
         Upgrade=GetWorld()->SpawnActor<AONEUpgradeMachine>(AONEUpgradeMachine::StaticClass(),UpgradeTransform,Spawn);
         Check(IsValid(Upgrade),TEXT("Declared replacement machine fixture uses original transform after destruction test"));
-        W->ResetStarterLoadout(); if (!Approach(Upgrade)) break; Next(44);
+        W->ResetStarterLoadout(); if (!Approach(Upgrade)) break;
+        W->AddReserveAmmo(-56); Count=0; Player->SetAimOverride(true,Player->GetActorLocation()+FVector(0,1500,20)); Next(430);
+    } break;
+    case 430: if (T>.28f) { Key(EKeys::LeftMouseButton,IE_Pressed); Next(431); } break;
+    case 431: if (T>.03f)
+    {
+        Key(EKeys::LeftMouseButton,IE_Released); ++Count;
+        if (Count<7) Next(430); else Next(432);
+    } break;
+    case 432: if (T>.3f)
+    {
+        Check(W->GetAmmo()==0 && W->GetReserveAmmo()==0 && Upgrade->BuildOffer(Player).bEnabled,
+            TEXT("A genuinely exhausted pistol remains eligible for tap deposit with both ammo pools empty")); Next(44);
     } break;
     case 44: if (T>.2f) { Key(EKeys::F,IE_Pressed); Next(45); } break;
     case 45: if (Upgrade->GetState()==EONEMachineState::Active)
     {
         Token=Upgrade->GetReservation(); Receipt=Upgrade->GetPaymentReceipt(); Key(EKeys::F,IE_Released);
-        Check(Token.IsValid() && GM->GetPoints()==0,TEXT("Restart fixture has a real charged in-flight upgrade"));
+        Check(Token.IsValid() && GM->GetPoints()==0,TEXT("Expiry fixture has a real charged exact-instance reservation"));
+        Player->SetActorLocation(Player->GetActorLocation()+Upgrade->GetActorForwardVector()*500.f); Next(46);
+    } break;
+    case 46: if (Upgrade->GetState()==EONEMachineState::Ready)
+    {
+        Check(Upgrade->GetReadySecondsRemaining()>14.8f && !Upgrade->IsExpiryWarning(),TEXT("Fifteen-second deadline begins only when the paid upgrade becomes ready"));
+        AcceptedAt=Upgrade->GetReadySecondsRemaining(); Key(EKeys::Escape,IE_Pressed); Next(460);
+    } break;
+    case 460: if (RealT>.12) { Key(EKeys::Escape,IE_Released); Next(461); } break;
+    case 461: if (RealT>.35)
+    {
+        Check(UGameplayStatics::IsGamePaused(this) && FMath::IsNearlyEqual(Upgrade->GetReadySecondsRemaining(),AcceptedAt,.03f),
+            TEXT("Production pause freezes the ready/loss countdown")); Key(EKeys::Escape,IE_Pressed); Next(462);
+    } break;
+    case 462: if (RealT>.12) { Key(EKeys::Escape,IE_Released); Next(47); } break;
+    case 47: if (T>14.6f)
+    {
+        Check(Upgrade->GetState()==EONEMachineState::Ready && Upgrade->IsExpiryWarning() &&
+            W->GetSlotState(Token.Slot)->Status==EONEWeaponSlotStatus::ReadyToCollect,
+            TEXT("Weapon remains reserved with warning before its actual fifteen-second deadline")); Next(48);
+    } break;
+    case 48: if (T>.7f)
+    {
+        Check(Upgrade->GetExpiredCount()==1 && Upgrade->GetDeliveredCount()==0 && GM->GetPoints()==0 &&
+            W->GetSlotState(Token.Slot)->Status==EONEWeaponSlotStatus::Empty && !W->HasUsableWeapon() &&
+            W->IsFamilyRollEligible(EONEWeaponFamily::Pistol),TEXT("Expired upgrade permanently removes exact instance and re-enables its family without refund"));
+        Check(!GM->RefundPointsOnce(Receipt) && !W->ExpireUpgrade(Token) && !W->CollectUpgrade(Token) &&
+            Upgrade->WasLastLossFor(Player),TEXT("Intentional expiry closes receipt/token exactly once and emits owner/run-bound loss"));
+        W->ResetStarterLoadout(); SetPoints(5000); Next(49);
+    } break;
+    case 49: if (Upgrade->GetState()==EONEMachineState::Idle)
+    { Check(!Upgrade->WasLastLossFor(Player),TEXT("Old loss notification cannot cross inventory run reset")); if (!Approach(Upgrade)) break; Key(EKeys::F,IE_Pressed); Next(50); } break;
+    case 50: if (Upgrade->GetState()==EONEMachineState::Active)
+    {
+        Token=Upgrade->GetReservation(); Receipt=Upgrade->GetPaymentReceipt(); Key(EKeys::F,IE_Released);
+        AcceptedAt=GetWorld()->GetTimeSeconds()-Upgrade->GetStateElapsed(); Next(501);
+    } break;
+    case 501: if (Upgrade->GetDeliveredCount()==1)
+    {
+        Check(GetWorld()->GetTimeSeconds()-AcceptedAt>=8.98f && GetWorld()->GetTimeSeconds()-AcceptedAt<9.15f &&
+            W->GetSlotState(Token.Slot)->InstanceId==Token.InstanceId && W->GetSlotState(Token.Slot)->bUpgraded &&
+            W->GetSlotState(Token.Slot)->Status==EONEWeaponSlotStatus::Available && Upgrade->GetReadySecondsRemaining()==0,
+            TEXT("Owner standing in range receives exact-slot upgrade at nine seconds without F or exit/re-entry"));
+        Check(!GM->RefundPointsOnce(Receipt),TEXT("Successful automatic return closes its nonrefundable receipt")); Next(502);
+    } break;
+    case 502: if (Upgrade->GetState()==EONEMachineState::Idle && T>.9f)
+    {
+        W->ResetStarterLoadout(); SetPoints(5000); if (!Approach(Upgrade)) break;
+        Key(EKeys::F,IE_Pressed); Key(EKeys::F,IE_Released); Next(503);
+    } break;
+    case 503: if (Upgrade->GetState()==EONEMachineState::Active)
+    {
+        Token=Upgrade->GetReservation(); Receipt=Upgrade->GetPaymentReceipt();
+        Check(Token.IsValid() && GM->GetPoints()==0,TEXT("Restart fixture has a fresh charged in-flight upgrade"));
         Player->ReceiveAttack(1000,Player->GetActorLocation()+FVector(100,0,0)); Next(90);
     } break;
-    case 70: if (Upgrade->GetState()==EONEMachineState::Collecting)
+    case 70: if (T>.18f)
     {
-        Check(Upgrade->GetDeliveredCount()==0 && Upgrade->GetStateElapsed()<.18f,TEXT("Retrieval cancellation fixture occurs before actual take event"));
-        Key(EKeys::F,IE_Released); Player->SetActorLocation(Player->GetActorLocation()+Upgrade->GetActorForwardVector()*300.f); Next(71);
+        Key(EKeys::LeftMouseButton,IE_Released); Key(EKeys::R,IE_Pressed); Key(EKeys::R,IE_Released);
+        // InputKey dispatch is consumed by PlayerInput on the next frame.
+        // Observe the real operation before entering automatic return reach.
+        Next(700);
     } break;
-    case 71: if (T>.35f)
+    case 700:
+        if (T>.05f && W->IsMagazineReloadCommitted())
+        {
+            Check(W->GetEquippedIndex()==1 && W->GetTotalShotsFired()>ShotCount && W->GetAmmo()<W->GetDefinition().Capacity &&
+                Upgrade->GetState()==EONEMachineState::Ready && !Upgrade->CanReach(Player),
+                TEXT("Other-rifle committed reload is active before approaching ready output"));
+            OtherReloadStart=GetWorld()->GetTimeSeconds()-W->GetReloadElapsed();
+            if (!Approach(Upgrade)) break; Next(71);
+        }
+        else if (T>.6f) { Check(false,TEXT("Production R did not begin the other-rifle reload before ready approach")); Finish(); }
+        break;
+    case 71: if (T>.05f)
     {
-        auto* Visual=Upgrade->GetPresentation();
-        Check(Upgrade->GetState()==EONEMachineState::Ready && Upgrade->GetDeliveredCount()==0 && W->GetSlotState(0)->InstanceId==Instance && W->GetSlotState(0)->Status==EONEWeaponSlotStatus::ReadyToCollect && W->GetEquippedIndex()==1 && !W->IsHandoffLocked(),TEXT("Leaving before take returns ready reservation without delivery or loss of other usable gun"));
-        Check(Visual && Visual->HasCompletePreview() && Visual->GetVisiblePreviewPartCount()==3 && FVector::Dist(Visual->GetPreviewWorldTransform().GetLocation(),Visual->GetOutputWorldTransform().GetLocation())<.5f,TEXT("Canceled retrieval restores complete Last Word preview at output rather than following old hand"));
-        if (!Approach(Upgrade)) break; Next(72);
+        Check(Upgrade->GetDeliveredCount()==1 && W->GetSlotState(0)->Status==EONEWeaponSlotStatus::Available &&
+            W->GetSlotState(0)->InstanceId==Instance && W->GetSlotState(0)->bUpgraded && W->IsMagazineReloadCommitted() &&
+            W->GetEquippedIndex()==1 && !W->IsHandoffLocked() &&
+            FMath::Abs((GetWorld()->GetTimeSeconds()-W->GetReloadElapsed())-OtherReloadStart)<.01f,
+            TEXT("No-F approach restores ownership immediately without interrupting the other committed reload")); Next(72);
     } break;
-    case 72: if (T>.1f) { Key(EKeys::F,IE_Pressed); Next(32); } break;
+    case 72: if (T>.2f && !W->IsMagazineReloadCommitted()) { Key(EKeys::One,IE_Pressed); Key(EKeys::One,IE_Released); Next(32); } break;
     case 80: if (T>.1f) { Key(EKeys::F,IE_Pressed); Next(81); } break;
     case 81: if (T>.15f) { Key(EKeys::Escape,IE_Pressed); Next(82); } break;
     case 82: if (RealT>.12)

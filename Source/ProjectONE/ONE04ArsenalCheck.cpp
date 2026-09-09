@@ -113,9 +113,9 @@ void AONE04ArsenalCheck::PrepareRayCase(int32 Index)
     if (Index==3) TargetAt(D.Range-100.f);
     else if (Index==4) TargetAt(D.Range+100.f);
     else TargetAt(650.f);
-    if (Index==0) TargetAt(900.f);
+    if (Index==0) { TargetAt(900.f); TargetAt(1150.f); }
     if (Index==1 || Index==2) Cover=StaticBox(Muzzle+FVector(Index==1?500.f:200.f,0,0),FVector(12,140,140));
-    Check(Targets.Num()==(Index==0?3:2) && (Index!=1 && Index!=2 || IsValid(Cover)),TEXT("Declared horizontal ray fixture contains required targets and explicit cover"));
+    Check(Targets.Num()==(Index==0?4:2) && (Index!=1 && Index!=2 || IsValid(Cover)),TEXT("Declared horizontal ray fixture contains required targets and explicit cover"));
     Shots=Player->GetWeaponComponent()->GetTotalShotsFired(); Next(61);
 }
 void AONE04ArsenalCheck::CheckRayCase()
@@ -124,16 +124,23 @@ void AONE04ArsenalCheck::CheckRayCase()
     Check(W->GetTotalShotsFired()==Shots+1,TEXT("Penetration scenario is one actual semi-auto discharge"));
     if (Targets.Num()<2) return;
     const float First=10000.f-Targets[0]->GetHealth(),Second=10000.f-Targets[1]->GetHealth();
+    const float Retained=W->GetDefinition().Penetration.DamageRetainedPerBody;
     if (RayCase==0)
     {
-        Check(FMath::IsNearlyEqual(First,W->GetDefinition().Damage,.05f) && FMath::IsNearlyEqual(Second,First*.6f,.05f),FString::Printf(TEXT("Last Word damages torso then one reduced second victim: %.4f / %.4f"),First,Second));
-        Check(Targets[0]->GetDamageTransactionCount()==1 && Targets[1]->GetDamageTransactionCount()==1 && Targets[2]->GetDamageTransactionCount()==0 && Targets[2]->GetHealth()==10000.f && W->GetLastShotVictimCount()==2,TEXT("One discharge visits each first/second victim once and never chains to third"));
+        const float Third=10000.f-Targets[2]->GetHealth();
+        Check(FMath::IsNearlyEqual(First,W->GetDefinition().Damage,.05f) && FMath::IsNearlyEqual(Second,First*Retained,.05f) &&
+            FMath::IsNearlyEqual(Third,Second*Retained,.05f),FString::Printf(TEXT("Candidate06 Last Word retains declining damage through three aligned torsos: %.4f / %.4f / %.4f"),First,Second,Third));
+        Check(Targets[0]->GetDamageTransactionCount()==1 && Targets[1]->GetDamageTransactionCount()==1 &&
+            Targets[2]->GetDamageTransactionCount()==1 && Targets[3]->GetDamageTransactionCount()==0 &&
+            Targets[3]->GetHealth()==10000.f && W->GetLastShotVictimCount()==3,
+            TEXT("Three total-body profile visits each victim once and cannot reach the fourth body"));
     }
     else if (RayCase==1) Check(First>0 && Second==0 && W->GetLastShotVictimCount()==1,TEXT("World cover behind first victim stops the second penetration trace"));
     else if (RayCase==2) Check(First==0 && Second==0 && W->GetLastShotVictimCount()==0,TEXT("World cover before first victim prevents every damage transaction"));
-    else if (RayCase==3) Check(First>0 && Second>0 && Second<First*.6f && W->GetLastShotVictimCount()==2,TEXT("Control target inside original range is penetrated with normal range falloff"));
+    else if (RayCase==3) Check(First>0 && Second>0 && Second<First*Retained && W->GetLastShotVictimCount()==2,TEXT("Control target inside original range is penetrated with normal range falloff"));
     else if (RayCase==4) Check(First>0 && Second==0 && W->GetLastShotVictimCount()==1,TEXT("Target beyond original muzzle range is not reached by resetting range at first victim"));
-    else Check(First>0 && Second==0 && W->GetLastShotVictimCount()==1,TEXT("Base M1911 retains single-victim behavior in identical aligned geometry"));
+    else Check(First>0 && Second>0 && FMath::IsNearlyEqual(Second,First*Retained,.05f) && W->GetLastShotVictimCount()==2,
+        TEXT("Candidate06 base M1911 penetrates two aligned bodies with configured retained damage"));
 }
 void AONE04ArsenalCheck::Finish()
 {
@@ -142,7 +149,8 @@ void AONE04ArsenalCheck::Finish()
     if (Player) { Player->ReleaseHeldInputs(); Player->GetWeaponComponent()->ClearEjectedCases(); }
     ClearTargets(); if (IsValid(Floor)) Floor->Destroy();
     bFinished=true; FinishedReal=FPlatformTime::Seconds();
-    auto R=MakeShared<FJsonObject>(); R->SetStringField(TEXT("candidate"),TEXT("04"));
+    auto R=MakeShared<FJsonObject>(); R->SetStringField(TEXT("candidate"),TEXT("06"));
+    R->SetStringField(TEXT("compatibility_mode"),TEXT("ONE04ArsenalCheck legacy name; current Candidate06 penetration/ownership rules, not preserved Candidate04 evidence"));
     R->SetStringField(TEXT("fixture"),TEXT("Isolated collision floor outside arena and frozen, unregistered torso-query targets with10000 health/sever thresholds. Actual catalog damage/spread/range/timings unchanged. Variant acquisition/reserve/ready/collection APIs bypass only machine wait for isolated weapon setup. Fire/R/Shift/W route through production PlayerController InputKey. Magazine cap fixture extends already-emitted actor lifespans to120s only to isolate eviction; separate test measures genuine8s expiry. This is not native OS input, art/audio review, navigation/score or performance proof."));
     R->SetNumberField(TEXT("checks"),Checks); R->SetNumberField(TEXT("failures"),Failures); R->SetArrayField(TEXT("assertions"),Records);
     FString Json; FJsonSerializer::Serialize(R,TJsonWriterFactory<>::Create(&Json));

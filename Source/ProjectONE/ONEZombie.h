@@ -61,6 +61,8 @@ public:
     float GetLegQueryCoverageErrorCm(EONEHitRegion Region) const;
     float GetReferenceLegQuerySeparationCm() const { return ReferenceLegQuerySeparation; }
     float GetHealth() const;
+    bool WasLastKillHeadshot() const { return bLastKillHeadshot; }
+    float GetLastDeathImpulse() const { return LastDeathImpulse; }
     UONEHealthComponent* GetHealthComponent() const { return Health; }
     EONEZombieState GetCombatState() const { return State; }
     float GetStateElapsed() const;
@@ -75,6 +77,7 @@ public:
     UPROPERTY(EditAnywhere, Category="Infected") float HitReactCooldown=1.1f;
     UPROPERTY(EditAnywhere, Category="Infected") float MinorReactionInterval=.13f;
     UPROPERTY(EditAnywhere, Category="Infected") float HeadSeverThreshold=32.f;
+    UPROPERTY(EditAnywhere, Category="Infected",meta=(ClampMin="1",ClampMax="3")) float HeadDamageMultiplier=1.5f;
     UPROPERTY(EditAnywhere, Category="Infected") float ArmSeverThreshold=50.f;
     UPROPERTY(EditAnywhere, Category="Infected") float LegSeverThreshold=70.f;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UONEHealthComponent> Health;
@@ -85,13 +88,13 @@ public:
     UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> LegLeftMesh;
     // Compatibility aliases: accepted source *_l is anatomical RIGHT after import.
     UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> ArmMesh;
-    UPROPERTY(VisibleAnywhere) TObjectPtr<USphereComponent> HeadRegion;
-    UPROPERTY(VisibleAnywhere) TObjectPtr<USphereComponent> ArmRegion;
-    UPROPERTY(VisibleAnywhere) TObjectPtr<USphereComponent> UpperArmRegion;
-    UPROPERTY(VisibleAnywhere) TObjectPtr<USphereComponent> ArmLeftRegion;
-    UPROPERTY(VisibleAnywhere) TObjectPtr<USphereComponent> UpperArmLeftRegion;
-    UPROPERTY(VisibleAnywhere) TObjectPtr<USphereComponent> ArmRightRegion;
-    UPROPERTY(VisibleAnywhere) TObjectPtr<USphereComponent> UpperArmRightRegion;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> HeadRegion;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> ArmRegion;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> UpperArmRegion;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> ArmLeftRegion;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> UpperArmLeftRegion;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> ArmRightRegion;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> UpperArmRightRegion;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> LegLeftRegion;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> UpperLegLeftRegion;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> LegRightRegion;
@@ -122,6 +125,8 @@ private:
     TArray<uint64> RecentShotIds;
     bool bHeadSevered=false,bLeftArmSevered=false,bRightArmSevered=false,bLeftLegSevered=false,bContactDelivered=false;
     bool bRagdollActive=false;
+    bool bLastKillHeadshot=false;
+    float LastDeathImpulse=0.f;
     ONEPhysicsRuntime::FRestState RestState;
     FTimerHandle RestTimer;
     float RagdollPositionError=BIG_NUMBER,RagdollAngleError=BIG_NUMBER;

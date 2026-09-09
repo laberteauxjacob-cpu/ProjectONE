@@ -1,5 +1,7 @@
 #include "ONEGameMode.h"
 #include "ONEPlayer.h"
+#include "ONEHealthComponent.h"
+#include "ONEPowerUpComponent.h"
 #include "ONEZombie.h"
 #include "ONEPlayerController.h"
 #include "ONEHUD.h"
@@ -27,6 +29,10 @@
 #include "ONE05PresentationCheck.h"
 #include "ONE05MotionCheck.h"
 #include "ONE05UICheck.h"
+#include "ONE06SurvivalCheck.h"
+#include "ONE06CombatCheck.h"
+#include "ONE06PortabilityCheck.h"
+#include "ONE06GroupingCheck.h"
 #include "Misc/CommandLine.h"
 #include "Kismet/GameplayStatics.h"
 #include "NavigationSystem.h"
@@ -50,10 +56,13 @@ AONEGameMode::AONEGameMode()
     ZombieClass = AONEZombie::StaticClass();
     ForcedBoxReward=EONEWeaponFamily::Invalid;
     AmbientAudio=CreateDefaultSubobject<UONEAmbientAudioComponent>(TEXT("FacilityAudio"));
+    PowerUps=CreateDefaultSubobject<UONEPowerUpComponent>(TEXT("RunPowerUps"));
 }
 void AONEGameMode::BeginPlay()
 {
     Super::BeginPlay();
+    PowerUps->ResetForRun(FGuid::NewGuid());
+    CombatAwards.Reset(PowerUps->GetRunId());
     const bool bMovementCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03MovementCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03MovementCapture")) || FString(FCommandLine::Get()).Contains(TEXT("ONE03ManualCapture="));
     const bool bWeaponCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03WeaponCheck"));
     const bool bPresentationCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03PresentationCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03PresentationCapture"));
@@ -62,7 +71,8 @@ void AONEGameMode::BeginPlay()
     const bool bPhysicalityCheck=FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE03PhysicalityProfile"));
     const bool bCandidate04=FString(FCommandLine::Get()).Contains(TEXT("ONE04"));
     const bool bCandidate05=FString(FCommandLine::Get()).Contains(TEXT("ONE05"));
-    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck || bCandidate04 || bCandidate05;
+    const bool bCandidate06=FString(FCommandLine::Get()).Contains(TEXT("ONE06"));
+    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck || bCandidate04 || bCandidate05 || bCandidate06;
     if (bSandbox) { bIntermission=false; Countdown=0; }
     // Authored material categories drive concrete versus metal impact audio.
     for (TActorIterator<AStaticMeshActor> It(GetWorld());It;++It)
@@ -74,7 +84,8 @@ void AONEGameMode::BeginPlay()
         }
     for (TActorIterator<ATargetPoint> It(GetWorld()); It; ++It)
         if (It->ActorHasTag("ONE_Spawn")) SpawnLocations.Add(It->GetActorLocation());
-    if (SpawnLocations.IsEmpty()) SpawnLocations = { FVector(-950,-700,100), FVector(950,-700,100), FVector(-950,650,100), FVector(950,650,100) };
+    if (SpawnLocations.IsEmpty())
+        UE_LOG(LogTemp,Warning,TEXT("ONE_ROUNDS_NO_AUTHORED_SPAWNS: rounds wait for ONE_Spawn target points; no coordinate fallback"));
     const bool bLegacyLoadout=bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck ||
         FParse::Param(FCommandLine::Get(),TEXT("ONEValidate")) || FString(FCommandLine::Get()).Contains(TEXT("ONEBenchmark=")) ||
         FParse::Param(FCommandLine::Get(),TEXT("ONEPresentation")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare"));
@@ -108,6 +119,10 @@ void AONEGameMode::BeginPlay()
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE05AimCheck"))) GetWorld()->SpawnActor<AONE05AimCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE05WeaponCheck"))) GetWorld()->SpawnActor<AONE05WeaponCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE05UICheck"))) GetWorld()->SpawnActor<AONE05UICheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE06SurvivalCheck"))) GetWorld()->SpawnActor<AONE06SurvivalCheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE06CombatCheck"))) GetWorld()->SpawnActor<AONE06CombatCheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE06PortabilityCheck"))) GetWorld()->SpawnActor<AONE06PortabilityCheck>();
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE06GroupingCheck"))) GetWorld()->SpawnActor<AONE06GroupingCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE05MotionCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE05MotionCapture"))) GetWorld()->SpawnActor<AONE05MotionCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE05PresentationCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE05Profile")) ||
         FString(FCommandLine::Get()).Contains(TEXT("ONE05ManualCapture="))) GetWorld()->SpawnActor<AONE05PresentationCheck>();
@@ -116,6 +131,7 @@ void AONEGameMode::BeginPlay()
 }
 void AONEGameMode::StartRound()
 {
+    if (SpawnLocations.IsEmpty()) { Countdown=IntermissionSeconds; return; }
     if (Round > 0)
         if (AONEPlayer* Player = Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0))) Player->GetWeaponComponent()->GrantRoundAmmo();
     ++Round;
@@ -126,6 +142,7 @@ void AONEGameMode::StartRound()
 }
 void AONEGameMode::SpawnEnemy()
 {
+    if (SpawnLocations.IsEmpty()) return;
     const APawn* Player = UGameplayStatics::GetPlayerPawn(this, 0);
     const FVector PlayerPos = Player ? Player->GetActorLocation() : FVector::ZeroVector;
     FVector Point = SpawnLocations[FMath::RandHelper(SpawnLocations.Num())];
@@ -140,7 +157,7 @@ void AONEGameMode::SpawnEnemy()
     Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
     if (AONEZombie* Zombie = GetWorld()->SpawnActor<AONEZombie>(ZombieClass, Point, FRotator::ZeroRotator, Params))
     {
-        Alive.Add(Zombie);
+        RegisterZombie(Zombie);
         --ToSpawn;
     }
 }
@@ -148,6 +165,12 @@ void AONEGameMode::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
     if (bGameOver) return;
+    if (PendingCombatGain>0)
+    {
+        CombatGainBatchSeconds+=DeltaSeconds;
+        if (CombatGainBatchSeconds>=.18f)
+        { LastCombatGain=PendingCombatGain; PendingCombatGain=0; CombatGainBatchSeconds=0.f; ++CombatGainSerial; }
+    }
     SurvivalSeconds+=DeltaSeconds;
     if (bSandbox)
     {
@@ -182,17 +205,55 @@ void AONEGameMode::Tick(float DeltaSeconds)
         UE_LOG(LogTemp, Display, TEXT("ONE_ROUND_COMPLETE round=%d points=%d"), Round, Points);
     }
 }
-void AONEGameMode::NotifyZombieKilled(AONEZombie* Zombie, int32 Reward)
+bool AONEGameMode::RegisterZombie(AONEZombie* Zombie)
+{
+    if (bGameOver || !IsValid(Zombie) || Zombie->IsDead() || Zombie->GetWorld()!=GetWorld() || Alive.Contains(Zombie)) return false;
+    Alive.Add(Zombie); return true;
+}
+void AONEGameMode::NotifyZombieKilled(AONEZombie* Zombie, int32 /*LegacyReward*/)
 {
     // Removing from the authoritative live set makes repeated death notification idempotent.
-    if (!Zombie || Alive.Remove(Zombie) == 0) return;
-    Points += FMath::Max(0, Reward);
+    if (bGameOver || !IsValid(Zombie) || !Zombie->IsDead() || Alive.Remove(Zombie)==0) return;
     ++Kills;
+    CombatAwards.RegisteredDeath(FObjectKey(Zombie));
+    if (PowerUps) PowerUps->ConsiderRegisteredDeath(Zombie->GetActorLocation());
+}
+FONECombatDischargeContext AONEGameMode::BeginCombatDischarge()
+{
+    if (bGameOver || !PowerUps || !PowerUps->GetRunId().IsValid() || PowerUps->GetRunId()!=CombatAwards.GetRunId()) return {};
+    return CombatAwards.Begin(PowerUps->IsActive(EONEPowerUpType::DoublePoints) ? 2 : 1,PowerUps->IsActive(EONEPowerUpType::InstaKill));
+}
+void AONEGameMode::EndCombatDischarge(const FONECombatDischargeContext& Context)
+{ CombatAwards.End(Context); }
+int32 AONEGameMode::RecordCombatAward(const FONECombatDischargeContext& Context,AONEZombie* Victim,EONEWeaponHitOutcome Outcome,bool HeadshotQualified)
+{
+    if (bGameOver || !IsValid(Victim) || Victim->GetWorld()!=GetWorld()) return 0;
+    const int32 Requested=CombatAwards.Resolve(Context,FObjectKey(Victim),Outcome,HeadshotQualified,Alive.Contains(Victim) && !Victim->IsDead());
+    const int32 Added=FMath::Min(Requested,MAX_int32-Points);
+    Points+=Added;
+    PendingCombatGain=int32(FMath::Min<int64>(MAX_int32,int64(PendingCombatGain)+Added));
+    return Added;
+}
+void AONEGameMode::InvalidateCombatRun()
+{
+    CombatAwards.Invalidate();
+    PendingCombatGain=LastCombatGain=0; CombatGainSerial=0; CombatGainBatchSeconds=0.f;
+    if (PowerUps) PowerUps->InvalidateRun();
+    if (auto* Player=Cast<AONEPlayer>(UGameplayStatics::GetPlayerPawn(this,0))) Player->GetHealthComponent()->InvalidateRecovery();
+}
+void AONEGameMode::EndPlay(const EEndPlayReason::Type Reason)
+{ InvalidateCombatRun(); Super::EndPlay(Reason); }
+bool AONEGameMode::CloseMachineReceipt(uint64 Receipt)
+{
+    int32* Paid=MachineReceipts.Find(Receipt);
+    if (bGameOver || !Paid || *Paid<=0) return false;
+    *Paid=0; return true;
 }
 void AONEGameMode::PlayerDied()
 {
     if (bGameOver) return;
     bGameOver = true;
+    InvalidateCombatRun();
     if (AmbientAudio) AmbientAudio->Shutdown();
     for (TActorIterator<AONEZombie> It(GetWorld());It;++It)
         if (auto* Audio=It->FindComponentByClass<UONEZombieAudioComponent>()) Audio->Shutdown();
@@ -203,6 +264,7 @@ void AONEGameMode::PlayerDied()
 }
 void AONEGameMode::RestartScene()
 {
+    InvalidateCombatRun();
     if (AmbientAudio) AmbientAudio->Shutdown();
     if (auto* PC=Cast<AONEPlayerController>(UGameplayStatics::GetPlayerController(this,0))) PC->GuardGameplayInput();
     for (TActorIterator<AONEProgressionMachine> It(GetWorld());It;++It) It->InvalidateRun();
@@ -251,7 +313,7 @@ AONEZombie* AONEGameMode::SpawnSandboxEnemyAt(const FVector& Location)
         // Do not let collision adjustment move a verified floor point onto a prop.
         Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
         if (AONEZombie* Zombie=GetWorld()->SpawnActor<AONEZombie>(ZombieClass,Point,FRotator(0,180,0),Params))
-        { Alive.Add(Zombie); if (Diagnose) UE_LOG(LogTemp,Display,TEXT("ONE03_SPAWN accepted=%s"),*Point.ToString()); return Zombie; }
+        { RegisterZombie(Zombie); if (Diagnose) UE_LOG(LogTemp,Display,TEXT("ONE03_SPAWN accepted=%s"),*Point.ToString()); return Zombie; }
         ++SpawnMiss;
     }
     if (Diagnose) UE_LOG(LogTemp,Display,TEXT("ONE03_SPAWN rejected nav=%d path=%d overlap=%d spawn=%d"),NavMiss,PathMiss,Blocked,SpawnMiss);

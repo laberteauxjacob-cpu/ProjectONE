@@ -35,8 +35,8 @@ void AONE05AimCheck::BeginPlay()
     FParse::Value(FCommandLine::Get(),TEXT("ONE05AimVariants="),VariantLimit);
     FParse::Value(FCommandLine::Get(),TEXT("ONE05AimHeadings="),HeadingLimit);
     VariantLimit=FMath::Clamp(VariantLimit,1,6); HeadingLimit=FMath::Clamp(HeadingLimit,1,8);
-    Report=TEXT("Actual arena collision probe with declared targets, cover, aim overrides and production controller dispatch. Rendering and native OS input are separate review gates.\n");
-    Report+=bProjectedAim ? TEXT("Aim mode: actual projected viewport cursor through production mouse picking; no aim override.\n") : TEXT("Aim mode: explicit world-point override.\n");
+    Report=TEXT("Actual arena collision probe with declared standing targets, cover and production controller dispatch. Rendering and native OS input are separate review gates.\n");
+    Report+=bProjectedAim ? TEXT("Aim mode: unshaken logical viewport projection onto the ordinary player-selected height plane; no aim override or anatomical picking.\n") : TEXT("Aim mode: explicit world-point override.\n");
     Report+=FString::Printf(TEXT("Declared fixture scope: %d variants, %d headings, 10 cases; expected discharges %d.\n"),VariantLimit,HeadingLimit,VariantLimit*HeadingLimit*10);
     Csv=TEXT("variant,trial,heading,case,shots,victims,obstructed,tracers,intent_dot,ray_x,ray_y,ray_z,muzzle_x,muzzle_y,muzzle_z,pose_frame,shot_frame,contact_pellets,aim_x,aim_y,aim_z,intent_x,intent_y,fixture_dot\n");
 }
@@ -56,8 +56,13 @@ void AONE05AimCheck::AimAt(const FVector& Point)
 {
     if (!bProjectedAim) { Player->SetAimOverride(true,Point); return; }
     Player->SetAimOverride(false,Point);
+    // Preserve the requested horizontal fixture point on the same plane that
+    // ordinary gameplay will intersect; body-center height cannot select a
+    // different point through the old anatomical cursor-picking rule.
+    FVector PlanePoint=Point;
+    PlanePoint.Z=Player->GetActorLocation().Z-Player->GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+Player->GetAimHeightCm();
     FVector2D Screen;
-    if (auto* PC=Cast<AONEPlayerController>(Player->GetController()); PC && PC->ProjectWorldLocationToScreen(Point,Screen))
+    if (auto* PC=Cast<AONEPlayerController>(Player->GetController()); PC && Player->ProjectLogicalWorld(PlanePoint,Screen))
         PC->SetMouseLocation(FMath::RoundToInt(Screen.X),FMath::RoundToInt(Screen.Y));
     else Check(false,TEXT("World aim fixture projects into an actual rendered viewport"));
 }
@@ -192,15 +197,14 @@ void AONE05AimCheck::Tick(float Dt)
         }
         if (Case==8 || Case==9)
         {
-            // Keep the low-cover target beyond every barrel so its upper body
-            // cannot itself win the authoritative physical obstruction trace.
+            // The target remains beyond the barrel. Case 8 places a small
+            // independent cover on the immutable projectile extension below.
             Target=MakeTarget(Shoulder+Intent*(Case==8 ? 150 : Barrel+25));
-            Check(IsValid(Target),TEXT("Real-height target exercises contact-prefix cover or forward barrel edge"));
+            Check(IsValid(Target),TEXT("Real-height target exercises collinear close cover or forward barrel edge"));
             Cursor=IsValid(Target) ? Target->BodyRegion->GetComponentLocation() : Shoulder+Intent*60;
             if (Case==8)
             {
                 Cover=MakeCover(FMath::Lerp(Shoulder,Cursor,.5f),Intent.Rotation().Yaw);
-                if (IsValid(Cover)) CastChecked<UBoxComponent>(Cover->GetRootComponent())->SetBoxExtent(FVector(5,25,3));
             }
         }
         TargetHealth=IsValid(Target) ? Target->GetHealth() : 0;
@@ -210,14 +214,23 @@ void AONE05AimCheck::Tick(float Dt)
     {
         if (Trial%10==8 && IsValid(Cover))
         {
-            // The projected cursor can select a different anatomical region
-            // than the requested body center. Put this declared small cover
-            // fixture on the actual contact direction, before the barrel plane.
-            const FVector Shoulder=Player->GetAimOrigin();
-            const FVector Contact=ONEAim::ResolveShotDirection(Shoulder,Player->GetAimPoint(),Player->GetIntendedAimDirection(),Shoulder,
-                Player->AimConvergenceAhead,Player->AimMaximumPitch);
-            Cover->SetActorLocation(Shoulder+Contact*25);
-            Cover->SetActorRotation(Player->GetIntendedAimDirection().Rotation());
+            // Match production's evaluated-muzzle ray and collinear backward
+            // extension. Cover spans the full possible pellet cone here, while
+            // a separate real trace must prove the shoulder route stays clear.
+            const FVector Shoulder=Player->GetAimOrigin(),Muzzle=Player->GetMuzzleLocation();
+            const FVector Ray=Player->GetShotDirection(Muzzle);
+            const float ContactLength=FMath::Clamp(float(FVector::DotProduct(Muzzle-Shoulder,Ray)),0.f,float(FVector::Dist(Muzzle,Shoulder)));
+            const float Behind=ContactLength*.65f;
+            const float HalfWidth=FMath::Tan(FMath::DegreesToRadians(W->GetDefinition().MaximumSpreadDegrees))*Behind+1.f;
+            auto* Box=CastChecked<UBoxComponent>(Cover->GetRootComponent());
+            Box->SetBoxExtent(FVector(1.5f,HalfWidth,HalfWidth));
+            Cover->SetActorLocation(Muzzle-Ray*Behind); Cover->SetActorRotation(Ray.Rotation());
+            FCollisionQueryParams Params(SCENE_QUERY_STAT(ONE05ClearShoulderFixture),false,Player);
+            if (Target) Params.AddIgnoredActor(Target);
+            FHitResult Reach;
+            Check(ContactLength>4.f && Behind>2.f,TEXT("Close-cover fixture lies strictly inside the real pre-muzzle projectile extension"));
+            Check(!GetWorld()->LineTraceSingleByChannel(Reach,Shoulder,Muzzle,ECC_Visibility,Params),
+                TEXT("Small projectile-path cover leaves the physical shoulder-to-muzzle route clear"));
         }
         Key(true); Next(5);
     } break;
@@ -238,8 +251,22 @@ void AONE05AimCheck::Tick(float Dt)
             TEXT("World cover prevents target damage including shoulder-to-muzzle obstruction"));
         if (Case==6) Check(W->WasLastShotMuzzleObstructed() && W->GetLastShotForwardTracerCount()==0,
             TEXT("Behind-muzzle obstruction resolves collision without a backward muzzle tracer"));
-        if (Case==8 && !bProjectedAim) Check(!W->WasLastShotMuzzleObstructed() && W->GetLastShotContactPelletCount()==W->GetDefinition().Pellets && W->GetLastShotForwardTracerCount()==0,
-            TEXT("Low cover stops every contact pellet while the physical muzzle clears it; no backward tracer"));
+        if (Case==8)
+        {
+            const auto& Paths=W->GetLastProjectilePaths();
+            bool AllOnCover=IsValid(Cover) && Paths.Num()==W->GetDefinition().Pellets;
+            for (const auto& Path:Paths)
+            {
+                FCollisionQueryParams Params(SCENE_QUERY_STAT(ONE05CloseCoverEndpoint),false,Player);
+                if (Target) Params.AddIgnoredActor(Target);
+                FHitResult Hit;
+                AllOnCover=AllOnCover && Path.Contacts.IsEmpty() && FVector::DotProduct(Path.End-Muzzle,Path.Direction)<-.1 &&
+                    GetWorld()->LineTraceSingleByChannel(Hit,Path.Origin,Path.End+Path.Direction*.2,ECC_Visibility,Params) &&
+                    Hit.GetActor()==Cover && Hit.ImpactPoint.Equals(Path.End,.05);
+            }
+            Check(!W->WasLastShotMuzzleObstructed() && AllOnCover && W->GetLastShotContactPelletCount()==0 && W->GetLastShotForwardTracerCount()==0,
+                TEXT("Every immutable projectile stops on real pre-muzzle cover, with no victim contact or backward tracer and a clear shoulder route"));
+        }
         Csv+=FString::Printf(TEXT("%d,%d,%d,%d,%d,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%u,%llu,%d,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f\n"),
             Variant,Trial,(Trial/10)*45,Case,W->GetTotalShotsFired(),W->GetLastShotVictimCount(),W->WasLastShotMuzzleObstructed(),
             W->GetLastShotForwardTracerCount(),Dot,Ray.X,Ray.Y,Ray.Z,Muzzle.X,Muzzle.Y,Muzzle.Z,W->GetLastShotPoseFrame(),W->GetLastShotFrame(),

@@ -7,18 +7,22 @@ class AONEPlayer;
 class AONEProgressionMachine;
 
 enum class EONEInteractionAction : uint8 { None, BuyBox, CollectBox, DepositUpgrade, CollectUpgrade };
+enum class EONEInteractionInput : uint8 { None, Hold, Tap, Automatic };
 struct FONEInteractionOffer
 {
     TWeakObjectPtr<AONEProgressionMachine> Machine;
     EONEInteractionAction Action=EONEInteractionAction::None;
+    EONEInteractionInput Input=EONEInteractionInput::None;
     FString Title,Detail;
     bool bEnabled=false;
+    float ReadySecondsRemaining=0;
+    bool bExpiryWarning=false;
     int32 Price=0,Slot=INDEX_NONE;
     uint64 Epoch=0,RunId=0,Revision=0,InstanceId=0;
     FONEWeaponAcquisitionPlan Acquisition;
     bool SameContext(const FONEInteractionOffer& B) const
     {
-        return Machine==B.Machine && Action==B.Action && Epoch==B.Epoch && RunId==B.RunId &&
+        return Machine==B.Machine && Action==B.Action && Input==B.Input && Epoch==B.Epoch && RunId==B.RunId &&
             Revision==B.Revision && InstanceId==B.InstanceId && Slot==B.Slot && Acquisition==B.Acquisition;
     }
 };
@@ -41,11 +45,12 @@ public:
     bool IsHeld() const { return bHeld; }
     bool RequiresRelease() const { return bLatched; }
     int32 GetCompletedHolds() const { return CompletedHolds; }
+    int32 GetCompletedTaps() const { return CompletedTaps; }
     static constexpr float HoldSeconds=.4f;
     UPROPERTY(EditAnywhere,Category="Interaction",meta=(ClampMin="0.1",ClampMax="2.0")) float HoldDuration=.4f;
 private:
     FONEInteractionOffer Focus,Started;
     bool bHeld=false,bLatched=false;
     float HoldElapsed=0;
-    int32 CompletedHolds=0;
+    int32 CompletedHolds=0,CompletedTaps=0;
 };

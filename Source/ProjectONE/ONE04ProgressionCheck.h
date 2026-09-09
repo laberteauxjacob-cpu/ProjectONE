@@ -11,7 +11,7 @@ class AONEUpgradeMachine;
 class AONEProgressionMachine;
 class FJsonValue;
 /** Opt-in real machine/input integration. Point setup and actor positioning are
- * explicitly declared fixtures; hold timing runs through production bindings. */
+ * explicitly declared fixtures; action-specific tap/hold input uses production bindings. */
 UCLASS()
 class PROJECTONE_API AONE04ProgressionCheck : public AActor
 {
@@ -37,7 +37,7 @@ private:
     FVector MoveOrigin=FVector::ZeroVector;
     uint64 Instance=0,Receipt=0;
     int32 Stage=0,Checks=0,Failures=0,Count=0,ShotCount=0;
-    float StageStart=0,AcceptedAt=0,LastTrace=-1;
+    float StageStart=0,AcceptedAt=0,LastTrace=-1,OtherReloadStart=0;
     double StartReal=0,StageReal=0,FinishedReal=0,ElapsedOffset=0;
     bool bFinished=false;
     TArray<TSharedPtr<FJsonValue>> Records;

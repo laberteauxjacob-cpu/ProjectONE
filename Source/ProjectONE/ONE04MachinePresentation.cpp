@@ -206,6 +206,10 @@ void UONE04MachinePresentation::UpdateStrut(int32 Index,const FVector& Bottom,co
     Rods[Index]->SetRelativeTransform(FTransform(Rotation,Bottom+Direction*((Length+SleeveLength)*.5f),FVector(1,1,FMath::Max(1.f,Length-SleeveLength))));
 }
 
+void UONE04MachinePresentation::BeginLossRetraction()
+{
+    bLossRetraction=true; bTransferring=false; bRetrieving=false;
+}
 void UONE04MachinePresentation::UpdateVisual(EONE04MachineVisualState State,float Elapsed,float Duration)
 {
     CSV_SCOPED_TIMING_STAT(ONEProgression,MachineVisual);
@@ -218,6 +222,7 @@ void UONE04MachinePresentation::UpdateVisual(EONE04MachineVisualState State,floa
         if (!IdleLoop->IsPlaying() && IdleLoop->Sound) IdleLoop->FadeIn(.4f,.6f);
         if (Active)
         {
+            bLossRetraction=false;
             bClampCue=false;bOutputCue=false;
             PlayCue(bBox?TEXT("BoxActivate"):TEXT("UpgradeIntake"),.9f);
         }
@@ -227,10 +232,11 @@ void UONE04MachinePresentation::UpdateVisual(EONE04MachineVisualState State,floa
         }
         else if (State==EONE04MachineVisualState::Closing)
         {
-            ProcessLoop->FadeOut(.12f,0);PlayCue(bBox?TEXT("BoxCollect"):TEXT("UpgradeCollect"),.8f);
+            ProcessLoop->FadeOut(.12f,0);
+            if (!bLossRetraction) PlayCue(bBox?TEXT("BoxCollect"):TEXT("UpgradeCollect"),.8f);
             PlayCue(bBox?TEXT("BoxClose"):TEXT("UpgradeClose"),.8f);
         }
-        else ProcessLoop->FadeOut(.15f,0);
+        else { ProcessLoop->FadeOut(.15f,0); bLossRetraction=false; }
         PreviousState=State;
     }
     const double Now=GetWorld()->GetTimeSeconds();
@@ -258,6 +264,7 @@ void UONE04MachinePresentation::UpdateVisual(EONE04MachineVisualState State,floa
         const float T=Active?Elapsed/Duration*9.f:0.f;
         float Feed=0.f;
         if (Active) Feed=T<1.2f ? Smooth((T-.35f)/.85f) : (T>7.7f?1.f-Smooth((T-7.7f)/1.3f):1.f);
+        else if (bLossRetraction && State==EONE04MachineVisualState::Closing) Feed=Smooth(Elapsed/Duration);
         PreviewMount=FMath::Lerp(FVector(94,0,107),FVector(-5,0,121),Feed);Cradle->SetRelativeLocation(PreviewMount);
         const float Clamped=Active ? FMath::Min(Smooth((T-.60f)/.28f),1.f-Smooth((T-8.38f)/.38f)) : 0.f;
         for (int32 I=0;I<2;++I)
@@ -276,7 +283,8 @@ void UONE04MachinePresentation::UpdateVisual(EONE04MachineVisualState State,floa
         }
         if (Active && T>=7.7f && !bOutputCue) { bOutputCue=true;ProcessLoop->FadeOut(.2f,0);PlayCue(TEXT("UpgradeOutput"),.85f); }
         const float Pulse=Active?.85f+.15f*FMath::Sin(float(Now)*11.f):1.f;
-        const FLinearColor Color=Ready?FLinearColor(.15f,1.f,.55f):(Active?FLinearColor(.17f,.65f,1.f):FLinearColor(1.f,.36f,.075f));
+        const FLinearColor Color=(Ready && bExpiryWarning) || bLossRetraction ? FLinearColor(1.f,.09f,.025f) :
+            Ready?FLinearColor(.15f,1.f,.55f):(Active?FLinearColor(.17f,.65f,1.f):FLinearColor(1.f,.36f,.075f));
         UpdateEmitters(Color,Ready?5.f:(Active?5.f*Pulse:1.2f),Ready?1600.f:(Active?1800.f*Pulse:450.f));
     }
     if (bRetrieving)
@@ -289,7 +297,8 @@ void UONE04MachinePresentation::UpdateVisual(EONE04MachineVisualState State,floa
         if (T>=1.f) bTransferring=false;
     }
     else SetPreviewWorld(Mount(PreviewMount));
-    const bool Show=bPreviewValid && (bRetrieving || bTransferring || Ready || (Active && (!bBox || Elapsed>=.57f)));
+    const bool Show=bPreviewValid && (bRetrieving || bTransferring || Ready ||
+        (bLossRetraction && State==EONE04MachineVisualState::Closing && Elapsed<Duration) || (Active && (!bBox || Elapsed>=.57f)));
     PreviewRoot->SetVisibility(Show,false);
     for (UStaticMeshComponent* Part:PreviewParts) Part->SetVisibility(Show && Part->GetStaticMesh()!=nullptr);
     PreviewLight->SetVisibility(Show && PreviewAura.A>0);

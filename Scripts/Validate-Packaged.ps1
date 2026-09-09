@@ -1,7 +1,8 @@
 # Validate an existing package; this script does not build or curate Evidence.
 param(
-    [ValidateSet('Candidate02', 'Candidate03', 'Candidate04', 'Candidate05')][string]$Candidate = 'Candidate05',
+    [ValidateSet('Candidate02', 'Candidate03', 'Candidate04', 'Candidate05', 'Candidate06')][string]$Candidate = 'Candidate06',
     [string[]]$Modes,
+    [string]$Map,
     [ValidateRange(30, 600)][int]$TimeoutSeconds = 450,
     [switch]$ShowWindow,
     [switch]$RenderOffscreen,
@@ -12,7 +13,7 @@ $projectRoot = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 $gameExe = Join-Path $projectRoot "Packaged\$Candidate\Windows\ProjectONE.exe"
 $runRoot = Join-Path $projectRoot ("Saved\PackagedValidation\$Candidate\" + (Get-Date -Format 'yyyyMMdd_HHmmss_fff'))
 $suite = [ordered]@{}
-if ($Candidate -in @('Candidate03','Candidate04','Candidate05')) {
+if ($Candidate -in @('Candidate03','Candidate04','Candidate05','Candidate06')) {
     $suite['ONE03MovementCheck'] = 'ONE03_MOVEMENT_COMPLETE'
     $suite['ONE03WeaponCheck'] = 'ONE03_WEAPON_COMPLETE'
     $suite['ONE03CaseCheck'] = 'ONE03_CASE_COMPLETE'
@@ -22,31 +23,41 @@ if ($Candidate -in @('Candidate03','Candidate04','Candidate05')) {
     $suite['ONE03PhysicalityCheck'] = 'ONE03_PHYSICALITY_COMPLETE'
     $suite['ONE03PhysicalityCapture'] = 'ONE03_PHYSICALITY_COMPLETE'
 }
-if ($Candidate -in @('Candidate04','Candidate05')) {
+if ($Candidate -in @('Candidate04','Candidate05','Candidate06')) {
     $suite['ONE04ProgressionCheck'] = 'ONE04_PROGRESSION_COMPLETE'
     $suite['ONE04ArsenalCheck'] = 'ONE04_ARSENAL_COMPLETE'
 }
-if ($Candidate -eq 'Candidate05') {
+if ($Candidate -in @('Candidate05','Candidate06')) {
     $suite['ONE05AimCheck'] = 'ONE05_AIM_COMPLETE'
     $suite['ONE05WeaponCheck'] = 'ONE05_WEAPON_COMPLETE'
     $suite['ONE05MotionCheck'] = 'ONE05_MOTION_COMPLETE'
     $suite['ONE05UICheck'] = 'ONE05_UI_COMPLETE'
+}
+if ($Candidate -eq 'Candidate06') {
+    $suite['ONE06CombatCheck'] = 'ONE06_COMBAT_COMPLETE'
+    $suite['ONE06GroupingCheck'] = 'ONE06_GROUPING_COMPLETE'
+    $suite['ONE06SurvivalCheck'] = 'ONE06_SURVIVAL_COMPLETE'
+    $suite['ONE06PortabilityCheck'] = 'ONE06_PORTABILITY_COMPLETE'
 }
 $suite['ONECombatCheck'] = 'ONE_COMBAT_COMPLETE'
 $suite['ONECompare'] = 'ONE_COMBAT_COMPLETE'
 $suite['ONEPresentation'] = 'ONE_PRESENTATION_COMPLETE'
 $suite['ONEValidate'] = 'ONE_VALIDATION_COMPLETE'
 foreach ($count in @(6, 12, 18)) { $suite["ONEBenchmark=$count"] = 'ONE_VALIDATION_COMPLETE' }
-if (!$Modes) { $Modes = @($suite.Keys | Where-Object { $_ -notin @('ONE03PresentationCapture','ONE03PhysicalityCapture') }) }
+if (!$Modes) { $Modes = @($suite.Keys | Where-Object { $_ -notin @('ONE03PresentationCapture','ONE03PhysicalityCapture','ONE06PortabilityCheck') }) }
 if (@($Modes | Select-Object -Unique).Count -ne $Modes.Count) { throw 'Duplicate validation modes are not allowed.' }
 foreach ($mode in $Modes) {
     if (!$suite.Contains($mode)) { throw "Unsupported $Candidate validation mode: $mode" }
 }
+if ($Modes -contains 'ONE06PortabilityCheck') {
+    if ($Map -cne '/Game/ONE/Maps/Portability06') { throw 'ONE06PortabilityCheck requires explicit -Map /Game/ONE/Maps/Portability06.' }
+} elseif ($Map) { throw '-Map is reserved for the explicit ONE06PortabilityCheck mode; other modes keep their normal map.' }
 if ($PlanOnly) {
     [ordered]@{
         candidate = $Candidate; executable = $gameExe; local_run_directory = $runRoot
-        modes = @($Modes | ForEach-Object { @{ mode = $_; completion_marker = $suite[$_] } })
+        modes = @($Modes | ForEach-Object { @{ mode = $_; completion_marker = $suite[$_]; map = $(if ($_ -eq 'ONE06PortabilityCheck') { $Map } else { 'project default' }) } })
         timeout_seconds = $TimeoutSeconds
+        timeout_note = 'The outer process limit includes startup/shutdown; ONE06CombatCheck has its own 180-second actor limit and ONE06SurvivalCheck a 140-second real-time actor limit.'
         render_mode = $(if ($RenderOffscreen) { 'offscreen engine viewport' } else { 'native window' })
         performance_note = 'Legacy benchmarks retain their single screenshot at 15 seconds; this suite does not enable CSV profiling.'
     } | ConvertTo-Json -Depth 5
@@ -74,11 +85,12 @@ function Assert-ProjectPath([string]$Path) {
 New-Item -ItemType Directory -Path (Assert-ProjectPath $runRoot) | Out-Null
 # Move only this selected package's previous runtime output into a unique local
 # backup. Earlier candidate packages and curated Evidence are never selected
-# implicitly by the Candidate05 default.
+# implicitly by the Candidate06 default.
 $folders = @('Presentation', 'Validation', 'Candidate02')
-if ($Candidate -in @('Candidate03','Candidate04','Candidate05')) { $folders += 'Candidate03' }
-if ($Candidate -in @('Candidate04','Candidate05')) { $folders += 'Candidate04' }
-if ($Candidate -eq 'Candidate05') { $folders += 'Candidate05' }
+if ($Candidate -in @('Candidate03','Candidate04','Candidate05','Candidate06')) { $folders += 'Candidate03' }
+if ($Candidate -in @('Candidate04','Candidate05','Candidate06')) { $folders += 'Candidate04' }
+if ($Candidate -in @('Candidate05','Candidate06')) { $folders += 'Candidate05' }
+if ($Candidate -eq 'Candidate06') { $folders += 'Candidate06' }
 foreach ($folder in $folders) {
     $source = Assert-ProjectPath (Join-Path (Split-Path -Parent $gameExe) "ProjectONE\Saved\$folder")
     $destination = Assert-ProjectPath (Join-Path $runRoot "PreviousRuntimeSaved\$folder")
@@ -93,6 +105,7 @@ foreach ($mode in $Modes) {
     $label = $mode.Replace('=', '_')
     $log = Join-Path $runRoot "$label.log"
     $arguments = @("-$mode", '-windowed', '-ResX=1600', '-ResY=900', '-unattended', '-nosplash', "-abslog=`"$log`"")
+    if ($mode -eq 'ONE06PortabilityCheck') { $arguments = @($Map) + $arguments }
     # Offscreen viewports must retain the requested test size even when the
     # desktop work area is smaller or changes during an unattended run.
     if ($RenderOffscreen) { $arguments += @('-RenderOffScreen', '-ForceRes') }

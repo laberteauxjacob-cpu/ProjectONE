@@ -1,5 +1,6 @@
 #include "ONEPlayer.h"
 #include "ONEAim.h"
+#include "ONE06CameraModifier.h"
 #include "ONEHealthComponent.h"
 #include "ONEWeaponComponent.h"
 #include "ONEInteractionComponent.h"
@@ -11,6 +12,11 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/PlayerController.h"
+#include "Camera/PlayerCameraManager.h"
+#include "Engine/LocalPlayer.h"
+#include "Engine/GameViewportClient.h"
+#include "SceneView.h"
+#include "Math/InverseRotationMatrix.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -29,6 +35,7 @@ AONEPlayer::AONEPlayer()
 {
     PrimaryActorTick.bCanEverTick = true;
     Health = CreateDefaultSubobject<UONEHealthComponent>(TEXT("Health"));
+    Health->EnablePlayerRegeneration(true);
     Weapon = CreateDefaultSubobject<UONEWeaponComponent>(TEXT("Weapon"));
     Interaction = CreateDefaultSubobject<UONEInteractionComponent>(TEXT("Interaction"));
     GetCapsuleComponent()->InitCapsuleSize(28.f, 90.f);
@@ -307,38 +314,70 @@ void AONEPlayer::Tick(float Dt)
     else if (bAimOverride) AimPoint=OverrideAimPoint;
     else if (auto* PC = Cast<APlayerController>(GetController()))
     {
-        FVector Origin,Direction;
-        if (PC->DeprojectMousePositionToWorld(Origin,Direction))
+        FVector Origin,Direction; float MouseX=0.f,MouseY=0.f;
+        if (PC->GetMousePosition(MouseX,MouseY) && DeprojectLogicalCursor(FVector2D(MouseX,MouseY),Origin,Direction))
         {
-            FHitResult Hit;
-            FCollisionQueryParams Params(SCENE_QUERY_STAT(MouseAim),false,this);
-            if (GetWorld()->LineTraceSingleByChannel(Hit,Origin,Origin+Direction*10000,ECC_Visibility,Params) && Hit.GetActor() && Hit.GetActor()->ActorHasTag(TEXT("Infected")))
-            {
-                AimPoint=Hit.ImpactPoint;
-                // Pick inside the exact anatomical primitive under the cursor,
-                // along the same camera ray. A camera-facing entry surface is
-                // a grazing aim point from the muzzle's different viewpoint.
-                // Actual shoulder/muzzle traces still decide damage and cover.
-                FHitResult Exit;
-                if (auto* Region=Hit.GetComponent(); Region && Region->LineTraceComponent(Exit,Origin+Direction*10000,Origin,Params) &&
-                    Exit.BoneName==Hit.BoneName &&
-                    FVector::DotProduct(Exit.ImpactPoint-Hit.ImpactPoint,Direction)>0.f)
-                    AimPoint=(Hit.ImpactPoint+Exit.ImpactPoint)*.5f;
-            }
-            else
-            {
-                if (FMath::Abs(Direction.Z)>.001f)
-                {
-                    const double T=(GetAimOrigin().Z-Origin.Z)/Direction.Z;
-                    if (T>0 && FMath::IsFinite(T)) AimPoint=Origin+Direction*T;
-                }
-            }
+            // One target-independent surface, chosen by explicit player input.
+            // Neither infected regions nor world hits participate in aim selection.
+            const double FloorZ=GetActorLocation().Z-GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
+            ONEAim::IntersectCursorPlane(Origin,Direction,FloorZ+GetAimHeightCm(),AimPoint);
         }
     }
     IntendedAimDirection=ONEAim::ResolveIntent(GetAimOrigin(),AimPoint,IntendedAimDirection,AimCenterRadius);
     const float AimYaw=IntendedAimDirection.Rotation().Yaw;
     UpdateBodyFacing(Dt,AimYaw);
     SetActorRotation(FRotator(0,AimYaw,0));
+}
+namespace ONE06LogicalView
+{
+    bool Projection(const AONEPlayer* Pawn,FSceneViewProjectionData& Data)
+    {
+        const auto* PC=Pawn ? Cast<APlayerController>(Pawn->GetController()) : nullptr;
+        const auto* Local=PC ? PC->GetLocalPlayer() : nullptr;
+        if (!Local || !Local->ViewportClient || !Local->ViewportClient->Viewport ||
+            !Local->GetProjectionData(Local->ViewportClient->Viewport,Data)) return false;
+        // Keep the viewport/FOV projection, but replace shaken camera-manager
+        // origin/rotation with the actual unmodified spring-arm camera view.
+        Data.ViewOrigin=Pawn->Camera->GetComponentLocation();
+        Data.ViewRotationMatrix=FInverseRotationMatrix(Pawn->Camera->GetComponentRotation())*
+            FMatrix(FPlane(0,0,1,0),FPlane(1,0,0,0),FPlane(0,1,0,0),FPlane(0,0,0,1));
+        return true;
+    }
+}
+bool AONEPlayer::DeprojectLogicalCursor(const FVector2D& Screen,FVector& Origin,FVector& Direction) const
+{
+    FSceneViewProjectionData Data; if (!ONE06LogicalView::Projection(this,Data)) return false;
+    FSceneView::DeprojectScreenToWorld(Screen,Data.GetConstrainedViewRect(),Data.ComputeViewProjectionMatrix().InverseFast(),Origin,Direction);
+    return !Origin.ContainsNaN() && !Direction.ContainsNaN();
+}
+bool AONEPlayer::ProjectLogicalWorld(const FVector& World,FVector2D& Screen) const
+{
+    FSceneViewProjectionData Data; if (!ONE06LogicalView::Projection(this,Data)) return false;
+    return FSceneView::ProjectWorldToScreen(World,Data.GetConstrainedViewRect(),Data.ComputeViewProjectionMatrix(),Screen);
+}
+float AONEPlayer::GetAimHeightCm() const
+{
+    const auto* PC=Cast<APlayerController>(GetController());
+    if (PC && PC->IsInputKeyDown(EKeys::LeftControl)) return LowAimHeight;
+    if (PC && PC->IsInputKeyDown(EKeys::RightMouseButton)) return HeadAimHeight;
+    return TorsoAimHeight;
+}
+FString AONEPlayer::GetAimHeightLabel() const
+{
+    const auto* PC=Cast<APlayerController>(GetController());
+    return PC && PC->IsInputKeyDown(EKeys::LeftControl) ? TEXT("Low") :
+        PC && PC->IsInputKeyDown(EKeys::RightMouseButton) ? TEXT("Head") : TEXT("Torso");
+}
+bool AONEPlayer::IsAdjustingAimHeight() const
+{
+    const auto* PC=Cast<APlayerController>(GetController());
+    return PC && (PC->IsInputKeyDown(EKeys::LeftControl) || PC->IsInputKeyDown(EKeys::RightMouseButton));
+}
+void AONEPlayer::AddPresentationShake(float Impulse)
+{
+    if (const auto* PC=Cast<APlayerController>(GetController());PC && PC->PlayerCameraManager)
+        if (auto* Modifier=Cast<UONE06CameraModifier>(PC->PlayerCameraManager->FindCameraModifierByClass(UONE06CameraModifier::StaticClass())))
+            Modifier->AddImpulse(Impulse);
 }
 FVector AONEPlayer::GetShotDirection(const FVector& EvaluatedMuzzle) const
 {
@@ -543,9 +582,9 @@ void AONEPlayer::ReceiveAttack(float Damage,const FVector& From)
 {
     const float Now = GetWorld()->GetTimeSeconds();
     if (IsDead() || Now-LastDamageTime < .55f) return;
+    if (!Health->ApplyDamage(Damage)) return;
     LastDamageTime = Now;
     DamageReactionDirection=(GetActorLocation()-From).GetSafeNormal2D();
-    Health->ApplyDamage(Damage);
     if (auto* Blood = GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->Impact(GetActorLocation()+FVector(0,0,30),(GetActorLocation()-From).GetSafeNormal(),false);
     if (IsDead())
     {

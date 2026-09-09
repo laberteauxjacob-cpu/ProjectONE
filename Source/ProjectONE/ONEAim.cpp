@@ -1,5 +1,14 @@
 #include "ONEAim.h"
 
+bool ONEAim::IntersectCursorPlane(const FVector& Origin,const FVector& Direction,double PlaneZ,FVector& OutPoint)
+{
+    if (Origin.ContainsNaN() || Direction.ContainsNaN() || !FMath::IsFinite(PlaneZ) || FMath::Abs(Direction.Z)<.001) return false;
+    const double Distance=(PlaneZ-Origin.Z)/Direction.Z;
+    if (!FMath::IsFinite(Distance) || Distance<=0. || Distance>20000.) return false;
+    OutPoint=Origin+Direction*Distance;
+    return !OutPoint.ContainsNaN();
+}
+
 FVector ONEAim::ResolveIntent(const FVector& Origin,const FVector& CursorPoint,
     const FVector& PreviousDirection,float CenterRadius)
 {

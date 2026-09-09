@@ -23,7 +23,7 @@ public:
     virtual void EndPlay(const EEndPlayReason::Type Reason) override;
     FString GetSegmentLabel() const { return Segment; }
 private:
-    enum class EStep : uint8 { Wait,Tap,Walk,Retreat,Hold,WaitState,Select,Fire,Reload,Verify,StartProfile,Combat };
+    enum class EStep : uint8 { Wait,Tap,Walk,Retreat,Hold,WaitState,WaitOwned,Select,Fire,Reload,Verify,StartProfile,Combat };
     struct FStep
     {
         EStep Kind=EStep::Wait;
@@ -64,6 +64,8 @@ private:
     TSharedFuture<FString> CsvCompletion;
     int32 Phase=-1,Checks=0,Failures=0,Frames=0,EnemyCount=6,Live=0,Spawned=0;
     int32 ShotsAtStep=0,DropsAtStep=0,HoldCountAtStep=0,WalkLeg=0,FirePulses=0;
+    int32 TapCountAtStep=0;
+    FONEWeaponReservation CapturedUpgrade;
     int32 CompletedConfigurations=0,ProfileSamples=0,ExactCountSamples=0;
     int32 ProfileMaximumLive=0;
     uint64 StepFirstFrame=0;

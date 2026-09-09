@@ -3,6 +3,7 @@
 #include "GameFramework/HUD.h"
 #include "ONEUITypes.h"
 #include "ONEWeaponTypes.h"
+#include "ONE06CombatTypes.h"
 #include "ONEHUD.generated.h"
 class UTexture2D;
 class AONEPlayer;
@@ -22,6 +23,7 @@ public:
     bool HandlePointerReleased(const FVector2D& Position);
     void ToggleTools();
     void CloseTools();
+    void CycleShakeStrength();
     bool IsPointerUIActive() const;
     bool IsToolsOpen() const { return bTools; }
     bool HasCompleteArtwork() const;
@@ -32,6 +34,10 @@ public:
     int32 GetObservedBoxCycle() const { return ReelCycle; }
     bool IsBoxReelVisible() const { return ReelMachine.IsValid(); }
     float GetDeathPresentationProgress() const { return DeathPresentationProgress; }
+    float GetHealthEdgeSeverity() const { return HealthEdgeSeverity; }
+    float GetDamagePulseStrength() const { return DamagePulseStrength; }
+    int32 GetDisplayedCombatGain() const { return DisplayedCombatGain; }
+    int32 GetVisiblePowerUpTimers() const { return VisiblePowerUpTimers; }
 private:
     struct FButton { EONEUIAction Action; FBox2D Rect; bool Enabled; };
     UPROPERTY() TObjectPtr<UTexture2D> Glyphs;
@@ -51,6 +57,13 @@ private:
     float ReelChangedAt=0.f;
     double DeathPresentedAt=-1.;
     float DeathPresentationProgress=1.f;
+    TWeakObjectPtr<AONEPlayer> VisualPlayer;
+    FGuid VisualRun;
+    uint64 ObservedCombatGainSerial=0, ObservedPickupSerial=0;
+    float HealthEdgeSeverity=0.f, DamagePulseStrength=0.f;
+    double VisualTime=-1., GainUpdatedAt=-10., PickupPresentedAt=-10.;
+    int32 DisplayedCombatGain=0, VisiblePowerUpTimers=0;
+    EONEPowerUpType LastPickupType=EONEPowerUpType::Count;
     int32 UIContext() const;
     float Advance(TCHAR Character,float Height) const;
     float TextWidth(const FString& Value,float Height) const;
@@ -66,4 +79,9 @@ private:
     void DrawTools(const AONEGameMode* GM,float W,float H);
     void DrawMenu(const AONEGameMode* GM,float W,float H);
     bool DrawBoxReel(const AONEPlayer* Player,float W,float Top);
+    void UpdateSurvivalPresentation(const AONEPlayer* Player,const AONEGameMode* GM);
+    void DrawHealthEdges(float W,float H);
+    void PowerUpIcon(EONEPowerUpType Type,float X,float Y,float Size,FLinearColor Color);
+    void DrawPowerUps(const AONEGameMode* GM,float Left,float Top,float W);
+    void DrawUpgradeStatus(const AONEPlayer* Player,float W,float Top);
 };

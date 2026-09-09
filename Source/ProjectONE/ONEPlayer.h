@@ -35,6 +35,12 @@ public:
     FVector GetAimOrigin() const { return GetActorLocation()+FVector(0,0,42); }
     FVector GetIntendedAimDirection() const { return IntendedAimDirection; }
     FVector GetShotDirection(const FVector& EvaluatedMuzzle) const;
+    bool DeprojectLogicalCursor(const FVector2D& Screen,FVector& Origin,FVector& Direction) const;
+    bool ProjectLogicalWorld(const FVector& World,FVector2D& Screen) const;
+    float GetAimHeightCm() const;
+    FString GetAimHeightLabel() const;
+    bool IsAdjustingAimHeight() const;
+    void AddPresentationShake(float Impulse);
     float GetDamageReactionAge() const;
     FVector GetDamageReactionDirection() const { return DamageReactionDirection; }
     FVector GetMuzzleLocation() const;
@@ -73,6 +79,9 @@ public:
     UPROPERTY(EditAnywhere, Category="Aim") float AimCenterRadius=4.f;
     UPROPERTY(EditAnywhere, Category="Aim") float AimConvergenceAhead=120.f;
     UPROPERTY(EditAnywhere, Category="Aim") float AimMaximumPitch=35.f;
+    UPROPERTY(EditAnywhere, Category="Aim",meta=(ClampMin="20",ClampMax="200")) float TorsoAimHeight=125.f;
+    UPROPERTY(EditAnywhere, Category="Aim",meta=(ClampMin="20",ClampMax="200")) float HeadAimHeight=168.f;
+    UPROPERTY(EditAnywhere, Category="Aim",meta=(ClampMin="20",ClampMax="200")) float LowAimHeight=65.f;
     UPROPERTY(EditAnywhere, Category="Animation") float AuthoredWalkSpeed = 225.f;
     UPROPERTY(EditAnywhere, Category="Animation") float AuthoredRunSpeed = 370.f;
     UPROPERTY(EditAnywhere, Category="Animation") float TurnTriggerAngle = 55.f;

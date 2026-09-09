@@ -30,6 +30,8 @@ public:
     void PlayCycleCue();
     void BeginTransferFrom(const FTransform& ActualGunWorld);
     void BeginRetrievalTo(const FTransform& HandWorld);
+    void BeginLossRetraction();
+    void SetExpiryWarning(bool bWarning) { bExpiryWarning=bWarning; }
     FTransform GetIntakeWorldTransform() const;
     FTransform GetOutputWorldTransform() const;
     FTransform GetPreviewWorldTransform() const;
@@ -77,6 +79,7 @@ private:
     EONE04MachineVisualState PreviousState=EONE04MachineVisualState::Disabled;
     bool bConfigured=false, bBox=true, bPreviewValid=false, bTransferring=false, bRetrieving=false;
     bool bClampCue=false, bOutputCue=false;
+    bool bLossRetraction=false,bExpiryWarning=false;
     int32 ExpectedPreviewParts=0, CycleCueCount=0, NextCueVoice=0;
     float PreviewCenterX=0.f, LidOpenDegrees=0.f;
     float TransferStartErrorCm=0.f, RetrievalStartErrorCm=0.f;

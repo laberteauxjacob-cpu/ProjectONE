@@ -100,7 +100,8 @@ void AONE05WeaponCheck::Finish()
     if (bFinished) return;
     if (Player) Player->ReleaseHeldInputs(); UGameplayStatics::SetGamePaused(this,false);
     bFinished=true; FinishedReal=FPlatformTime::Seconds();
-    auto R=MakeShared<FJsonObject>(); R->SetStringField(TEXT("candidate"),TEXT("05"));
+    auto R=MakeShared<FJsonObject>(); R->SetStringField(TEXT("candidate"),TEXT("06"));
+    R->SetStringField(TEXT("compatibility_mode"),TEXT("ONE05WeaponCheck legacy name; ordinary reload/cadence retained with accepted PaP transfer tested separately"));
     R->SetStringField(TEXT("fixture"),TEXT("Six actual catalog variants installed using owned-instance APIs; machine waits bypassed only for loadout setup. Real component SetTrigger/BeginReload requests, evaluated pose shots, ammunition, mechanical events, frame cadence, controller FlushPressedKeys, actual death and OpenLevel restart. Requests normally run before weapon tick; a labeled late-tap case runs in OnWorldPostActorTick. One deliberate 320ms game-thread sleep per automatic weapon probes hitch recovery. No ammo setter, modified fire interval or artificial damage target. This is functional engine input-boundary evidence, not native OS held-input, audible quality, contact/aim scene, or performance proof. ONE05Rate declares runner-requested cap; actual shot times are retained in CSV."));
     R->SetNumberField(TEXT("requested_fps"),ExpectedRate); R->SetNumberField(TEXT("checks"),Checks); R->SetNumberField(TEXT("failures"),Failures); R->SetArrayField(TEXT("assertions"),Records);
     FString Json; FJsonSerializer::Serialize(R,TJsonWriterFactory<>::Create(&Json));
@@ -171,18 +172,21 @@ void AONE05WeaponCheck::Tick(float Dt)
     {
         Check(Weapon->GetTotalShotsFired()==Shots+1 && !Weapon->IsAutomaticBurstActive(),TEXT("Leaving handoff while invalid fire remains held cannot start a burst"));
         Weapon->SetTrigger(false); Ammo=Weapon->GetAmmo(); Reserve=Weapon->GetReserveAmmo(); Drops=Weapon->GetMagazineDropCount(); Transfers=Weapon->GetMagazineCommitCount();
-        StalePlan=Weapon->BuildAcquisitionPlan(Weapon->GetDefinition().Family); Player->SetSprintHeld(true); Weapon->BeginReload(); Next(8);
+        const EONEWeaponFamily Unowned=Weapon->GetDefinition().Family==EONEWeaponFamily::Carbine ? EONEWeaponFamily::Shotgun : EONEWeaponFamily::Carbine;
+        StalePlan=Weapon->BuildAcquisitionPlan(Unowned);
+        Check(StalePlan.IsValid(),TEXT("Ordinary reload test begins with a genuinely eligible unowned-family acquisition plan"));
+        Player->SetSprintHeld(true); Weapon->BeginReload(); Next(8);
     } break;
     case 8: if (Weapon->IsReloading() && Weapon->GetOperationElapsed()>.1f)
     {
         Check(Player->IsSprintRequested() && Weapon->IsReloading(),TEXT("Held sprint permits manual reload instead of canceling it"));
         if (Weapon->GetDefinition().bShellReload) { Next(12); break; }
-        const uint64 Revision=Weapon->GetInventoryRevision(); const float Clock=Weapon->GetOperationElapsed(); FONEWeaponReservation Token;
+        const uint64 Revision=Weapon->GetInventoryRevision(); const float Clock=Weapon->GetOperationElapsed();
         Weapon->CancelReload(); Weapon->BeginReload(); Tap();
         const bool Switched=Weapon->SelectWeapon(1-Weapon->GetEquippedIndex());
-        const bool Reserved=Weapon->ReserveEquippedForUpgrade(Token); const bool Acquired=Weapon->ApplyAcquisitionPlan(StalePlan);
+        const bool Acquired=Weapon->ApplyAcquisitionPlan(StalePlan);
         Weapon->RefillAllAmmo(); Weapon->SetHandoffLocked(true);
-        Check(Weapon->IsMagazineReloadCommitted() && !Weapon->CanChangeInventory() && !Switched && !Reserved && !Acquired && !Weapon->IsHandoffLocked() && Weapon->GetPendingWeaponIndex()==INDEX_NONE,TEXT("Committed magazine reload rejects cancel/fire/switch/reserve/acquire/refill/handoff backdoors"));
+        Check(Weapon->IsMagazineReloadCommitted() && !Weapon->CanChangeInventory() && !Switched && !Acquired && !Weapon->IsHandoffLocked() && Weapon->GetPendingWeaponIndex()==INDEX_NONE,TEXT("Committed ordinary reload rejects cancel/fire/switch/acquire/refill/direct-handoff; accepted PaP transfer is tested separately"));
         Check(Weapon->GetInventoryRevision()==Revision && Weapon->GetOperationElapsed()>=Clock && Weapon->GetAmmo()==Ammo && Weapon->GetReserveAmmo()==Reserve,TEXT("Rejected actions preserve exact inventory revision, ammunition and reload clock")); Next(9);
     } break;
     case 9: if (!Weapon->IsBusy() && T>.3f)

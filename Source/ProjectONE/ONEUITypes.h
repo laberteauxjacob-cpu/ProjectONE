@@ -10,5 +10,5 @@ enum class EONEUIAction : uint8
     SpawnOne, SpawnSix, Refill, GrantPoints,
     ResetSandbox, ClearGore, ToggleLighting,
     ForcePistol, ForceCarbine, ForceShotgun, RandomBox,
-    CloseTools
+    CloseTools, ForceInstaKill, ForceDoublePoints, ForceMaxAmmo, CycleShakeStrength
 };

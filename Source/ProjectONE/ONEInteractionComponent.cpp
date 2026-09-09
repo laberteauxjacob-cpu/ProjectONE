@@ -18,7 +18,10 @@ FONEInteractionOffer UONEInteractionComponent::FindOffer() const
     {
         if (!It->CanReach(P)) continue;
         const float D=FVector::DistSquared(P->GetActorLocation(),It->GetInteractionPoint());
-        if (D<BestDistance) { BestDistance=D; Best=*It; }
+        // Stable distance ordering keeps overlapping interaction areas focused
+        // on one physical machine, including exact-distance ties.
+        if (D<BestDistance || (D==BestDistance && Best && It->GetUniqueID()<Best->GetUniqueID()))
+        { BestDistance=D; Best=*It; }
     }
     return Best ? Best->BuildOffer(P) : FONEInteractionOffer{};
 }
@@ -26,7 +29,15 @@ void UONEInteractionComponent::Press()
 {
     if (bHeld || bLatched) return;
     bHeld=true; HoldElapsed=0; Focus=FindOffer(); Started=Focus;
-    if (!Started.bEnabled) bLatched=true;
+    if (!Started.bEnabled || Started.Input==EONEInteractionInput::Automatic || Started.Input==EONEInteractionInput::None)
+        bLatched=true;
+    else if (Started.Input==EONEInteractionInput::Tap)
+    {
+        bLatched=true;
+        if (AONEProgressionMachine* Machine=Started.Machine.Get())
+            if (Machine->CommitOffer(Cast<AONEPlayer>(GetOwner()),Started)) ++CompletedTaps;
+        Focus=FindOffer();
+    }
 }
 void UONEInteractionComponent::Release()
 {
@@ -42,7 +53,7 @@ void UONEInteractionComponent::TickComponent(float Dt,ELevelTick TickType,FActor
     Super::TickComponent(Dt,TickType,TickFunction);
     Focus=FindOffer();
     if (!bHeld || bLatched) return;
-    if (!Focus.bEnabled || !Started.SameContext(Focus)) { Cancel(); return; }
+    if (Started.Input!=EONEInteractionInput::Hold || !Focus.bEnabled || !Started.SameContext(Focus)) { Cancel(); return; }
     const float Required=FMath::Clamp(HoldDuration,.1f,2.f);
     HoldElapsed=FMath::Min(Required,HoldElapsed+Dt);
     if (HoldElapsed+KINDA_SMALL_NUMBER<Required) return;

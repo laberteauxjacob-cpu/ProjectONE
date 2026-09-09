@@ -1,0 +1,17 @@
+{
+  "candidate": "06",
+  "provenance": "Original Project ONE primitive composition and Canvas emblems; no external artwork or Project Zero content.",
+  "world_geometry_source": "Source/ProjectONE/ONE06PickupVisualComponent.cpp",
+  "hud_geometry_source": "Source/ProjectONE/ONEHUD.cpp",
+  "material_generator": "Scripts/create_candidate06_pickup_art.py",
+  "material_asset": "/Game/ONE/Pickups/Candidate06/M_Pickup06",
+  "primitive_assets": ["/Engine/BasicShapes/Cube", "/Engine/BasicShapes/Sphere", "/Engine/BasicShapes/Cylinder"],
+  "emblems": {
+    "InstaKill": {"motif": "skull with dark sockets, nose, jaw and teeth", "color_linear_rgb": [1.0, 0.12, 0.025], "mesh_parts_including_glow": 10},
+    "DoublePoints": {"motif": "multiplication cross and segmented numeral 2", "color_linear_rgb": [1.0, 0.68, 0.07], "mesh_parts_including_glow": 8},
+    "MaxAmmo": {"motif": "lidded ammunition crate, two straps and three cartridge marks", "color_linear_rgb": [0.03, 0.82, 0.60], "mesh_parts_including_glow": 11}
+  },
+  "bounds": {"maximum_mesh_parts": 12, "dynamic_materials_per_pickup": 3, "nonshadow_lights_per_pickup": 1, "light_radius_cm": 64, "light_intensity": 32, "particle_emitters": 0, "visual_collision_or_navigation": false},
+  "motion": {"hover_center_cm": 28, "hover_amplitude_cm": 2.5, "hover_period_seconds": 2.8, "yaw_sway_degrees": 12, "warning_final_seconds": 5, "warning_frequency_hz": 1.3, "final_opacity_fade_seconds": 0.85},
+  "review_status": "Source specification; import, runtime, image and audio review are separate evidence."
+}

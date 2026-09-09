@@ -85,15 +85,17 @@ AONEZombie::AONEZombie()
     LegLeftMesh=MakePart(TEXT("LegLeft")); ArmMesh=ArmRightMesh;
     auto MakeRegion=[this](const TCHAR* Name,float Radius)
     {
-        auto* Region=CreateDefaultSubobject<USphereComponent>(Name);
-        Region->SetupAttachment(GetMesh()); Region->InitSphereRadius(Radius);
+        auto* Region=CreateDefaultSubobject<UCapsuleComponent>(Name);
+        Region->SetupAttachment(GetMesh()); Region->InitCapsuleSize(Radius,Radius+10.f);
         return Region;
     };
-    HeadRegion=MakeRegion(TEXT("HeadRegion"),18.f);
-    ArmLeftRegion=MakeRegion(TEXT("ArmLeftRegion"),13.f);
-    UpperArmLeftRegion=MakeRegion(TEXT("UpperArmLeftRegion"),12.f);
-    ArmRightRegion=MakeRegion(TEXT("ArmRightRegion"),13.f);
-    UpperArmRightRegion=MakeRegion(TEXT("UpperArmRightRegion"),12.f);
+    // Match the existing source skull (~8cm radius) and actual limb segments.
+    // Candidate05's 18cm head and 12/13cm arm spheres extended into visible air.
+    HeadRegion=MakeRegion(TEXT("HeadRegion"),8.2f); HeadRegion->SetCapsuleHalfHeight(11.f);
+    ArmLeftRegion=MakeRegion(TEXT("ArmLeftRegion"),5.8f);
+    UpperArmLeftRegion=MakeRegion(TEXT("UpperArmLeftRegion"),7.f);
+    ArmRightRegion=MakeRegion(TEXT("ArmRightRegion"),5.8f);
+    UpperArmRightRegion=MakeRegion(TEXT("UpperArmRightRegion"),7.f);
     ArmRegion=ArmRightRegion; UpperArmRegion=UpperArmRightRegion;
     auto MakeLegRegion=[this](const TCHAR* Name,float Radius)
     {
@@ -107,7 +109,7 @@ AONEZombie::AONEZombie()
     UpperLegRightRegion=MakeLegRegion(TEXT("UpperLegRightRegion"),8.f);
     BodyRegion=CreateDefaultSubobject<UCapsuleComponent>(TEXT("BodyRegion"));
     BodyRegion->SetupAttachment(GetMesh());
-    BodyRegion->InitCapsuleSize(22.f,29.f);
+    BodyRegion->InitCapsuleSize(14.f,32.f);
     for (UPrimitiveComponent* C:TArray<UPrimitiveComponent*>{HeadRegion,ArmLeftRegion,UpperArmLeftRegion,ArmRightRegion,UpperArmRightRegion,
         LegLeftRegion,UpperLegLeftRegion,LegRightRegion,UpperLegRightRegion,BodyRegion})
     {
@@ -160,8 +162,9 @@ void AONEZombie::BeginPlay()
             return Result;
         };
         HeadRegion->SetRelativeLocation(Bind(TEXT("head")).GetRotation().Inverse().RotateVector(FVector(0,0,9)));
+        HeadRegion->SetRelativeRotation(Bind(TEXT("head")).GetRotation().Inverse());
         const FTransform TorsoBind=Bind(TEXT("spine_01"));
-        BodyRegion->SetRelativeLocation(TorsoBind.InverseTransformPosition(FVector(0,0,116)));
+        BodyRegion->SetRelativeLocation(TorsoBind.InverseTransformPosition(FVector(0,0,122)));
         BodyRegion->SetRelativeRotation(TorsoBind.GetRotation().Inverse());
         // Narrow capsules cover the entire bone segments and shared knee. Their
         // reference widths leave separation between anatomical sides (8+8<18cm).
@@ -183,8 +186,16 @@ void AONEZombie::BeginPlay()
             FVector A,B; FMath::SegmentDistToSegmentSafe(EndsA[L],EndsB[L],EndsA[R],EndsB[R],A,B);
             ReferenceLegQuerySeparation=FMath::Min(ReferenceLegQuerySeparation,float(FVector::Dist(A,B))-LegQueries[L]->GetUnscaledCapsuleRadius()-LegQueries[R]->GetUnscaledCapsuleRadius());
         }
-        for (auto* Region:TArray<USphereComponent*>{UpperArmLeftRegion,UpperArmRightRegion})
-            Region->SetRelativeLocation(Bind(Region->GetAttachSocketName()).InverseTransformVector(FVector(0,0,-10)));
+        const TArray<UCapsuleComponent*> ArmQueries={UpperArmLeftRegion,ArmLeftRegion,UpperArmRightRegion,ArmRightRegion};
+        const FName ArmEnds[]={TEXT("lowerarm_r"),TEXT("hand_r"),TEXT("lowerarm_l"),TEXT("hand_l")};
+        for (int32 I=0;I<ArmQueries.Num();++I)
+        {
+            auto* Region=ArmQueries[I]; const FTransform Parent=Bind(Region->GetAttachSocketName());
+            const FVector End=Parent.InverseTransformPosition(Bind(ArmEnds[I]).GetLocation());
+            Region->SetCapsuleHalfHeight(float(End.Size())*.5f+Region->GetUnscaledCapsuleRadius());
+            Region->SetRelativeLocation(End*.5f);
+            Region->SetRelativeRotation(FQuat::FindBetweenNormals(FVector::UpVector,End.GetSafeNormal()));
+        }
     }
     GetMesh()->SetAnimInstanceClass(UONEAnimInstance::StaticClass());
     GetMesh()->AddTickPrerequisiteActor(this);
@@ -345,7 +356,7 @@ void AONEZombie::ReceiveBullet(const FHitResult& Hit,const FVector& Direction,fl
     const EONEHitRegion Region=GetHitRegion(Hit);
     if (!FONEWeaponDamagePacket::IsValidRegion(Region)) return;
     FONEWeaponDamagePacket Packet;
-    const float Trauma=Region==EONEHitRegion::Head ? FMath::Max(HeadSeverThreshold,Damage*2.f) : Damage;
+    const float Trauma=Region==EONEHitRegion::Head ? Damage*2.f : Damage;
     Packet.Get(Region).AddPellet(Damage,Trauma,Hit.ImpactPoint,Direction,Hit.ImpactNormal,Hit.BoneName);
     Packet.Finalize(); ReceiveWeaponDamage(Packet);
 }
@@ -372,7 +383,7 @@ EONEWeaponHitOutcome AONEZombie::ReceiveWeaponDamageOutcome(const FONEWeaponDama
     if (Packet.ShotId && RecentShotIds.Contains(Packet.ShotId)) return EONEWeaponHitOutcome::Rejected;
     FONEWeaponRegionDamage Accepted[FONEWeaponDamagePacket::RegionCount];
     bool SeverRegion[FONEWeaponDamagePacket::RegionCount]={};
-    float Total=0,HealthDamage=0,Largest=0;
+    float Total=0,HealthDamage=0,HeadHealthDamage=0,Largest=0;
     int32 Strongest=0;
     // Read the complete pre-discharge presence mask before changing any region.
     for (int32 I=0;I<FONEWeaponDamagePacket::RegionCount;++I)
@@ -386,7 +397,10 @@ EONEWeaponHitOutcome AONEZombie::ReceiveWeaponDamageOutcome(const FONEWeaponDama
         Out.Normal=In.Normal.GetSafeNormal(SMALL_NUMBER,-Out.Direction);
         Out.Bone=ResolveRegionBone(Region,In.Bone);
         Total+=Out.Damage;
-        HealthDamage+=Out.Damage*((Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight) ? .4f : 1.f);
+        const float Multiplier=Region==EONEHitRegion::Head ? FMath::Clamp(HeadDamageMultiplier,1.f,3.f) :
+            (Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight) ? .4f : 1.f;
+        HealthDamage+=Out.Damage*Multiplier;
+        if (Region==EONEHitRegion::Head) HeadHealthDamage+=Out.Damage*Multiplier;
         if (Out.Damage>Largest) { Largest=Out.Damage; Strongest=I; }
     }
     if (Total<=0) return EONEWeaponHitOutcome::Rejected;
@@ -396,6 +410,7 @@ EONEWeaponHitOutcome AONEZombie::ReceiveWeaponDamageOutcome(const FONEWeaponDama
         RecentShotIds.Add(Packet.ShotId);
     }
     const bool WasDead=IsDead();
+    const bool HeadDominant=HeadHealthDamage>HealthDamage*.5f;
     if (WasDead) ++CorpseTransactions; else ++DamageTransactions;
     for (int32 I=0;I<FONEWeaponDamagePacket::RegionCount;++I)
     {
@@ -406,6 +421,10 @@ EONEWeaponHitOutcome AONEZombie::ReceiveWeaponDamageOutcome(const FONEWeaponDama
             Region==EONEHitRegion::ArmLeft || Region==EONEHitRegion::ArmRight ? ArmSeverThreshold :
             Region==EONEHitRegion::LegLeft ? LegSeverThreshold : BIG_NUMBER;
         SeverRegion[I]=RegionalTrauma[I]>=Threshold;
+        // Head trauma cannot bypass health. Removal is presentation of lethal
+        // head damage (or a head-dominant Insta-Kill), and remains possible on a corpse.
+        if (Region==EONEHitRegion::Head)
+            SeverRegion[I]&=WasDead || HeadHealthDamage>=Health->Health || (Packet.bForceLethal && HeadDominant);
     }
     // One spray per victim transaction; each anatomical wound has its own anchor.
     const auto& Main=Accepted[Strongest];
@@ -430,9 +449,12 @@ EONEWeaponHitOutcome AONEZombie::ReceiveWeaponDamageOutcome(const FONEWeaponDama
     }
     if (WasDead) return EONEWeaponHitOutcome::CorpseHit;
     const bool FatalLoss=!HasHead() || !HasLeftLeg() || (!HasLeftArm() && !HasRightArm());
-    Health->ApplyDamage(FatalLoss ? FMath::Max(Health->MaxHealth,Health->Health) : HealthDamage);
+    Health->ApplyDamage(FatalLoss || Packet.bForceLethal ? Health->Health : HealthDamage);
     if (Health->IsDead())
     {
+        // Classification uses this lethal discharge's effective health damage;
+        // old head trauma and one incidental head pellet cannot claim the bonus.
+        bLastKillHeadshot=HeadDominant;
         Die(Main.Direction,EONEHitRegion(Strongest),Main.Bone,Main.Position,FMath::Clamp(Total*4.f,150.f,550.f));
         return EONEWeaponHitOutcome::NewKill;
     }
@@ -520,6 +542,7 @@ void AONEZombie::Sever(EONEHitRegion Region,const FVector& Direction)
 void AONEZombie::Die(const FVector& Direction,EONEHitRegion ImpactRegion,FName ImpactBone,const FVector& ImpactPosition,float Impulse)
 {
     if (IsDead()) return;
+    LastDeathImpulse=Impulse;
     if (ZombieAudio) ZombieAudio->NotifyDeath();
     const FVector Inherited=GetVelocity();
     if (GetMesh()->GetSkeletalMeshAsset())

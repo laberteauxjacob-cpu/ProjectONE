@@ -3,6 +3,7 @@
 #include "ONEPlayer.h"
 #include "ONEWeaponComponent.h"
 #include "ONEGameMode.h"
+#include "ONE06MachineRules.h"
 #include "Components/BoxComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "ProfilingDebugging/CsvProfiler.h"
@@ -53,8 +54,13 @@ bool AONEProgressionMachine::CanReach(const AONEPlayer* P) const
     if (!P || P->IsDead() || State==EONEMachineState::Disabled) return false;
     const FVector Focus=GetInteractionPoint();
     const FVector Local=Presentation->GetComponentTransform().InverseTransformPosition(P->GetActorLocation());
-    if (Local.X<(bIsBox?60.f:108.f) || FMath::Abs(P->GetActorLocation().Z-Focus.Z)>145.f ||
-        FVector::DistSquared2D(P->GetActorLocation(),Focus)>FMath::Square(180.f)) return false;
+    if (bIsBox)
+    {
+        if (Local.X<60.f || FMath::Abs(P->GetActorLocation().Z-Focus.Z)>145.f ||
+            FVector::DistSquared2D(P->GetActorLocation(),Focus)>FMath::Square(180.f)) return false;
+    }
+    else if (!ONE06MachineRules::WithinUpgradeArea(Local,FMath::Clamp(UpgradeReachCm,100.f,250.f),
+        FMath::Clamp(UpgradeMinimumLocalX,-40.f,60.f))) return false;
     FHitResult Hit; FCollisionQueryParams Params(SCENE_QUERY_STAT(MachineReach),false,P);
     const bool Blocked=GetWorld()->LineTraceSingleByChannel(Hit,P->GetActorLocation()+FVector(0,0,25),Focus,ECC_Visibility,Params);
     return !Blocked || Hit.GetActor()==this;
@@ -63,23 +69,16 @@ bool AONEProgressionMachine::CanDeposit(AONEPlayer* P,FString& Reason) const
 {
     const auto* W=P ? P->GetWeaponComponent() : nullptr;
     const auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>();
-    if (!CanContact(P)) { Reason=TEXT("Move to the center of the intake tray"); return false; }
+    if (!CanContact(P)) { Reason=TEXT("Approach the front or side with a clear path"); return false; }
     if (!W || !W->HasUsableWeapon()) { Reason=TEXT("Equip an available base weapon"); return false; }
     if (W->IsHandoffLocked()) { Reason=TEXT("Finish the weapon handoff"); return false; }
-    if (W->IsMagazineReloadCommitted()) { Reason=TEXT("Finish reloading, then hold F to deposit"); return false; }
     if (W->GetDefinition().bUpgraded) { Reason=TEXT("Already upgraded - one tier per weapon"); return false; }
-    const auto* S=W->GetSlotState(W->GetEquippedIndex());
-    if (W->GetOperation()!=EONEWeaponOperation::Ready || S->bNeedsPump || !S->bMagazinePresent)
-    { Reason=TEXT("Ready the weapon before depositing"); return false; }
     if (!GM || GM->IsGameOver() || GM->GetPoints()<UpgradePrice) { Reason=TEXT("Requires 5,000 points"); return false; }
     return true;
 }
 bool AONEProgressionMachine::CanContact(const AONEPlayer* P) const
 {
-    if (!CanReach(P)) return false;
-    if (bIsBox) return true;
-    const FVector Local=Presentation->GetComponentTransform().InverseTransformPosition(P->GetActorLocation());
-    return Local.X<=190.f && FMath::Abs(Local.Y)<=55.f;
+    return CanReach(P);
 }
 FONEInteractionOffer AONEProgressionMachine::BuildOffer(AONEPlayer* P) const
 {
@@ -93,6 +92,7 @@ FONEInteractionOffer AONEProgressionMachine::BuildOffer(AONEPlayer* P) const
     {
         O.Price=bIsBox ? BoxPrice : UpgradePrice;
         O.Action=bIsBox ? EONEInteractionAction::BuyBox : EONEInteractionAction::DepositUpgrade;
+        O.Input=bIsBox ? EONEInteractionInput::Hold : EONEInteractionInput::Tap;
         if (bIsBox)
         {
             O.Detail=TEXT("950 points - roll one weapon");
@@ -102,19 +102,22 @@ FONEInteractionOffer AONEProgressionMachine::BuildOffer(AONEPlayer* P) const
             bool bEligible=false;
             for (const auto F:{EONEWeaponFamily::Pistol,EONEWeaponFamily::Carbine,EONEWeaponFamily::Shotgun})
                 bEligible|=W->IsFamilyRollEligible(F) && RollWeight(F)>0;
-            if (!bEligible) { O.bEnabled=false; O.Detail=TEXT("No eligible reward with the configured weights"); }
-            if (GM && GM->GetForcedBoxReward()!=EONEWeaponFamily::Invalid && !W->IsFamilyRollEligible(GM->GetForcedBoxReward()))
-            { O.bEnabled=false; O.Detail=TEXT("Forced test reward is reserved - V resets next roll to random"); }
+            if (!bEligible) { O.bEnabled=false; O.Detail=TEXT("All available weapon types are owned - no eligible reward"); }
+            if (GM && GM->GetForcedBoxReward()!=EONEWeaponFamily::Invalid &&
+                (!W->IsFamilyRollEligible(GM->GetForcedBoxReward()) || RollWeight(GM->GetForcedBoxReward())<=0))
+            { O.bEnabled=false; O.Detail=TEXT("Forced test reward is owned or excluded - V resets to random"); }
         }
         else
         {
             O.bEnabled=CanDeposit(P,O.Detail);
             if (O.bEnabled)
             {
-                const auto* Other=W->GetSlotState(1-O.Slot);
-                const bool OnlyWeapon=!Other || Other->Status!=EONEWeaponSlotStatus::Available;
+                bool OnlyWeapon=true;
+                for (int32 Slot=0;Slot<W->GetWeaponCount();++Slot)
+                    if (const auto* Other=W->GetSlotState(Slot);Slot!=O.Slot && Other && Other->Status==EONEWeaponSlotStatus::Available)
+                        OnlyWeapon=false;
                 O.Detail=FString::Printf(TEXT("5,000 - upgrade %s; reserve slot %d.%s"),*W->GetDefinition().DisplayName.ToString(),O.Slot+1,
-                    OnlyWeapon?TEXT(" You will be UNARMED until you collect or acquire a weapon."):TEXT(""));
+                    OnlyWeapon?TEXT(" UNARMED until automatic return or another acquisition."):TEXT(""));
             }
         }
     }
@@ -123,8 +126,9 @@ FONEInteractionOffer AONEProgressionMachine::BuildOffer(AONEPlayer* P) const
         if (bIsBox)
         {
             O.Action=EONEInteractionAction::CollectBox;
+            O.Input=EONEInteractionInput::Hold;
             O.Acquisition=W->BuildAcquisitionPlan(RewardFamily);
-            O.bEnabled=O.Acquisition.IsValid();
+            O.bEnabled=W->IsFamilyRollEligible(RewardFamily) && O.Acquisition.IsValid();
             const auto* Reward=W->GetCatalogDefinition(RewardFamily);
             const auto* Current=W->GetDefinitionForWeapon(O.Acquisition.Slot);
             const FString Name=Reward ? Reward->DisplayName.ToString() : TEXT("Weapon");
@@ -132,9 +136,7 @@ FONEInteractionOffer AONEProgressionMachine::BuildOffer(AONEPlayer* P) const
             {
                 case EONEWeaponAcquisitionKind::FillEmpty: O.Detail=FString::Printf(TEXT("Take %s into empty slot %d"),*Name,O.Acquisition.Slot+1); break;
                 case EONEWeaponAcquisitionKind::Replace: O.Detail=FString::Printf(TEXT("Take %s - REPLACE %s in slot %d"),*Name,Current?*Current->DisplayName.ToString():TEXT("weapon"),O.Acquisition.Slot+1); break;
-                case EONEWeaponAcquisitionKind::Refill: O.Detail=FString::Printf(TEXT("%s AMMO REFILL - keep %s"),*Name,Current?*Current->DisplayName.ToString():TEXT("owned weapon")); break;
-                case EONEWeaponAcquisitionKind::AlreadyFull: O.Detail=FString::Printf(TEXT("%s ammo FULL - collect consumes reward; no extra ammo"),Current?*Current->DisplayName.ToString():*Name); break;
-                default: O.Detail=TEXT("Reward waiting - its family is reserved at Pack-a-Punch"); break;
+                default: O.Detail=TEXT("Owned-family delivery invalid - refunding this roll"); break;
             }
             if (W->IsMagazineReloadCommitted())
             { O.bEnabled=false; O.Detail=TEXT("Finish reloading, then hold F to collect"); }
@@ -142,11 +144,12 @@ FONEInteractionOffer AONEProgressionMachine::BuildOffer(AONEPlayer* P) const
         else
         {
             O.Action=EONEInteractionAction::CollectUpgrade;
-            O.bEnabled=!W->IsHandoffLocked() && !W->IsMagazineReloadCommitted() && CanContact(P);
+            O.Input=EONEInteractionInput::Automatic;
+            O.bEnabled=false;
+            O.ReadySecondsRemaining=GetReadySecondsRemaining(); O.bExpiryWarning=IsExpiryWarning();
             const auto* D=W->GetCatalogDefinition(RewardFamily,true);
-            O.Detail=FString::Printf(TEXT("Take %s - returns to slot %d, fully supplied"),D?*D->DisplayName.ToString():TEXT("upgraded weapon"),Reservation.Slot+1);
-            if (!CanContact(P)) O.Detail=TEXT("Weapon ready - move to the center of the output tray");
-            else if (W->IsMagazineReloadCommitted()) O.Detail=TEXT("Finish reloading, then hold F to collect");
+            O.Detail=FString::Printf(TEXT("Approach to receive %s - no F - %.1fs before loss - slot %d"),
+                D?*D->DisplayName.ToString():TEXT("upgrade"),O.ReadySecondsRemaining,Reservation.Slot+1);
         }
     }
     else if (State==EONEMachineState::Active)
@@ -161,7 +164,12 @@ FONEInteractionOffer AONEProgressionMachine::BuildOffer(AONEPlayer* P) const
 bool AONEProgressionMachine::CommitOffer(AONEPlayer* P,const FONEInteractionOffer& Offered)
 {
     const FONEInteractionOffer Current=BuildOffer(P);
-    if (!Current.bEnabled || !Current.SameContext(Offered) || !CanReach(P)) return false;
+    if (!Current.bEnabled || !Current.SameContext(Offered) || !CanReach(P))
+    {
+        if (bIsBox && State==EONEMachineState::Ready && IsOwnedBy(P) &&
+            !P->GetWeaponComponent()->IsFamilyRollEligible(RewardFamily)) RejectInvalidBoxDelivery();
+        return false;
+    }
     auto* W=P->GetWeaponComponent(); auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>();
     if (!GM || GM->IsGameOver()) return false;
     if (Current.Action==EONEInteractionAction::BuyBox)
@@ -170,11 +178,13 @@ bool AONEProgressionMachine::CommitOffer(AONEPlayer* P,const FONEInteractionOffe
         for (const auto F:{EONEWeaponFamily::Pistol,EONEWeaponFamily::Carbine,EONEWeaponFamily::Shotgun})
             if (W->IsFamilyRollEligible(F) && RollWeight(F)>0) Eligible.Add(F);
         if (Eligible.IsEmpty()) return false;
+        const EONEWeaponFamily Forced=GM->GetForcedBoxReward();
+        if (Forced!=EONEWeaponFamily::Invalid && !Eligible.Contains(Forced)) return false;
         const uint64 Receipt=GM->NewMachineReceipt();
         if (!GM->TrySpendPoints(BoxPrice,Receipt)) return false;
         PaymentReceipt=Receipt; Customer=P; OwnerRunId=W->GetRunId(); bDelivered=false;
         RollPool=Eligible;
-        const EONEWeaponFamily Forced=GM->ConsumeForcedBoxReward();
+        GM->ConsumeForcedBoxReward();
         float Total=0; for (const auto F:Eligible) Total+=RollWeight(F);
         float Draw=FMath::FRand()*Total; RewardFamily=Eligible.Last();
         for (const auto F:Eligible) { Draw-=RollWeight(F); if (Draw<=0) { RewardFamily=F; break; } }
@@ -187,24 +197,15 @@ bool AONEProgressionMachine::CommitOffer(AONEPlayer* P,const FONEInteractionOffe
     }
     if (Current.Action==EONEInteractionAction::CollectBox)
     {
+        if (!W->IsFamilyRollEligible(RewardFamily)) { RejectInvalidBoxDelivery(); return false; }
         if (!W->ApplyAcquisitionPlan(Current.Acquisition)) return false;
+        GM->CloseMachineReceipt(PaymentReceipt);
         bDelivered=true; ++DeliveredCount; Presentation->SetPreview(nullptr); SetState(EONEMachineState::Closing);
         UE_LOG(LogTemp,Display,TEXT("ONE04_BOX_COLLECT receipt=%llu kind=%d slot=%d"),PaymentReceipt,int32(Current.Acquisition.Kind),Current.Acquisition.Slot);
         return true;
     }
     if (Current.Action==EONEInteractionAction::DepositUpgrade)
-    {
-        Customer=P; OwnerRunId=W->GetRunId(); HandoffSlot=Current.Slot; HandoffInstance=Current.InstanceId;
-        RewardFamily=W->GetDefinition().Family; bDelivered=false; PaymentReceipt=0;
-        P->BeginMachineAction(RewardFamily,false,GetInteractionPoint()); bOwnsAction=true; HandoffRevision=W->GetInventoryRevision();
-        SetState(EONEMachineState::Handoff); return true;
-    }
-    if (Current.Action==EONEInteractionAction::CollectUpgrade)
-    {
-        P->BeginMachineAction(RewardFamily,true,GetInteractionPoint()); bOwnsAction=true; P->SuppressCarriedPresentation(true);
-        Presentation->BeginRetrievalTo(P->GetWeaponWorldTransform()); bCollectedVisual=false;
-        SetState(EONEMachineState::Collecting); return true;
-    }
+        return AcceptUpgrade(P);
     return false;
 }
 bool AONEProgressionMachine::IsCurrentOwner() const
@@ -216,25 +217,90 @@ bool AONEProgressionMachine::IsOwnedBy(const AONEPlayer* Player) const
 {
     return IsCurrentOwner() && Customer.Get()==Player;
 }
-void AONEProgressionMachine::AcceptUpgrade()
+float AONEProgressionMachine::GetReadySecondsRemaining() const
 {
-    AONEPlayer* P=Customer.Get(); auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>();
-    if (!IsCurrentOwner() || !P || !GM || !CanContact(P)) { CancelUnacceptedAction(P); return; }
-    auto* W=P->GetWeaponComponent(); const auto* S=W->GetSlotState(HandoffSlot);
-    if (W->GetInventoryRevision()!=HandoffRevision || W->GetEquippedIndex()!=HandoffSlot || !S ||
-        S->InstanceId!=HandoffInstance || S->Status!=EONEWeaponSlotStatus::Available || S->bUpgraded || GM->GetPoints()<UpgradePrice)
-    { CancelUnacceptedAction(P); return; }
+    return !bIsBox && State==EONEMachineState::Ready ? FMath::Max(0.f,FMath::Clamp(ReadyLifetime,1.f,60.f)-StateElapsed) : 0.f;
+}
+bool AONEProgressionMachine::IsExpiryWarning() const
+{
+    return !bIsBox && State==EONEMachineState::Ready && GetReadySecondsRemaining()<=FMath::Clamp(ExpiryWarningSeconds,0.f,15.f);
+}
+float AONEProgressionMachine::GetTimeSinceWeaponLost() const
+{
+    return GetWorld() ? FMath::Max(0.f,GetWorld()->GetTimeSeconds()-LastLostTime) : BIG_NUMBER;
+}
+bool AONEProgressionMachine::WasLastLossFor(const AONEPlayer* P) const
+{
+    return !bInvalidated && P && !P->IsDead() && LastLostOwner.Get()==P && LastLostReceipt!=0 &&
+        P->GetWeaponComponent()->GetRunId()==LastLostRunId;
+}
+void AONEProgressionMachine::RejectInvalidBoxDelivery()
+{
+    if (!bIsBox || bDelivered || !IsCurrentOwner() || (State!=EONEMachineState::Ready && State!=EONEMachineState::Active)) return;
+    bool bRefunded=false;
+    if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) bRefunded=GM->RefundPointsOnce(PaymentReceipt);
+    ++InvalidBoxDeliveryCount;
+    UE_LOG(LogTemp,Display,TEXT("ONE06_BOX_INVALID_DELIVERY receipt=%llu run=%llu family=%d refunded_now=%d"),PaymentReceipt,OwnerRunId,int32(RewardFamily),bRefunded);
+    PaymentReceipt=0; bDelivered=true;
+    Presentation->SetPreview(nullptr); Presentation->BeginLossRetraction(); SetState(EONEMachineState::Closing);
+}
+void AONEProgressionMachine::ResolveReadyUpgrade()
+{
+    if (bIsBox || State!=EONEMachineState::Ready || !IsCurrentOwner()) return;
+    AONEPlayer* P=Customer.Get(); auto* W=P->GetWeaponComponent();
+    const auto Resolution=ONE06MachineRules::ResolveReady(StateElapsed,FMath::Clamp(ReadyLifetime,1.f,60.f),CanContact(P));
+    if (Resolution==ONE06MachineRules::EReadyResolution::Collect)
+    {
+        // Ownership commits before any cosmetic transition. A different gun's
+        // reload never blocks this transaction or gets canceled for retrieval.
+        if (!W->CollectUpgrade(Reservation)) { RecoverTechnicalFailure(); return; }
+        if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->CloseMachineReceipt(PaymentReceipt);
+        bDelivered=true; ++DeliveredCount; bCollectedVisual=false;
+        if (W->GetEquippedIndex()==Reservation.Slot)
+        {
+            P->SuppressCarriedPresentation(true);
+            Presentation->BeginRetrievalTo(P->GetWeaponWorldTransform());
+            bCollectedVisual=true;
+            SetState(EONEMachineState::Collecting);
+        }
+        else { Presentation->SetPreview(nullptr); SetState(EONEMachineState::Closing); }
+        UE_LOG(LogTemp,Display,TEXT("ONE06_UPGRADE_AUTO_RETURN receipt=%llu run=%llu instance=%llu slot=%d"),PaymentReceipt,OwnerRunId,Reservation.InstanceId,Reservation.Slot);
+    }
+    else if (Resolution==ONE06MachineRules::EReadyResolution::Expire)
+    {
+        if (!W->ExpireUpgrade(Reservation)) { RecoverTechnicalFailure(); return; }
+        if (auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>()) GM->CloseMachineReceipt(PaymentReceipt);
+        LastLostOwner=P; LastLostRunId=OwnerRunId; LastLostReceipt=PaymentReceipt;
+        LastLostFamily=RewardFamily; LastLostTime=GetWorld()->GetTimeSeconds(); ++ExpiredCount;
+        UE_LOG(LogTemp,Display,TEXT("ONE06_UPGRADE_EXPIRED receipt=%llu run=%llu instance=%llu slot=%d refund=0"),PaymentReceipt,OwnerRunId,Reservation.InstanceId,Reservation.Slot);
+        // This is a resolved gameplay loss. Clear the recovery token/receipt so
+        // destruction during retraction cannot invoke technical rollback.
+        Reservation={}; PaymentReceipt=0; bDelivered=true;
+        Presentation->BeginLossRetraction(); SetState(EONEMachineState::Closing);
+    }
+}
+bool AONEProgressionMachine::AcceptUpgrade(AONEPlayer* P)
+{
+    auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>(); FString Reason;
+    if (!P || !GM || !CanDeposit(P,Reason)) return false;
+    auto* W=P->GetWeaponComponent();
+    const EONEWeaponFamily Family=W->GetDefinition().Family;
     const FTransform Hand=P->GetWeaponWorldTransform();
-    if (!W->ReserveEquippedForUpgrade(Reservation)) { CancelUnacceptedAction(P); return; }
+    FONEWeaponReservation Pending;
+    if (!W->ReserveEquippedForUpgrade(Pending)) return false;
     const uint64 Receipt=GM->NewMachineReceipt();
     if (!GM->TrySpendPoints(UpgradePrice,Receipt))
-    { W->RollbackUpgrade(Reservation); Reservation={}; CancelUnacceptedAction(P); return; }
-    PaymentReceipt=Receipt; ++AcceptedCount; bOutputVariant=false; ActiveDuration=FMath::Clamp(ProcessingDuration,8.f,10.f);
+    { W->RollbackUpgrade(Pending); return false; }
+    Reservation=Pending; Customer=P; OwnerRunId=W->GetRunId(); RewardFamily=Family;
+    PaymentReceipt=Receipt; ++AcceptedCount; bDelivered=false; bOutputVariant=false;
+    ActiveDuration=FMath::Clamp(ProcessingDuration,8.f,10.f);
+    P->BeginMachineAction(RewardFamily,false,GetInteractionPoint()); bOwnsAction=true;
     P->SuppressCarriedPresentation(true);
     Presentation->SetPreview(W->GetCatalogDefinition(RewardFamily,false)); Presentation->BeginTransferFrom(Hand);
-    if (!Presentation->HasCompletePreview()) { RecoverTechnicalFailure(); return; }
-    ActionReleaseAt=.24f; SetState(EONEMachineState::Active);
+    if (!Presentation->HasCompletePreview()) { RecoverTechnicalFailure(); return false; }
+    ActionReleaseAt=.72f; SetState(EONEMachineState::Active);
     UE_LOG(LogTemp,Display,TEXT("ONE04_UPGRADE_ACCEPT receipt=%llu run=%llu instance=%llu slot=%d points=%d"),PaymentReceipt,OwnerRunId,Reservation.InstanceId,Reservation.Slot,GM->GetPoints());
+    return true;
 }
 void AONEProgressionMachine::SetState(EONEMachineState NewState)
 {
@@ -247,12 +313,16 @@ void AONEProgressionMachine::UpdatePresentation()
     else if (State==EONEMachineState::Ready || State==EONEMachineState::Collecting) Visual=EONE04MachineVisualState::Ready;
     else if (State==EONEMachineState::Closing) Visual=EONE04MachineVisualState::Closing;
     else if (State==EONEMachineState::Disabled) Visual=EONE04MachineVisualState::Disabled;
+    Presentation->SetExpiryWarning(IsExpiryWarning());
     Presentation->UpdateVisual(Visual,StateElapsed,State==EONEMachineState::Closing?.85f:ActiveDuration);
 }
 void AONEProgressionMachine::FinishAction()
 {
     if (bOwnsAction)
         if (AONEPlayer* P=Customer.Get()) P->EndMachineAction();
+    if (bCollectedVisual)
+        if (AONEPlayer* P=Customer.Get()) P->SuppressCarriedPresentation(false);
+    bCollectedVisual=false;
     bOwnsAction=false;
     ActionReleaseAt=0;
 }
@@ -260,15 +330,13 @@ void AONEProgressionMachine::Tick(float Dt)
 {
     CSV_SCOPED_TIMING_STAT(ONEProgression,MachineState);
     Super::Tick(Dt);
-    if (State==EONEMachineState::Disabled) return;
+    if (State==EONEMachineState::Disabled || UGameplayStatics::IsGamePaused(this)) return;
     StateElapsed+=Dt;
     if (State!=EONEMachineState::Idle && State!=EONEMachineState::Closing && !IsCurrentOwner()) { InvalidateRun(); return; }
-    if (State==EONEMachineState::Handoff)
-    {
-        if (!CanContact(Customer.Get()) || UGameplayStatics::IsGamePaused(this)) CancelUnacceptedAction(Customer.Get());
-        else if (StateElapsed>=.48f) AcceptUpgrade();
-    }
-    else if (State==EONEMachineState::Active)
+    if (bIsBox && (State==EONEMachineState::Active || State==EONEMachineState::Ready) &&
+        !Customer->GetWeaponComponent()->IsFamilyRollEligible(RewardFamily))
+    { RejectInvalidBoxDelivery(); return; }
+    if (State==EONEMachineState::Active)
     {
         auto* W=Customer->GetWeaponComponent();
         if (!bIsBox && ActionReleaseAt>0 && StateElapsed>=ActionReleaseAt) FinishAction();
@@ -292,25 +360,22 @@ void AONEProgressionMachine::Tick(float Dt)
     }
     else if (State==EONEMachineState::Collecting)
     {
-        AONEPlayer* P=Customer.Get(); auto* W=P->GetWeaponComponent();
-        if (!bDelivered && !CanContact(P)) { CancelUnacceptedAction(P); return; }
-        Presentation->BeginRetrievalTo(P->GetWeaponWorldTransform());
-        if (!bDelivered && StateElapsed>=.18f)
+        AONEPlayer* P=Customer.Get();
+        if (StateElapsed>=.18f)
         {
-            if (!W->CollectUpgrade(Reservation)) { RecoverTechnicalFailure(); return; }
-            bDelivered=true; ++DeliveredCount;
-            UE_LOG(LogTemp,Display,TEXT("ONE04_UPGRADE_COLLECT receipt=%llu instance=%llu slot=%d"),PaymentReceipt,Reservation.InstanceId,Reservation.Slot);
+            Presentation->SetPreview(nullptr); P->SuppressCarriedPresentation(false);
+            bCollectedVisual=false;
+            SetState(EONEMachineState::Closing);
         }
-        if (bDelivered && !bCollectedVisual && W->GetEquippedIndex()==Reservation.Slot)
-        {
-            bCollectedVisual=true; Presentation->SetPreview(nullptr); P->SuppressCarriedPresentation(false);
-        }
-        if (StateElapsed>=.64f && bCollectedVisual) { FinishAction(); SetState(EONEMachineState::Closing); }
     }
     else if (State==EONEMachineState::Closing && StateElapsed>=.85f)
     {
-        Customer.Reset(); Reservation={}; PaymentReceipt=0; RewardFamily=EONEWeaponFamily::Invalid; SetState(EONEMachineState::Idle);
+        Presentation->SetPreview(nullptr); Customer.Reset(); Reservation={}; PaymentReceipt=0;
+        RewardFamily=EONEWeaponFamily::Invalid; RollPool.Reset(); SetState(EONEMachineState::Idle);
     }
+    // Also resolves the Active -> Ready transition immediately, so an owner
+    // already in range needs neither F nor an exit/re-enter movement.
+    ResolveReadyUpgrade();
     UpdatePresentation();
 }
 void AONEProgressionMachine::CancelUnacceptedAction(AONEPlayer* P)
@@ -318,12 +383,6 @@ void AONEProgressionMachine::CancelUnacceptedAction(AONEPlayer* P)
     if (!P || Customer.Get()!=P) return;
     if (State==EONEMachineState::Handoff)
     { FinishAction(); Customer.Reset(); Reservation={}; PaymentReceipt=0; SetState(EONEMachineState::Idle); }
-    else if (State==EONEMachineState::Collecting && !bDelivered)
-    {
-        FinishAction(); Presentation->SetPreview(nullptr);
-        Presentation->SetPreview(P->GetWeaponComponent()->GetCatalogDefinition(RewardFamily,true));
-        SetState(EONEMachineState::Ready);
-    }
 }
 void AONEProgressionMachine::RecoverTechnicalFailure()
 {
@@ -339,6 +398,7 @@ void AONEProgressionMachine::RecoverTechnicalFailure()
 void AONEProgressionMachine::InvalidateRun()
 {
     bInvalidated=true; FinishAction(); Reservation={}; PaymentReceipt=0; Customer.Reset();
+    LastLostOwner.Reset(); LastLostRunId=LastLostReceipt=0; LastLostFamily=EONEWeaponFamily::Invalid;
     Presentation->SetPreview(nullptr); SetState(EONEMachineState::Disabled); Presentation->Shutdown();
 }
 void AONEProgressionMachine::EndPlay(const EEndPlayReason::Type Reason)

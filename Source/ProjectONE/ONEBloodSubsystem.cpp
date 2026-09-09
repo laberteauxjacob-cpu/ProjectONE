@@ -1,4 +1,5 @@
 #include "ONEBloodSubsystem.h"
+#include "ONE06ImpactSubsystem.h"
 #include "ProceduralMeshComponent.h"
 #include "ONESnapshotAnimInstance.h"
 #include "ONEPhysicsRuntime.h"
@@ -340,6 +341,7 @@ void UONEBloodSubsystem::StepBlood()
 }
 void UONEBloodSubsystem::ClearPresentation()
 {
+    if (auto* Marks=GetWorld()->GetSubsystem<UONE06ImpactSubsystem>()) Marks->Clear();
     bClearing=true; ++Generation; GetWorld()->GetTimerManager().ClearTimer(BloodTimer);
     Wounds.Reset(); Drops.Reset(); Pools.Reset(); PendingSurfaces.Reset();
     if (DropRenderer.IsValid()) DropRenderer->Destroy(); DropRenderer.Reset();

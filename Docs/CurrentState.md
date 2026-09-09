@@ -1,4 +1,17 @@
-# Current state — Candidate05
+# Current state — Candidate06 in development
+
+Candidate06 implementation is on `codex/candidate06`. Its local Editor build,
+28 automation tests and new pickup/map imports pass. A recorded six-weapon
+combat check passes 1,728 assertions, including head/low input and active shake
+invariance. Survival and relocated-map checks pass; broader validation and
+packaging remain in progress. It is not yet a verified playable release.
+See [Candidate06](Passes/Candidate06.md) for current
+scope and [combat rules](CombatRules.md) for the current source contract.
+
+The verified published baseline below remains Candidate05 until Candidate06
+finishes packaging and publication. Preserve its tag and package.
+
+## Verified Candidate05 baseline
 
 **Local build, packaged checks, media and four profiles verified.** Packaged
 source S is `6b8621cef9d2a87de6e6eabc1743359c6274da5a`. Its clean public-source
