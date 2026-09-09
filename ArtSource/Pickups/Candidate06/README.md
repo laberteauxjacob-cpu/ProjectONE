@@ -7,6 +7,13 @@ ammunition crate. Their different silhouettes have matching Canvas icons in
 art, texture, model, font or Project Zero input is introduced. `design.json`
 records the editable inventory.
 
+The primitive layout is authored with +Y toward the top of each motif. Its
+positions and local yaw are reflected across Y when creating parts so that
+world -Y is the top under the ordinary absolute overhead camera. This keeps
+the skull upright and the numeral reading 2, with the multiplication mark on
+its left. Positive mesh scales and upward faces are retained; no camera or
+map coordinates are sampled by the visual component.
+
 Root-scheduled `Scripts/create_candidate06_pickup_art.py` authors one depth-tested
 parameter material and writes actual source/hash/import evidence. The reusable
 visual component uses no map coordinates, at most 12 mesh parts, three dynamic

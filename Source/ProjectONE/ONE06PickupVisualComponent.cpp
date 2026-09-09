@@ -31,7 +31,10 @@ UStaticMeshComponent* UONE06PickupVisualComponent::Part(const TCHAR* Name,const 
     GetOwner()->AddInstanceComponent(Mesh); Mesh->SetupAttachment(Emblem);
     Mesh->SetMobility(EComponentMobility::Movable);
     Mesh->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,*FString::Printf(TEXT("/Engine/BasicShapes/%s.%s"),Shape,Shape)));
-    Mesh->SetRelativeLocation(Position); Mesh->SetRelativeRotation(FRotator(0,Yaw,0)); Mesh->SetRelativeScale3D(Scale);
+    // Emblems are authored with +Y as their top. The ordinary overhead camera
+    // sees world -Y as screen up; reflect the layout and its local yaw together.
+    Mesh->SetRelativeLocation(FVector(Position.X,-Position.Y,Position.Z));
+    Mesh->SetRelativeRotation(FRotator(0,-Yaw,0)); Mesh->SetRelativeScale3D(Scale);
     Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision); Mesh->SetCollisionResponseToAllChannels(ECR_Ignore);
     Mesh->SetGenerateOverlapEvents(false); Mesh->SetCanEverAffectNavigation(false); Mesh->SetCastShadow(false);
     Mesh->SetMaterial(0,Material); Mesh->RegisterComponent(); Parts.Add(Mesh); return Mesh;
