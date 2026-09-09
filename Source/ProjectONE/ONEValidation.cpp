@@ -224,23 +224,84 @@ void AONEValidation::Tick(float Dt)
         Check(true,TEXT("Round two starts after intermission"));
         GM->MaximumActive=0;
         for (TActorIterator<AONEZombie> It(GetWorld());It;++It) if (!It->IsDead()) Hit(*It,TEXT("spine_02"),1000);
+        // Let protection from the preceding live round expire before measuring
+        // an ordinary contact. No health restoration occurs in stages18-21 or10-12.
+        Stage=18; StageTime=Elapsed;
+    }
+    else if (Stage==18 && Elapsed-StageTime>.6f)
+    {
+        Check(P->GetDamageReactionAge()>.55f,TEXT("Attack fixture begins after prior player damage protection expires"));
         AttackTest=SpawnTest(P->GetActorLocation()+FVector(95,0,0));
+        Check(AttackTest!=nullptr,TEXT("Isolated live attacker spawned for minor, heavy and death contact checks"));
         Stage=10; StageTime=Elapsed;
     }
-    else if (Stage==10 && AttackTest && AttackTest->GetCombatState()==EONEZombieState::Attack)
+    else if (Stage==10 && AttackTest && AttackTest->GetCombatState()==EONEZombieState::Attack && !AttackTest->IsAttackContactConsumed())
     {
+        const float AttackAge=AttackTest->GetStateElapsed(), ZombieHealth=AttackTest->GetHealth();
+        const int32 Transactions=AttackTest->GetDamageTransactionCount();
+        AttackContactDelay=AttackTest->GetCurrentAttackContactTime()-AttackAge;
+        Check(AttackContactDelay>0,TEXT("Minor hit fixture observes a real pending contact before damage"));
+        HealthBefore=P->GetHealth(); AttackAttemptsBefore=AttackTest->GetAttackContactAttemptCount(); AttackDispatchesBefore=AttackTest->GetAttackDamageDispatchCount();
         Hit(AttackTest,TEXT("spine_02"),1);
-        Check(AttackTest->GetCombatState()==EONEZombieState::Hit,TEXT("Hit interrupts a pending attack"));
-        HealthBefore=P->GetHealth(); Stage=11; StageTime=Elapsed;
+        Check(AttackTest->GetCombatState()==EONEZombieState::Attack && FMath::IsNearlyEqual(AttackTest->GetStateElapsed(),AttackAge) &&
+            AttackTest->GetHealth()==ZombieHealth-1 && AttackTest->GetDamageTransactionCount()==Transactions+1 &&
+            AttackTest->GetMinorReactionStrength()>0 && AttackTest->GetMinorReactionAge()<.01f,
+            TEXT("Accepted minor hit adds feedback while preserving the pending attack and its clock"));
+        Stage=11; StageTime=Elapsed;
     }
-    else if (Stage==11 && Elapsed-StageTime>.52f)
+    else if (Stage==11 && Elapsed-StageTime>AttackContactDelay+.08f)
     {
-        Check(P->GetHealth()==HealthBefore,TEXT("Interrupted attack did not deliver delayed damage"));
-        Hit(AttackTest,TEXT("head"),32); Stage=12; StageTime=Elapsed;
+        Check(AttackTest && AttackTest->IsAttackContactConsumed() && AttackTest->GetAttackContactAttemptCount()==AttackAttemptsBefore+1 &&
+            AttackTest->GetAttackDamageDispatchCount()==AttackDispatchesBefore+1 && P->GetHealth()==HealthBefore-AttackTest->AttackDamage,
+            TEXT("Minor reaction preserves exactly one ordinary damaging contact without restoring player health"));
+        Stage=19; StageTime=Elapsed;
     }
-    else if (Stage==12 && Elapsed-StageTime>1.1f)
+    else if (Stage==19 && AttackTest && AttackTest->GetCombatState()==EONEZombieState::Attack && !AttackTest->IsAttackContactConsumed())
     {
-        Check(P->GetHealth()==HealthBefore,TEXT("Dead attacker did not deliver delayed damage"));
+        // A fresh attack gets an actual catalog-threshold torso packet. The
+        // legacy ReceiveBullet helper intentionally uses a non-staggering threshold.
+        const auto* Shotgun=W->GetDefinitionForWeapon(1);
+        const bool ValidHeavy=Shotgun && Shotgun->Family==EONEWeaponFamily::Shotgun && FMath::IsFinite(Shotgun->HeavyStaggerThreshold) &&
+            Shotgun->HeavyStaggerThreshold>0 && Shotgun->HeavyStaggerThreshold<AttackTest->GetHealth();
+        Check(ValidHeavy,TEXT("Heavy interruption uses the actual carried shotgun threshold and remains nonlethal"));
+        if (!ValidHeavy) { SaveAndExit(); return; }
+        AttackContactDelay=AttackTest->GetCurrentAttackContactTime()-AttackTest->GetStateElapsed();
+        Check(AttackContactDelay>0,TEXT("Heavy hit fixture observes a fresh pending contact before damage"));
+        HealthBefore=P->GetHealth(); AttackAttemptsBefore=AttackTest->GetAttackContactAttemptCount(); AttackDispatchesBefore=AttackTest->GetAttackDamageDispatchCount();
+        const float ZombieHealth=AttackTest->GetHealth();
+        FONEWeaponDamagePacket Packet; Packet.HeavyStaggerThreshold=Shotgun->HeavyStaggerThreshold;
+        Packet.Get(EONEHitRegion::Body).AddPellet(Shotgun->HeavyStaggerThreshold,Shotgun->HeavyStaggerThreshold,
+            AttackTest->GetMesh()->GetSocketLocation(TEXT("spine_02")),FVector::ForwardVector,-FVector::ForwardVector,TEXT("spine_02"));
+        Packet.Finalize();
+        const auto Outcome=AttackTest->ReceiveWeaponDamageOutcome(Packet);
+        Check(Outcome==EONEWeaponHitOutcome::LiveHit && !AttackTest->IsDead() && AttackTest->IsHeavyReaction() &&
+            AttackTest->GetCombatState()==EONEZombieState::Hit && AttackTest->GetHealth()==ZombieHealth-Shotgun->HeavyStaggerThreshold,
+            TEXT("Meaningful nonlethal heavy hit interrupts its pending attack through the production damage API"));
+        Stage=20; StageTime=Elapsed;
+    }
+    else if (Stage==20 && Elapsed-StageTime>AttackContactDelay+.08f)
+    {
+        Check(AttackTest && P->GetHealth()==HealthBefore && AttackTest->GetAttackContactAttemptCount()==AttackAttemptsBefore &&
+            AttackTest->GetAttackDamageDispatchCount()==AttackDispatchesBefore,
+            TEXT("Heavy-interrupted contact delivers neither a delayed attempt nor player damage"));
+        Stage=21; StageTime=Elapsed;
+    }
+    else if (Stage==21 && AttackTest && AttackTest->GetCombatState()==EONEZombieState::Attack && !AttackTest->IsAttackContactConsumed())
+    {
+        AttackContactDelay=AttackTest->GetCurrentAttackContactTime()-AttackTest->GetStateElapsed();
+        Check(AttackContactDelay>0,TEXT("Lethal hit fixture observes a fresh pending contact after heavy recovery"));
+        // Independent baselines prevent the earlier legitimate minor-hit contact
+        // from being misreported as damage dispatched after this actor's death.
+        HealthBefore=P->GetHealth(); AttackAttemptsBefore=AttackTest->GetAttackContactAttemptCount(); AttackDispatchesBefore=AttackTest->GetAttackDamageDispatchCount();
+        Hit(AttackTest,TEXT("head"),32);
+        Check(AttackTest->IsDead(),TEXT("Lethal hit immediately ends the fresh pending attack"));
+        Stage=12; StageTime=Elapsed;
+    }
+    else if (Stage==12 && Elapsed-StageTime>FMath::Max(1.1f,AttackContactDelay+.08f))
+    {
+        Check(AttackTest && AttackTest->IsDead() && P->GetHealth()==HealthBefore &&
+            AttackTest->GetAttackContactAttemptCount()==AttackAttemptsBefore && AttackTest->GetAttackDamageDispatchCount()==AttackDispatchesBefore,
+            TEXT("Dead attacker delivers no delayed contact or damage relative to its own fresh baseline"));
         if (UONEBloodSubsystem* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>())
         {
             for (int32 I=0;I<120;++I) Blood->Pool(FVector(-800+(I%10)*12,500+(I/10)*12,40),15);

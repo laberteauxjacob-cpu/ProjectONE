@@ -21,7 +21,8 @@ private:
     float LastRecordFrame=-1;
     int32 Stage=0, Failed=0, BenchmarkCount=0;
     int32 AmmoBefore=0, ReserveBefore=0, PointsBefore=0;
-    float HealthBefore=0, InitialDistance=0;
+    int32 AttackAttemptsBefore=0, AttackDispatchesBefore=0;
+    float HealthBefore=0, InitialDistance=0, AttackContactDelay=0;
     FVector InitialArmLocation=FVector::ZeroVector;
     FString Entries;
     TArray<float> FrameTimes;
