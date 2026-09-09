@@ -10,6 +10,14 @@
 #include "Sound/SoundAttenuation.h"
 #include "ONE05Audio.h"
 
+namespace ONE06PickupVisualDetails
+{
+    // Both authored maps use -4.7 stops of manual exposure. Compensate only
+    // the coloured unlit faces; dark glyph cutouts retain their original ink.
+    constexpr float EmissionGain=32.f;
+    constexpr float CloseLightLumens=32.f;
+}
+
 UONE06PickupVisualComponent::UONE06PickupVisualComponent()
 {
     PrimaryComponentTick.bCanEverTick=false;
@@ -40,9 +48,9 @@ void UONE06PickupVisualComponent::Configure(EONEPowerUpType Type)
     BodyMaterial=UMaterialInstanceDynamic::Create(Base,this);
     InkMaterial=UMaterialInstanceDynamic::Create(Base,this);
     GlowMaterial=UMaterialInstanceDynamic::Create(Base,this);
-    BodyMaterial->SetVectorParameterValue(TEXT("Tint"),Color); BodyMaterial->SetScalarParameterValue(TEXT("Emission"),.65f);
+    BodyMaterial->SetVectorParameterValue(TEXT("Tint"),Color); BodyMaterial->SetScalarParameterValue(TEXT("Emission"),.65f*ONE06PickupVisualDetails::EmissionGain);
     InkMaterial->SetVectorParameterValue(TEXT("Tint"),FLinearColor(.012f,.018f,.020f)); InkMaterial->SetScalarParameterValue(TEXT("Emission"),.15f);
-    GlowMaterial->SetVectorParameterValue(TEXT("Tint"),Color); GlowMaterial->SetScalarParameterValue(TEXT("Emission"),2.f);
+    GlowMaterial->SetVectorParameterValue(TEXT("Tint"),Color); GlowMaterial->SetScalarParameterValue(TEXT("Emission"),2.f*ONE06PickupVisualDetails::EmissionGain);
     Emblem=NewObject<USceneComponent>(GetOwner(),TEXT("PickupEmblem")); GetOwner()->AddInstanceComponent(Emblem);
     Emblem->SetupAttachment(this); Emblem->SetMobility(EComponentMobility::Movable); Emblem->RegisterComponent();
     // The broad face points upward to remain readable from an ordinary overhead
@@ -83,8 +91,11 @@ void UONE06PickupVisualComponent::Configure(EONEPowerUpType Type)
     }
     Part(TEXT("CloseGlowBase"),TEXT("Cylinder"),FVector(0,0,-7),FVector(.46f,.40f,.008f),GlowMaterial);
     Glow=NewObject<UPointLightComponent>(GetOwner(),TEXT("PickupCloseGlow")); GetOwner()->AddInstanceComponent(Glow);
-    Glow->SetupAttachment(Emblem); Glow->SetRelativeLocation(FVector(0,0,10)); Glow->SetMobility(EComponentMobility::Movable);
-    Glow->SetLightColor(Color); Glow->SetIntensity(32.f); Glow->SetAttenuationRadius(64.f); Glow->SetCastShadows(false); Glow->RegisterComponent();
+    // Placement is navigation-floor+45 and hover is +28: keep this light near
+    // the floor so its existing 64 cm influence sphere actually reaches it.
+    Glow->SetupAttachment(Emblem); Glow->SetRelativeLocation(FVector(0,0,-48)); Glow->SetMobility(EComponentMobility::Movable);
+    Glow->SetIntensityUnits(ELightUnits::Lumens); Glow->SetLightColor(Color); Glow->SetIntensity(ONE06PickupVisualDetails::CloseLightLumens);
+    Glow->SetAttenuationRadius(64.f); Glow->SetCastShadows(false); Glow->RegisterComponent();
     const TCHAR* Name=Type==EONEPowerUpType::InstaKill?TEXT("S_Pickup06_InstaKill"):
         Type==EONEPowerUpType::DoublePoints?TEXT("S_Pickup06_DoublePoints"):TEXT("S_Pickup06_MaxAmmo");
     CollectionSound=LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/ONE/Audio/Candidate06/%s.%s"),Name,Name));
@@ -104,8 +115,8 @@ void UONE06PickupVisualComponent::SetRemainingLifetime(float Remaining,float Tot
     BodyMaterial->SetScalarParameterValue(TEXT("Opacity"),VisualOpacity);
     InkMaterial->SetScalarParameterValue(TEXT("Opacity"),VisualOpacity);
     GlowMaterial->SetScalarParameterValue(TEXT("Opacity"),VisualOpacity*.32f);
-    GlowMaterial->SetScalarParameterValue(TEXT("Emission"),2.f*Pulse);
-    Glow->SetIntensity(32.f*Pulse*VisualOpacity);
+    GlowMaterial->SetScalarParameterValue(TEXT("Emission"),2.f*ONE06PickupVisualDetails::EmissionGain*Pulse);
+    Glow->SetIntensity(ONE06PickupVisualDetails::CloseLightLumens*Pulse*VisualOpacity);
 }
 
 void UONE06PickupVisualComponent::PlayCollectionCue()

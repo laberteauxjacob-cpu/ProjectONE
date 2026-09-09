@@ -172,7 +172,9 @@ void AONE05WeaponCheck::Tick(float Dt)
     {
         Check(Weapon->GetTotalShotsFired()==Shots+1 && !Weapon->IsAutomaticBurstActive(),TEXT("Leaving handoff while invalid fire remains held cannot start a burst"));
         Weapon->SetTrigger(false); Ammo=Weapon->GetAmmo(); Reserve=Weapon->GetReserveAmmo(); Drops=Weapon->GetMagazineDropCount(); Transfers=Weapon->GetMagazineCommitCount();
-        const EONEWeaponFamily Unowned=Weapon->GetDefinition().Family==EONEWeaponFamily::Carbine ? EONEWeaponFamily::Shotgun : EONEWeaponFamily::Carbine;
+        // Prepare also owns the unequipped family: pistol cases already carry
+        // a carbine. Select the remaining family using both owned slots.
+        const EONEWeaponFamily Unowned=Weapon->IsFamilyRollEligible(EONEWeaponFamily::Carbine) ? EONEWeaponFamily::Carbine : EONEWeaponFamily::Shotgun;
         StalePlan=Weapon->BuildAcquisitionPlan(Unowned);
         Check(StalePlan.IsValid(),TEXT("Ordinary reload test begins with a genuinely eligible unowned-family acquisition plan"));
         Player->SetSprintHeld(true); Weapon->BeginReload(); Next(8);
@@ -186,7 +188,7 @@ void AONE05WeaponCheck::Tick(float Dt)
         const bool Switched=Weapon->SelectWeapon(1-Weapon->GetEquippedIndex());
         const bool Acquired=Weapon->ApplyAcquisitionPlan(StalePlan);
         Weapon->RefillAllAmmo(); Weapon->SetHandoffLocked(true);
-        Check(Weapon->IsMagazineReloadCommitted() && !Weapon->CanChangeInventory() && !Switched && !Acquired && !Weapon->IsHandoffLocked() && Weapon->GetPendingWeaponIndex()==INDEX_NONE,TEXT("Committed ordinary reload rejects cancel/fire/switch/acquire/refill/direct-handoff; accepted PaP transfer is tested separately"));
+        Check(StalePlan.IsValid() && StalePlan.Revision==Revision && Weapon->IsMagazineReloadCommitted() && !Weapon->CanChangeInventory() && !Switched && !Acquired && !Weapon->IsHandoffLocked() && Weapon->GetPendingWeaponIndex()==INDEX_NONE,TEXT("Committed ordinary reload rejects cancel/fire/switch/acquire/refill/direct-handoff; accepted PaP transfer is tested separately"));
         Check(Weapon->GetInventoryRevision()==Revision && Weapon->GetOperationElapsed()>=Clock && Weapon->GetAmmo()==Ammo && Weapon->GetReserveAmmo()==Reserve,TEXT("Rejected actions preserve exact inventory revision, ammunition and reload clock")); Next(9);
     } break;
     case 9: if (!Weapon->IsBusy() && T>.3f)
