@@ -1,5 +1,9 @@
 # Original character pipeline
 
+The original and Candidate05 instructions below are retained as historical
+workflows. Current infected authoring uses the [Candidate07 extension](#candidate07-trio-and-infected-only-motion);
+the player's separate accepted sources remain retained.
+
 All geometry, skin weights, vertex paint and animation in this folder were authored for Project ONE by `Scripts/create_characters.py`, using Blender 5.1.2. No Project Zero assets, external character meshes, rigs, animation or textures were used.
 
 Run from the project root:
@@ -34,3 +38,43 @@ The subsequent bounded garment revision adds asymmetric sculpted fabric creases,
 `ArtSource/Characters/C05/README.md` and its inventory document 25 new 100 Hz skeletal clips on the accepted rigs:18 player directional/turn clips, two infected gaits and five left/right/two-hand attack clips across three families. They preserve accepted character surfaces and bind matrices. Source checks report less sustained pelvis compression and exact authored 225/370 cm/s player and 100/195 cm/s infected speeds. C05 uses new asset paths; earlier clips remain historical sources.
 
 The native graph applies short directional live hit reactions additively, preserving movement and attack state for ordinary hits. The infected controller commits attack heading and required limbs, consumes one contact event, checks static cover and caps early step travel. Heavy stagger retains a separate 1.1 s cooldown. New source/native tests and later runtime/visual gates are distinct; generation success is not visual approval. Player damage reaction uses the accepted damage direction and age without taking movement control.
+
+## Candidate07 trio and infected-only motion
+
+[Candidate07 source notes](../ArtSource/Characters/Candidate07/README.md) describe
+three original appearances: Maintenance, Laboratory and FacilityStaff. Their
+three editable Blender files export 15 modular FBXs, sharing two original normal
+textures, the existing 21 authored bones and unchanged infected bind matrices.
+Each has Core, Head, ArmLeft, ArmRight and LegLeft parts. Source `_r` remains
+anatomical left; no unilateral bone renaming or player reimport is part of this
+extension. Distinct clothing, facial geometry and hair replace the earlier
+infected surfaces; the measured [head envelope](../ArtSource/Characters/Candidate07/physics_fit.json)
+and part ownership remain explicit contracts.
+
+The [character generator](../Scripts/create_candidate07_infected.py) selects
+`--variant maintenance`, `laboratory` or `facility_staff` after Blender's `--`
+separator. Use `--python-exit-code 1`; optional `--render` writes source inspection
+views. Sanitize changed Blender/FBX metadata, then refresh inventory hashes only
+from the sanitizer's proof that art data is unchanged. Importing uses
+`PROJECTONE_C07_VARIANT` with the same three values. Maintenance creates the C07
+physics copies; Laboratory and FacilityStaff reuse them. Explicit LINEAR vertex
+colors, skeletal material usage and material connections are verified by the
+[targeted importer](../Scripts/import_candidate07_infected.py).
+
+[Motion inventory](../ArtSource/Characters/Candidate07/Motion/inventory.json)
+binds one editable motion Blender file and 14 animation FBXs at 100 Hz. The
+[motion generator](../Scripts/create_candidate07_infected_motion.py) authors the
+full bank by default; `--recoveries-only` retains 12 existing clips, while
+`--supine-only` retains 13, including the 2.55-second prone recovery. The current
+supine clip is 3.0 seconds. Partial modes preserve retained export hashes and
+poses, retain action users, and reopen the saved file to verify all 14 actions.
+The runtime holds the first authored pose for its 0.35-second snapshot blend,
+then plays the selected full recovery clip. The infected graph and recorded
+contact/voice events have their own [runtime contract](Candidate07Infected.md)
+and [audio integration note](Candidate07Audio.md).
+
+Use the [targeted import order](EnvironmentPipeline.md#candidate07-targeted-import-order)
+after authoring. Candidate07 remains in verification; source measurements,
+successful imports and bounded engine-frame inspection do not establish final
+packaged behavior, continuous motion quality, listening approval or user
+acceptance of the art direction.

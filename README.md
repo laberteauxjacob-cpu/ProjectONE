@@ -2,7 +2,8 @@
 
 The `codex/candidate07` branch is an in-progress infected/audio overhaul.
 Its three appearances, living physics and recorded event audio are integrated;
-38 engine tests pass, with packaged/public checks still pending. See
+all 39 current engine tests and initial six-weapon/three-appearance runtime checks pass;
+ordinary-encounter review and packaged/public verification are continuing. See
 [Candidate07 checkpoint status](Docs/Passes/Candidate07.md). The release and
 launch instructions below remain the verified Candidate06 baseline.
 

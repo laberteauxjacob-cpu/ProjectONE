@@ -36,6 +36,7 @@ namespace ONE07PhysicalityTestDetails
         UWorld* World=nullptr;
         AONEGameMode* Mode=nullptr;
         UONEInfectedVariant* Variant=nullptr;
+        AActor* Ground=nullptr;
         FWorld()
         {
             if (!GEngine) return;
@@ -51,7 +52,7 @@ namespace ONE07PhysicalityTestDetails
             FURL URL; URL.Map=TEXT("ONE07PhysicalityAutomation"); URL.AddOption(TEXT("ONESandbox=1"));
             if (!World->SetGameMode(URL)) return;
             Mode=World->GetAuthGameMode<AONEGameMode>();
-            Box(FVector(0,0,-10),FVector(2200,2200,10));
+            Ground=Box(FVector(0,0,-10),FVector(2200,2200,10));
             auto* Spawn=World->SpawnActor<ATargetPoint>(FVector(1800,1800,90),FRotator::ZeroRotator);
             if (Spawn) Spawn->Tags.Add(TEXT("ONE_Spawn"));
             World->InitializeActorsForPlay(URL); World->BeginPlay();
@@ -105,6 +106,181 @@ namespace ONE07PhysicalityTestDetails
             FVector::ForwardVector,-FVector::ForwardVector,Bone);
         P.Finalize(); return P;
     }
+
+    // A real frozen corpse is positioned once as explicit fixture setup. After
+    // that setup neither actor nor any rigid body is moved by the test. Actual
+    // Chaos motion and the ordinary recovery loop must clear occupied anatomy.
+    class FRecoveryEffortCheck : public IAutomationLatentCommand
+    {
+        FAutomationTestBase* Test;
+        TUniquePtr<FWorld> Scene;
+        AONEZombie* Living=nullptr;
+        AONEZombie* Corpse=nullptr;
+        AActor* Ceiling=nullptr;
+        int32 Phase=0,RestSetupStage=0,ResumeBefore=0;
+        uint32 CorpseId=0;
+        float PhaseStart=0;
+        FVector InitialPelvis=FVector::ZeroVector,InitialTransport=FVector::ZeroVector;
+        bool SawEffortMotion=false;
+        double Started=FPlatformTime::Seconds();
+        bool Finish() { Scene.Reset(); return true; }
+        float Age() const { return Scene->World->GetTimeSeconds()-PhaseStart; }
+        void Next(int32 P) { Phase=P; PhaseStart=Scene->World->GetTimeSeconds(); }
+        bool TimedOut(float Seconds)
+        {
+            if (Age()<Seconds) return false;
+            for (AONEZombie* Z:{Living,Corpse})
+            {
+                const auto& R=Z->GetRestState(); FHitResult Floor;
+                const FVector P=Z->GetMesh()->GetSocketLocation(TEXT("pelvis"));
+                const bool Supported=Z->FindRecoveryFloor(P,Floor);
+                Test->AddInfo(FString::Printf(TEXT("Rest prerequisite id=%u now=%.3f frozen=%d bodies=%d awake=%d last=%.3f sleeping=%d disturbed=%.3f window=%.3f stable=%.3f max_linear=%.5f max_angular=%.5f drift_cm=%.5f drift_deg=%.5f pelvis=%s floor=%d floor_z=%.3f"),
+                    Z->GetUniqueID(),Scene->World->GetTimeSeconds(),R.Frozen,Z->GetActivePhysicsBodyCount(),Z->GetAwakePhysicsBodyCount(),R.LastSample,R.WasSleeping,R.DisturbedAt,R.WindowStart,R.StableSeconds,R.MaxLinear,R.MaxAngular,R.PoseDriftCm,R.PoseDriftDegrees,*P.ToCompactString(),Supported,Floor.ImpactPoint.Z));
+            }
+            Test->AddError(FString::Printf(TEXT("Recovery effort phase %d rest_stage=%d timed out: efforts=%d blocked=%d travel=%.3f frozen=%d"),
+                Phase,RestSetupStage,Living->GetRecoveryEffortCount(),Living->GetRecoveryBlockedCount(),Living->GetRecoveryEffortTravelCm(),Living->GetRestState().Frozen));
+            return true;
+        }
+        void FixtureSleep(AONEZombie* Z,bool Allow)
+        {
+            // Fixture-only solver control: let the production supported-rest
+            // monitor observe its complete quiet pose window. Repeated waking
+            // can otherwise reset that window after Chaos sleeps between ticks.
+            // No production rest threshold or pose is changed; restore the
+            // original per-instance sleep multiplier before the effort trial.
+            for (FBodyInstance* Body:Z->GetMesh()->Bodies)
+                if (Body && Body->IsValidBodyInstance())
+                    FPhysicsCommand::ExecuteWrite(Body->GetPhysicsActorHandle(),[&](const FPhysicsActorHandle& Actor)
+                    { FPhysicsInterface::SetSleepThresholdMultiplier_AssumesLocked(Actor,Allow?Body->GetSleepThresholdMultiplier():0.f); });
+            if (!Allow) Z->GetMesh()->WakeAllRigidBodies();
+        }
+    public:
+        explicit FRecoveryEffortCheck(FAutomationTestBase* InTest):Test(InTest) {}
+        virtual bool Update() override
+        {
+            if (FPlatformTime::Seconds()-Started>180.) { Test->AddError(TEXT("Recovery effort wall timeout")); return Finish(); }
+            if (!Scene)
+            {
+                Scene=MakeUnique<FWorld>();
+                if (!Test->TestTrue(TEXT("Recovery effort has actual world, authority and imported variant"),Scene->World && Scene->Mode && Scene->Variant)) return Finish();
+                Living=Scene->Spawn(FVector(0,0,90)); Corpse=Scene->Spawn(FVector(650,0,90));
+                if (!Test->TestTrue(TEXT("Two actual registered infected exist"),Living && Corpse)) return Finish();
+                CorpseId=Corpse->GetUniqueID(); Next(0); return false;
+            }
+            Scene->Tick();
+            if (!IsValid(Corpse)) { Test->AddError(TEXT("Corpse retired before clearance proof; retirement cannot count as escape")); return Finish(); }
+            if (Phase==0)
+            {
+                if (Age()<.3f) return false;
+                if (!Test->TestTrue(TEXT("Effort fixture begins an actual living fall"),Living->TryLivingFall(FVector(230,0,15),TEXT("automation_effort")))) return Finish();
+                FixtureSleep(Living,false);
+                Next(1); return false;
+            }
+            if (Phase==1)
+            {
+                if (Age()<.65f) return false;
+                const FVector P=Living->GetMesh()->GetSocketLocation(TEXT("pelvis"));
+                Ceiling=Scene->Box(FVector(P.X,P.Y,155),FVector(220,220,10));
+                Next(2); return false;
+            }
+            if (Phase==2)
+            {
+                if (RestSetupStage==0)
+                {
+                    if (!Living->GetRestState().Frozen) { if (TimedOut(12.f)) return Finish(); return false; }
+                    // Prove escape from a genuinely frozen intact body first.
+                    // Limb loss is exercised during get-up below, independently
+                    // of whether an asymmetric fallen pose qualifies to freeze.
+                    // The corpse's ordinary lifespan starts only now.
+                    Test->TestEqual(TEXT("Blocker is an actual lethal damage outcome"),Corpse->ReceiveWeaponDamageOutcome(Packet(9402,Corpse,EONEHitRegion::Body,1.f,0.f,true)),EONEWeaponHitOutcome::NewKill);
+                    FixtureSleep(Corpse,false); RestSetupStage=1; Next(2); return false;
+                }
+                if (!Living->GetRestState().Frozen || !Corpse->GetRestState().Frozen)
+                { if (TimedOut(12.f)) return Finish(); return false; }
+                FixtureSleep(Living,true); FixtureSleep(Corpse,true);
+                Test->TestEqual(TEXT("Static overhead solid never starts an anatomy effort"),Living->GetRecoveryEffortCount(),0);
+                Test->TestEqual(TEXT("Supported living rest has no simulated bodies before wake"),Living->GetActivePhysicsBodyCount(),0);
+                InitialPelvis=Living->GetMesh()->GetSocketLocation(TEXT("pelvis")); InitialTransport=Living->GetActorLocation();
+                const FVector Feet=(Living->GetMesh()->GetSocketLocation(TEXT("foot_r"))+Living->GetMesh()->GetSocketLocation(TEXT("foot_l")))*.5f;
+                const FVector Axis=(Living->GetMesh()->GetSocketLocation(TEXT("head"))-Feet).GetSafeNormal2D();
+                const FVector Side=FVector::CrossProduct(FVector::UpVector,Axis);
+                const FVector Body=Corpse->BodyRegion->GetComponentLocation();
+                const FVector Wanted=InitialPelvis+Side*46.f;
+                const FVector Delta(Wanted.X-Body.X,Wanted.Y-Body.Y,0);
+                // One declared setup translation of the already frozen corpse;
+                // both Z support and the evaluated skeletal pose are retained.
+                Corpse->SetActorLocation(Corpse->GetActorLocation()+Delta,false,nullptr,ETeleportType::TeleportPhysics);
+                Corpse->GetMesh()->TickAnimation(0.f,false); Corpse->GetMesh()->RefreshBoneTransforms();
+                Corpse->GetMesh()->UpdateKinematicBonesToAnim(Corpse->GetMesh()->GetComponentSpaceTransforms(),ETeleportType::TeleportPhysics,true,EAllowKinematicDeferral::DisallowDeferral);
+                ResumeBefore=Living->GetRestState().ResumeEvents;
+                Next(3); return false;
+            }
+            if (Phase==3)
+            {
+                if (Age()<.1f) return false;
+                FVector At; FRotator Facing; UPrimitiveComponent* Blocker=nullptr;
+                Test->TestFalse(TEXT("Ceiling still blocks ordinary standing clearance"),Living->FindRecoverySpace(At,Facing,&Blocker));
+                Test->TestNull(TEXT("A solid ceiling cannot authorize an anatomy effort"),Blocker);
+                Ceiling->Destroy(); Ceiling=nullptr;
+                if (!Test->TestFalse(TEXT("Actual retained corpse blocks the unmodified recovery volumes"),Living->FindRecoverySpace(At,Facing,&Blocker))) return Finish();
+                if (!Test->TestTrue(TEXT("Clearance blocker belongs to that actual corpse"),Blocker && Blocker->GetOwner()==Corpse)) return Finish();
+                Scene->Ground->Destroy(); Scene->Ground=nullptr;
+                Test->TestFalse(TEXT("Missing floor rejects an otherwise actual corpse effort"),Living->BeginRecoveryEffort(Blocker));
+                Test->TestEqual(TEXT("Unsupported refusal consumes no effort or wake"),Living->GetRecoveryEffortCount(),0);
+                Test->TestTrue(TEXT("Unsupported refusal preserves supported frozen pose"),Living->GetRestState().Frozen);
+                Scene->Ground=Scene->Box(FVector(0,0,-10),FVector(2200,2200,10));
+                Next(4); return false;
+            }
+            if (Phase==4)
+            {
+                const FVector P=Living->GetMesh()->GetSocketLocation(TEXT("pelvis"));
+                if (!SawEffortMotion && Living->GetRecoveryEffortCount()>0 && Living->IsLivingFallen() && FVector::Dist2D(P,InitialPelvis)>2.f)
+                {
+                    SawEffortMotion=true;
+                    Test->TestTrue(TEXT("Physical effort moves bones while the disabled transport remains fixed"),Living->GetActorLocation().Equals(InitialTransport,.01f));
+                }
+                if (!Living->IsGettingUp()) { if (TimedOut(18.f)) return Finish(); return false; }
+                Test->TestTrue(TEXT("Actual force effort displaced the retained living body before get-up"),SawEffortMotion);
+                Test->TestTrue(TEXT("Recovery effort resumed the real frozen body"),Living->GetRestState().ResumeEvents>ResumeBefore);
+                Test->TestTrue(TEXT("Frozen resume preserved evaluated pose continuity"),Living->GetRestState().ResumePositionErrorCm<.5f);
+                Test->TestTrue(TEXT("Finite effort count is one through six"),Living->GetRecoveryEffortCount()>0 && Living->GetRecoveryEffortCount()<=6);
+                Test->TestTrue(TEXT("Measured effort path stays within the 90 cm budget plus one physics step"),Living->GetRecoveryEffortTravelCm()<=92.f);
+                Test->TestTrue(TEXT("Get-up snapshot retains the actual cleared physical pose"),Living->GetRecoveryRebaseErrorCm()<.5f);
+                Test->TestEqual(TEXT("Same blocker identity remains present during recovery"),Corpse->GetUniqueID(),CorpseId);
+                Test->TestTrue(TEXT("Effort did not delete, revive or change corpse health"),Corpse->IsDead() && Corpse->GetHealth()==0.f);
+                Test->TestEqual(TEXT("Actual escape preserves intact living health"),Living->GetHealth(),112.f);
+                Test->TestEqual(TEXT("A real non-heavy arm sever is accepted during get-up"),Living->ReceiveWeaponDamageOutcome(Packet(9401,Living,EONEHitRegion::ArmLeft,1.f,50.f)),EONEWeaponHitOutcome::LiveHit);
+                Test->TestTrue(TEXT("Non-heavy get-up sever preserves the recovery state"),Living->IsGettingUp());
+                Test->TestFalse(TEXT("Get-up sever removes the anatomical left arm"),Living->HasLeftArm());
+                Test->TestEqual(TEXT("Get-up sever disables its damage query"),Living->ArmLeftRegion->GetCollisionEnabled(),ECollisionEnabled::NoCollision);
+                Test->TestEqual(TEXT("Get-up sever removes its retained physical chain"),Living->GetRegionPhysicsBodyCount(EONEHitRegion::ArmLeft),0);
+                Next(5); return false;
+            }
+            if (Phase==5)
+            {
+                if (Living->GetRecoveryCount()==0) { if (TimedOut(4.5f)) return Finish(); return false; }
+                Test->TestEqual(TEXT("One supported recovery completes around the still-present corpse"),Living->GetRecoveryCount(),1);
+                Test->TestTrue(TEXT("Completion retains exactly the post-sever health"),FMath::IsNearlyEqual(Living->GetHealth(),111.6f,.001f));
+                Test->TestFalse(TEXT("Completion cannot restore the severed left arm"),Living->HasLeftArm());
+                Test->TestEqual(TEXT("Completion retains the disabled left-arm query"),Living->ArmLeftRegion->GetCollisionEnabled(),ECollisionEnabled::NoCollision);
+                Test->TestEqual(TEXT("Completion cannot restore severed-arm bodies"),Living->GetRegionPhysicsBodyCount(EONEHitRegion::ArmLeft),0);
+                Test->TestFalse(TEXT("Leaving full-body recovery clears stale frozen bookkeeping"),Living->GetRestState().Frozen);
+                if (Scene->World->GetTimeSeconds()<Living->NextFallAllowed) return false;
+                if (!Test->TestTrue(TEXT("Recovered identity can enter a second actual fall"),Living->TryLivingFall(FVector(230,0,15),TEXT("automation_second_fall")))) return Finish();
+                Test->TestTrue(TEXT("Second fall enables real retained simulation"),Living->GetActivePhysicsBodyCount()>0);
+                Test->TestFalse(TEXT("Second fall rest monitor is not stuck Frozen"),Living->GetRestState().Frozen);
+                Test->TestEqual(TEXT("Second fall still has no severed-arm bodies"),Living->GetRegionPhysicsBodyCount(EONEHitRegion::ArmLeft),0);
+                Next(6); return false;
+            }
+            if (Phase==6)
+            {
+                if (Age()<.3f) return false;
+                Test->TestTrue(TEXT("Second fall's restarted rest timer observes the actual body"),Living->GetRestState().LastSample>=PhaseStart);
+                return Finish();
+            }
+            return false;
+        }
+    };
 
     enum class EScenario { FallenDamage, BlockedLimbRecovery, FallCapAndGetUpDeath, RegionalFiltering };
     class FCheck : public IAutomationLatentCommand
@@ -574,6 +750,13 @@ IMPLEMENT_SIMPLE_AUTOMATION_TEST(FONE07WorldRegionFilterTest,"ProjectONE.Candida
 bool FONE07WorldRegionFilterTest::RunTest(const FString&)
 {
     ADD_LATENT_AUTOMATION_COMMAND(ONE07PhysicalityTestDetails::FCheck(this,ONE07PhysicalityTestDetails::EScenario::RegionalFiltering));
+    return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FONE07RecoveryEffortTest,"ProjectONE.Candidate07.Physicality.FrozenBodyEffortClearsActualCorpse",
+    EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FONE07RecoveryEffortTest::RunTest(const FString&)
+{
+    ADD_LATENT_AUTOMATION_COMMAND(ONE07PhysicalityTestDetails::FRecoveryEffortCheck(this));
     return true;
 }
 #endif

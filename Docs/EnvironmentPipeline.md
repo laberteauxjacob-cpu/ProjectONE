@@ -1,5 +1,10 @@
 # Environment and firearm candidate
 
+The original import/map workflow and later collision repair below remain
+historical instructions. Candidate07 character, motion and recorded-audio
+updates use the [targeted sequence](#candidate07-targeted-import-order), without
+regenerating the arena or rerunning the original bulk importer.
+
 All thirteen static meshes, their material palette, and the blood alpha mask are original to Project ONE. `Scripts/create_environment.py` authored them with Blender 5.1.2; no Project Zero or third-party assets were inputs. Editable source is `ArtSource/Environment/ProjectONE_IndustrialKit.blend`; `manifest.json` records the palette, exports and axes. The saved Blender file arranges models as a catalog; each FBX is exported at its intended local origin before catalog placement.
 
 | Element | Authored details |
@@ -91,3 +96,51 @@ headless navigation do not establish natural corpse settling, readable pools,
 all detached-part contacts or user acceptance. Agent-run captures and automation
 remain distinct from the user's own playtest; no final user playtest pass is
 claimed here.
+
+## Candidate07 targeted import order
+
+The [source index](../ArtSource/README.md) links the three character Blender
+files/15 mesh FBXs, one motion Blender file/14 animation FBXs and two shared
+normal textures. The [recorded-audio bank](../ArtSource/Audio/Candidate07/README.md)
+retains 76 source files and exports 134 processed PCM cues, with per-source
+licenses, hashes and documented analogues. These are current source counts,
+not claims about final release verification.
+
+1. Author the selected appearances and compatible motion with the
+   [character](../Scripts/create_candidate07_infected.py) and
+   [motion](../Scripts/create_candidate07_infected_motion.py) generators.
+   Preserve player/prior-source guards and inspect the generated source views.
+   For changed Blender/FBX/PNG metadata, use the
+   [sanitizer](../Scripts/sanitize_asset_metadata.py), retain its art-data
+   equivalence proof, then [refresh the corresponding inventories](../Scripts/refresh_candidate07_metadata.py)
+   from that exact applied report.
+2. Process audio with `py -3.10 -B Scripts/process_candidate07_audio.py`, then
+   run the same command with `--check`. Python 3.10+, NumPy and PyAV are required;
+   the [processor](../Scripts/process_candidate07_audio.py) verifies retained
+   inputs and does not acquire sources or launch Unreal.
+3. Compile `ProjectONEEditor` using [Build.ps1](../Scripts/Build.ps1), with the
+   normal `UE_ROOT` or `-EngineRoot` configuration. Close other Project ONE
+   Unreal processes before asset writes. Run the following imports serially in
+   the configured Unreal Python environment; do not overlap authoring/import
+   with gameplay capture or profiling.
+4. Run [import_candidate07_infected.py](../Scripts/import_candidate07_infected.py)
+   first with `PROJECTONE_C07_VARIANT=maintenance`, then `laboratory`, then
+   `facility_staff`. Maintenance creates the five C07 physics copies through the
+   compiled helper; the other variants reuse them. The importer preserves the
+   infected skeleton reference pose and writes only the selected appearance's
+   meshes/materials/definition plus the explicitly shared Maintenance resources.
+5. Run [import_candidate07_infected_motion.py](../Scripts/import_candidate07_infected_motion.py)
+   after the definitions exist. It imports all 14 clips and fills each existing
+   C07 definition's motion map, checking skeleton and duration compatibility.
+6. Run [import_candidate07_audio.py](../Scripts/import_candidate07_audio.py)
+   separately with `-AllowCommandletAudio`. It accepts only manifest-matching
+   PCM, checks duration/channel count and imports `/Game/ONE/Audio/Candidate07`.
+   Keep source notices and [distribution requirements](Candidate07AudioDistribution.md)
+   with any subsequently published audio.
+
+Import reports stay under `Saved/Candidate07` until curated. The original
+environment collision/full-editor requirements above are unchanged. C07 does
+not require arena regeneration, a player import or a source-license change.
+Source checks and import readback remain separate from actual gameplay,
+performance, native input, recorded-audio audition and packaged verification;
+the [pass report](Passes/Candidate07.md) records the current verification status.

@@ -1,4 +1,4 @@
-"""Run one bounded C07 check, or an unchanged C06 packaged profile baseline.
+"""Run one bounded C07 check, or unchanged C06 packaged profile/presentation.
 
 No retries, cleanup, process killing, publication or performance conclusions.
 All raw outputs stay in Saved. Editor runs bind dirty inputs and a DLL but do
@@ -113,6 +113,8 @@ def assertions(path, expected):
     return rows
 
 def check_layout(check, candidate):
+    if check=='presentation':
+        return ('ONE05PresentationCapture','Candidate05/PresentationCapture','ONE05_PRESENTATION_COMPLETE','/Game/ONE/Maps/Containment')
     if check in regression.MODES:
         flag,marker,directory,_,_=regression.MODES[check]
         return flag,directory,marker,'/Game/ONE/Maps/Containment'
@@ -180,6 +182,9 @@ def validate_portability(folder, done, log, labels, capture=False):
             'timeline': record(folder/'observations.csv')}
 
 def capture_flag(check, candidate):
+    if check=='presentation':
+        require(candidate in ('06','07'),'Unknown native presentation candidate')
+        return '-ONE05PresentationCapture'
     require(candidate == '07' and check in ('physicality','encounter','portability','combat'),
             'Capture is limited to C07 physicality, encounter, portability and native combat; never profiles')
     return '-ONE06Capture' if check in ('portability','combat') else '-ONE07Capture'
@@ -210,7 +215,7 @@ def capture_transport(folder, mode, source, expected_frames, artifact_files, nat
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('check', choices=('profile', 'physicality', 'encounter', 'portability',*regression.MODES))
+    ap.add_argument('check', choices=('profile', 'physicality', 'encounter', 'portability','presentation',*regression.MODES))
     ap.add_argument('--mode', choices=('editor', 'packaged'), required=True)
     ap.add_argument('--candidate', choices=('07', '06'), default='07')
     ap.add_argument('--root', type=Path, required=True)
@@ -224,7 +229,7 @@ def main():
     ap.add_argument('--rate', type=int, choices=(30,60,120), help='weapon05 only; real frame cap and fixture requested rate')
     ap.add_argument('--size', choices=('1280x720','1600x900'), help='UI only; six intrinsic screenshots at this actual viewport')
     ap.add_argument('--timeout', type=int, help='Wall seconds; bounded default by check, timed-out process left running')
-    ap.add_argument('--capture', action='store_true', help='Record original viewport/master audio for C07 non-profile checks')
+    ap.add_argument('--capture', action='store_true', help='Record original viewport/master audio; native presentation supports C06/C07, never profiles')
     args = ap.parse_args()
     root, executable = args.root.resolve(), args.executable.resolve()
     flag, actor_directory, marker, map_path = check_layout(args.check, args.candidate)
@@ -233,11 +238,13 @@ def main():
     rate=args.rate or 120;size=args.size or '1600x900';width,height=map(int,size.split('x'))
     actor_directory=actor_directory.format(rate=rate,size=size)
     fixed=regression.MODES[args.check][3] if args.check in regression.MODES else False
-    if args.timeout is None:args.timeout=regression.MODES[args.check][4] if args.check in regression.MODES else 240
+    if args.timeout is None:args.timeout=420 if args.check=='presentation' else regression.MODES[args.check][4] if args.check in regression.MODES else 240
+    require(args.check!='presentation' or args.capture,'Native presentation explicitly requires --capture; it is never a profile')
     capture_argument = capture_flag(args.check,args.candidate) if args.capture else None
     require(30 <= args.timeout <= 600, 'Timeout must be between 30 and 600 seconds')
-    require(args.candidate == '07' or (args.mode == 'packaged' and args.check == 'profile' and args.enemies in (6,12,18) and args.falls == 'none'),
-            'Unchanged C06 baseline supports packaged profile counts 6/12/18 and no new fall interventions')
+    require(args.candidate == '07' or (args.mode == 'packaged' and (args.check=='presentation' or
+            (args.check == 'profile' and args.enemies in (6,12,18) and args.falls == 'none'))),
+            'Unchanged C06 supports packaged native presentation or 6/12/18 numeric profiles only')
     require(args.mode != 'editor' or args.source is None, 'Editor WIP source_commit is null; omit --source')
     stamp = dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S_%f')
     folder = root / 'Saved/Candidate07/Runtime' / (stamp + '_' + args.check + '_' + uuid.uuid4().hex[:8])
@@ -246,6 +253,7 @@ def main():
               'check': args.check, 'mode': args.mode, 'source_commit': args.source if args.mode == 'packaged' else None,
               'root': str(root), 'executable': str(executable), 'runner': record(Path(__file__).resolve()),
               'requested': {'variants':'all_three_production_appearances'} if args.check == 'portability' else
+                           {'weapon_variants':6,'native_recorder':'ONE05PresentationCapture'} if args.check=='presentation' else
                            {'weapon_variants':6,'headings':8,'cases':10,'projected':True} if args.check=='aim05' else
                            {'weapon_variants':6,'cases':13} if args.check=='combat' else
                            {'rate':rate} if args.check=='weapon05' else {'viewport':[width,height]} if args.check=='ui' else
@@ -273,14 +281,19 @@ def main():
             package = args.package_root.resolve(); proof_path = args.build_proof.resolve()
             require(not any(part.casefold() in {'users','onedrive','.codex'} for part in root.parts), 'Use a neutral final source checkout')
             proof = json.loads(readtext(proof_path))
-            require(proof.get('schema') == 'one07.runtime_build.v1' and proof.get('status') == 'PASS' and proof.get('source_commit') == args.source,
-                    'Build proof has wrong schema, status or source')
-            require(proof.get('candidate', args.candidate) == args.candidate, 'Build proof identifies a different candidate')
             runtime = [record(package/name, package) for name in RUNTIME]
-            require(sorted(proof.get('runtime_files', []), key=lambda r:r['path']) == sorted(runtime, key=lambda r:r['path']), 'Package differs from source-bound runtime proof')
+            if args.candidate=='06' and args.check=='presentation':
+                import candidate07_presentation_capture as presentation
+                presentation.native_c06_proof(proof,root,args.source,runtime)
+                result['build_proof_kind']='original_candidate06_native'
+            else:
+                require(proof.get('schema') == 'one07.runtime_build.v1' and proof.get('status') == 'PASS' and proof.get('source_commit') == args.source,
+                        'Build proof has wrong schema, status or source')
+                require(proof.get('candidate', args.candidate) == args.candidate, 'Build proof identifies a different candidate')
+                require(sorted(proof.get('runtime_files', []), key=lambda r:r['path']) == sorted(runtime, key=lambda r:r['path']), 'Package differs from source-bound runtime proof')
             require(executable == package/'ProjectONE/Binaries/Win64/ProjectONE.exe', 'Launch the verified inner game executable so the waited process owns the full run')
             build_logs = proof.get('build_logs', [])
-            require(build_logs, 'Build proof must bind its retained build logs')
+            require(build_logs or (args.candidate=='06' and args.check=='presentation'), 'Build proof must bind its retained build logs')
             for row in build_logs:
                 path = (root/row['path']).resolve()
                 require(path.is_relative_to(root) and record(path, root) == row, 'Build log binding differs')
@@ -306,7 +319,7 @@ def main():
         if args.check=='combat':command += ['-ONE06CombatVariants=6','-ONE03InputTrace']
         if args.check=='aim05':command += ['-ONE05AimVariants=6','-ONE05AimHeadings=8','-ONE05ProjectedAim']
         if args.check=='weapon05':command += [f'-ONE05Rate={rate}']
-        if capture_argument: command.append(capture_argument)
+        if capture_argument and capture_argument not in command: command.append(capture_argument)
         result['command'] = command; result['state'] = 'RUNNING'; save()
         with (folder/'process.log').open('wb') as output:
             process = subprocess.Popen(command, cwd=package or root, stdout=output, stderr=subprocess.STDOUT, creationflags=subprocess.CREATE_NO_WINDOW)
@@ -336,7 +349,13 @@ def main():
         driver = Path(result['artifacts']['driver'][0]['folder'])
         result['fixture_folder'] = driver.relative_to(saved).as_posix()
         result['completion'] = completion(log, marker, allow_failures=True)
-        if args.capture:
+        if args.check=='presentation':
+            import candidate07_presentation_capture as presentation
+            options=SimpleNamespace(chapters=True,review_only=args.mode=='editor',capture_kind='packaged' if package else 'editor-game',
+                                    render_mode='offscreen',source_revision=args.source,source_state='exact-commit' if package else 'working-tree')
+            _,_,_,native_summary,native_ledger=presentation.prepare(driver,options)
+            result['capture']=presentation.transport(native_summary,native_ledger,result['artifacts']['driver'][0]['files'])
+        elif args.capture:
             result['capture'] = capture_transport(driver,args.mode,result['source_commit'],result['completion'].get('frames'),
                                                   result['artifacts']['driver'][0]['files'],native_combat=args.check=='combat')
             if args.check=='combat':
@@ -351,6 +370,8 @@ def main():
         if args.check in regression.MODES:
             result['regression']=regression.validate(args.check,driver,done,log,rate,size)
             result['assertions']={'driver':result['regression'].pop('ordered_assertion_labels')}
+        elif args.check=='presentation':
+            result['assertions']={'driver':presentation.validate_actor(driver,done,log,native_summary)}
         else:
             validate_fixture_completion(done, args.check, args.capture)
             result['assertions'] = {'driver':assertions(driver/'checks.txt',done['checks'])}

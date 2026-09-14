@@ -11,6 +11,7 @@
 #include "PhysicsEngine/PhysicalAnimationComponent.h"
 #include "PhysicsEngine/PhysicsAsset.h"
 #include "PhysicsEngine/BodyInstance.h"
+#include "PhysicsEngine/SkeletalBodySetup.h"
 #include "EngineUtils.h"
 #include "Engine/World.h"
 #include "Engine/OverlapResult.h"
@@ -161,6 +162,9 @@ void AONEZombie::OnPhysicalContact(UPrimitiveComponent* HitComponent,AActor* Oth
     const FVector Normal=Hit.ImpactNormal.GetSafeNormal(SMALL_NUMBER,FVector::UpVector);
     const float Mass=FMath::Max(1.f,GetMesh()->GetBoneMass(Hit.MyBoneName));
     const float ImpactSpeed=FMath::Clamp(float(NormalImpulse.Size())/Mass,0.f,500.f);
+    if (bRecoveryEffortActive && Normal.Z<.65f && ImpactSpeed>45.f &&
+        FVector::DotProduct(Normal,RecoveryEffortDirection)<-.2f)
+        StopRecoveryEffort(TEXT("opposing_contact"));
     const float Now=GetWorld()->GetTimeSeconds();
     const float* Last=ContactCooldowns.Find(OtherActor);
     if (Last && Now-*Last<.18f) return;
@@ -247,10 +251,13 @@ bool AONEZombie::TryLivingFall(const FVector& Impulse,FName Cause)
         return false;
     }
     StumpFitError=Result.StumpFitErrorCm;
+    RestState.Frozen=false; RestState.FrozenBodyCount=0;
     ONEPhysicsRuntime::ResetRest(GetMesh(),RestState,false);
     GetMesh()->AddImpulseAtLocation(Impulse.GetClampedToMaxSize(330.f),GetMesh()->GetSocketLocation(TEXT("spine_01")),TEXT("spine_01"));
     FallStartPelvis=GetMesh()->GetSocketLocation(TEXT("pelvis"));
     ++LivingFallCount; RecoveryQuietSince=-1; RecoveryAttemptsInBurst=0;
+    bRecoveryEffortActive=false; bRecoveryEffortBudgetReported=false; RecoveryEffortCount=0;
+    RecoveryEffortTravelCm=0; NextRecoveryEffort=0; RecoveryEffortBlocker.Reset();
     NextRecoveryAttempt=GetWorld()->GetTimeSeconds()+1.1f;
     NextFallAllowed=GetWorld()->GetTimeSeconds()+8.f;
     if (ZombieAudio) ZombieAudio->NotifyFall();
@@ -261,27 +268,32 @@ bool AONEZombie::TryLivingFall(const FVector& Impulse,FName Cause)
     return true;
 }
 
-bool AONEZombie::FindRecoverySpace(FVector& CapsuleLocation,FRotator& Facing) const
+bool AONEZombie::FindRecoveryFloor(const FVector& Position,FHitResult& Floor) const
 {
-    const auto* PhysicalMesh=GetMesh();
-    const FVector Pelvis=PhysicalMesh->GetSocketLocation(TEXT("pelvis"));
-    if (Pelvis.ContainsNaN()) return false;
+    if (Position.ContainsNaN()) return false;
     FCollisionQueryParams Params(SCENE_QUERY_STAT(InfectedRecovery),false,this);
-    FHitResult Floor;
     FCollisionObjectQueryParams Solids; Solids.AddObjectTypesToQuery(ECC_WorldStatic);
     Solids.AddObjectTypesToQuery(ECC_WorldDynamic); Solids.AddObjectTypesToQuery(ECC_PhysicsBody);
-    FCollisionQueryParams FloorParams=Params;
-    bool FoundSupport=false;
     // Object traces may stop at their first blocking result. Ignore only each
     // rejected component, so a trigger cannot hide solid geometry behind it.
     for (int32 Attempt=0;Attempt<32;++Attempt)
     {
-        if (!GetWorld()->LineTraceSingleByObjectType(Floor,Pelvis+FVector(0,0,30),Pelvis-FVector(0,0,140),Solids,FloorParams)) break;
-        if (ONERecoveryCollision::SupportsStanding(Floor.GetComponent())) { FoundSupport=true; break; }
+        if (!GetWorld()->LineTraceSingleByObjectType(Floor,Position+FVector(0,0,30),Position-FVector(0,0,140),Solids,Params)) break;
+        if (ONERecoveryCollision::SupportsStanding(Floor.GetComponent()))
+            return Floor.ImpactNormal.Z>=.85f && !Floor.bStartPenetrating;
         if (!Floor.GetComponent()) break;
-        FloorParams.AddIgnoredComponent(Floor.GetComponent());
+        Params.AddIgnoredComponent(Floor.GetComponent());
     }
-    if (!FoundSupport || Floor.ImpactNormal.Z<.85f || Floor.bStartPenetrating) return false;
+    return false;
+}
+
+bool AONEZombie::FindRecoverySpace(FVector& CapsuleLocation,FRotator& Facing,UPrimitiveComponent** AnatomyBlocker) const
+{
+    if (AnatomyBlocker) *AnatomyBlocker=nullptr;
+    const auto* PhysicalMesh=GetMesh();
+    const FVector Pelvis=PhysicalMesh->GetSocketLocation(TEXT("pelvis"));
+    FHitResult Floor;
+    if (!FindRecoveryFloor(Pelvis,Floor)) return false;
     // The only solution is directly above the actual body's supported pelvis.
     // No offset search toward the player, navigation projection or distant warp.
     CapsuleLocation=FVector(Pelvis.X,Pelvis.Y,Floor.ImpactPoint.Z+GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+2.f);
@@ -292,32 +304,165 @@ bool AONEZombie::FindRecoverySpace(FVector& CapsuleLocation,FRotator& Facing) co
     Facing=FRotator(0,Axis.Rotation().Yaw,0);
     // Extra shoulder/get-up clearance, including pawn capsules and movable
     // solid cover. Physics-only own body is ignored by actor identity.
-    FCollisionObjectQueryParams Clearance=Solids; Clearance.AddObjectTypesToQuery(ECC_Pawn);
+    FCollisionQueryParams Params(SCENE_QUERY_STAT(InfectedRecovery),false,this);
+    FCollisionObjectQueryParams Clearance; Clearance.AddObjectTypesToQuery(ECC_WorldStatic);
+    Clearance.AddObjectTypesToQuery(ECC_WorldDynamic); Clearance.AddObjectTypesToQuery(ECC_PhysicsBody);
+    Clearance.AddObjectTypesToQuery(ECC_Pawn);
     const FVector Center(CapsuleLocation.X,CapsuleLocation.Y,Floor.ImpactPoint.Z+96.f);
+    bool HardBlocker=false;
+    UPrimitiveComponent* Nearest=nullptr; double NearestDistance=DBL_MAX;
     auto Occupied=[&](const FVector& At,const FQuat& Rotation,const FCollisionShape& Shape)
     {
         TArray<FOverlapResult> Overlaps;
         GetWorld()->OverlapMultiByObjectType(Overlaps,At,Rotation,Clearance,Shape,Params);
+        bool Blocked=false;
         for (const FOverlapResult& Overlap:Overlaps)
-            if (ONERecoveryCollision::OccupiesRecoverySpace(Overlap.GetComponent())) return true;
-        return false;
+            if (ONERecoveryCollision::OccupiesRecoverySpace(Overlap.GetComponent()))
+            {
+                if (!Blocked && RecoveryAttemptsInBurst==5 && FParse::Param(FCommandLine::Get(),TEXT("ONE07RecoveryDiagnostics")))
+                    UE_LOG(LogTemp,Display,TEXT("ONE07_RECOVERY_BLOCKED id=%u pelvis=%s volume=%s blocker=%s component=%s location=%s"),
+                        GetUniqueID(),*Pelvis.ToCompactString(),*At.ToCompactString(),*GetNameSafe(Overlap.GetActor()),
+                        *GetNameSafe(Overlap.GetComponent()),*Overlap.GetComponent()->GetComponentLocation().ToCompactString());
+                Blocked=true;
+                const auto* Other=Cast<AONEZombie>(Overlap.GetActor());
+                if (!Other || (!Other->IsDead() && !Other->IsLivingFallen())) HardBlocker=true;
+                else
+                {
+                    const double Distance=FVector::DistSquared2D(Pelvis,Overlap.GetComponent()->GetComponentLocation());
+                    if (Distance<NearestDistance) { Nearest=Overlap.GetComponent(); NearestDistance=Distance; }
+                }
+            }
+        return Blocked;
     };
-    if (Occupied(Center,FQuat::Identity,FCollisionShape::MakeCapsule(43.f,93.f))) return false;
+    const bool UprightOccupied=Occupied(Center,FQuat::Identity,FCollisionShape::MakeCapsule(43.f,93.f));
     // The initial body, palms and feet occupy more floor than the upright
     // capsule. Wait if another body or cover occupies that rollout footprint.
     const FQuat AlongBody=FQuat::FindBetweenNormals(FVector::UpVector,Axis);
-    return !Occupied(FVector(Pelvis.X,Pelvis.Y,Floor.ImpactPoint.Z+29.f),AlongBody,FCollisionShape::MakeCapsule(26.f,96.f));
+    const bool RolloutOccupied=Occupied(FVector(Pelvis.X,Pelvis.Y,Floor.ImpactPoint.Z+29.f),AlongBody,FCollisionShape::MakeCapsule(26.f,96.f));
+    // An anatomical obstacle in one volume must not hide solid cover/player
+    // occupancy in the other. Both original clearance shapes still must pass.
+    if (AnatomyBlocker) *AnatomyBlocker=HardBlocker?nullptr:Nearest;
+    return !UprightOccupied && !RolloutOccupied;
+}
+
+bool AONEZombie::HasRecoveryEffortFloor(const FVector& Direction) const
+{
+    const FVector Pelvis=GetMesh()->GetSocketLocation(TEXT("pelvis"));
+    FHitResult Support;
+    if (!FindRecoveryFloor(Pelvis,Support) || FMath::Abs(Pelvis.Z-Support.ImpactPoint.Z)>105.f) return false;
+    const FVector Feet=(GetMesh()->GetSocketLocation(TEXT("foot_r"))+GetMesh()->GetSocketLocation(TEXT("foot_l")))*.5f;
+    const FVector Axis=(GetMesh()->GetSocketLocation(TEXT("head"))-Feet).GetSafeNormal2D(SMALL_NUMBER,GetActorForwardVector());
+    const FVector Side=FVector::CrossProduct(FVector::UpVector,Axis);
+    // Check the actual rollout footprint and its short destination on the same
+    // floor. No navigation projection, cover top, ledge crossing or Z force.
+    const FVector Goal=Pelvis+Direction*30.f;
+    const FVector Probes[]={Pelvis+Direction*15.f,Goal,Goal+Axis*70.f,Goal-Axis*70.f,Goal+Side*26.f,Goal-Side*26.f};
+    for (const FVector& Probe:Probes)
+    {
+        FHitResult Floor;
+        if (!FindRecoveryFloor(Probe,Floor) || FMath::Abs(Floor.ImpactPoint.Z-Support.ImpactPoint.Z)>6.f) return false;
+    }
+    return true;
+}
+
+bool AONEZombie::BeginRecoveryEffort(UPrimitiveComponent* AnatomyBlocker)
+{
+    const auto* Other=AnatomyBlocker?Cast<AONEZombie>(AnatomyBlocker->GetOwner()):nullptr;
+    if (!Other || (!Other->IsDead() && !Other->IsLivingFallen()) || !IsLivingFallen()) return false;
+    const float Now=GetWorld()->GetTimeSeconds();
+    if (Now<NextRecoveryEffort) return false;
+    const FVector Pelvis=GetMesh()->GetSocketLocation(TEXT("pelvis"));
+    if (RecoveryEffortCount>=6 || RecoveryEffortTravelCm>=90.f ||
+        (RecoveryEffortCount>0 && FVector::Dist2D(Pelvis,RecoveryEffortAnchor)>=90.f))
+    {
+        if (!bRecoveryEffortBudgetReported)
+            UE_LOG(LogTemp,Display,TEXT("ONE07_RECOVERY_EFFORT_LIMIT id=%u attempts=%d travel_cm=%.3f still_fallen=1"),GetUniqueID(),RecoveryEffortCount,RecoveryEffortTravelCm);
+        bRecoveryEffortBudgetReported=true; return false;
+    }
+    FVector Closest=AnatomyBlocker->GetComponentLocation(),Surface;
+    if (AnatomyBlocker->GetClosestPointOnCollision(Pelvis,Surface)>0.f && !Surface.ContainsNaN()) Closest=Surface;
+    const FVector Direction=(Pelvis-Closest).GetSafeNormal2D();
+    if (Direction.IsNearlyZero() || !HasRecoveryEffortFloor(Direction)) return false;
+    // Supported rest may have made retained bodies kinematic. Resume their
+    // captured physical pose once; never resurrect a severed chain.
+    const bool WasFrozen=RestState.Frozen;
+    ONEPhysicsRuntime::ResetRest(GetMesh(),RestState,true);
+    if (GetActivePhysicsBodyCount()==0) return false;
+    if (RecoveryEffortCount==0) { RecoveryEffortAnchor=Pelvis; RecoveryEffortLastPelvis=Pelvis; }
+    ++RecoveryEffortCount; bRecoveryEffortActive=true;
+    RecoveryEffortDirection=Direction; RecoveryEffortStartPelvis=Pelvis;
+    RecoveryEffortStartTravelCm=RecoveryEffortTravelCm; RecoveryEffortMaxSpeed=0;
+    RecoveryEffortStarted=Now; NextRecoveryFloorCheck=Now+.1f; RecoveryEffortDamageSerial=DamageTransactions;
+    RecoveryEffortBlocker=AnatomyBlocker; RecoveryQuietSince=-1;
+    UE_LOG(LogTemp,Display,TEXT("ONE07_RECOVERY_EFFORT_BEGIN id=%u attempt=%d blocker=%s component=%s pelvis=%s direction=%s resumed_frozen=%d retained=%d health=%.3f"),
+        GetUniqueID(),RecoveryEffortCount,*GetNameSafe(Other),*GetNameSafe(AnatomyBlocker),*Pelvis.ToCompactString(),*Direction.ToCompactString(),WasFrozen,GetActivePhysicsBodyCount(),GetHealth());
+    return true;
+}
+
+void AONEZombie::StopRecoveryEffort(const TCHAR* Reason)
+{
+    if (!bRecoveryEffortActive) return;
+    bRecoveryEffortActive=false; NextRecoveryEffort=GetWorld()->GetTimeSeconds()+2.f;
+    NextRecoveryAttempt=NextRecoveryEffort; RecoveryQuietSince=-1;
+    const FVector Pelvis=GetMesh()->GetSocketLocation(TEXT("pelvis"));
+    UE_LOG(LogTemp,Display,TEXT("ONE07_RECOVERY_EFFORT_END id=%u attempt=%d reason=%s pelvis=%s progress_cm=%.3f travel_cm=%.3f max_pelvis_speed=%.3f"),
+        GetUniqueID(),RecoveryEffortCount,Reason,*Pelvis.ToCompactString(),FVector::Dist2D(Pelvis,RecoveryEffortStartPelvis),RecoveryEffortTravelCm,RecoveryEffortMaxSpeed);
+    RecoveryEffortBlocker.Reset();
+}
+
+void AONEZombie::TickRecoveryEffort(float Dt)
+{
+    const auto* Other=RecoveryEffortBlocker.IsValid()?Cast<AONEZombie>(RecoveryEffortBlocker->GetOwner()):nullptr;
+    if (!IsLivingFallen() || DamageTransactions!=RecoveryEffortDamageSerial || !Other || (!Other->IsDead() && !Other->IsLivingFallen()))
+    { StopRecoveryEffort(TEXT("state_or_damage")); return; }
+    const float Now=GetWorld()->GetTimeSeconds();
+    if (Now-RecoveryEffortStarted>=.55f || RecoveryEffortTravelCm-RecoveryEffortStartTravelCm>=28.f ||
+        RecoveryEffortTravelCm>=90.f || FVector::Dist2D(GetMesh()->GetSocketLocation(TEXT("pelvis")),RecoveryEffortAnchor)>=90.f || Dt>.1f)
+    { StopRecoveryEffort(TEXT("bounded_interval")); return; }
+    if (Now>=NextRecoveryFloorCheck)
+    {
+        NextRecoveryFloorCheck=Now+.1f;
+        if (!HasRecoveryEffortFloor(RecoveryEffortDirection)) { StopRecoveryEffort(TEXT("lost_floor")); return; }
+    }
+    FBodyInstance* Pelvis=GetMesh()->GetBodyInstance(TEXT("pelvis"));
+    FBodyInstance* Spine=GetMesh()->GetBodyInstance(TEXT("spine_01"));
+    if (!Pelvis || !Spine || !Pelvis->IsInstanceSimulatingPhysics() || !Spine->IsInstanceSimulatingPhysics())
+    { StopRecoveryEffort(TEXT("missing_simulation")); return; }
+    const float Speed=float(Pelvis->GetUnrealWorldVelocity().Size2D());
+    RecoveryEffortMaxSpeed=FMath::Max(RecoveryEffortMaxSpeed,Speed);
+    if (Speed>70.f || FMath::Abs(Pelvis->GetUnrealWorldVelocity().Z)>45.f)
+    { StopRecoveryEffort(TEXT("outside_impulse")); return; }
+    float Mass=0;
+    for (const USkeletalBodySetup* Setup:GetMesh()->GetPhysicsAsset()->SkeletalBodySetups)
+        if (Setup) if (const auto* Body=GetMesh()->GetBodyInstance(Setup->BoneName))
+            if (Body->IsValidBodyInstance() && Body->IsInstanceSimulatingPhysics()) Mass+=Body->GetBodyMass();
+    // The inherited .65 friction must carry the whole retained body. Distribute
+    // bounded horizontal effort at the hips/chest rather than tiny repeated
+    // impulses or overwriting solver velocities. Contact remains authoritative.
+    for (FBodyInstance* Body:{Pelvis,Spine})
+    {
+        const FVector Velocity=Body->GetUnrealWorldVelocity();
+        if (Velocity.Size2D()>=55.f) continue;
+        const float Along=float(FVector::DotProduct(Velocity,RecoveryEffortDirection));
+        const float Acceleration=FMath::Clamp((50.f-Along)*30.f,0.f,1100.f);
+        const float Share=Body==Pelvis?.55f:.45f;
+        const float LateralSquared=FMath::Max(0.f,float(Velocity.SizeSquared2D())-Along*Along);
+        const float MaximumAlong=FMath::Sqrt(FMath::Max(0.f,55.f*55.f-LateralSquared));
+        const float Force=FMath::Min(Mass*Share*Acceleration,Body->GetBodyMass()*FMath::Max(0.f,MaximumAlong-Along)/FMath::Max(Dt,1.f/120.f));
+        Body->AddForce(RecoveryEffortDirection*Force,true,false);
+    }
 }
 
 bool AONEZombie::TryBeginGetUp()
 {
     if (!IsLivingFallen() || IsDead()) return false;
     FVector SafeLocation; FRotator Facing;
-    if (!FindRecoverySpace(SafeLocation,Facing))
+    UPrimitiveComponent* AnatomyBlocker=nullptr;
+    if (!FindRecoverySpace(SafeLocation,Facing,&AnatomyBlocker))
     {
         ++RecoveryBlockedCount; ++RecoveryAttemptsInBurst;
         NextRecoveryAttempt=GetWorld()->GetTimeSeconds()+(RecoveryAttemptsInBurst>=6?2.f:.4f);
-        if (RecoveryAttemptsInBurst>=6) RecoveryAttemptsInBurst=0;
+        if (RecoveryAttemptsInBurst>=6) { RecoveryAttemptsInBurst=0; BeginRecoveryEffort(AnatomyBlocker); }
         return false;
     }
     auto* PhysicalMesh=GetMesh();
@@ -339,6 +484,7 @@ bool AONEZombie::TryBeginGetUp()
     GetUpDuration=.35f+(RecoverySequence?RecoverySequence->GetPlayLength():2.05f);
     StopLivingPhysicalResponse();
     PhysicalMesh->SetAllBodiesSimulatePhysics(false); PhysicalMesh->SetSimulatePhysics(false); PhysicalMesh->SetAllBodiesPhysicsBlendWeight(0.f);
+    RestState.Frozen=false; RestState.FrozenBodyCount=0;
     PhysicalMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
     SetActorLocationAndRotation(SafeLocation,Facing,false,nullptr,ETeleportType::TeleportPhysics);
     PhysicalMesh->SetRelativeLocationAndRotation(FVector(0,0,-88),FRotator::ZeroRotator);
@@ -384,6 +530,7 @@ void AONEZombie::CompleteGetUp()
 
 void AONEZombie::TickLivingPhysicality(float Dt)
 {
+    if (bRecoveryEffortActive && !IsLivingFallen()) StopRecoveryEffort(TEXT("state_changed"));
     ContactStrength=FMath::Max(0.f,ContactStrength-Dt*1.8f);
     ContactPressure=FMath::Max(0.f,ContactPressure-Dt*.55f);
     if (IsGettingUp())
@@ -393,6 +540,13 @@ void AONEZombie::TickLivingPhysicality(float Dt)
     }
     if (IsLivingFallen())
     {
+        if (RecoveryEffortCount>0)
+        {
+            const FVector Pelvis=GetMesh()->GetSocketLocation(TEXT("pelvis"));
+            RecoveryEffortTravelCm+=float(FVector::Dist2D(Pelvis,RecoveryEffortLastPelvis));
+            RecoveryEffortLastPelvis=Pelvis;
+        }
+        if (bRecoveryEffortActive) { TickRecoveryEffort(Dt); return; }
         const float Now=GetWorld()->GetTimeSeconds();
         if (Now<NextRecoveryAttempt) return;
         float MaxSpeed=0,MaxSpin=0;

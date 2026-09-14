@@ -114,8 +114,8 @@ event checks and digital clipping analysis do not substitute for listening.
 
 ## Completion gates still pending
 
-Final combined attack/physicality/audio review; all-variant portability and
-ordinary encounter checks; representative comparative performance; full
+Final combined attack/physicality/audio review and ordinary recovery-delay
+investigation; representative comparative performance; full
 packaged regression checks; fresh neutral
 build, source/LFS verification, archive and public download verification.
 
@@ -181,8 +181,8 @@ Both still have a brisk, stylized initial transition.
 Subsequent integration review fixed two concrete issues: non-solid pickup
 collection spheres no longer supply floor support or block recovery, and
 stopped attack footplants can use grounded movement from the same action's
-preceding 0.22 seconds. Idle/airborne/stale callbacks remain rejected. All
-38 engine tests now pass (35 clean, three with warnings), including real
+preceding 0.22 seconds. Idle/airborne/stale callbacks remain rejected.
+That checkpoint's 38 engine tests passed (35 clean, three with warnings), including real
 pickup availability through recovery and the stopped-footplant regression.
 The 80.448-second recording predates these two fixes; final packaged recordings
 are still required. The combined build also exposed and fixed a Unity-build
@@ -194,3 +194,45 @@ null exact packaged-source identity. No perceptual audition occurred. Current
 source inventory records 459 C07 LFS payloads; visible-string review found no
 actionable private-path/token matches. Final outgoing-history, fresh checkout,
 package and publication audits remain separate.
+
+## Combined-review preflight
+
+The initial ordinary encounter completed with all three appearances: 24 actual
+actors (nine Maintenance, nine Laboratory, six FacilityStaff), 16 kills and
+eight remaining living enemies. Player health reached 81 and regenerated to
+100; the driver performed no health restoration. This is automated WASD,
+cursor selection and LMB input, not native free play. Its late 0/0-ammunition
+state caused useless repeated reload requests; the fixture now requests reload
+only while reserve ammunition is available. Bounded review also found two
+living fallen bodies waiting over 32 seconds for recovery clearance. That
+delay led to the bounded physical recovery effort described below.
+
+The three-appearance portability run passed 150 assertions, including actual
+navigation/attacks, a disclosed fall and damage packets, local recovery with a
+missing arm, death/scoring and cleanup for each appearance. It recorded 823
+frames. The six-weapon combat run passed 2,119 assertions on the new bodies.
+These are Editor-game preflight checks, not final packaged evidence.
+
+The first recording-free M4A1/12/mixed-fall profile retained all 3,044 engine
+rows: mean 10.1242 ms, p95 11.8822 ms, p99 13.0582 ms, maximum 295.541 ms.
+Seven frames exceeded 16.7 ms and two exceeded 33.3 ms. The analyzer initially
+rejected duplicate Unreal texture-streaming column names; it now retains both
+positional series and the original header. No timing rows or spikes were
+removed. This single Editor WIP sample is not the final same-host packaged
+comparison or a universal performance claim.
+
+The follow-up recovery regression now passes with actual imported bodies: an
+intact living body reaches supported frozen rest, resumes that pose, physically
+moves clear of a still-present corpse through three finite efforts, and begins
+get-up at unchanged 112 health. The final interval reports 65.902 cm accumulated
+path and 48.894 cm/s maximum pelvis speed. A real arm-sever packet during get-up
+remains absent through completion and a second fall. Static cover and missing
+floor reject the effort. Setup uses a declared frozen-corpse placement and
+temporary solver sleep suppression before the trial; this is an engine fixture,
+not ordinary player input or visual approval. Earlier prerequisite failures are
+retained: a missing-arm pose did not satisfy the unchanged two-degree rest
+window. The existing separate missing-arm recovery check is unchanged.
+
+The complete current 39-test engine suite then passed: 36 clean, three with
+warnings, zero failures or skipped tests. Fresh public-source packaging and
+the final recorded/uncaptured runtime matrix still remain separate gates.

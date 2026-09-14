@@ -1,8 +1,14 @@
 # Project ONE accepted development sequence
 
-Candidate06 covers combat, survival, rewards and machine usability on the
-existing foundation. It does not add archetypes, weapon tiers, a finished map,
-a new production spawn system, the infected/audio overhaul, or perk chambers.
+Candidate06 is the latest verified playable/public baseline. Candidate07's
+infected and recorded-audio implementation is in verification, with three
+integrated visual appearances, an infected-specific motion bank and living
+contact/fall/recovery. It is not released or approved art/audio direction.
+[CurrentState](CurrentState.md) and the [Candidate07 pass](Passes/Candidate07.md)
+separate completed checks from ordinary encounters, performance, native play,
+packaged testing and publication gates. No new gameplay archetypes, weapon
+tiers, finished map, production spawn system, perk chambers or menu overhaul
+are part of this pass.
 
 ## Reuse and future map entry
 
@@ -20,26 +26,43 @@ Windows, wall breaches and crawls beneath objects are future entrance examples,
 not assets for this pass. Visible developer spawning is a disclosed sandbox
 testing exception, not the production solution.
 
-## Following milestone: infected redesign and recorded audio
+## Candidate07: implemented, verification in progress
 
-- Replace the bald-mannequin look with dead, bloody, decayed humans: a convincing
-  base archetype and compatible visual variants.
-- Remove the permanently bent “T. rex” arms. Pursuit must flow into attacks
-  without repeated full stops; build expandable attack selection with distinct motions.
-- Use controlled physical response, crowd contact, stumbles/toppling and recovery
-  instead of orbiting avoidance bubbles. Preserve navigation, limb-loss behavior
-  and bounded physics.
-- Use suitable recorded sources for gunfire, reload mechanisms, footsteps,
-  clothing, casing contacts and performed creature voices. Electronic layers
-  remain appropriate for deliberate upgraded effects, not every physical sound.
-- Preserve editable references and provenance. Publish only sources whose terms
-  permit the intended source distribution; do not buy content or silently add
-  restricted packs, and do not call synthesis real recordings.
+- Maintenance, Laboratory and FacilityStaff have distinct modeled clothing,
+  faces and hair on the retained infected rig/cut contract. They share gameplay
+  statistics; these are visual variants, not new enemy classes.
+- Fourteen infected-only clips support pursuit, turns, three attack families,
+  reactions and separate prone/supine recovery. Attack selection considers
+  available limbs and approach conditions; physical responses preserve health,
+  registered living identity and current-pose dismemberment.
+- The audio bank contains 134 processed cues and 76 retained recorded source
+  files. Physical events use recordings with documented firearm/Foley
+  analogues; deliberate upgraded energy overlays remain synthesized. Source
+  licensing, reproducible processing, runtime dispatch and listening judgment
+  are separate requirements.
+- The implementation is undergoing actual encounter, performance and release
+  verification. Bounded source/engine still reviews are not continuous playback,
+  audio audition, native free-play or user approval.
 
-Candidate06's three pickup cues may use intentional stylized sound design. This
-narrow permission does not authorize replacing all weapon/zombie audio now.
+Editable sources and import order are linked from the
+[art-source index](../ArtSource/README.md). Candidate06 pickup cues and machine
+reward cues retain their deliberate earlier sound design. Existing source
+notices remain attached; no broad project license or additional content
+purchase is implied.
 
-## Subsequent milestone: six perk chambers
+## Proposed next correction: floor-level mouse targeting
+
+The actual motion check reproduced ordinary Left Ctrl + LMB shots passing
+above a corpse below the fixed 65 cm low-aim plane. Evaluated regional queries
+can reach that anatomy, but the current mouse-height controls do not follow it.
+After Candidate07, propose a focused targeting/usability pass that preserves
+target-independent aiming and makes intended floor-level shots reviewable.
+No snapping, larger hit regions or control redesign has been added to conceal
+the limitation. This is a recommendation for a separately authorized task;
+[the runtime note](Candidate07Infected.md#queries-and-controls) records the
+measured limitation.
+
+## Future milestone: six perk chambers
 
 | Perk | Accepted role |
 | --- | --- |
@@ -56,5 +79,6 @@ Invalid or repeated purchases must not grant free invulnerability. Integrate
 with shared health, score, inventory, modifier and machine ownership interfaces.
 
 Prices, exact strengths, durations, revive consumption and perk-loss rules still
-require explicit tuning decisions; none is settled here. Do not automatically
-begin these future milestones after completing Candidate06.
+require explicit tuning decisions; none is settled here. Perk chambers and
+menu work remain future tasks outside Candidate07. Stop after the current
+assignment; do not automatically begin either or the proposed targeting pass.

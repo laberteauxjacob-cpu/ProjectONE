@@ -160,7 +160,7 @@ void AONE07PhysicalityCheck::DriveEncounter(float Dt)
             { Key(EKeys::LeftMouseButton,true); ReleaseFireAt=Elapsed+.045f; NextFire=Elapsed+.29f; }
         }
     }
-    if (W->GetAmmo()==0 && !W->IsBusy()) { Key(EKeys::R,true); Key(EKeys::R,false); }
+    if (W->GetAmmo()==0 && W->GetReserveAmmo()>0 && !W->IsBusy()) { Key(EKeys::R,true); Key(EKeys::R,false); }
     if (Elapsed>=110.f) Finish();
 }
 void AONE07PhysicalityCheck::Observe(float Dt)

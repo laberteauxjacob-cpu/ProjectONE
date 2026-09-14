@@ -20,6 +20,7 @@ import wave
 import assemble_candidate06_capture as capture_tools
 import assemble_candidate07_capture as c07_media
 import audit_gameplay_audio as pcm_tools
+import candidate07_presentation_capture as presentation
 
 
 def require(condition, message):
@@ -65,7 +66,7 @@ def peak_windows(envelope, threshold):
 
 
 def analyze(folder, source, run_path=None, build_root=None, review_only=False, source_state='exact-commit', capture_kind='packaged', input_format='common'):
-    require(input_format in ('common','legacy-motion') and (input_format != 'legacy-motion' or review_only),
+    require(input_format in ('common','legacy-motion','legacy-presentation') and (input_format != 'legacy-motion' or review_only),
             'Legacy motion audio is explicitly private review only')
     require(not source or re.fullmatch(r'[0-9a-f]{40}', source), 'Expected a full source/base commit when supplied')
     require(source_state != 'exact-commit' or source, 'Exact-commit source state requires its actual source commit')
@@ -80,12 +81,17 @@ def analyze(folder, source, run_path=None, build_root=None, review_only=False, s
     args = SimpleNamespace(chapters=True, capture_kind=capture_kind, render_mode='unknown',
                            source_revision=source, source_state=source_state, run_result=run_path, build_root=build_root,
                            review_only=review_only, input_format=input_format)
-    _, _, wav, inputs, ledger, actor, _ = c07_media.prepare_input(folder, args)
+    if input_format=='legacy-presentation':
+        _,_,wav,inputs,ledger=presentation.prepare(folder,args)
+        actor=inputs['gameplay_checks']
+    else:_, _, wav, inputs, ledger, actor, _ = c07_media.prepare_input(folder, args)
     binding = {'status': 'UNVERIFIED_DIAGNOSTIC_SOURCE', 'source_state': source_state,
                'source_commit': source if source_state == 'exact-commit' else None,
                'working_tree_base_commit': source if source_state == 'working-tree' else None,
                'limit': 'The source label alone does not establish runtime identity; use the separate package report.'}
-    if run_path and review_only:
+    if input_format=='legacy-presentation' and run_path:
+        binding=presentation.run_binding(args,folder,inputs,ledger,not review_only)
+    elif run_path and review_only:
         run = capture_tools.strict_json(run_path)
         if input_format == 'common' and run.get('schema') == 'one07.private_runtime.v1':
             binding = c07_media.run_binding(args,folder,actor,inputs,ledger,False)
@@ -188,7 +194,7 @@ def main():
     policy.add_argument('--public', action='store_true', help='Require a passing exact-source packaged run binding')
     policy.add_argument('--review-only', action='store_true', help='Private WIP diagnostic measurement; never a source/runtime PASS')
     parser.add_argument('--media-folder', required=True, type=Path)
-    parser.add_argument('--input-format', choices=('common','legacy-motion'), default='common')
+    parser.add_argument('--input-format', choices=('common','legacy-motion','legacy-presentation'), default='common')
     parser.add_argument('--source', help='Exact source commit, or optional base commit for explicitly working-tree diagnostics')
     parser.add_argument('--source-state', choices=('exact-commit', 'working-tree', 'unknown'), default='unknown')
     parser.add_argument('--capture-kind', choices=('packaged', 'editor-game'), default='packaged')
@@ -196,7 +202,7 @@ def main():
     parser.add_argument('--run-result', type=Path)
     parser.add_argument('--build-root', type=Path)
     parser.add_argument('--reference-media', type=Path)
-    parser.add_argument('--reference-input-format', choices=('common','legacy-motion'), default='common')
+    parser.add_argument('--reference-input-format', choices=('common','legacy-motion','legacy-presentation'), default='common')
     parser.add_argument('--reference-source')
     parser.add_argument('--reference-source-state', choices=('exact-commit', 'working-tree', 'unknown'), default='exact-commit')
     parser.add_argument('--reference-capture-kind', choices=('packaged', 'editor-game'), default='packaged')
@@ -204,7 +210,7 @@ def main():
     parser.add_argument('--reference-build-root', type=Path)
     parser.add_argument('--write-comparison-wav', action='store_true')
     args = parser.parse_args()
-    require(args.review_only or (args.input_format == 'common' and args.reference_input_format == 'common'),
+    require(args.review_only or ('legacy-motion' not in (args.input_format,args.reference_input_format)),
             'Legacy motion audio cannot satisfy public capture requirements')
     require(args.reference_media is not None or not args.reference_source, 'Reference source requires reference media')
     require(args.review_only or bool(args.run_result) == bool(args.build_root), 'Public run result and build root must be supplied together')
@@ -234,6 +240,8 @@ def main():
                'perceptual_audio_review': False, 'encoded_or_decoded_movie': False, 'release_verified': False}
     if 'legacy-motion' in (args.input_format,args.reference_input_format):
         summary['tools'].append(identity(Path(c07_media.legacy_motion.__file__)))
+    if 'legacy-presentation' in (args.input_format,args.reference_input_format):
+        summary['tools'] += [identity(Path(presentation.__file__)),identity(Path(presentation.native.__file__))]
     if args.write_comparison_wav:
         summary['comparison'] = concatenate(reference_wav, current_wav, output / 'reference_then_current.wav', (reference, current))
     write_json(output / 'summary.json', summary)

@@ -2,8 +2,11 @@
 
 Work in progress on `codex/candidate07`: Maintenance, Laboratory and Facility
 Staff are integrated, with recorded event audio and living fall/recovery.
-All 38 engine tests pass; bounded trio footage has been reviewed. Ordinary
-encounters, final performance, packaged checks and release gates remain pending. See the
+All 39 current engine tests pass; bounded trio footage has been reviewed. Initial
+ordinary, six-weapon and three-appearance portability runs completed. Their
+review exposed prolonged blocked recoveries. A bounded physical escape now
+passes a real frozen-body/corpse regression; final comparative
+performance, packaged checks and release gates remain pending. See the
 [Candidate07 checkpoint report](Passes/Candidate07.md). Candidate06 below is
 still the latest verified playable/public baseline.
 

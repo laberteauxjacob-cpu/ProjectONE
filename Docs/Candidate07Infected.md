@@ -67,6 +67,16 @@ solution. Blocked attempts are spaced out rather than moved to a remote spot.
 Support must block the transport capsule. Pickup collection triggers cannot
 act as floors or get-up obstacles; clearance still includes solid blockers,
 pawn capsules and other infected's actual-pose anatomical queries.
+When only fallen/dead anatomy blocks those volumes, a settled living body can
+resume its retained physical pose and exert a short horizontal effort away
+from the actual blocking component. Both clearance volumes are checked for
+hard blockers first. Floor probes must support the local footprint and path;
+the solver retains contact authority. Each effort lasts at most 0.55 seconds
+or 28 cm, with two-second spacing, six efforts and 90 cm total travel per fall.
+Opposing contact, damage, lost support, external impulses and state changes
+stop the effort. Exhausting the budget leaves the living body waiting for
+clearance; it does not guarantee escape from every pile. No teleport, vertical
+force, collision exclusion, health change or blocker removal supplies escape.
 Recovery rebases the captured pose into the checked capsule frame and blends
 for 0.35 seconds before playing the complete authored get-up. It writes no
 health and cannot complete after the actor enters death.

@@ -1,9 +1,11 @@
-"""Read-only, review-only adapter for original ONE05MotionCapture recordings.
+"""Read-only native motion/presentation recording validation.
 
 No metadata is synthesized on disk and no historical script is modified.
 Completed gameplay failures are retained; incomplete/truncated capture fails.
 The legacy recorder did not serialize the measured stop clock, so its real
 stop-tail duration remains unknown instead of borrowing the C06 metadata claim.
+Motion remains review only. Presentation may use the separate strict source/run
+binding for audio comparison; input validation alone establishes no source.
 """
 import hashlib
 import json
@@ -19,35 +21,42 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def prepare(folder, args):
-    require(args.review_only, 'Legacy motion is explicitly private review only')
+def prepare(folder, args, presentation=False):
+    require(presentation or args.review_only, 'Legacy motion is explicitly private review only')
     require(not (folder/'capture.json').exists(), 'Legacy format cannot substitute for a common capture.json recording')
     paths = [legacy.local_input(folder,name) for name in ('frames.csv','checks.txt','gameplay_master.wav')]
     initial = {path.name:legacy.digest(path) for path in paths}
     csv_path, checks_path, audio = paths
     text = legacy.read_record(checks_path)
-    require(text.splitlines() and text.splitlines()[0] == 'Candidate05 scripted production-input motion and explicit attack fixtures',
-            'Expected the actual legacy motion recorder report')
+    heading = ('Candidate06 machine/inventory presentation via legacy ONE05 driver; current tap-deposit, automatic-return and ready-expiry rules. Historical output mode names do not identify an old candidate build.'
+               if presentation else 'Candidate05 scripted production-input motion and explicit attack fixtures')
+    require(text.splitlines() and text.splitlines()[0] == heading, 'Expected the actual native recorder report')
+    if presentation:
+        require('Passive native-input recorder:' not in text and 'Profile: recording disabled.' not in text,
+                'Presentation cannot substitute a passive/manual recorder or numeric profile')
     counters = {}
-    for key in ('Complete','Checks','Failures','Frames','Headless cursor fallback calls'):
+    for key in ('Complete','Checks','Failures','Frames','Profile actual frames' if presentation else 'Headless cursor fallback calls'):
         matches = re.findall(r'^'+re.escape(key)+r': ([0-9]+)\s*$',text,re.M)
         require(len(matches) == 1,'Missing/duplicate legacy completion counter: '+key)
         counters[key] = int(matches[0])
     outcomes = re.findall(r'^(PASS|FAIL) \| ([^\r\n]+)\r?$',text,re.M)
     require(counters['Complete'] == 1 and counters['Checks'] > 0 and len(outcomes) == counters['Checks'] and
             sum(outcome == 'FAIL' for outcome,_ in outcomes) == counters['Failures'], 'Legacy recorder is incomplete or assertion counts disagree')
-    require(counters['Headless cursor fallback calls'] == 0,'Legacy motion used headless cursor fallback')
-    fields = {'file','audio_seconds','world_seconds','phase','weapon','ammo','reserve','operation','frame'}
+    require(counters['Profile actual frames' if presentation else 'Headless cursor fallback calls'] == 0,
+            'Native capture contained profile samples or headless cursor fallback')
+    fields = {'file','audio_seconds','world_seconds','phase','weapon','ammo','reserve','operation'}
+    if not presentation: fields.add('frame')
     rows = legacy.read_csv(csv_path,fields)
-    require(2 <= len(rows) <= 6000 and counters['Frames'] == len(rows),'Legacy frame count differs from completed recorder')
+    require(2 <= len(rows) <= (12000 if presentation else 6000) and counters['Frames'] == len(rows),'Legacy frame count differs from completed recorder')
     times = [legacy.finite_number(row['audio_seconds'],'audio_seconds') for row in rows]
     world = [legacy.finite_number(row['world_seconds'],'world_seconds') for row in rows]
     phases = [legacy.integer(row['phase'],'phase') for row in rows]
-    engine_frames = [legacy.integer(row['frame'],'frame') for row in rows]
-    require(all(b>a for a,b in zip(times,times[1:])) and times[-1] < 180,'Legacy audio callbacks must strictly increase within the bounded recording')
+    require(all(b>a for a,b in zip(times,times[1:])) and times[-1] < (400 if presentation else 180),'Legacy audio callbacks must strictly increase within the bounded recording')
     require(all(b>=a for a,b in zip(world,world[1:])) and phases[0] >= 0 and all(b>=a for a,b in zip(phases,phases[1:])),
             'Legacy gameplay time or phase order moved backward')
-    require(engine_frames[0] >= 0 and all(b>a for a,b in zip(engine_frames,engine_frames[1:])),'Legacy actual engine frame identities must strictly increase')
+    if not presentation:
+        engine_frames = [legacy.integer(row['frame'],'frame') for row in rows]
+        require(engine_frames[0] >= 0 and all(b>a for a,b in zip(engine_frames,engine_frames[1:])),'Legacy actual engine frame identities must strictly increase')
     for row in rows:
         for field in ('weapon','ammo','reserve','operation'): legacy.integer(row[field],field)
     layout = common.wave_layout(audio)
@@ -58,7 +67,7 @@ def prepare(folder, args):
         while block := wav.readframes(65536): actual += len(block)
     require(actual == count*channels*2 == layout['pcm_bytes'],'Legacy original PCM payload is incomplete')
     duration = count/rate
-    require(times[-1] < duration <= min(180,times[-1]+.5),'Legacy WAV must cover every original callback with an unchanged positive tail of at most 0.5 seconds')
+    require(times[-1] < duration <= min(400 if presentation else 180,times[-1]+.5),'Legacy WAV must cover every original callback with an unchanged positive tail of at most 0.5 seconds')
     frames, ledger, sizes = [],[],set(); ordered = hashlib.sha256()
     for index,row in enumerate(rows):
         require(row['file'] == f'frame_{index:05d}.jpg','Legacy original frame names must remain contiguous and ordered')
@@ -70,7 +79,7 @@ def prepare(folder, args):
     labels = {}; chapters_path = folder/'chapters.csv'
     if chapters_path.is_file():
         lines = legacy.read_record(chapters_path).splitlines()
-        require(lines and lines[0] == 'phase,seconds,label','Unknown native legacy chapter schema')
+        require(lines and lines[0] == ('phase,world_seconds,label' if presentation else 'phase,seconds,label'),'Unknown native legacy chapter schema')
         previous_phase,previous_time = -1,-1.
         for line in lines[1:]:
             # This native final text field is intentionally unquoted and may
@@ -89,10 +98,11 @@ def prepare(folder, args):
         if (folder/name).is_file(): paths.append(legacy.local_input(folder,name))
     inputs = [{'file':path.name,'bytes':path.stat().st_size,'sha256':legacy.digest(path)} for path in paths]
     require(all(next(row['sha256'] for row in inputs if row['file']==name)==sha for name,sha in initial.items()),'Legacy recording changed during validation')
-    actor = {'kind':'legacy-motion','status':'FAILED' if counters['Failures'] else 'PASS','checks':counters['Checks'],'failures':counters['Failures'],
+    kind = 'legacy-presentation' if presentation else 'legacy-motion'
+    actor = {'kind':kind,'status':'FAILED' if counters['Failures'] else 'PASS','checks':counters['Checks'],'failures':counters['Failures'],
              'completion_counters':counters,'failed_assertions':[label for outcome,label in outcomes if outcome=='FAIL'],
              'report':next(row for row in inputs if row['file']=='checks.txt'),'scope':'Original legacy actor outcomes retained; valid capture bytes do not turn failed gameplay into passing evidence'}
-    summary = {'schema':'one07.legacy_motion_review.v1','input_format':'legacy-motion','input_validation':'PASS','frames':len(rows),'dimensions':[width,height],
+    summary = {'schema':'one07.native_presentation_capture.v1' if presentation else 'one07.legacy_motion_review.v1','input_format':kind,'input_validation':'PASS','frames':len(rows),'dimensions':[width,height],
                'capture_kind':getattr(args,'capture_kind','unknown'),'render_mode':getattr(args,'render_mode','unknown'),
                'source_revision':getattr(args,'source_revision',None),'source_state':getattr(args,'source_state','unknown'),
                'audio_duration_seconds':duration,'audio_sample_rate':rate,'audio_channels':channels,'audio_sample_frames':count,'source_wav_layout':layout,

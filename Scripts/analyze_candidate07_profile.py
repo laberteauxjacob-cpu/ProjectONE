@@ -13,6 +13,7 @@ import math
 from pathlib import Path
 import re
 import statistics
+from collections import Counter
 import analyze_candidate03_performance as engine_csv
 from run_candidate07_checks import require, record, readtext, assertions, same_runtime_inputs, RUNTIME
 
@@ -42,6 +43,20 @@ def scalar(text,name):
     values=re.findall(r'^'+re.escape(name)+r':\s*([\d.eE+-]+)\s*$',text,re.M)
     require(len(values)==1,'Missing/duplicate report scalar: '+name)
     return number(values[0])
+
+def column_identities(header):
+    """UE can emit identically named non-identity series; preserve their positions."""
+    require(header and header[0]=='EVENTS' and all(header),'Invalid final header')
+    counts=Counter(header)
+    for name,count in counts.items():
+        if count>1:
+            require(name!='EVENTS' and name not in ('FrameTime','GameThread','RenderThread','RHIThread',
+                    'GameThreadTime','RenderThreadTime','RHIThreadTime','GPU Frame','GPUFrameTime') and
+                    not name.startswith((C05,C07)), 'Duplicate measured identity column: '+name)
+    identities=[name if counts[name]==1 else f'{name} [raw column {i}]' for i,name in enumerate(header)]
+    require(len(set(identities))==len(identities),'Qualified column identities collide')
+    mapping=[{'raw_column_index':i,'original_name':name,'output_name':identities[i]} for i,name in enumerate(header)]
+    return identities,mapping
 
 def analyze(result_path):
     result=json.loads(readtext(result_path))
@@ -74,8 +89,8 @@ def analyze(result_path):
     require(len(files)==1,'Expected one complete engine CSV')
     engine_csv.SAFE_METADATA.update({'one_carried_weapon','one_carried_family','one_pickup_fixture','one_media_capture',
                                     'one_requested_enemies','one_c07_companion','one_c07_explicit_falls'})
-    capture=engine_csv.read_capture(files[0]); header=capture['header']
-    require(len(set(header))==len(header) and header[0]=='EVENTS','Duplicate/invalid final header')
+    capture=engine_csv.read_capture(files[0]); original_header=capture['header']
+    header,column_mapping=column_identities(original_header)
     requested=result['requested']; count=requested['enemies']; weapon=requested['weapon']
     meta=capture['metadata']
     require(meta.get('one_requested_enemies')==str(count) and meta.get('one_carried_weapon')==weapon and
@@ -174,6 +189,7 @@ def analyze(result_path):
             'source_snapshot_sha256':result['source_before']['snapshot_sha256'],'source_was_dirty':bool(result['source_before']['git_status']),
             'runtime_files':result['runtime_files'],'build_proof':result.get('build_proof'),'requested':requested,'capture_metadata':meta,'bindings':bindings,
             'all_engine_rows':len(rows),'all_engine_numeric_columns':len(header)-1,'zero_duration_rows':sum(r['data']['FrameTime']==0 for r in rows),
+            'original_final_header':original_header,'engine_column_mapping':column_mapping,
             'all_frame_time_seconds':elapsed,'all_frame_timings':stats,
             'frame_spike_indices':{str(limit):[r['frame'] for r in rows if r['data']['FrameTime']>limit] for limit in (16.7,33.3,50.,100.)},
             'legacy_driver_census':{'valid_rows':len(valid),'uninitialized_boundary_rows_retained':len(rows)-len(valid),
@@ -185,6 +201,7 @@ def analyze(result_path):
             'c07_census':census,
             'limitations':['Every engine timing row, including zero frame 0, is retained. Percentiles interpolate at (n-1)*p; timings are milliseconds.',
                 'Missing early numeric cells are zero per UE stream semantics. Raw event text and private metadata remain in hash-bound originals.',
+                'Duplicate non-identity series labels retain every positional column with its zero-based raw column index; the original final header and full mapping are included.',
                 'Nested and worker scope durations are not summed into wall time. Voice counts mean component playback, not mixer audibility.',
                 'C07 post-driver census includes replenishment; legacy driver live counts are sampled before its replenishment and are retained separately.',
                 'Actor contact/fall/recovery sums are current-actor snapshots and can decrease after retirement.',

@@ -14,6 +14,7 @@ class UONEZombieAudioComponent;
 class UPhysicalAnimationComponent;
 class UONEInfectedVariant;
 struct FONEInfectedAnimationState;
+namespace ONE07PhysicalityTestDetails { class FRecoveryEffortCheck; }
 
 UENUM(BlueprintType)
 enum class EONEZombieState : uint8 { Pursue, Attack, Hit, Dead, Stumble, Fallen, GetUp };
@@ -82,6 +83,9 @@ public:
     int32 GetLivingFallCount() const { return LivingFallCount; }
     int32 GetRecoveryCount() const { return RecoveryCount; }
     int32 GetRecoveryBlockedCount() const { return RecoveryBlockedCount; }
+    int32 GetRecoveryEffortCount() const { return RecoveryEffortCount; }
+    float GetRecoveryEffortTravelCm() const { return RecoveryEffortTravelCm; }
+    bool IsRecoveryEffortActive() const { return bRecoveryEffortActive && IsLivingFallen() && DamageTransactions==RecoveryEffortDamageSerial; }
     int32 GetPhysicalContactCount() const { return PhysicalContactCount; }
     float GetRecoveryRebaseErrorCm() const { return RecoveryRebaseError; }
     FName GetVariantId() const;
@@ -123,6 +127,7 @@ public:
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> UpperLegRightRegion;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCapsuleComponent> BodyRegion;
 private:
+    friend class ONE07PhysicalityTestDetails::FRecoveryEffortCheck;
     void ChangeState(EONEZombieState Next);
     void Die(const FVector& Direction,EONEHitRegion ImpactRegion,FName ImpactBone,const FVector& ImpactPosition,float Impulse);
     void Sever(EONEHitRegion Region,const FVector& Direction);
@@ -138,7 +143,12 @@ private:
     void StopLivingPhysicalResponse();
     void TickLivingPhysicality(float Dt);
     bool TryBeginGetUp();
-    bool FindRecoverySpace(FVector& CapsuleLocation,FRotator& Facing) const;
+    bool FindRecoveryFloor(const FVector& Position,FHitResult& Floor) const;
+    bool FindRecoverySpace(FVector& CapsuleLocation,FRotator& Facing,UPrimitiveComponent** AnatomyBlocker=nullptr) const;
+    bool HasRecoveryEffortFloor(const FVector& Direction) const;
+    bool BeginRecoveryEffort(UPrimitiveComponent* AnatomyBlocker);
+    void TickRecoveryEffort(float Dt);
+    void StopRecoveryEffort(const TCHAR* Reason);
     void CompleteGetUp();
     void CaptureCurrentPose();
     TArray<FName> MissingPhysicsRoots() const;
@@ -182,6 +192,13 @@ private:
     float NextFallAllowed=0,NextRecoveryAttempt=0,RecoveryQuietSince=-1,GetUpDuration=2.4f;
     int32 LivingFallCount=0,RecoveryCount=0,RecoveryBlockedCount=0,PhysicalContactCount=0;
     int32 RecoveryAttemptsInBurst=0;
+    int32 RecoveryEffortCount=0,RecoveryEffortDamageSerial=0;
+    bool bRecoveryEffortActive=false,bRecoveryEffortBudgetReported=false;
+    float RecoveryEffortStarted=0,NextRecoveryEffort=0,NextRecoveryFloorCheck=0;
+    float RecoveryEffortTravelCm=0,RecoveryEffortStartTravelCm=0,RecoveryEffortMaxSpeed=0;
+    FVector RecoveryEffortDirection=FVector::ZeroVector,RecoveryEffortAnchor=FVector::ZeroVector;
+    FVector RecoveryEffortLastPelvis=FVector::ZeroVector,RecoveryEffortStartPelvis=FVector::ZeroVector;
+    TWeakObjectPtr<UPrimitiveComponent> RecoveryEffortBlocker;
     float RecoveryRebaseError=BIG_NUMBER;
     TMap<TWeakObjectPtr<AActor>,float> ContactCooldowns;
 };
