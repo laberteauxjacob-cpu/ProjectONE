@@ -1,7 +1,7 @@
 # Candidate07 — infected physicality and recorded audio
 
-Status: internal checkpoint B, first Maintenance character integrated and
-inspected in actual Editor-game frames. Candidate07 remains in progress; it is
+Status: internal checkpoint C, first Maintenance character and connected
+attack families inspected in actual Editor-game frames. Candidate07 remains in progress; it is
 not packaged, publicly released or approved by the user for visual/audio quality.
 The latest verified playable release remains Candidate06.
 
@@ -114,7 +114,7 @@ event checks and digital clipping analysis do not substitute for listening.
 
 ## Completion gates still pending
 
-Connected attack and physical-contact checkpoints;
+Physical-contact checkpoint and final combined attack review;
 living fall/recovery and lethal-state checks; all-variant dismemberment/query
 fit; recorded audio and event synchronization; chronological engine review;
 representative comparative performance; full regression checks; fresh neutral
@@ -123,3 +123,33 @@ build, source/LFS verification, archive and public download verification.
 Candidate06 controls remain: LMB fires; hold RMB for head height; hold Left Ctrl
 for low height; release both for torso height. Ctrl takes precedence when both
 height modifiers are held. No height modifier fires a weapon.
+
+## Connected-combat checkpoint
+
+The actual Editor-game motion recording completed 90 assertions with one
+retained compatibility failure. All three attack families entered through the
+production selector, delivered one 19-health contact and one effort cue, and
+returned to pursuit. Forty recorded frame samples were inspected, including
+twelve chronological poses per family and the same-scale Candidate06/Candidate07
+camera comparison. Swipe, cross-body rake and two-handed forward strike have
+different windups/follow-through; the camera can occlude the far hand. This is
+bounded frame review, not uninterrupted human play or complete naturalism approval.
+
+The historical isolated fixture spawned its enemy facing away. Candidate07's
+bearing eligibility correctly rejected that setup; the fixture now starts
+facing the player and logs distance, bearing and grounded state. Production
+selection/fairness was not relaxed. The failed earlier recording is retained.
+
+The completed run reproduced a genuine fixed-height limitation: ten shots with
+processed Left Ctrl and LMB selected Low at world Z 68.474 cm while the corpse's
+body query top was 61.743–62.698 cm. All ten missed; the corpse assertion remains
+a failure. These controls do not follow floor-level anatomy, and direct regional
+query tests do not establish ordinary mouse targeting. No snapping, larger hit
+regions or control redesign was added to hide this incompatibility.
+
+The complete old/new engine WAVs were measured and concatenated without gain,
+trimming or replacement for private listening comparison. The current WAV has
+zero full-scale samples and zero near-clip windows. Actual PCM segments match
+their sources; no sound was perceptually heard or approved. Candidate07 remains
+an Editor WIP with null exact packaged-source identity, and final media/package
+evidence remains required.

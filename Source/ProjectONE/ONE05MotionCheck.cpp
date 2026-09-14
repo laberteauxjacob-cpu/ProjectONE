@@ -105,7 +105,10 @@ void AONE05MotionCheck::SpawnFixture(const FVector& Point,bool Hold)
 {
     if (Enemy) Enemy->Destroy();
     FActorSpawnParameters Params; Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
-    Enemy=GetWorld()->SpawnActor<AONEZombie>(Point,FRotator(0,180,0),Params);
+    // The isolated fixture starts facing its subject, inside the same bearing
+    // eligibility used by ordinary pursuit. Do not bypass production selection.
+    const FRotator Facing=(Player->GetActorLocation()-Point).GetSafeNormal2D().Rotation();
+    Enemy=GetWorld()->SpawnActor<AONEZombie>(Point,Facing,Params);
     Check(IsValid(Enemy),TEXT("Explicit infected fixture spawned without collision adjustment"));
     if (!Enemy) { Finish(false); return; }
     if (Hold)
@@ -241,6 +244,11 @@ void AONE05MotionCheck::RunPhase(float Dt)
         if (T>=.5f && !bAttackStarted)
         {
             Enemy->GetCharacterMovement()->SetMovementMode(MOVE_Walking);Enemy->SetActorTickEnabled(true);
+            const FVector TowardPlayer=(Player->GetActorLocation()-Enemy->GetActorLocation()).GetSafeNormal2D();
+            UE_LOG(LogTemp,Display,TEXT("ONE07_MOTION_ATTACK_ENTRY family=%d distance=%.3f bearing=%.3f grounded=%d state=%d"),
+                Phase-18,FVector::Dist2D(Player->GetActorLocation(),Enemy->GetActorLocation()),
+                FMath::FindDeltaAngleDegrees(Enemy->GetActorRotation().Yaw,TowardPlayer.Rotation().Yaw),
+                Enemy->GetCharacterMovement()->IsMovingOnGround(),int32(Enemy->GetCombatState()));
             bAttackStarted=Enemy->TryStartAttack(Player,Phase-18);
             if (!bAttackStarted) { Check(false,TEXT("Explicit family failed to enter windup")); Finish(false); return; }
         }
