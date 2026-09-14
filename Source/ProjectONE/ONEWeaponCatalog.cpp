@@ -7,7 +7,7 @@ namespace ONEWeaponCatalogPrivate
 {
     template<class T> TSoftObjectPtr<T> Asset(const FString& Folder,const FString& Name)
     { int32 Slash=INDEX_NONE; Name.FindLastChar(TEXT('/'),Slash); return TSoftObjectPtr<T>(FSoftObjectPath(Folder+Name+TEXT(".")+Name.Mid(Slash+1))); }
-    TSoftObjectPtr<USoundBase> Sound(const TCHAR* Name) { return Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/"),Name); }
+    TSoftObjectPtr<USoundBase> Sound(const TCHAR* Name) { return Asset<USoundBase>(TEXT("/Game/ONE/Audio/Candidate07/"),TEXT("S_C07_")+FString(Name).Mid(2)); }
     TSoftObjectPtr<UAnimSequence> Clip(const TCHAR* Name) { return Asset<UAnimSequence>(TEXT("/Game/ONE/Animations/"),Name); }
     void AddOperation(FONEWeaponDefinition& D,EONEWeaponOperation Op,float Duration,const TCHAR* Animation,std::initializer_list<FONEWeaponTimedEvent> Events={})
     {
@@ -33,7 +33,7 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
     Carbine.EmptySound=Sound(TEXT("S_CarbineEmpty"));
     Carbine.EjectedCaseMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/"),TEXT("SM_RifleBrass_C03"));
     Carbine.EjectionPoint=FVector(3.f,-3.7f,14.f);
-    for (int32 I=1;I<=6;++I) Carbine.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/Candidate03/"),FString::Printf(TEXT("S_C03_CarbineShot_%02d"),I)));
+    for (int32 I=1;I<=6;++I) Carbine.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Candidate07/"),FString::Printf(TEXT("S_C07_CarbineShot_%02d"),I)));
     Carbine.FleshSounds={Sound(TEXT("S_FleshImpact_01")),Sound(TEXT("S_FleshImpact_02")),Sound(TEXT("S_FleshImpact_03"))};
     Carbine.ConcreteSounds={Sound(TEXT("S_ConcreteImpact_01")),Sound(TEXT("S_ConcreteImpact_02"))};
     Carbine.MetalSounds={Sound(TEXT("S_MetalImpact_01")),Sound(TEXT("S_MetalImpact_02"))};
@@ -68,7 +68,7 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
     Shotgun.ReadyAnimation=Clip(TEXT("A_Response_ShotgunReady"));
     Shotgun.EmptySound=Sound(TEXT("S_ShotgunEmpty"));
     Shotgun.ShotSounds.Reset();
-    for (int32 I=1;I<=6;++I) Shotgun.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/Candidate03/"),FString::Printf(TEXT("S_C03_ShotgunShot_%02d"),I)));
+    for (int32 I=1;I<=6;++I) Shotgun.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Candidate07/"),FString::Printf(TEXT("S_C07_ShotgunShot_%02d"),I)));
     Shotgun.Operations.Reset();
     AddOperation(Shotgun,EONEWeaponOperation::Equip,.36f,TEXT("A_Response_Equip"),{Event(.18f,EONEWeaponEvent::WeaponSwap,TEXT("S_WeaponEquip"))});
     AddOperation(Shotgun,EONEWeaponOperation::Fire,.22f,TEXT("A_Response_ShotgunFire"));
@@ -96,16 +96,16 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
     Pistol.MagazineMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/Candidate04/"),TEXT("SM_M1911_Magazine"));
     Pistol.EjectedCaseMesh=Asset<UStaticMesh>(TEXT("/Game/ONE/Art/Weapons/Candidate04/"),TEXT("SM_M1911_Case"));
     Pistol.ReadyAnimation=Clip(TEXT("Candidate04/A_Response_C04_PistolReady"));
-    Pistol.EmptySound=Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/Candidate04/"),TEXT("S_C04_PistolEmpty"));
+    Pistol.EmptySound=Sound(TEXT("S_PistolEmpty"));
     Pistol.ShotSounds.Reset();
-    for (int32 I=1;I<=6;++I) Pistol.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/Candidate04/"),FString::Printf(TEXT("S_C04_M1911Shot_%02d"),I)));
+    for (int32 I=1;I<=6;++I) Pistol.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Candidate07/"),FString::Printf(TEXT("S_C07_PistolShot_%02d"),I)));
     Pistol.Operations.Reset();
     AddOperation(Pistol,EONEWeaponOperation::Equip,.36f,TEXT("Candidate04/A_Response_C04_PistolEquip"),{Event(.18f,EONEWeaponEvent::WeaponSwap,TEXT("S_WeaponEquip"))});
     AddOperation(Pistol,EONEWeaponOperation::Fire,.18f,TEXT("Candidate04/A_Response_C04_PistolFire"),{Event(0.f,EONEWeaponEvent::ShellEject,nullptr)});
     AddOperation(Pistol,EONEWeaponOperation::MagazineReload,1.8f,TEXT("Candidate04/A_Response_C04_PistolReload"),{
         Event(.28f,EONEWeaponEvent::MagazineOut,nullptr),Event(1.1f,EONEWeaponEvent::MagazineCommit,nullptr),Event(1.4f,EONEWeaponEvent::Sound,nullptr)});
-    const TCHAR* PistolMechanics[]={TEXT("S_C04_PistolMagOut"),TEXT("S_C04_PistolMagIn"),TEXT("S_C04_PistolSlide")};
-    for (int32 I=0;I<3;++I) Pistol.Operations.Last().Events[I].Sound=Asset<USoundBase>(TEXT("/Game/ONE/Audio/Weapons/Candidate04/"),PistolMechanics[I]);
+    const TCHAR* PistolMechanics[]={TEXT("S_PistolMagOut"),TEXT("S_PistolMagIn"),TEXT("S_PistolSlide")};
+    for (int32 I=0;I<3;++I) Pistol.Operations.Last().Events[I].Sound=Sound(PistolMechanics[I]);
     WeaponDefinitions.Add(Pistol);
     // Effective rows are independent copies. Upgrading an owned instance never
     // mutates base catalog tuning or future box rewards.
@@ -135,7 +135,7 @@ TArray<FONEWeaponDefinition> ONEWeaponCatalog::BuildDefaults()
         { O.Duration/=1.15f; for (auto& E:O.Events) E.Time/=1.15f; }
         D.ShotSounds.Reset();
         const TCHAR* SoundPrefix=I==0 ? TEXT("Overcurrent") : I==1 ? TEXT("Gravebreaker") : TEXT("LastWord");
-        for (int32 N=1;N<=6;++N) D.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Candidate05/"),FString::Printf(TEXT("S_%sShot_%02d"),SoundPrefix,N)));
+        for (int32 N=1;N<=6;++N) D.ShotSounds.Add(Asset<USoundBase>(TEXT("/Game/ONE/Audio/Candidate07/"),FString::Printf(TEXT("S_C07_%sShot_%02d"),SoundPrefix,N)));
         WeaponDefinitions.Add(D);
     }
     return WeaponDefinitions;

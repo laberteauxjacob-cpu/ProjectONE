@@ -7,6 +7,7 @@
 #include "ONEProgressionMachine.h"
 #include "Animation/AnimSequence.h"
 #include "ONEAnimInstance.h"
+#include "ONE07FootstepComponent.h"
 #include "ONEBloodSubsystem.h"
 #include "ONEGameMode.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -38,6 +39,7 @@ AONEPlayer::AONEPlayer()
     Health->EnablePlayerRegeneration(true);
     Weapon = CreateDefaultSubobject<UONEWeaponComponent>(TEXT("Weapon"));
     Interaction = CreateDefaultSubobject<UONEInteractionComponent>(TEXT("Interaction"));
+    CreateDefaultSubobject<UONE07FootstepComponent>(TEXT("FootContacts"));
     GetCapsuleComponent()->InitCapsuleSize(28.f, 90.f);
     GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Ignore);
     GetMesh()->SetRelativeLocation(FVector(0,0,-90));

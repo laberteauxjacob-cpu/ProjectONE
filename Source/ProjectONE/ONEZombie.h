@@ -3,6 +3,7 @@
 #include "GameFramework/Character.h"
 #include "ONEWeaponTypes.h"
 #include "ONEPhysicsRuntime.h"
+#include "ONEInfectedAttackDefinition.h"
 #include "TimerManager.h"
 #include "ONEZombie.generated.h"
 class UONEHealthComponent;
@@ -10,9 +11,12 @@ class USphereComponent;
 class UCapsuleComponent;
 class AONEPlayer;
 class UONEZombieAudioComponent;
+class UPhysicalAnimationComponent;
+class UONEInfectedVariant;
+struct FONEInfectedAnimationState;
 
 UENUM(BlueprintType)
-enum class EONEZombieState : uint8 { Pursue, Attack, Hit, Dead };
+enum class EONEZombieState : uint8 { Pursue, Attack, Hit, Dead, Stumble, Fallen, GetUp };
 
 UCLASS()
 class PROJECTONE_API AONEZombie : public ACharacter
@@ -61,11 +65,28 @@ public:
     float GetLegQueryCoverageErrorCm(EONEHitRegion Region) const;
     float GetReferenceLegQuerySeparationCm() const { return ReferenceLegQuerySeparation; }
     float GetHealth() const;
+    static TArray<FString> GetProductionVariantPaths();
+    FVector GetPhysicalRewardLocation() const;
     bool WasLastKillHeadshot() const { return bLastKillHeadshot; }
     float GetLastDeathImpulse() const { return LastDeathImpulse; }
     UONEHealthComponent* GetHealthComponent() const { return Health; }
     EONEZombieState GetCombatState() const { return State; }
     float GetStateElapsed() const;
+    FONEInfectedAnimationState GetInfectedAnimationState() const;
+    // Contextual runtime entry shared with explicit physicality probes. It does
+    // not change health, live population, rewards or the actor's identity.
+    bool TryLivingFall(const FVector& Impulse,FName Cause);
+    bool IsLivingFallen() const { return State==EONEZombieState::Fallen; }
+    bool IsGettingUp() const { return State==EONEZombieState::GetUp; }
+    bool HasLivingPhysicalResponse() const { return bLivingUpperPhysics; }
+    int32 GetLivingFallCount() const { return LivingFallCount; }
+    int32 GetRecoveryCount() const { return RecoveryCount; }
+    int32 GetRecoveryBlockedCount() const { return RecoveryBlockedCount; }
+    int32 GetPhysicalContactCount() const { return PhysicalContactCount; }
+    float GetRecoveryRebaseErrorCm() const { return RecoveryRebaseError; }
+    FName GetVariantId() const;
+    UPROPERTY(EditAnywhere, Category="Presentation") TSoftObjectPtr<UONEInfectedVariant> VariantOverride;
+    UPROPERTY(EditAnywhere, Category="Attacks") TArray<FONEInfectedAttackDefinition> AttackDefinitions;
     UPROPERTY(EditAnywhere, Category="Infected") float ShambleSpeed=100.f;
     UPROPERTY(EditAnywhere, Category="Infected") float PursuitSpeed=195.f;
     UPROPERTY(EditAnywhere, Category="Animation") float AuthoredWalkSpeed=100.f;
@@ -82,6 +103,7 @@ public:
     UPROPERTY(EditAnywhere, Category="Infected") float LegSeverThreshold=70.f;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UONEHealthComponent> Health;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UONEZombieAudioComponent> ZombieAudio;
+    UPROPERTY(VisibleAnywhere) TObjectPtr<UPhysicalAnimationComponent> PhysicalAnimation;
     UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> HeadMesh;
     UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> ArmLeftMesh;
     UPROPERTY(VisibleAnywhere) TObjectPtr<USkeletalMeshComponent> ArmRightMesh;
@@ -111,13 +133,34 @@ private:
     bool RequiredAttackArmsPresent() const;
     void TickAttack(float Dt);
     void ObserveRest();
+    bool ApplyVariant();
+    void StartLivingPhysicalResponse();
+    void StopLivingPhysicalResponse();
+    void TickLivingPhysicality(float Dt);
+    bool TryBeginGetUp();
+    bool FindRecoverySpace(FVector& CapsuleLocation,FRotator& Facing) const;
+    void CompleteGetUp();
+    void CaptureCurrentPose();
+    TArray<FName> MissingPhysicsRoots() const;
+    UFUNCTION() void OnPhysicalContact(UPrimitiveComponent* HitComponent,AActor* OtherActor,
+        UPrimitiveComponent* OtherComponent,FVector NormalImpulse,const FHitResult& Hit);
+    UFUNCTION() void OnCapsuleContact(UPrimitiveComponent* HitComponent,AActor* OtherActor,
+        UPrimitiveComponent* OtherComponent,FVector NormalImpulse,const FHitResult& Hit);
+    void RegisterContact(const FVector& Direction,float ClosingSpeed,const FVector& Position,bool Physical);
+    void OnFootContact(bool bLeft);
+    const FONEInfectedAttackDefinition* CurrentAttackDefinition() const;
     UPROPERTY() TObjectPtr<AONEPlayer> Target;
+    UPROPERTY() TObjectPtr<UONEInfectedVariant> Variant;
     EONEZombieState State=EONEZombieState::Pursue;
     float StateStart=0,LastReaction=-100,NextAttack=0,NextPath=0;
     float RegionalTrauma[FONEWeaponDamagePacket::RegionCount]={};
     bool bHeavyReaction=false;
     int32 AttackFamily=0,AttackSerial=0,AttackContactAttempts=0,AttackDamageDispatches=0;
     uint8 RequiredAttackArms=0;
+    int32 AttackDefinitionIndex=INDEX_NONE;
+    FName PreviousAttack;
+    FRandomStream AttackRandom,PresentationRandom;
+    float AttackEntrySpeed=0,AttackRecoveryAlpha=0,CommittedAttackTravel=0;
     FVector AttackHeading=FVector::ForwardVector,AttackStartPosition=FVector::ZeroVector;
     float MinorReactionStart=-100.f,MinorReactionStrength=0.f;
     FVector MinorReactionDirection=FVector::ForwardVector;
@@ -132,4 +175,13 @@ private:
     float RagdollPositionError=BIG_NUMBER,RagdollAngleError=BIG_NUMBER;
     float StumpFitError=BIG_NUMBER;
     float ReferenceLegQuerySeparation=-BIG_NUMBER;
+    bool bLivingUpperPhysics=false,bGetUpSupine=false;
+    float GaitPhaseOffset=0,ContactStrength=0,ContactPressure=0,LastContact=-100;
+    FVector ContactDirection=FVector::ZeroVector,PreviousMovementVelocity=FVector::ZeroVector;
+    FVector FallStartPelvis=FVector::ZeroVector;
+    float NextFallAllowed=0,NextRecoveryAttempt=0,RecoveryQuietSince=-1,GetUpDuration=2.4f;
+    int32 LivingFallCount=0,RecoveryCount=0,RecoveryBlockedCount=0,PhysicalContactCount=0;
+    int32 RecoveryAttemptsInBurst=0;
+    float RecoveryRebaseError=BIG_NUMBER;
+    TMap<TWeakObjectPtr<AActor>,float> ContactCooldowns;
 };

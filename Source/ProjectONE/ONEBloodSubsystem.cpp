@@ -1,4 +1,5 @@
 #include "ONEBloodSubsystem.h"
+#include "ONE05Audio.h"
 #include "ONE06ImpactSubsystem.h"
 #include "ProceduralMeshComponent.h"
 #include "ONESnapshotAnimInstance.h"
@@ -115,7 +116,9 @@ void AONEGorePiece::Initialize(USkeletalMeshComponent* Part,USkeletalMeshCompone
     const TCHAR* PartName=Bone==TEXT("head") ? TEXT("Head") : Bone==TEXT("upperarm_r") ? TEXT("ArmLeft") :
         Bone==TEXT("upperarm_l") ? TEXT("ArmRight") : TEXT("LegLeft");
     const FString Asset=FString::Printf(TEXT("/Game/ONE/Characters/Candidate03/PA_Infected_%s_C03.PA_Infected_%s_C03"),PartName,PartName);
-    Piece->SetPhysicsAsset(LoadObject<UPhysicsAsset>(nullptr,*Asset),true);
+    // Production C07 parts supply their fitted detached-body asset through the
+    // variant definition. The historical fixture fallback retains older probes.
+    Piece->SetPhysicsAsset(Part->GetPhysicsAsset()?Part->GetPhysicsAsset():LoadObject<UPhysicsAsset>(nullptr,*Asset),true);
     Piece->SetAnimationMode(EAnimationMode::AnimationBlueprint);
     Piece->SetAnimInstanceClass(UONESnapshotAnimInstance::StaticClass());
     if (auto* Anim=Cast<UONESnapshotAnimInstance>(Piece->GetAnimInstance())) Anim->CapturedPose=Snapshot;
@@ -123,6 +126,8 @@ void AONEGorePiece::Initialize(USkeletalMeshComponent* Part,USkeletalMeshCompone
     const FVector Inherited=PoseSource->IsSimulatingPhysics(Bone) ? PoseSource->GetPhysicsLinearVelocity(Bone) :
         PoseSource->GetOwner() ? PoseSource->GetOwner()->GetVelocity() : FVector::ZeroVector;
     const auto Started=ONEPhysicsRuntime::Start(Piece,Inherited,{});
+    Piece->SetAllBodiesNotifyRigidBodyCollision(true);
+    Piece->OnComponentHit.AddDynamic(this,&AONEGorePiece::OnBodyContact);
     ONEPhysicsRuntime::ResetRest(Piece,RestState,false);
     TransitionErrorCm=Started.PositionErrorCm;
     if (!Started.SimulatedBodies)
@@ -136,6 +141,16 @@ void AONEGorePiece::Initialize(USkeletalMeshComponent* Part,USkeletalMeshCompone
     }
 }
 void AONEGorePiece::ObserveRest() { ONEPhysicsRuntime::UpdateRest(Piece,RestState); }
+void AONEGorePiece::OnBodyContact(UPrimitiveComponent* HitComponent,AActor* OtherActor,
+    UPrimitiveComponent* OtherComponent,FVector NormalImpulse,const FHitResult& Hit)
+{
+    if (!OtherActor || !OtherComponent || RestState.Frozen || !GetWorld() ||
+        GetWorld()->GetTimeSeconds()<NextContactSound || NormalImpulse.ContainsNaN()) return;
+    const float Speed=FMath::Clamp(float(NormalImpulse.Size())/FMath::Max(1.f,Piece->GetBoneMass(Hit.MyBoneName)),0.f,500.f);
+    if (Speed<65.f) return;
+    NextContactSound=GetWorld()->GetTimeSeconds()+.2f;
+    if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>()) Audio->PlayBodyContact(Hit.ImpactPoint,Speed);
+}
 void AONEGorePiece::EndPlay(const EEndPlayReason::Type Reason)
 { GetWorld()->GetTimerManager().ClearTimer(RestTimer); if (auto* Blood=GetWorld()->GetSubsystem<UONEBloodSubsystem>()) Blood->RemoveSourcesForActor(this); Super::EndPlay(Reason); }
 int32 AONEGorePiece::GetActivePhysicsBodyCount() const { return ONEPhysicsRuntime::Count(Piece); }
@@ -341,6 +356,7 @@ void UONEBloodSubsystem::StepBlood()
 }
 void UONEBloodSubsystem::ClearPresentation()
 {
+    if (GetWorld()) if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>()) Audio->StopContacts();
     if (auto* Marks=GetWorld()->GetSubsystem<UONE06ImpactSubsystem>()) Marks->Clear();
     bClearing=true; ++Generation; GetWorld()->GetTimerManager().ClearTimer(BloodTimer);
     Wounds.Reset(); Drops.Reset(); Pools.Reset(); PendingSurfaces.Reset();

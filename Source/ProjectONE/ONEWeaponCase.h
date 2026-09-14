@@ -22,6 +22,7 @@ public:
     int32 GetWeaponIndex() const { return WeaponIndex; }
     uint64 GetSourceShotId() const { return SourceShotId; }
     float GetCollisionRadius() const { return CollisionRadius; }
+    int32 GetContactCueCount() const { return ContactCueCount; }
 private:
     void StepFlight(float Dt);
     UPROPERTY() TObjectPtr<UStaticMeshComponent> Mesh;
@@ -31,4 +32,7 @@ private:
     int32 BounceCount=0,WeaponIndex=0;
     uint64 SourceShotId=0;
     bool bSettled=false;
+    bool bShotgunShell=false;
+    int32 ContactCueCount=0;
+    double NextContactAudio=0.;
 };

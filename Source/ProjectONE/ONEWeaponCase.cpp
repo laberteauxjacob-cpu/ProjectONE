@@ -1,5 +1,7 @@
 #include "ONEWeaponCase.h"
+#include "ONE05Audio.h"
 #include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
 #include "Engine/World.h"
 #include "ProfilingDebugging/CsvProfiler.h"
 AONEWeaponCase::AONEWeaponCase()
@@ -17,6 +19,7 @@ void AONEWeaponCase::Initialize(UStaticMesh* Asset,const FVector& EmissionVeloci
     const FVector& Spin,float Radius,float Lifetime,int32 SourceWeapon,uint64 ShotId)
 {
     Mesh->SetStaticMesh(Asset);
+    bShotgunShell=Asset && Asset->GetName().Contains(TEXT("ShotgunShell"));
     InheritedVelocity=OwnerVelocity; InitialVelocity=EmissionVelocity+OwnerVelocity;
     Velocity=InitialVelocity; AngularVelocity=Spin;
     CollisionRadius=FMath::Max(.1f,Radius); WeaponIndex=SourceWeapon; SourceShotId=ShotId;
@@ -28,6 +31,7 @@ void AONEWeaponCase::StepFlight(float Dt)
     Velocity.Z+=GetWorld()->GetGravityZ()*Dt;
     FHitResult Hit;
     FCollisionQueryParams Params(SCENE_QUERY_STAT(ONECaseFlight),false,this);
+    Params.bReturnPhysicalMaterial=true;
     if (GetWorld()->SweepSingleByObjectType(Hit,From,From+Velocity*Dt,FQuat::Identity,
         FCollisionObjectQueryParams(ECC_WorldStatic),FCollisionShape::MakeSphere(CollisionRadius),Params))
     {
@@ -36,6 +40,17 @@ void AONEWeaponCase::StepFlight(float Dt)
         const float Into=FVector::DotProduct(Velocity,Normal);
         if (Into<0.f)
         {
+            const double Now=GetWorld()->GetTimeSeconds();
+            if (-Into>=65.f && ContactCueCount<3 && Now>=NextContactAudio)
+            {
+                if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>())
+                {
+                    const TCHAR* Stem=ONE05Audio::IsMetalContact(Hit)?TEXT("CasingMetal"):(bShotgunShell?TEXT("ShellConcrete"):TEXT("CasingConcrete"));
+                    const float Gain=FMath::Clamp(-Into/400.f,.12f,.5f)*(ContactCueCount==0?1.f:.35f);
+                    if (Audio->PlayFoley(Stem,3,Hit.ImpactPoint,Gain,.3f)) ++ContactCueCount;
+                }
+                NextContactAudio=Now+.14;
+            }
             ++BounceCount;
             Velocity=(Velocity-Normal*Into)*.58f-Normal*Into*.30f;
             AngularVelocity*=.52f;

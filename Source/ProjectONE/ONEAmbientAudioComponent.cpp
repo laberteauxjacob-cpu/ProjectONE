@@ -31,8 +31,8 @@ void UONEAmbientAudioComponent::BeginPlay()
     SparseVoices.Add(MakeVoice(TEXT("FacilityPipe"),FVector(-890,200,170),80,1850,true));
     if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>())
     {
-        Loops[0]->SetSound(Audio->Sound(TEXT("S_AmbientVentLoop")));
-        Loops[1]->SetSound(Audio->Sound(TEXT("S_AmbientMotorLoop")));
+        Loops[0]->SetSound(Audio->Sound(TEXT("S_C07_AmbientVentLoop")));
+        Loops[1]->SetSound(Audio->Sound(TEXT("S_C07_AmbientMotorLoop")));
     }
     NextDrip=GetWorld()->GetTimeSeconds()+3.7; NextMetal=GetWorld()->GetTimeSeconds()+8.3;
     SetEnabled(bEnabled);
@@ -59,13 +59,13 @@ void UONEAmbientAudioComponent::TickComponent(float Dt,ELevelTick TickType,FActo
     if (Now>=NextDrip)
     {
         NextDrip=Now+Random.FRandRange(4.5f,9.f); DripIndex=DripIndex%3+1;
-        auto* Voice=SparseVoices[0].Get(); Voice->SetSound(Audio->Sound(FName(*FString::Printf(TEXT("S_AmbientDrip_%02d"),DripIndex))));
+        auto* Voice=SparseVoices[0].Get(); Voice->SetSound(Audio->Sound(FName(*FString::Printf(TEXT("S_C07_AmbientDrip_%02d"),DripIndex))));
         Voice->SetVolumeMultiplier(.58f*ONE05Audio::GetAmbienceGain()); if (Voice->Sound) Voice->Play(); ++SparseCueCount;
     }
     if (Now>=NextMetal)
     {
         NextMetal=Now+Random.FRandRange(9.f,17.f); MetalIndex=MetalIndex%3+1;
-        auto* Voice=SparseVoices[1].Get(); Voice->SetSound(Audio->Sound(FName(*FString::Printf(TEXT("S_AmbientPipe_%02d"),MetalIndex))));
+        auto* Voice=SparseVoices[1].Get(); Voice->SetSound(Audio->Sound(FName(*FString::Printf(TEXT("S_C07_AmbientPipe_%02d"),MetalIndex))));
         Voice->SetVolumeMultiplier(.46f*ONE05Audio::GetAmbienceGain()); if (Voice->Sound) Voice->Play(); ++SparseCueCount;
     }
 }

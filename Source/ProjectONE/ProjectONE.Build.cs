@@ -6,5 +6,7 @@ public class ProjectONE : ModuleRules
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         PublicDependencyModuleNames.AddRange(new string[] {"Core", "CoreUObject", "Engine", "InputCore", "AIModule", "NavigationSystem", "AnimGraphRuntime", "ProceduralMeshComponent", "RenderCore", "RHI", "Json", "JsonUtilities", "AudioMixer", "ImageCore", "PhysicsCore"});
         if (Target.bBuildEditor) PrivateDependencyModuleNames.Add("AssetRegistry");
+        // Development validation inspects the actual capsule raycast geometry.
+        if (Target.Configuration != UnrealTargetConfiguration.Shipping) PrivateDependencyModuleNames.Add("Chaos");
     }
 }

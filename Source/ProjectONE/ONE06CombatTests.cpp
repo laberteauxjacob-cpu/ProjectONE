@@ -24,7 +24,7 @@ namespace
         FCombatWorld()
         {
             if (!GEngine) return;
-            Mesh=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/Candidate03/SK_Infected_Core.SK_Infected_Core"));
+            Mesh=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_Core.SK_Infected_C07_Maintenance_Core"));
             Physics=LoadObject<UPhysicsAsset>(nullptr,TEXT("/Game/ONE/Characters/Candidate03/PA_Infected_C03.PA_Infected_C03"));
             const auto Options=UWorld::InitializationValues().AllowAudioPlayback(false).CreateNavigation(false).CreateAISystem(false);
             World=UWorld::CreateWorld(EWorldType::Game,false,NAME_None,nullptr,true,ERHIFeatureLevel::Num,&Options);

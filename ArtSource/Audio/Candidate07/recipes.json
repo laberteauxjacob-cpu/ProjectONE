@@ -1,0 +1,2795 @@
+{
+  "schema": 1,
+  "sample_rate": 48000,
+  "channels": 1,
+  "sample_width_bytes": 2,
+  "default_edits": "Decode, arithmetic channel mean, resample 48 kHz, explicit source trims, smooth frequency roll-off, DC removal, recorded layers, peak normalization, <=2 ms attack pre-roll and bounded edge fades. No generated physical excitations.",
+  "cues": {
+    "S_C07_PistolShot_01": {
+      "layers": [
+        {
+          "source": "pistol_near",
+          "start_seconds": 0.9049999999999999,
+          "end_seconds": 1.46,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_LastWordShot_01": {
+      "layers": [
+        {
+          "source": "pistol_near",
+          "start_seconds": 0.9049999999999999,
+          "end_seconds": 1.46,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "LastWord",
+        "variant": 1
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_PistolShot_02": {
+      "layers": [
+        {
+          "source": "pistol_near",
+          "start_seconds": 4.965,
+          "end_seconds": 5.52,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_LastWordShot_02": {
+      "layers": [
+        {
+          "source": "pistol_near",
+          "start_seconds": 4.965,
+          "end_seconds": 5.52,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "LastWord",
+        "variant": 2
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_PistolShot_03": {
+      "layers": [
+        {
+          "source": "pistol_mid",
+          "start_seconds": 1.5050000000000001,
+          "end_seconds": 2.06,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_LastWordShot_03": {
+      "layers": [
+        {
+          "source": "pistol_mid",
+          "start_seconds": 1.5050000000000001,
+          "end_seconds": 2.06,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "LastWord",
+        "variant": 3
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_PistolShot_04": {
+      "layers": [
+        {
+          "source": "pistol_mid",
+          "start_seconds": 6.615,
+          "end_seconds": 7.17,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_LastWordShot_04": {
+      "layers": [
+        {
+          "source": "pistol_mid",
+          "start_seconds": 6.615,
+          "end_seconds": 7.17,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "LastWord",
+        "variant": 4
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_PistolShot_05": {
+      "layers": [
+        {
+          "source": "pistol_near",
+          "start_seconds": 0.9049999999999999,
+          "end_seconds": 1.3664,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_LastWordShot_05": {
+      "layers": [
+        {
+          "source": "pistol_near",
+          "start_seconds": 0.9049999999999999,
+          "end_seconds": 1.3664,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "LastWord",
+        "variant": 5
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_PistolShot_06": {
+      "layers": [
+        {
+          "source": "pistol_near",
+          "start_seconds": 4.965,
+          "end_seconds": 5.52,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_LastWordShot_06": {
+      "layers": [
+        {
+          "source": "pistol_near",
+          "start_seconds": 4.965,
+          "end_seconds": 5.52,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "LastWord",
+        "variant": 6
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_CarbineShot_01": {
+      "layers": [
+        {
+          "source": "carbine_near",
+          "start_seconds": 0.6649999999999999,
+          "end_seconds": 1.08,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_OvercurrentShot_01": {
+      "layers": [
+        {
+          "source": "carbine_near",
+          "start_seconds": 0.6649999999999999,
+          "end_seconds": 1.08,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Overcurrent",
+        "variant": 1
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_CarbineShot_02": {
+      "layers": [
+        {
+          "source": "carbine_near",
+          "start_seconds": 5.6049999999999995,
+          "end_seconds": 6.02,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_OvercurrentShot_02": {
+      "layers": [
+        {
+          "source": "carbine_near",
+          "start_seconds": 5.6049999999999995,
+          "end_seconds": 6.02,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Overcurrent",
+        "variant": 2
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_CarbineShot_03": {
+      "layers": [
+        {
+          "source": "carbine_mid",
+          "start_seconds": 0.505,
+          "end_seconds": 0.92,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_OvercurrentShot_03": {
+      "layers": [
+        {
+          "source": "carbine_mid",
+          "start_seconds": 0.505,
+          "end_seconds": 0.92,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Overcurrent",
+        "variant": 3
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_CarbineShot_04": {
+      "layers": [
+        {
+          "source": "carbine_mid",
+          "start_seconds": 3.875,
+          "end_seconds": 4.29,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_OvercurrentShot_04": {
+      "layers": [
+        {
+          "source": "carbine_mid",
+          "start_seconds": 3.875,
+          "end_seconds": 4.29,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Overcurrent",
+        "variant": 4
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_CarbineShot_05": {
+      "layers": [
+        {
+          "source": "carbine_near",
+          "start_seconds": 0.6649999999999999,
+          "end_seconds": 1.0116,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_OvercurrentShot_05": {
+      "layers": [
+        {
+          "source": "carbine_near",
+          "start_seconds": 0.6649999999999999,
+          "end_seconds": 1.0116,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Overcurrent",
+        "variant": 5
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_CarbineShot_06": {
+      "layers": [
+        {
+          "source": "carbine_near",
+          "start_seconds": 5.6049999999999995,
+          "end_seconds": 6.02,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_OvercurrentShot_06": {
+      "layers": [
+        {
+          "source": "carbine_near",
+          "start_seconds": 5.6049999999999995,
+          "end_seconds": 6.02,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Overcurrent",
+        "variant": 6
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_ShotgunShot_01": {
+      "layers": [
+        {
+          "source": "shotgun_near",
+          "start_seconds": 0.395,
+          "end_seconds": 1.11,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_GravebreakerShot_01": {
+      "layers": [
+        {
+          "source": "shotgun_near",
+          "start_seconds": 0.395,
+          "end_seconds": 1.11,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Gravebreaker",
+        "variant": 1
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_ShotgunShot_02": {
+      "layers": [
+        {
+          "source": "shotgun_near",
+          "start_seconds": 3.425,
+          "end_seconds": 4.14,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_GravebreakerShot_02": {
+      "layers": [
+        {
+          "source": "shotgun_near",
+          "start_seconds": 3.425,
+          "end_seconds": 4.14,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Gravebreaker",
+        "variant": 2
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_ShotgunShot_03": {
+      "layers": [
+        {
+          "source": "shotgun_mid",
+          "start_seconds": 0.6549999999999999,
+          "end_seconds": 1.37,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_GravebreakerShot_03": {
+      "layers": [
+        {
+          "source": "shotgun_mid",
+          "start_seconds": 0.6549999999999999,
+          "end_seconds": 1.37,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Gravebreaker",
+        "variant": 3
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_ShotgunShot_04": {
+      "layers": [
+        {
+          "source": "shotgun_mid",
+          "start_seconds": 3.665,
+          "end_seconds": 4.38,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_GravebreakerShot_04": {
+      "layers": [
+        {
+          "source": "shotgun_mid",
+          "start_seconds": 3.665,
+          "end_seconds": 4.38,
+          "gain": 1.0,
+          "highpass_hz": 40,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Gravebreaker",
+        "variant": 4
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_ShotgunShot_05": {
+      "layers": [
+        {
+          "source": "shotgun_near",
+          "start_seconds": 0.395,
+          "end_seconds": 0.9876,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_GravebreakerShot_05": {
+      "layers": [
+        {
+          "source": "shotgun_near",
+          "start_seconds": 0.395,
+          "end_seconds": 0.9876,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Gravebreaker",
+        "variant": 5
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_ShotgunShot_06": {
+      "layers": [
+        {
+          "source": "shotgun_near",
+          "start_seconds": 3.425,
+          "end_seconds": 4.14,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": null,
+      "note": "Four excerpts across two microphone perspectives; variants 5/6 are additional EQ/tail edits, not extra recorded performances. No randomized playback pitch."
+    },
+    "S_C07_GravebreakerShot_06": {
+      "layers": [
+        {
+          "source": "shotgun_near",
+          "start_seconds": 3.425,
+          "end_seconds": 4.14,
+          "gain": 1.0,
+          "highpass_hz": 70,
+          "lowpass_hz": 10800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -5,
+      "loop": false,
+      "energy": {
+        "family": "Gravebreaker",
+        "variant": 6
+      },
+      "note": "Recorded physical report plus the retained original C05 energy design only; no synthesized physical shot layer."
+    },
+    "S_C07_WeaponEquip": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 0.18,
+          "end_seconds": 0.57,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_CarbineEmpty": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 2.76,
+          "end_seconds": 2.97,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_CarbineMagOut": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 4.3,
+          "end_seconds": 4.71,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_CarbineMagIn": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 6.39,
+          "end_seconds": 6.89,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_CarbineBolt": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 7.18,
+          "end_seconds": 7.65,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_PistolEmpty": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 3.24,
+          "end_seconds": 3.52,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_PistolMagOut": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 10.6,
+          "end_seconds": 10.98,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_PistolMagIn": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 11.38,
+          "end_seconds": 11.85,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_PistolSlide": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 12.11,
+          "end_seconds": 12.47,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_ShotgunEmpty": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 13.08,
+          "end_seconds": 13.24,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_ShotgunPumpLock": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 16.21,
+          "end_seconds": 16.49,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_ShotgunReloadStart": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 18.02,
+          "end_seconds": 18.38,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_ShotgunReloadEnd": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 19.62,
+          "end_seconds": 20.02,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mixed-object mechanical Foley analogue; exact firearm operation not established by source."
+    },
+    "S_C07_ShotgunPumpBack": {
+      "layers": [
+        {
+          "source": "pump",
+          "start_seconds": 0,
+          "end_seconds": 0.21,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": "Rear portion of recorded Winchester SXP rack; 870 analogue."
+    },
+    "S_C07_ShotgunPumpForward": {
+      "layers": [
+        {
+          "source": "pump",
+          "start_seconds": 0.24,
+          "end_seconds": 0.484,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": "Forward portion of same recorded Winchester SXP rack; 870 analogue."
+    },
+    "S_C07_ShotgunShellInsert": {
+      "layers": [
+        {
+          "source": "equipment",
+          "start_seconds": 20.33,
+          "end_seconds": 20.68,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "casings_hand",
+          "start_seconds": 7.87,
+          "end_seconds": 8.17,
+          "gain": 0.32,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.035,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded mechanism and casing-hand contact Foley; shell insertion analogue."
+    },
+    "S_C07_ZombieBreath_01": {
+      "layers": [
+        {
+          "source": "moan1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.94
+        }
+      ],
+      "target_peak_dbfs": -15,
+      "loop": false,
+      "energy": null,
+      "note": "Performed undead moan, modest rate/EQ edit; no synthesized voice."
+    },
+    "S_C07_ZombiePursuit_01": {
+      "layers": [
+        {
+          "source": "grunt1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.96
+        }
+      ],
+      "target_peak_dbfs": -11,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieHit_01": {
+      "layers": [
+        {
+          "source": "yell4",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieHeavyHit_01": {
+      "layers": [
+        {
+          "source": "yell1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.96
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieDeath_01": {
+      "layers": [
+        {
+          "source": "yell1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6300,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.9
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieFall_01": {
+      "layers": [
+        {
+          "source": "grunt3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.94
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieBreath_02": {
+      "layers": [
+        {
+          "source": "moan2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.94
+        }
+      ],
+      "target_peak_dbfs": -15,
+      "loop": false,
+      "energy": null,
+      "note": "Performed undead moan, modest rate/EQ edit; no synthesized voice."
+    },
+    "S_C07_ZombiePursuit_02": {
+      "layers": [
+        {
+          "source": "grunt2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.96
+        }
+      ],
+      "target_peak_dbfs": -11,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieHit_02": {
+      "layers": [
+        {
+          "source": "yell7",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieHeavyHit_02": {
+      "layers": [
+        {
+          "source": "yell6",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.96
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieDeath_02": {
+      "layers": [
+        {
+          "source": "yell6",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6300,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.9
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieFall_02": {
+      "layers": [
+        {
+          "source": "grunt4",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.94
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieBreath_03": {
+      "layers": [
+        {
+          "source": "moan3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.94
+        }
+      ],
+      "target_peak_dbfs": -15,
+      "loop": false,
+      "energy": null,
+      "note": "Performed undead moan, modest rate/EQ edit; no synthesized voice."
+    },
+    "S_C07_ZombiePursuit_03": {
+      "layers": [
+        {
+          "source": "grunt3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.96
+        }
+      ],
+      "target_peak_dbfs": -11,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieHit_03": {
+      "layers": [
+        {
+          "source": "yell12",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieHeavyHit_03": {
+      "layers": [
+        {
+          "source": "yell13",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.96
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieDeath_03": {
+      "layers": [
+        {
+          "source": "yell13",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6300,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.9
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieFall_03": {
+      "layers": [
+        {
+          "source": "grunt5",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.94
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieBreath_04": {
+      "layers": [
+        {
+          "source": "moan4",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.94
+        }
+      ],
+      "target_peak_dbfs": -15,
+      "loop": false,
+      "energy": null,
+      "note": "Performed undead moan, modest rate/EQ edit; no synthesized voice."
+    },
+    "S_C07_ZombiePursuit_04": {
+      "layers": [
+        {
+          "source": "grunt4",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.96
+        }
+      ],
+      "target_peak_dbfs": -11,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieHit_04": {
+      "layers": [
+        {
+          "source": "yell15",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieHeavyHit_04": {
+      "layers": [
+        {
+          "source": "yell16",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.96
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieDeath_04": {
+      "layers": [
+        {
+          "source": "yell16",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6300,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.9
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieFall_04": {
+      "layers": [
+        {
+          "source": "grunt6",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 0.94
+        }
+      ],
+      "target_peak_dbfs": -10,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieAttack_01": {
+      "layers": [
+        {
+          "source": "grunt1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieAttack_02": {
+      "layers": [
+        {
+          "source": "grunt2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieAttack_03": {
+      "layers": [
+        {
+          "source": "grunt3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieAttack_04": {
+      "layers": [
+        {
+          "source": "grunt4",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieAttack_05": {
+      "layers": [
+        {
+          "source": "grunt5",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_ZombieAttack_06": {
+      "layers": [
+        {
+          "source": "grunt6",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": ""
+    },
+    "S_C07_PlayerStepConcrete_01": {
+      "layers": [
+        {
+          "source": "footstep_concrete0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "cloth0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_PlayerStepMetal_01": {
+      "layers": [
+        {
+          "source": "metalstep0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "cloth0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_ZombieStepConcrete_01": {
+      "layers": [
+        {
+          "source": "footstep_concrete0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "leather0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_ZombieStepMetal_01": {
+      "layers": [
+        {
+          "source": "metalstep4",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "leather0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_PlayerStepConcrete_02": {
+      "layers": [
+        {
+          "source": "footstep_concrete1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "cloth1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_PlayerStepMetal_02": {
+      "layers": [
+        {
+          "source": "metalstep1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "cloth1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_ZombieStepConcrete_02": {
+      "layers": [
+        {
+          "source": "footstep_concrete1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "leather1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_ZombieStepMetal_02": {
+      "layers": [
+        {
+          "source": "metalstep5",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "leather1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_PlayerStepConcrete_03": {
+      "layers": [
+        {
+          "source": "footstep_concrete2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "cloth2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_PlayerStepMetal_03": {
+      "layers": [
+        {
+          "source": "metalstep2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "cloth2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_ZombieStepConcrete_03": {
+      "layers": [
+        {
+          "source": "footstep_concrete2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "leather2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_ZombieStepMetal_03": {
+      "layers": [
+        {
+          "source": "metalstep6",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "leather2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_PlayerStepConcrete_04": {
+      "layers": [
+        {
+          "source": "footstep_concrete3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "cloth3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_PlayerStepMetal_04": {
+      "layers": [
+        {
+          "source": "metalstep3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "cloth3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_ZombieStepConcrete_04": {
+      "layers": [
+        {
+          "source": "footstep_concrete3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "leather3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_ZombieStepMetal_04": {
+      "layers": [
+        {
+          "source": "metalstep7",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "leather3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.22,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.006,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Actual surface footstep plus recorded clothing at the same evaluated contact. Metal source is boots on aluminum ladder."
+    },
+    "S_C07_BodyContact_01": {
+      "layers": [
+        {
+          "source": "towel1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactSoft_heavy0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.45,
+          "highpass_hz": 45,
+          "lowpass_hz": 2200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded wet towel and soft-object impact; body-floor Foley analogue."
+    },
+    "S_C07_BodyContact_02": {
+      "layers": [
+        {
+          "source": "towel2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactSoft_heavy1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.45,
+          "highpass_hz": 45,
+          "lowpass_hz": 2200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded wet towel and soft-object impact; body-floor Foley analogue."
+    },
+    "S_C07_BodyContact_03": {
+      "layers": [
+        {
+          "source": "towel3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactSoft_heavy2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.45,
+          "highpass_hz": 45,
+          "lowpass_hz": 2200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded wet towel and soft-object impact; body-floor Foley analogue."
+    },
+    "S_C07_BodyContact_04": {
+      "layers": [
+        {
+          "source": "towel4",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactSoft_heavy3",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.45,
+          "highpass_hz": 45,
+          "lowpass_hz": 2200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded wet towel and soft-object impact; body-floor Foley analogue."
+    },
+    "S_C07_BodyContact_05": {
+      "layers": [
+        {
+          "source": "towel5",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactSoft_heavy0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.45,
+          "highpass_hz": 45,
+          "lowpass_hz": 2200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded wet towel and soft-object impact; body-floor Foley analogue."
+    },
+    "S_C07_BodyContact_06": {
+      "layers": [
+        {
+          "source": "towel6",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 6200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactSoft_heavy1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.45,
+          "highpass_hz": 45,
+          "lowpass_hz": 2200,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -8,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded wet towel and soft-object impact; body-floor Foley analogue."
+    },
+    "S_C07_FleshImpact_01": {
+      "layers": [
+        {
+          "source": "towel4",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded wet towel, not real injury."
+    },
+    "S_C07_FleshImpact_02": {
+      "layers": [
+        {
+          "source": "towel5",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded wet towel, not real injury."
+    },
+    "S_C07_FleshImpact_03": {
+      "layers": [
+        {
+          "source": "towel6",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 7500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -9,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded wet towel, not real injury."
+    },
+    "S_C07_ConcreteImpact_01": {
+      "layers": [
+        {
+          "source": "impactWood_medium0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 9000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -13,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded hard-object impact analogue; not a recording of a bullet entering concrete."
+    },
+    "S_C07_MetalImpact_01": {
+      "layers": [
+        {
+          "source": "impactMetal_medium0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -13,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded generic metal impact analogue, not a live bullet recording."
+    },
+    "S_C07_ConcreteImpact_02": {
+      "layers": [
+        {
+          "source": "impactWood_medium1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 9000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -13,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded hard-object impact analogue; not a recording of a bullet entering concrete."
+    },
+    "S_C07_MetalImpact_02": {
+      "layers": [
+        {
+          "source": "impactMetal_medium1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -13,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded generic metal impact analogue, not a live bullet recording."
+    },
+    "S_C07_CasingConcrete_01": {
+      "layers": [
+        {
+          "source": "shell_concrete",
+          "start_seconds": 1.47,
+          "end_seconds": 1.97,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -13,
+      "loop": false,
+      "energy": null,
+      "note": "One actual shell-contact cluster; three explicit EQ edits, not three separate performances."
+    },
+    "S_C07_ShellConcrete_01": {
+      "layers": [
+        {
+          "source": "shell12",
+          "start_seconds": 1.56,
+          "end_seconds": 1.95,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 14000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -13,
+      "loop": false,
+      "energy": null,
+      "note": "One actual 12-gauge shell first contact; three explicit EQ edits."
+    },
+    "S_C07_CasingMetal_01": {
+      "layers": [
+        {
+          "source": "shell_concrete",
+          "start_seconds": 1.47,
+          "end_seconds": 1.97,
+          "gain": 0.7,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactMetal_light0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.32,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.002,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -14,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded casing plus recorded metal-object resonant Foley; material analogue."
+    },
+    "S_C07_MagazineConcrete_01": {
+      "layers": [
+        {
+          "source": "impactMetal_medium0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactSoft_heavy0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.25,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded object-impact analogue; exact weapon magazine drop not available."
+    },
+    "S_C07_MagazineMetal_01": {
+      "layers": [
+        {
+          "source": "impactMetal_medium0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactPlate_light0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.35,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.003,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded metal-object Foley analogue."
+    },
+    "S_C07_AmbientPipe_01": {
+      "layers": [
+        {
+          "source": "impactPlate_light0",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 5500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -20,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded plate impact used as distant pipe contact analogue."
+    },
+    "S_C07_AmbientDrip_01": {
+      "layers": [
+        {
+          "source": "water",
+          "start_seconds": 5,
+          "end_seconds": 5.58,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 10000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -20,
+      "loop": false,
+      "energy": null,
+      "note": "Distinct excerpts from actual water-drop recording; may contain more than one drop."
+    },
+    "S_C07_CasingConcrete_02": {
+      "layers": [
+        {
+          "source": "shell_concrete",
+          "start_seconds": 1.47,
+          "end_seconds": 1.97,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 10500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -13,
+      "loop": false,
+      "energy": null,
+      "note": "One actual shell-contact cluster; three explicit EQ edits, not three separate performances."
+    },
+    "S_C07_ShellConcrete_02": {
+      "layers": [
+        {
+          "source": "shell12",
+          "start_seconds": 1.56,
+          "end_seconds": 1.95,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 11000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -13,
+      "loop": false,
+      "energy": null,
+      "note": "One actual 12-gauge shell first contact; three explicit EQ edits."
+    },
+    "S_C07_CasingMetal_02": {
+      "layers": [
+        {
+          "source": "shell_concrete",
+          "start_seconds": 1.47,
+          "end_seconds": 1.97,
+          "gain": 0.7,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactMetal_light1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.32,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.002,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -14,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded casing plus recorded metal-object resonant Foley; material analogue."
+    },
+    "S_C07_MagazineConcrete_02": {
+      "layers": [
+        {
+          "source": "impactMetal_medium1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactSoft_heavy1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.25,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded object-impact analogue; exact weapon magazine drop not available."
+    },
+    "S_C07_MagazineMetal_02": {
+      "layers": [
+        {
+          "source": "impactMetal_medium1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactPlate_light1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.35,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.003,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded metal-object Foley analogue."
+    },
+    "S_C07_AmbientPipe_02": {
+      "layers": [
+        {
+          "source": "impactPlate_light1",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 5500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -20,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded plate impact used as distant pipe contact analogue."
+    },
+    "S_C07_AmbientDrip_02": {
+      "layers": [
+        {
+          "source": "water",
+          "start_seconds": 10,
+          "end_seconds": 10.58,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 10000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -20,
+      "loop": false,
+      "energy": null,
+      "note": "Distinct excerpts from actual water-drop recording; may contain more than one drop."
+    },
+    "S_C07_CasingConcrete_03": {
+      "layers": [
+        {
+          "source": "shell_concrete",
+          "start_seconds": 1.47,
+          "end_seconds": 1.97,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -13,
+      "loop": false,
+      "energy": null,
+      "note": "One actual shell-contact cluster; three explicit EQ edits, not three separate performances."
+    },
+    "S_C07_ShellConcrete_03": {
+      "layers": [
+        {
+          "source": "shell12",
+          "start_seconds": 1.56,
+          "end_seconds": 1.95,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -13,
+      "loop": false,
+      "energy": null,
+      "note": "One actual 12-gauge shell first contact; three explicit EQ edits."
+    },
+    "S_C07_CasingMetal_03": {
+      "layers": [
+        {
+          "source": "shell_concrete",
+          "start_seconds": 1.47,
+          "end_seconds": 1.97,
+          "gain": 0.7,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactMetal_light2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.32,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.002,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -14,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded casing plus recorded metal-object resonant Foley; material analogue."
+    },
+    "S_C07_MagazineConcrete_03": {
+      "layers": [
+        {
+          "source": "impactMetal_medium2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 8500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactSoft_heavy2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.25,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded object-impact analogue; exact weapon magazine drop not available."
+    },
+    "S_C07_MagazineMetal_03": {
+      "layers": [
+        {
+          "source": "impactMetal_medium2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        },
+        {
+          "source": "impactPlate_light2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 0.35,
+          "highpass_hz": 45,
+          "lowpass_hz": 15000,
+          "offset_seconds": 0.003,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -12,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded metal-object Foley analogue."
+    },
+    "S_C07_AmbientPipe_03": {
+      "layers": [
+        {
+          "source": "impactPlate_light2",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 5500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -20,
+      "loop": false,
+      "energy": null,
+      "note": "Recorded plate impact used as distant pipe contact analogue."
+    },
+    "S_C07_AmbientDrip_03": {
+      "layers": [
+        {
+          "source": "water",
+          "start_seconds": 15,
+          "end_seconds": 15.58,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 10000,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -20,
+      "loop": false,
+      "energy": null,
+      "note": "Distinct excerpts from actual water-drop recording; may contain more than one drop."
+    },
+    "S_C07_AmbientVentLoop": {
+      "layers": [
+        {
+          "source": "fan",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 45,
+          "lowpass_hz": 4500,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -23,
+      "loop": true,
+      "energy": null,
+      "note": "Recorded two-mini-fan exhaust; 80 ms cyclic crossfade. Facility ventilation analogue."
+    },
+    "S_C07_AmbientMotorLoop": {
+      "layers": [
+        {
+          "source": "fan",
+          "start_seconds": 0,
+          "end_seconds": null,
+          "gain": 1.0,
+          "highpass_hz": 60,
+          "lowpass_hz": 800,
+          "offset_seconds": 0,
+          "playback_rate_edit": 1.0
+        }
+      ],
+      "target_peak_dbfs": -26,
+      "loop": true,
+      "energy": null,
+      "note": "Same actual fan recording, low-pass edited as distant motor analogue; not independent motor recording."
+    }
+  }
+}

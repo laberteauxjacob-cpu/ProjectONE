@@ -1,0 +1,200 @@
+{
+  "candidate": "07",
+  "fps": 100,
+  "destination": "/Game/ONE/Animations/Candidate07",
+  "source": "ArtSource/Characters/Candidate07/Maintenance.blend",
+  "source_sha256": "a1ce6e2992081a7eb59330cda7efdc37bbe7e497da0eb56be734b2be45b5c9de",
+  "source_axes": "+X forward; source _r anatomical LEFT, _l anatomical RIGHT; imported skeleton has armature root",
+  "authorship": "Original Project ONE authored skeletal poses; existing local IK/FBX conventions reused. No third-party animation.",
+  "clips": {
+    "A_Infected_C07_Idle": {
+      "key": "Idle",
+      "duration": 2.4,
+      "loop": true,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_Idle.fbx",
+      "fbx_sha256": "f3155ad6237fcceadb5288a3807afa564e0e6fdb38431be2c68fb8a9f9477cc8"
+    },
+    "A_Infected_C07_Walk": {
+      "key": "Walk",
+      "duration": 1.04,
+      "loop": true,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_Walk.fbx",
+      "fbx_sha256": "5fddd919d482202ae30143a6b317b8374c173a29d17f1e331a415d398ca7fbfd",
+      "speed": 100,
+      "stance_fraction": 0.5,
+      "stride_cm": 104
+    },
+    "A_Infected_C07_Run": {
+      "key": "Run",
+      "duration": 0.66,
+      "loop": true,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_Run.fbx",
+      "fbx_sha256": "829de4d8abf3f65c49f03ea546b126a08e2a4f3db8b8ecf0fc7ba21da72437e3",
+      "speed": 195,
+      "stance_fraction": 0.38,
+      "stride_cm": 128.7
+    },
+    "A_Infected_C07_TurnLeft": {
+      "key": "TurnLeft",
+      "duration": 1.0,
+      "loop": true,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_TurnLeft.fbx",
+      "fbx_sha256": "33c3bf8d4d46fa1cf4d15e602c6af922de99e859b2ae568bdeadc8150b6eb704"
+    },
+    "A_Infected_C07_TurnRight": {
+      "key": "TurnRight",
+      "duration": 1.0,
+      "loop": true,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_TurnRight.fbx",
+      "fbx_sha256": "cf011c8a702e017bdca60afe98f945082704fedb2449ae193cc3e34d04bc53cb"
+    },
+    "A_Infected_C07_SwipeLeft": {
+      "key": "SwipeLeft",
+      "duration": 0.96,
+      "loop": false,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_SwipeLeft.fbx",
+      "fbx_sha256": "844c818ea7a878d67a2d4d1c329ed865562dd92883790675553f8f59f97e90a0",
+      "family": 0,
+      "required_limbs": "Left",
+      "contact_time": 0.45,
+      "step_distance_cm": 18.0,
+      "step_end": 0.34,
+      "authored_entry_speed_cm_s": 195,
+      "recovery_locomotion_start": 0.67,
+      "foot_correction": "Runtime position-space leg IK subtracts actual capsule travel from the same reference Hermite advance."
+    },
+    "A_Infected_C07_SwipeRight": {
+      "key": "SwipeRight",
+      "duration": 0.96,
+      "loop": false,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_SwipeRight.fbx",
+      "fbx_sha256": "3e9343dedd69a7dd231c9b0a90b6d20d1df06f733a2f05b3730cecf9bdfa61ab",
+      "family": 0,
+      "required_limbs": "Right",
+      "contact_time": 0.45,
+      "step_distance_cm": 18.0,
+      "step_end": 0.34,
+      "authored_entry_speed_cm_s": 195,
+      "recovery_locomotion_start": 0.67,
+      "foot_correction": "Runtime position-space leg IK subtracts actual capsule travel from the same reference Hermite advance."
+    },
+    "A_Infected_C07_RakeLeft": {
+      "key": "RakeLeft",
+      "duration": 1.08,
+      "loop": false,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_RakeLeft.fbx",
+      "fbx_sha256": "a8bd78d649365bb875d12e4bb67240ff30222f86c1dd96483516c952139c6f83",
+      "family": 1,
+      "required_limbs": "Left",
+      "contact_time": 0.48,
+      "step_distance_cm": 12.0,
+      "step_end": 0.34,
+      "authored_entry_speed_cm_s": 195,
+      "recovery_locomotion_start": 0.75,
+      "foot_correction": "Runtime position-space leg IK subtracts actual capsule travel from the same reference Hermite advance."
+    },
+    "A_Infected_C07_RakeRight": {
+      "key": "RakeRight",
+      "duration": 1.08,
+      "loop": false,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_RakeRight.fbx",
+      "fbx_sha256": "48e60e83847800704084d79fec033fc545831df5a297e42d80e17aa2567b0fc1",
+      "family": 1,
+      "required_limbs": "Right",
+      "contact_time": 0.48,
+      "step_distance_cm": 12.0,
+      "step_end": 0.34,
+      "authored_entry_speed_cm_s": 195,
+      "recovery_locomotion_start": 0.75,
+      "foot_correction": "Runtime position-space leg IK subtracts actual capsule travel from the same reference Hermite advance."
+    },
+    "A_Infected_C07_TwoHand": {
+      "key": "TwoHand",
+      "duration": 1.12,
+      "loop": false,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_TwoHand.fbx",
+      "fbx_sha256": "e255dfb1301e32abc722a7768efcf3e67d7aa20eecb45949859beae581b40472",
+      "family": 2,
+      "required_limbs": "Both",
+      "contact_time": 0.54,
+      "step_distance_cm": 14.0,
+      "step_end": 0.38,
+      "authored_entry_speed_cm_s": 195,
+      "recovery_locomotion_start": 0.8,
+      "foot_correction": "Runtime position-space leg IK subtracts actual capsule travel from the same reference Hermite advance."
+    },
+    "A_Infected_C07_HeavyHit": {
+      "key": "HeavyHit",
+      "duration": 0.52,
+      "loop": false,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_HeavyHit.fbx",
+      "fbx_sha256": "9711e645a5712857985d24dec042fe72ef3825179c1a16d5ce83ea7df7639b40"
+    },
+    "A_Infected_C07_Stumble": {
+      "key": "Stumble",
+      "duration": 0.7,
+      "loop": false,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_Stumble.fbx",
+      "fbx_sha256": "cc207848297f33aacf8819a29f2a6630f0e17efba4227c7da8c6a03fcd2fa077"
+    },
+    "A_Infected_C07_GetUpProne": {
+      "key": "GetUpProne",
+      "duration": 2.55,
+      "loop": false,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_GetUpProne.fbx",
+      "fbx_sha256": "52c144aaff26c7cd41a320d1164a9e9d3823274b3bf45605d649cae94ce9eb56",
+      "recovery_phases": [
+        "prone_entry",
+        "palm_brace",
+        "right_knee_tuck",
+        "left_foot_swing",
+        "planted_weight_transfer",
+        "supported_rise",
+        "right_foot_step",
+        "left_foot_settle"
+      ],
+      "support_contract": "Stationary component-space palm frames during brace/tuck/lead-foot plant; stationary planted foot targets through weight transfer. Separate lifted adjustment steps before standing. Runtime snapshot blend precedes this clip clock."
+    },
+    "A_Infected_C07_GetUpSupine": {
+      "key": "GetUpSupine",
+      "duration": 3.0,
+      "loop": false,
+      "skeleton": "SK_Infected_Skeleton",
+      "source": "ArtSource/Exports/Candidate07/Motion/A_Infected_C07_GetUpSupine.fbx",
+      "fbx_sha256": "d74c4a344bbdf3d3db2bb138d64d8b12fa323a2273121d2631254db604e803f8",
+      "recovery_phases": [
+        "low_roll",
+        "palm_brace",
+        "right_knee_tuck",
+        "left_foot_swing",
+        "planted_weight_transfer",
+        "supported_rise",
+        "right_foot_step",
+        "left_foot_settle"
+      ],
+      "support_contract": "Stationary component-space palm frames during brace/tuck/lead-foot plant; stationary planted foot targets through weight transfer. Separate lifted adjustment steps before standing. Runtime snapshot blend precedes this clip clock."
+    }
+  },
+  "limits": "Authoring/invariant results are separate from UE import, evaluated runtime motion, contact, and visual approval.",
+  "retained_action_source": {
+    "description": "Previously authored C07 InfectedMotion.blend supplies the twelve unchanged actions; exported FBX identities remain authoritative in clips.",
+    "bytes": 4330128,
+    "sha256": "7a9e4ab2239c131afa95c5dfbb13ada8af10a6995be215b559fb5e3276dca01d",
+    "source_inventory_sha256": "128d96ecb14486e1c5f11ac0249907c977f9e52edcd4ddaf0aa6ad947b700b9d",
+    "recorded_character_source": "ArtSource/Characters/Candidate07/Maintenance.blend",
+    "recorded_character_source_sha256": "ea1594dc5de96ec9fee747df8f47c30a2c771c3288ab03c32dc51794bb390601"
+  }
+}

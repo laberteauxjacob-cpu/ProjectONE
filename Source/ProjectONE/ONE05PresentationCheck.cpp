@@ -46,7 +46,8 @@ void AONE05PresentationCheck::BeginPlay()
     Super::BeginPlay();
     LastDriverTime=FPlatformTime::Seconds();
     bManual=FParse::Value(FCommandLine::Get(),TEXT("ONE05ManualCapture="),ManualDuration);
-    bProfile=FParse::Param(FCommandLine::Get(),TEXT("ONE05Profile"));
+    const bool Candidate07Profile=FParse::Param(FCommandLine::Get(),TEXT("ONE07Profile"));
+    bProfile=FParse::Param(FCommandLine::Get(),TEXT("ONE05Profile")) || Candidate07Profile;
     FParse::Value(FCommandLine::Get(),TEXT("ONE05ProfileWeapon="),ProfileWeapon);
     bProfileUpgraded=ProfileWeapon==TEXT("Overcurrent")||ProfileWeapon==TEXT("Gravebreaker");
     ProfileFamily=(ProfileWeapon==TEXT("870")||ProfileWeapon==TEXT("Gravebreaker"))?EONEWeaponFamily::Shotgun:EONEWeaponFamily::Carbine;
@@ -71,7 +72,8 @@ void AONE05PresentationCheck::BeginPlay()
     }
     ChaptersCsv=TEXT("phase,world_seconds,label\n");
     Check(!(bProfile && bCapture),TEXT("Profile and media capture modes are mutually exclusive"));
-    Check(!bProfile || EnemyCount==6 || EnemyCount==12 || EnemyCount==18,TEXT("Profile count is exactly 6, 12 or 18"));
+    Check(!bProfile || EnemyCount==6 || EnemyCount==12 || EnemyCount==18 || (Candidate07Profile && (EnemyCount==1 || EnemyCount==2)),
+        Candidate07Profile?TEXT("Candidate07 profile count is exactly 1, 2, 6, 12 or 18"):TEXT("Profile count is exactly 6, 12 or 18"));
     Check(!bProfile || ProfileWeapon==TEXT("M4A1") || ProfileWeapon==TEXT("Overcurrent") ||
         ProfileWeapon==TEXT("870") || ProfileWeapon==TEXT("Gravebreaker"),TEXT("Profile explicitly selects M4A1, Overcurrent, 870 or Gravebreaker"));
     if (bProfile) Check(!UONE06CaptureComponent::IsAnyCaptureActive(),TEXT("No Candidate06 viewport/audio capture owns the profile process"));

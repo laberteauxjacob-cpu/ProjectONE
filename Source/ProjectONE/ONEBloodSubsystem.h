@@ -48,11 +48,14 @@ public:
     const ONEPhysicsRuntime::FRestState& GetRestState() const { return RestState; }
 private:
     void ObserveRest();
+    UFUNCTION() void OnBodyContact(UPrimitiveComponent* HitComponent,AActor* OtherActor,
+        UPrimitiveComponent* OtherComponent,FVector NormalImpulse,const FHitResult& Hit);
     UPROPERTY() TObjectPtr<USkeletalMeshComponent> Piece;
     FTransform CapturedSourceBoneTransform=FTransform::Identity;
     float TransitionErrorCm=BIG_NUMBER;
     ONEPhysicsRuntime::FRestState RestState;
     FTimerHandle RestTimer;
+    float NextContactSound=0;
 };
 
 struct FONEBleedingWound

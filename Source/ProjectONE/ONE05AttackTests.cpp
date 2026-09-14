@@ -1,5 +1,6 @@
 #include "Misc/AutomationTest.h"
 #include "ONE05AttackMotion.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "ONEZombie.h"
 #include "ONEPlayer.h"
 #include "ONEHealthComponent.h"
@@ -26,7 +27,7 @@ namespace
             World=UWorld::CreateWorld(EWorldType::Game,false,NAME_None,nullptr,true,ERHIFeatureLevel::Num,&Options);
             Context.SetCurrentWorld(World);
             FActorSpawnParameters P; P.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-            USkeletalMesh* InfectedMesh=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/Candidate03/SK_Infected_Core.SK_Infected_Core"));
+            USkeletalMesh* InfectedMesh=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_Core.SK_Infected_C07_Maintenance_Core"));
             USkeletalMesh* ResponseMesh=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/ONE/Characters/SK_Response.SK_Response"));
             P.CustomPreSpawnInitalization=[InfectedMesh,ResponseMesh](AActor* Actor)
             {
@@ -44,6 +45,7 @@ namespace
             Zombie=World->SpawnActor<AONEZombie>(FVector(0,0,100),FRotator::ZeroRotator,P);
             Player=World->SpawnActor<AONEPlayer>(FVector(80,0,100),FRotator::ZeroRotator,P);
             Zombie->GetHealthComponent()->Restore(); Player->GetHealthComponent()->Restore();
+            Zombie->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
             for (AActor* Actor:{static_cast<AActor*>(Zombie),static_cast<AActor*>(Player)})
             {
                 Actor->SetActorTickEnabled(false);
@@ -123,9 +125,10 @@ bool FONE05AttackCancellationTest::RunTest(const FString&)
     }
     {
         FAttackWorld F; F.Zombie->TryStartAttack(F.Player,0);
-        TestEqual(TEXT("First swipe requires anatomical left"),F.Zombie->GetAttackClipKey(),FName(TEXT("C05_SwipeLeft")));
-        F.Zombie->ReceiveWeaponDamage(Packet(5001,EONEHitRegion::ArmLeft,1,50)); F.Advance(.55f);
-        TestFalse(TEXT("Required arm was severed"),F.Zombie->HasLeftArm());
+        const bool Left=F.Zombie->GetAttackClipKey()==FName(TEXT("SwipeLeft"));
+        TestTrue(TEXT("Requested swipe selected one eligible side"),Left || F.Zombie->GetAttackClipKey()==FName(TEXT("SwipeRight")));
+        F.Zombie->ReceiveWeaponDamage(Packet(5001,Left?EONEHitRegion::ArmLeft:EONEHitRegion::ArmRight,1,50)); F.Advance(.55f);
+        TestFalse(TEXT("Selected required arm was severed"),Left?F.Zombie->HasLeftArm():F.Zombie->HasRightArm());
         TestEqual(TEXT("Missing arm cancels scheduled damage"),F.Zombie->GetAttackDamageDispatchCount(),0);
         TestTrue(TEXT("Minor hit does not replace attack state"),F.Zombie->GetCombatState()==EONEZombieState::Attack);
     }
@@ -165,7 +168,7 @@ bool FONE05AttackBudgetTest::RunTest(const FString&)
         for (int32 I=0;I<10000;++I) Distance+=ONE05AttackMotion::StepSpeed(Family,(I+.5f)*P.StepEnd/10000.f)*P.StepEnd/10000.f;
         TestTrue(TEXT("Integrated step stays within authored budget"),FMath::IsNearlyEqual(Distance,P.StepDistance,.003f));
         TestTrue(TEXT("Step completes before damaging contact"),P.StepEnd<P.Contact);
-        TestEqual(TEXT("No movement during recovery"),ONE05AttackMotion::StepSpeed(Family,P.Contact),0.f);
+        TestEqual(TEXT("Legacy committed step completes by contact"),ONE05AttackMotion::StepSpeed(Family,P.Contact),0.f);
     }
     TestFalse(TEXT("Two-hand contact requires both arms"),ONE05AttackMotion::ArmsAvailable(3,true,false));
     TestTrue(TEXT("Left swipe remains valid with right absent"),ONE05AttackMotion::ArmsAvailable(1,true,false));

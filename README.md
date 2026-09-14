@@ -1,5 +1,10 @@
 # Project ONE — Candidate06
 
+The `codex/candidate07` branch is an in-progress infected/audio overhaul.
+Its first Maintenance character is integrated in the game; see
+[Candidate07 checkpoint status](Docs/Passes/Candidate07.md). The release and
+launch instructions below remain the verified Candidate06 baseline.
+
 An original top-down facility survival prototype in Unreal Engine 5.7.2.
 Candidate06 adds target-independent aiming, consistent spread and body
 penetration, headshot rewards, health recovery, three pickups, and revised

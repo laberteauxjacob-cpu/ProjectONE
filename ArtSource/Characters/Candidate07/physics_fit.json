@@ -1,0 +1,193 @@
+{
+  "candidate": "07",
+  "variant": "Maintenance",
+  "status": "AUTHORED_SURFACE_FIT_MEASURED_RUNTIME_PENDING",
+  "scope": "Actual exported craniofacial geometry and bind-space capsule measurements. No imported PA readback, runtime contact/settling certification or final art approval.",
+  "geometry_author": "Scripts/create_candidate07_infected.py",
+  "physics_author": "Source/ProjectONE/ONE07PhysicsAssets.cpp",
+  "importer": "Scripts/import_candidate07_infected.py",
+  "meshes": {
+    "Core": {
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_Maintenance_Core.fbx",
+      "bytes": 614860,
+      "sha256": "b4baf2a499d209092bfba5a8feccc5e39257b4f9fe177ae2550645fc2cd93551",
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_Core"
+    },
+    "Head": {
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_Maintenance_Head.fbx",
+      "bytes": 1262492,
+      "sha256": "b47eb9b6be84be4331753b64bc5b58cf1dd66ba1ce2334f87d2cb1ef2a9e1cca",
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_Head"
+    },
+    "ArmLeft": {
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_Maintenance_ArmLeft.fbx",
+      "bytes": 264684,
+      "sha256": "0a81e61905f771dfff70aee5148957af10a1348317ef8bc1474307c7d5649012",
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_ArmLeft"
+    },
+    "ArmRight": {
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_Maintenance_ArmRight.fbx",
+      "bytes": 263276,
+      "sha256": "54c37a6604d08f3eca9f6ae1c4691b6a142f7aa8163933f6870ac64e46be5f89",
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_ArmRight"
+    },
+    "LegLeft": {
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_Maintenance_LegLeft.fbx",
+      "bytes": 177964,
+      "sha256": "beea3876628e3fdf1defd436f2dc4dd7b9620e2d621315cd7ff32b4d74465fc2",
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_LegLeft"
+    }
+  },
+  "coordinates": "FBX geometry uses authored component centimetres. UE accepted import reflects Y. Capsules centered at Y=0 have identical distances under that reflection. These are reference/bind measurements, not a posed sample.",
+  "head_bind": {
+    "authored_fbx_cluster_transform_link": [
+      -1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      157.0,
+      1.0
+    ],
+    "reference_component_origin_cm": [
+      0.0,
+      0.0,
+      157.0
+    ],
+    "all_head_vertices_rigid_weight_one": true,
+    "source_y_to_unreal_y": -1,
+    "old_query_reference_center_cm": [
+      0,
+      0,
+      166
+    ],
+    "old_PA_reference_center_cm": [
+      0,
+      0,
+      167.5
+    ]
+  },
+  "loft_reconstruction": {
+    "vertices_compared": 7008,
+    "maximum_difference_cm": 1.1968886952466147e-05,
+    "source_rows": 73,
+    "source_sides": 96,
+    "uncompressed_z_cm": [
+      157.8,
+      181
+    ],
+    "final_above_171_z_scale": 0.76
+  },
+  "craniofacial_loft": {
+    "used_vertices": 6927,
+    "unused_opening_vertices_excluded": 81,
+    "bounds": {
+      "minimum_cm": [
+        -8.699999809265137,
+        -7.696296215057373,
+        157.8000030517578
+      ],
+      "maximum_cm": [
+        8.687614440917969,
+        7.696296215057373,
+        178.60000610351562
+      ]
+    },
+    "selection": "Source-index 0..7007 after exact equation/boundary verification, restricted to vertices used by actual FBX faces; excludes hair, brows, ears, eyes, lip additions and all wound/cut interior additions."
+  },
+  "skin_surface": {
+    "used_vertices": 8031,
+    "bounds": {
+      "minimum_cm": [
+        -8.699999809265137,
+        -8.149992942810059,
+        157.8000030517578
+      ],
+      "maximum_cm": [
+        8.687614440917969,
+        8.149992942810059,
+        178.60000610351562
+      ]
+    },
+    "selection": "Actual FBX polygons bound to M_C07_InfectedSkin; includes ears, eyelid/lip skin and wound skin border, excludes hair/brows, clouded eyes, teeth and flesh interiors."
+  },
+  "head_query": {
+    "label": "Conservative containing query option",
+    "component_center_cm": [
+      -0.2,
+      0,
+      168.7
+    ],
+    "radius_cm": 9.0,
+    "half_height_cm": 12.3,
+    "cylinder_length_cm": 6.6,
+    "base_craniofacial_loft": {
+      "vertices": 6927,
+      "outside_vertices_tolerance_0_0001_cm": 0,
+      "maximum_signed_distance_cm": -0.08697976258257434,
+      "worst_vertex_source_cm": [
+        -8.699999809265137,
+        8.965321762633024e-16,
+        174.68177795410156
+      ],
+      "all_surface_vertices_contained": true
+    },
+    "all_skin_material_vertices": {
+      "vertices": 8031,
+      "outside_vertices_tolerance_0_0001_cm": 0,
+      "maximum_signed_distance_cm": -0.08697976258257434,
+      "worst_vertex_source_cm": [
+        -8.699999809265137,
+        8.965321762633024e-16,
+        174.68177795410156
+      ],
+      "all_surface_vertices_contained": true
+    }
+  },
+  "head_physics": {
+    "label": "Interior PA comparison only",
+    "component_center_cm": [
+      -0.2,
+      0,
+      168.7
+    ],
+    "radius_cm": 8.5,
+    "half_height_cm": 11.8,
+    "cylinder_length_cm": 6.6,
+    "base_craniofacial_loft": {
+      "vertices": 6927,
+      "outside_vertices_tolerance_0_0001_cm": 663,
+      "maximum_signed_distance_cm": 0.41302023741742566,
+      "worst_vertex_source_cm": [
+        -8.699999809265137,
+        8.965321762633024e-16,
+        174.68177795410156
+      ],
+      "all_surface_vertices_contained": false
+    },
+    "all_skin_material_vertices": {
+      "vertices": 8031,
+      "outside_vertices_tolerance_0_0001_cm": 663,
+      "maximum_signed_distance_cm": 0.41302023741742566,
+      "worst_vertex_source_cm": [
+        -8.699999809265137,
+        8.965321762633024e-16,
+        174.68177795410156
+      ],
+      "all_surface_vertices_contained": false
+    }
+  },
+  "inherited_non_head_scope": "Unchanged 21-bone bind, modular cut planes and limb ownership allow C07 copies to retain C03 masses, joint anchors, constraints and simple interior collision bodies. Those bodies approximate underlying anatomy; added cloth folds, boot soles, fingers and shoulder volumes can extend beyond them. This is compatibility rationale, not full visual-surface containment or settling certification.",
+  "historical_physics_author": "Source/ProjectONE/ONE03PhysicsAssets.cpp",
+  "cut_contract": "Arm cuts 4.8 cm along the upper arms; left thigh at 0.38 of thigh length; head seam Z 157.8 cm. Preserve anatomical _r = LEFT and _l = RIGHT. C07-only physics copies retain masses, constraints, collision tables and non-head bodies; never resave historical assets.",
+  "fit_interpretation": "The query conservatively contains every measured skull and skin-face vertex. The smaller simulation capsule intentionally allows at most 0.413021 cm skin overhang in bind pose; this is an interior approximation, not a containment pass."
+}

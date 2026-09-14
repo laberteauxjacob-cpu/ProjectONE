@@ -6,6 +6,7 @@
 #include "ONEPlayerController.h"
 #include "ONEHUD.h"
 #include "ONEAmbientAudioComponent.h"
+#include "ONE05Audio.h"
 #include "ONEZombieAudioComponent.h"
 #include "ONEWeaponComponent.h"
 #include "ONEProgressionMachine.h"
@@ -33,6 +34,10 @@
 #include "ONE06CombatCheck.h"
 #include "ONE06PortabilityCheck.h"
 #include "ONE06GroupingCheck.h"
+#include "ONE07PhysicalityCheck.h"
+#include "ONE07ProfileCheck.h"
+#include "ONE07PortabilityCheck.h"
+#include "ONEInfectedVariant.h"
 #include "Misc/CommandLine.h"
 #include "Kismet/GameplayStatics.h"
 #include "NavigationSystem.h"
@@ -72,7 +77,10 @@ void AONEGameMode::BeginPlay()
     const bool bCandidate04=FString(FCommandLine::Get()).Contains(TEXT("ONE04"));
     const bool bCandidate05=FString(FCommandLine::Get()).Contains(TEXT("ONE05"));
     const bool bCandidate06=FString(FCommandLine::Get()).Contains(TEXT("ONE06"));
-    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck || bCandidate04 || bCandidate05 || bCandidate06;
+    const bool bCandidate07=FParse::Param(FCommandLine::Get(),TEXT("ONE07PhysicalityCheck"));
+    const bool bCandidate07Profile=FParse::Param(FCommandLine::Get(),TEXT("ONE07Profile"));
+    const bool bCandidate07Portability=FParse::Param(FCommandLine::Get(),TEXT("ONE07PortabilityCheck"));
+    bSandbox=UGameplayStatics::HasOption(OptionsString,TEXT("ONESandbox")) || FParse::Param(FCommandLine::Get(),TEXT("ONECombatCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONECompare")) || bMovementCheck || bWeaponCheck || bPresentationCheck || bCaseCheck || bDamageCheck || bPhysicalityCheck || bCandidate04 || bCandidate05 || bCandidate06 || bCandidate07 || bCandidate07Profile || bCandidate07Portability;
     if (bSandbox) { bIntermission=false; Countdown=0; }
     // Authored material categories drive concrete versus metal impact audio.
     for (TActorIterator<AStaticMeshActor> It(GetWorld());It;++It)
@@ -80,7 +88,10 @@ void AONEGameMode::BeginPlay()
         {
             const FString Name=Mesh->GetName();
             if (Name.Contains(TEXT("Rack")) || Name.Contains(TEXT("Door")) || Name.Contains(TEXT("Vessel")) || Name.Contains(TEXT("Bench")) || Name.Contains(TEXT("Console")) || Name.Contains(TEXT("Hatch")) || Name.Contains(TEXT("Barrier")))
+            {
                 It->Tags.AddUnique(TEXT("Metal"));
+                It->Tags.AddUnique(TEXT("ONE_AudioMetal"));
+            }
         }
     for (TActorIterator<ATargetPoint> It(GetWorld()); It; ++It)
         if (It->ActorHasTag("ONE_Spawn")) SpawnLocations.Add(It->GetActorLocation());
@@ -123,8 +134,11 @@ void AONEGameMode::BeginPlay()
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE06CombatCheck"))) GetWorld()->SpawnActor<AONE06CombatCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE06PortabilityCheck"))) GetWorld()->SpawnActor<AONE06PortabilityCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE06GroupingCheck"))) GetWorld()->SpawnActor<AONE06GroupingCheck>();
+    if (bCandidate07 || FParse::Param(FCommandLine::Get(),TEXT("ONE07Encounter"))) GetWorld()->SpawnActor<AONE07PhysicalityCheck>();
+    if (bCandidate07Profile) GetWorld()->SpawnActor<AONE07ProfileCheck>();
+    if (bCandidate07Portability) GetWorld()->SpawnActor<AONE07PortabilityCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE05MotionCheck")) || FParse::Param(FCommandLine::Get(),TEXT("ONE05MotionCapture"))) GetWorld()->SpawnActor<AONE05MotionCheck>();
-    if (FParse::Param(FCommandLine::Get(),TEXT("ONE05PresentationCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE05Profile")) ||
+    if (FParse::Param(FCommandLine::Get(),TEXT("ONE05PresentationCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE05Profile")) || bCandidate07Profile ||
         FString(FCommandLine::Get()).Contains(TEXT("ONE05ManualCapture="))) GetWorld()->SpawnActor<AONE05PresentationCheck>();
     if (FParse::Param(FCommandLine::Get(),TEXT("ONE04PresentationCapture")) || FParse::Param(FCommandLine::Get(),TEXT("ONE04Profile")) ||
         FString(FCommandLine::Get()).Contains(TEXT("ONE04ManualCapture="))) GetWorld()->SpawnActor<AONE04PresentationCheck>();
@@ -216,7 +230,7 @@ void AONEGameMode::NotifyZombieKilled(AONEZombie* Zombie, int32 /*LegacyReward*/
     if (bGameOver || !IsValid(Zombie) || !Zombie->IsDead() || Alive.Remove(Zombie)==0) return;
     ++Kills;
     CombatAwards.RegisteredDeath(FObjectKey(Zombie));
-    if (PowerUps) PowerUps->ConsiderRegisteredDeath(Zombie->GetActorLocation());
+    if (PowerUps) PowerUps->ConsiderRegisteredDeath(Zombie->GetPhysicalRewardLocation());
 }
 FONECombatDischargeContext AONEGameMode::BeginCombatDischarge()
 {
@@ -253,6 +267,7 @@ void AONEGameMode::PlayerDied()
 {
     if (bGameOver) return;
     bGameOver = true;
+    if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>()) Audio->StopContacts();
     InvalidateCombatRun();
     if (AmbientAudio) AmbientAudio->Shutdown();
     for (TActorIterator<AONEZombie> It(GetWorld());It;++It)
@@ -264,6 +279,7 @@ void AONEGameMode::PlayerDied()
 }
 void AONEGameMode::RestartScene()
 {
+    if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>()) Audio->StopContacts();
     InvalidateCombatRun();
     if (AmbientAudio) AmbientAudio->Shutdown();
     if (auto* PC=Cast<AONEPlayerController>(UGameplayStatics::GetPlayerController(this,0))) PC->GuardGameplayInput();
@@ -278,7 +294,7 @@ void AONEGameMode::ToggleSandbox()
     bSandbox=!bSandbox;
     RestartScene();
 }
-AONEZombie* AONEGameMode::SpawnSandboxEnemyAt(const FVector& Location)
+AONEZombie* AONEGameMode::SpawnSandboxEnemyAt(const FVector& Location,UONEInfectedVariant* AppearanceOverride)
 {
     const bool Diagnose=FParse::Param(FCommandLine::Get(),TEXT("ONE03SpawnDiagnostics"));
     if (!bSandbox || bGameOver || Alive.Num()>=MaximumActive) return nullptr;
@@ -312,6 +328,8 @@ AONEZombie* AONEGameMode::SpawnSandboxEnemyAt(const FVector& Location)
         FActorSpawnParameters Params;
         // Do not let collision adjustment move a verified floor point onto a prop.
         Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
+        if (AppearanceOverride) Params.CustomPreSpawnInitalization=[AppearanceOverride](AActor* Actor)
+        { CastChecked<AONEZombie>(Actor)->VariantOverride=AppearanceOverride; };
         if (AONEZombie* Zombie=GetWorld()->SpawnActor<AONEZombie>(ZombieClass,Point,FRotator(0,180,0),Params))
         { RegisterZombie(Zombie); if (Diagnose) UE_LOG(LogTemp,Display,TEXT("ONE03_SPAWN accepted=%s"),*Point.ToString()); return Zombie; }
         ++SpawnMiss;

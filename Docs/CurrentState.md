@@ -1,5 +1,11 @@
 # Current state — Candidate06
 
+Work in progress on `codex/candidate07`: the first new Maintenance infected
+has been built and inspected in actual gameplay. The other variants, final
+physicality/audio review and release gates remain pending. See the
+[Candidate07 checkpoint report](Passes/Candidate07.md). Candidate06 below is
+still the latest verified playable/public baseline.
+
 Candidate06 implements the requested combat, survival, rewards and machine
 changes on the accepted Project ONE foundation. Packaged gameplay source S3 is
 `c2c422012f4f219fb5e63ac24294a6ba8428f999`; final publication revision D is

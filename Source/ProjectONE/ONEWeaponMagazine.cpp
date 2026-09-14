@@ -1,4 +1,5 @@
 #include "ONEWeaponMagazine.h"
+#include "ONE05Audio.h"
 #include "Components/SceneComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
@@ -33,12 +34,26 @@ void AONEWeaponMagazine::StepFlight(float Dt)
     Velocity.Z+=GetWorld()->GetGravityZ()*Dt;
     const FVector From=GetActorLocation();
     FHitResult Hit; FCollisionQueryParams Query(SCENE_QUERY_STAT(ONEMagazineFlight),false,this);
+    Query.bReturnPhysicalMaterial=true;
     if (GetWorld()->SweepSingleByObjectType(Hit,From,From+Velocity*Dt,GetActorQuat(),FCollisionObjectQueryParams(ECC_WorldStatic),FCollisionShape::MakeBox(Extent),Query))
     {
         const FVector Normal=Hit.ImpactNormal.GetSafeNormal();
         SetActorLocation(Hit.Location+Normal*.08f);
         const float Into=FVector::DotProduct(Velocity,Normal);
-        if (Into<0.f) { ++Bounces; Velocity=(Velocity-Normal*Into)*.52f-Normal*Into*.23f; Spin*=.48f; }
+        if (Into<0.f)
+        {
+            const double Now=GetWorld()->GetTimeSeconds();
+            if (-Into>=65.f && ContactCueCount<3 && Now>=NextContactAudio)
+            {
+                if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>())
+                {
+                    const float Gain=FMath::Clamp(-Into/400.f,.18f,.65f)*(ContactCueCount==0?1.f:.35f);
+                    if (Audio->PlayFoley(ONE05Audio::IsMetalContact(Hit)?TEXT("MagazineMetal"):TEXT("MagazineConcrete"),3,Hit.ImpactPoint,Gain,.55f)) ++ContactCueCount;
+                }
+                NextContactAudio=Now+.16;
+            }
+            ++Bounces; Velocity=(Velocity-Normal*Into)*.52f-Normal*Into*.23f; Spin*=.48f;
+        }
         if (Normal.Z>.7f && (Velocity.SizeSquared()<FMath::Square(38.f) || Bounces>=8))
         {
             // The thin side rests against support, then re-sweep downward with

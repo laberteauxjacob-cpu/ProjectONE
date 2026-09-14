@@ -10,6 +10,7 @@ enum class EONEWeaponFamily : uint8;
 class ULightComponent;
 class UONEAmbientAudioComponent;
 class UONEPowerUpComponent;
+class UONEInfectedVariant;
 UCLASS()
 class PROJECTONE_API AONEGameMode : public AGameModeBase
 {
@@ -42,7 +43,7 @@ public:
     UFUNCTION(BlueprintCallable) void RestartScene();
     void ToggleSandbox();
     void SpawnSandboxEnemies(int32 Count);
-    AONEZombie* SpawnSandboxEnemyAt(const FVector& Location);
+    AONEZombie* SpawnSandboxEnemyAt(const FVector& Location,UONEInfectedVariant* AppearanceOverride=nullptr);
     void RefillSandboxAmmo();
     void ClearSandboxPresentation();
     void SetSandboxDimLighting(bool Dim);

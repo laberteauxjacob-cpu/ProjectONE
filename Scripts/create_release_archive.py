@@ -1,6 +1,6 @@
 """Archive a complete cooked Windows candidate without modifying runtime bytes.
 
-Candidate06 is the default; earlier candidates must be explicit and existing accepted
+Candidate07 is the default; earlier candidates must be explicit and existing accepted
 archives cannot be replaced. Python 3.10+ standard library. A neutral fresh build,
 source-revision verification, binary privacy review and runtime QA are upstream
 requirements: this tool does not perform or claim those checks.
@@ -66,15 +66,51 @@ def inventory(package, catalog):
     return files
 
 
+def candidate07_audio_notices(files):
+    """Carry attribution and unchanged source-license documents with recorded audio."""
+    base = ROOT/'ArtSource/Audio/Candidate07'
+    source_inventory = json.loads((base/'source_inventory.json').read_text(encoding='utf-8-sig'))
+    manifest = json.loads((base/'manifest.json').read_text(encoding='utf-8-sig'))
+    if source_inventory.get('candidate') != '07' or manifest.get('candidate') != '07' or manifest.get('status') != 'SOURCE_PCM_VERIFIED':
+        raise ValueError('Candidate07 recorded-audio source inventory or processed manifest is incomplete.')
+    if hashlib.sha256((base/'source_inventory.json').read_bytes()).hexdigest() != manifest['source_inventory_sha256']:
+        raise ValueError('Candidate07 source-license inventory differs from its processed audio manifest.')
+    if hashlib.sha256((base/'recipes.json').read_bytes()).hexdigest() != manifest['recipes_sha256']:
+        raise ValueError('Candidate07 audio edit recipes differ from their verified manifest.')
+    prefix = 'ThirdPartyNotices/ProjectONE-Candidate07Audio/'
+    required = {'CREDITS.md', 'source_inventory.json', 'recipes.json', 'manifest.json'}
+    notice_rows = source_inventory['notices']
+    if not notice_rows or len({r['file'].casefold() for r in notice_rows}) != len(notice_rows):
+        raise ValueError('Missing or duplicate Candidate07 audio source notices.')
+    if not {'Notices/CC0-1.0.txt','Notices/CC-BY-3.0.txt','Notices/CC-BY-4.0.txt'} <= {r['file'] for r in notice_rows}:
+        raise ValueError('All three recorded-source Creative Commons legal texts are required.')
+    for row in notice_rows:
+        path = (base/row['file']).resolve()
+        if not path.is_relative_to((base/'Notices').resolve()) or not path.is_file():
+            raise ValueError('Source notice is missing or outside its notice directory.')
+        if hashlib.sha256(path.read_bytes()).hexdigest() != row['sha256']:
+            raise ValueError('Source notice bytes differ from the reviewed original: '+row['file'])
+        required.add(row['file'])
+    additions = {prefix+relative:(base/relative).resolve() for relative in sorted(required)}
+    additions['Candidate07AudioNotice.md'] = ROOT/'Docs/Candidate07AudioDistribution.md'
+    for name,path in additions.items():
+        if not path.is_file() or name.casefold() in {key.casefold() for key in files}:
+            raise ValueError('Missing or colliding Candidate07 audio credit entry: '+name)
+        if not path.resolve().is_relative_to(ROOT.resolve()):
+            raise ValueError('Audio credits must stay in the selected source repository.')
+        files[name] = path
+    return sorted(additions)
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--candidate', choices=('Candidate02', 'Candidate03', 'Candidate04', 'Candidate05', 'Candidate06'), default='Candidate06')
+    p.add_argument('--candidate', choices=('Candidate02', 'Candidate03', 'Candidate04', 'Candidate05', 'Candidate06', 'Candidate07'), default='Candidate07')
     p.add_argument('--package', type=pathlib.Path, help='Default: Packaged/<candidate>/Windows')
     p.add_argument('--source-revision', required=True, help='Verified full commit of the actual fresh build')
     p.add_argument('--engine-root', type=pathlib.Path, required=True)
     p.add_argument('--output', type=pathlib.Path, help='Default: Releases/ProjectONE-<candidate>-Windows.zip')
     p.add_argument('--report-ref', help='Public documentation ref; default: lowercase candidate tag')
-    p.add_argument('--replace', action='store_true', help='Explicitly replace Candidate06 output and sidecars only')
+    p.add_argument('--replace', action='store_true', help='Explicitly replace Candidate07 output and sidecars only; prior candidates are preserved')
     p.add_argument('--dry-run', action='store_true', help='Validate inventory and report a plan without writing any files')
     a = p.parse_args()
     if not re.fullmatch(r'[0-9a-f]{40}', a.source_revision):
@@ -85,7 +121,7 @@ def main():
     package = (a.package or ROOT/'Packaged'/a.candidate/'Windows').resolve()
     output = (a.output or ROOT/'Releases'/f'ProjectONE-{a.candidate}-Windows.zip').resolve()
     catalog = (a.engine_root/'Engine/Source/ThirdParty/Licenses').resolve()
-    other_candidates = {'candidate01', 'candidate02', 'candidate03', 'candidate04', 'candidate05', 'candidate06'} - {a.candidate.lower()}
+    other_candidates = {'candidate01', 'candidate02', 'candidate03', 'candidate04', 'candidate05', 'candidate06', 'candidate07'} - {a.candidate.lower()}
     if any(part.lower() in other_candidates for part in package.parts):
         p.error('Package directory names a different candidate; select it explicitly.')
     if output.name != f'ProjectONE-{a.candidate}-Windows.zip':
@@ -96,12 +132,13 @@ def main():
         p.error('Output must be outside the input package and notice catalog.')
     outputs = (output, output.with_suffix('.sha256'), output.with_suffix('.json'))
     if not a.dry_run and any(path.exists() for path in outputs):
-        if a.candidate != 'Candidate06':
+        if a.candidate != 'Candidate07':
             p.error('Existing earlier release artifacts are preserved; choose a new output directory.')
         if not a.replace:
-            p.error('Candidate06 output exists; use --replace only after checking the intended destination.')
+            p.error('Candidate07 output exists; use a new directory to preserve it, or --replace only for an explicitly authorized replacement.')
     try:
         files = inventory(package, catalog)
+        audio_notices = candidate07_audio_notices(files) if a.candidate == 'Candidate07' else []
     except ValueError as error:
         p.error(str(error))
     if a.dry_run:
@@ -111,12 +148,16 @@ def main():
                           'retained_notice_files': sum(name.startswith('ThirdPartyNotices/') for name in files),
                           'excluded_unused_component_notices': sorted(UNUSED_NOTICES),
                           'existing_output_files': sum(path.exists() for path in outputs),
+                          'candidate_audio_notice_entries': audio_notices,
+                          'release_verified': False,
                           'dry_run': True, 'files_written': 0}, indent=2))
         return
     manifest = {'candidate':a.candidate, 'source_revision':a.source_revision,
                 'engine':'5.7.2', 'platform':'Windows x64', 'configuration':'Development',
                 'runtime_binary_modified_after_build':False,
                 'excluded_unused_component_notices':sorted(UNUSED_NOTICES), 'files':[]}
+    if a.candidate == 'Candidate07':
+        manifest['recorded_audio_notice_entries'] = audio_notices
     if a.candidate == 'Candidate02':
         controls = '''WASD move; mouse aim; left mouse fire; R reload; Shift run.
 1 carbine; 2 pump shotgun; Tab/mouse wheel cycle. Escape pause.
@@ -192,6 +233,7 @@ F7 bright/dim lighting; T grants labelled test points.
 Z/X/C force next box pistol/M4A1/870; V restores random. Prices stay normal.
 The sandbox tools tray can force each power-up drop for testing.'''
         limitations = 'Technical checks and recorded evidence are separate from player approval. See the pass report for the exact scope of gameplay, motion, audio, portability and native-input verification.'
+    audio_notice_line = '\nCandidate07 recorded-audio credits and licenses: Candidate07AudioNotice.md and\nThirdPartyNotices/ProjectONE-Candidate07Audio/CREDITS.md.\n' if a.candidate == 'Candidate07' else ''
     launch = f'''Project ONE — {a.candidate}
 
 Extract this entire folder and run ProjectONE.exe. Keep all subfolders together.
@@ -201,13 +243,13 @@ Engine/Extras/Redist/en-us/vc_redist.x64.exe, then launch the game.
 {controls}
 
 {limitations}
-See DistributionNotice.md and ThirdPartyNotices for runtime terms and credits.
+See DistributionNotice.md and ThirdPartyNotices for runtime terms and credits.{audio_notice_line}
 Build source: {a.source_revision}
 Full report: https://github.com/laberteauxjacob-cpu/ProjectONE/blob/{report_ref}/Docs/Passes/{a.candidate}.md
 '''
     output.parent.mkdir(parents=True, exist_ok=True)
     prefix = f'ProjectONE-{a.candidate}-Windows/'
-    # Build and CRC-check a new temporary archive before replacing an authorized C06 output.
+    # Build and CRC-check a new temporary archive before an authorized C07 replacement.
     with tempfile.NamedTemporaryFile(dir=output.parent, suffix='.partial', delete=False) as temporary:
         pending = pathlib.Path(temporary.name)
     try:
@@ -230,6 +272,10 @@ Full report: https://github.com/laberteauxjacob-cpu/ProjectONE/blob/{report_ref}
     summary = {'candidate':a.candidate, 'archive':output.name, 'bytes':output.stat().st_size, 'sha256':checksum,
                'source_revision':a.source_revision, 'files':len(files)+2,
                'archive_crc_verified':True, 'runtime_binary_modified_after_build':False}
+    if a.candidate == 'Candidate07':
+        summary.update(status='ARCHIVE_CREATED_PENDING_INDEPENDENT_VERIFICATION', release_verified=False,
+                       recorded_audio_notice_entries=audio_notices,
+                       verification_scope='Inventory and ZIP CRC only. Source/runtime audit, actual extracted identities and public downloads must be verified separately.')
     output.with_suffix('.json').write_text(json.dumps(summary, indent=2)+'\n', encoding='utf-8')
     print(json.dumps(summary, indent=2))
 

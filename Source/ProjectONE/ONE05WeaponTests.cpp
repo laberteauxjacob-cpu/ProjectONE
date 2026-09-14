@@ -1,6 +1,7 @@
 #include "Misc/AutomationTest.h"
 #include "ONEWeaponTiming.h"
 #include "ONEWeaponCatalog.h"
+#include "Sound/SoundWave.h"
 
 #if WITH_DEV_AUTOMATION_TESTS
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FONE05BurstPhaseTest,"ProjectONE.Weapons.Candidate05.AutomaticPhaseAndHitch",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
@@ -43,7 +44,21 @@ bool FONE05RateCatalogTest::RunTest(const FString& Parameters)
         if (D.bUpgraded)
         {
             TestEqual(TEXT("Each upgrade uses six independent new voices"),D.ShotSounds.Num(),6);
-            for (const auto& S:D.ShotSounds) TestTrue(TEXT("Upgraded bank is explicitly Candidate05 source"),S.ToSoftObjectPath().ToString().Contains(TEXT("/Audio/Candidate05/")));
+            const TCHAR* Prefix=D.Family==EONEWeaponFamily::Carbine?TEXT("Overcurrent"):
+                D.Family==EONEWeaponFamily::Shotgun?TEXT("Gravebreaker"):TEXT("LastWord");
+            TSet<USoundWave*> Voices;
+            for (int32 Index=0;Index<D.ShotSounds.Num();++Index)
+            {
+                const auto& Sound=D.ShotSounds[Index];
+                const FString Name=FString::Printf(TEXT("S_C07_%sShot_%02d"),Prefix,Index+1);
+                const FString Expected=FString::Printf(TEXT("/Game/ONE/Audio/Candidate07/%s.%s"),*Name,*Name);
+                TestEqual(TEXT("Upgrade resolves its exact Candidate07 recorded-report and retained-energy bank entry"),Sound.ToSoftObjectPath().ToString(),Expected);
+                auto* Wave=Cast<USoundWave>(Sound.LoadSynchronous());
+                TestTrue(TEXT("Recorded bank entry loads a finite non-looping mono wave with positive duration"),
+                    Wave && Wave->NumChannels==1 && !Wave->bLooping && FMath::IsFinite(Wave->GetDuration()) && Wave->GetDuration()>0.f);
+                if (Wave) Voices.Add(Wave);
+            }
+            TestEqual(TEXT("All six upgrade entries resolve to independent wave assets"),Voices.Num(),6);
             TestTrue(TEXT("Definition gain stays finite and bounded independently of bus gain"),FMath::IsFinite(D.ShotVolume) && D.ShotVolume>0 && D.ShotVolume<=2);
         }
     }

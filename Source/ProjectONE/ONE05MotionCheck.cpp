@@ -5,6 +5,7 @@
 #include "ONEZombie.h"
 #include "ONEZombieAudioComponent.h"
 #include "ONEAnimInstance.h"
+#include "ONEInfectedAnimInstance.h"
 #include "ONEHealthComponent.h"
 #include "ONEWeaponComponent.h"
 #include "AIController.h"
@@ -51,7 +52,7 @@ void AONE05MotionCheck::BeginPlay()
     Report=TEXT("Candidate05 scripted production-input motion and explicit attack fixtures\n")
         TEXT("Normal gameplay camera and real PlayerController WASD/Shift/mouse events. This is not native human input or ordinary uninterrupted survival.\n")
         TEXT("Each stride/turn fixture resets player transform and stops previous movement at its boundary. Three isolated attack fixtures each reset player health once, spawn a production infected, select a family using the common TryStartAttack entry, and suspend that actor after recovery to prevent a second attack.\n")
-        TEXT("The final body-hit fixture restores health/ammo once and spawns a pursuing infected; pistol shots then use actual production input, traces, damage outcomes, hit/death audio and ragdoll. After the kill, production WASD backs away before a low corpse trace so the fixture respects the normal 120cm forward-convergence/35degree pitch limit. This does not claim that point-blank low corpses are precisely aimable. No per-tick health restoration or camera override.\n")
+        TEXT("The final body-hit fixture restores health/ammo once and spawns a pursuing infected; pistol shots then use actual production input, traces, damage outcomes, hit/death audio and ragdoll. After the kill, production WASD backs away, Left Ctrl selects the ordinary fixed low plane, and LMB fires using the logical cursor projected onto the evaluated torso. The normal 120 cm forward convergence and 35 degree pitch limit remain in force. The fixed 65 cm low plane may still miss a body lying below it; misses remain failures and are recorded with the actual plane, query bounds and shot ray. Phase 21 forbids aim-override fallback. No per-tick health restoration or camera override.\n")
         TEXT("Numeric checks do not establish naturalism, foot planting or audible timbre. Review chronological recorded frames and actual audio separately.\n");
     FramesCsv=TEXT("file,audio_seconds,world_seconds,phase,weapon,ammo,reserve,operation,frame\n");
     PosesCsv=TEXT("seconds,phase,frame,speed,actor_x,actor_y,actor_z,actor_yaw,body_yaw,pelvis_x,pelvis_y,pelvis_z,left_x,left_y,left_z,right_x,right_y,right_z,hand_l_x,hand_l_y,hand_l_z,hand_r_x,hand_r_y,hand_r_z,health,player_reaction_age,ammo,operation,shots,outcome,enemy_x,enemy_y,enemy_z,enemy_health,enemy_state,enemy_age,enemy_family,contact_attempts,damage_dispatches,minor_age,minor_strength,attack_audio,hit_audio,death_audio,enemy_pelvis_z,enemy_left_z,enemy_right_z,enemy_body_x,enemy_body_y,enemy_body_z,last_shot_muzzle_x,last_shot_muzzle_y,last_shot_muzzle_z,last_shot_dir_x,last_shot_dir_y,last_shot_dir_z,turn_time,turning,pivot_l_weight,pivot_r_weight\n");
@@ -83,13 +84,18 @@ void AONE05MotionCheck::AimAt(const FVector& Point)
 {
     FVector2D Screen; int32 Width=0,Height=0;
     Controller->GetViewportSize(Width,Height);
-    if (Width>0 && Height>0 && Controller->ProjectWorldLocationToScreen(Point,Screen))
+    if (Width>0 && Height>0 && Player->ProjectLogicalWorld(Point,Screen))
     {
         Player->SetAimOverride(false,FVector::ZeroVector);
         Controller->SetMouseLocation(FMath::Clamp(FMath::RoundToInt(Screen.X),1,Width-2),FMath::Clamp(FMath::RoundToInt(Screen.Y),1,Height-2));
     }
     else
     {
+        if (Phase==21)
+        {
+            Check(false,TEXT("Real body/corpse shot fixture requires a logical projected cursor; direct aim override is forbidden"));
+            Finish(false); return;
+        }
         // Headless numerical checks cannot dispatch a projected desktop cursor.
         // The report explicitly counts every fallback; rendered captures forbid it.
         ++CursorFallbacks; Player->SetAimOverride(true,Point);
@@ -139,9 +145,9 @@ void AONE05MotionCheck::EnterPhase()
         AttackAudioStart=Enemy?Enemy->ZombieAudio->GetAttackCueCount():0;
         if (Phase==18 && Enemy)
         {
-            auto* Anim=Cast<UONEAnimInstance>(Enemy->GetMesh()->GetAnimInstance());
+            auto* Anim=Cast<UONEInfectedAnimInstance>(Enemy->GetMesh()->GetAnimInstance());
             bool Loaded=Anim!=nullptr;
-            for (const TCHAR* Name:{TEXT("C05_SwipeLeft"),TEXT("C05_SwipeRight"),TEXT("C05_RakeLeft"),TEXT("C05_RakeRight"),TEXT("C05_TwoHand")})
+            for (const TCHAR* Name:{TEXT("SwipeLeft"),TEXT("SwipeRight"),TEXT("RakeLeft"),TEXT("RakeRight"),TEXT("TwoHand")})
                 Loaded=Loaded && Anim->FindClip(Name)!=nullptr;
             Check(Loaded,TEXT("All five revised attacks loaded on the production infected graph"));
         }
@@ -186,7 +192,7 @@ void AONE05MotionCheck::CompletePhase()
     {
         Check(LiveOutcomes>=1 && MinorSamples>=1,TEXT("Real nonfatal torso-aimed shot reported live feedback with minor pose reaction while no full stagger; exact hit region not asserted"));
         Check(KillOutcomes==1 && Enemy && Enemy->IsDead(),TEXT("Real trace transitioned one living target to one new kill"));
-        Check(CorpseOutcomes>=1 && Enemy && Enemy->GetCorpseTransactionCount()>=1,TEXT("Later real corpse trace stayed cosmetic and did not repeat kill feedback"));
+        Check(CorpseOutcomes>=1 && Enemy && Enemy->GetCorpseTransactionCount()>=1,TEXT("Later real Left Ctrl plus LMB corpse trace stayed cosmetic and did not repeat kill feedback; a fixed low-plane miss remains a failure"));
         Check(Enemy && Enemy->ZombieAudio->GetDeathCueCount()==1 && !Enemy->ZombieAudio->IsLivingAudioEnabled(),TEXT("Death issued one cue and stopped living audio scheduling"));
         Check(!Player->IsDead(),TEXT("Target fixture completed while player remained alive"));
     }
@@ -251,12 +257,17 @@ void AONE05MotionCheck::RunPhase(float Dt)
     {
         if (!Enemy) return;
         auto* W=Player->GetWeaponComponent();
+        // Weapon/pose ticks have already run. Snapshot their current input
+        // state before this post-update fixture requests the next key changes.
+        const bool ShotCtrl=Controller->IsInputKeyDown(EKeys::LeftControl),ShotLmb=Controller->IsInputKeyDown(EKeys::LeftMouseButton);
+        const float ShotHeight=Player->GetAimHeightCm(); const FString ShotHeightLabel=Player->GetAimHeightLabel();
         const FVector AimTarget=Enemy->BodyRegion->GetComponentLocation();
         AimAt(AimTarget);
+        if (bFinishing || bFinished) return;
         if (Enemy->IsDead() && DeathAt<0)
         {
             DeathAt=Elapsed;Key(EKeys::LeftMouseButton,false);ReleaseFireAt=0;
-            Segment=TEXT("REAL CORPSE / WASD RETREAT TO A FEASIBLE LOW TARGET CONVERGENCE DISTANCE");
+            Segment=TEXT("REAL CORPSE / WASD RETREAT / FIXED LOW PLANE WITH LEFT CTRL");
             UE_LOG(LogTemp,Display,TEXT("ONE05_MOTION_CORPSE_RETREAT seconds=%.6f initial_distance=%.3f"),Elapsed,FVector::Dist2D(Player->GetActorLocation(),AimTarget));
         }
         if (Enemy->IsDead() && !bCorpseRetreatComplete)
@@ -271,16 +282,35 @@ void AONE05MotionCheck::RunPhase(float Dt)
             else
             {
                 ReleaseKeys();bCorpseRetreatComplete=true;NextFire=Elapsed+.25f;
-                Segment=TEXT("REAL CORPSE / RELEASE MOVEMENT THEN FIRE AT EVALUATED TORSO QUERY");
+                Segment=TEXT("REAL CORPSE / LEFT CTRL THEN LMB / CURSOR AT EVALUATED TORSO");
                 UE_LOG(LogTemp,Display,TEXT("ONE05_MOTION_CORPSE_RETREAT_COMPLETE seconds=%.6f distance=%.3f"),Elapsed,Distance);
             }
         }
+        // Retain this modifier through the normal input path. Reapply after the
+        // retreat's ReleaseKeys, then allow the existing .25 second settling
+        // interval before LMB so the production player has processed low aim.
+        if (Enemy->IsDead()) Key(EKeys::LeftControl,true);
         if (ReleaseFireAt>0 && Elapsed>=ReleaseFireAt) { Key(EKeys::LeftMouseButton,false);ReleaseFireAt=0; }
         if (Elapsed>=NextFire && CorpseOutcomes==0 && !W->IsBusy() && (!Enemy->IsDead() || bCorpseRetreatComplete))
-        { Key(EKeys::LeftMouseButton,true);ReleaseFireAt=Elapsed+.07f;NextFire=Elapsed+.40f; }
+        {
+            if (Enemy->IsDead())
+                Check(Controller->IsInputKeyDown(EKeys::LeftControl) && Player->GetAimHeightLabel()==TEXT("Low") &&
+                    FMath::IsNearlyEqual(Player->GetAimHeightCm(),Player->LowAimHeight),TEXT("Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"));
+            Key(EKeys::LeftMouseButton,true);ReleaseFireAt=Elapsed+.07f;NextFire=Elapsed+.40f;
+        }
         if (W->GetTotalShotsFired()!=ObservedShots)
         {
             ObservedShots=W->GetTotalShotsFired();
+            const FVector Point=Player->GetAimPoint(),Muzzle=W->GetLastShotMuzzle(),Direction=W->GetLastShotDirection();
+            const double Floor=Player->GetActorLocation().Z-Player->GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
+            const FBox Bounds=Enemy->BodyRegion->Bounds.GetBox();
+            const FString Diagnostic=FString::Printf(TEXT("ONE07_MOTION_SHOT seconds=%.6f frame=%llu shot=%d outcome=%d ctrl=%d lmb=%d height=%s plane_z=%.3f body_center_z=%.3f body_min_z=%.3f body_max_z=%.3f body_below_plane=%d aim=(%.3f %.3f %.3f) muzzle=(%.3f %.3f %.3f) direction=(%.6f %.6f %.6f) corpse_transactions=%d"),
+                Elapsed,static_cast<unsigned long long>(GFrameCounter),ObservedShots,int32(W->GetLastShotOutcome()),
+                ShotCtrl,ShotLmb,*ShotHeightLabel,
+                Floor+ShotHeight,AimTarget.Z,Bounds.Min.Z,Bounds.Max.Z,Bounds.Max.Z<Floor+Player->LowAimHeight,
+                Point.X,Point.Y,Point.Z,Muzzle.X,Muzzle.Y,Muzzle.Z,Direction.X,Direction.Y,Direction.Z,Enemy->GetCorpseTransactionCount());
+            Report+=TEXT("DIAGNOSTIC | ")+Diagnostic+TEXT("\n");
+            UE_LOG(LogTemp,Display,TEXT("%s"),*Diagnostic);
             switch (W->GetLastShotOutcome())
             {
                 case EONEWeaponHitOutcome::LiveHit:++LiveOutcomes;break;

@@ -20,6 +20,7 @@
 #include "ONEAim.h"
 #include "ONEWeaponTiming.h"
 #include "ONE06Ballistics.h"
+#include "ONE07RegionalTrace.h"
 #include "ONE06ImpactSubsystem.h"
 #include "ONEGameMode.h"
 
@@ -27,8 +28,6 @@ namespace
 {
     uint64 NextDischargeId=0;
     uint64 NextMagazineReleaseId=0;
-    USoundBase* Choose(const TArray<TSoftObjectPtr<USoundBase>>& Sounds)
-    { return Sounds.IsEmpty() ? nullptr : Sounds[FMath::RandHelper(Sounds.Num())].Get(); }
     FName RegionalImpactBone(const AONEZombie* Zombie,EONEHitRegion Region,const FHitResult& Hit)
     {
         // Query-only region primitives do not supply a skeletal BoneName. Find
@@ -540,6 +539,7 @@ void UONEWeaponComponent::Fire(bool bContinuingBurst)
     auto* GM=GetWorld()->GetAuthGameMode<AONEGameMode>();
     const FONECombatDischargeContext AwardContext=GM ? GM->BeginCombatDischarge() : FONECombatDischargeContext();
     FCollisionQueryParams Params(SCENE_QUERY_STAT(ONEWeapon),false,P);
+    Params.bReturnPhysicalMaterial=true;
     FHitResult Obstruction; const FVector Shoulder=P->GetAimOrigin();
     // The physical weapon cannot reach through solid cover. Infected are tested
     // only on each projectile's immutable line, never on this separate body path.
@@ -577,7 +577,7 @@ void UONEWeaponComponent::Fire(bool bContinuingBurst)
         for (int32 Query=0;!bObstructed && Query<ONE06Ballistics::MaximumContactsPerProjectile;++Query)
         {
             FHitResult Hit; ++Path.SceneQueries;
-            const bool bHit=GetWorld()->LineTraceSingleByChannel(Hit,TraceStart,TraceEnd,ECC_Visibility,PelletParams);
+            const bool bHit=ONE07RegionalTrace::TraceWeaponSegment(GetWorld(),Hit,TraceStart,TraceEnd,PelletParams);
             LastEnd=bHit ? Hit.ImpactPoint : TraceEnd;
             if (!bHit) break;
             if (auto* Z=Cast<AONEZombie>(Hit.GetActor()))
@@ -633,8 +633,8 @@ void UONEWeaponComponent::Fire(bool bContinuingBurst)
             if (Outcome==EONEWeaponHitOutcome::NewKill) ++LastShotNewKills;
             else if (Outcome==EONEWeaponHitOutcome::LiveHit) ++LastShotLiveHits;
             else if (Outcome==EONEWeaponHitOutcome::CorpseHit) ++LastShotCorpseHits;
-            if (FleshVoices<2) if (auto* S=Choose(D.FleshSounds))
-            { UGameplayStatics::PlaySoundAtLocation(this,S,Packet.GetImpactPosition(),.72f*ONE05Audio::GetWeaponGain()); ++FleshVoices; }
+            if (FleshVoices<2) if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>())
+            { Audio->PlayFoley(TEXT("FleshImpact"),3,Packet.GetImpactPosition(),.72f*ONE05Audio::GetWeaponGain(),1.5f); ++FleshVoices; }
         }
         else ++LastShotRejected;
     }
@@ -648,7 +648,7 @@ void UONEWeaponComponent::Fire(bool bContinuingBurst)
     TraceInput(TEXT("DISCHARGE"));
     for (const auto& Hit:SurfaceHits)
     {
-        const bool Metal=(Hit.GetActor() && Hit.GetActor()->ActorHasTag(TEXT("Metal"))) || (Hit.GetComponent() && Hit.GetComponent()->ComponentHasTag(TEXT("Metal")));
-        if (auto* S=Choose(Metal ? D.MetalSounds : D.ConcreteSounds)) UGameplayStatics::PlaySoundAtLocation(this,S,Hit.ImpactPoint,.4f);
+        const bool Metal=ONE05Audio::IsMetalContact(Hit) || (Hit.GetActor() && Hit.GetActor()->ActorHasTag(TEXT("Metal"))) || (Hit.GetComponent() && Hit.GetComponent()->ComponentHasTag(TEXT("Metal")));
+        if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>()) Audio->PlayFoley(Metal?TEXT("MetalImpact"):TEXT("ConcreteImpact"),2,Hit.ImpactPoint,.4f*ONE05Audio::GetWeaponGain(),.7f);
     }
 }

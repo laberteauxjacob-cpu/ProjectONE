@@ -1,6 +1,9 @@
 #include "ONEZombieAudioComponent.h"
 #include "ONE05Audio.h"
+#include "ONEZombie.h"
 #include "Components/AudioComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Actor.h"
 #include "Engine/World.h"
 #include "Sound/SoundAttenuation.h"
@@ -8,7 +11,7 @@
 UONEZombieAudioComponent::UONEZombieAudioComponent()
 {
     PrimaryComponentTick.bCanEverTick=true;
-    PrimaryComponentTick.TickInterval=.15f;
+    PrimaryComponentTick.TickGroup=TG_PostPhysics;
 }
 UAudioComponent* UONEZombieAudioComponent::MakeVoice(const TCHAR* Name,bool Action)
 {
@@ -29,13 +32,29 @@ UAudioComponent* UONEZombieAudioComponent::MakeVoice(const TCHAR* Name,bool Acti
 }
 void UONEZombieAudioComponent::BeginPlay()
 {
-    Super::BeginPlay(); Random.Initialize(int32(GetOwner()->GetUniqueID())*7919+505);
+    Super::BeginPlay(); SeedPresentationRandom();
     BreathVoice=MakeVoice(TEXT("InfectedBreathVoice"),false); ActionVoice=MakeVoice(TEXT("InfectedActionVoice"),true);
-    NextBreath=GetWorld()->GetTimeSeconds()+Random.FRandRange(1.5f,5.5f);
+    if (auto* Zombie=Cast<AONEZombie>(GetOwner())) if (Zombie->GetMesh()) AddTickPrerequisiteComponent(Zombie->GetMesh());
+    UpdateVoiceLocation();
+    NextBreath=GetWorld()->GetTimeSeconds()+PresentationRandom.FRandRange(1.5f,5.5f);
+}
+void UONEZombieAudioComponent::SeedPresentationRandom()
+{
+    const uint32 OwnerSeed=GetOwner()?GetOwner()->GetUniqueID():0u;
+    PresentationRandom.Initialize(static_cast<int32>(HashCombine(OwnerSeed,GetTypeHash(VoiceVariation))));
+    bPresentationSeeded=true;
+}
+void UONEZombieAudioComponent::ConfigureVoiceVariation(int32 Salt)
+{
+    if (bPresentationSeeded && VoiceVariation==Salt) return;
+    VoiceVariation=Salt;
+    // Applying an appearance does not restart an audible event or its cooldown.
+    // Subsequent choices still use distinct recorded clips at unchanged pitch.
+    if (HasBegunPlay()) SeedPresentationRandom();
 }
 int32 UONEZombieAudioComponent::Choose(int32 Count,int32& Previous)
 {
-    int32 Result=Random.RandRange(1,Count);
+    int32 Result=PresentationRandom.RandRange(1,Count);
     if (Result==Previous && Count>1) Result=Result%Count+1;
     Previous=Result; return Result;
 }
@@ -43,7 +62,8 @@ void UONEZombieAudioComponent::Play(UAudioComponent* Voice,const FString& Stem,i
 {
     if (!Voice || bShutdown) return;
     auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>(); if (!Audio) return;
-    const FName Name(*FString::Printf(TEXT("S_Zombie%s_%02d"),*Stem,Index));
+    const FName Name(*FString::Printf(TEXT("S_C07_Zombie%s_%02d"),*Stem,Index));
+    UpdateVoiceLocation();
     Voice->Stop(); Voice->SetSound(Audio->Sound(Name)); Voice->SetPitchMultiplier(1.f);
     Voice->SetVolumeMultiplier(Gain*ONE05Audio::GetZombieGain());
     if (Voice->Sound) Voice->Play();
@@ -51,20 +71,21 @@ void UONEZombieAudioComponent::Play(UAudioComponent* Voice,const FString& Stem,i
 void UONEZombieAudioComponent::SetPursuing(bool Pursuing)
 {
     if (bDead || bShutdown) return;
-    if (Pursuing && !bPursuing) NextBreath=FMath::Min(NextBreath,GetWorld()->GetTimeSeconds()+Random.FRandRange(.4f,1.6f));
+    if (Pursuing && !bPursuing) NextBreath=FMath::Min(NextBreath,GetWorld()->GetTimeSeconds()+PresentationRandom.FRandRange(.4f,1.6f));
     bPursuing=Pursuing;
 }
 void UONEZombieAudioComponent::TickComponent(float Dt,ELevelTick TickType,FActorComponentTickFunction* TickFunction)
 {
     Super::TickComponent(Dt,TickType,TickFunction);
     if (bShutdown) return;
+    UpdateVoiceLocation();
     if (BreathVoice) BreathVoice->SetVolumeMultiplier(BreathGain*ONE05Audio::GetZombieGain());
     if (ActionVoice) ActionVoice->SetVolumeMultiplier(ActionGain*ONE05Audio::GetZombieGain());
     if (bDead) return;
     const double Now=GetWorld()->GetTimeSeconds();
     if (Now>=NextBreath)
     {
-        NextBreath=Now+Random.FRandRange(bPursuing?2.4f:4.f,bPursuing?4.8f:7.5f);
+        NextBreath=Now+PresentationRandom.FRandRange(bPursuing?2.4f:4.f,bPursuing?4.8f:7.5f);
         if (!ActionVoice || !ActionVoice->IsPlaying())
         {
             BreathGain=bPursuing?.58f:.4f;
@@ -77,7 +98,7 @@ void UONEZombieAudioComponent::NotifyAttack(int32 Variant)
     if (!IsLivingAudioEnabled() || GetWorld()->GetTimeSeconds()<NextAttack) return;
     NextAttack=GetWorld()->GetTimeSeconds()+.4; NextHit=GetWorld()->GetTimeSeconds()+.18;
     if (BreathVoice) BreathVoice->Stop();
-    ActionGain=.95f; Play(ActionVoice,TEXT("Attack"),FMath::Clamp(Variant,0,2)*2+Random.RandRange(1,2),ActionGain);
+    ActionGain=.95f; Play(ActionVoice,TEXT("Attack"),FMath::Clamp(Variant,0,2)*2+PresentationRandom.RandRange(1,2),ActionGain);
     ++AttackCueCount;
 }
 void UONEZombieAudioComponent::NotifyHit(bool Heavy)
@@ -87,7 +108,48 @@ void UONEZombieAudioComponent::NotifyHit(bool Heavy)
     // Anticipation remains audible; minor bullets cannot replace an incoming cue.
     if (!Heavy && GetWorld()->GetTimeSeconds()<NextAttack) return;
     if (BreathVoice) BreathVoice->Stop();
-    ActionGain=Heavy?.82f:.62f; Play(ActionVoice,TEXT("Hit"),Choose(4,LastHit),ActionGain); ++HitCueCount;
+    ActionGain=Heavy?.82f:.62f; Play(ActionVoice,Heavy?TEXT("HeavyHit"):TEXT("Hit"),Heavy?Choose(4,LastHeavyHit):Choose(4,LastHit),ActionGain); ++HitCueCount;
+}
+void UONEZombieAudioComponent::UpdateVoiceLocation()
+{
+    auto* Zombie=Cast<AONEZombie>(GetOwner()); if (!Zombie || !Zombie->GetMesh()) return;
+    auto* Mesh=Zombie->GetMesh(); const FName Bone=Zombie->HasHead()?FName(TEXT("head")):FName(TEXT("spine_02"));
+    const FVector Location=Mesh->GetBoneIndex(Bone)!=INDEX_NONE?Mesh->GetSocketLocation(Bone):Mesh->GetComponentLocation();
+    if (BreathVoice) BreathVoice->SetWorldLocation(Location);
+    if (ActionVoice) ActionVoice->SetWorldLocation(Location);
+}
+void UONEZombieAudioComponent::NotifyFootContact(bool bLeftFoot)
+{
+    auto* Zombie=Cast<AONEZombie>(GetOwner()); const int32 I=bLeftFoot?0:1;
+    if (!IsLivingAudioEnabled() || !Zombie || Zombie->IsDead() || Zombie->IsLivingFallen() || Zombie->IsGettingUp() ||
+        !Zombie->GetCharacterMovement()->IsMovingOnGround() || Zombie->GetVelocity().SizeSquared2D()<FMath::Square(15.f) ||
+        GetWorld()->GetTimeSeconds()<NextFoot[I]) return;
+    auto* Mesh=Zombie->GetMesh(); const FName Toe=bLeftFoot?FName(TEXT("toe_r")):FName(TEXT("toe_l"));
+    const FName Foot=bLeftFoot?FName(TEXT("foot_r")):FName(TEXT("foot_l"));
+    const FVector Position=Mesh->GetSocketLocation(Mesh->GetBoneIndex(Toe)!=INDEX_NONE?Toe:Foot);
+    FHitResult Hit; FCollisionQueryParams Query(SCENE_QUERY_STAT(ONE07InfectedFoot),false,Zombie); Query.bReturnPhysicalMaterial=true;
+    if (GetWorld()->LineTraceSingleByObjectType(Hit,Position+FVector(0,0,12),Position-FVector(0,0,22),
+        FCollisionObjectQueryParams(ECC_WorldStatic),Query) && Hit.ImpactNormal.Z>.55f)
+    {
+        NextFoot[I]=GetWorld()->GetTimeSeconds()+.16;
+        if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>()) Audio->PlayFootContact(Hit,false);
+        ++FootCueCount;
+    }
+}
+void UONEZombieAudioComponent::NotifyFall()
+{
+    if (!IsLivingAudioEnabled() || GetWorld()->GetTimeSeconds()<NextFall) return;
+    NextFall=GetWorld()->GetTimeSeconds()+.6; NextBreath=NextFall+1.;
+    if (BreathVoice) BreathVoice->Stop();
+    ActionGain=.72f; Play(ActionVoice,TEXT("Fall"),Choose(4,LastFall),ActionGain); ++FallCueCount;
+}
+void UONEZombieAudioComponent::NotifyBodyContact(const FVector& Location,float NormalImpactSpeedCmPerSec)
+{
+    if (bShutdown || !FMath::IsFinite(NormalImpactSpeedCmPerSec) || NormalImpactSpeedCmPerSec<65.f ||
+        GetWorld()->GetTimeSeconds()<NextBodyContact) return;
+    NextBodyContact=GetWorld()->GetTimeSeconds()+.18;
+    if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>())
+    { Audio->PlayBodyContact(Location,NormalImpactSpeedCmPerSec); ++BodyCueCount; }
 }
 void UONEZombieAudioComponent::StopLiving()
 {

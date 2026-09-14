@@ -1,0 +1,583 @@
+{
+  "candidate": "07",
+  "variant": "maintenance",
+  "skeleton_asset": "/Game/ONE/Characters/SK_Infected_Skeleton",
+  "editable_source": "ArtSource/Characters/Candidate07/Maintenance.blend",
+  "anatomy": {
+    "left_arm": "upperarm_r",
+    "right_arm": "upperarm_l",
+    "left_leg": "thigh_r",
+    "head": "head"
+  },
+  "fbx_vertex_color_space": "LINEAR: Unreal skeletal FBX importer directly quantizes these RGB/alpha values",
+  "meshes": {
+    "Core": {
+      "vertices": 7494,
+      "triangles": 14670,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000298023224,
+      "materials": [
+        "M_C07_WorkCloth",
+        "M_C07_CutTissue",
+        "M_C07_BoneTeeth",
+        "M_C07_Boot",
+        "M_C07_Hair",
+        "M_C07_InfectedSkin"
+      ],
+      "features": {
+        "Torn_chest_workwear": {
+          "kind": "open_cloth_with_thickness_dark_underlayer_and_loose_threads"
+        },
+        "Crossed_boot_lace_11": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_14": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_17": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_20": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Continuous_knee": {
+          "rings": 44,
+          "weights": "smooth thigh/calf window 62\u201344 cm"
+        },
+        "Front_placket": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.16
+        },
+        "Pocket_outer_-9": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.18
+        },
+        "Pocket_flap_-9": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.3
+        },
+        "Curved_pocket_panel_-9": {
+          "kind": "conforming_cloth_panel",
+          "grid": [
+            7,
+            7
+          ]
+        },
+        "Pocket_outer_9": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.18
+        },
+        "Pocket_flap_9": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.3
+        },
+        "Curved_pocket_panel_9": {
+          "kind": "conforming_cloth_panel",
+          "grid": [
+            7,
+            7
+          ]
+        },
+        "Folded_collar_-1": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.7
+        },
+        "Shoulder_sewn_line_-1": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.08
+        },
+        "Faded_safety_strip_-1": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.065
+        },
+        "Folded_collar_1": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.7
+        },
+        "Shoulder_sewn_line_1": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.08
+        },
+        "Faded_safety_strip_1": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.065
+        },
+        "Small_ID_card": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.14
+        },
+        "ID_marking": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.08
+        }
+      },
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_Maintenance_Core.fbx",
+      "bytes": 614860,
+      "sha256": "b4baf2a499d209092bfba5a8feccc5e39257b4f9fe177ae2550645fc2cd93551",
+      "exported_vertex_colors": {
+        "space": "LINEAR",
+        "rgba_records": 8059,
+        "minimum": [
+          0.024204397574067116,
+          0.0200735405087471,
+          0.011504394002258778,
+          0.44502726197242737
+        ],
+        "maximum": [
+          0.49049368500709534,
+          0.4087447226047516,
+          0.25040555000305176,
+          0.9549866914749146
+        ],
+        "source_range_match": true
+      },
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_Core"
+    },
+    "Head": {
+      "vertices": 16735,
+      "triangles": 31944,
+      "weight_sum_min": 1.0,
+      "weight_sum_max": 1.0,
+      "materials": [
+        "M_C07_InfectedSkin",
+        "M_C07_CutTissue",
+        "M_C07_Hair",
+        "M_C07_BoneTeeth",
+        "M_C07_CloudedEye"
+      ],
+      "features": {
+        "Modeled_asymmetric_face": {
+          "longitudinal_rings": 73,
+          "circumference": 96,
+          "features": [
+            "nose_bridge",
+            "brow",
+            "integrated_socket_lids",
+            "zygomatic_plane",
+            "temple_hollows",
+            "uneven_jaw",
+            "recessed_mouth_gums",
+            "open_cheek_wound"
+          ]
+        },
+        "Recessed_eye_-1": {
+          "kind": "modeled_volume"
+        },
+        "Clouded_iris_-1": {
+          "kind": "modeled_volume"
+        },
+        "Auricle_-1": {
+          "kind": "modeled_volume"
+        },
+        "Concha_-1": {
+          "kind": "modeled_volume"
+        },
+        "Integrated_nasal_ala_-1": {
+          "kind": "continuous_skull_form_and_recessed_underside_colour"
+        },
+        "Recessed_eye_1": {
+          "kind": "modeled_volume"
+        },
+        "Clouded_iris_1": {
+          "kind": "modeled_volume"
+        },
+        "Auricle_1": {
+          "kind": "modeled_volume"
+        },
+        "Concha_1": {
+          "kind": "modeled_volume"
+        },
+        "Integrated_nasal_ala_1": {
+          "kind": "continuous_skull_form_and_recessed_underside_colour"
+        },
+        "Inset_tooth_0": {
+          "kind": "chipped_inset_volume"
+        },
+        "Inset_tooth_1": {
+          "kind": "chipped_inset_volume"
+        },
+        "Inset_tooth_2": {
+          "kind": "chipped_inset_volume"
+        },
+        "Inset_tooth_3": {
+          "kind": "chipped_inset_volume"
+        },
+        "Inset_tooth_4": {
+          "kind": "chipped_inset_volume"
+        },
+        "Irregular_swept_hair": {
+          "modeled_locks": 84,
+          "fine_strands": 160,
+          "opaque": true,
+          "scalp_surface": "curved receding side/back coverage with irregular edge and partial crown sweep",
+          "placement": "deterministic continuous sampling; no grid of roots"
+        },
+        "Eyebrows": {
+          "modeled_strands": 22,
+          "attached_to": "sampled original brow surface"
+        }
+      },
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_Maintenance_Head.fbx",
+      "bytes": 1262492,
+      "sha256": "b47eb9b6be84be4331753b64bc5b58cf1dd66ba1ce2334f87d2cb1ef2a9e1cca",
+      "exported_vertex_colors": {
+        "space": "LINEAR",
+        "rgba_records": 17182,
+        "minimum": [
+          0.013486582785844803,
+          0.007192844524979591,
+          0.006293738726526499,
+          0.36511683464050293
+        ],
+        "maximum": [
+          0.49022814631462097,
+          0.40852347016334534,
+          0.25082582235336304,
+          0.9549896717071533
+        ],
+        "source_range_match": true
+      },
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_Head"
+    },
+    "ArmLeft": {
+      "vertices": 2712,
+      "triangles": 5360,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000298023224,
+      "materials": [
+        "M_C07_WorkCloth",
+        "M_C07_CutTissue",
+        "M_C07_BoneTeeth",
+        "M_C07_InfectedSkin"
+      ],
+      "features": {
+        "Knuckle_0": {
+          "kind": "modeled_volume"
+        },
+        "Nail_0": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_1": {
+          "kind": "modeled_volume"
+        },
+        "Nail_1": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_2": {
+          "kind": "modeled_volume"
+        },
+        "Nail_2": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_3": {
+          "kind": "modeled_volume"
+        },
+        "Nail_3": {
+          "kind": "modeled_volume"
+        },
+        "Continuous_elbow_sleeve": {
+          "rows": 35,
+          "hem": "ragged short",
+          "thickness_cm": 0.25
+        },
+        "Individual_fingers_nails": {
+          "fingers": 5,
+          "rig_limit": "hand-bone rigid; no new finger joints"
+        }
+      },
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_Maintenance_ArmLeft.fbx",
+      "bytes": 264684,
+      "sha256": "0a81e61905f771dfff70aee5148957af10a1348317ef8bc1474307c7d5649012",
+      "exported_vertex_colors": {
+        "space": "LINEAR",
+        "rgba_records": 2872,
+        "minimum": [
+          0.08099338412284851,
+          0.027534617111086845,
+          0.0283689983189106,
+          0.4450758099555969
+        ],
+        "maximum": [
+          0.4908595085144043,
+          0.4090496003627777,
+          0.25054287910461426,
+          0.9549152255058289
+        ],
+        "source_range_match": true
+      },
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_ArmLeft"
+    },
+    "ArmRight": {
+      "vertices": 2712,
+      "triangles": 5360,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000298023224,
+      "materials": [
+        "M_C07_WorkCloth",
+        "M_C07_CutTissue",
+        "M_C07_BoneTeeth",
+        "M_C07_InfectedSkin"
+      ],
+      "features": {
+        "Knuckle_0": {
+          "kind": "modeled_volume"
+        },
+        "Nail_0": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_1": {
+          "kind": "modeled_volume"
+        },
+        "Nail_1": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_2": {
+          "kind": "modeled_volume"
+        },
+        "Nail_2": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_3": {
+          "kind": "modeled_volume"
+        },
+        "Nail_3": {
+          "kind": "modeled_volume"
+        },
+        "Continuous_elbow_sleeve": {
+          "rows": 35,
+          "hem": "worn long",
+          "thickness_cm": 0.25
+        },
+        "Individual_fingers_nails": {
+          "fingers": 5,
+          "rig_limit": "hand-bone rigid; no new finger joints"
+        }
+      },
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_Maintenance_ArmRight.fbx",
+      "bytes": 263276,
+      "sha256": "54c37a6604d08f3eca9f6ae1c4691b6a142f7aa8163933f6870ac64e46be5f89",
+      "exported_vertex_colors": {
+        "space": "LINEAR",
+        "rgba_records": 2872,
+        "minimum": [
+          0.055692244321107864,
+          0.02034490555524826,
+          0.011890490539371967,
+          0.4452836215496063
+        ],
+        "maximum": [
+          0.44438380002975464,
+          0.37031981348991394,
+          0.2497788965702057,
+          0.9547630548477173
+        ],
+        "source_range_match": true
+      },
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_ArmRight"
+    },
+    "LegLeft": {
+      "vertices": 1552,
+      "triangles": 3072,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000298023224,
+      "materials": [
+        "M_C07_CutTissue",
+        "M_C07_BoneTeeth",
+        "M_C07_WorkCloth",
+        "M_C07_Boot"
+      ],
+      "features": {
+        "Crossed_boot_lace_11": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_14": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_17": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_20": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Continuous_knee": {
+          "rings": 44,
+          "weights": "smooth thigh/calf window 62\u201344 cm"
+        }
+      },
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_Maintenance_LegLeft.fbx",
+      "bytes": 177964,
+      "sha256": "beea3876628e3fdf1defd436f2dc4dd7b9620e2d621315cd7ff32b4d74465fc2",
+      "exported_vertex_colors": {
+        "space": "LINEAR",
+        "rgba_records": 1647,
+        "minimum": [
+          0.027750086039304733,
+          0.019827401265501976,
+          0.011053944937884808,
+          0.44585779309272766
+        ],
+        "maximum": [
+          0.4604078233242035,
+          0.38367319107055664,
+          0.23499982059001923,
+          0.9549251794815063
+        ],
+        "source_range_match": true
+      },
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_Maintenance_LegLeft"
+    }
+  },
+  "materials": {
+    "M_C07_InfectedSkin": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_InfectedSkin",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.83,
+      "normal_texture": "T_C07_SkinPores_N"
+    },
+    "M_C07_WorkCloth": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_WorkCloth",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.92,
+      "normal_texture": "T_C07_WorkWeave_N"
+    },
+    "M_C07_Hair": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_Hair",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.92,
+      "normal_texture": null
+    },
+    "M_C07_Boot": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_Boot",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.86,
+      "normal_texture": null
+    },
+    "M_C07_CutTissue": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_CutTissue",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.48,
+      "normal_texture": null
+    },
+    "M_C07_BoneTeeth": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_BoneTeeth",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.78,
+      "normal_texture": null
+    },
+    "M_C07_CloudedEye": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_CloudedEye",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.4,
+      "normal_texture": null
+    },
+    "M_C07_WorkMetal": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_WorkMetal",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0.35,
+      "fallback_roughness": 0.65,
+      "normal_texture": null
+    }
+  },
+  "textures": {
+    "T_C07_SkinPores_N": {
+      "source": "ArtSource/Characters/Candidate07/T_C07_SkinPores_N.png",
+      "asset": "/Game/ONE/Textures/Candidate07/T_C07_SkinPores_N",
+      "bytes": 41402,
+      "sha256": "8cc31e70e494eac47c62487fa245917ee275b13aabf6924302221ed0a4c4aaf7",
+      "size": [
+        256,
+        256
+      ],
+      "kind": "original periodic tangent-space normal",
+      "green_convention": "OpenGL; Unreal flip green channel",
+      "external_inputs": false
+    },
+    "T_C07_WorkWeave_N": {
+      "source": "ArtSource/Characters/Candidate07/T_C07_WorkWeave_N.png",
+      "asset": "/Game/ONE/Textures/Candidate07/T_C07_WorkWeave_N",
+      "bytes": 9225,
+      "sha256": "ef06853f819f342517d85312e23638f16ddd516aae42c3446f6f7ef8a464afd5",
+      "size": [
+        256,
+        256
+      ],
+      "kind": "original periodic tangent-space normal",
+      "green_convention": "OpenGL; Unreal flip green channel",
+      "external_inputs": false
+    }
+  },
+  "cuts": {
+    "Head": {
+      "bone": "head",
+      "source_component_cm": [
+        0,
+        0,
+        157.8
+      ],
+      "ue_component_cm": [
+        0,
+        0,
+        157.8
+      ],
+      "paired_rim_weights": "Identical across split; retain proximal bone and terminate removed physics chains."
+    },
+    "ArmLeft": {
+      "bone": "upperarm_r",
+      "source_component_cm": [
+        0.6531972885131836,
+        19.306394577026367,
+        140.4276123046875
+      ],
+      "ue_component_cm": [
+        0.6531972885131836,
+        -19.306394577026367,
+        140.4276123046875
+      ],
+      "paired_rim_weights": "Identical across split; retain proximal bone and terminate removed physics chains."
+    },
+    "ArmRight": {
+      "bone": "upperarm_l",
+      "source_component_cm": [
+        0.6531972885131836,
+        -19.306394577026367,
+        140.4276123046875
+      ],
+      "ue_component_cm": [
+        0.6531972885131836,
+        19.306394577026367,
+        140.4276123046875
+      ],
+      "paired_rim_weights": "Identical across split; retain proximal bone and terminate removed physics chains."
+    },
+    "LegLeft": {
+      "bone": "thigh_r",
+      "source_component_cm": [
+        0.4560000002384186,
+        9.0,
+        79.04000091552734
+      ],
+      "ue_component_cm": [
+        0.4560000002384186,
+        -9.0,
+        79.04000091552734
+      ],
+      "paired_rim_weights": "Identical across split; retain proximal bone and terminate removed physics chains."
+    }
+  },
+  "validation_limit": "Finite weights, exact evaluated seams and source bounds do not prove visual quality, motion, query/physics fit or gameplay."
+}

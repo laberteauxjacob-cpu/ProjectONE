@@ -23,6 +23,7 @@ public:
     int32 GetBounceCount() const { return Bounces; }
     uint64 GetSourceInstanceId() const { return SourceInstanceId; }
     uint64 GetReleaseId() const { return SourceReleaseId; }
+    int32 GetContactCueCount() const { return ContactCueCount; }
 private:
     void StepFlight(float Dt);
     UPROPERTY() TObjectPtr<USceneComponent> Center;
@@ -32,4 +33,6 @@ private:
     uint64 SourceInstanceId=0,SourceReleaseId=0;
     int32 Bounces=0;
     bool bSettled=false;
+    int32 ContactCueCount=0;
+    double NextContactAudio=0.;
 };
