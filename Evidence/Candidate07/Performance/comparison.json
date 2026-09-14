@@ -1,0 +1,6067 @@
+{
+  "schema": "one07.final_profile_comparison.v1",
+  "status": "PASS_CURATION_ONLY",
+  "created_utc": "2026-09-14T10:34:11.299150+00:00",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "comparison_source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "bindings": {
+    "ledger": {
+      "path": "ledger.json",
+      "bytes": 4308192,
+      "sha256": "f0cb30a7e14e76fbf524fffff48b471536bdece211bc07f91d7877c96ec9c3e7"
+    },
+    "analysis_plan": {
+      "path": "commands_101.json",
+      "bytes": 9273,
+      "sha256": "225707c4b9a77a9a819b45f96238d69bb0d8bfee28961c7daa236ed75a69e279"
+    },
+    "c06_manifest": {
+      "path": "c06_manifest_101.private.json",
+      "bytes": 9295,
+      "sha256": "82e0fd42d63c158e5e125b7eefdd7ff82207dc010f26fa685e606d7ebfd510e8"
+    },
+    "curator": {
+      "path": "curate_final_performance.py",
+      "bytes": 28527,
+      "sha256": "11d1fa3554bb5a461fb63440257afa52994424fed277974c4466a8c483378fd6"
+    }
+  },
+  "c07_runs": 13,
+  "c06_runs": 6,
+  "matched_requested_workload_pairs": [
+    {
+      "weapon": "M4A1",
+      "requested_live": 6,
+      "c06_case": "c06_profile_m4a1_6_none",
+      "c07_case": "c07_profile_m4a1_6_none",
+      "observed_c07_minus_c06_ms": {
+        "mean_ms": 0.05339790170082104,
+        "median_ms": 0.011049999999999116,
+        "p95_ms": 0.2717649999999985,
+        "p99_ms": 0.4136119999999952,
+        "max_ms": 13.4605
+      },
+      "capture_metadata_equal": {
+        "cpu": true,
+        "os": true,
+        "engineversion": true,
+        "config": true,
+        "deviceprofile": true,
+        "systemresolution.resx": true,
+        "systemresolution.resy": true
+      },
+      "meaning": "Matched requested workload only; one sequential observation per candidate. No controlled/causal improvement or equal random population history claim."
+    },
+    {
+      "weapon": "M4A1",
+      "requested_live": 12,
+      "c06_case": "c06_profile_m4a1_12_none",
+      "c07_case": "c07_profile_m4a1_12_none",
+      "observed_c07_minus_c06_ms": {
+        "mean_ms": 0.7894827772774349,
+        "median_ms": 0.660400000000001,
+        "p95_ms": 1.7849199999999996,
+        "p99_ms": 2.1505560000000035,
+        "max_ms": 12.676499999999997
+      },
+      "capture_metadata_equal": {
+        "cpu": true,
+        "os": true,
+        "engineversion": true,
+        "config": true,
+        "deviceprofile": true,
+        "systemresolution.resx": true,
+        "systemresolution.resy": true
+      },
+      "meaning": "Matched requested workload only; one sequential observation per candidate. No controlled/causal improvement or equal random population history claim."
+    },
+    {
+      "weapon": "M4A1",
+      "requested_live": 18,
+      "c06_case": "c06_profile_m4a1_18_none",
+      "c07_case": "c07_profile_m4a1_18_none",
+      "observed_c07_minus_c06_ms": {
+        "mean_ms": 1.7834593635205067,
+        "median_ms": 2.0741000000000014,
+        "p95_ms": 3.2691350000000003,
+        "p99_ms": 4.420451000000011,
+        "max_ms": 13.534399999999998
+      },
+      "capture_metadata_equal": {
+        "cpu": true,
+        "os": true,
+        "engineversion": true,
+        "config": true,
+        "deviceprofile": true,
+        "systemresolution.resx": true,
+        "systemresolution.resy": true
+      },
+      "meaning": "Matched requested workload only; one sequential observation per candidate. No controlled/causal improvement or equal random population history claim."
+    },
+    {
+      "weapon": "870",
+      "requested_live": 6,
+      "c06_case": "c06_profile_870_6_none",
+      "c07_case": "c07_profile_870_6_none",
+      "observed_c07_minus_c06_ms": {
+        "mean_ms": 0.0038423535362266392,
+        "median_ms": 0.0012499999999988631,
+        "p95_ms": 0.04779000000000089,
+        "p99_ms": 0.12677700000000236,
+        "max_ms": 12.7839
+      },
+      "capture_metadata_equal": {
+        "cpu": true,
+        "os": true,
+        "engineversion": true,
+        "config": true,
+        "deviceprofile": true,
+        "systemresolution.resx": true,
+        "systemresolution.resy": true
+      },
+      "meaning": "Matched requested workload only; one sequential observation per candidate. No controlled/causal improvement or equal random population history claim."
+    },
+    {
+      "weapon": "870",
+      "requested_live": 12,
+      "c06_case": "c06_profile_870_12_none",
+      "c07_case": "c07_profile_870_12_none",
+      "observed_c07_minus_c06_ms": {
+        "mean_ms": 0.06912643013000519,
+        "median_ms": 0.028999999999999915,
+        "p95_ms": 0.2843800000000005,
+        "p99_ms": 0.654488000000006,
+        "max_ms": 12.3494
+      },
+      "capture_metadata_equal": {
+        "cpu": true,
+        "os": true,
+        "engineversion": true,
+        "config": true,
+        "deviceprofile": true,
+        "systemresolution.resx": true,
+        "systemresolution.resy": true
+      },
+      "meaning": "Matched requested workload only; one sequential observation per candidate. No controlled/causal improvement or equal random population history claim."
+    },
+    {
+      "weapon": "870",
+      "requested_live": 18,
+      "c06_case": "c06_profile_870_18_none",
+      "c07_case": "c07_profile_870_18_none",
+      "observed_c07_minus_c06_ms": {
+        "mean_ms": 2.136440968371895,
+        "median_ms": 2.6043000000000003,
+        "p95_ms": 4.01863,
+        "p99_ms": 5.1421399999999995,
+        "max_ms": 14.287599999999998
+      },
+      "capture_metadata_equal": {
+        "cpu": true,
+        "os": true,
+        "engineversion": true,
+        "config": true,
+        "deviceprofile": true,
+        "systemresolution.resx": true,
+        "systemresolution.resy": true
+      },
+      "meaning": "Matched requested workload only; one sequential observation per candidate. No controlled/causal improvement or equal random population history claim."
+    }
+  ],
+  "unmatched_c07_cases": [
+    "c07_profile_m4a1_1_mixed",
+    "c07_profile_m4a1_2_mixed",
+    "c07_profile_m4a1_6_mixed",
+    "c07_profile_m4a1_12_mixed",
+    "c07_profile_m4a1_18_mixed",
+    "c07_profile_overcurrent_12_mixed",
+    "c07_profile_870_12_mixed"
+  ],
+  "run_order_from_matrix": [
+    "c06_profile_m4a1_6_none",
+    "c07_profile_m4a1_6_none",
+    "c07_profile_m4a1_12_none",
+    "c06_profile_m4a1_12_none",
+    "c06_profile_m4a1_18_none",
+    "c07_profile_m4a1_18_none",
+    "c07_profile_870_6_none",
+    "c06_profile_870_6_none",
+    "c06_profile_870_12_none",
+    "c07_profile_870_12_none",
+    "c07_profile_870_18_none",
+    "c06_profile_870_18_none",
+    "c07_profile_m4a1_1_mixed",
+    "c07_profile_m4a1_2_mixed",
+    "c07_profile_m4a1_6_mixed",
+    "c07_profile_m4a1_12_mixed",
+    "c07_profile_m4a1_18_mixed",
+    "c07_profile_overcurrent_12_mixed",
+    "c07_profile_870_12_mixed"
+  ],
+  "settings": {
+    "width": 1600,
+    "height": 900,
+    "max_fps": 120,
+    "vsync": 0,
+    "screen_percentage": 100
+  },
+  "host_condition": "ambient_processes_recorded_no_isolation_claim",
+  "isolated_host": false,
+  "controlled_baseline_comparison": false,
+  "runs": [
+    {
+      "case": "c06_profile_m4a1_6_none",
+      "candidate": "06",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "weapon": "M4A1",
+      "requested_live": 6,
+      "explicit_falls": "none",
+      "analysis": "c06/m4a1_6_analysis.json",
+      "analysis_identity": {
+        "path": "c06/m4a1_6_analysis.json",
+        "bytes": 347620,
+        "sha256": "7cd3fc7f5b3db91ed3d25233c4904de9bb2fe14b07e758a834396af7409aea77"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 4405,
+        "sha256": "a9b802203616b12bea2f8418026837c69a8e1ebfa621b080862998e17be58054"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 117864,
+        "sha256": "500ae77f28d40beeff83d91709b7094192dfa29058ed320c4f0ffad6706d6e23"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292697088,
+          "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10731021,
+          "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221414272,
+          "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 240183,
+          "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "6"
+      },
+      "frame_time": {
+        "column": "FrameTime",
+        "samples": 3694,
+        "mean_ms": 8.33909163508392,
+        "median_ms": 8.324950000000001,
+        "p95_ms": 8.855,
+        "p99_ms": 9.473856000000001,
+        "max_ms": 21.3798,
+        "nonzero_samples": 3694,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.02707092582566324
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3694,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3693,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 2754,
+          "exact_requested_fraction": 0.7457351746547523,
+          "live_histogram": {
+            "0": 0,
+            "1": 11,
+            "2": 53,
+            "3": 124,
+            "4": 256,
+            "5": 495,
+            "6": 2754
+          },
+          "both_active_rows": 386,
+          "both_active_profile_seconds": 3.2169,
+          "both_active_frame_time_seconds": 3.2198975000000036
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3693,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 2754,
+        "exact_requested_fraction": 0.7457351746547523,
+        "live_histogram": {
+          "0": 0,
+          "1": 11,
+          "2": 53,
+          "3": 124,
+          "4": 256,
+          "5": 495,
+          "6": 2754
+        },
+        "both_active_rows": 386,
+        "both_active_profile_seconds": 3.2169,
+        "both_active_frame_time_seconds": 3.2198975000000036
+      },
+      "c07_census": null,
+      "actual_weapon_combat": {
+        "family": "Carbine",
+        "variant": "M4A1",
+        "phase": 20,
+        "begin_event_frame": 694,
+        "end_event_frame": 3693,
+        "shot_counter_baseline": 0,
+        "actual_committed_discharge_count": 144,
+        "required_minimum_discharges": 60,
+        "csv_variant_samples": 2999,
+        "all_combat_samples_match_requested_variant": true,
+        "family_variant_observation_samples": 247,
+        "held_aura_matches_variant": true,
+        "observed_csv_shots_since_baseline": 144.0,
+        "observed_shots_since_event_baseline": 144.0,
+        "scope_limit": "This workload establishes only its requested carried family/variant. Last-shot contact counters repeat until the next shot and are not cumulative event totals."
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:12:25.133566+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:13:24.604395+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 6.4375,
+          "wall_seconds": 59.46899999999732,
+          "cpu_seconds_per_wall_second": 0.1082496763019437,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:12:25.133566+00:00",
+      "completed_utc": "2026-09-14T10:13:24.636603+00:00"
+    },
+    {
+      "case": "c06_profile_m4a1_12_none",
+      "candidate": "06",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "weapon": "M4A1",
+      "requested_live": 12,
+      "explicit_falls": "none",
+      "analysis": "c06/m4a1_12_analysis.json",
+      "analysis_identity": {
+        "path": "c06/m4a1_12_analysis.json",
+        "bytes": 348001,
+        "sha256": "58da4f2fcbeb560f2156274fce0b9c4d63a87d01f049d205ee0be0476187657e"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 4404,
+        "sha256": "816e51ad278ecfaeb1f3b223156d7da63e7740e816d6798b0fbc69027167c006"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 116727,
+        "sha256": "4a2c17e0b47f52b8b58375e0ddf61d9fa847a48bf1e4977e73e2c1b31e70b9f7"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292697088,
+          "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10731021,
+          "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221414272,
+          "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 240183,
+          "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "12"
+      },
+      "frame_time": {
+        "column": "FrameTime",
+        "samples": 3687,
+        "mean_ms": 8.353027285055601,
+        "median_ms": 8.3233,
+        "p95_ms": 9.05482,
+        "p99_ms": 10.208204,
+        "max_ms": 26.6295,
+        "nonzero_samples": 3687,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.027122321670735014
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3687,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3686,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 2610,
+          "exact_requested_fraction": 0.7080846446011937,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 7,
+            "7": 65,
+            "8": 197,
+            "9": 227,
+            "10": 313,
+            "11": 267,
+            "12": 2610
+          },
+          "both_active_rows": 386,
+          "both_active_profile_seconds": 3.2182999999999993,
+          "both_active_frame_time_seconds": 3.2239972000000057
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3686,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 2610,
+        "exact_requested_fraction": 0.7080846446011937,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 7,
+          "7": 65,
+          "8": 197,
+          "9": 227,
+          "10": 313,
+          "11": 267,
+          "12": 2610
+        },
+        "both_active_rows": 386,
+        "both_active_profile_seconds": 3.2182999999999993,
+        "both_active_frame_time_seconds": 3.2239972000000057
+      },
+      "c07_census": null,
+      "actual_weapon_combat": {
+        "family": "Carbine",
+        "variant": "M4A1",
+        "phase": 20,
+        "begin_event_frame": 693,
+        "end_event_frame": 3686,
+        "shot_counter_baseline": 0,
+        "actual_committed_discharge_count": 144,
+        "required_minimum_discharges": 60,
+        "csv_variant_samples": 2993,
+        "all_combat_samples_match_requested_variant": true,
+        "family_variant_observation_samples": 247,
+        "held_aura_matches_variant": true,
+        "observed_csv_shots_since_baseline": 144.0,
+        "observed_shots_since_event_baseline": 144.0,
+        "scope_limit": "This workload establishes only its requested carried family/variant. Last-shot contact counters repeat until the next shot and are not cumulative event totals."
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:15:31.712727+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:16:31.231480+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 4.0625,
+          "wall_seconds": 59.51600000000326,
+          "cpu_seconds_per_wall_second": 0.0682589555749677,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:15:31.712727+00:00",
+      "completed_utc": "2026-09-14T10:16:31.263774+00:00"
+    },
+    {
+      "case": "c06_profile_m4a1_18_none",
+      "candidate": "06",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "weapon": "M4A1",
+      "requested_live": 18,
+      "explicit_falls": "none",
+      "analysis": "c06/m4a1_18_analysis.json",
+      "analysis_identity": {
+        "path": "c06/m4a1_18_analysis.json",
+        "bytes": 348470,
+        "sha256": "c157865f556d60cd7feb62f6902b33282be98bed0dda53e348feadf5592798ae"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 4406,
+        "sha256": "a95d104a6fd4bf00efb8c953a9f46dba244432c433441c4c8617dd042aef1868"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 118954,
+        "sha256": "f32f962d45c78afd863d520c9527ac5ccd7163026522f4505382dab28e936100"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292697088,
+          "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10731021,
+          "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221414272,
+          "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 240183,
+          "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "18"
+      },
+      "frame_time": {
+        "column": "FrameTime",
+        "samples": 3664,
+        "mean_ms": 8.406307887554584,
+        "median_ms": 8.3342,
+        "p95_ms": 9.223934999999999,
+        "p99_ms": 10.759181,
+        "max_ms": 32.7076,
+        "nonzero_samples": 3664,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 3,
+            "percent": 0.08187772925764192
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3664,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0,
+            780,
+            1859
+          ],
+          "33.3": [],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3663,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 2227,
+          "exact_requested_fraction": 0.607971607971608,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 5,
+            "10": 3,
+            "11": 27,
+            "12": 61,
+            "13": 101,
+            "14": 157,
+            "15": 288,
+            "16": 286,
+            "17": 508,
+            "18": 2227
+          },
+          "both_active_rows": 382,
+          "both_active_profile_seconds": 3.217999999999999,
+          "both_active_frame_time_seconds": 3.222389100000001
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3663,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 2227,
+        "exact_requested_fraction": 0.607971607971608,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 5,
+          "10": 3,
+          "11": 27,
+          "12": 61,
+          "13": 101,
+          "14": 157,
+          "15": 288,
+          "16": 286,
+          "17": 508,
+          "18": 2227
+        },
+        "both_active_rows": 382,
+        "both_active_profile_seconds": 3.217999999999999,
+        "both_active_frame_time_seconds": 3.222389100000001
+      },
+      "c07_census": null,
+      "actual_weapon_combat": {
+        "family": "Carbine",
+        "variant": "M4A1",
+        "phase": 20,
+        "begin_event_frame": 692,
+        "end_event_frame": 3663,
+        "shot_counter_baseline": 0,
+        "actual_committed_discharge_count": 144,
+        "required_minimum_discharges": 60,
+        "csv_variant_samples": 2971,
+        "all_combat_samples_match_requested_variant": true,
+        "family_variant_observation_samples": 245,
+        "held_aura_matches_variant": true,
+        "observed_csv_shots_since_baseline": 144.0,
+        "observed_shots_since_event_baseline": 144.0,
+        "scope_limit": "This workload establishes only its requested carried family/variant. Last-shot contact counters repeat until the next shot and are not cumulative event totals."
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:16:32.912218+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:17:32.567360+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 5.375,
+          "wall_seconds": 59.65600000000268,
+          "cpu_seconds_per_wall_second": 0.09009990612846586,
+          "matched_processes": 137,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:16:32.912218+00:00",
+      "completed_utc": "2026-09-14T10:17:32.596828+00:00"
+    },
+    {
+      "case": "c06_profile_870_6_none",
+      "candidate": "06",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "weapon": "870",
+      "requested_live": 6,
+      "explicit_falls": "none",
+      "analysis": "c06/870_6_analysis.json",
+      "analysis_identity": {
+        "path": "c06/870_6_analysis.json",
+        "bytes": 347024,
+        "sha256": "c91184c0caaf8245e5227797ab983edab30f7ba1948179c4f1b658e80e379fcc"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 4404,
+        "sha256": "da26498c8eabbedd25d9306c7d58818f5362ab5d71551ba25a32f3bd673c801a"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 112747,
+        "sha256": "e37fb4409c2884db8bbfdd409a77ade4cfdfa0c2c044541ff9a975ff4442f41e"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292697088,
+          "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10731021,
+          "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221414272,
+          "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 240183,
+          "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "870",
+        "one_carried_family": "Shotgun",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "6"
+      },
+      "frame_time": {
+        "column": "FrameTime",
+        "samples": 3695,
+        "mean_ms": 8.336523085250338,
+        "median_ms": 8.3261,
+        "p95_ms": 8.7434,
+        "p99_ms": 9.201072,
+        "max_ms": 21.2993,
+        "nonzero_samples": 3695,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.02706359945872801
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3695,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3694,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 3258,
+          "exact_requested_fraction": 0.8819707634001083,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 83,
+            "5": 353,
+            "6": 3258
+          },
+          "both_active_rows": 386,
+          "both_active_profile_seconds": 3.2171000000000003,
+          "both_active_frame_time_seconds": 3.2183624000000064
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3694,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 3258,
+        "exact_requested_fraction": 0.8819707634001083,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 83,
+          "5": 353,
+          "6": 3258
+        },
+        "both_active_rows": 386,
+        "both_active_profile_seconds": 3.2171000000000003,
+        "both_active_frame_time_seconds": 3.2183624000000064
+      },
+      "c07_census": null,
+      "actual_weapon_combat": {
+        "family": "Shotgun",
+        "variant": "870",
+        "phase": 20,
+        "begin_event_frame": 694,
+        "end_event_frame": 3694,
+        "shot_counter_baseline": 0,
+        "actual_committed_discharge_count": 16,
+        "required_minimum_discharges": 10,
+        "csv_variant_samples": 3000,
+        "all_combat_samples_match_requested_variant": true,
+        "family_variant_observation_samples": 247,
+        "held_aura_matches_variant": true,
+        "observed_csv_shots_since_baseline": 16.0,
+        "observed_shots_since_event_baseline": 16.0,
+        "scope_limit": "This workload establishes only its requested carried family/variant. Last-shot contact counters repeat until the next shot and are not cumulative event totals."
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:19:39.990760+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:20:39.576979+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 4.65625,
+          "wall_seconds": 59.57800000000134,
+          "cpu_seconds_per_wall_second": 0.0781538487361089,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:19:39.990760+00:00",
+      "completed_utc": "2026-09-14T10:20:39.622692+00:00"
+    },
+    {
+      "case": "c06_profile_870_12_none",
+      "candidate": "06",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "weapon": "870",
+      "requested_live": 12,
+      "explicit_falls": "none",
+      "analysis": "c06/870_12_analysis.json",
+      "analysis_identity": {
+        "path": "c06/870_12_analysis.json",
+        "bytes": 347669,
+        "sha256": "2b89778c0801ef3ca5816440abcdde584f041effd2c8fbe7c9accba530be0c05"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 4405,
+        "sha256": "8950f9b9ff5cda67e5576076908f9f65310f59aea8ece696c34a7857a93cacb7"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 116032,
+        "sha256": "39685464b046f353e7067c5b8ccb5c4269fd3a7fafb379881f3d7685e2c5e368"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292697088,
+          "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10731021,
+          "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221414272,
+          "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 240183,
+          "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "870",
+        "one_carried_family": "Shotgun",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "12"
+      },
+      "frame_time": {
+        "column": "FrameTime",
+        "samples": 3693,
+        "mean_ms": 8.338743785540212,
+        "median_ms": 8.3245,
+        "p95_ms": 8.85016,
+        "p99_ms": 9.293047999999997,
+        "max_ms": 26.8357,
+        "nonzero_samples": 3693,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.027078256160303276
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3693,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3692,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 3225,
+          "exact_requested_fraction": 0.8735102925243771,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 146,
+            "10": 116,
+            "11": 205,
+            "12": 3225
+          },
+          "both_active_rows": 387,
+          "both_active_profile_seconds": 3.2252,
+          "both_active_frame_time_seconds": 3.2294297999999957
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3692,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 3225,
+        "exact_requested_fraction": 0.8735102925243771,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 146,
+          "10": 116,
+          "11": 205,
+          "12": 3225
+        },
+        "both_active_rows": 387,
+        "both_active_profile_seconds": 3.2252,
+        "both_active_frame_time_seconds": 3.2294297999999957
+      },
+      "c07_census": null,
+      "actual_weapon_combat": {
+        "family": "Shotgun",
+        "variant": "870",
+        "phase": 20,
+        "begin_event_frame": 692,
+        "end_event_frame": 3692,
+        "shot_counter_baseline": 0,
+        "actual_committed_discharge_count": 16,
+        "required_minimum_discharges": 10,
+        "csv_variant_samples": 3000,
+        "all_combat_samples_match_requested_variant": true,
+        "family_variant_observation_samples": 247,
+        "held_aura_matches_variant": true,
+        "observed_csv_shots_since_baseline": 16.0,
+        "observed_shots_since_event_baseline": 16.0,
+        "scope_limit": "This workload establishes only its requested carried family/variant. Last-shot contact counters repeat until the next shot and are not cumulative event totals."
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:20:41.291077+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:21:40.930900+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 3.78125,
+          "wall_seconds": 59.64100000000326,
+          "cpu_seconds_per_wall_second": 0.06340017773008154,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:20:41.291077+00:00",
+      "completed_utc": "2026-09-14T10:21:40.962923+00:00"
+    },
+    {
+      "case": "c06_profile_870_18_none",
+      "candidate": "06",
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "weapon": "870",
+      "requested_live": 18,
+      "explicit_falls": "none",
+      "analysis": "c06/870_18_analysis.json",
+      "analysis_identity": {
+        "path": "c06/870_18_analysis.json",
+        "bytes": 348014,
+        "sha256": "c60b8a3513a36dc5d8adb3605bd8fe166d8e85de277d71f42611f18491ca2145"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 4405,
+        "sha256": "53b8d05aca0e969a070ca8568cadd833f332f762247e0e929939ef8c300dac4e"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 116987,
+        "sha256": "3663715450897853005bdd3a63ce1cdc79dc3641c995e240f50f58df34c6ab3d"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 292697088,
+          "sha256": "b5e314eee7675dffeb3ae4cf6aad1519c4cc03e4dae521ebf386492a2909ede4"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10731021,
+          "sha256": "10788aaa2edd4057b5bef8ee9dcba3285c43621f39a2f754089d1db4a82e35ac"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 221414272,
+          "sha256": "0835caf6811b2c694a70e21b4093504b2e3218723fea16cd9c6817879ddb4585"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 240183,
+          "sha256": "277e393c53dea616fb37110d5b9d367862ad04dd29e733f7bc1114984543dd17"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "870",
+        "one_carried_family": "Shotgun",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "18"
+      },
+      "frame_time": {
+        "column": "FrameTime",
+        "samples": 3689,
+        "mean_ms": 8.348385741393331,
+        "median_ms": 8.3308,
+        "p95_ms": 8.99418,
+        "p99_ms": 9.486892,
+        "max_ms": 32.7854,
+        "nonzero_samples": 3689,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.027107617240444564
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3689,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3688,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 3258,
+          "exact_requested_fraction": 0.8834056399132321,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 119,
+            "16": 102,
+            "17": 209,
+            "18": 3258
+          },
+          "both_active_rows": 386,
+          "both_active_profile_seconds": 3.2172,
+          "both_active_frame_time_seconds": 3.219672299999999
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3688,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 3258,
+        "exact_requested_fraction": 0.8834056399132321,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0,
+          "12": 0,
+          "13": 0,
+          "14": 0,
+          "15": 119,
+          "16": 102,
+          "17": 209,
+          "18": 3258
+        },
+        "both_active_rows": 386,
+        "both_active_profile_seconds": 3.2172,
+        "both_active_frame_time_seconds": 3.219672299999999
+      },
+      "c07_census": null,
+      "actual_weapon_combat": {
+        "family": "Shotgun",
+        "variant": "870",
+        "phase": 20,
+        "begin_event_frame": 692,
+        "end_event_frame": 3688,
+        "shot_counter_baseline": 0,
+        "actual_committed_discharge_count": 16,
+        "required_minimum_discharges": 10,
+        "csv_variant_samples": 2996,
+        "all_combat_samples_match_requested_variant": true,
+        "family_variant_observation_samples": 246,
+        "held_aura_matches_variant": true,
+        "observed_csv_shots_since_baseline": 16.0,
+        "observed_shots_since_event_baseline": 16.0,
+        "scope_limit": "This workload establishes only its requested carried family/variant. Last-shot contact counters repeat until the next shot and are not cumulative event totals."
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:23:48.448567+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:24:48.175316+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 4.84375,
+          "wall_seconds": 59.71899999999732,
+          "cpu_seconds_per_wall_second": 0.08110902727775443,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:23:48.448567+00:00",
+      "completed_utc": "2026-09-14T10:24:48.207758+00:00"
+    },
+    {
+      "case": "c07_profile_m4a1_6_none",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "M4A1",
+      "requested_live": 6,
+      "explicit_falls": "none",
+      "analysis": "c07_profile_m4a1_6_none/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_m4a1_6_none/analysis.json",
+        "bytes": 202619,
+        "sha256": "8e946f28a4da857366011b978bbf488ca57b506a9bb95e9d0468cc1eb46d442a"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300015,
+        "sha256": "03e36ca2a381b9d350423c05b977923b46d42bf6b33bb33902933472907c3d29"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 129264,
+        "sha256": "daf41f3513399e2b3cb428d48a4df20c93a8064b5bbf50a6f266ca345fdb5413"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "none",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "6"
+      },
+      "frame_time": {
+        "samples": 3670,
+        "mean_ms": 8.39248953678474,
+        "median_ms": 8.336,
+        "p95_ms": 9.126764999999999,
+        "p99_ms": 9.887467999999997,
+        "max_ms": 34.8403,
+        "nonzero_samples": 3670,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.027247956403269755
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.027247956403269755
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3670,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [
+            0
+          ],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3669,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 2948,
+          "exact_requested_fraction": 0.8034886890160807,
+          "live_histogram": {
+            "0": 0,
+            "1": 38,
+            "2": 16,
+            "3": 134,
+            "4": 191,
+            "5": 342,
+            "6": 2948
+          },
+          "both_active_rows": 386
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3669,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 2948,
+        "exact_requested_fraction": 0.8034886890160807,
+        "live_histogram": {
+          "0": 0,
+          "1": 38,
+          "2": 16,
+          "3": 134,
+          "4": 191,
+          "5": 342,
+          "6": 2948
+        },
+        "both_active_rows": 386,
+        "both_active_profile_seconds": 3.2196,
+        "both_active_frame_time_seconds": 3.222039699999998
+      },
+      "c07_census": {
+        "all_rows": 6169,
+        "csv_active_rows": 3671,
+        "exact_requested_fraction": 0.808499046581313,
+        "state_occupancy_rows": {
+          "standing": 3671,
+          "fallen": 0,
+          "get_up": 0,
+          "dead": 2977
+        },
+        "maxima": {
+          "live": 6.0,
+          "fallen": 0.0,
+          "get_up": 0.0,
+          "dead": 14.0,
+          "simulated_bodies": 278.0,
+          "awake_bodies": 278.0,
+          "zombie_voices": 10.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 0,
+        "attempted_explicit_falls": 0,
+        "matched_global_frames": 3670,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          6169
+        ],
+        "exact_requested_rows": 2968,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "1": 36,
+            "2": 13,
+            "3": 129,
+            "4": 187,
+            "5": 338,
+            "6": 2968
+          },
+          "standing": {
+            "1": 36,
+            "2": 13,
+            "3": 129,
+            "4": 187,
+            "5": 338,
+            "6": 2968
+          },
+          "fallen": {
+            "0": 3671
+          },
+          "get_up": {
+            "0": 3671
+          },
+          "dead": {
+            "0": 694,
+            "1": 12,
+            "3": 12,
+            "4": 12,
+            "5": 12,
+            "6": 12,
+            "7": 48,
+            "8": 12,
+            "9": 24,
+            "10": 397,
+            "11": 12,
+            "12": 12,
+            "14": 2412
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 692,
+        "event_last_frame": 3669,
+        "phase": 20,
+        "committed_shots": 144
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:13:26.243594+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:14:27.399362+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 4.390625,
+          "wall_seconds": 61.15600000000268,
+          "cpu_seconds_per_wall_second": 0.07179385505918974,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:13:26.243594+00:00",
+      "completed_utc": "2026-09-14T10:14:27.440452+00:00"
+    },
+    {
+      "case": "c07_profile_m4a1_12_none",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "M4A1",
+      "requested_live": 12,
+      "explicit_falls": "none",
+      "analysis": "c07_profile_m4a1_12_none/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_m4a1_12_none/analysis.json",
+        "bytes": 203069,
+        "sha256": "4383b89165500c1cb55d933b98a6bd5683e1c77479a1c79389a59444bced3702"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300017,
+        "sha256": "ae105267bef7bdd110797de0564c189db171288be5422b3029e1320ec9d4daa2"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 142600,
+        "sha256": "211a88e6b295cadac06e5058f77ca2d1fd3d83a8363f9556b2d15f71de8dd86e"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "none",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "12"
+      },
+      "frame_time": {
+        "samples": 3369,
+        "mean_ms": 9.142510062333036,
+        "median_ms": 8.9837,
+        "p95_ms": 10.839739999999999,
+        "p99_ms": 12.358760000000004,
+        "max_ms": 39.306,
+        "nonzero_samples": 3369,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 5,
+            "percent": 0.14841199168892846
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.029682398337785694
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3369,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0,
+            777,
+            894,
+            1341,
+            1779
+          ],
+          "33.3": [
+            0
+          ],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3368,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 2326,
+          "exact_requested_fraction": 0.6906175771971497,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 14,
+            "6": 27,
+            "7": 75,
+            "8": 57,
+            "9": 227,
+            "10": 267,
+            "11": 375,
+            "12": 2326
+          },
+          "both_active_rows": 367
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3368,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 2326,
+        "exact_requested_fraction": 0.6906175771971497,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 14,
+          "6": 27,
+          "7": 75,
+          "8": 57,
+          "9": 227,
+          "10": 267,
+          "11": 375,
+          "12": 2326
+        },
+        "both_active_rows": 367,
+        "both_active_profile_seconds": 3.2277999999999993,
+        "both_active_frame_time_seconds": 3.2330505
+      },
+      "c07_census": {
+        "all_rows": 5868,
+        "csv_active_rows": 3370,
+        "exact_requested_fraction": 0.6988130563798219,
+        "state_occupancy_rows": {
+          "standing": 3370,
+          "fallen": 0,
+          "get_up": 0,
+          "dead": 2678
+        },
+        "maxima": {
+          "live": 12.0,
+          "fallen": 0.0,
+          "get_up": 0.0,
+          "dead": 14.0,
+          "simulated_bodies": 332.0,
+          "awake_bodies": 332.0,
+          "zombie_voices": 13.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 0,
+        "attempted_explicit_falls": 0,
+        "matched_global_frames": 3369,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          5868
+        ],
+        "exact_requested_rows": 2355,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "5": 13,
+            "6": 26,
+            "7": 68,
+            "8": 55,
+            "9": 220,
+            "10": 264,
+            "11": 369,
+            "12": 2355
+          },
+          "standing": {
+            "5": 13,
+            "6": 26,
+            "7": 68,
+            "8": 55,
+            "9": 220,
+            "10": 264,
+            "11": 369,
+            "12": 2355
+          },
+          "fallen": {
+            "0": 3370
+          },
+          "get_up": {
+            "0": 3370
+          },
+          "dead": {
+            "0": 692,
+            "1": 12,
+            "3": 12,
+            "5": 12,
+            "8": 12,
+            "10": 12,
+            "11": 12,
+            "12": 35,
+            "13": 47,
+            "14": 2524
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 690,
+        "event_last_frame": 3368,
+        "phase": 20,
+        "committed_shots": 144
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:14:29.070494+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:15:30.044709+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 3.4375,
+          "wall_seconds": 60.96899999999732,
+          "cpu_seconds_per_wall_second": 0.05638111171251211,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:14:29.070494+00:00",
+      "completed_utc": "2026-09-14T10:15:30.092611+00:00"
+    },
+    {
+      "case": "c07_profile_m4a1_18_none",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "M4A1",
+      "requested_live": 18,
+      "explicit_falls": "none",
+      "analysis": "c07_profile_m4a1_18_none/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_m4a1_18_none/analysis.json",
+        "bytes": 202563,
+        "sha256": "4170df13c64160588749043891090c7205b8dc50b5cf45ba5fa1471998f21466"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300017,
+        "sha256": "a15406aebcd4daabe048b30d90d388a3935a108067a6649b0e467cae228c3b64"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 154908,
+        "sha256": "adb7d68365fce03094ab1aebdaea48a4cba255c3e85fafa43f9095bd09fc4fe7"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "none",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "18"
+      },
+      "frame_time": {
+        "samples": 3023,
+        "mean_ms": 10.189767251075091,
+        "median_ms": 10.4083,
+        "p95_ms": 12.49307,
+        "p99_ms": 15.17963200000001,
+        "max_ms": 46.242,
+        "nonzero_samples": 3023,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 15,
+            "percent": 0.4961958319550116
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.033079722130334104
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3023,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0,
+            721,
+            934,
+            1365,
+            1597,
+            1753,
+            2015,
+            2431,
+            2618,
+            2619,
+            2845,
+            2846,
+            2895,
+            2937,
+            2938
+          ],
+          "33.3": [
+            0
+          ],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3022,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 1888,
+          "exact_requested_fraction": 0.6247518199867638,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 5,
+            "9": 0,
+            "10": 46,
+            "11": 25,
+            "12": 48,
+            "13": 107,
+            "14": 154,
+            "15": 161,
+            "16": 303,
+            "17": 285,
+            "18": 1888
+          },
+          "both_active_rows": 335
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3022,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 1888,
+        "exact_requested_fraction": 0.6247518199867638,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 5,
+          "9": 0,
+          "10": 46,
+          "11": 25,
+          "12": 48,
+          "13": 107,
+          "14": 154,
+          "15": 161,
+          "16": 303,
+          "17": 285,
+          "18": 1888
+        },
+        "both_active_rows": 335,
+        "both_active_profile_seconds": 3.215600000000001,
+        "both_active_frame_time_seconds": 3.2242018999999984
+      },
+      "c07_census": {
+        "all_rows": 5522,
+        "csv_active_rows": 3024,
+        "exact_requested_fraction": 0.6349206349206349,
+        "state_occupancy_rows": {
+          "standing": 3024,
+          "fallen": 0,
+          "get_up": 0,
+          "dead": 2333
+        },
+        "maxima": {
+          "live": 18.0,
+          "fallen": 0.0,
+          "get_up": 0.0,
+          "dead": 14.0,
+          "simulated_bodies": 386.0,
+          "awake_bodies": 386.0,
+          "zombie_voices": 15.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 0,
+        "attempted_explicit_falls": 0,
+        "matched_global_frames": 3023,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          5522
+        ],
+        "exact_requested_rows": 1920,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "8": 4,
+            "10": 44,
+            "11": 23,
+            "12": 45,
+            "13": 103,
+            "14": 147,
+            "15": 157,
+            "16": 298,
+            "17": 283,
+            "18": 1920
+          },
+          "standing": {
+            "8": 4,
+            "10": 44,
+            "11": 23,
+            "12": 45,
+            "13": 103,
+            "14": 147,
+            "15": 157,
+            "16": 298,
+            "17": 283,
+            "18": 1920
+          },
+          "fallen": {
+            "0": 3024
+          },
+          "get_up": {
+            "0": 3024
+          },
+          "dead": {
+            "0": 691,
+            "1": 12,
+            "3": 12,
+            "6": 11,
+            "7": 12,
+            "8": 12,
+            "9": 12,
+            "10": 11,
+            "11": 10,
+            "13": 10,
+            "14": 2231
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 689,
+        "event_last_frame": 3022,
+        "phase": 20,
+        "committed_shots": 144
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:17:34.247678+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:18:35.414833+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 10.125,
+          "wall_seconds": 61.17199999999866,
+          "cpu_seconds_per_wall_second": 0.16551690315831136,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:17:34.247678+00:00",
+      "completed_utc": "2026-09-14T10:18:35.460501+00:00"
+    },
+    {
+      "case": "c07_profile_870_6_none",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "870",
+      "requested_live": 6,
+      "explicit_falls": "none",
+      "analysis": "c07_profile_870_6_none/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_870_6_none/analysis.json",
+        "bytes": 201500,
+        "sha256": "08f5af378a9bbf5f20102a152a9fc5a630930a6b9cc30adaed4ab193f8177135"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300012,
+        "sha256": "199ab0120007eb88f97aff961215294f47c1c1e046a7f0e9bb41a01c3307101e"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 123586,
+        "sha256": "450e2953d8818082ac7842915c209e910a68600939823a20c070e0bade9a4365"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "none",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "870",
+        "one_carried_family": "Shotgun",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "6"
+      },
+      "frame_time": {
+        "samples": 3692,
+        "mean_ms": 8.340365438786565,
+        "median_ms": 8.32735,
+        "p95_ms": 8.79119,
+        "p99_ms": 9.327849000000002,
+        "max_ms": 34.0832,
+        "nonzero_samples": 3692,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.027085590465872156
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.027085590465872156
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3692,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [
+            0
+          ],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3691,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 3344,
+          "exact_requested_fraction": 0.905987537252777,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 16,
+            "4": 0,
+            "5": 331,
+            "6": 3344
+          },
+          "both_active_rows": 387
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3691,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 3344,
+        "exact_requested_fraction": 0.905987537252777,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 16,
+          "4": 0,
+          "5": 331,
+          "6": 3344
+        },
+        "both_active_rows": 387,
+        "both_active_profile_seconds": 3.226400000000001,
+        "both_active_frame_time_seconds": 3.2273373
+      },
+      "c07_census": {
+        "all_rows": 6191,
+        "csv_active_rows": 3693,
+        "exact_requested_fraction": 0.909017059301381,
+        "state_occupancy_rows": {
+          "standing": 3693,
+          "fallen": 2498,
+          "get_up": 0,
+          "dead": 3000
+        },
+        "maxima": {
+          "live": 6.0,
+          "fallen": 1.0,
+          "get_up": 0.0,
+          "dead": 13.0,
+          "simulated_bodies": 172.0,
+          "awake_bodies": 156.0,
+          "zombie_voices": 9.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 0,
+        "attempted_explicit_falls": 0,
+        "matched_global_frames": 3692,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          6191
+        ],
+        "exact_requested_rows": 3357,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "3": 15,
+            "5": 321,
+            "6": 3357
+          },
+          "standing": {
+            "2": 8,
+            "3": 7,
+            "4": 192,
+            "5": 2427,
+            "6": 1059
+          },
+          "fallen": {
+            "0": 1195,
+            "1": 2498
+          },
+          "get_up": {
+            "0": 3693
+          },
+          "dead": {
+            "0": 693,
+            "1": 198,
+            "2": 99,
+            "3": 99,
+            "4": 99,
+            "7": 825,
+            "8": 99,
+            "9": 99,
+            "10": 1122,
+            "11": 99,
+            "12": 99,
+            "13": 162
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 691,
+        "event_last_frame": 3691,
+        "phase": 20,
+        "committed_shots": 16
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:18:37.112707+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:19:38.273720+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 3.234375,
+          "wall_seconds": 61.171000000002095,
+          "cpu_seconds_per_wall_second": 0.052874319530494665,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:18:37.112707+00:00",
+      "completed_utc": "2026-09-14T10:19:38.322214+00:00"
+    },
+    {
+      "case": "c07_profile_870_12_none",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "870",
+      "requested_live": 12,
+      "explicit_falls": "none",
+      "analysis": "c07_profile_870_12_none/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_870_12_none/analysis.json",
+        "bytes": 201773,
+        "sha256": "9429a41d89bf537c7daa068cae24320d81d2e64a60c34b2b2f45226ce34a51b3"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300015,
+        "sha256": "e508097079a8e88545b4ac2e25db55f0be830ab4b45d72913145933bd410a998"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 126743,
+        "sha256": "4194844ddc9857599c4616f0751258807728e950f1510b97964ead3b45f10324"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "none",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "870",
+        "one_carried_family": "Shotgun",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "12"
+      },
+      "frame_time": {
+        "samples": 3663,
+        "mean_ms": 8.407870215670217,
+        "median_ms": 8.3535,
+        "p95_ms": 9.134540000000001,
+        "p99_ms": 9.947536000000003,
+        "max_ms": 39.1851,
+        "nonzero_samples": 3663,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.0273000273000273
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.0273000273000273
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3663,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [
+            0
+          ],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3662,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 3382,
+          "exact_requested_fraction": 0.9235390496996176,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 54,
+            "10": 109,
+            "11": 117,
+            "12": 3382
+          },
+          "both_active_rows": 386
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3662,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 3382,
+        "exact_requested_fraction": 0.9235390496996176,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 54,
+          "10": 109,
+          "11": 117,
+          "12": 3382
+        },
+        "both_active_rows": 386,
+        "both_active_profile_seconds": 3.216899999999999,
+        "both_active_frame_time_seconds": 3.2200296000000015
+      },
+      "c07_census": {
+        "all_rows": 6163,
+        "csv_active_rows": 3664,
+        "exact_requested_fraction": 0.9260371179039302,
+        "state_occupancy_rows": {
+          "standing": 3664,
+          "fallen": 2824,
+          "get_up": 0,
+          "dead": 2971
+        },
+        "maxima": {
+          "live": 12.0,
+          "fallen": 4.0,
+          "get_up": 0.0,
+          "dead": 13.0,
+          "simulated_bodies": 258.0,
+          "awake_bodies": 258.0,
+          "zombie_voices": 10.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 0,
+        "attempted_explicit_falls": 0,
+        "matched_global_frames": 3663,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          6163
+        ],
+        "exact_requested_rows": 3393,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "9": 53,
+            "10": 107,
+            "11": 111,
+            "12": 3393
+          },
+          "standing": {
+            "6": 59,
+            "7": 45,
+            "8": 2214,
+            "9": 58,
+            "10": 277,
+            "11": 245,
+            "12": 766
+          },
+          "fallen": {
+            "0": 840,
+            "1": 312,
+            "2": 189,
+            "3": 58,
+            "4": 2265
+          },
+          "get_up": {
+            "0": 3664
+          },
+          "dead": {
+            "0": 693,
+            "1": 99,
+            "3": 99,
+            "4": 99,
+            "5": 99,
+            "8": 1313,
+            "10": 97,
+            "11": 915,
+            "12": 97,
+            "13": 153
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 691,
+        "event_last_frame": 3662,
+        "phase": 20,
+        "committed_shots": 16
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:21:42.646983+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:22:43.805295+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 3.859375,
+          "wall_seconds": 61.15699999999924,
+          "cpu_seconds_per_wall_second": 0.06310602220514491,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:21:42.646983+00:00",
+      "completed_utc": "2026-09-14T10:22:43.853345+00:00"
+    },
+    {
+      "case": "c07_profile_870_18_none",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "870",
+      "requested_live": 18,
+      "explicit_falls": "none",
+      "analysis": "c07_profile_870_18_none/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_870_18_none/analysis.json",
+        "bytes": 202115,
+        "sha256": "67bbd5158751b64ca675371bc5710d48b3db7327716c90ba36ce4a1dea7fd81f"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300014,
+        "sha256": "e4d786a82a210930e7a30bdac6486a985ace19768c8194ec264629d42b454a9d"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 129419,
+        "sha256": "a4fdc82976995cc214bf81afaf57d5cc7917fe393e94feb1e60aaff7b2ed3330"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "none",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "870",
+        "one_carried_family": "Shotgun",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "18"
+      },
+      "frame_time": {
+        "samples": 2939,
+        "mean_ms": 10.484826709765226,
+        "median_ms": 10.9351,
+        "p95_ms": 13.01281,
+        "p99_ms": 14.629031999999999,
+        "max_ms": 47.073,
+        "nonzero_samples": 2939,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 8,
+            "percent": 0.27220142905750255
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.03402517863218782
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 2939,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0,
+            1,
+            1931,
+            1932,
+            2125,
+            2126,
+            2698,
+            2699
+          ],
+          "33.3": [
+            0
+          ],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 2938,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 2557,
+          "exact_requested_fraction": 0.8703199455411845,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 34,
+            "15": 47,
+            "16": 220,
+            "17": 80,
+            "18": 2557
+          },
+          "both_active_rows": 375
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 2938,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 2557,
+        "exact_requested_fraction": 0.8703199455411845,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0,
+          "12": 0,
+          "13": 0,
+          "14": 34,
+          "15": 47,
+          "16": 220,
+          "17": 80,
+          "18": 2557
+        },
+        "both_active_rows": 375,
+        "both_active_profile_seconds": 3.207299999999999,
+        "both_active_frame_time_seconds": 3.211521800000002
+      },
+      "c07_census": {
+        "all_rows": 5439,
+        "csv_active_rows": 2940,
+        "exact_requested_fraction": 0.8755102040816326,
+        "state_occupancy_rows": {
+          "standing": 2940,
+          "fallen": 2021,
+          "get_up": 0,
+          "dead": 2248
+        },
+        "maxima": {
+          "live": 18.0,
+          "fallen": 4.0,
+          "get_up": 0.0,
+          "dead": 14.0,
+          "simulated_bodies": 411.0,
+          "awake_bodies": 397.0,
+          "zombie_voices": 15.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 0,
+        "attempted_explicit_falls": 0,
+        "matched_global_frames": 2939,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          5439
+        ],
+        "exact_requested_rows": 2574,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "14": 33,
+            "15": 46,
+            "16": 211,
+            "17": 76,
+            "18": 2574
+          },
+          "standing": {
+            "12": 120,
+            "13": 96,
+            "14": 1362,
+            "15": 107,
+            "16": 238,
+            "17": 189,
+            "18": 828
+          },
+          "fallen": {
+            "0": 919,
+            "1": 281,
+            "2": 134,
+            "3": 107,
+            "4": 1499
+          },
+          "get_up": {
+            "0": 2940
+          },
+          "dead": {
+            "0": 692,
+            "2": 99,
+            "4": 98,
+            "6": 97,
+            "10": 90,
+            "13": 81,
+            "14": 1783
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 690,
+        "event_last_frame": 2938,
+        "phase": 20,
+        "committed_shots": 16
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:22:45.589544+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:23:46.700892+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 3.25,
+          "wall_seconds": 61.109000000004016,
+          "cpu_seconds_per_wall_second": 0.05318365543536609,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:22:45.589544+00:00",
+      "completed_utc": "2026-09-14T10:23:46.749085+00:00"
+    },
+    {
+      "case": "c07_profile_m4a1_1_mixed",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "M4A1",
+      "requested_live": 1,
+      "explicit_falls": "mixed",
+      "analysis": "c07_profile_m4a1_1_mixed/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_m4a1_1_mixed/analysis.json",
+        "bytes": 201267,
+        "sha256": "c7e33cae8385f7676bae0e2e7bff9c379314f1c9e08570571330cc64b635b675"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300107,
+        "sha256": "617d03c2a214b7ac7a7c2019249e65ca4208946f3b9ee3523ec3d8213d2bf9fa"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 117191,
+        "sha256": "8be736094cc25c37ca3f397de7e1bfc1643608d8d36e81ed2f0e51a053342d06"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "mixed",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "1"
+      },
+      "frame_time": {
+        "samples": 3695,
+        "mean_ms": 8.334943734776726,
+        "median_ms": 8.3279,
+        "p95_ms": 8.650030000000001,
+        "p99_ms": 8.923518000000001,
+        "max_ms": 17.4733,
+        "nonzero_samples": 3695,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.02706359945872801
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3695,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3694,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 3508,
+          "exact_requested_fraction": 0.9496480779642664,
+          "live_histogram": {
+            "0": 186,
+            "1": 3508
+          },
+          "both_active_rows": 386
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3694,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 3508,
+        "exact_requested_fraction": 0.9496480779642664,
+        "live_histogram": {
+          "0": 186,
+          "1": 3508
+        },
+        "both_active_rows": 386,
+        "both_active_profile_seconds": 3.216799999999999,
+        "both_active_frame_time_seconds": 3.2176798000000035
+      },
+      "c07_census": {
+        "all_rows": 6195,
+        "csv_active_rows": 3696,
+        "exact_requested_fraction": 0.9512987012987013,
+        "state_occupancy_rows": {
+          "standing": 2220,
+          "fallen": 600,
+          "get_up": 696,
+          "dead": 2868
+        },
+        "maxima": {
+          "live": 1.0,
+          "fallen": 1.0,
+          "get_up": 1.0,
+          "dead": 6.0,
+          "simulated_bodies": 89.0,
+          "awake_bodies": 73.0,
+          "zombie_voices": 2.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 2,
+        "attempted_explicit_falls": 2,
+        "matched_global_frames": 3695,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          6195
+        ],
+        "exact_requested_rows": 3516,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "0": 180,
+            "1": 3516
+          },
+          "standing": {
+            "0": 1476,
+            "1": 2220
+          },
+          "fallen": {
+            "0": 3096,
+            "1": 600
+          },
+          "get_up": {
+            "0": 3000,
+            "1": 696
+          },
+          "dead": {
+            "0": 828,
+            "1": 409,
+            "2": 252,
+            "3": 385,
+            "4": 445,
+            "5": 541,
+            "6": 836
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 694,
+        "event_last_frame": 3694,
+        "phase": 20,
+        "committed_shots": 144
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:24:49.955689+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:25:51.293012+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 4.265625,
+          "wall_seconds": 61.34399999999732,
+          "cpu_seconds_per_wall_second": 0.06953614045383714,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:24:49.955689+00:00",
+      "completed_utc": "2026-09-14T10:25:51.340266+00:00"
+    },
+    {
+      "case": "c07_profile_m4a1_2_mixed",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "M4A1",
+      "requested_live": 2,
+      "explicit_falls": "mixed",
+      "analysis": "c07_profile_m4a1_2_mixed/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_m4a1_2_mixed/analysis.json",
+        "bytes": 202510,
+        "sha256": "7755e1f56c263fa01435cdd0fab1b5059b26b8593d9a6302c81e9127151e197e"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300107,
+        "sha256": "a485bfbf57f9888b1edcec69d0fa405a13ba9ad9c0dcae516ef3ccee376751c5"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 123606,
+        "sha256": "e76d27b4f8e399d536704ca6df644b88b42dfb29d16f86759be2eac54e1743cc"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "mixed",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "2"
+      },
+      "frame_time": {
+        "samples": 3693,
+        "mean_ms": 8.337831058759816,
+        "median_ms": 8.3249,
+        "p95_ms": 8.809859999999999,
+        "p99_ms": 9.304276,
+        "max_ms": 19.6226,
+        "nonzero_samples": 3693,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.027078256160303276
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3693,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3692,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 2941,
+          "exact_requested_fraction": 0.7965872156013001,
+          "live_histogram": {
+            "0": 91,
+            "1": 660,
+            "2": 2941
+          },
+          "both_active_rows": 387
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3692,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 2941,
+        "exact_requested_fraction": 0.7965872156013001,
+        "live_histogram": {
+          "0": 91,
+          "1": 660,
+          "2": 2941
+        },
+        "both_active_rows": 387,
+        "both_active_profile_seconds": 3.2253999999999996,
+        "both_active_frame_time_seconds": 3.2263968000000034
+      },
+      "c07_census": {
+        "all_rows": 6193,
+        "csv_active_rows": 3694,
+        "exact_requested_fraction": 0.8010286951813752,
+        "state_occupancy_rows": {
+          "standing": 2954,
+          "fallen": 397,
+          "get_up": 499,
+          "dead": 2963
+        },
+        "maxima": {
+          "live": 2.0,
+          "fallen": 2.0,
+          "get_up": 2.0,
+          "dead": 14.0,
+          "simulated_bodies": 204.0,
+          "awake_bodies": 172.0,
+          "zombie_voices": 6.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 2,
+        "attempted_explicit_falls": 2,
+        "matched_global_frames": 3693,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          6193
+        ],
+        "exact_requested_rows": 2959,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "0": 88,
+            "1": 647,
+            "2": 2959
+          },
+          "standing": {
+            "0": 740,
+            "1": 682,
+            "2": 2272
+          },
+          "fallen": {
+            "0": 3297,
+            "1": 151,
+            "2": 246
+          },
+          "get_up": {
+            "0": 3195,
+            "1": 302,
+            "2": 197
+          },
+          "dead": {
+            "0": 731,
+            "1": 84,
+            "2": 421,
+            "3": 60,
+            "4": 156,
+            "5": 36,
+            "6": 373,
+            "7": 12,
+            "8": 445,
+            "9": 12,
+            "10": 24,
+            "11": 60,
+            "12": 180,
+            "13": 313,
+            "14": 787
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 693,
+        "event_last_frame": 3692,
+        "phase": 20,
+        "committed_shots": 144
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:25:53.117364+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:26:54.402674+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 4.875,
+          "wall_seconds": 61.28100000000268,
+          "cpu_seconds_per_wall_second": 0.07955157389728933,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:25:53.117364+00:00",
+      "completed_utc": "2026-09-14T10:26:54.450367+00:00"
+    },
+    {
+      "case": "c07_profile_m4a1_6_mixed",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "M4A1",
+      "requested_live": 6,
+      "explicit_falls": "mixed",
+      "analysis": "c07_profile_m4a1_6_mixed/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_m4a1_6_mixed/analysis.json",
+        "bytes": 203286,
+        "sha256": "0875e1fd21425b8b15b1ce0729f99c16232656f690d45d956372b3c89301386f"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300096,
+        "sha256": "1ef12ea3340ecce06bee906266083d8bd5c6f1de9671907f269b9fdcae0d6b5f"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 134172,
+        "sha256": "7c2eed10caa16b88501efad83805a1f171924f9bfc4a2777984531f10ed83f8c"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "mixed",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "6"
+      },
+      "frame_time": {
+        "samples": 3673,
+        "mean_ms": 8.385369452763408,
+        "median_ms": 8.3308,
+        "p95_ms": 9.11238,
+        "p99_ms": 9.917711999999998,
+        "max_ms": 31.4167,
+        "nonzero_samples": 3673,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.027225701061802342
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3673,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3672,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 2838,
+          "exact_requested_fraction": 0.7728758169934641,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 42,
+            "3": 143,
+            "4": 181,
+            "5": 468,
+            "6": 2838
+          },
+          "both_active_rows": 386
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3672,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 2838,
+        "exact_requested_fraction": 0.7728758169934641,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 42,
+          "3": 143,
+          "4": 181,
+          "5": 468,
+          "6": 2838
+        },
+        "both_active_rows": 386,
+        "both_active_profile_seconds": 3.218399999999999,
+        "both_active_frame_time_seconds": 3.221635599999997
+      },
+      "c07_census": {
+        "all_rows": 6173,
+        "csv_active_rows": 3674,
+        "exact_requested_fraction": 0.7781709308655417,
+        "state_occupancy_rows": {
+          "standing": 3663,
+          "fallen": 2143,
+          "get_up": 1009,
+          "dead": 2980
+        },
+        "maxima": {
+          "live": 6.0,
+          "fallen": 3.0,
+          "get_up": 2.0,
+          "dead": 14.0,
+          "simulated_bodies": 291.0,
+          "awake_bodies": 288.0,
+          "zombie_voices": 11.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 6,
+        "attempted_explicit_falls": 6,
+        "matched_global_frames": 3673,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          6173
+        ],
+        "exact_requested_rows": 2859,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "2": 38,
+            "3": 139,
+            "4": 177,
+            "5": 461,
+            "6": 2859
+          },
+          "standing": {
+            "0": 11,
+            "1": 38,
+            "2": 69,
+            "3": 289,
+            "4": 1569,
+            "5": 1145,
+            "6": 553
+          },
+          "fallen": {
+            "0": 1531,
+            "1": 1352,
+            "2": 784,
+            "3": 7
+          },
+          "get_up": {
+            "0": 2665,
+            "1": 661,
+            "2": 348
+          },
+          "dead": {
+            "0": 694,
+            "1": 12,
+            "2": 12,
+            "3": 12,
+            "4": 24,
+            "5": 36,
+            "7": 36,
+            "8": 12,
+            "9": 397,
+            "10": 24,
+            "11": 12,
+            "13": 24,
+            "14": 2379
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 692,
+        "event_last_frame": 3672,
+        "phase": 20,
+        "committed_shots": 144
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:26:56.223075+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:27:57.533707+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 6.53125,
+          "wall_seconds": 61.296000000002095,
+          "cpu_seconds_per_wall_second": 0.10655262986165127,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:26:56.223075+00:00",
+      "completed_utc": "2026-09-14T10:27:57.573662+00:00"
+    },
+    {
+      "case": "c07_profile_m4a1_12_mixed",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "M4A1",
+      "requested_live": 12,
+      "explicit_falls": "mixed",
+      "analysis": "c07_profile_m4a1_12_mixed/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_m4a1_12_mixed/analysis.json",
+        "bytes": 203175,
+        "sha256": "830d3bd1ed48c90f8f701c08d0bb79909407aa2875eb11badcd7f542733dcc54"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300108,
+        "sha256": "8b5e5cf87f8a44dbeb7810a2a26a0a46282b9905395ecc4ede40e6b65dc0ff46"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 144163,
+        "sha256": "39949acb58c401335701c0957be6708ab71535689bd2ad9d76fd931837de521c"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "mixed",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "12"
+      },
+      "frame_time": {
+        "samples": 3327,
+        "mean_ms": 9.259006762849413,
+        "median_ms": 9.1559,
+        "p95_ms": 10.97087,
+        "p99_ms": 12.363581999999987,
+        "max_ms": 39.7144,
+        "nonzero_samples": 3327,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 2,
+            "percent": 0.06011421701232342
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.03005710850616171
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3327,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0,
+            778
+          ],
+          "33.3": [
+            0
+          ],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3326,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 2379,
+          "exact_requested_fraction": 0.7152736019242333,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 10,
+            "7": 53,
+            "8": 81,
+            "9": 148,
+            "10": 247,
+            "11": 408,
+            "12": 2379
+          },
+          "both_active_rows": 364
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3326,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 2379,
+        "exact_requested_fraction": 0.7152736019242333,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 10,
+          "7": 53,
+          "8": 81,
+          "9": 148,
+          "10": 247,
+          "11": 408,
+          "12": 2379
+        },
+        "both_active_rows": 364,
+        "both_active_profile_seconds": 3.2257000000000007,
+        "both_active_frame_time_seconds": 3.2310112000000006
+      },
+      "c07_census": {
+        "all_rows": 5827,
+        "csv_active_rows": 3328,
+        "exact_requested_fraction": 0.7238581730769231,
+        "state_occupancy_rows": {
+          "standing": 3328,
+          "fallen": 3271,
+          "get_up": 763,
+          "dead": 2636
+        },
+        "maxima": {
+          "live": 12.0,
+          "fallen": 4.0,
+          "get_up": 1.0,
+          "dead": 14.0,
+          "simulated_bodies": 357.0,
+          "awake_bodies": 353.0,
+          "zombie_voices": 13.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 6,
+        "attempted_explicit_falls": 6,
+        "matched_global_frames": 3327,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          5827
+        ],
+        "exact_requested_rows": 2409,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "6": 9,
+            "7": 49,
+            "8": 78,
+            "9": 142,
+            "10": 243,
+            "11": 398,
+            "12": 2409
+          },
+          "standing": {
+            "4": 40,
+            "5": 62,
+            "6": 209,
+            "7": 255,
+            "8": 570,
+            "9": 643,
+            "10": 1030,
+            "11": 462,
+            "12": 57
+          },
+          "fallen": {
+            "0": 57,
+            "1": 959,
+            "2": 1111,
+            "3": 655,
+            "4": 546
+          },
+          "get_up": {
+            "0": 2565,
+            "1": 763
+          },
+          "dead": {
+            "0": 692,
+            "1": 12,
+            "2": 12,
+            "4": 12,
+            "7": 12,
+            "8": 36,
+            "9": 23,
+            "10": 12,
+            "11": 12,
+            "12": 35,
+            "14": 2470
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 690,
+        "event_last_frame": 3326,
+        "phase": 20,
+        "committed_shots": 144
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:27:59.304794+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:29:00.532149+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 5.546875,
+          "wall_seconds": 61.21800000000076,
+          "cpu_seconds_per_wall_second": 0.09060856284099336,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:27:59.304794+00:00",
+      "completed_utc": "2026-09-14T10:29:00.595643+00:00"
+    },
+    {
+      "case": "c07_profile_m4a1_18_mixed",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "M4A1",
+      "requested_live": 18,
+      "explicit_falls": "mixed",
+      "analysis": "c07_profile_m4a1_18_mixed/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_m4a1_18_mixed/analysis.json",
+        "bytes": 202596,
+        "sha256": "e122fd0fe5b80365e38389567b9b72428f878efa074efc103b2721a27054b92d"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300107,
+        "sha256": "74e95ee79d8bbfdc4b9272e6190abef791a9d21d726958211177fc8bf84633dd"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 157669,
+        "sha256": "3e6f280a8209db71030f5a54e46c0940e76ae9f583d716b62079ac67440259aa"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "mixed",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "M4A1",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "18"
+      },
+      "frame_time": {
+        "samples": 2880,
+        "mean_ms": 10.696333263888889,
+        "median_ms": 10.8841,
+        "p95_ms": 13.293484999999999,
+        "p99_ms": 15.749725000000002,
+        "max_ms": 53.0143,
+        "nonzero_samples": 2880,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 18,
+            "percent": 0.625
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.034722222222222224
+          },
+          "above_50_ms": {
+            "count": 1,
+            "percent": 0.034722222222222224
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 2880,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0,
+            1,
+            718,
+            883,
+            1263,
+            1264,
+            1577,
+            1578,
+            1625,
+            1971,
+            1972,
+            2096,
+            2386,
+            2387,
+            2431,
+            2803,
+            2829,
+            2830
+          ],
+          "33.3": [
+            0
+          ],
+          "50.0": [
+            0
+          ],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 2879,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 1865,
+          "exact_requested_fraction": 0.6477943730461966,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 15,
+            "12": 23,
+            "13": 68,
+            "14": 145,
+            "15": 141,
+            "16": 277,
+            "17": 345,
+            "18": 1865
+          },
+          "both_active_rows": 336
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 2879,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 1865,
+        "exact_requested_fraction": 0.6477943730461966,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 15,
+          "12": 23,
+          "13": 68,
+          "14": 145,
+          "15": 141,
+          "16": 277,
+          "17": 345,
+          "18": 1865
+        },
+        "both_active_rows": 336,
+        "both_active_profile_seconds": 3.2135,
+        "both_active_frame_time_seconds": 3.2185032
+      },
+      "c07_census": {
+        "all_rows": 5380,
+        "csv_active_rows": 2881,
+        "exact_requested_fraction": 0.6581048247136411,
+        "state_occupancy_rows": {
+          "standing": 2881,
+          "fallen": 2827,
+          "get_up": 795,
+          "dead": 2191
+        },
+        "maxima": {
+          "live": 18.0,
+          "fallen": 4.0,
+          "get_up": 1.0,
+          "dead": 14.0,
+          "simulated_bodies": 414.0,
+          "awake_bodies": 414.0,
+          "zombie_voices": 15.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 4,
+        "attempted_explicit_falls": 6,
+        "matched_global_frames": 2880,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          5380
+        ],
+        "exact_requested_rows": 1896,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "11": 12,
+            "12": 21,
+            "13": 65,
+            "14": 142,
+            "15": 136,
+            "16": 271,
+            "17": 338,
+            "18": 1896
+          },
+          "standing": {
+            "7": 12,
+            "8": 26,
+            "9": 13,
+            "10": 52,
+            "11": 59,
+            "12": 179,
+            "13": 461,
+            "14": 398,
+            "15": 360,
+            "16": 1060,
+            "17": 207,
+            "18": 54
+          },
+          "fallen": {
+            "0": 54,
+            "1": 789,
+            "2": 1128,
+            "3": 155,
+            "4": 755
+          },
+          "get_up": {
+            "0": 2086,
+            "1": 795
+          },
+          "dead": {
+            "0": 690,
+            "2": 12,
+            "5": 12,
+            "7": 23,
+            "9": 12,
+            "10": 35,
+            "12": 33,
+            "13": 20,
+            "14": 2044
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 688,
+        "event_last_frame": 2879,
+        "phase": 20,
+        "committed_shots": 144
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:29:02.343268+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:30:03.533055+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 4.078125,
+          "wall_seconds": 61.187000000005355,
+          "cpu_seconds_per_wall_second": 0.06665018713124754,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:29:02.343268+00:00",
+      "completed_utc": "2026-09-14T10:30:03.580180+00:00"
+    },
+    {
+      "case": "c07_profile_overcurrent_12_mixed",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "Overcurrent",
+      "requested_live": 12,
+      "explicit_falls": "mixed",
+      "analysis": "c07_profile_overcurrent_12_mixed/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_overcurrent_12_mixed/analysis.json",
+        "bytes": 203486,
+        "sha256": "9241d98f5d53d789a6815f41f3e5ede4457c2770aca4dac0f97571bb1920c072"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300697,
+        "sha256": "c8444b15068baf33ddc9c80024c6a08fafa03c1002a92c03bee3cc4cf9e09c24"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 153647,
+        "sha256": "1d3efb9586a6cf2d8469ff3933d1f4d4676b3c2f5217741cacf990d1d901010f"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "mixed",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "Overcurrent",
+        "one_carried_family": "Carbine",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "12"
+      },
+      "frame_time": {
+        "samples": 3374,
+        "mean_ms": 9.129663100177831,
+        "median_ms": 9.03345,
+        "p95_ms": 10.708359999999999,
+        "p99_ms": 11.948642,
+        "max_ms": 30.3598,
+        "nonzero_samples": 3374,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 4,
+            "percent": 0.11855364552459988
+          },
+          "above_33.3_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3374,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0,
+            778,
+            2466,
+            3003
+          ],
+          "33.3": [],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3373,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 2333,
+          "exact_requested_fraction": 0.6916691372665283,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 18,
+            "6": 11,
+            "7": 20,
+            "8": 55,
+            "9": 174,
+            "10": 307,
+            "11": 455,
+            "12": 2333
+          },
+          "both_active_rows": 363
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3373,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 2333,
+        "exact_requested_fraction": 0.6916691372665283,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 18,
+          "6": 11,
+          "7": 20,
+          "8": 55,
+          "9": 174,
+          "10": 307,
+          "11": 455,
+          "12": 2333
+        },
+        "both_active_rows": 363,
+        "both_active_profile_seconds": 3.2217000000000002,
+        "both_active_frame_time_seconds": 3.2253709000000006
+      },
+      "c07_census": {
+        "all_rows": 8179,
+        "csv_active_rows": 3375,
+        "exact_requested_fraction": 0.6998518518518518,
+        "state_occupancy_rows": {
+          "standing": 3375,
+          "fallen": 3317,
+          "get_up": 611,
+          "dead": 3375
+        },
+        "maxima": {
+          "live": 12.0,
+          "fallen": 4.0,
+          "get_up": 1.0,
+          "dead": 14.0,
+          "simulated_bodies": 338.0,
+          "awake_bodies": 338.0,
+          "zombie_voices": 12.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 5,
+        "attempted_explicit_falls": 6,
+        "matched_global_frames": 3374,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          8179
+        ],
+        "exact_requested_rows": 2362,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "5": 16,
+            "6": 10,
+            "7": 20,
+            "8": 50,
+            "9": 170,
+            "10": 302,
+            "11": 445,
+            "12": 2362
+          },
+          "standing": {
+            "1": 16,
+            "2": 10,
+            "3": 20,
+            "4": 24,
+            "5": 61,
+            "6": 172,
+            "7": 481,
+            "8": 1324,
+            "9": 244,
+            "10": 965,
+            "12": 58
+          },
+          "fallen": {
+            "0": 58,
+            "2": 1384,
+            "3": 672,
+            "4": 1261
+          },
+          "get_up": {
+            "0": 2764,
+            "1": 611
+          },
+          "dead": {
+            "1": 694,
+            "2": 11,
+            "3": 10,
+            "5": 11,
+            "7": 20,
+            "8": 21,
+            "9": 11,
+            "11": 9,
+            "12": 21,
+            "13": 10,
+            "14": 2557
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 692,
+        "event_last_frame": 3373,
+        "phase": 33,
+        "committed_shots": 180
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:30:05.374281+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:31:26.642778+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 5.6875,
+          "wall_seconds": 81.26600000000326,
+          "cpu_seconds_per_wall_second": 0.069986218098587,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:30:05.374281+00:00",
+      "completed_utc": "2026-09-14T10:31:26.690680+00:00"
+    },
+    {
+      "case": "c07_profile_870_12_mixed",
+      "candidate": "07",
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "weapon": "870",
+      "requested_live": 12,
+      "explicit_falls": "mixed",
+      "analysis": "c07_profile_870_12_mixed/analysis.json",
+      "analysis_identity": {
+        "path": "c07_profile_870_12_mixed/analysis.json",
+        "bytes": 201686,
+        "sha256": "f10c81021f4957eb7a017c86b5c1c1e98471f7452274db03d4a20247e8f75959"
+      },
+      "original_result": {
+        "path": "result.json",
+        "bytes": 300106,
+        "sha256": "ae9c39eb5829553f608b0ff8b094c30c6f140aeb1b12a46e371a7efdb1f3390a"
+      },
+      "original_engine_log": {
+        "path": "engine.log",
+        "bytes": 129349,
+        "sha256": "0d23373a86ae58f76f43f1fbc8701c17ca038e209632340aa276cd94be1ea3bc"
+      },
+      "runtime_identity": [
+        {
+          "path": "ProjectONE.exe",
+          "bytes": 164864,
+          "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+        },
+        {
+          "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+          "bytes": 293055488,
+          "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+          "bytes": 10737169,
+          "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+          "bytes": 226088848,
+          "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+        },
+        {
+          "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+          "bytes": 277601,
+          "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+        },
+        {
+          "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+          "bytes": 25646504,
+          "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+        }
+      ],
+      "settings_requested": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "capture_metadata": {
+        "platform": "Windows",
+        "config": "Development",
+        "buildversion": "++UE5+Release-5.7-CL-49658320",
+        "engineversion": "5.7.2-49658320+++UE5+Release-5.7",
+        "enginereleaseversion": "5.7.2",
+        "os": "Windows 11 (25H2) [10.0.26200.9445]",
+        "cpu": "AuthenticAMD|AMD Ryzen 9 5950X 16-Core Processor",
+        "systemresolution.resx": "1600",
+        "systemresolution.resy": "900",
+        "deviceprofile": "Windows",
+        "one_c07_companion": "all_frames_physicality_census",
+        "one_c07_explicit_falls": "mixed",
+        "one_scenario": "candidate06_legacy05_two_machines_production_input_combat",
+        "one_carried_weapon": "870",
+        "one_carried_family": "Shotgun",
+        "one_pickup_fixture": "Two actual overlap collections plus three forced world drops before CSV; normal lifetime decay",
+        "one_media_capture": "none",
+        "one_requested_enemies": "12"
+      },
+      "frame_time": {
+        "samples": 3391,
+        "mean_ms": 9.086047154231789,
+        "median_ms": 8.6108,
+        "p95_ms": 11.093350000000001,
+        "p99_ms": 12.658379999999996,
+        "max_ms": 46.0084,
+        "nonzero_samples": 3391,
+        "spikes": {
+          "above_16.7_ms": {
+            "count": 1,
+            "percent": 0.029489826010026542
+          },
+          "above_33.3_ms": {
+            "count": 1,
+            "percent": 0.029489826010026542
+          },
+          "above_50_ms": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "above_100_ms": {
+            "count": 0,
+            "percent": 0.0
+          }
+        }
+      },
+      "retention_and_driver_verification": {
+        "all_rows": 3391,
+        "zero_duration_rows": 0,
+        "spikes_removed": 0,
+        "spike_indices": {
+          "16.7": [
+            0
+          ],
+          "33.3": [
+            0
+          ],
+          "50.0": [],
+          "100.0": []
+        },
+        "maximum_frame_indices": [
+          0
+        ],
+        "legacy_driver": {
+          "valid_rows": 3390,
+          "uninitialized_boundary_rows_retained": 1,
+          "exact_requested_rows": 3001,
+          "exact_requested_fraction": 0.8852507374631269,
+          "live_histogram": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 29,
+            "10": 98,
+            "11": 262,
+            "12": 3001
+          },
+          "both_active_rows": 386
+        }
+      },
+      "legacy_driver_census": {
+        "valid_rows": 3390,
+        "uninitialized_boundary_rows_retained": 1,
+        "exact_requested_rows": 3001,
+        "exact_requested_fraction": 0.8852507374631269,
+        "live_histogram": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 29,
+          "10": 98,
+          "11": 262,
+          "12": 3001
+        },
+        "both_active_rows": 386,
+        "both_active_profile_seconds": 3.2175000000000002,
+        "both_active_frame_time_seconds": 3.219140700000001
+      },
+      "c07_census": {
+        "all_rows": 5891,
+        "csv_active_rows": 3392,
+        "exact_requested_fraction": 0.8891509433962265,
+        "state_occupancy_rows": {
+          "standing": 3392,
+          "fallen": 3336,
+          "get_up": 1016,
+          "dead": 2700
+        },
+        "maxima": {
+          "live": 12.0,
+          "fallen": 4.0,
+          "get_up": 2.0,
+          "dead": 14.0,
+          "simulated_bodies": 342.0,
+          "awake_bodies": 335.0,
+          "zombie_voices": 11.0,
+          "ambient_voices": 3.0,
+          "contact_voices": 12.0
+        },
+        "accepted_explicit_falls": 4,
+        "attempted_explicit_falls": 6,
+        "matched_global_frames": 3391,
+        "unmatched_engine_boundary_indices_retained": [],
+        "unmatched_census_boundary_frames_retained": [
+          5891
+        ],
+        "exact_requested_rows": 3016,
+        "state_histograms_csv_active_rows": {
+          "live": {
+            "9": 28,
+            "10": 94,
+            "11": 254,
+            "12": 3016
+          },
+          "standing": {
+            "3": 28,
+            "5": 8,
+            "6": 283,
+            "7": 166,
+            "8": 1170,
+            "9": 326,
+            "10": 837,
+            "11": 518,
+            "12": 56
+          },
+          "fallen": {
+            "0": 56,
+            "1": 1001,
+            "2": 438,
+            "3": 636,
+            "4": 1261
+          },
+          "get_up": {
+            "0": 2376,
+            "1": 701,
+            "2": 315
+          },
+          "dead": {
+            "0": 692,
+            "2": 99,
+            "3": 99,
+            "5": 99,
+            "6": 99,
+            "8": 924,
+            "11": 94,
+            "12": 92,
+            "14": 1194
+          }
+        },
+        "denominator": "All csv_active=1 census rows, including retained unmatched boundary rows; sampled after driver replenishment. Occupancy categories can coexist in a frame."
+      },
+      "actual_weapon_combat": {
+        "event_first_frame": 690,
+        "event_last_frame": 3390,
+        "phase": 20,
+        "committed_shots": 16
+      },
+      "host_boundaries": {
+        "host_before": {
+          "recorded_utc": "2026-09-14T10:31:28.501541+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "host_after": {
+          "recorded_utc": "2026-09-14T10:32:29.779333+00:00",
+          "cpu": [
+            {
+              "Name": "AMD Ryzen 9 5950X 16-Core Processor            ",
+              "NumberOfLogicalProcessors": 32
+            }
+          ],
+          "gpu": [
+            {
+              "Name": "Meta Virtual Monitor",
+              "DriverVersion": "11.1.45.729"
+            },
+            {
+              "Name": "Virtual Desktop Monitor",
+              "DriverVersion": "13.50.53.699"
+            },
+            {
+              "Name": "NVIDIA GeForce RTX 3090",
+              "DriverVersion": "32.0.15.9186"
+            }
+          ],
+          "os": [
+            {
+              "Caption": "Microsoft Windows 11 Pro",
+              "Version": "10.0.26200",
+              "BuildNumber": "26200",
+              "TotalVisibleMemorySize": 67052136
+            }
+          ]
+        },
+        "ambient": {
+          "role": "other_observed",
+          "cpu_seconds": 3.765625,
+          "wall_seconds": 61.28100000000268,
+          "cpu_seconds_per_wall_second": 0.06144849137579079,
+          "matched_processes": 136,
+          "limit": "Only processes with matching PID/name/start time and readable counters at both boundaries. Child/new/retired processes and intervening bursts are omitted. Not host isolation or CSV-window CPU cost."
+        },
+        "adopted_after_runner_interruption": false
+      },
+      "started_utc": "2026-09-14T10:31:28.501541+00:00",
+      "completed_utc": "2026-09-14T10:32:29.827281+00:00"
+    }
+  ],
+  "limits": [
+    "All engine frame rows and spikes are retained, including initialization, zero duration and unfavorable maxima. No trimming or spike removal.",
+    "Exact-live driver fraction uses only valid RequestedLive rows before replenishment. All invalid boundary rows remain in timing statistics.",
+    "C07 separately retains every physicality census row. CSV-active census includes its unmatched boundary rows and samples after replenishment; no invented alignment to C06.",
+    "None means no explicit fixture falls. Ordinary production contact falls can still occur. Mixed means additional explicit fall attempts, with actual acceptance/state counts reported.",
+    "Alternating candidate order for the six requested pairs reduces simple ordering bias but does not control ambient load, cache state, random streams or population histories.",
+    "Boundary process CPU observations cover the whole child invocation, not the CSV window, and omit new/retired/unreadable processes. Missing observations stay missing.",
+    "1600x900, cap120, VSync0 and screen percentage100. Capped warm scripted runs include two machines, requested-weapon combat, pickups and disclosed profile health protection; not startup or native play.",
+    "Nested/inclusive CPU and worker scopes are retained separately, never added or subtracted as unique wall cost. No GPU attribution, universal FPS or causal speedup is inferred.",
+    "No continuous playback or audio audition occurred in this curation; voice counters do not prove audibility."
+  ]
+}

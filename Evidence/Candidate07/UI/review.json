@@ -1,0 +1,412 @@
+{
+  "schema": "one07.final_ui_pixel_review.v1",
+  "status": "REVIEWED_WITH_MINOR_CONTRAST_LIMIT",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "reviewed_utc": "2026-09-14T10:00:50.256969+00:00",
+  "method": "Viewed each of the twelve original PNGs individually using view_image at original resolution. No contact sheet, crop, image regeneration, movie playback or native input.",
+  "runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 293055488,
+      "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10737169,
+      "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 226088848,
+      "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 277601,
+      "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "build_proof": {
+    "path": "runtime_build.json",
+    "bytes": 29215,
+    "sha256": "07ee50383fd86373d8f47589dc982dbe98b7d26390b0dfc60e728b46fbe9140d"
+  },
+  "runs": [
+    {
+      "case": "c07_ui_1600x900",
+      "status": "PASS",
+      "result": {
+        "path": "Saved/Candidate07/Runtime/20260914T095741_069703_ui_a1b2a472/result.json",
+        "bytes": 299487,
+        "sha256": "c802147f263bd08ff56558a3c2758bba76dcec51b90d2d77223bd994271dfb51"
+      },
+      "matrix_case_evidence": {
+        "path": "Saved/Candidate07/FinalMatrix/S_3d75c2faa0ce_01/Runs/c07_ui_1600x900/evidence.json",
+        "bytes": 3509,
+        "sha256": "be33f86ff3a81808a26d54f112e91e5158734b9707821ef57e4d36350635059c"
+      },
+      "engine_log": {
+        "path": "engine.log",
+        "bytes": 103724,
+        "sha256": "2516fd350a124e005041feea22042a6656ffb55f4eca29b2c0836c9efeecece6"
+      },
+      "fixture_relative": "Candidate05/UI1600x900",
+      "checks": {
+        "path": "checks.json",
+        "bytes": 11168,
+        "sha256": "f1e38f0da8391eb45d9d84b7c2a47322d0cf51ced2b52c89bab471753cd57f13"
+      },
+      "input_trace": {
+        "path": "input.csv",
+        "bytes": 1192,
+        "sha256": "d0515348e7d4765bf613ca173a241d09ed8ec269a56e5f852d13949d4873f5e6"
+      },
+      "completion": {
+        "failures": 0,
+        "checks": 49,
+        "width": 1600,
+        "height": 900
+      },
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "pre_and_post_source_runtime_verified": true,
+      "normal_exit_code": 0,
+      "legacy_fixture_candidate_label": "05",
+      "fixture_scope": "Rendered production Controller InputKey events and SetMouseLocation at read-back drawn HUD button rectangles, with press/release separated by real frames. Not native OS input. Actual sandbox10000-point button grant followed by explicit TrySpendPoints8500 fixture exposes1500 typography. One safe-contact teleport to existing mystery box precedes a real production F-hold so death/restart invalidates an active machine. Fatal ReceiveAttack is an explicit death fixture. Sparse original viewport PNGs only; no screenshot replacement, audio recording or performance claim. Final Quit is verified by engine exit request; runner must also verify process exit."
+    },
+    {
+      "case": "c07_ui_1280x720",
+      "status": "PASS",
+      "result": {
+        "path": "Saved/Candidate07/Runtime/20260914T095758_678779_ui_8e93f141/result.json",
+        "bytes": 299498,
+        "sha256": "370a382726d6a628117f4bc7f317f9431c9cecafdfaa723a3f553bb37dfc96e5"
+      },
+      "matrix_case_evidence": {
+        "path": "Saved/Candidate07/FinalMatrix/S_3d75c2faa0ce_01/Runs/c07_ui_1280x720/evidence.json",
+        "bytes": 3506,
+        "sha256": "5f24e1a3dc906830cacfe654264a2e847319a435f1fe62d493ce2b4b771e18f3"
+      },
+      "engine_log": {
+        "path": "engine.log",
+        "bytes": 103524,
+        "sha256": "2d7dd799017a4095d316045977c954380befd7cd6db663488c2c0097d25c6c8b"
+      },
+      "fixture_relative": "Candidate05/UI1280x720",
+      "checks": {
+        "path": "checks.json",
+        "bytes": 11566,
+        "sha256": "661554f1c9ca941b46c27b1d5f03c55c6881041f5b6b030a049642ab71c3d0a0"
+      },
+      "input_trace": {
+        "path": "input.csv",
+        "bytes": 1192,
+        "sha256": "891a738ea21f32e1285deb0d0a5d7ede0516271645f7001b45ac3722b5a454b1"
+      },
+      "completion": {
+        "failures": 0,
+        "checks": 49,
+        "width": 1280,
+        "height": 720
+      },
+      "settings": {
+        "width": 1280,
+        "height": 720,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "pre_and_post_source_runtime_verified": true,
+      "normal_exit_code": 0,
+      "legacy_fixture_candidate_label": "05",
+      "fixture_scope": "Rendered production Controller InputKey events and SetMouseLocation at read-back drawn HUD button rectangles, with press/release separated by real frames. Not native OS input. Actual sandbox10000-point button grant followed by explicit TrySpendPoints8500 fixture exposes1500 typography. One safe-contact teleport to existing mystery box precedes a real production F-hold so death/restart invalidates an active machine. Fatal ReceiveAttack is an explicit death fixture. Sparse original viewport PNGs only; no screenshot replacement, audio recording or performance claim. Final Quit is verified by engine exit request; runner must also verify process exit."
+    }
+  ],
+  "originals_viewed": 12,
+  "frames": [
+    {
+      "case": "c07_ui_1600x900",
+      "fixture_relative": "Candidate05/UI1600x900",
+      "file": "01_starter_0_7_56.png",
+      "width": 1600,
+      "height": 900,
+      "world_seconds": 0.6830233000218868,
+      "frame": 80,
+      "points": 0,
+      "paused": false,
+      "tools": false,
+      "dead": false,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 1217121,
+      "sha256": "f7b55d0745ff25c94f18fc484dd497a9bbb6fe6c747c4647b7c9721838fb28a5",
+      "viewed_original_pixels": true,
+      "observation": "Zero points, health 100/full bar, seven loaded and 56 reserve read distinctly. Slot 1 M1911 and slot 2 Empty are visible. Compact round and H Sandbox panels leave the player/world clear; no red health-edge tint at full health.",
+      "size_specific_observation": "Pause shows Survived 0m 2s; tray has clear outer margins at full 1600x900."
+    },
+    {
+      "case": "c07_ui_1600x900",
+      "fixture_relative": "Candidate05/UI1600x900",
+      "file": "02_expanded_tools.png",
+      "width": 1600,
+      "height": 900,
+      "world_seconds": 1.2151067033410072,
+      "frame": 130,
+      "points": 0,
+      "paused": false,
+      "tools": true,
+      "dead": false,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 610237,
+      "sha256": "13ceaacae3e82c17e8f5e88f25f71562e00efe1253d3e7d57d722a44cca996fc",
+      "viewed_original_pixels": true,
+      "observation": "The entire help tray fits. LMB fire, hold RMB head/Left Ctrl low, wheel switch, Box hold F and Upgrade tap F/auto-return are legible. Shake 100%, all three forced-pickup buttons, grant/reset/cleanup controls and Back to game remain inside separated buttons.",
+      "size_specific_observation": "Pause shows Survived 0m 2s; tray has clear outer margins at full 1600x900."
+    },
+    {
+      "case": "c07_ui_1600x900",
+      "fixture_relative": "Candidate05/UI1600x900",
+      "file": "03_compact_1500.png",
+      "width": 1600,
+      "height": 900,
+      "world_seconds": 2.1322363018989563,
+      "frame": 233,
+      "points": 1500,
+      "paused": false,
+      "tools": false,
+      "dead": false,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 1219761,
+      "sha256": "2c612ee99715084d89c60d83ab75e7028f34ec7e03e937082cefcbe983dfe206",
+      "viewed_original_pixels": true,
+      "observation": "The four-digit 1500 points read cleanly without colliding with health or ammo. Compact tray state restored, ammo remains 7/56 and slot 2 Empty. Small Torso 125 cm caption lies over the pale floor stencil and loses contrast against that text.",
+      "size_specific_observation": "Pause shows Survived 0m 2s; tray has clear outer margins at full 1600x900."
+    },
+    {
+      "case": "c07_ui_1600x900",
+      "fixture_relative": "Candidate05/UI1600x900",
+      "file": "04_pause.png",
+      "width": 1600,
+      "height": 900,
+      "world_seconds": 3.0061648041009903,
+      "frame": 363,
+      "points": 1500,
+      "paused": true,
+      "tools": false,
+      "dead": false,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 475096,
+      "sha256": "3630e93264750cf80a02a262710dbe84c9c02023260fef1717c63120e16c60b5",
+      "viewed_original_pixels": true,
+      "observation": "Centered PAUSED menu, round 0, zero kills, 1500 points and survival time are readable. Resume/Restart/Quit and key labels fit; the world and gameplay HUD are subdued behind the panel.",
+      "size_specific_observation": "Pause shows Survived 0m 2s; tray has clear outer margins at full 1600x900."
+    },
+    {
+      "case": "c07_ui_1600x900",
+      "fixture_relative": "Candidate05/UI1600x900",
+      "file": "05_death.png",
+      "width": 1600,
+      "height": 900,
+      "world_seconds": 4.822867106646299,
+      "frame": 678,
+      "points": 550,
+      "paused": false,
+      "tools": false,
+      "dead": true,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 533356,
+      "sha256": "eede81131475cf3524db503dd7d7a5cdebf0bece7227db312d3edc00a6960754",
+      "viewed_original_pixels": true,
+      "observation": "GAME OVER and Response lost distinguish death from pause. Round 0, zero kills, 550 points and 4-second survival display clearly. Try again/Quit fit; health 0 is visible beneath the subdued overlay.",
+      "size_specific_observation": "Pause shows Survived 0m 2s; tray has clear outer margins at full 1600x900."
+    },
+    {
+      "case": "c07_ui_1600x900",
+      "fixture_relative": "Candidate05/UI1600x900",
+      "file": "06_restarted_starter.png",
+      "width": 1600,
+      "height": 900,
+      "world_seconds": 0.9591701030731201,
+      "frame": 866,
+      "points": 0,
+      "paused": false,
+      "tools": false,
+      "dead": false,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 1218039,
+      "sha256": "5d8751bde2964cf10e0edde283911ff7dab61dccde19d3510b7ecb7db670df74",
+      "viewed_original_pixels": true,
+      "observation": "Restart is visibly live and compact: 0 points, 100 health/full bar, 7/56 M1911 and Empty slot 2. The Torso 125 cm caption is readable over plain floor near the player, with no tools/death overlay or lingering red edge.",
+      "size_specific_observation": "Pause shows Survived 0m 2s; tray has clear outer margins at full 1600x900."
+    },
+    {
+      "case": "c07_ui_1280x720",
+      "fixture_relative": "Candidate05/UI1280x720",
+      "file": "01_starter_0_7_56.png",
+      "width": 1280,
+      "height": 720,
+      "world_seconds": 0.6908393017947674,
+      "frame": 81,
+      "points": 0,
+      "paused": false,
+      "tools": false,
+      "dead": false,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 812027,
+      "sha256": "716102efe1f17a2fb113a6feb0fe09221138b68cede6b3eab57e198d7dbfcd21",
+      "viewed_original_pixels": true,
+      "observation": "Zero points, health 100/full bar, seven loaded and 56 reserve read distinctly. Slot 1 M1911 and slot 2 Empty are visible. Compact round and H Sandbox panels leave the player/world clear; no red health-edge tint at full health.",
+      "size_specific_observation": "Pause shows Survived 0m 3s. At 1280x720 the complete smaller help panel and forced-pickup labels still fit; the floor-stencil contrast issue is more apparent."
+    },
+    {
+      "case": "c07_ui_1280x720",
+      "fixture_relative": "Candidate05/UI1280x720",
+      "file": "02_expanded_tools.png",
+      "width": 1280,
+      "height": 720,
+      "world_seconds": 1.2282275967299938,
+      "frame": 136,
+      "points": 0,
+      "paused": false,
+      "tools": true,
+      "dead": false,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 418194,
+      "sha256": "1120f56b6e27068fc2dc75c38c04952d399afadc3d48801164ef96ec70e35992",
+      "viewed_original_pixels": true,
+      "observation": "The entire help tray fits. LMB fire, hold RMB head/Left Ctrl low, wheel switch, Box hold F and Upgrade tap F/auto-return are legible. Shake 100%, all three forced-pickup buttons, grant/reset/cleanup controls and Back to game remain inside separated buttons.",
+      "size_specific_observation": "Pause shows Survived 0m 3s. At 1280x720 the complete smaller help panel and forced-pickup labels still fit; the floor-stencil contrast issue is more apparent."
+    },
+    {
+      "case": "c07_ui_1280x720",
+      "fixture_relative": "Candidate05/UI1280x720",
+      "file": "03_compact_1500.png",
+      "width": 1280,
+      "height": 720,
+      "world_seconds": 2.1436544954776764,
+      "frame": 241,
+      "points": 1500,
+      "paused": false,
+      "tools": false,
+      "dead": false,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 814291,
+      "sha256": "6ffcd8942d7c7fa7ea1145e25e4233ebde152a59a21055b22f9c2928bf65c594",
+      "viewed_original_pixels": true,
+      "observation": "The four-digit 1500 points read cleanly without colliding with health or ammo. Compact tray state restored, ammo remains 7/56 and slot 2 Empty. Small Torso 125 cm caption lies over the pale floor stencil and loses contrast against that text.",
+      "size_specific_observation": "Pause shows Survived 0m 3s. At 1280x720 the complete smaller help panel and forced-pickup labels still fit; the floor-stencil contrast issue is more apparent."
+    },
+    {
+      "case": "c07_ui_1280x720",
+      "fixture_relative": "Candidate05/UI1280x720",
+      "file": "04_pause.png",
+      "width": 1280,
+      "height": 720,
+      "world_seconds": 3.0115275979042053,
+      "frame": 375,
+      "points": 1500,
+      "paused": true,
+      "tools": false,
+      "dead": false,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 328179,
+      "sha256": "9273f06f4ae59f7679809b49690cc90d01d657bf42ae1c052f1e2a08569f3d9a",
+      "viewed_original_pixels": true,
+      "observation": "Centered PAUSED menu, round 0, zero kills, 1500 points and survival time are readable. Resume/Restart/Quit and key labels fit; the world and gameplay HUD are subdued behind the panel.",
+      "size_specific_observation": "Pause shows Survived 0m 3s. At 1280x720 the complete smaller help panel and forced-pickup labels still fit; the floor-stencil contrast issue is more apparent."
+    },
+    {
+      "case": "c07_ui_1280x720",
+      "fixture_relative": "Candidate05/UI1280x720",
+      "file": "05_death.png",
+      "width": 1280,
+      "height": 720,
+      "world_seconds": 4.836563598364592,
+      "frame": 693,
+      "points": 550,
+      "paused": false,
+      "tools": false,
+      "dead": true,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 367762,
+      "sha256": "375db2950afea407406f99eeb301e2cfd3c82c0d8e57f309a62e57fbeaee6d82",
+      "viewed_original_pixels": true,
+      "observation": "GAME OVER and Response lost distinguish death from pause. Round 0, zero kills, 550 points and 4-second survival display clearly. Try again/Quit fit; health 0 is visible beneath the subdued overlay.",
+      "size_specific_observation": "Pause shows Survived 0m 3s. At 1280x720 the complete smaller help panel and forced-pickup labels still fit; the floor-stencil contrast issue is more apparent."
+    },
+    {
+      "case": "c07_ui_1280x720",
+      "fixture_relative": "Candidate05/UI1280x720",
+      "file": "06_restarted_starter.png",
+      "width": 1280,
+      "height": 720,
+      "world_seconds": 0.9531009010970592,
+      "frame": 883,
+      "points": 0,
+      "paused": false,
+      "tools": false,
+      "dead": false,
+      "ammo": 7,
+      "reserve": 56,
+      "bytes": 814222,
+      "sha256": "ed2974efd4fb6845c98435803f68ad555a93570ea1d7859a74c4bcb14ff27bdd",
+      "viewed_original_pixels": true,
+      "observation": "Restart is visibly live and compact: 0 points, 100 health/full bar, 7/56 M1911 and Empty slot 2. The Torso 125 cm caption is readable over plain floor near the player, with no tools/death overlay or lingering red edge.",
+      "size_specific_observation": "Pause shows Survived 0m 3s. At 1280x720 the complete smaller help panel and forced-pickup labels still fit; the floor-stencil contrast issue is more apparent."
+    }
+  ],
+  "frame_inventory": {
+    "path": "frame_identities.csv",
+    "bytes": 2379,
+    "sha256": "d0fce618a91affeab100587916f5a4721ff733c080b5bdea47697400286c7acf"
+  },
+  "blocking_layout_findings": [],
+  "minor_observations": [
+    {
+      "files": [
+        "Candidate05/UI1600x900/03_compact_1500.png",
+        "Candidate05/UI1280x720/03_compact_1500.png"
+      ],
+      "finding": "The small Torso 125 cm aim caption overlays light floor-stencil lettering, reducing contrast. It is clearer on the plain floor in both restart frames. This is a local text/background contrast limitation, not a cropped HUD panel."
+    }
+  ],
+  "context": [
+    "The teal horizontal line and gold vertical marks in sandbox images are the actual world range ruler drawn by ONEGameMode.cpp:189-197, not a HUD panel border/clipping artifact.",
+    "The raw checks and folder use the legacy Candidate05 fixture label. These twelve images are newly generated by the exact Candidate07 packaged runtime above; historical pixels were not reused.",
+    "Each size has 49 passing automated assertions. Fixture input is Controller InputKey and SetMouseLocation with an explicit 1500 spend fixture, safe-contact box teleport and fatal damage packet. Pixel review does not turn those into native controls or ordinary death gameplay.",
+    "Engine frame numbers are retained. World seconds reset after actual level restart; six screenshots are sparse states, not a continuous timeline."
+  ],
+  "limits": [
+    "Only these twelve UI stills at two resolutions were inspected. No other resolution, full motion, infected anatomy/physicality or perceptual audio approval.",
+    "Active power-up timers, intermediate health regeneration/vignette states and PaP warnings are outside these six states; tray controls/help are visible but this review does not claim every button was clicked.",
+    "Original PNG, result, engine log, checks and input-trace hashes were rechecked. Six runtime identities were compared with the actual build receipt and verified runner reports, not rehashed during another running game.",
+    "No engine launch, source edit, screenshot replacement, image encoding, desktop capture, user-input action, audit completion or release-publication claim."
+  ]
+}

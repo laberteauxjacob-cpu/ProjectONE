@@ -1,9 +1,11 @@
 # Candidate07 infected contract
 
-This is the current implementation record for the in-progress Candidate07
-milestone. Maintenance, Laboratory and Facility Staff are integrated in the
-Editor game. Final combined review and packaged/public verification remain
-pending. See [checkpoint status](Passes/Candidate07.md) for actual results.
+This is the implementation record for the Candidate07 Windows prerelease.
+Maintenance, Laboratory and Facility Staff are integrated in the verified fresh
+package. See the [pass report](Passes/Candidate07.md) for build, engine, packaged,
+frame-review and performance results, and its separate public verification
+attachment. Native desktop capture was blocked; no perceptual audition or user
+approval of appearance and feel is claimed.
 
 ## Character and rig
 

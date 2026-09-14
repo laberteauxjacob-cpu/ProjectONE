@@ -1,0 +1,45 @@
+{
+  "schema": "one07.native_summary.v1",
+  "status": "BLOCKED_NATIVE_CAPTURE",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "native_action_count": 0,
+  "input_trace_event_count": 0,
+  "review": "native_input.json",
+  "native_pass_count": 0,
+  "normal_quit_verified": false,
+  "usable_capture_count": 0,
+  "markdown_curation": {
+    "review": "native_review.md",
+    "original": {
+      "name": "review.md",
+      "bytes": 1500,
+      "sha256": "b19eeb7137a3af4e106ca29847ea8aa38884b5d6953f1be116655ec997e915e7"
+    },
+    "curated": {
+      "path": "native_review.md",
+      "bytes": 1497,
+      "sha256": "61d28cc770e886bbd85b56a04e442fd8959a620916aead4042a383cd9700f430"
+    },
+    "transformation": "Changed the single Markdown target review.json to native_input.json for the public destination filename.",
+    "scope": "Original Markdown identity retained here; all native observations, failure status, zero-action count and limits are unchanged. The public native report readme identity names the transformed Markdown."
+  },
+  "raw_review": {
+    "name": "review.json",
+    "bytes": 6011,
+    "sha256": "0a01f1e302f435830c28a14a7f1686f9850827626709ae3231514fa4125de344"
+  },
+  "raw_log": {
+    "name": "engine.log",
+    "bytes": 86812,
+    "sha256": "9e35343955815035fff34712e1dabd4fd33c39405b7b0273e0e185e23335d4b9"
+  },
+  "limits": [
+    "This attempt is blocked, not a limited native pass. Zero gameplay input actions and zero usable captured images are recorded.",
+    "Window identification and the two capture errors are the owner agent's actual tool-console observations supplied to this reviewer. No separate native screenshot or capture-error file exists; none is invented.",
+    "The engine log verifies sandbox map initialization, not a visually observed game state, usable viewport, accepted controls, animation, performance or audio quality.",
+    "Requested 1600x900 window settings were not confirmed through a usable image.",
+    "The owner terminated only its test process after verifying its executable identity and start time. The termination receipt is retained; normal in-game Quit was not verified.",
+    "Build/runtime identity verification remains separate from native capture capability, packaged automation, the release audit and publication. The separate release audit was FINDINGS at launch; no later audit result is inferred here.",
+    "This review launched no game, retried no desktop capture and sent no native input. It performed read-only source checks and exact post-exit runtime hashing."
+  ]
+}

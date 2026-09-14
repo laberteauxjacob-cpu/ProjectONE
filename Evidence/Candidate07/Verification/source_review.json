@@ -1,0 +1,229 @@
+{
+  "schema": "one07.portable_source_review.v1",
+  "candidate": "07",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "base_checkpoint": "74cf98539b4c68dee14395e32cc36fa2c46acc82",
+  "status": "SCOPED_REVIEW_COMPLETE_NO_ACTIONABLE_FINDINGS",
+  "reviewed_utc": "2026-09-14T09:29:58.766652+00:00",
+  "curated_utc": "2026-09-14T09:31:54.825059+00:00",
+  "scope": "17-file source delta and unchanged prior foundation proof; distinct from fresh build/publication verification",
+  "files": [
+    {
+      "path": "ArtSource/README.md",
+      "bytes": 3031,
+      "sha256": "236e5cc4bcfc34938062412659dfbc2463eef63e9319500129b1d6ef883db02e"
+    },
+    {
+      "path": "Docs/Candidate07Infected.md",
+      "bytes": 7314,
+      "sha256": "38051aaa3ed9fa14a089e3afaaa103c1e9baa8f1a7603d71bf0e8c5213ff3f26"
+    },
+    {
+      "path": "Docs/CharacterPipeline.md",
+      "bytes": 8655,
+      "sha256": "f36d51b5baa698dc659d7401d41806ab4c1c54422e6241e656335211f6f6a977"
+    },
+    {
+      "path": "Docs/CurrentState.md",
+      "bytes": 10039,
+      "sha256": "8342e1a7bd897dad60c11d157bef7a72edd92feaec7da3f766bcee112bf47516"
+    },
+    {
+      "path": "Docs/EnvironmentPipeline.md",
+      "bytes": 13858,
+      "sha256": "9f6a4a7d9386c94d2252debaacacfe9af73b99de741f58ed9a53d1ac3f493dfe"
+    },
+    {
+      "path": "Docs/Passes/Candidate07.md",
+      "bytes": 14823,
+      "sha256": "c0de17a4e5cc066970cf326386edd9cb3b1273699e7c7fe03142e1a556eb02c5"
+    },
+    {
+      "path": "Docs/Roadmap.md",
+      "bytes": 4662,
+      "sha256": "49db3f0ce13c2083dff2a6567e732f26c4c2f61d7156252bb69941ef3d9c9b10"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8805,
+      "sha256": "1d96a3b47b8bc1dd60ba454715e3ffab34766775e0ea9cc08594263f0e29dce0"
+    },
+    {
+      "path": "Scripts/analyze_candidate07_audio.py",
+      "bytes": 17962,
+      "sha256": "712cf72ce8f3a7bf289f8b244317e5eee142b1bf91092908cc3dc435ff9233dd"
+    },
+    {
+      "path": "Scripts/analyze_candidate07_profile.py",
+      "bytes": 20795,
+      "sha256": "65571e84baf53aa36ceaec011c6cdd679f2be310043733bf222861a2db8b67ca"
+    },
+    {
+      "path": "Scripts/candidate07_legacy_motion.py",
+      "bytes": 10647,
+      "sha256": "68e3e1b9db5433df96274c6f17ee70093d2f17e715a9babbbe541d49af1234c6"
+    },
+    {
+      "path": "Scripts/candidate07_presentation_capture.py",
+      "bytes": 11494,
+      "sha256": "026e484066f1e5f7dc310f8bab9d96f4ecd8e42c4ffbed4022f076d4ca4f86e3"
+    },
+    {
+      "path": "Scripts/run_candidate07_checks.py",
+      "bytes": 29721,
+      "sha256": "be8f02483a4d9dafcf885e625a3f8fb48ad6a4e2ebf256d681186ba1b683c2c3"
+    },
+    {
+      "path": "Source/ProjectONE/ONE07PhysicalityCheck.cpp",
+      "bytes": 16146,
+      "sha256": "74e7615bf9f799a99eb823121379ff8fd6728b90c8225abcfb0be5e869e53ce4"
+    },
+    {
+      "path": "Source/ProjectONE/ONE07PhysicalityTests.cpp",
+      "bytes": 58948,
+      "sha256": "08b58dd2e11adbbc1c75f72ba4eff64a95c6b25ce29ae395ab9152bcb490bc81"
+    },
+    {
+      "path": "Source/ProjectONE/ONEZombie.h",
+      "bytes": 12512,
+      "sha256": "05420610c11ccc1e21827fad4d2f95d95a160116715feb167eff980714c50656"
+    },
+    {
+      "path": "Source/ProjectONE/ONEZombiePhysicality.cpp",
+      "bytes": 32630,
+      "sha256": "52e65b44bf892a350830339d863937519d028a61ff361d52bba501805baf61fe"
+    }
+  ],
+  "findings": [],
+  "checks": {
+    "private_pattern_candidates": 0,
+    "local_markdown_targets": 92,
+    "python_ast_parsed": 5,
+    "local_imports_and_includes_resolve": true,
+    "retained_foundation_report_hashes_match": true,
+    "asset_or_lfs_delta": false,
+    "presentation_tool_hashes_match_prior_actual_candidate06_binding_review": true
+  },
+  "retained_foundation": {
+    "payloads": 459,
+    "bytes": 139464619,
+    "imports": 165,
+    "metadata_files": 50,
+    "original_recordings": 76,
+    "runtime_audio_cues": 134
+  },
+  "source_findings_and_limits": [
+    {
+      "files": [
+        "Source/ProjectONE/ONEZombiePhysicality.cpp:290",
+        "Source/ProjectONE/ONEZombiePhysicality.cpp:312"
+      ],
+      "finding": "Both clearance volumes share accumulated hard-blocker state. Only actual dead/fallen anatomy can authorize an effort; a solid/standing blocker in either volume prevents it."
+    },
+    {
+      "files": [
+        "Source/ProjectONE/ONEZombiePhysicality.cpp:368",
+        "Source/ProjectONE/ONEZombiePhysicality.cpp:413"
+      ],
+      "finding": "Finite horizontal forces resume supported retained bodies, retain solver collision, gate local floor and velocity, and stop on damage/state/support/contact/budget. No recovery health/score writes, deleted blocker, severed-chain reconstruction or transport translation supplies effort."
+    },
+    {
+      "files": [
+        "Source/ProjectONE/ONE07PhysicalityTests.cpp:144",
+        "Source/ProjectONE/ONE07PhysicalityTests.cpp:171",
+        "Source/ProjectONE/ONE07PhysicalityTests.cpp:212",
+        "Source/ProjectONE/ONE07PhysicalityTests.cpp:237"
+      ],
+      "finding": "Fixture restores prerequisite sleep multipliers before the trial, declares one frozen-corpse setup translation, rejects corpse retirement, observes real bone travel while transport stays fixed, then requires GetUp/recovery. Timeout and failed prerequisites cannot count as PASS."
+    },
+    {
+      "files": [
+        "Source/ProjectONE/ONE07PhysicalityTests.cpp:252",
+        "Source/ProjectONE/ONE07PhysicalityTests.cpp:278"
+      ],
+      "finding": "Real arm sever during get-up persists through completion and a second fall; unchanged 112 HP before sever and exact 111.6 afterward are checked. It does not prove an already-armless frozen escape."
+    },
+    {
+      "files": [
+        "Source/ProjectONE/ONE07PhysicalityCheck.cpp:163"
+      ],
+      "finding": "Reserve guard only avoids useless fixture reload requests at 0/0 ammo; production weapon rules and control mapping are unchanged by this delta."
+    },
+    {
+      "files": [
+        "Scripts/analyze_candidate07_profile.py"
+      ],
+      "finding": "Duplicate non-identity engine columns retain original positions and all samples; timing/workload identities and generated-name collisions remain protected."
+    },
+    {
+      "files": [
+        "README.md",
+        "Docs/CurrentState.md",
+        "Docs/Passes/Candidate07.md"
+      ],
+      "finding": "Current 39-test wording matches actual report; older 38 checkpoint remains historical. Editor preflight/visual/audio scope and still-pending exact-S packaged/public gates are explicit; C06 launch remains advertised."
+    }
+  ],
+  "historical_editor_preflight": {
+    "scope": "Actual working-source Editor preflight reviewed for checkpoint wording; not the later clean-checkout build or packaged suite.",
+    "engine_automation": {
+      "succeeded": 36,
+      "succeededWithWarnings": 3,
+      "failed": 0,
+      "notRun": 0,
+      "inProcess": 0
+    },
+    "registered_tests_match_current_source": 39,
+    "focused_recovery": {
+      "result": "PASS",
+      "efforts_observed": 3,
+      "final_interval_accumulated_path_cm": 65.902,
+      "final_interval_max_pelvis_speed_cm_s": 48.894,
+      "scope": "Intact frozen escape with still-present corpse; real sever during subsequent get-up persists through completion and second fall. No arbitrary crowd-escape guarantee."
+    }
+  },
+  "private_report_bindings": {
+    "source_delta": {
+      "name": "review.json",
+      "bytes": 154135,
+      "sha256": "b4dbbd1b099f55dc6a9a0fb5c1b6e36595d614b3abf6fe6f7ec3ef98f654966d"
+    },
+    "foundation": {
+      "name": "review.json",
+      "bytes": 3414,
+      "sha256": "d3271f6bfe96cc216e1679c861625eebd74e766bc356b33da5b5c88d55dca3d0"
+    },
+    "foundation_payloads": {
+      "name": "payloads.json",
+      "bytes": 124514,
+      "sha256": "c660af22b79e31308c2e9f0c28aa3462ecb98ceb82317b5eecdad2e2c59167f9"
+    },
+    "presentation": {
+      "name": "review.json",
+      "bytes": 4342,
+      "sha256": "5bf2f15b7c495c80c526ca577e5fafd57e235ad5851aaac21b0f123e2215698e"
+    },
+    "editor_automation": {
+      "name": "index.json",
+      "bytes": 59967,
+      "sha256": "e7df868c4a34a3d10e7675421845d3dc9b21f15881ea6ca74e9e129948c5cb94"
+    },
+    "focused_recovery": {
+      "name": "index.json",
+      "bytes": 1146,
+      "sha256": "908d0a8651fd277a710a39fed88cbb8de3039dfc0a0fc2b56f88990db30e1cd5"
+    },
+    "focused_recovery_log": {
+      "name": "recovery-effort-fourth.log",
+      "bytes": 112103,
+      "sha256": "3dca7c8afcf39419994cbb9838e461265253402f4a91a5cbd07736ec0c464e70"
+    }
+  },
+  "limits": [
+    "Read-only source, AST, local-link/dependency and retained-report review. No engine/build/import/media/network execution by this curator.",
+    "Unchanged binary source/import/audio proofs reused; assets were not reopened or rehashed again. Opaque audio metadata and complete package dependency deserialization are outside this review.",
+    "Physical force budgets stop added effort, not subsequent solver motion from inertia or external contact. The controlled fixture does not establish all crowd layouts or budget exhaustion.",
+    "No native-input, full-motion playback, audible-quality or user visual-approval claim.",
+    "Exact-S fresh build, packaged checks, public downloads, LFS verification at documentation commit D, and final publication record remain separate evidence."
+  ]
+}

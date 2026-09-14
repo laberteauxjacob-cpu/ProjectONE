@@ -1,0 +1,48 @@
+{
+  "schema": "one07.checkout_preparation_note.v1",
+  "candidate": "07",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "status": "PUBLIC_SOURCE_CHECKOUT_PROVENANCE_RECORDED",
+  "recorded_utc": "2026-09-14T09:31:54.825059+00:00",
+  "public_origin": "https://github.com/laberteauxjacob-cpu/ProjectONE.git",
+  "source_branch": "codex/candidate07",
+  "initial_clone_checkpoint": "74cf98539b4c68dee14395e32cc36fa2c46acc82",
+  "prepared_checkout_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "sequence": [
+    "Owner created an independent HTTPS single-branch public clone at the then-public 74cf checkpoint.",
+    "After explicit publication of the reviewed source, the same checkout fetched codex/candidate07 and advanced by fast-forward only from 74cf to S.",
+    "Owner observed the checkout clean and unbuilt before invoking the existing prepared-checkout build pipeline.",
+    "This curator subsequently read exact S, its 74cf parent, the public origin and an empty Git status from that checkout."
+  ],
+  "prebuild_unbuilt_observation": {
+    "basis": "owner observation before pipeline launch; not reconstructed from the now-building directory",
+    "build_started_by_curator": false
+  },
+  "private_input_records": {
+    "initial_clone": {
+      "name": "fresh-public-clone.log",
+      "bytes": 9419,
+      "sha256": "bfe76dc1c504bf67cd56f581a32d47a3a1adbdf13f6a83ec48720a9e4dc01b78"
+    },
+    "public_fast_forward": {
+      "name": "fresh-public-fast-forward-3d75c2faa0ce.log",
+      "bytes": 1424,
+      "sha256": "c7a84c638834e9e562c0508c1f4c3eade0430844c298b568dcc759f2420c8869"
+    },
+    "explicit_branch_push": {
+      "name": "push-source-3d75c2faa0ce.log",
+      "bytes": 106,
+      "sha256": "049bae6d0f348a863d2b20a125e55cd970ca8956efdea12874503beb934c515a"
+    },
+    "reviewed_source": {
+      "name": "review.json",
+      "bytes": 154135,
+      "sha256": "b4dbbd1b099f55dc6a9a0fb5c1b6e36595d614b3abf6fe6f7ec3ef98f654966d"
+    }
+  },
+  "limits": [
+    "Host paths and raw private transcripts are omitted; original transcript bytes remain privately retained under the recorded hashes.",
+    "Clone progress is transport evidence, not a complete source/LFS content audit. Existing exact-source pipeline gates remain authoritative.",
+    "This note adds no new build requirement and makes no build, engine-test, package, release, download, main-branch or tag completion claim."
+  ]
+}

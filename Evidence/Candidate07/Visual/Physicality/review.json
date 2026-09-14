@@ -1,0 +1,1605 @@
+{
+  "schema": "one07.final_physicality_pixel_lifecycle_review.v1",
+  "status": "REVIEWED_WITH_EXPLICIT_VISUAL_AND_LIFECYCLE_LIMITS",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "reviewed_utc": "2026-09-14T10:06:34.929312+00:00",
+  "method": "Viewed 41 original full 1600x900 JPEG frames individually in chronological order with view_image at original resolution. Read the actual source fixture, all telemetry rows and lifecycle log events. No image editing, contact sheets, playback, engine launch, encode/decode, audio audition or native input.",
+  "result": {
+    "path": "Saved/Candidate07/Runtime/20260914T095816_197563_physicality_29d13222/result.json",
+    "bytes": 729463,
+    "sha256": "ae7f0b70eed4d2fad5d74f15b53a7f0100ac821969b059d048382ed67e3de0ec"
+  },
+  "build_proof": {
+    "path": "runtime_build.json",
+    "bytes": 29215,
+    "sha256": "07ee50383fd86373d8f47589dc982dbe98b7d26390b0dfc60e728b46fbe9140d"
+  },
+  "runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 293055488,
+      "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10737169,
+      "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 226088848,
+      "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 277601,
+      "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "engine_log": {
+    "path": "engine.log",
+    "bytes": 114437,
+    "sha256": "807fd355e3e5cf241005aa25dffd7f7e7b2871da207e76cb7daeb6068d59a4d9"
+  },
+  "fixture_relative": "Candidate07/Physicality/20260914_095819_A9F5F53A",
+  "raw_files": {
+    "checks.txt": {
+      "path": "checks.txt",
+      "bytes": 5553,
+      "sha256": "69fbd3d2204d06a1f6ec84eb7c6db89119b861bedfd8bdc8a49a1322b43d0044"
+    },
+    "observations.csv": {
+      "path": "observations.csv",
+      "bytes": 721414,
+      "sha256": "ea250b7e040c01da7f9aea4ee9e3f8b2db4c9f435c3c7da6013df9a6ca153da8"
+    },
+    "input_events.csv": {
+      "path": "input_events.csv",
+      "bytes": 71,
+      "sha256": "78683ce7ad27e9db1b651ef77dd4dfa5a6d3fa6aa4279dd445bad585504fd5d2"
+    },
+    "Media/capture.json": {
+      "path": "Media/capture.json",
+      "bytes": 2563,
+      "sha256": "7c9a50cf7a58dc670e727629baf9b0a67a1bbe7e3d75a37e3574bfc4736860e0"
+    },
+    "Media/frames.csv": {
+      "path": "Media/frames.csv",
+      "bytes": 254801,
+      "sha256": "902435e3a77bb7549f221e18eeea7247c1a259974420d998a82b7c9bb9e2b75b"
+    }
+  },
+  "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+  "pre_and_post_source_runtime_verified": true,
+  "runtime_binding_method": "Compared the six actual runner identities and its build-proof hash with the passing build receipt. Runtime payloads were not redundantly rehashed during another running game. Selected images, telemetry, capture metadata, CSV, checks and engine log were directly rehashed.",
+  "automated_completion": {
+    "checks": 84,
+    "failures": 0,
+    "encounter": 0,
+    "phases": 7,
+    "frames": 2226
+  },
+  "capture_transport": {
+    "frames": 2226,
+    "dimensions": [
+      1600,
+      900
+    ],
+    "audio_duration_seconds": 80.42666666666666,
+    "audio_sample_rate": 48000,
+    "audio_channels": 2,
+    "audio_sample_frames": 3860480,
+    "source_wav_layout": {
+      "header_block_align": 2,
+      "computed_frame_bytes": 4,
+      "unreal_block_align_quirk": true,
+      "pcm_bytes": 15441920,
+      "channels": 2,
+      "rate": 48000
+    },
+    "ordered_frame_identity_sha256": "00251d67c7a661cfeb636d0894adbcd8f95ca0dfaab4b3f0a3c3d5feac804f04",
+    "actual_real_stop_tail_seconds": 0.4011995978653431,
+    "recorded_audio_after_last_callback_seconds": 0.36665036566665776,
+    "first_frame_audio_seconds": 0.0260083,
+    "last_frame_audio_seconds": 80.060016301,
+    "schema": "one07.capture_transport.v1",
+    "status": "PASS",
+    "path_base": "fixture_folder",
+    "native_input_evidence": false,
+    "performance_evidence": false,
+    "perceptual_audio_review": false,
+    "metadata": {
+      "path": "Media/capture.json",
+      "bytes": 2563,
+      "sha256": "7c9a50cf7a58dc670e727629baf9b0a67a1bbe7e3d75a37e3574bfc4736860e0"
+    },
+    "frames_csv": {
+      "path": "Media/frames.csv",
+      "bytes": 254801,
+      "sha256": "902435e3a77bb7549f221e18eeea7247c1a259974420d998a82b7c9bb9e2b75b"
+    },
+    "audio": {
+      "path": "Media/gameplay_master.wav",
+      "bytes": 15441964,
+      "sha256": "0d95c5061778e7bd226e9fce8732d7a764cc5fcb4b99a0445dd0a36ad2cfcffa"
+    }
+  },
+  "capture_timebase": "audio_seconds is screenshot callback platform time minus the CPU timestamp immediately after StartRecordingOutput; audio render scheduling offset is not measured",
+  "frames_viewed": 41,
+  "frames_available": 2226,
+  "viewed_frames": [
+    {
+      "file": "frame_00002.jpg",
+      "audio_seconds": "0.098877199",
+      "world_seconds": "0.801106598",
+      "phase": "1",
+      "label": "ONE INFECTED / ORDINARY CAMERA / APPROACH AND ATTACK",
+      "engine_frame": "91",
+      "width": "1600",
+      "height": "900",
+      "bytes": 92200,
+      "sha256": "18e8fe57b6a94ce11bccd1af4431158f37d73a7551c5e61218a1ad036919829c",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00022.jpg",
+      "audio_seconds": "0.896858498",
+      "world_seconds": "1.598820399",
+      "phase": "1",
+      "label": "ONE INFECTED / ORDINARY CAMERA / APPROACH AND ATTACK",
+      "engine_frame": "168",
+      "width": "1600",
+      "height": "900",
+      "bytes": 88779,
+      "sha256": "3b96fd250d2d933b711d176f01f6b5f5bd16cdaab8db252d09b356b349f9106a",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00070.jpg",
+      "audio_seconds": "2.692681398",
+      "world_seconds": "3.392796099",
+      "phase": "1",
+      "label": "ONE INFECTED / ORDINARY CAMERA / APPROACH AND ATTACK",
+      "engine_frame": "333",
+      "width": "1600",
+      "height": "900",
+      "bytes": 88131,
+      "sha256": "c4455b00f3358d140fde57530693128b61feee3f9dd612951674dda00f28515e",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00183.jpg",
+      "audio_seconds": "6.798992097",
+      "world_seconds": "7.500339199",
+      "phase": "2",
+      "label": "ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED",
+      "engine_frame": "704",
+      "width": "1600",
+      "height": "900",
+      "bytes": 87932,
+      "sha256": "5f2a24df6950d6ac49f2888919f263b27a585730d1fafa3f1784d846a696f47b",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00193.jpg",
+      "audio_seconds": "7.143343799",
+      "world_seconds": "7.843954500",
+      "phase": "2",
+      "label": "ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED",
+      "engine_frame": "734",
+      "width": "1600",
+      "height": "900",
+      "bytes": 87974,
+      "sha256": "47ed15313aada9b8408ff3cdc707bca3b3f4fa11c11e287afeb5ae5ba47cd6fa",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00218.jpg",
+      "audio_seconds": "8.006790400",
+      "world_seconds": "8.707913898",
+      "phase": "2",
+      "label": "ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED",
+      "engine_frame": "809",
+      "width": "1600",
+      "height": "900",
+      "bytes": 87711,
+      "sha256": "3d159ba4a073f594d1f0a9c52ca31325104198fb6a44b729a07ac69d79007771",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00253.jpg",
+      "audio_seconds": "9.237370998",
+      "world_seconds": "9.934561800",
+      "phase": "2",
+      "label": "ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED",
+      "engine_frame": "914",
+      "width": "1600",
+      "height": "900",
+      "bytes": 87693,
+      "sha256": "91451671594893cc0f7c17fe3f26a9b705674cb12d6a21f17dcdfc5ecf80e301",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00261.jpg",
+      "audio_seconds": "9.509703699",
+      "world_seconds": "10.210790601",
+      "phase": "2",
+      "label": "ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED",
+      "engine_frame": "938",
+      "width": "1600",
+      "height": "900",
+      "bytes": 87963,
+      "sha256": "7267c617bda0cbda8fcd8d56325db967758b9058ac946632011fc28de2bd92a1",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00267.jpg",
+      "audio_seconds": "9.711695798",
+      "world_seconds": "10.413451400",
+      "phase": "2",
+      "label": "ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED",
+      "engine_frame": "956",
+      "width": "1600",
+      "height": "900",
+      "bytes": 88837,
+      "sha256": "bbb846e7e2c1e2b5f0b4600b5f452643637f205d29ab1663044a75f46f3ac071",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00278.jpg",
+      "audio_seconds": "10.141301900",
+      "world_seconds": "10.843724199",
+      "phase": "2",
+      "label": "ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED",
+      "engine_frame": "997",
+      "width": "1600",
+      "height": "900",
+      "bytes": 88874,
+      "sha256": "f14d11f9c3fbd8b012d104731072a3b6550da9d3c209a20c505c1308a4c1353f",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00299.jpg",
+      "audio_seconds": "10.997869100",
+      "world_seconds": "11.700542200",
+      "phase": "2",
+      "label": "ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED",
+      "engine_frame": "1081",
+      "width": "1600",
+      "height": "900",
+      "bytes": 88250,
+      "sha256": "e088c578b6d6f3263b093e4dfc2ab7cddd23e10cb2634e9a97148f234b91fb5a",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00332.jpg",
+      "audio_seconds": "12.310107499",
+      "world_seconds": "13.010706998",
+      "phase": "2",
+      "label": "ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED",
+      "engine_frame": "1206",
+      "width": "1600",
+      "height": "900",
+      "bytes": 88169,
+      "sha256": "651a7ec0d958647b5eaf514e3edb34cb27aa7473d228560ddd15c02e65ab0e9e",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00428.jpg",
+      "audio_seconds": "15.788459800",
+      "world_seconds": "16.489995301",
+      "phase": "2",
+      "label": "ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED",
+      "engine_frame": "1521",
+      "width": "1600",
+      "height": "900",
+      "bytes": 88468,
+      "sha256": "6ee1f68eb442d07fd6fe1a3362c145eb89e910641de141279e79cfbcbb399c09",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00438.jpg",
+      "audio_seconds": "16.198171098",
+      "world_seconds": "16.899787299",
+      "phase": "3",
+      "label": "TWO BODIES / SHARED APPROACH / REAL CONTACT",
+      "engine_frame": "1560",
+      "width": "1600",
+      "height": "900",
+      "bytes": 90446,
+      "sha256": "d5d82aed60e326603cbbf1732b27b8d7e519c623b00350564fd013919ed081be",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00493.jpg",
+      "audio_seconds": "18.111987397",
+      "world_seconds": "18.813270900",
+      "phase": "3",
+      "label": "TWO BODIES / SHARED APPROACH / REAL CONTACT",
+      "engine_frame": "1731",
+      "width": "1600",
+      "height": "900",
+      "bytes": 89775,
+      "sha256": "10b17259b5b46fba3e97363339713917d02185e01cda7df84d4ae32f004994eb",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00674.jpg",
+      "audio_seconds": "24.491696797",
+      "world_seconds": "25.192588199",
+      "phase": "3",
+      "label": "TWO BODIES / SHARED APPROACH / REAL CONTACT",
+      "engine_frame": "2291",
+      "width": "1600",
+      "height": "900",
+      "bytes": 89565,
+      "sha256": "19848f307971f434260ef9947cc74bc025edc12c58fe03d84dcda8dc48921873",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00721.jpg",
+      "audio_seconds": "26.194590598",
+      "world_seconds": "26.893457100",
+      "phase": "4",
+      "label": "SIX BODIES / DECLARED SOLID OBSTACLE / REAL CONTACT",
+      "engine_frame": "2443",
+      "width": "1600",
+      "height": "900",
+      "bytes": 97127,
+      "sha256": "41e82af9dbb858d7c04d8b70509a983a1dc85b60e0398e54509cce4875f744e7",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00813.jpg",
+      "audio_seconds": "29.503574900",
+      "world_seconds": "30.201036301",
+      "phase": "4",
+      "label": "SIX BODIES / DECLARED SOLID OBSTACLE / REAL CONTACT",
+      "engine_frame": "2719",
+      "width": "1600",
+      "height": "900",
+      "bytes": 95170,
+      "sha256": "bd7c78ceff9b83d09eea08141fd3fd8d9893405f03d01a8e906d3f597360a1b7",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00837.jpg",
+      "audio_seconds": "30.384038597",
+      "world_seconds": "31.082060300",
+      "phase": "4",
+      "label": "SIX BODIES / DECLARED SOLID OBSTACLE / REAL CONTACT",
+      "engine_frame": "2791",
+      "width": "1600",
+      "height": "900",
+      "bytes": 94479,
+      "sha256": "2f07854a44c45a55aabda8b8f05c7668fc99c086b1bea7b51cc9883c579c1420",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_00915.jpg",
+      "audio_seconds": "33.213256501",
+      "world_seconds": "33.912555099",
+      "phase": "4",
+      "label": "SIX BODIES / DECLARED SOLID OBSTACLE / REAL CONTACT",
+      "engine_frame": "3025",
+      "width": "1600",
+      "height": "900",
+      "bytes": 94458,
+      "sha256": "8740d6b6e7c4bbc45fb476b1feaefaca37ec7e30db785bb00c58550bcb2c182e",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01043.jpg",
+      "audio_seconds": "37.892263997",
+      "world_seconds": "38.591171701",
+      "phase": "4",
+      "label": "SIX BODIES / DECLARED SOLID OBSTACLE / REAL CONTACT",
+      "engine_frame": "3409",
+      "width": "1600",
+      "height": "900",
+      "bytes": 96872,
+      "sha256": "056dadabdc5b5755631c92d7d8a0def1c41c73ddaadb089446272d08ee0e7e21",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01051.jpg",
+      "audio_seconds": "38.190040000",
+      "world_seconds": "38.890354101",
+      "phase": "5",
+      "label": "MIXED LIVING FALL AND GET-UP / PHYSICALITY PROBE",
+      "engine_frame": "3433",
+      "width": "1600",
+      "height": "900",
+      "bytes": 95311,
+      "sha256": "9cc7ca0aab941b21dcae31ec0d1215da6e82f641e5b28f12214f7ab799338021",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01083.jpg",
+      "audio_seconds": "39.310885597",
+      "world_seconds": "40.010235701",
+      "phase": "5",
+      "label": "MIXED LIVING FALL AND GET-UP / PHYSICALITY PROBE",
+      "engine_frame": "3529",
+      "width": "1600",
+      "height": "900",
+      "bytes": 97233,
+      "sha256": "aaa94ce127114949233bf246bf628ee6fa6c211a70c8e3ccc894f2f2503099ba",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01172.jpg",
+      "audio_seconds": "42.500889499",
+      "world_seconds": "43.198863998",
+      "phase": "5",
+      "label": "MIXED LIVING FALL AND GET-UP / PHYSICALITY PROBE",
+      "engine_frame": "3796",
+      "width": "1600",
+      "height": "900",
+      "bytes": 94599,
+      "sha256": "ee4ef1c7c341fa3d9625120eacb9416d3c539281e018d18601b7d10c9cc6e453",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01196.jpg",
+      "audio_seconds": "43.401084699",
+      "world_seconds": "44.098873399",
+      "phase": "5",
+      "label": "MIXED LIVING FALL AND GET-UP / PHYSICALITY PROBE",
+      "engine_frame": "3868",
+      "width": "1600",
+      "height": "900",
+      "bytes": 93477,
+      "sha256": "3e0445c0f8296fb707691f3431196c380a30daa52b7ab9a942d6583ac53dff1d",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01249.jpg",
+      "audio_seconds": "45.308243800",
+      "world_seconds": "46.007404298",
+      "phase": "5",
+      "label": "MIXED LIVING FALL AND GET-UP / PHYSICALITY PROBE",
+      "engine_frame": "4027",
+      "width": "1600",
+      "height": "900",
+      "bytes": 91035,
+      "sha256": "5777aef8cc8266418be0e8cb70756e901d68c15b7a8dc0e264dd9ca9068ff876",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01273.jpg",
+      "audio_seconds": "46.187415298",
+      "world_seconds": "46.886477601",
+      "phase": "6",
+      "label": "MIXED FALLS / PRODUCTION D ESCAPE / LOCAL RECOVERY CLEARANCE",
+      "engine_frame": "4099",
+      "width": "1600",
+      "height": "900",
+      "bytes": 94302,
+      "sha256": "ad214e12d2765f280c380e62b7418bdb93fff47aa4219232b0b95acd8b4d18d0",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01431.jpg",
+      "audio_seconds": "51.898599997",
+      "world_seconds": "52.597449698",
+      "phase": "6",
+      "label": "MIXED FALLS / PRODUCTION D ESCAPE / LOCAL RECOVERY CLEARANCE",
+      "engine_frame": "4573",
+      "width": "1600",
+      "height": "900",
+      "bytes": 93913,
+      "sha256": "0b271aa8a7c754e9fee636b049eb2dd5b6c1656fc431f266f501868af072333c",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01442.jpg",
+      "audio_seconds": "52.288160797",
+      "world_seconds": "52.988533597",
+      "phase": "7",
+      "label": "CURRENT-POSE LIMB LOSS AND DEATH / REGIONAL PACKET PROBE",
+      "engine_frame": "4605",
+      "width": "1600",
+      "height": "900",
+      "bytes": 93461,
+      "sha256": "69b57f7151c27e3b81f1d874d78d79f060ed2f8677a17deccf6ec2da4bbaaa0e",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01499.jpg",
+      "audio_seconds": "54.296032500",
+      "world_seconds": "54.995652098",
+      "phase": "7",
+      "label": "CURRENT-POSE LIMB LOSS AND DEATH / REGIONAL PACKET PROBE",
+      "engine_frame": "4776",
+      "width": "1600",
+      "height": "900",
+      "bytes": 91239,
+      "sha256": "c834427b7b085adab7be0754f3338556592549f29ba1c0d2b6a0fefba47bcafc",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01558.jpg",
+      "audio_seconds": "56.382616498",
+      "world_seconds": "57.082942698",
+      "phase": "7",
+      "label": "CURRENT-POSE LIMB LOSS AND DEATH / REGIONAL PACKET PROBE",
+      "engine_frame": "4953",
+      "width": "1600",
+      "height": "900",
+      "bytes": 92248,
+      "sha256": "05a66a1808beea6d966c27011fef44f35326bdce6954008d1e07b3ebbe01c433",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01606.jpg",
+      "audio_seconds": "58.077417098",
+      "world_seconds": "58.777279798",
+      "phase": "7",
+      "label": "CURRENT-POSE LIMB LOSS AND DEATH / REGIONAL PACKET PROBE",
+      "engine_frame": "5097",
+      "width": "1600",
+      "height": "900",
+      "bytes": 92770,
+      "sha256": "9c180ab8630016bdcaad4627e551929c5cfb253890c26b76c3a3191986804418",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01615.jpg",
+      "audio_seconds": "58.400185600",
+      "world_seconds": "59.098935001",
+      "phase": "7",
+      "label": "CURRENT-POSE LIMB LOSS AND DEATH / REGIONAL PACKET PROBE",
+      "engine_frame": "5124",
+      "width": "1600",
+      "height": "900",
+      "bytes": 93139,
+      "sha256": "4b0d778e23fed6c4b42e515b020e6a75bfab5ca90028195273dc07161a121f1f",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01682.jpg",
+      "audio_seconds": "60.790937599",
+      "world_seconds": "61.488534600",
+      "phase": "7",
+      "label": "CURRENT-POSE LIMB LOSS AND DEATH / REGIONAL PACKET PROBE",
+      "engine_frame": "5325",
+      "width": "1600",
+      "height": "900",
+      "bytes": 92211,
+      "sha256": "966a947c056634cdb7a357229d58c8eb944f6ce519b785d3e61d963338cbc152",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01779.jpg",
+      "audio_seconds": "64.202957898",
+      "world_seconds": "64.903748501",
+      "phase": "7",
+      "label": "CURRENT-POSE LIMB LOSS AND DEATH / REGIONAL PACKET PROBE",
+      "engine_frame": "5616",
+      "width": "1600",
+      "height": "900",
+      "bytes": 91531,
+      "sha256": "5939e9a7d2e6fae5ac0b518e1929cc1937373be93a2520c614ebdb1f841c9a3a",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01882.jpg",
+      "audio_seconds": "67.801048599",
+      "world_seconds": "68.501213301",
+      "phase": "7",
+      "label": "CURRENT-POSE LIMB LOSS AND DEATH / REGIONAL PACKET PROBE",
+      "engine_frame": "5925",
+      "width": "1600",
+      "height": "900",
+      "bytes": 91563,
+      "sha256": "6d7c35641fb5ed482b5b64a858d24902e91e4b2fe550e6ab70a5f276027e2296",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01893.jpg",
+      "audio_seconds": "68.189257700",
+      "world_seconds": "68.888687000",
+      "phase": "8",
+      "label": "EXPLICIT THREE-VARIANT LINEUP / SIX BODY PURSUIT",
+      "engine_frame": "5957",
+      "width": "1600",
+      "height": "900",
+      "bytes": 98080,
+      "sha256": "a97a758de58f25805212ba3118227215a2eabd91dcd5c51afcb70aa1c64e7e0f",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01924.jpg",
+      "audio_seconds": "69.293161198",
+      "world_seconds": "69.992837198",
+      "phase": "8",
+      "label": "EXPLICIT THREE-VARIANT LINEUP / SIX BODY PURSUIT",
+      "engine_frame": "6050",
+      "width": "1600",
+      "height": "900",
+      "bytes": 98345,
+      "sha256": "39455dafbeec8e1455e2c662f5c70a8eb7cbf9a442e4c4a01d45e064a54598d9",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_01983.jpg",
+      "audio_seconds": "71.394639399",
+      "world_seconds": "72.094342399",
+      "phase": "8",
+      "label": "EXPLICIT THREE-VARIANT LINEUP / SIX BODY PURSUIT",
+      "engine_frame": "6227",
+      "width": "1600",
+      "height": "900",
+      "bytes": 95904,
+      "sha256": "b987f2a5a436193d46fb41a13923b24967b3b3a5fe96b7dd0d51b3491ef09930",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_02090.jpg",
+      "audio_seconds": "75.213151600",
+      "world_seconds": "75.911676198",
+      "phase": "8",
+      "label": "EXPLICIT THREE-VARIANT LINEUP / SIX BODY PURSUIT",
+      "engine_frame": "6548",
+      "width": "1600",
+      "height": "900",
+      "bytes": 92923,
+      "sha256": "71aa4f5f1f75fa59410a640dde9ebba65c3cec206043228d78afb664faf273c0",
+      "viewed_original_pixels": true
+    },
+    {
+      "file": "frame_02215.jpg",
+      "audio_seconds": "79.703459598",
+      "world_seconds": "80.402694900",
+      "phase": "8",
+      "label": "EXPLICIT THREE-VARIANT LINEUP / SIX BODY PURSUIT",
+      "engine_frame": "6926",
+      "width": "1600",
+      "height": "900",
+      "bytes": 94123,
+      "sha256": "151f95f456d45768e62e1b268a01535c00dea8bb5c786dfbdd50463a83f53376",
+      "viewed_original_pixels": true
+    }
+  ],
+  "chronological_windows": [
+    {
+      "name": "Approach and shared attacks",
+      "files": [
+        "frame_00002.jpg",
+        "frame_00022.jpg",
+        "frame_00070.jpg",
+        "frame_00438.jpg",
+        "frame_00493.jpg",
+        "frame_00674.jpg"
+      ],
+      "audio_seconds": [
+        0.098877199,
+        24.491696797
+      ],
+      "observation": "The isolated Laboratory silhouette advances toward the player with changing leg and arm poses. The two-body sequence shows separate Maintenance and FacilityStaff silhouettes approaching, then crowding the player during attacks. Hands rise and torsos lean into the close contact; feet and lower limbs become partly occluded at contact. Sparse frames do not establish exact stride locking or attack timing."
+    },
+    {
+      "name": "Isolated prone recovery",
+      "files": [
+        "frame_00183.jpg",
+        "frame_00193.jpg",
+        "frame_00218.jpg",
+        "frame_00253.jpg",
+        "frame_00261.jpg",
+        "frame_00267.jpg",
+        "frame_00278.jpg",
+        "frame_00299.jpg",
+        "frame_00332.jpg",
+        "frame_00428.jpg"
+      ],
+      "audio_seconds": [
+        6.798992097,
+        15.7884598
+      ],
+      "observation": "Maintenance descends from upright to a compact folded floor pose. The initial get-up transition visibly unfolds the compact pose into a long prone pose between frames 253 and 267, then draws the leg beneath the body, stands, and resumes approach. This conspicuous pose reconfiguration is retained as a visual limitation, although no large location jump or stretched mesh bridge is visible in the sampled frames. Exact floor penetration and continuous smoothness cannot be established from this top-down still sequence. The matching log records zero measured rebase error and an actual completed prone recovery; those are numerical facts, not proof of perceptual smoothness."
+    },
+    {
+      "name": "Visible obstacle and two contact falls",
+      "files": [
+        "frame_00721.jpg",
+        "frame_00813.jpg",
+        "frame_00837.jpg",
+        "frame_00915.jpg",
+        "frame_01043.jpg"
+      ],
+      "audio_seconds": [
+        26.194590598,
+        37.892263997
+      ],
+      "observation": "A tall dark rectangular obstacle is plainly present. The six subjects approach around its upper visible end; two blue-clothed bodies tumble and settle in different bent poses while the others gather by the player. At the final sampled moment both remain on the floor, matching the two Fallen states before cleanup. Their removal at the next phase is declared fixture retirement, not recovery. Close bodies overlap in projection, so this does not establish collision-free surfaces throughout the crowd."
+    },
+    {
+      "name": "Mixed falls, one prone recovery, and D movement",
+      "files": [
+        "frame_01051.jpg",
+        "frame_01083.jpg",
+        "frame_01172.jpg",
+        "frame_01196.jpg",
+        "frame_01249.jpg",
+        "frame_01273.jpg",
+        "frame_01431.jpg"
+      ],
+      "audio_seconds": [
+        38.19004,
+        51.898599997
+      ],
+      "observation": "Two explicitly forced falls begin among six pursuing bodies. The left Laboratory subject changes from a splayed floor pose to prone, then upright. Other bodies crowd the player and remain on the floor. The D-input segment visibly moves the player and camera right while the group follows; its log begins after the successful recovery, so it cannot be credited with causing that completed get-up. The final view still contains two horizontal fallen bodies. No supine get-up is shown."
+    },
+    {
+      "name": "Regional severing, brief interrupted effort, and death",
+      "files": [
+        "frame_01442.jpg",
+        "frame_01499.jpg",
+        "frame_01558.jpg",
+        "frame_01606.jpg",
+        "frame_01615.jpg",
+        "frame_01682.jpg",
+        "frame_01779.jpg",
+        "frame_01882.jpg"
+      ],
+      "audio_seconds": [
+        52.288160797,
+        67.801048599
+      ],
+      "observation": "Four subjects approach before the declared regional packets. Separate arm pieces, a detached head, reduced body silhouettes and accumulating localized blood are visible as the count falls to zero. The bodies settle into a pile with no conspicuous long polygon bridge or duplicate attached replacement limb in these samples; some stump and limb surfaces remain occluded. One body stays nearly upright immediately after the final lethal intervention, then folds into the pile. The Maintenance body shifts slightly between frames 1606 and 1615 during the logged effort interval; the subsequent declared head packet kills it before any completed escape or recovery. These frames cannot support a successful corpse-escape claim."
+    },
+    {
+      "name": "Final three-appearance lineup and pursuit",
+      "files": [
+        "frame_01893.jpg",
+        "frame_01924.jpg",
+        "frame_01983.jpg",
+        "frame_02090.jpg",
+        "frame_02215.jpg"
+      ],
+      "audio_seconds": [
+        68.1892577,
+        79.703459598
+      ],
+      "observation": "Two of each appearance enter in separated rows: blue Maintenance, pale Laboratory coat and brown/gray FacilityStaff with dark hair. Their clothing and hair silhouettes remain distinguishable over the gray arena floor, then partially occlude each other as the six subjects surround the player. Arms and bodies take different attack poses. This capture uses one arena lighting setup with local shadow variation; it contains no controlled bright-versus-dim comparison or close facial assessment."
+    }
+  ],
+  "telemetry_rows_read": 3060,
+  "actor_lifecycles": [
+    {
+      "fixture_phase": 0,
+      "id": 29872,
+      "variant": "Laboratory",
+      "first_sample_seconds": 0.70795,
+      "last_sample_seconds": 6.62406,
+      "states_observed": [
+        "Pursue",
+        "Attack"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 1,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 1,
+      "id": 30083,
+      "variant": "Maintenance",
+      "first_sample_seconds": 6.73121,
+      "last_sample_seconds": 16.66277,
+      "states_observed": [
+        "Pursue",
+        "Attack",
+        "Fallen",
+        "GetUp"
+      ],
+      "last_observed_state": "Pursue",
+      "last_health": 112.0,
+      "falls": 1,
+      "completed_recoveries": 1,
+      "blocked_checks": 0,
+      "contacts": 1,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 2,
+      "id": 30170,
+      "variant": "Maintenance",
+      "first_sample_seconds": 16.76695,
+      "last_sample_seconds": 26.68066,
+      "states_observed": [
+        "Pursue",
+        "Attack"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 7,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 2,
+      "id": 30207,
+      "variant": "FacilityStaff",
+      "first_sample_seconds": 16.76695,
+      "last_sample_seconds": 26.68066,
+      "states_observed": [
+        "Pursue",
+        "Attack"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 7,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 3,
+      "id": 30331,
+      "variant": "Laboratory",
+      "first_sample_seconds": 26.79831,
+      "last_sample_seconds": 38.67842,
+      "states_observed": [
+        "Pursue",
+        "Attack"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 8,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 3,
+      "id": 30368,
+      "variant": "Maintenance",
+      "first_sample_seconds": 26.79831,
+      "last_sample_seconds": 38.67842,
+      "states_observed": [
+        "Pursue",
+        "Stumble",
+        "Fallen"
+      ],
+      "last_observed_state": "Fallen",
+      "last_health": 112.0,
+      "falls": 1,
+      "completed_recoveries": 0,
+      "blocked_checks": 2,
+      "contacts": 3,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 3,
+      "id": 30405,
+      "variant": "Maintenance",
+      "first_sample_seconds": 26.79831,
+      "last_sample_seconds": 38.67842,
+      "states_observed": [
+        "Pursue",
+        "Fallen"
+      ],
+      "last_observed_state": "Fallen",
+      "last_health": 112.0,
+      "falls": 1,
+      "completed_recoveries": 0,
+      "blocked_checks": 5,
+      "contacts": 2,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 3,
+      "id": 30442,
+      "variant": "FacilityStaff",
+      "first_sample_seconds": 26.79831,
+      "last_sample_seconds": 38.67842,
+      "states_observed": [
+        "Pursue",
+        "Attack",
+        "Stumble"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 12,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 3,
+      "id": 30479,
+      "variant": "Laboratory",
+      "first_sample_seconds": 26.79831,
+      "last_sample_seconds": 38.67842,
+      "states_observed": [
+        "Pursue",
+        "Stumble"
+      ],
+      "last_observed_state": "Pursue",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 3,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 3,
+      "id": 30516,
+      "variant": "Laboratory",
+      "first_sample_seconds": 26.79831,
+      "last_sample_seconds": 38.67842,
+      "states_observed": [
+        "Pursue",
+        "Attack",
+        "Stumble"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 21,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 4,
+      "id": 30626,
+      "variant": "Laboratory",
+      "first_sample_seconds": 38.7787,
+      "last_sample_seconds": 52.71616,
+      "states_observed": [
+        "Pursue",
+        "Fallen",
+        "GetUp"
+      ],
+      "last_observed_state": "Pursue",
+      "last_health": 112.0,
+      "falls": 1,
+      "completed_recoveries": 1,
+      "blocked_checks": 0,
+      "contacts": 4,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 4,
+      "id": 30663,
+      "variant": "Maintenance",
+      "first_sample_seconds": 38.7787,
+      "last_sample_seconds": 52.71616,
+      "states_observed": [
+        "Pursue",
+        "Fallen"
+      ],
+      "last_observed_state": "Fallen",
+      "last_health": 112.0,
+      "falls": 1,
+      "completed_recoveries": 0,
+      "blocked_checks": 5,
+      "contacts": 0,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 4,
+      "id": 30700,
+      "variant": "FacilityStaff",
+      "first_sample_seconds": 38.7787,
+      "last_sample_seconds": 52.71616,
+      "states_observed": [
+        "Pursue",
+        "Attack",
+        "Stumble"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 25,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 4,
+      "id": 30737,
+      "variant": "FacilityStaff",
+      "first_sample_seconds": 38.7787,
+      "last_sample_seconds": 52.71616,
+      "states_observed": [
+        "Pursue",
+        "Attack",
+        "Stumble"
+      ],
+      "last_observed_state": "Pursue",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 11,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 4,
+      "id": 30774,
+      "variant": "Laboratory",
+      "first_sample_seconds": 38.7787,
+      "last_sample_seconds": 52.71616,
+      "states_observed": [
+        "Pursue",
+        "Stumble",
+        "Fallen"
+      ],
+      "last_observed_state": "Fallen",
+      "last_health": 112.0,
+      "falls": 1,
+      "completed_recoveries": 0,
+      "blocked_checks": 6,
+      "contacts": 4,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 4,
+      "id": 30811,
+      "variant": "Maintenance",
+      "first_sample_seconds": 38.7787,
+      "last_sample_seconds": 52.71616,
+      "states_observed": [
+        "Pursue",
+        "Attack",
+        "Stumble"
+      ],
+      "last_observed_state": "Pursue",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 9,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 5,
+      "id": 30892,
+      "variant": "Laboratory",
+      "first_sample_seconds": 52.82359,
+      "last_sample_seconds": 68.68709,
+      "states_observed": [
+        "Pursue",
+        "Attack",
+        "Dead"
+      ],
+      "last_observed_state": "Dead",
+      "last_health": 0.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 1,
+      "last_present": {
+        "head_present": true,
+        "left_arm": false,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 5,
+      "id": 30929,
+      "variant": "Laboratory",
+      "first_sample_seconds": 52.82359,
+      "last_sample_seconds": 68.68709,
+      "states_observed": [
+        "Pursue",
+        "Dead",
+        "Fallen"
+      ],
+      "last_observed_state": "Dead",
+      "last_health": 0.0,
+      "falls": 1,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 3,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": false,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 5,
+      "id": 30966,
+      "variant": "Maintenance",
+      "first_sample_seconds": 52.82359,
+      "last_sample_seconds": 68.68709,
+      "states_observed": [
+        "Pursue",
+        "Dead",
+        "Stumble",
+        "Fallen"
+      ],
+      "last_observed_state": "Dead",
+      "last_health": 0.0,
+      "falls": 1,
+      "completed_recoveries": 0,
+      "blocked_checks": 6,
+      "contacts": 3,
+      "last_present": {
+        "head_present": false,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 5,
+      "id": 31003,
+      "variant": "FacilityStaff",
+      "first_sample_seconds": 52.82359,
+      "last_sample_seconds": 68.68709,
+      "states_observed": [
+        "Pursue",
+        "Attack",
+        "Dead",
+        "Stumble"
+      ],
+      "last_observed_state": "Dead",
+      "last_health": 0.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 3,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": false
+      }
+    },
+    {
+      "fixture_phase": 6,
+      "id": 30720,
+      "variant": "FacilityStaff",
+      "first_sample_seconds": 68.79485,
+      "last_sample_seconds": 80.66339,
+      "states_observed": [
+        "Pursue"
+      ],
+      "last_observed_state": "Pursue",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 1,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 6,
+      "id": 30757,
+      "variant": "Laboratory",
+      "first_sample_seconds": 68.79485,
+      "last_sample_seconds": 80.66339,
+      "states_observed": [
+        "Pursue",
+        "Attack",
+        "Stumble"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 6,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 6,
+      "id": 30794,
+      "variant": "Maintenance",
+      "first_sample_seconds": 68.79485,
+      "last_sample_seconds": 80.66339,
+      "states_observed": [
+        "Pursue",
+        "Stumble"
+      ],
+      "last_observed_state": "Pursue",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 3,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 6,
+      "id": 30831,
+      "variant": "FacilityStaff",
+      "first_sample_seconds": 68.79485,
+      "last_sample_seconds": 80.66339,
+      "states_observed": [
+        "Pursue",
+        "Attack"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 4,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 6,
+      "id": 30870,
+      "variant": "Laboratory",
+      "first_sample_seconds": 68.79485,
+      "last_sample_seconds": 80.66339,
+      "states_observed": [
+        "Pursue",
+        "Attack"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 6,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    },
+    {
+      "fixture_phase": 6,
+      "id": 31076,
+      "variant": "Maintenance",
+      "first_sample_seconds": 68.79485,
+      "last_sample_seconds": 80.66339,
+      "states_observed": [
+        "Pursue",
+        "Attack"
+      ],
+      "last_observed_state": "Attack",
+      "last_health": 112.0,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "blocked_checks": 0,
+      "contacts": 6,
+      "last_present": {
+        "head_present": true,
+        "left_arm": true,
+        "right_arm": true,
+        "left_leg": true
+      }
+    }
+  ],
+  "phase_summary": [
+    {
+      "fixture_phase": 0,
+      "actors": 1,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "last_sample_states": {
+        "Attack": 1
+      },
+      "fallen_at_last_sample": [],
+      "getting_up_at_last_sample": []
+    },
+    {
+      "fixture_phase": 1,
+      "actors": 1,
+      "falls": 1,
+      "completed_recoveries": 1,
+      "last_sample_states": {
+        "Pursue": 1
+      },
+      "fallen_at_last_sample": [],
+      "getting_up_at_last_sample": []
+    },
+    {
+      "fixture_phase": 2,
+      "actors": 2,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "last_sample_states": {
+        "Attack": 2
+      },
+      "fallen_at_last_sample": [],
+      "getting_up_at_last_sample": []
+    },
+    {
+      "fixture_phase": 3,
+      "actors": 6,
+      "falls": 2,
+      "completed_recoveries": 0,
+      "last_sample_states": {
+        "Attack": 3,
+        "Fallen": 2,
+        "Pursue": 1
+      },
+      "fallen_at_last_sample": [
+        30368,
+        30405
+      ],
+      "getting_up_at_last_sample": []
+    },
+    {
+      "fixture_phase": 4,
+      "actors": 6,
+      "falls": 3,
+      "completed_recoveries": 1,
+      "last_sample_states": {
+        "Pursue": 3,
+        "Fallen": 2,
+        "Attack": 1
+      },
+      "fallen_at_last_sample": [
+        30663,
+        30774
+      ],
+      "getting_up_at_last_sample": []
+    },
+    {
+      "fixture_phase": 5,
+      "actors": 4,
+      "falls": 2,
+      "completed_recoveries": 0,
+      "last_sample_states": {
+        "Dead": 4
+      },
+      "fallen_at_last_sample": [],
+      "getting_up_at_last_sample": []
+    },
+    {
+      "fixture_phase": 6,
+      "actors": 6,
+      "falls": 0,
+      "completed_recoveries": 0,
+      "last_sample_states": {
+        "Pursue": 2,
+        "Attack": 4
+      },
+      "fallen_at_last_sample": [],
+      "getting_up_at_last_sample": []
+    }
+  ],
+  "lifecycle_events": [
+    {
+      "engine_log_line": 995,
+      "utc_log_timestamp": "2026.09.14-09.58.27:302",
+      "event": "ONE07_LIVING_FALL id=30083 cause=explicit_recorded_probe health=112.000 count=1 pose_cm=0.00000"
+    },
+    {
+      "engine_log_line": 1001,
+      "utc_log_timestamp": "2026.09.14-09.58.29:629",
+      "event": "ONE07_GETUP_BEGIN id=30083 health=112.000 rebase_cm=0.00000 blocked=0 clip=GetUpProne duration=2.900"
+    },
+    {
+      "engine_log_line": 1003,
+      "utc_log_timestamp": "2026.09.14-09.58.32:537",
+      "event": "ONE07_GETUP_COMPLETE id=30083 health=112.000 count=1"
+    },
+    {
+      "engine_log_line": 1056,
+      "utc_log_timestamp": "2026.09.14-09.58.49:918",
+      "event": "ONE07_LIVING_FALL id=30368 cause=sustained_contact health=112.000 count=1 pose_cm=0.00000"
+    },
+    {
+      "engine_log_line": 1058,
+      "utc_log_timestamp": "2026.09.14-09.58.49:938",
+      "event": "ONE07_LIVING_FALL id=30405 cause=sustained_contact health=112.000 count=1 pose_cm=0.00000"
+    },
+    {
+      "engine_log_line": 1089,
+      "utc_log_timestamp": "2026.09.14-09.58.59:321",
+      "event": "ONE07_LIVING_FALL id=30626 cause=explicit_recorded_probe health=112.000 count=1 pose_cm=0.00000"
+    },
+    {
+      "engine_log_line": 1093,
+      "utc_log_timestamp": "2026.09.14-09.58.59:322",
+      "event": "ONE07_LIVING_FALL id=30663 cause=explicit_recorded_probe health=112.000 count=1 pose_cm=0.00000"
+    },
+    {
+      "engine_log_line": 1097,
+      "utc_log_timestamp": "2026.09.14-09.59.02:903",
+      "event": "ONE07_GETUP_BEGIN id=30626 health=112.000 rebase_cm=0.00000 blocked=0 clip=GetUpProne duration=2.900"
+    },
+    {
+      "engine_log_line": 1098,
+      "utc_log_timestamp": "2026.09.14-09.59.05:319",
+      "event": "ONE07_LIVING_FALL id=30774 cause=sustained_contact health=112.000 count=1 pose_cm=0.00000"
+    },
+    {
+      "engine_log_line": 1099,
+      "utc_log_timestamp": "2026.09.14-09.59.05:809",
+      "event": "ONE07_GETUP_COMPLETE id=30626 health=112.000 count=1"
+    },
+    {
+      "engine_log_line": 1118,
+      "utc_log_timestamp": "2026.09.14-09.59.14:177",
+      "event": "ONE07_LIVING_FALL id=30929 cause=sustained_contact health=112.000 count=1 pose_cm=0.00000"
+    },
+    {
+      "engine_log_line": 1119,
+      "utc_log_timestamp": "2026.09.14-09.59.14:204",
+      "event": "ONE07_LIVING_FALL id=30966 cause=sustained_contact health=112.000 count=1 pose_cm=0.00000"
+    },
+    {
+      "engine_log_line": 1123,
+      "utc_log_timestamp": "2026.09.14-09.59.18:311",
+      "event": "ONE07_RECOVERY_EFFORT_BEGIN id=30966 attempt=1 blocker=ONEZombie_2147482053 component=BodyRegion pelvis=V(X=-141.45, Y=397.97, Z=15.25) direction=V(X=-1.00, Y=0.06) resumed_frozen=0 retained=16 health=112.000"
+    }
+  ],
+  "lifecycle_conclusions": {
+    "living_falls": 8,
+    "explicit_diagnostic_falls": 3,
+    "sustained_contact_falls_in_controlled_fixture": 5,
+    "completed_recoveries": 2,
+    "prone_getups_started_and_completed": 2,
+    "supine_getups_started": 0,
+    "still_fallen_at_phase_cleanup": 4,
+    "getting_up_at_phase_cleanup": 0,
+    "previously_fallen_then_explicitly_killed_without_recovery": 2,
+    "effort_begins": 1,
+    "successful_effort_escape_shown": false,
+    "effort_limit": "Actor 30966 begins effort at 09:59:18.311 UTC. Its declared head/death packet follows at 09:59:18.726 UTC, about 0.415 s later. No effort-end or successful get-up event follows for this actor. The absence of an end log is retained rather than treated as completion.",
+    "d_input_limit": "D press at fixture second 46.231640 and release at 47.738079 are real controller events generated by the fixture (pressed handled=0, released handled=1). The Laboratory get-up completes at 09:59:05.809 UTC, before the D segment, so this run does not show D causing that recovery."
+  },
+  "source_references": [
+    {
+      "path": "Source/ProjectONE/ONE07PhysicalityCheck.cpp",
+      "lines": "68-78, 81-141, 179-247",
+      "bytes": 16414,
+      "sha256": "d315f34add91e777418cca1004ee1d5ee2ff8507db8faad6a5a54622c56208f8"
+    },
+    {
+      "path": "Source/ProjectONE/ONEZombie.h",
+      "lines": "20",
+      "bytes": 12639,
+      "sha256": "efbb4551599a814773e817c31a2d6496e4576dd9a6f3ed36cc1344b9704c9a7c"
+    },
+    {
+      "path": "Source/ProjectONE/ONEZombiePhysicality.cpp",
+      "lines": "367-456, 458-529",
+      "bytes": 33197,
+      "sha256": "96332a46c0904215b2b1f70e606a0eda9949b4f06d13f10f193e6b0b3773d665"
+    }
+  ],
+  "limits": [
+    "Automated 84/0 is fixture completion, not global animation, physics, collision or visual approval.",
+    "The fixture performs phase-boundary lethal retirement/cleanup, player placement, 16 health restores, three explicit fall interventions and four sever/death packet interventions. It is not ordinary survival or player aiming.",
+    "Only 41 sparse frames are visually reviewed. The full 2226-frame timeline and audio have not been played or auditioned here. Numerical lifecycle counts come from all 3060 telemetry samples plus the actual event log.",
+    "No supine get-up, complete corpse escape, long-duration recovery guarantee, exact foot locking, absence of all interpenetration, matched lighting comparison, frame-time or audio quality conclusion is supported.",
+    "The initial compact-to-prone pose change remains conspicuous; crowded bodies and small character scale restrict assessment of joints, stumps and floor support.",
+    "Phase labels and cleanup are not substituted for observed state transitions. All four unresolved Fallen states and the two deliberate subsequent deaths remain in the report."
+  ],
+  "frame_inventory": {
+    "path": "frame_identities.csv",
+    "bytes": 7587,
+    "sha256": "a2904aeaf65774984bb845e9eebfe103183aa75f0363859ed36adebf8014aa3e"
+  },
+  "readme": {
+    "path": "review.md",
+    "bytes": 3119,
+    "sha256": "4e2df8878aaabcabeca65dfd03a7ed4d99da6aa310b70c29501cd4cc6fd2a41c"
+  }
+}

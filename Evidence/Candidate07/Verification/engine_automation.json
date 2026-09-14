@@ -1,0 +1,860 @@
+{
+  "schema": "one07.engine_automation.v1",
+  "status": "PASS",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "test_count": 39,
+  "warning_count": 5,
+  "succeeded": 36,
+  "succeededWithWarnings": 3,
+  "failed": 0,
+  "notRun": 0,
+  "inProcess": 0,
+  "totalDuration": 21.670236587524414,
+  "tests": [
+    {
+      "testDisplayName": "CloseCursorFullCircle",
+      "fullTestPath": "ProjectONE.Aim.CloseCursorFullCircle",
+      "state": "Success",
+      "duration": 0.007856901735067368,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "RegionConvergenceAndObstructionSegments",
+      "fullTestPath": "ProjectONE.Aim.RegionConvergenceAndObstructionSegments",
+      "state": "Success",
+      "duration": 0.00820859894156456,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "BoundedStepAndLimbMasks",
+      "fullTestPath": "ProjectONE.Candidate05.Attacks.BoundedStepAndLimbMasks",
+      "state": "Success",
+      "duration": 0.008229602128267288,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "ThreeFamiliesOneContact",
+      "fullTestPath": "ProjectONE.Candidate05.Attacks.ThreeFamiliesOneContact",
+      "state": "Success",
+      "duration": 0.15792520344257355,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "WallHeadingLimbAndDeathCancel",
+      "fullTestPath": "ProjectONE.Candidate05.Attacks.WallHeadingLimbAndDeathCancel",
+      "state": "Success",
+      "duration": 0.024673502892255783,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "LiveKillCorpseAndMinorContinuity",
+      "fullTestPath": "ProjectONE.Candidate05.Feedback.LiveKillCorpseAndMinorContinuity",
+      "state": "Success",
+      "duration": 0.009946998208761215,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "PrivateSpreadStreamIgnoresGlobalRandomNoise",
+      "fullTestPath": "ProjectONE.Candidate06.Ballistics.PrivateSpreadStreamIgnoresGlobalRandomNoise",
+      "state": "Success",
+      "duration": 0.008151501417160034,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "SixProfilesOriginalDistanceAndBodyBudgets",
+      "fullTestPath": "ProjectONE.Candidate06.Ballistics.SixProfilesOriginalDistanceAndBodyBudgets",
+      "state": "Success",
+      "duration": 0.008268099278211594,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "BaseHeadDamageCannotBypassHealth",
+      "fullTestPath": "ProjectONE.Candidate06.Combat.BaseHeadDamageCannotBypassHealth",
+      "state": "Success",
+      "duration": 0.015987299382686615,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "ExplicitInstaKillKeepsOrdinaryImpulseBounds",
+      "fullTestPath": "ProjectONE.Candidate06.Combat.ExplicitInstaKillKeepsOrdinaryImpulseBounds",
+      "state": "Success",
+      "duration": 0.010077100247144699,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "LethalDischargeStrictHeadMajority",
+      "fullTestPath": "ProjectONE.Candidate06.Combat.LethalDischargeStrictHeadMajority",
+      "state": "Success",
+      "duration": 0.010704100131988525,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "EmptyReloadAndPumpTransfer",
+      "fullTestPath": "ProjectONE.Candidate06.Inventory.EmptyReloadAndPumpTransfer",
+      "state": "Success",
+      "duration": 0.15765780210494995,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "ReadyBoundaryOrdering",
+      "fullTestPath": "ProjectONE.Candidate06.Machines.ReadyBoundaryOrdering",
+      "state": "Success",
+      "duration": 0.008285097777843475,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "RelocatedApproachesAndWalls",
+      "fullTestPath": "ProjectONE.Candidate06.Machines.RelocatedApproachesAndWalls",
+      "state": "Success",
+      "duration": 0.010403398424386978,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "ChanceWeightsAndRefresh",
+      "fullTestPath": "ProjectONE.Candidate06.PowerUps.ChanceWeightsAndRefresh",
+      "state": "Success",
+      "duration": 0.007955700159072876,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "DischargeVictimAndRunDedup",
+      "fullTestPath": "ProjectONE.Candidate06.Rewards.DischargeVictimAndRunDedup",
+      "state": "Success",
+      "duration": 0.008319400250911713,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "AcceptedDamageDelayAndMaximum",
+      "fullTestPath": "ProjectONE.Candidate06.Survival.AcceptedDamageDelayAndMaximum",
+      "state": "Success",
+      "duration": 0.009126801043748856,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "ExplicitTimeEventBoundariesAndReset",
+      "fullTestPath": "ProjectONE.Candidate07.Animation.ExplicitTimeEventBoundariesAndReset",
+      "state": "Success",
+      "duration": 0.00821400061249733,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "ContextLimbsAndIndependentSelection",
+      "fullTestPath": "ProjectONE.Candidate07.Attacks.ContextLimbsAndIndependentSelection",
+      "state": "Success",
+      "duration": 0.008234202861785889,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "MomentumBudgetAndRecoveryContinuity",
+      "fullTestPath": "ProjectONE.Candidate07.Attacks.MomentumBudgetAndRecoveryContinuity",
+      "state": "Success",
+      "duration": 0.00830719992518425,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "ValidDefinitionsAndPreservedBudgets",
+      "fullTestPath": "ProjectONE.Candidate07.Attacks.ValidDefinitionsAndPreservedBudgets",
+      "state": "Success",
+      "duration": 0.00828629732131958,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "StoppedAttackPlantAndIdleRejection",
+      "fullTestPath": "ProjectONE.Candidate07.Audio.StoppedAttackPlantAndIdleRejection",
+      "state": "Success",
+      "duration": 0.02511030063033104,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "BlockedLocalRecoveryAndMissingLimb",
+      "fullTestPath": "ProjectONE.Candidate07.Physicality.BlockedLocalRecoveryAndMissingLimb",
+      "state": "Success",
+      "duration": 3.254693031311035,
+      "warnings": 0,
+      "errors": 0,
+      "events": [
+        {
+          "type": "Info",
+          "message": "Get-up: region=HeadRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.000000 center=(53.109 27.977 11.597) query=(53.109 27.977 11.597) ray_side=(69.730 -34.821 -18.033) radius=9.000 halfheight=12.300"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: geometry region=HeadRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(3.5213471960560128e-06 -80.000005866337148 -7.0233658178153746e-07) local_direction=(-4.401683995070016e-08 1.0000000733292145 8.7792072722692186e-09) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: implicit region=HeadRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-9 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: capsule region=HeadRegion radius=9 endpoint_a=(0 0 -3.3000001907348633) endpoint_b=(0 0 3.3000001907348633) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: capsule_math region=HeadRegion bounds_entry=71.000000659962865 axial_projection=3.3000001117220035 radial2=81.000000000000156 radius2=81 initial_overlap=0 quadratic_c=1.5631940186722204e-13 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: region=BodyRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.000000 center=(30.009 19.274 28.392) query=(30.009 19.274 28.392) ray_side=(-37.055 66.084 -25.689) radius=14.000 halfheight=32.000"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: geometry region=BodyRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(-3.2026304808141504e-06 -80.000000861184489 -6.9553595949400915e-07) local_direction=(4.0032881010176879e-08 1.0000000107648062 8.6941994936751147e-09) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: implicit region=BodyRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-14 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: capsule region=BodyRegion radius=14 endpoint_a=(0 0 -18) endpoint_b=(0 0 18) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: capsule_math region=BodyRegion bounds_entry=66.00000015070728 axial_projection=17.999999878281209 radial2=196.00000000000031 radius2=196 initial_overlap=0 quadratic_c=3.4106051316484809e-13 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: region=UpperLegLeftRegion contact=0 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.021017 center=(28.529 -13.608 17.181) query=(28.529 -13.608 17.181) ray_side=(-29.687 -59.082 45.033) radius=8.000 halfheight=29.009"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: geometry region=UpperLegLeftRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(1.3617693142009557e-06 -79.999995321502851 -2.1110240311372763e-06) local_direction=(-1.7022116427511947e-08 0.99999994151878568 2.6387800389215954e-08) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: implicit region=UpperLegLeftRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-8.0000019073486328 direct_original=0 reverse=0 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: capsule region=UpperLegLeftRegion radius=8.0000019073486328 endpoint_a=(0 0 -21.008560180664062) endpoint_b=(0 0 21.008560180664062) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: capsule_math region=UpperLegLeftRegion bounds_entry=71.999997624801509 axial_projection=21.008559969561595 radial2=64.000030517581777 radius2=64.000030517581763 initial_overlap=0 quadratic_c=0 caps_only_branch=1"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: KnownEngineCapsuleIssue: raw Chaos side-on ray missed UpperLegLeftRegion; raw geometry diagnostics are retained above."
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: region=UpperLegRightRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.000000 center=(23.854 2.762 13.464) query=(23.854 2.762 13.464) ray_side=(52.291 28.241 53.554) radius=8.000 halfheight=29.009"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: geometry region=UpperLegRightRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(3.3740192257880608e-06 -80.000003106810226 3.6059498285112568e-06) local_direction=(-4.2175240322350765e-08 1.0000000388351278 -4.5074372856390712e-08) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: implicit region=UpperLegRightRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-8.0000019073486328 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: capsule region=UpperLegRightRegion radius=8.0000019073486328 endpoint_a=(0 0 -21.008560180664062) endpoint_b=(0 0 21.008560180664062) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up: capsule_math region=UpperLegRightRegion bounds_entry=71.999998403332455 axial_projection=21.008560541259119 radial2=64.000030517581877 radius2=64.000030517581763 initial_overlap=0 quadratic_c=1.1368683772161603e-13 caps_only_branch=0"
+        }
+      ]
+    },
+    {
+      "testDisplayName": "ConcurrentFallCapAndLethalGetUp",
+      "fullTestPath": "ProjectONE.Candidate07.Physicality.ConcurrentFallCapAndLethalGetUp",
+      "state": "Success",
+      "duration": 2.5813252925872803,
+      "warnings": 0,
+      "errors": 0,
+      "events": [
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: region=HeadRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.000000 center=(50.408 -1.229 9.749) query=(50.408 -1.229 9.749) ray_side=(71.416 35.452 -6.547) radius=9.000 halfheight=12.300"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: geometry region=HeadRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(2.7744613362301607e-06 -80.00000156789082 8.2436759640813762e-08) local_direction=(-3.4680766702877008e-08 1.0000000195986354 -1.030459495510172e-09) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: implicit region=HeadRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-9 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: capsule region=HeadRegion radius=9 endpoint_a=(0 0 -3.3000001907348633) endpoint_b=(0 0 3.3000001907348633) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: capsule_math region=HeadRegion bounds_entry=71.000000176387701 axial_projection=3.3000002000089985 radial2=81.000000000000099 radius2=81 initial_overlap=0 quadratic_c=9.9475983006414026e-14 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: region=BodyRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.017863 center=(16.545 11.023 31.935) query=(16.545 11.023 31.935) ray_side=(-10.661 72.277 -32.593) radius=14.000 halfheight=32.000"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: geometry region=BodyRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(1.6787160692643965e-06 -79.999999812344015 6.3564183605535618e-07) local_direction=(-2.0983950865804959e-08 0.99999999765430025 -7.9455229506919529e-09) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: implicit region=BodyRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-14 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: capsule region=BodyRegion radius=14 endpoint_a=(0 0 -18) endpoint_b=(0 0 18) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: capsule_math region=BodyRegion bounds_entry=65.999999967160207 axial_projection=18.00000011123732 radial2=195.99999999999969 radius2=196 initial_overlap=1 quadratic_c=-2.8421709430404007e-13 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: region=UpperLegLeftRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.026417 center=(19.673 -13.601 16.735) query=(19.673 -13.601 16.735) ray_side=(4.491 -52.599 60.110) radius=8.000 halfheight=29.009"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: geometry region=UpperLegLeftRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(-3.3588237258186382e-07 -79.999992952986418 -3.93625381889251e-06) local_direction=(4.1985296128643773e-09 0.99999991191233029 4.9203172736156377e-08) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: implicit region=UpperLegLeftRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-8.0000019073486328 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: capsule region=UpperLegLeftRegion radius=8.0000019073486328 endpoint_a=(0 0 -21.008560180664062) endpoint_b=(0 0 21.008560180664062) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: capsule_math region=UpperLegLeftRegion bounds_entry=71.999997387949762 axial_projection=21.008559787038553 radial2=64.00003051758199 radius2=64.000030517581763 initial_overlap=0 quadratic_c=2.2737367544323206e-13 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: region=UpperLegRightRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.019651 center=(17.297 1.234 11.147) query=(17.297 1.234 11.147) ray_side=(12.942 -29.327 73.297) radius=8.000 halfheight=29.009"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: geometry region=UpperLegRightRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(-1.6738115782288787e-06 -79.999996784887912 -2.3848625829714365e-06) local_direction=(2.0922644727860984e-08 0.9999999598110989 2.9810782287142956e-08) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: implicit region=UpperLegRightRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-8.0000019073486328 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: capsule region=UpperLegRightRegion radius=8.0000019073486328 endpoint_a=(0 0 -21.008560180664062) endpoint_b=(0 0 21.008560180664062) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Get-up before lethal: capsule_math region=UpperLegRightRegion bounds_entry=71.999997771140059 axial_projection=21.008559942177737 radial2=64.000030517582019 radius2=64.000030517581763 initial_overlap=0 quadratic_c=2.2737367544323206e-13 caps_only_branch=0"
+        }
+      ]
+    },
+    {
+      "testDisplayName": "FallenDamageAndDeathIdentity",
+      "fullTestPath": "ProjectONE.Candidate07.Physicality.FallenDamageAndDeathIdentity",
+      "state": "Success",
+      "duration": 1.34172785282135,
+      "warnings": 0,
+      "errors": 0,
+      "events": [
+        {
+          "type": "Info",
+          "message": "Empty scene: fixed low-plane query: direction=(0.974391 0.000000 -0.224860), contact=1, actor=Actor_0, component=BoxComponent_0. Contact is diagnostic, not a required corpse hit."
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: region=HeadRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.027611 center=(42.106 -0.652 19.294) query=(42.106 -0.652 19.294) ray_side=(17.032 75.918 18.612) radius=9.000 halfheight=12.300"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: geometry region=HeadRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(-1.3244096628284296e-06 -79.999999762993127 -1.2862022060744494e-06) local_direction=(1.655512078535537e-08 0.99999999703741416 1.6077527531521696e-08) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: implicit region=HeadRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-9 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: capsule region=HeadRegion radius=9 endpoint_a=(0 0 -3.3000001907348633) endpoint_b=(0 0 3.3000001907348633) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: capsule_math region=HeadRegion bounds_entry=70.999999973336728 axial_projection=3.3000000460371117 radial2=81.000000000000028 radius2=81 initial_overlap=0 quadratic_c=2.8421709430404007e-14 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: region=BodyRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.026060 center=(7.156 1.882 35.611) query=(7.156 1.882 35.611) ray_side=(-5.043 75.864 -24.886) radius=14.000 halfheight=32.000"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: geometry region=BodyRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(4.3492702594960519e-07 -79.999999786062958 6.6059732084511325e-07) local_direction=(-5.4365878243700654e-09 0.99999999732578704 -8.2574665105639159e-09) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: implicit region=BodyRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-14 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: capsule region=BodyRegion radius=14 endpoint_a=(0 0 -18) endpoint_b=(0 0 18) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: capsule_math region=BodyRegion bounds_entry=65.99999996256102 axial_projection=18.000000115604532 radial2=196 radius2=196 initial_overlap=1 quadratic_c=0 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: region=UpperLegLeftRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.000000 center=(18.442 -12.946 18.543) query=(18.442 -12.946 18.543) ray_side=(1.608 -72.525 33.728) radius=8.000 halfheight=29.009"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: geometry region=UpperLegLeftRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(1.6511279099518106e-07 -80.000001593507619 8.8932452513290627e-08) local_direction=(-2.0639098874397634e-09 1.0000000199188452 -1.1116556564161328e-09) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: implicit region=UpperLegLeftRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-8.0000019073486328 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: capsule region=UpperLegLeftRegion radius=8.0000019073486328 endpoint_a=(0 0 -21.008560180664062) endpoint_b=(0 0 21.008560180664062) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: capsule_math region=UpperLegLeftRegion bounds_entry=71.999998252002172 axial_projection=21.008560189557311 radial2=64.000030517581536 radius2=64.000030517581763 initial_overlap=1 quadratic_c=-2.2737367544323206e-13 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: region=UpperLegRightRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.000000 center=(16.961 0.186 11.916) query=(16.961 0.186 11.916) ray_side=(-5.647 -68.409 41.090) radius=8.000 halfheight=29.009"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: geometry region=UpperLegRightRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(1.0545957707108755e-07 -80.000002838244015 1.7571948092154344e-06) local_direction=(-1.3182447133885945e-09 1.0000000354780503 -2.1964935115192932e-08) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: implicit region=UpperLegRightRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-8.0000019073486328 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: capsule region=UpperLegRightRegion radius=8.0000019073486328 endpoint_a=(0 0 -21.008560180664062) endpoint_b=(0 0 21.008560180664062) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Fallen: capsule_math region=UpperLegRightRegion bounds_entry=71.999998376475816 axial_projection=21.00856035638358 radial2=64.000030517581763 radius2=64.000030517581763 initial_overlap=1 quadratic_c=0 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Living fallen: fixed low-plane query: direction=(0.974391 0.000000 -0.224860), contact=1, actor=Actor_0, component=BoxComponent_0. Contact is diagnostic, not a required corpse hit."
+        },
+        {
+          "type": "Info",
+          "message": "Dead: region=HeadRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.000000 center=(48.513 -0.421 9.602) query=(48.513 -0.421 9.602) ray_side=(77.019 21.470 2.652) radius=9.000 halfheight=12.300"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: geometry region=HeadRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(2.1203240123668365e-06 -80.000000283566337 -2.2521656077856278e-06) local_direction=(-2.6504050154585458e-08 1.0000000035445793 2.8152070186138192e-08) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: implicit region=HeadRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-9 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: capsule region=HeadRegion radius=9 endpoint_a=(0 0 -3.3000001907348633) endpoint_b=(0 0 3.3000001907348633) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: capsule_math region=HeadRegion bounds_entry=71.000000031901209 axial_projection=3.2999999373662394 radial2=81.000000000000057 radius2=81 initial_overlap=0 quadratic_c=5.6843418860808015e-14 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: region=BodyRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.019952 center=(16.305 10.534 31.852) query=(16.305 10.534 31.852) ray_side=(-10.974 71.628 -33.897) radius=14.000 halfheight=32.000"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: geometry region=BodyRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(5.3258075460860255e-07 -79.999999746192117 2.4633147788222232e-07) local_direction=(-6.6572594326075322e-09 0.99999999682740148 -3.079143473527779e-09) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: implicit region=BodyRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-14 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: capsule region=BodyRegion radius=14 endpoint_a=(0 0 -18) endpoint_b=(0 0 18) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: capsule_math region=BodyRegion bounds_entry=65.999999955583633 axial_projection=18.00000004310801 radial2=195.9999999999996 radius2=196 initial_overlap=1 quadratic_c=-3.979039320256561e-13 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: region=UpperLegLeftRegion contact=1 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.023413 center=(19.957 -14.052 16.387) query=(19.957 -14.052 16.387) ray_side=(9.080 -52.194 59.944) radius=8.000 halfheight=29.009"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: geometry region=UpperLegLeftRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(7.0118868045199179e-07 -79.99999448137747 -3.5397931696934393e-06) local_direction=(-8.7648584834454365e-09 0.99999993101721874 4.4247414621167991e-08) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: implicit region=UpperLegLeftRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-8.0000019073486328 direct_original=1 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: capsule region=UpperLegLeftRegion radius=8.0000019073486328 endpoint_a=(0 0 -21.008560180664062) endpoint_b=(0 0 21.008560180664062) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: capsule_math region=UpperLegLeftRegion bounds_entry=71.999997540788911 axial_projection=21.008559826684635 radial2=64.00003051758199 radius2=64.000030517581763 initial_overlap=0 quadratic_c=2.2737367544323206e-13 caps_only_branch=0"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: region=UpperLegRightRegion contact=0 body_valid=1 pose_vs_query_cm=0.000000 pose_vs_query_deg=0.013897 center=(17.301 0.768 11.224) query=(17.301 0.768 11.224) ray_side=(13.075 -30.625 72.740) radius=8.000 halfheight=29.009"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: geometry region=UpperLegRightRegion shapes=1 auto_weld=1 welded=0 component_scale=X=1.000 Y=1.000 Z=1.000 body_scale=X=1.000 Y=1.000 Z=1.000 local_start=(1.5619665028054897e-06 -79.999998372886878 -4.4316725933413181e-06) local_direction=(-1.9524581285068621e-08 0.999999979661086 5.5395907416766477e-08) length=160"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: implicit region=UpperLegRightRegion index=0 type=3 bound=1 query=1 flags=3 visibility_block=1 center_phi=-8.0000019073486328 direct_original=0 reverse=1 diagonal=1 axial=1"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: capsule region=UpperLegRightRegion radius=8.0000019073486328 endpoint_a=(0 0 -21.008560180664062) endpoint_b=(0 0 21.008560180664062) shape_local=0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: capsule_math region=UpperLegRightRegion bounds_entry=71.999997929940008 axial_projection=21.008559737496689 radial2=64.000030517581791 radius2=64.000030517581763 initial_overlap=0 quadratic_c=0 caps_only_branch=1"
+        },
+        {
+          "type": "Info",
+          "message": "Dead: KnownEngineCapsuleIssue: raw Chaos side-on ray missed UpperLegRightRegion; raw geometry diagnostics are retained above."
+        },
+        {
+          "type": "Info",
+          "message": "Floor corpse: fixed low-plane query: direction=(0.974391 0.000000 -0.224860), contact=1, actor=Actor_0, component=BoxComponent_0. Contact is diagnostic, not a required corpse hit."
+        }
+      ]
+    },
+    {
+      "testDisplayName": "FrozenBodyEffortClearsActualCorpse",
+      "fullTestPath": "ProjectONE.Candidate07.Physicality.FrozenBodyEffortClearsActualCorpse",
+      "state": "Success",
+      "duration": 13.68373966217041,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "ExactSegmentBoundaries",
+      "fullTestPath": "ProjectONE.Candidate07.RegionalTrace.ExactSegmentBoundaries",
+      "state": "Success",
+      "duration": 0.008372001349925995,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "WorldOcclusionAndVictimIdentity",
+      "fullTestPath": "ProjectONE.Candidate07.RegionalTrace.WorldOcclusionAndVictimIdentity",
+      "state": "Success",
+      "duration": 0.1673211008310318,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "AnatomicalSidesAndCorpseTransactions",
+      "fullTestPath": "ProjectONE.Combat.AnatomicalSidesAndCorpseTransactions",
+      "state": "Success",
+      "duration": 0.010033302009105682,
+      "warnings": 1,
+      "errors": 0,
+      "events": [
+        {
+          "type": "Warning",
+          "message": "LogSpawn: UWorld::DestroyActor: World has no context! World: Untitled, Actor: /Temp/Untitled_21.Untitled:PersistentLevel.ONEZombie_0"
+        }
+      ]
+    },
+    {
+      "testDisplayName": "DamageAndDeathAreMonotonic",
+      "fullTestPath": "ProjectONE.Combat.DamageAndDeathAreMonotonic",
+      "state": "Success",
+      "duration": 0.008343201130628586,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "RegionalPelletsKeepSpatialData",
+      "fullTestPath": "ProjectONE.Combat.RegionalPelletsKeepSpatialData",
+      "state": "Success",
+      "duration": 0.0082893967628479,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "RegionalTraumaBoundaries",
+      "fullTestPath": "ProjectONE.Combat.RegionalTraumaBoundaries",
+      "state": "Success",
+      "duration": 0.01016400009393692,
+      "warnings": 3,
+      "errors": 0,
+      "events": [
+        {
+          "type": "Warning",
+          "message": "LogSpawn: UWorld::DestroyActor: World has no context! World: Untitled, Actor: /Temp/Untitled_22.Untitled:PersistentLevel.ONEZombie_0"
+        },
+        {
+          "type": "Warning",
+          "message": "LogSpawn: UWorld::DestroyActor: World has no context! World: Untitled, Actor: /Temp/Untitled_22.Untitled:PersistentLevel.ONEZombie_4"
+        },
+        {
+          "type": "Warning",
+          "message": "LogSpawn: UWorld::DestroyActor: World has no context! World: Untitled, Actor: /Temp/Untitled_22.Untitled:PersistentLevel.ONEZombie_3"
+        }
+      ]
+    },
+    {
+      "testDisplayName": "WeaponPacketsAreIdempotent",
+      "fullTestPath": "ProjectONE.Combat.WeaponPacketsAreIdempotent",
+      "state": "Success",
+      "duration": 0.009695999324321747,
+      "warnings": 1,
+      "errors": 0,
+      "events": [
+        {
+          "type": "Warning",
+          "message": "LogSpawn: UWorld::DestroyActor: World has no context! World: Untitled, Actor: /Temp/Untitled_23.Untitled:PersistentLevel.ONEZombie_0"
+        }
+      ]
+    },
+    {
+      "testDisplayName": "AcquisitionPlansAndUpgradeRefill",
+      "fullTestPath": "ProjectONE.Inventory.AcquisitionPlansAndUpgradeRefill",
+      "state": "Success",
+      "duration": 0.009392697364091873,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "ExactInstanceReservationAndRollback",
+      "fullTestPath": "ProjectONE.Inventory.ExactInstanceReservationAndRollback",
+      "state": "Success",
+      "duration": 0.008989498019218445,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "ResetRejectsOldMachineCallbacks",
+      "fullTestPath": "ProjectONE.Inventory.ResetRejectsOldMachineCallbacks",
+      "state": "Success",
+      "duration": 0.009146902710199356,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "SixIndependentVariantsAndTiming",
+      "fullTestPath": "ProjectONE.Inventory.SixIndependentVariantsAndTiming",
+      "state": "Success",
+      "duration": 0.008287198841571808,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "AutomaticPhaseAndHitch",
+      "fullTestPath": "ProjectONE.Weapons.Candidate05.AutomaticPhaseAndHitch",
+      "state": "Success",
+      "duration": 0.008203499019145966,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    },
+    {
+      "testDisplayName": "CatalogCadenceAndUpgradeBanks",
+      "fullTestPath": "ProjectONE.Weapons.Candidate05.CatalogCadenceAndUpgradeBanks",
+      "state": "Success",
+      "duration": 0.012585900723934174,
+      "warnings": 0,
+      "errors": 0,
+      "events": []
+    }
+  ],
+  "source_registrations": [
+    {
+      "path": "Source/ProjectONE/ONE04WeaponTests.cpp",
+      "bytes": 16209,
+      "sha256": "7ce88e31f7338d95334e195a0103a5894db0e029e67646467aaf0b0c6fadc109",
+      "tests": [
+        "ProjectONE.Inventory.SixIndependentVariantsAndTiming",
+        "ProjectONE.Inventory.ExactInstanceReservationAndRollback",
+        "ProjectONE.Inventory.AcquisitionPlansAndUpgradeRefill",
+        "ProjectONE.Inventory.ResetRejectsOldMachineCallbacks",
+        "ProjectONE.Candidate06.Inventory.EmptyReloadAndPumpTransfer"
+      ]
+    },
+    {
+      "path": "Source/ProjectONE/ONE05AimTests.cpp",
+      "bytes": 4834,
+      "sha256": "67fd588d9a7bebefaab21a1d3470ac9e97c5f1c6fecf347239cba16ab25eddae",
+      "tests": [
+        "ProjectONE.Aim.CloseCursorFullCircle",
+        "ProjectONE.Aim.RegionConvergenceAndObstructionSegments"
+      ]
+    },
+    {
+      "path": "Source/ProjectONE/ONE05AttackTests.cpp",
+      "bytes": 13924,
+      "sha256": "91d23769cdefa4910f4249a467035098745978dcf9f27609df3372bbbc4605aa",
+      "tests": [
+        "ProjectONE.Candidate05.Attacks.ThreeFamiliesOneContact",
+        "ProjectONE.Candidate07.Audio.StoppedAttackPlantAndIdleRejection",
+        "ProjectONE.Candidate05.Attacks.WallHeadingLimbAndDeathCancel",
+        "ProjectONE.Candidate05.Feedback.LiveKillCorpseAndMinorContinuity",
+        "ProjectONE.Candidate05.Attacks.BoundedStepAndLimbMasks"
+      ]
+    },
+    {
+      "path": "Source/ProjectONE/ONE05WeaponTests.cpp",
+      "bytes": 4494,
+      "sha256": "5cd7db54b84949227a4383ce9a5368bfd0306a922375db146c29c41c25b3c879",
+      "tests": [
+        "ProjectONE.Weapons.Candidate05.AutomaticPhaseAndHitch",
+        "ProjectONE.Weapons.Candidate05.CatalogCadenceAndUpgradeBanks"
+      ]
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CombatTests.cpp",
+      "bytes": 18675,
+      "sha256": "cb6f8c388e430f1c47e768a76a7f5e7e4de0019d4f3b5bc1354b45efc7eb362f",
+      "tests": [
+        "ProjectONE.Candidate06.Ballistics.SixProfilesOriginalDistanceAndBodyBudgets",
+        "ProjectONE.Candidate06.Ballistics.PrivateSpreadStreamIgnoresGlobalRandomNoise",
+        "ProjectONE.Candidate06.Combat.BaseHeadDamageCannotBypassHealth",
+        "ProjectONE.Candidate06.Combat.LethalDischargeStrictHeadMajority",
+        "ProjectONE.Candidate06.Combat.ExplicitInstaKillKeepsOrdinaryImpulseBounds"
+      ]
+    },
+    {
+      "path": "Source/ProjectONE/ONE06MachineTests.cpp",
+      "bytes": 4567,
+      "sha256": "d6269c934a97b28be305d2bf327dd746a02c4eceb7e9bbf192301b8e6078f248",
+      "tests": [
+        "ProjectONE.Candidate06.Machines.ReadyBoundaryOrdering",
+        "ProjectONE.Candidate06.Machines.RelocatedApproachesAndWalls"
+      ]
+    },
+    {
+      "path": "Source/ProjectONE/ONE06SurvivalTests.cpp",
+      "bytes": 12218,
+      "sha256": "d88237d29bcab64bc0daa814f9c68cb49880640fa7c5e612693025a8d4efd721",
+      "tests": [
+        "ProjectONE.Candidate06.Survival.AcceptedDamageDelayAndMaximum",
+        "ProjectONE.Candidate06.Rewards.DischargeVictimAndRunDedup",
+        "ProjectONE.Candidate06.PowerUps.ChanceWeightsAndRefresh"
+      ]
+    },
+    {
+      "path": "Source/ProjectONE/ONE07AttackTests.cpp",
+      "bytes": 10172,
+      "sha256": "86ee8cdf4291f6b794ceb17c884da50d04f162f21d8058451707fda7112cd9a8",
+      "tests": [
+        "ProjectONE.Candidate07.Attacks.ValidDefinitionsAndPreservedBudgets",
+        "ProjectONE.Candidate07.Attacks.ContextLimbsAndIndependentSelection",
+        "ProjectONE.Candidate07.Attacks.MomentumBudgetAndRecoveryContinuity",
+        "ProjectONE.Candidate07.Animation.ExplicitTimeEventBoundariesAndReset"
+      ]
+    },
+    {
+      "path": "Source/ProjectONE/ONE07PhysicalityTests.cpp",
+      "bytes": 59710,
+      "sha256": "bf328365a5031c7f86ee2ad84d11e1e51abe87d1cd26d189c6227a803195e21f",
+      "tests": [
+        "ProjectONE.Candidate07.Physicality.FallenDamageAndDeathIdentity",
+        "ProjectONE.Candidate07.Physicality.BlockedLocalRecoveryAndMissingLimb",
+        "ProjectONE.Candidate07.Physicality.ConcurrentFallCapAndLethalGetUp",
+        "ProjectONE.Candidate07.RegionalTrace.WorldOcclusionAndVictimIdentity",
+        "ProjectONE.Candidate07.Physicality.FrozenBodyEffortClearsActualCorpse"
+      ]
+    },
+    {
+      "path": "Source/ProjectONE/ONE07RegionalTraceTests.cpp",
+      "bytes": 4267,
+      "sha256": "822d8f1d0f54c0afab6ba881f541a5f9c89df1fe681422fe845266e51ba5c764",
+      "tests": [
+        "ProjectONE.Candidate07.RegionalTrace.ExactSegmentBoundaries"
+      ]
+    },
+    {
+      "path": "Source/ProjectONE/ONETests.cpp",
+      "bytes": 14728,
+      "sha256": "a315bb8ea7954d5bb7852dda695e37a6f11c57093b813b89ebf1f97327895c2c",
+      "tests": [
+        "ProjectONE.Combat.DamageAndDeathAreMonotonic",
+        "ProjectONE.Combat.WeaponPacketsAreIdempotent",
+        "ProjectONE.Combat.RegionalTraumaBoundaries",
+        "ProjectONE.Combat.RegionalPelletsKeepSpatialData",
+        "ProjectONE.Combat.AnatomicalSidesAndCorpseTransactions"
+      ]
+    }
+  ],
+  "raw_report": {
+    "name": "index.json",
+    "bytes": 59945,
+    "sha256": "b8c9c91ca514a67ec86887c4faeb4c54c6a6554fe67feb324428783f0b3521fc"
+  },
+  "limits": [
+    "The test set is enumerated from the actual final source, not a fixed acceptance count.",
+    "Engine automation uses nullrhi with AllowCommandletAudio. It is separate from native input, pixel review and audition.",
+    "Device instances, host names and event file paths are omitted; warning/error counts are retained."
+  ]
+}

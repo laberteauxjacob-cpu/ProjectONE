@@ -1,9 +1,9 @@
 # Project ONE accepted development sequence
 
-Candidate06 is the latest verified playable/public baseline. Candidate07's
-infected and recorded-audio implementation is in verification, with three
-integrated visual appearances, an infected-specific motion bank and living
-contact/fall/recovery. It is not released or approved art/audio direction.
+Candidate07 is the current technically verified Windows prerelease, with three
+integrated infected appearances, an infected-specific motion bank, living
+contact/fall/recovery and recorded physical audio. Native desktop capture was
+blocked; appearance, feel and perceptual audio approval remain provisional.
 [CurrentState](CurrentState.md) and the [Candidate07 pass](Passes/Candidate07.md)
 separate completed checks from ordinary encounters, performance, native play,
 packaged testing and publication gates. No new gameplay archetypes, weapon

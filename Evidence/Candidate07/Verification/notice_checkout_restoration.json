@@ -1,0 +1,110 @@
+{
+  "schema": "one07.notice_checkout_restoration.v1",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "status": "EXACT_COMMITTED_NOTICE_BYTES_RESTORED",
+  "verified_utc": "2026-09-14T09:40:53.464912+00:00",
+  "changes": [
+    {
+      "path": "ArtSource/Audio/Candidate07/Notices/undead/LICENSE.txt",
+      "checkout_before": {
+        "bytes": 7169,
+        "sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328"
+      },
+      "committed_original": {
+        "bytes": 7048,
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+      },
+      "checkout_after": {
+        "bytes": 7048,
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+      },
+      "newline_only": true
+    },
+    {
+      "path": "ArtSource/Audio/Candidate07/Notices/towel/wet_towel_on_floor-info.txt",
+      "checkout_before": {
+        "bytes": 4510,
+        "sha256": "723b8fb9fa74a96935182c08b6622ddb2c209835ed85a274b95807ff1b962213"
+      },
+      "committed_original": {
+        "bytes": 4447,
+        "sha256": "bf0fa01e9b1b70d8a7e1188540cad6a13d07f8b59379b5143b305ab2d7e51cf3"
+      },
+      "checkout_after": {
+        "bytes": 4447,
+        "sha256": "bf0fa01e9b1b70d8a7e1188540cad6a13d07f8b59379b5143b305ab2d7e51cf3"
+      },
+      "newline_only": true
+    },
+    {
+      "path": "ArtSource/Audio/Candidate07/Notices/metal_steps/license.txt",
+      "checkout_before": {
+        "bytes": 148,
+        "sha256": "9bf839c5c61d9d50d0d90d678f8752cf9dd60090b5c4e96cf524c8fdac1e202e"
+      },
+      "committed_original": {
+        "bytes": 145,
+        "sha256": "b2f0c186d108ebe8c6452ba6b21c580a81071bc91b66a07938c796372dd72f41"
+      },
+      "checkout_after": {
+        "bytes": 145,
+        "sha256": "b2f0c186d108ebe8c6452ba6b21c580a81071bc91b66a07938c796372dd72f41"
+      },
+      "newline_only": true
+    },
+    {
+      "path": "ArtSource/Audio/Candidate07/Notices/CC0-1.0.txt",
+      "checkout_before": {
+        "bytes": 7169,
+        "sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328"
+      },
+      "committed_original": {
+        "bytes": 7048,
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+      },
+      "checkout_after": {
+        "bytes": 7048,
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+      },
+      "newline_only": true
+    },
+    {
+      "path": "ArtSource/Audio/Candidate07/Notices/CC-BY-3.0.txt",
+      "checkout_before": {
+        "bytes": 19786,
+        "sha256": "1257d59336eb747e40523d74d7658d4d7885c30577d0310bbd282797e95b0773"
+      },
+      "committed_original": {
+        "bytes": 19467,
+        "sha256": "e6bc9e9c474700b708f568bac9e5a8a9bcb2b1dad53442f5ba449fcb848b8e76"
+      },
+      "checkout_after": {
+        "bytes": 19467,
+        "sha256": "e6bc9e9c474700b708f568bac9e5a8a9bcb2b1dad53442f5ba449fcb848b8e76"
+      },
+      "newline_only": true
+    },
+    {
+      "path": "ArtSource/Audio/Candidate07/Notices/CC-BY-4.0.txt",
+      "checkout_before": {
+        "bytes": 19053,
+        "sha256": "d07988f4be47912f75a73b44da8a9c0b602bf6c8ced69de858b848f379ecd973"
+      },
+      "committed_original": {
+        "bytes": 18657,
+        "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+      },
+      "checkout_after": {
+        "bytes": 18657,
+        "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+      },
+      "newline_only": true
+    }
+  ],
+  "clean_git_status_after": true,
+  "unchanged_git_index_tree": true,
+  "all_eight_notices_match_original_inventory": true,
+  "six_runtime_identities_unchanged": true,
+  "process_note": "Initial restoration stopped after writing six exact originals because Git still reported stale newline/stat differences. Read-only diff was empty; explicit add of only those same six blobs refreshed the index cache. The staged diff and final Git status are empty. Original converted bytes and failed audit are preserved.",
+  "scope": "No source commit, compilation, cooking, engine test or package runtime changed. Notices are copied from these exact source originals by later archive assembly. Final documentation attributes prevent future newline conversion."
+}

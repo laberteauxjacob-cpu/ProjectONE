@@ -1,0 +1,75 @@
+{
+  "schema": "one07.presentation_evidence_inventory.v1",
+  "status": "MEASURED",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "reference_source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "curated_utc": "2026-09-14T10:42:18.255574+00:00",
+  "curation_scope": "Three unchanged actual analyzer reports plus an explanatory README. No new audio measurement or perceptual review.",
+  "public_files": [
+    {
+      "name": "summary.json",
+      "bytes": 55103,
+      "sha256": "c82fbf3e5ed745bf7c472d454bc18b91141c27b88f75b6185d164d34505cb279"
+    },
+    {
+      "name": "reference_audio.json",
+      "bytes": 405586,
+      "sha256": "c72b51d0592ff696f3d027177f73d5c56c77d0d2718e4f615d66c362353edfd3"
+    },
+    {
+      "name": "current_audio.json",
+      "bytes": 411501,
+      "sha256": "9ad5b385059bb2465cfeb70195d3e43b85df5aaa74e90fa66d3dbf37be775c5d"
+    },
+    {
+      "name": "README.md",
+      "bytes": 3585,
+      "sha256": "b529bdcbf6fd21f50bd3de697c0bd2055a037092bf3f5d15f5905ebfbfeac9a8"
+    }
+  ],
+  "original_reports": [
+    {
+      "name": "summary.json",
+      "bytes": 55103,
+      "sha256": "c82fbf3e5ed745bf7c472d454bc18b91141c27b88f75b6185d164d34505cb279"
+    },
+    {
+      "name": "reference_audio.json",
+      "bytes": 405586,
+      "sha256": "c72b51d0592ff696f3d027177f73d5c56c77d0d2718e4f615d66c362353edfd3"
+    },
+    {
+      "name": "current_audio.json",
+      "bytes": 411501,
+      "sha256": "9ad5b385059bb2465cfeb70195d3e43b85df5aaa74e90fa66d3dbf37be775c5d"
+    }
+  ],
+  "reports_copied_byte_exact": true,
+  "release_asset": {
+    "name": "reference_then_current.wav",
+    "bytes": 73699372,
+    "sha256": "bb70e7daf17978ad77352403c762332d95b5b2eebccdb648b7100578a4321859",
+    "intended_url": "https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate07/reference_then_current.wav",
+    "actual_file_hash_rechecked": true,
+    "header_format": {
+      "channels": 2,
+      "sample_rate_hz": 48000,
+      "bits_per_sample": 16,
+      "sample_frames": 18424832,
+      "encoding": "NONE"
+    },
+    "duration_seconds": 383.85066666666665,
+    "copied_into_evidence": false,
+    "publication_verified": false,
+    "download_verified": false
+  },
+  "actual_pcm_validation_status": "PCM_SEGMENTS_EXACT",
+  "perceptual_audio_review": false,
+  "encoded_or_decoded_movie": false,
+  "mixer_stop_time_known": false,
+  "limits": [
+    "Recorded native-presentation schemas describe the original engine recorder and fixture events, not OS input.",
+    "Raw report filenames are private evidence identities, not promised public assets.",
+    "The source summary retains its original generation time and statuses; curation does not retroactively verify publication."
+  ]
+}

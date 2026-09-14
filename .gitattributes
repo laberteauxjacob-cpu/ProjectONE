@@ -8,6 +8,13 @@
 ArtSource/Audio/Candidate07/Originals/**/*.ogg filter=lfs diff=lfs merge=lfs -text
 ArtSource/Audio/Candidate07/Originals/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
 ArtSource/Audio/Candidate07/Originals/**/*.flac filter=lfs diff=lfs merge=lfs -text
+ArtSource/Audio/Candidate07/Notices/** -text
+Scripts/process_candidate07_audio.py -text
+ArtSource/Audio/Candidate07/source_inventory.json text eol=crlf
+ArtSource/Audio/Candidate07/recipes.json text eol=crlf
+Evidence/Candidate07/UI/**/*.png filter=lfs diff=lfs merge=lfs -text
+Evidence/Candidate07/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
+Evidence/Candidate07/**/*.md whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
 ArtSource/Characters/Candidate07/**/*.png filter=lfs diff=lfs merge=lfs -text
 Evidence/Candidate04/Performance/** -text
 Evidence/Candidate04/Tools/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -74,7 +74,9 @@ contact/voice events have their own [runtime contract](Candidate07Infected.md)
 and [audio integration note](Candidate07Audio.md).
 
 Use the [targeted import order](EnvironmentPipeline.md#candidate07-targeted-import-order)
-after authoring. Candidate07 remains in verification; source measurements,
-successful imports and bounded engine-frame inspection do not establish final
-packaged behavior, continuous motion quality, listening approval or user
-acceptance of the art direction.
+after authoring. The [Candidate07 pass](Passes/Candidate07.md) records the actual
+fresh build, packaged checks, original-frame review and performance results.
+Source measurements and successful imports remain separate from those runtime
+checks. Bounded frame inspection does not establish continuous motion quality,
+listening approval or user acceptance of the art direction; native capture was
+blocked and no perceptual audition is claimed.

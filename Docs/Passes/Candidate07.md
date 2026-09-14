@@ -1,238 +1,169 @@
 # Candidate07 — infected physicality and recorded audio
 
-Status: internal checkpoints D/E, physical contact, all three appearances and
-recorded event audio integrated in the Editor game. Candidate07 remains in progress; it is
-not packaged, publicly released or approved by the user for visual/audio quality.
-The latest verified playable release remains Candidate06.
+Candidate07 develops one infected archetype into three recognizable appearances,
+with hanging-arm locomotion, contextual attacks, physical crowd response and
+recoverable living falls. Recorded physical shots, mechanisms, creature
+performances and contact Foley replace the old physical-sound foundation.
+Candidate06's player, six weapon variants, two-slot inventory, machines, health
+regeneration, rewards and power-ups remain the gameplay baseline.
 
-## Preserved baseline
+**Release status: Windows prerelease prepared; native control review is blocked and visual/audio approval remains provisional.** Technical verification and user
+approval of appearance, sound and feel are separate.
 
-- Published source/documentation revision: `90ead259e10ef7ad7ed8803b0236aa02bb75eac6`.
-- Candidate06 gameplay build source: `c2c422012f4f219fb5e63ac24294a6ba8428f999`.
-- Candidate06 release archive SHA256: `4dd954cdeb894d2be371fa78df0f640ef7a623685c40aa5cf0261c804f1c8b0a`.
-- Existing candidate branches, tags, source and packages are preserved. Work
-  continues on `codex/candidate07`; Project Zero is excluded.
+## Release identity
 
-Preflight on 2026-09-14 UTC verified UE 5.7.2 CL49658320 and Blender 5.1.2.
-Available disk was approximately 871 GiB; the initial incremental allowance is
-10–20 GiB for bounded authoring, capture and one fresh neutral release build.
-No old candidates or unrelated files were removed.
+| Item | Exact binding |
+| --- | --- |
+| Gameplay and asset source S | `3d75c2faa0cecef6075f00755d8e4f5dd2562817` |
+| Publication revision D / review branch | [the candidate07 tag](https://github.com/laberteauxjacob-cpu/ProjectONE/tree/candidate07) / `codex/candidate07` |
+| Windows package | [ProjectONE-Candidate07-Windows.zip](https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate07/ProjectONE-Candidate07-Windows.zip) |
+| Archive size / SHA-256 | 414510213 bytes / `e3dae5b6ead801d03c6bc67362f8849ae465df88bd1e691ceed2681b18e61348` |
+| S-to-D scope | Documentation, Candidate07 evidence and scoped `.gitattributes` transport rules only; gameplay, runtime assets and authoring tools remain byte-identical in Git to S. The later fresh-D verification independently checks this scope. |
+| Fresh public checkout and LFS | Fresh S verified 1,816 tracked files and 1,132 LFS payloads / 449,311,411 bytes. Final D retrieval and its added evidence are recorded separately in the later publication-verification attachment. |
+| Archive extraction and runtime identities | PASS: 1,230 ZIP entries, all 1,228 manifest payloads, CRCs, notice/prerequisite bytes and six extracted runtime identities verified; adopted to a separate Candidate07 folder. |
+| Published refs, anonymous downloads and prior-candidate preservation | The [publication-verification attachment](https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate07/Candidate07-PublicationVerification.json) identifies actual D and records public refs, anonymous downloads, fresh D checkout/LFS and prior-candidate preservation when issued. These later public checks are not asserted by this committed text. |
 
-The extracted Candidate06 runtime matched all six published runtime hashes.
-Native launch, ordinary game-over, Enter restart to 100 health / M1911 7+56,
-and Q quit were inspected. No security prompt was approved or bypassed.
-Supported review includes discrete native input, screenshots, actual engine
-frame/audio capture and offline decode. Held native input and perceptual audio
-audition are not established. Engine master-output recording is distinct from
-listening; microphone input is not used.
+The built runtime belongs to S. D may add reviewed documentation/evidence and
+their attributes; it must not silently change gameplay or authoring tools after
+the build. The later publication-verification attachment identifies actual D
+after the public refs/downloads exist. Candidate06 source
+`c2c422012f4f219fb5e63ac24294a6ba8428f999`, publication
+`90ead259e10ef7ad7ed8803b0236aa02bb75eac6` and earlier candidates remain preserved.
 
-One new baseline M4A1/six-enemy performance scenario completed all 38 checks.
-All 2,185 frames were retained: mean 14.1072 ms, p95 22.7607 ms, p99 24.2811 ms,
-worst 34.9726 ms. Exact six-enemy occupancy was 81.41% of registered counter
-frames; comparison remains pending. A separate actual-engine motion capture
-completed 80 checks with one failure: its later corpse trace missed. Inspection
-found that the historical harness did not actually hold Ctrl for that shot;
-it does not establish a failure of a genuine 65 cm low-aim input.
-The failure and raw capture are retained for compatibility analysis; this is
-not reported as a passing baseline motion validation. An unrelated game was
-already running on the host, so these runs do not establish an isolated host.
+## Appearance and connected combat
 
-## Audit and implementation direction
+| Appearance | Source triangles | Main visual differences |
+| --- | ---: | --- |
+| Maintenance | 60,406 | Damaged blue jacket, gaunt face, receding swept hair |
+| Laboratory | 64,798 | Lined split coat, lapels, alternate facial damage, grey hair |
+| Facility Staff | 64,982 | Rolled cuffs, loose tie, brown trousers, broader lower face and broken dark crown hair |
 
-The actual C03 infected has five modular meshes, 21 source bones and the same
-rig plus imported armature node. Imported anatomical left uses `_r` suffixes.
-Source arm, thigh and head cut boundaries must remain coherent under evaluated
-poses. The player uses an independent bind and remains outside the art change.
+Each has an editable Blender source and five modular exports, using the retained
+21-bone infected bind. Each passed 140 evaluated source seam samples and weight
+checks. Head, both arms and the existing supported left-leg sever remain tied
+to the correct meshes and current pose. Source skin measurements fit the shared
+head query; cosmetic hair does not enlarge it. The appearance data assets carry
+no health, speed, damage or reward overrides. Player assets retain their own bind
+and animation graph.
 
-The shared C05 animation graph explicitly samples sequences, so imported
-notifies cannot be presumed to play. The infected's chest-height wrist targets
-are authored into the clips. Attack selection currently cycles families, entry
-discards approach speed, and recovery explicitly stops movement. Capsule/RVO
-avoidance alone is not physical upper-body response. Those paths are being
-replaced in an infected-specific animation/attack/contact implementation.
+Fourteen infected-only clips provide locomotion, full-body turns, five sided
+performances across swipe/rake/two-hand families, heavy hit, stumble and two
+get-ups. Selection considers limbs, distance, bearing, entry speed and previous
+performance. Bounded entry travel and recovery pursuit preserve approach
+continuity without adding damage contacts. Effort and foot-contact events cross
+explicit animation phases, matching the graph's explicit-time evaluation.
 
-The first new Maintenance model must pass source and in-game inspection before
-Laboratory and Facility Staff appearances are multiplied. Appearance data has
-no health, speed, damage or reward settings. Living falls remain the same live,
-damageable actor and never award kills or drops. Recovery requires local floor
-support and clearance; dead actors cannot resume recovery.
+Upper-body physics yields to measured contact while the living capsule drives
+locomotion. Full living falls retain health, registration and absent limbs and
+cancel pending attacks. At most four living actors simulate full-body falls.
+Floor support, upright clearance and the recovery path must remain valid; pickup
+triggers cannot create support or obstruct a rise. Bounded physical effort can
+help a fallen actor clear another actual fallen/dead body. Static blockers and
+exhausted effort budgets can still prevent recovery.
 
-Recorded source research began during preflight. Actual firearm recordings,
-performed creature vocalizations and physical Foley have been located with
-asset-specific license evidence. Only selected sources with both commercial
-and public raw-source redistribution rights will be integrated. Exact analog
-weapon provenance, compressed-preview sources, attribution, hashes and edits
-will be recorded separately. No synthesized physical cue will be described as
-a recording. Existing upgraded energy and useful machine/pickup accents stay.
+Captured-pose rebasing precedes the complete prone/supine clip. Recovery lasts
+2.90/3.35 seconds including its 0.35-second entry blend, keeps the same living
+identity and cannot complete after death. The corpse/rest lifecycle and severed
+parts remain bounded; a physical death uses its evaluated pelvis for drop origin.
+The ordinary encounter recorded a sustained-contact fall, a 2.509 cm effort stopped for lost floor support, and a later prone recovery preserving 100.8 HP. A nearby corpse disappeared before clearance, so effort-caused escape is not established. The arranged physicality film completed two prone recoveries, retained four Fallen actors before phase cleanup and captured no supine recovery; its folded-to-prone entry remains conspicuous.
 
-## First integrated character checkpoint
+The regional ray wrapper fixes a reproduced Chaos cylinder-middle numerical miss
+using the unchanged segment and exact evaluated capsule dimensions. It retains
+world occlusion, ignore filters, removed-region exclusion and the existing
+per-discharge victim transaction. This geometry correction does not redirect
+mouse aim. [Runtime contract](../Candidate07Infected.md) and
+[source/import notes](../../ArtSource/Characters/Candidate07/README.md) provide
+the implementation detail.
 
-Maintenance now uses five original modular meshes, 60,406 source triangles,
-modeled facial damage, partial hair, thick torn/stained workwear and authored
-vertex color/roughness with small original normal maps. The imported skeleton
-and player assets retain their existing contracts. All 140 paired source seam
-samples match. The measured skull query uses center (-0.2, 0, 168.7) cm,
-radius 9 cm and half-height 12.3 cm; the interior physical head uses radius
-8.5 cm and a 6.6 cm cylinder. Other existing body/constraint parameters remain.
-This is a mesh-fit correction, not an aiming-height or target-selection change.
+## Recorded audio
 
-The infected-specific graph samples fourteen editable motions. Revised prone
-and supine clips are 2.55 and 3.0 seconds, preceded by a 0.35-second captured-pose
-blend. The saved Blender source was reopened to verify all fourteen actions;
-twelve original motion FBXs remain byte-identical. The current supine entry
-still needs a grounded torso/hip roll correction. The prone gameplay sequence
-shows palm brace, knee tuck, foot placement and rise; its short initial pose
-blend remains visibly procedural. This is bounded chronological frame review,
-not continuous playback or a claim that all motion is finished.
+The bank contains 134 processed cues from 76 retained originals. Shot reports,
+reload/pump/extraction, performed creature voices, foot/body contacts and ambient
+machinery use recordings. Weapon operation timestamps and actual contact events
+remain authoritative. Priorities, cooldowns, attenuation and bounded shared pools
+limit overlaps; event counts do not imply that every request was audible.
 
-Hybrid upper-body simulation, living fall/get-up states, event-based recorded
-audio and an exact regional capsule query are integrated. The regional query
-addresses a reproduced Chaos cylinder-middle ray miss using the unchanged ray
-and current capsule dimensions; world occlusion, near misses, ignored actors,
-absent limbs and per-victim transactions are tested. A physical death's pickup
-origin now follows the evaluated pelvis instead of an abandoned capsule.
+M4-family identity is not verified as an exact M4A1; the 870 uses recorded Nova
+reports and SXP mechanisms. Object/wet-towel Foley supplies declared magazine,
+impact and flesh analogues. Six Freesound originals are the official public MP3
+representations. Some bank variants are alternate edits of the same performances.
+Intentional upgrade energy is still synthesized, and machine/pickup accents
+retain their earlier authored design.
 
-The second full engine automation run executed 37 tests: 36 passed (three with
-warnings), while one catalog test failed eighteen obsolete Candidate05 audio
-path expectations. That expectation was deliberately migrated to the exact
-Candidate07 wave banks; its separate follow-up passed. A complete fresh-build
-suite remains required. Original failures and diagnostics are retained privately.
+[Credits, original hashes, licenses and recipes](../../ArtSource/Audio/Candidate07/README.md)
+and the [runtime audio note](../Candidate07Audio.md) preserve those qualifications.
+The grants cover the selected audio; no general project license is assigned.
+Final old/new source-WAV comparison: [Full old-then-new PCM comparison](https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate07/reference_then_current.wav): 191.893333 seconds of verified C06 followed by 191.957333 seconds of verified C07, with no trimming, gain, added silence, resampling or crossfade. Both original packaged presentation fixtures passed 93 assertions. Actual mixer-stop clock is unavailable in that legacy format.
+Full original PCM comparison and digital headroom measurements do not establish
+realism, mix balance, localization or comfort. **No perceptual audition occurred.**
 
-Two complete WIP viewport/master-audio captures have been produced. The latest
-80.49-second capture has 2,151 actual frames and 76 assertions with one failure:
-runtime obstacle mesh assignment was rejected. The fixture setup is corrected
-in subsequent source but has not yet passed a new recording. This capture is
-REVIEW_ONLY, with its actual compiled DLL identity recorded separately. It
-does not prove obstacle contact or a finished crowd system. The first character
-was reviewed at the ordinary camera and through its modular death sequence;
-appearance remains subject to user judgment. No perceptual audio audition occurred.
+## Final verification
 
-The source audio inventory now contains 76 originals and 134 processed cues.
-Exact rights, analogues, retained synthetic energy layers and attribution are
-documented in Candidate07Audio.md and the source inventory. Library verification,
-event checks and digital clipping analysis do not substitute for listening.
+Every result below has its own source/runtime binding. Local editor
+preflight passed 39 tests (36 clean, three with warnings), but that earlier result
+does not substitute for the final fresh-S suite.
 
-## Completion gates still pending
+| Evidence | Final result and scope |
+| --- | --- |
+| Fresh neutral Editor/Game/package build | PASS: fresh public S checkout, UE 5.7.2 Win64 Development Editor/Game/package stages all exited 0. The original empty-stdout receipt correction and unchanged real engine log/report are retained in the build record. |
+| All 39 engine tests at final S | PASS: 39 registered tests, 36 clean and three with warnings, zero failed or not run; the actual fresh-S report is retained. |
+| Source/LFS/import/privacy audit and six runtime identities | PASS: 459 declared C07 payloads, all six runtime files and the recorded-source chain match. The audit retains all 25 classified binary-pattern hits across 19 files, the exact unchanged upstream-script example and untouched original notice bytes. |
+| Packaged runtime matrix | PASS: all 32 runs completed. The 26 C07 runs comprise 13 regression/recording cases (6,867 driver assertions) and 13 recording-free profiles (502 driver plus 137 companion assertions): 7,506 assertions, zero failures. Six separate unchanged C06 profiles passed 228 assertions. These totals exclude the retained earlier low-plane failure and blocked native review. |
+| Native input attempt | BLOCKED_NATIVE_CAPTURE: Windows returned cursor-access and monitor-capture errors after a fresh-window retry. Zero native actions or usable images; only the launched test process was terminated, and all six runtime files still match. Normal Quit and held-input review were not verified. |
+| Original frames and twelve UI PNGs | 131 selected original chronological gameplay frames across four recordings, plus all 12 UI PNGs, were inspected with exact source/runtime/frame bindings. This is bounded still review, not continuous playback; the aim-height caption has a minor contrast issue over a pale floor stencil. |
+| Four common recordings, full video/audio decode and original PCM measurements | PASS: four final engine recordings each passed all 32 inspection checks and full video/audio decoding. Combat, physicality, ordinary encounter and portability contain 2,380 / 2,413 / 3,292 / 867 encoded video frames with audio endpoints 79.317333 / 80.426667 / 109.717333 / 28.900000 seconds. Encoded counts include documented timing holds and differ from original capture-frame counts. Original PCM measurements, source-frame inventories, assembly timing and hashes are retained; this is not continuous viewing or audition. |
+| Paired recording-free performance | All 19 recording-free workload analyses retain 66,511 original engine rows (44,389 C07; 22,122 C06) on the same RTX 3090/Ryzen 5950X host at 1600×900, cap 120, VSync off and D3D12. At 18 requested enemies, mean frame time rose from 8.4063 to 10.1898 ms for M4A1 and from 8.3484 to 10.4848 ms for 870. The C07 mixed 18-enemy run measured 10.6963 ms mean, 15.7497 ms p99 and 53.0143 ms maximum. All 19 maxima were first CSV rows; later spikes remain in the data. Actual live/state fractions, all distributions and single-sample/non-isolated host limits are retained in the performance evidence; no speedup or causal subsystem-cost claim. |
+| Portable reports and original artifact inventories | [Candidate07 evidence](https://github.com/laberteauxjacob-cpu/ProjectONE/tree/candidate07/Evidence/Candidate07) |
 
-Final combined attack/physicality/audio review and ordinary recovery-delay
-investigation; representative comparative performance; full
-packaged regression checks; fresh neutral
-build, source/LFS verification, archive and public download verification.
+The completed matrix has 32 serial runs: 13 C07 regression/recording runs, 13 C07
+profiles and six unchanged packaged C06 baseline profiles. Actual counts, failures and assertion totals are retained separately for each candidate. The C07
+regression set covers all six weapon bodies, 480 projected-aim discharges, 18
+wall-grouping trials, survival/rewards, machine progression, 30/60/120 cadence,
+two UI sizes, physicality, an ordinary encounter and three-appearance portability.
+It does not imply every weapon × appearance × scenario combination was tested.
 
-Candidate06 controls remain: LMB fires; hold RMB for head height; hold Left Ctrl
-for low height; release both for torso height. Ctrl takes precedence when both
-height modifiers are held. No height modifier fires a weapon.
+The combat, physicality and portability fixtures disclose direct setup/probes.
+The ordinary encounter uses automated movement, logical cursor and fire/reload
+input; it is not native human play. Common recordings retain actual full-camera
+frames and original engine master audio. Their chronological inspection reports name actual frame identities and limitations. Decode success is not
+continuous viewing, listening or visual approval.
 
-## Connected-combat checkpoint
+Profiles pair packaged C06/C07 M4A1 and 870 at requested populations 6/12/18.
+C07 additionally profiles explicit mixed falls at 1/2/6/12/18 with M4A1 and at
+12 with Overcurrent and 870. The 1/2 workloads have no unchanged C06 equivalent.
+Settings are 1600×900, cap 120, VSync off, screen percentage 100 and D3D12 with
+recording disabled. The evidence retains all engine rows, duplicate non-identity column
+positions, boundary rows, spikes and measured exact-live fractions. Disclosed
+restoration/replenishment and direct fall probes limit the workload claim.
+One sample per workload, changed behavior/assets/census overhead and uncontrolled
+background/random variation cannot establish isolated subsystem cost, statistical
+significance, universal FPS or spare capacity under a cap.
 
-The actual Editor-game motion recording completed 90 assertions with one
-retained compatibility failure. All three attack families entered through the
-production selector, delivered one 19-health contact and one effort cue, and
-returned to pursuit. Forty recorded frame samples were inspected, including
-twelve chronological poses per family and the same-scale Candidate06/Candidate07
-camera comparison. Swipe, cross-body rake and two-handed forward strike have
-different windups/follow-through; the camera can occlude the far hand. This is
-bounded frame review, not uninterrupted human play or complete naturalism approval.
+## Remaining limitations
 
-The historical isolated fixture spawned its enemy facing away. Candidate07's
-bearing eligibility correctly rejected that setup; the fixture now starts
-facing the player and logs distance, bearing and grounded state. Production
-selection/fairness was not relaxed. The failed earlier recording is retained.
+The fixed low plane can miss floor-level bodies. A retained motion recording
+processed ten real Left Ctrl + LMB shots at world Z 68.474 cm while the corpse's
+body-query top was 61.743–62.698 cm; all ten missed. Its compatibility assertion
+remains failed and is outside final passing-matrix totals; the
+[retained record](../../Evidence/Candidate07/Verification/low_aim_compatibility.md)
+preserves its WIP source limits and all ten shots. Direct posed-region
+tests are not proof that ordinary mouse controls can target that height. No aim
+snapping, larger hit regions or hidden target selection was added.
 
-The completed run reproduced a genuine fixed-height limitation: ten shots with
-processed Left Ctrl and LMB selected Low at world Z 68.474 cm while the corpse's
-body query top was 61.743–62.698 cm. All ten missed; the corpse assertion remains
-a failure. These controls do not follow floor-level anatomy, and direct regional
-query tests do not establish ordinary mouse targeting. No snapping, larger hit
-regions or control redesign was added to hide this incompatibility.
+Dense bodies or solid obstructions may keep a living actor down; the final
+encounter result above defines the observed scope. The initial get-up transition
+is stylized, and occluded contacts and seams cannot all be judged from selected
+frames. Native held-input coverage, continuous playback, perceptual audition and
+clean-Windows prerequisite installation must not be inferred from other checks.
 
-The complete old/new engine WAVs were measured and concatenated without gain,
-trimming or replacement for private listening comparison. The current WAV has
-zero full-scale samples and zero near-clip windows. Actual PCM segments match
-their sources; no sound was perceptually heard or approved. Candidate07 remains
-an Editor WIP with null exact packaged-source identity, and final media/package
-evidence remains required.
+The final projected-aim log also reports a default-material fallback because
+`M_EyeDark` lacks instanced-static-mesh usage. `ONE06ImpactSubsystem` uses that
+material for finite world-impact cylinder marks; this warning does not identify
+the Candidate07 infected-eye material. Its visual effect has not been assessed
+by the behavioral log review. Startup/restart missing-mesh bone and CrowdManager
+warnings remain in the raw logs; passing assertions do not make those logs
+warning-free.
 
-## Physical-contact, variants and audio checkpoint
-
-The source trio is Maintenance (60,406 triangles), Laboratory (64,798) and
-Facility Staff (64,982). Laboratory adds lined coat tails/lapels and grey
-receding hair; Staff adds rolled sleeves, bare forearms, tan trousers and a
-different crown/hair treatment. They share the rig, paired cuts, head-query
-envelope and gameplay statistics. All ten new source previews were inspected;
-coat/hip and hair-surface intersections found during authoring were corrected
-before import. Both new imports completed with zero errors and warnings.
-
-The latest physicality recording completed all seven phases: 84 assertions,
-zero failures, 2,144 original frames and 80.448 seconds of actual engine audio.
-It includes one/two/group contact, an obstacle, mixed living falls, both actual
-recovery clips and a declared two-of-each appearance lineup. Prone and supine
-recoveries retain 112 health, and the recorded snapshot rebases report 0 cm.
-Bounded chronological review found a readable Maintenance floor roll and
-supported rise; Staff's initial roll is partly occluded. Laboratory's coat
-remains coherent in sampled contact and folded death poses. Hidden crowd
-contacts/seams and continuous playback are outside this review.
-
-The revised supine source uses measured garment/head/boot support and retains
-the other thirteen FBXs. Its actual gameplay recovery lasts 3.35 seconds,
-including the initial 0.35-second snapshot blend; prone lasts 2.90 seconds.
-Both still have a brisk, stylized initial transition.
-
-Subsequent integration review fixed two concrete issues: non-solid pickup
-collection spheres no longer supply floor support or block recovery, and
-stopped attack footplants can use grounded movement from the same action's
-preceding 0.22 seconds. Idle/airborne/stale callbacks remain rejected.
-That checkpoint's 38 engine tests passed (35 clean, three with warnings), including real
-pickup availability through recovery and the stopped-footplant regression.
-The 80.448-second recording predates these two fixes; final packaged recordings
-are still required. The combined build also exposed and fixed a Unity-build
-test-helper name collision.
-
-That recording encoded to a 15.5 MB private preview and passed 31 integrity,
-timing and complete video/audio decode checks. It remains REVIEW_ONLY with
-null exact packaged-source identity. No perceptual audition occurred. Current
-source inventory records 459 C07 LFS payloads; visible-string review found no
-actionable private-path/token matches. Final outgoing-history, fresh checkout,
-package and publication audits remain separate.
-
-## Combined-review preflight
-
-The initial ordinary encounter completed with all three appearances: 24 actual
-actors (nine Maintenance, nine Laboratory, six FacilityStaff), 16 kills and
-eight remaining living enemies. Player health reached 81 and regenerated to
-100; the driver performed no health restoration. This is automated WASD,
-cursor selection and LMB input, not native free play. Its late 0/0-ammunition
-state caused useless repeated reload requests; the fixture now requests reload
-only while reserve ammunition is available. Bounded review also found two
-living fallen bodies waiting over 32 seconds for recovery clearance. That
-delay led to the bounded physical recovery effort described below.
-
-The three-appearance portability run passed 150 assertions, including actual
-navigation/attacks, a disclosed fall and damage packets, local recovery with a
-missing arm, death/scoring and cleanup for each appearance. It recorded 823
-frames. The six-weapon combat run passed 2,119 assertions on the new bodies.
-These are Editor-game preflight checks, not final packaged evidence.
-
-The first recording-free M4A1/12/mixed-fall profile retained all 3,044 engine
-rows: mean 10.1242 ms, p95 11.8822 ms, p99 13.0582 ms, maximum 295.541 ms.
-Seven frames exceeded 16.7 ms and two exceeded 33.3 ms. The analyzer initially
-rejected duplicate Unreal texture-streaming column names; it now retains both
-positional series and the original header. No timing rows or spikes were
-removed. This single Editor WIP sample is not the final same-host packaged
-comparison or a universal performance claim.
-
-The follow-up recovery regression now passes with actual imported bodies: an
-intact living body reaches supported frozen rest, resumes that pose, physically
-moves clear of a still-present corpse through three finite efforts, and begins
-get-up at unchanged 112 health. The final interval reports 65.902 cm accumulated
-path and 48.894 cm/s maximum pelvis speed. A real arm-sever packet during get-up
-remains absent through completion and a second fall. Static cover and missing
-floor reject the effort. Setup uses a declared frozen-corpse placement and
-temporary solver sleep suppression before the trial; this is an engine fixture,
-not ordinary player input or visual approval. Earlier prerequisite failures are
-retained: a missing-arm pose did not satisfy the unchanged two-degree rest
-window. The existing separate missing-arm recovery check is unchanged.
-
-The complete current 39-test engine suite then passed: 36 clean, three with
-warnings, zero failures or skipped tests. Fresh public-source packaging and
-the final recorded/uncaptured runtime matrix still remain separate gates.
+Recommend a focused, separately authorized floor-level targeting/usability pass.
+Perk chambers, production hidden entrances and finished maps remain later work.
+Project Zero is excluded, and Candidate07 does not add weapons or enemy classes.

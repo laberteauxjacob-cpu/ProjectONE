@@ -1,4 +1,4 @@
-# Candidate06 input and combat rules
+# Current input and combat rules
 
 This document describes the current source contract and editable defaults.
 Builds, automation results, packaged checks, recordings, visual inspection and
@@ -28,8 +28,9 @@ pitch bounds. A point behind the muzzle uses forward virtual convergence;
 it cannot produce a backward shot. The gameplay aim projection excludes the
 camera shake applied later for presentation.
 
-Anatomical queries use the actual infected collision components. Current
-head and torso capsule radii are 8.2 and 14 cm; lower/upper arm radii are 5.8/7
+Anatomical queries use the actual infected collision components. Candidate07's
+head capsule fits the redesigned skulls at radius 9 cm and half-height 12.3 cm;
+Candidate06 used radius 8.2 cm. The torso radius remains 14 cm; lower/upper arm radii are 5.8/7
 cm and lower/upper leg radii are 6.5/8 cm. A removed region cannot receive live
 regional damage. These dimensions describe source geometry; its correspondence
 to rendered bodies must be assessed in the separate standing-target checks.
@@ -293,5 +294,5 @@ warnings and collection cues present the actor's authoritative state.
 
 Automation and runtime fixtures exercise different parts of this contract.
 Pure ballistic/receipt tests do not establish actual cursor collision, machine
-reach, packaged behavior or visual/audio quality. The Candidate06 pass record
+reach, packaged behavior or visual/audio quality. The current pass record
 must identify the actual executed checks and their source revision separately.

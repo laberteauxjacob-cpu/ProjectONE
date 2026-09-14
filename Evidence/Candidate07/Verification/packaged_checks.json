@@ -1,0 +1,2063 @@
+{
+  "schema": "one07.packaged_checks.v1",
+  "status": "PASS",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "run_count": 26,
+  "driver_assertions": 7369,
+  "companion_assertions": 137,
+  "assertion_count": 7506,
+  "failures": 0,
+  "runs": [
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "failures": 0,
+        "checks": 2119
+      },
+      "capture_requested": true,
+      "id": "c07_combat",
+      "candidate": "07",
+      "check": "combat",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 898936,
+        "sha256": "710a0efb489bfbc7e3ddf17fdc2d74f1017f766cb7f3e2fc5516d1c4d8a0c6fe"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 584210,
+        "sha256": "a0e9d2ce3af94d007bf060bd8a0843e835a3876c0b7ce63848129a4f074ac5ee"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 721040,
+        "sha256": "d4a196a29cce6f9142595106c5f65d32927b76aa26552d2e094dc5b2bd97aa89"
+      },
+      "requested": {
+        "weapon_variants": 6,
+        "cases": 13
+      },
+      "wall_seconds": 92.26499999999942,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "capture": {
+        "frames": 2177,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "audio_duration_seconds": 79.31733333333334,
+        "audio_sample_rate": 48000,
+        "audio_channels": 2,
+        "audio_sample_frames": 3807232,
+        "source_wav_layout": {
+          "header_block_align": 2,
+          "computed_frame_bytes": 4,
+          "unreal_block_align_quirk": true,
+          "pcm_bytes": 15228928,
+          "channels": 2,
+          "rate": 48000
+        },
+        "ordered_frame_identity_sha256": "7f7048448c722fad016d548360a68e61f4e0115f417bfa6a9a9319cd240c87b7",
+        "actual_real_stop_tail_seconds": 0.40649789944291115,
+        "recorded_audio_after_last_callback_seconds": 0.2930697353333329,
+        "first_frame_audio_seconds": 0.1590335,
+        "last_frame_audio_seconds": 79.024263598,
+        "schema": "one07.capture_transport.v1",
+        "status": "PASS",
+        "path_base": "fixture_folder",
+        "native_input_evidence": false,
+        "performance_evidence": false,
+        "perceptual_audio_review": false,
+        "actor_frame_counter": "Not serialized by native ONE06_COMBAT_COMPLETE; actual common recorder metadata/CSV/images supply the count",
+        "metadata": {
+          "path": "Media/capture.json",
+          "bytes": 35649,
+          "sha256": "fe4e0fcffefaefb711c0e388d9d9c9b8ce2fa30004ebed4c8597c34f9f468e33"
+        },
+        "frames_csv": {
+          "path": "Media/frames.csv",
+          "bytes": 266631,
+          "sha256": "e7459eddc4c52924ba9a82f5abe22e2bc41c2e1d22bf2edfdc5fe936bf0fd56e"
+        },
+        "audio": {
+          "path": "Media/gameplay_master.wav",
+          "bytes": 15228972,
+          "sha256": "c1dedc05d29ddd7bd8f94e7b6c81c9d4df269f168c7cc182360f74c6c96b5910"
+        }
+      },
+      "regression": {
+        "native_fixture": "ONE06CombatCheck",
+        "checks": 2119,
+        "failures": 0,
+        "scope": "All original native actor assertions bound to engine completion/log. Raw timelines retained. UI PNG headers are validated without pixel review; no audio, native-input or performance claim."
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 2182,
+          "bytes": 244877651
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "failures": 0,
+        "checks": 2708
+      },
+      "capture_requested": false,
+      "id": "c07_aim05",
+      "candidate": "07",
+      "check": "aim05",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 563968,
+        "sha256": "9527b6eaec07d6cfcf7ccb370e8822572ce2c752aabe228f6c864468b9c0cb0a"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 542159,
+        "sha256": "e90623435730df1c51fd933160f58c4c3a01949ebaae600955f24ee7603b2b82"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 1724,
+        "sha256": "c68c1f2cd49f0c808e82c46ddb4b37d660730b86235ac9666677b0b238f8c083"
+      },
+      "requested": {
+        "weapon_variants": 6,
+        "headings": 8,
+        "cases": 10,
+        "projected": true
+      },
+      "wall_seconds": 280.0939999999973,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "regression": {
+        "native_fixture": "ONE05AimCheck",
+        "checks": 2708,
+        "failures": 0,
+        "scope": "All original native actor assertions bound to engine completion/log. Raw timelines retained. UI PNG headers are validated without pixel review; no audio, native-input or performance claim."
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 2,
+          "bytes": 366521
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 920,
+        "trials": 18,
+        "frames": 0
+      },
+      "capture_requested": false,
+      "id": "c07_grouping",
+      "candidate": "07",
+      "check": "grouping",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 400985,
+        "sha256": "2d3710c39880745c7467efb71cde950c69a66b87480f4cddc03e4433abec04a8"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 258069,
+        "sha256": "9ff74dcf4ea18864febcffcb528e813fdb2498127f9f1136ea412d2ee734128c"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 2786,
+        "sha256": "0c2233e3efb9dbfd5c23d1c3fd24b677395abbc6176bf8ff52266c4e84f2ebc1"
+      },
+      "requested": {},
+      "wall_seconds": 50.015999999995984,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "regression": {
+        "native_fixture": "ONE06GroupingCheck",
+        "checks": 920,
+        "failures": 0,
+        "scope": "All original native actor assertions bound to engine completion/log. Raw timelines retained. UI PNG headers are validated without pixel review; no audio, native-input or performance claim."
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 5,
+          "bytes": 228529
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 99,
+        "frames": 0
+      },
+      "capture_requested": false,
+      "id": "c07_survival",
+      "candidate": "07",
+      "check": "survival",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 302199,
+        "sha256": "33b14400761d429a38eb666d683eda8f7c07cd23ff7af10b2a52aa60446edc1c"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 108309,
+        "sha256": "9f28d6f178e1a8d10dbd9c0bfad90c25ad9f97626491291eec567d6d4c57e610"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 2132,
+        "sha256": "6533e08745d8153321f5a0bbcda291d8b025bd73a72c963dd95170ce8d19257a"
+      },
+      "requested": {},
+      "wall_seconds": 72.96899999999732,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "regression": {
+        "native_fixture": "ONE06SurvivalCheck",
+        "checks": 99,
+        "failures": 0,
+        "scope": "All original native actor assertions bound to engine completion/log. Raw timelines retained. UI PNG headers are validated without pixel review; no audio, native-input or performance claim."
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 3,
+          "bytes": 498207
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "failures": 0,
+        "checks": 95
+      },
+      "capture_requested": false,
+      "id": "c07_progression",
+      "candidate": "07",
+      "check": "progression",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 302192,
+        "sha256": "f1611accc790f015b5490df826c3823b612b6dda576a72e68f15ae943a46de4f"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 122831,
+        "sha256": "898c99eaa6116f8b000c7416a796e43f1f7659b416f80da156a2a73515f1f7c1"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 1696,
+        "sha256": "dfd2c391cd18a4d3750cdf2e28c8182a05ee97411b08734fc1c92da2261e36a6"
+      },
+      "requested": {},
+      "wall_seconds": 92.07800000000134,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "regression": {
+        "native_fixture": "ONE04ProgressionCheck",
+        "checks": 95,
+        "failures": 0,
+        "scope": "All original native actor assertions bound to engine completion/log. Raw timelines retained. UI PNG headers are validated without pixel review; no audio, native-input or performance claim."
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 2,
+          "bytes": 64880
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 30,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "failures": 0,
+        "checks": 197,
+        "rate": 30
+      },
+      "capture_requested": false,
+      "id": "c07_weapon05_30",
+      "candidate": "07",
+      "check": "weapon05",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 311356,
+        "sha256": "bd9e1d4e3982239b93d39318944d29eb2667f7249b2363f4e8069a28fee027c3"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 127098,
+        "sha256": "2421217f090d185f0d26a75e310505e9dc733b67f58701b60321d6ae234f6303"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 1700,
+        "sha256": "9c749ec527851d9ccf3a54511cafadd12d4f61ddfedb1743f59e59952164dee1"
+      },
+      "requested": {
+        "rate": 30
+      },
+      "wall_seconds": 94.0,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "regression": {
+        "native_fixture": "ONE05WeaponCheck",
+        "checks": 197,
+        "failures": 0,
+        "scope": "All original native actor assertions bound to engine completion/log. Raw timelines retained. UI PNG headers are validated without pixel review; no audio, native-input or performance claim."
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 2,
+          "bytes": 169085
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 60,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "failures": 0,
+        "checks": 197,
+        "rate": 60
+      },
+      "capture_requested": false,
+      "id": "c07_weapon05_60",
+      "candidate": "07",
+      "check": "weapon05",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 311356,
+        "sha256": "8ff71cbeb68db7763d9a993cd5546de1651c905d80142d419a66655449a548ad"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 127098,
+        "sha256": "f17521d4776113b890f9fedaf45a662cd125a56697c4c09064158027f03d5f98"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 1700,
+        "sha256": "4c8f2cf714f6d2f51982458742a28bd8f55bb5cced32f4f6b174b73b740a7fa6"
+      },
+      "requested": {
+        "rate": 60
+      },
+      "wall_seconds": 92.0,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "regression": {
+        "native_fixture": "ONE05WeaponCheck",
+        "checks": 197,
+        "failures": 0,
+        "scope": "All original native actor assertions bound to engine completion/log. Raw timelines retained. UI PNG headers are validated without pixel review; no audio, native-input or performance claim."
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 2,
+          "bytes": 292907
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "failures": 0,
+        "checks": 197,
+        "rate": 120
+      },
+      "capture_requested": false,
+      "id": "c07_weapon05_120",
+      "candidate": "07",
+      "check": "weapon05",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 311376,
+        "sha256": "a4c4e8f93cc0e340aa06fac300e43fd9d5c1c53cbd259585b24eba020c219956"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 127107,
+        "sha256": "4d94f8e252fe2cefa7e0eaf66f4f76d586ef0cc54b099e503a0ea5478fe6c2fd"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 1704,
+        "sha256": "d80568e68dd50ef5ef03e916e297956be7ab229df5f6156abeb4d1846986d32c"
+      },
+      "requested": {
+        "rate": 120
+      },
+      "wall_seconds": 90.95300000000134,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "regression": {
+        "native_fixture": "ONE05WeaponCheck",
+        "checks": 197,
+        "failures": 0,
+        "scope": "All original native actor assertions bound to engine completion/log. Raw timelines retained. UI PNG headers are validated without pixel review; no audio, native-input or performance claim."
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 2,
+          "bytes": 541579
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "failures": 0,
+        "checks": 49,
+        "width": 1600,
+        "height": 900
+      },
+      "capture_requested": false,
+      "id": "c07_ui_1600x900",
+      "candidate": "07",
+      "check": "ui",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 299487,
+        "sha256": "c802147f263bd08ff56558a3c2758bba76dcec51b90d2d77223bd994271dfb51"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 103724,
+        "sha256": "2516fd350a124e005041feea22042a6656ffb55f4eca29b2c0836c9efeecece6"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 3509,
+        "sha256": "be33f86ff3a81808a26d54f112e91e5158734b9707821ef57e4d36350635059c"
+      },
+      "requested": {
+        "viewport": [
+          1600,
+          900
+        ]
+      },
+      "wall_seconds": 14.0,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "regression": {
+        "native_fixture": "ONE05UICheck",
+        "checks": 49,
+        "failures": 0,
+        "scope": "All original native actor assertions bound to engine completion/log. Raw timelines retained. UI PNG headers are validated without pixel review; no audio, native-input or performance claim."
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 8,
+          "bytes": 5285970
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1280,
+        "height": 720,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "failures": 0,
+        "checks": 49,
+        "width": 1280,
+        "height": 720
+      },
+      "capture_requested": false,
+      "id": "c07_ui_1280x720",
+      "candidate": "07",
+      "check": "ui",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 299498,
+        "sha256": "370a382726d6a628117f4bc7f317f9431c9cecafdfaa723a3f553bb37dfc96e5"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 103524,
+        "sha256": "2d7dd799017a4095d316045977c954380befd7cd6db663488c2c0097d25c6c8b"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 3506,
+        "sha256": "5f24e1a3dc906830cacfe654264a2e847319a435f1fe62d493ce2b4b771e18f3"
+      },
+      "requested": {
+        "viewport": [
+          1280,
+          720
+        ]
+      },
+      "wall_seconds": 14.139999999999418,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "regression": {
+        "native_fixture": "ONE05UICheck",
+        "checks": 49,
+        "failures": 0,
+        "scope": "All original native actor assertions bound to engine completion/log. Raw timelines retained. UI PNG headers are validated without pixel review; no audio, native-input or performance claim."
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 8,
+          "bytes": 3567433
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "checks": 84,
+        "failures": 0,
+        "encounter": 0,
+        "phases": 7,
+        "frames": 2226
+      },
+      "capture_requested": true,
+      "id": "c07_physicality",
+      "candidate": "07",
+      "check": "physicality",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 729463,
+        "sha256": "ae7f0b70eed4d2fad5d74f15b53a7f0100ac821969b059d048382ed67e3de0ec"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 114437,
+        "sha256": "807fd355e3e5cf241005aa25dffd7f7e7b2871da207e76cb7daeb6068d59a4d9"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 735497,
+        "sha256": "ad275bb5868ed44f0ad77e6df06e5193157a1bed044c38b243da48c9269ef4fa"
+      },
+      "requested": {
+        "enemies": 6,
+        "weapon": "M4A1",
+        "falls": "mixed"
+      },
+      "wall_seconds": 94.125,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "capture": {
+        "frames": 2226,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "audio_duration_seconds": 80.42666666666666,
+        "audio_sample_rate": 48000,
+        "audio_channels": 2,
+        "audio_sample_frames": 3860480,
+        "source_wav_layout": {
+          "header_block_align": 2,
+          "computed_frame_bytes": 4,
+          "unreal_block_align_quirk": true,
+          "pcm_bytes": 15441920,
+          "channels": 2,
+          "rate": 48000
+        },
+        "ordered_frame_identity_sha256": "00251d67c7a661cfeb636d0894adbcd8f95ca0dfaab4b3f0a3c3d5feac804f04",
+        "actual_real_stop_tail_seconds": 0.4011995978653431,
+        "recorded_audio_after_last_callback_seconds": 0.36665036566665776,
+        "first_frame_audio_seconds": 0.0260083,
+        "last_frame_audio_seconds": 80.060016301,
+        "schema": "one07.capture_transport.v1",
+        "status": "PASS",
+        "path_base": "fixture_folder",
+        "native_input_evidence": false,
+        "performance_evidence": false,
+        "perceptual_audio_review": false,
+        "metadata": {
+          "path": "Media/capture.json",
+          "bytes": 2563,
+          "sha256": "7c9a50cf7a58dc670e727629baf9b0a67a1bbe7e3d75a37e3574bfc4736860e0"
+        },
+        "frames_csv": {
+          "path": "Media/frames.csv",
+          "bytes": 254801,
+          "sha256": "902435e3a77bb7549f221e18eeea7247c1a259974420d998a82b7c9bb9e2b75b"
+        },
+        "audio": {
+          "path": "Media/gameplay_master.wav",
+          "bytes": 15441964,
+          "sha256": "0d95c5061778e7bd226e9fce8732d7a764cc5fcb4b99a0445dd0a36ad2cfcffa"
+        }
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 2232,
+          "bytes": 221984497
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "checks": 3,
+        "failures": 0,
+        "encounter": 1,
+        "phases": 0,
+        "frames": 2972
+      },
+      "capture_requested": true,
+      "id": "c07_encounter",
+      "candidate": "07",
+      "check": "encounter",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 870634,
+        "sha256": "7fa97b7579ba52ce61323b5c8136205aaa26c7c72abc408ce7934e3c3939625c"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 101445,
+        "sha256": "91856b438486043b4556b8425034550d89e781a15fac2dc4f6872f0da4d955ce"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 977840,
+        "sha256": "55fe1348c8a4c9659f6467ac764d6a4bc6a0b5ff2d45af3431d667db452b9e6e"
+      },
+      "requested": {
+        "enemies": 6,
+        "weapon": "M4A1",
+        "falls": "mixed"
+      },
+      "wall_seconds": 125.07800000000134,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "capture": {
+        "frames": 2972,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "audio_duration_seconds": 109.71733333333333,
+        "audio_sample_rate": 48000,
+        "audio_channels": 2,
+        "audio_sample_frames": 5266432,
+        "source_wav_layout": {
+          "header_block_align": 2,
+          "computed_frame_bytes": 4,
+          "unreal_block_align_quirk": true,
+          "pcm_bytes": 21065728,
+          "channels": 2,
+          "rate": 48000
+        },
+        "ordered_frame_identity_sha256": "e3df327c598f24ce21201c95881d99bbe8a975b0e0c95e5737436d0f3e06b187",
+        "actual_real_stop_tail_seconds": 0.4076012000441551,
+        "recorded_audio_after_last_callback_seconds": 0.407008634333323,
+        "first_frame_audio_seconds": 0.0145742,
+        "last_frame_audio_seconds": 109.310324699,
+        "schema": "one07.capture_transport.v1",
+        "status": "PASS",
+        "path_base": "fixture_folder",
+        "native_input_evidence": false,
+        "performance_evidence": false,
+        "perceptual_audio_review": false,
+        "metadata": {
+          "path": "Media/capture.json",
+          "bytes": 1894,
+          "sha256": "03887c3ac7c1b19d9defdc2e1e6ad87a7ed13727e4447daa12fc95183bb6d2f3"
+        },
+        "frames_csv": {
+          "path": "Media/frames.csv",
+          "bytes": 329690,
+          "sha256": "23f783ba93cedbe0637713629687488d37e48000b4fedfc77da34f71a0a75afd"
+        },
+        "audio": {
+          "path": "Media/gameplay_master.wav",
+          "bytes": 21065772,
+          "sha256": "68082a06ba4765df2a5b25b016c179e0b8592f17035890c8cc78f8e2b9ab1abc"
+        }
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 2978,
+          "bytes": 383149507
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "variants": 3,
+        "checks": 150,
+        "failures": 0,
+        "observed_frames": 2454,
+        "frames": 732
+      },
+      "capture_requested": true,
+      "id": "c07_portability",
+      "candidate": "07",
+      "check": "portability",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 451414,
+        "sha256": "8d2d3ec072afbdf11584b2f3da721578f153e8770f159afa63af8fd410ef6a78"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 119541,
+        "sha256": "dc5d89654d2ff9c2993cc8299b5e262603eb216963bea8c81e6da75c2809e952"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 244009,
+        "sha256": "a000bb676de5d6e79fb850262648feb49e902b3906d64b120c99ae69cae73e49"
+      },
+      "requested": {
+        "variants": "all_three_production_appearances"
+      },
+      "wall_seconds": 37.96899999999732,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "capture": {
+        "frames": 732,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "audio_duration_seconds": 28.906666666666666,
+        "audio_sample_rate": 48000,
+        "audio_channels": 2,
+        "audio_sample_frames": 1387520,
+        "source_wav_layout": {
+          "header_block_align": 2,
+          "computed_frame_bytes": 4,
+          "unreal_block_align_quirk": true,
+          "pcm_bytes": 5550080,
+          "channels": 2,
+          "rate": 48000
+        },
+        "ordered_frame_identity_sha256": "ea0fc602efb1083a657d15e8f05d0d8d11f9b6dcc827c33dfa1773f0c75cf0e3",
+        "actual_real_stop_tail_seconds": 0.4078307971358299,
+        "recorded_audio_after_last_callback_seconds": 0.26624786566666714,
+        "first_frame_audio_seconds": 0.178909604,
+        "last_frame_audio_seconds": 28.640418801,
+        "schema": "one07.capture_transport.v1",
+        "status": "PASS",
+        "path_base": "fixture_folder",
+        "native_input_evidence": false,
+        "performance_evidence": false,
+        "perceptual_audio_review": false,
+        "metadata": {
+          "path": "Media/capture.json",
+          "bytes": 3412,
+          "sha256": "9f31e1f14ba8eb9c1b389e57ce9dafbdaa20aec28d1cdeec437ef3fa55f8f313"
+        },
+        "frames_csv": {
+          "path": "Media/frames.csv",
+          "bytes": 76160,
+          "sha256": "5beb7ba5fa9d2bf8214b460054d36b0e9708dbae25a64140f1036b279d8c596f"
+        },
+        "audio": {
+          "path": "Media/gameplay_master.wav",
+          "bytes": 5550124,
+          "sha256": "3685cddccebd9ee5c572b531bcb107dac8546f4be5452a416c527c7d7f37ec8c"
+        }
+      },
+      "portability": {
+        "variants": [
+          "Maintenance",
+          "Laboratory",
+          "FacilityStaff"
+        ],
+        "observed_frames": 2454,
+        "report": {
+          "path": "checks.json",
+          "bytes": 31721,
+          "sha256": "21c0f0409d8592e69df1e5e76239caef22e3878d9183ff7978b1c8962fb7c215"
+        },
+        "timeline": {
+          "path": "observations.csv",
+          "bytes": 480076,
+          "sha256": "7cb54c50c0956906f274a411f4febb74c2ef4fd4fb65dc87c95203698f976b6a"
+        }
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 738,
+          "bytes": 75745275
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_m4a1_6_none",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300015,
+        "sha256": "03e36ca2a381b9d350423c05b977923b46d42bf6b33bb33902933472907c3d29"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 129264,
+        "sha256": "daf41f3513399e2b3cb428d48a4df20c93a8064b5bbf50a6f266ca345fdb5413"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4557,
+        "sha256": "30f220b68cb2f7eb8ef80377777554f03b1c791c90ff4cdb4f70513353c2fe60"
+      },
+      "requested": {
+        "enemies": 6,
+        "weapon": "M4A1",
+        "falls": "none"
+      },
+      "wall_seconds": 59.07799999999406,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 10,
+        "rows": 6169,
+        "csv_rows": 3671,
+        "exact_rows": 2968,
+        "accepted_falls": 0
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 8273801
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 919687
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_m4a1_12_none",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300017,
+        "sha256": "ae105267bef7bdd110797de0564c189db171288be5422b3029e1320ec9d4daa2"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 142600,
+        "sha256": "211a88e6b295cadac06e5058f77ca2d1fd3d83a8363f9556b2d15f71de8dd86e"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4557,
+        "sha256": "447e67b219ba74b7bb83f232a485379face3a9ad2d579367d2137221a731f06f"
+      },
+      "requested": {
+        "enemies": 12,
+        "weapon": "M4A1",
+        "falls": "none"
+      },
+      "wall_seconds": 59.03100000000268,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 10,
+        "rows": 5868,
+        "csv_rows": 3370,
+        "exact_rows": 2355,
+        "accepted_falls": 0
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 7629143
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 889681
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_m4a1_18_none",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300017,
+        "sha256": "a15406aebcd4daabe048b30d90d388a3935a108067a6649b0e467cae228c3b64"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 154908,
+        "sha256": "adb7d68365fce03094ab1aebdaea48a4cba255c3e85fafa43f9095bd09fc4fe7"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4557,
+        "sha256": "b835a4040772f416540a2bc977cdb4f520e4cdf7dcf373773886a0b63a451d8c"
+      },
+      "requested": {
+        "enemies": 18,
+        "weapon": "M4A1",
+        "falls": "none"
+      },
+      "wall_seconds": 59.01499999999942,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 10,
+        "rows": 5522,
+        "csv_rows": 3024,
+        "exact_rows": 1920,
+        "accepted_falls": 0
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 6857894
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 837065
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_870_6_none",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300012,
+        "sha256": "199ab0120007eb88f97aff961215294f47c1c1e046a7f0e9bb41a01c3307101e"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 123586,
+        "sha256": "450e2953d8818082ac7842915c209e910a68600939823a20c070e0bade9a4365"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4557,
+        "sha256": "9e5d6de2d957c0ed369ccfbe25b99ccd6f9fba69996ed436ba09d4f6d2632613"
+      },
+      "requested": {
+        "enemies": 6,
+        "weapon": "870",
+        "falls": "none"
+      },
+      "wall_seconds": 59.0309999999954,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 10,
+        "rows": 6191,
+        "csv_rows": 3693,
+        "exact_rows": 3357,
+        "accepted_falls": 0
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 8289073
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 908811
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_870_12_none",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300015,
+        "sha256": "e508097079a8e88545b4ac2e25db55f0be830ab4b45d72913145933bd410a998"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 126743,
+        "sha256": "4194844ddc9857599c4616f0751258807728e950f1510b97964ead3b45f10324"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4557,
+        "sha256": "04ca75ea5307bbd017da2fd0a2cf6faf245bf87715e68c4005fd45d312422ef0"
+      },
+      "requested": {
+        "enemies": 12,
+        "weapon": "870",
+        "falls": "none"
+      },
+      "wall_seconds": 59.11000000000058,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 10,
+        "rows": 6163,
+        "csv_rows": 3664,
+        "exact_rows": 3393,
+        "accepted_falls": 0
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 8242427
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 928243
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_870_18_none",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300014,
+        "sha256": "e4d786a82a210930e7a30bdac6486a985ace19768c8194ec264629d42b454a9d"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 129419,
+        "sha256": "a4fdc82976995cc214bf81afaf57d5cc7917fe393e94feb1e60aaff7b2ed3330"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4557,
+        "sha256": "dfc993fba8421f8ce73e16d97c338167ba84a2779413ccd9f40cdd5972e64949"
+      },
+      "requested": {
+        "enemies": 18,
+        "weapon": "870",
+        "falls": "none"
+      },
+      "wall_seconds": 59.06300000000192,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 10,
+        "rows": 5439,
+        "csv_rows": 2940,
+        "exact_rows": 2574,
+        "accepted_falls": 0
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 6650062
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 818983
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_m4a1_1_mixed",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300107,
+        "sha256": "617d03c2a214b7ac7a7c2019249e65ca4208946f3b9ee3523ec3d8213d2bf9fa"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 117191,
+        "sha256": "8be736094cc25c37ca3f397de7e1bfc1643608d8d36e81ed2f0e51a053342d06"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4558,
+        "sha256": "4ea28c18cdcf06ec47721fcc833397521c2e85897007edc3b239b916e1f68add"
+      },
+      "requested": {
+        "enemies": 1,
+        "weapon": "M4A1",
+        "falls": "mixed"
+      },
+      "wall_seconds": 59.01600000000326,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 11,
+        "rows": 6195,
+        "csv_rows": 3696,
+        "exact_rows": 3516,
+        "accepted_falls": 2
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 8283290
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 903784
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_m4a1_2_mixed",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300107,
+        "sha256": "a485bfbf57f9888b1edcec69d0fa405a13ba9ad9c0dcae516ef3ccee376751c5"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 123606,
+        "sha256": "e76d27b4f8e399d536704ca6df644b88b42dfb29d16f86759be2eac54e1743cc"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4558,
+        "sha256": "31e15b3db93bf4c02b33410334852ad3d8a8069246415179051d72162077cd2a"
+      },
+      "requested": {
+        "enemies": 2,
+        "weapon": "M4A1",
+        "falls": "mixed"
+      },
+      "wall_seconds": 59.11000000000058,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 11,
+        "rows": 6193,
+        "csv_rows": 3694,
+        "exact_rows": 2959,
+        "accepted_falls": 2
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 8305069
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 914846
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_m4a1_6_mixed",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300096,
+        "sha256": "1ef12ea3340ecce06bee906266083d8bd5c6f1de9671907f269b9fdcae0d6b5f"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 134172,
+        "sha256": "7c2eed10caa16b88501efad83805a1f171924f9bfc4a2777984531f10ed83f8c"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4558,
+        "sha256": "80cba88d493034a34662d76b120f173cb67eabc6bfec614de1d6f5f473246d07"
+      },
+      "requested": {
+        "enemies": 6,
+        "weapon": "M4A1",
+        "falls": "mixed"
+      },
+      "wall_seconds": 59.125,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 11,
+        "rows": 6173,
+        "csv_rows": 3674,
+        "exact_rows": 2859,
+        "accepted_falls": 6
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 8296803
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 920691
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_m4a1_12_mixed",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300108,
+        "sha256": "8b5e5cf87f8a44dbeb7810a2a26a0a46282b9905395ecc4ede40e6b65dc0ff46"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 144163,
+        "sha256": "39949acb58c401335701c0957be6708ab71535689bd2ad9d76fd931837de521c"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4558,
+        "sha256": "7e51a42f8cc096e7225d086b232383994b367b15f4b02e6ba5da289971a913b2"
+      },
+      "requested": {
+        "enemies": 12,
+        "weapon": "M4A1",
+        "falls": "mixed"
+      },
+      "wall_seconds": 58.98399999999674,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 11,
+        "rows": 5827,
+        "csv_rows": 3328,
+        "exact_rows": 2409,
+        "accepted_falls": 6
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 7538610
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 884475
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_m4a1_18_mixed",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300107,
+        "sha256": "74e95ee79d8bbfdc4b9272e6190abef791a9d21d726958211177fc8bf84633dd"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 157669,
+        "sha256": "3e6f280a8209db71030f5a54e46c0940e76ae9f583d716b62079ac67440259aa"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4558,
+        "sha256": "7c3daa8d85a21a0485a3cb0a12001a3b5600dc874f841acd7237d4d6ffd2e5ae"
+      },
+      "requested": {
+        "enemies": 18,
+        "weapon": "M4A1",
+        "falls": "mixed"
+      },
+      "wall_seconds": 59.0309999999954,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 11,
+        "rows": 5380,
+        "csv_rows": 2881,
+        "exact_rows": 1896,
+        "accepted_falls": 4
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 6552819
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 817281
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 46,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_overcurrent_12_mixed",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300697,
+        "sha256": "c8444b15068baf33ddc9c80024c6a08fafa03c1002a92c03bee3cc4cf9e09c24"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 153647,
+        "sha256": "1d3efb9586a6cf2d8469ff3933d1f4d4676b3c2f5217741cacf990d1d901010f"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4560,
+        "sha256": "15160df4af160d422a305dfb0108fd719c940e37ded1e2a6acebe2324dff4e53"
+      },
+      "requested": {
+        "enemies": 12,
+        "weapon": "Overcurrent",
+        "falls": "mixed"
+      },
+      "wall_seconds": 79.01499999999942,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 11,
+        "rows": 8179,
+        "csv_rows": 3375,
+        "exact_rows": 2362,
+        "accepted_falls": 5
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 7745479
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 1234289
+        }
+      ]
+    },
+    {
+      "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c07_profile_870_12_mixed",
+      "candidate": "07",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 300106,
+        "sha256": "ae9c39eb5829553f608b0ff8b094c30c6f140aeb1b12a46e371a7efdb1f3390a"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 129349,
+        "sha256": "0d23373a86ae58f76f43f1fbc8701c17ca038e209632340aa276cd94be1ea3bc"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 4558,
+        "sha256": "25aafa05ec01e7e64693f529a7b16724ad3dbba3b21faabd280d3b0e40a9b5af"
+      },
+      "requested": {
+        "enemies": 12,
+        "weapon": "870",
+        "falls": "mixed"
+      },
+      "wall_seconds": 58.96800000000076,
+      "exit_code": 0,
+      "inputs_unchanged": true,
+      "source_snapshot_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+      "companion_completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 11,
+        "rows": 5891,
+        "csv_rows": 3392,
+        "exact_rows": 3016,
+        "accepted_falls": 4
+      },
+      "artifacts": [
+        {
+          "role": "driver",
+          "file_count": 6,
+          "bytes": 7653306
+        },
+        {
+          "role": "companion",
+          "file_count": 4,
+          "bytes": 887224
+        }
+      ]
+    }
+  ],
+  "raw_matrix_ledger": {
+    "name": "ledger.json",
+    "bytes": 4308192,
+    "sha256": "f0cb30a7e14e76fbf524fffff48b471536bdece211bc07f91d7877c96ec9c3e7"
+  },
+  "required_runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 293055488,
+      "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10737169,
+      "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 226088848,
+      "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 277601,
+      "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "separate_candidate06_baselines": [
+    {
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c06_profile_m4a1_6_none",
+      "candidate": "06",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 4405,
+        "sha256": "a9b802203616b12bea2f8418026837c69a8e1ebfa621b080862998e17be58054"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 117864,
+        "sha256": "500ae77f28d40beeff83d91709b7094192dfa29058ed320c4f0ffad6706d6e23"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 3101,
+        "sha256": "3b29d30d2824c4a1cbb854ba3131ff957b495a77cc055c89251f8771c39d11f7"
+      }
+    },
+    {
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c06_profile_m4a1_12_none",
+      "candidate": "06",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 4404,
+        "sha256": "816e51ad278ecfaeb1f3b223156d7da63e7740e816d6798b0fbc69027167c006"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 116727,
+        "sha256": "4a2c17e0b47f52b8b58375e0ddf61d9fa847a48bf1e4977e73e2c1b31e70b9f7"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 3101,
+        "sha256": "1f99d8d769f30c938bbcdca194533a0f49637a1d9d3271f2be4f2a3dd5a37796"
+      }
+    },
+    {
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c06_profile_m4a1_18_none",
+      "candidate": "06",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 4406,
+        "sha256": "a95d104a6fd4bf00efb8c953a9f46dba244432c433441c4c8617dd042aef1868"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 118954,
+        "sha256": "f32f962d45c78afd863d520c9527ac5ccd7163026522f4505382dab28e936100"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 3101,
+        "sha256": "cd87a6c8505e5be6e859053d89f7eb93690786ece6673ca93bde904cb3fd5047"
+      }
+    },
+    {
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c06_profile_870_6_none",
+      "candidate": "06",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 4404,
+        "sha256": "da26498c8eabbedd25d9306c7d58818f5362ab5d71551ba25a32f3bd673c801a"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 112747,
+        "sha256": "e37fb4409c2884db8bbfdd409a77ade4cfdfa0c2c044541ff9a975ff4442f41e"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 3101,
+        "sha256": "2216267209df0f6c3f70972f45f096e8b7e2a371fc4b6c1f601bf3e85b0d9dd5"
+      }
+    },
+    {
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c06_profile_870_12_none",
+      "candidate": "06",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 4405,
+        "sha256": "8950f9b9ff5cda67e5576076908f9f65310f59aea8ece696c34a7857a93cacb7"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 116032,
+        "sha256": "39685464b046f353e7067c5b8ccb5c4269fd3a7fafb379881f3d7685e2c5e368"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 3101,
+        "sha256": "41acdbceda42038fdc037f7564754d6ad8010cd6fe5d726712e18b7bd3d58142"
+      }
+    },
+    {
+      "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 38,
+        "frames": 0,
+        "profile": 1
+      },
+      "capture_requested": false,
+      "id": "c06_profile_870_18_none",
+      "candidate": "06",
+      "check": "profile",
+      "status": "PASS",
+      "raw_result": {
+        "name": "result.json",
+        "bytes": 4405,
+        "sha256": "53b8d05aca0e969a070ca8568cadd833f332f762247e0e929939ef8c300dac4e"
+      },
+      "raw_engine_log": {
+        "name": "engine.log",
+        "bytes": 116987,
+        "sha256": "3663715450897853005bdd3a63ce1cdc79dc3641c995e240f50f58df34c6ab3d"
+      },
+      "raw_matrix_evidence": {
+        "name": "evidence.json",
+        "bytes": 3101,
+        "sha256": "86f0c39094063b419641440051d003a8f63749a39ade2d7342d63ff3e6f08572"
+      }
+    }
+  ],
+  "raw_file_inventory": "raw_file_inventory.json",
+  "limits": [
+    "C07 totals exclude the six unchanged C06 baseline profiles; each baseline retains its own exact source.",
+    "Assertions are not independent play scenarios. Scripted capture/fixture input is not native input or uninterrupted human play.",
+    "Profile completion is separate from numerical analysis. UI PNG validation is separate from visual review."
+  ]
+}

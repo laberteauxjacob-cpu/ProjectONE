@@ -1,0 +1,676 @@
+{
+  "schema": "one07.behavioral_regression_review.v1",
+  "status": "PASS_WITH_LOG_WARNINGS",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "reviewed_utc": "2026-09-14T09:59:50.728349+00:00",
+  "scope": "Five completed packaged regressions from immutable matrix revision 18; not a final matrix claim.",
+  "matrix_snapshot": {
+    "path": "Revisions/00018.json",
+    "bytes": 749673,
+    "sha256": "4f34f710a06c9b1fae4f447b944bf503f755a8dae6b2de8915d7d86449bafaf4"
+  },
+  "matrix_snapshot_status": "RUNNING",
+  "matrix_revision": 18,
+  "method": "Replayed each native schema and exact ordered assertion stream against its engine log/completion and runner result. Rehashed matrix evidence, result JSON, logs and every non-media actor report/timeline. Rehashed inspected neutral source against the recorded exact-S snapshot. Large runtime/capture payloads were not reread; their original runner identities are retained.",
+  "validator": {
+    "path": "Scripts/candidate07_regression_checks.py",
+    "bytes": 8730,
+    "sha256": "8d7d6cacacfeb3dcbabacb24c698020c09266b83ab3321ea83f41002b30fae72"
+  },
+  "runner": {
+    "path": "Scripts/run_candidate07_checks.py",
+    "bytes": 30122,
+    "sha256": "4143e4a6e601791b21cd711be99e4de6478c512cd4f2c1746081d6efe90400ed"
+  },
+  "build_proof": {
+    "path": "runtime_build.json",
+    "bytes": 29215,
+    "sha256": "07ee50383fd86373d8f47589dc982dbe98b7d26390b0dfc60e728b46fbe9140d"
+  },
+  "recorded_runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 293055488,
+      "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10737169,
+      "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 226088848,
+      "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 277601,
+      "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "runs": [
+    {
+      "check": "combat",
+      "run_id": "20260914T094246_362882_combat_33a4a612",
+      "status": "PASS",
+      "native_fixture": "ONE06CombatCheck",
+      "assertions": 2119,
+      "failures": 0,
+      "completion": {
+        "failures": 0,
+        "checks": 2119
+      },
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "map": "/Game/ONE/Maps/Containment",
+      "capture_requested": true,
+      "result": {
+        "path": "result.json",
+        "bytes": 898936,
+        "sha256": "710a0efb489bfbc7e3ddf17fdc2d74f1017f766cb7f3e2fc5516d1c4d8a0c6fe"
+      },
+      "matrix_evidence": {
+        "path": "evidence.json",
+        "bytes": 721040,
+        "sha256": "d4a196a29cce6f9142595106c5f65d32927b76aa26552d2e094dc5b2bd97aa89"
+      },
+      "engine_log": {
+        "path": "engine.log",
+        "bytes": 584210,
+        "sha256": "a0e9d2ce3af94d007bf060bd8a0843e835a3876c0b7ce63848129a4f074ac5ee"
+      },
+      "fixture_folder": "Candidate06/CombatCheck/20260914_094249_9662F434",
+      "rehashed_actor_files": [
+        {
+          "path": "checks.txt",
+          "bytes": 204461,
+          "sha256": "d19796196bf13aede3039517d877ec138c5876f793a37a95de48a63600c303c5"
+        },
+        {
+          "path": "rays.csv",
+          "bytes": 57564,
+          "sha256": "a483e4785bb347ec057c1537e411e5239536ec27292bdb2ebbc83effb0514550"
+        }
+      ],
+      "ordered_assertions_sha256": "709c186fcca0b5d73f314aea946e66af96b3838e8d023ab9c5c6753ddc116ffe",
+      "warning_events": 19,
+      "warning_categories": {
+        "LogSkinnedMeshComp": 18,
+        "LogCrowdFollowing": 1
+      },
+      "error_or_fatal_events": 0,
+      "metrics": {
+        "variants": 6,
+        "scenes_per_variant": 13,
+        "discharges": 78,
+        "projectiles": 260,
+        "ray_rows": 353,
+        "contact_rows": 242,
+        "height_discharges": [
+          {
+            "height": "Torso",
+            "cm_above_floor": 125.0,
+            "discharges": 60
+          },
+          {
+            "height": "Head",
+            "cm_above_floor": 168.0,
+            "discharges": 12
+          },
+          {
+            "height": "Low",
+            "cm_above_floor": 65.0,
+            "discharges": 6
+          }
+        ],
+        "normal_112hp_crowd": [
+          {
+            "variant": 0,
+            "health_after": 84.0,
+            "dead": false
+          },
+          {
+            "variant": 0,
+            "health_after": 95.2,
+            "dead": false
+          },
+          {
+            "variant": 0,
+            "health_after": 112.0,
+            "dead": false
+          },
+          {
+            "variant": 1,
+            "health_after": 56.0,
+            "dead": false
+          },
+          {
+            "variant": 1,
+            "health_after": 75.6,
+            "dead": false
+          },
+          {
+            "variant": 1,
+            "health_after": 88.34,
+            "dead": false
+          },
+          {
+            "variant": 2,
+            "health_after": 80.0,
+            "dead": false
+          },
+          {
+            "variant": 2,
+            "health_after": 91.2,
+            "dead": false
+          },
+          {
+            "variant": 2,
+            "health_after": 98.48,
+            "dead": false
+          },
+          {
+            "variant": 3,
+            "health_after": 48.0,
+            "dead": false
+          },
+          {
+            "variant": 3,
+            "health_after": 67.2,
+            "dead": false
+          },
+          {
+            "variant": 3,
+            "health_after": 80.64,
+            "dead": false
+          },
+          {
+            "variant": 4,
+            "health_after": 0.0,
+            "dead": true
+          },
+          {
+            "variant": 4,
+            "health_after": 40.0,
+            "dead": false
+          },
+          {
+            "variant": 4,
+            "health_after": 112.0,
+            "dead": false
+          },
+          {
+            "variant": 5,
+            "health_after": 0.0,
+            "dead": true
+          },
+          {
+            "variant": 5,
+            "health_after": 0.0,
+            "dead": true
+          },
+          {
+            "variant": 5,
+            "health_after": 51.16,
+            "dead": false
+          }
+        ],
+        "variant_order": [
+          "M1911",
+          "Last Word",
+          "M4A1",
+          "Overcurrent",
+          "870",
+          "Gravebreaker"
+        ],
+        "capture_summary_from_runner_not_reviewed": {
+          "frames": 2177,
+          "dimensions": [
+            1600,
+            900
+          ],
+          "audio_duration_seconds": 79.31733333333334
+        },
+        "behavior": "Logical cursor and Controller InputKey LMB, no aim override; modifier-only no-fire, Ctrl priority, sampled-line invariance, cover, damage, penetration and per-victim awards. Direct fixed standing targets/pose are declared; not native human input."
+      }
+    },
+    {
+      "check": "aim05",
+      "run_id": "20260914T094424_431789_aim05_4f6b5875",
+      "status": "PASS",
+      "native_fixture": "ONE05AimCheck",
+      "assertions": 2708,
+      "failures": 0,
+      "completion": {
+        "failures": 0,
+        "checks": 2708
+      },
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "map": "/Game/ONE/Maps/Containment",
+      "capture_requested": false,
+      "result": {
+        "path": "result.json",
+        "bytes": 563968,
+        "sha256": "9527b6eaec07d6cfcf7ccb370e8822572ce2c752aabe228f6c864468b9c0cb0a"
+      },
+      "matrix_evidence": {
+        "path": "evidence.json",
+        "bytes": 1724,
+        "sha256": "c68c1f2cd49f0c808e82c46ddb4b37d660730b86235ac9666677b0b238f8c083"
+      },
+      "engine_log": {
+        "path": "engine.log",
+        "bytes": 542159,
+        "sha256": "e90623435730df1c51fd933160f58c4c3a01949ebaae600955f24ee7603b2b82"
+      },
+      "fixture_folder": "Candidate05/AimCheck/20260914_094902",
+      "rehashed_actor_files": [
+        {
+          "path": "checks.txt",
+          "bytes": 288357,
+          "sha256": "8c90681769f59657ce49b371da37075432bbf632e63deeae0f937e266ac22e90"
+        },
+        {
+          "path": "rays.csv",
+          "bytes": 78164,
+          "sha256": "a44b954a77ead6f59a369d1231ee5e018d6f7a642e2856b0356ab7dc8677ddcb"
+        }
+      ],
+      "ordered_assertions_sha256": "eea9139bea7b11ecb661a4e3dd87653be720d59935e5ca8a0eb74d02d6a9638b",
+      "warning_events": 21,
+      "warning_categories": {
+        "LogSkinnedMeshComp": 18,
+        "LogMaterial": 2,
+        "LogCrowdFollowing": 1
+      },
+      "error_or_fatal_events": 0,
+      "metrics": {
+        "discharges": 480,
+        "variants": 6,
+        "headings": 8,
+        "cases_per_heading": 10,
+        "cumulative_shot_counter": {
+          "first": 1,
+          "last": 480,
+          "each_increment": 1
+        },
+        "same_frame_pose_and_shot": 480,
+        "ordinary_torso_world_z_cm": [
+          128.4739
+        ],
+        "behavior": "Unshaken logical viewport projection onto the ordinary torso plane, Controller InputKey LMB; close/center/behind-target/muzzle/low-cover trials across eight headings. No aim override or anatomical picking; not a floor-corpse targeting check."
+      }
+    },
+    {
+      "check": "grouping",
+      "run_id": "20260914T094907_954829_grouping_02a3cae4",
+      "status": "PASS",
+      "native_fixture": "ONE06GroupingCheck",
+      "assertions": 920,
+      "failures": 0,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 920,
+        "trials": 18,
+        "frames": 0
+      },
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "map": "/Game/ONE/Maps/Containment",
+      "capture_requested": false,
+      "result": {
+        "path": "result.json",
+        "bytes": 400985,
+        "sha256": "2d3710c39880745c7467efb71cde950c69a66b87480f4cddc03e4433abec04a8"
+      },
+      "matrix_evidence": {
+        "path": "evidence.json",
+        "bytes": 2786,
+        "sha256": "0c2233e3efb9dbfd5c23d1c3fd24b677395abbc6176bf8ff52266c4e84f2ebc1"
+      },
+      "engine_log": {
+        "path": "engine.log",
+        "bytes": 258069,
+        "sha256": "9ff74dcf4ea18864febcffcb528e813fdb2498127f9f1136ea412d2ee734128c"
+      },
+      "fixture_folder": "Candidate06/GroupingCheck/20260914_094911_1E81547B",
+      "rehashed_actor_files": [
+        {
+          "path": "checks.csv",
+          "bytes": 98906,
+          "sha256": "aac8b991345d4c912b7597747dd6ffefa0ab9087ba18eddf75405546126a18ae"
+        },
+        {
+          "path": "checks.txt",
+          "bytes": 57,
+          "sha256": "266cc889c0ad9c6d6d72c9d2b2f5b38184e9cc29390dd33ae2b54e7be840d1b1"
+        },
+        {
+          "path": "groups.csv",
+          "bytes": 4245,
+          "sha256": "85498154ee69b43166f056dedfcdb7b67d71fe9ae243bacf61bc6349cbc2b16b"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 934,
+          "sha256": "ee30ec2d33d565401500d5073142ce610a668091421cff0da4db42aa9e6e787a"
+        },
+        {
+          "path": "rays.csv",
+          "bytes": 124387,
+          "sha256": "4b694225091a37eba9f152402b1a8bae24940d721c4d62a00f57522119c23e16"
+        }
+      ],
+      "ordered_assertions_sha256": "6c15d3db4cb95542d9593ff12cb6490cb233efa297cba48bf0066e49f9d89885",
+      "warning_events": 19,
+      "warning_categories": {
+        "LogSkinnedMeshComp": 18,
+        "LogCrowdFollowing": 1
+      },
+      "error_or_fatal_events": 0,
+      "metrics": {
+        "trials": 18,
+        "pairs": 9,
+        "discharges": 108,
+        "projectiles": 234,
+        "wall_hits": 234,
+        "ray_rows": 351,
+        "row_kinds": {
+          "projectile": 234,
+          "contact": 117
+        },
+        "max_paired_origin_error_cm": 0.0,
+        "max_paired_direction_error": 0.0,
+        "fully_recovered_bloom_trials": 18,
+        "empty_scene_groups": [
+          {
+            "pattern": "M4A1_short_3",
+            "wall_distance_from_player_cm": 300.0,
+            "diagonal_span_cm": 2.392558336,
+            "first_spread_degrees": 0.349999994,
+            "last_spread_degrees": 0.459999979,
+            "peak_bloom": 0.164999992
+          },
+          {
+            "pattern": "M4A1_short_3",
+            "wall_distance_from_player_cm": 650.0,
+            "diagonal_span_cm": 6.260410786,
+            "first_spread_degrees": 0.349999994,
+            "last_spread_degrees": 0.459999979,
+            "peak_bloom": 0.164999992
+          },
+          {
+            "pattern": "M4A1_short_3",
+            "wall_distance_from_player_cm": 1000.0,
+            "diagonal_span_cm": 10.12826252,
+            "first_spread_degrees": 0.349999994,
+            "last_spread_degrees": 0.459999979,
+            "peak_bloom": 0.164999992
+          },
+          {
+            "pattern": "M4A1_sustained_12",
+            "wall_distance_from_player_cm": 300.0,
+            "diagonal_span_cm": 5.339819431,
+            "first_spread_degrees": 0.349999994,
+            "last_spread_degrees": 0.955000043,
+            "peak_bloom": 0.660000026
+          },
+          {
+            "pattern": "M4A1_sustained_12",
+            "wall_distance_from_player_cm": 650.0,
+            "diagonal_span_cm": 13.972354889,
+            "first_spread_degrees": 0.349999994,
+            "last_spread_degrees": 0.955000043,
+            "peak_bloom": 0.660000026
+          },
+          {
+            "pattern": "M4A1_sustained_12",
+            "wall_distance_from_player_cm": 1000.0,
+            "diagonal_span_cm": 22.604890823,
+            "first_spread_degrees": 0.349999994,
+            "last_spread_degrees": 0.955000043,
+            "peak_bloom": 0.660000026
+          },
+          {
+            "pattern": "870_three_shells",
+            "wall_distance_from_player_cm": 300.0,
+            "diagonal_span_cm": 36.273086548,
+            "first_spread_degrees": 4.0,
+            "last_spread_degrees": 4.0,
+            "peak_bloom": 0.100000001
+          },
+          {
+            "pattern": "870_three_shells",
+            "wall_distance_from_player_cm": 650.0,
+            "diagonal_span_cm": 97.772186279,
+            "first_spread_degrees": 4.0,
+            "last_spread_degrees": 4.0,
+            "peak_bloom": 0.100000001
+          },
+          {
+            "pattern": "870_three_shells",
+            "wall_distance_from_player_cm": 1000.0,
+            "diagonal_span_cm": 159.271286011,
+            "first_spread_degrees": 4.0,
+            "last_spread_degrees": 4.0,
+            "peak_bloom": 0.100000001
+          }
+        ],
+        "method": "Declared fixed seed/pose/direct acquisition and refill; normal-height high-HP infected vs empty paired scene; actual walls at 300/650/1000 cm from player. Width is Y/Z bounding-box diagonal, not a fitted circle. No natural-play or distribution claim."
+      }
+    },
+    {
+      "check": "survival",
+      "run_id": "20260914T095001_632648_survival_8812c45f",
+      "status": "PASS",
+      "native_fixture": "ONE06SurvivalCheck",
+      "assertions": 99,
+      "failures": 0,
+      "completion": {
+        "complete": 1,
+        "failures": 0,
+        "checks": 99,
+        "frames": 0
+      },
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "map": "/Game/ONE/Maps/Containment",
+      "capture_requested": false,
+      "result": {
+        "path": "result.json",
+        "bytes": 302199,
+        "sha256": "33b14400761d429a38eb666d683eda8f7c07cd23ff7af10b2a52aa60446edc1c"
+      },
+      "matrix_evidence": {
+        "path": "evidence.json",
+        "bytes": 2132,
+        "sha256": "6533e08745d8153321f5a0bbcda291d8b025bd73a72c963dd95170ce8d19257a"
+      },
+      "engine_log": {
+        "path": "engine.log",
+        "bytes": 108309,
+        "sha256": "9f28d6f178e1a8d10dbd9c0bfad90c25ad9f97626491291eec567d6d4c57e610"
+      },
+      "fixture_folder": "Candidate06/SurvivalCheck/20260914_095004_8E8B2D6B",
+      "rehashed_actor_files": [
+        {
+          "path": "checks.csv",
+          "bytes": 7834,
+          "sha256": "4c8f136ba8ba0cb7b0a60b6111ac3dbd1913ec528612d009e8914cd8f0b0500b"
+        },
+        {
+          "path": "checks.txt",
+          "bytes": 45,
+          "sha256": "8f4af0194a4d5e17910b73488684a3e1680eefadfd3ebaeb2c8f9184c3a0821c"
+        },
+        {
+          "path": "observations.json",
+          "bytes": 490328,
+          "sha256": "f48998d05f680192bcb879e7672c90a629cfde0a35798b382584563628c653f4"
+        }
+      ],
+      "ordered_assertions_sha256": "090058348fe8c6b9653cd0a86a0320dfed706c2f633185af5d02e9507e4a347d",
+      "warning_events": 19,
+      "warning_categories": {
+        "LogSkinnedMeshComp": 18,
+        "LogCrowdFollowing": 1
+      },
+      "error_or_fatal_events": 0,
+      "metrics": {
+        "actual_collected_modifier_trace_body_kills": 1,
+        "actual_collected_modifier_trace_points": 220,
+        "behavior": "Accepted-damage 15-second delay/reset; protected/rejected damage exclusion; 200 maximum at 20 HP per gameplay second; real pause/death clocks; three forced pickups, reachable ground, wall rejection, once-only collection, Max Ammo, 30-second refresh/world expiry, cap and cleanup. Actual collected Insta-Kill/Double Points precede ordinary torso pistol trace into healthy 112 HP target: one body kill/220 points. Aggregated award, duplicate and run-reset guards retained.",
+        "limit": "Forced chance/cap probes do not measure the production 1% distribution; real level restart is covered separately by progression."
+      }
+    },
+    {
+      "check": "progression",
+      "run_id": "20260914T095117_832565_progression_686bb225",
+      "status": "PASS",
+      "native_fixture": "ONE04ProgressionCheck",
+      "assertions": 95,
+      "failures": 0,
+      "completion": {
+        "failures": 0,
+        "checks": 95
+      },
+      "settings": {
+        "width": 1600,
+        "height": 900,
+        "max_fps": 120,
+        "vsync": 0,
+        "screen_percentage": 100
+      },
+      "map": "/Game/ONE/Maps/Containment",
+      "capture_requested": false,
+      "result": {
+        "path": "result.json",
+        "bytes": 302192,
+        "sha256": "f1611accc790f015b5490df826c3823b612b6dda576a72e68f15ae943a46de4f"
+      },
+      "matrix_evidence": {
+        "path": "evidence.json",
+        "bytes": 1696,
+        "sha256": "dfd2c391cd18a4d3750cdf2e28c8182a05ee97411b08734fc1c92da2261e36a6"
+      },
+      "engine_log": {
+        "path": "engine.log",
+        "bytes": 122831,
+        "sha256": "898c99eaa6116f8b000c7416a796e43f1f7659b416f80da156a2a73515f1f7c1"
+      },
+      "fixture_folder": "Candidate04/Progression",
+      "rehashed_actor_files": [
+        {
+          "path": "checks.json",
+          "bytes": 16847,
+          "sha256": "1e5eed11a33eb61776704c7f23dd88803257d51a77a077ebc221c545d942c8c6"
+        },
+        {
+          "path": "timeline.csv",
+          "bytes": 48033,
+          "sha256": "216318a20ef439fa70251a2d98ac5634b91976f032e1c5799e08f037f06a1351"
+        }
+      ],
+      "ordered_assertions_sha256": "47346a54353b108330cd6d9e77eebd7c5e0c75db2c23219cb09803e810747fb3",
+      "warning_events": 39,
+      "warning_categories": {
+        "LogSkinnedMeshComp": 36,
+        "LogTemp": 1,
+        "LogCrowdFollowing": 2
+      },
+      "error_or_fatal_events": 0,
+      "metrics": {
+        "actual_upgrade_processing_seconds": 9.0002,
+        "behavior": "Box/upgrade price and input boundaries, family exclusion/pending race, nine-second processing, usable second slot, automatic same-slot return, reload/pump reservations, intentional destroyed-machine rollback/refund once, permanent 15-second expiry/closed receipt, death cancellation and real restart reject prior-run tokens."
+      }
+    }
+  ],
+  "totals": {
+    "runs": 5,
+    "assertions": 5941,
+    "failures": 0,
+    "warning_events": 117,
+    "error_or_fatal_events": 0
+  },
+  "source_inspection": [
+    {
+      "path": "Source/ProjectONE/ONE06ImpactSubsystem.cpp",
+      "bytes": 3597,
+      "sha256": "51d26e5cc39ab02a01fa9fbaadc99c88a32a7ed569224e597adfd3e7dafebf02",
+      "working_checkout_lf_normalized_equal": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE05AimCheck.cpp",
+      "bytes": 17091,
+      "sha256": "42c520961c681d228499401b339336fe43cae7076435afa66106da71ebdd5036",
+      "working_checkout_lf_normalized_equal": true
+    },
+    {
+      "path": "Source/ProjectONE/ONE06CombatCheck.cpp",
+      "bytes": 19573,
+      "sha256": "f38569149f3ae54b35c9c921b0ccbd727e576f68d89326f965c428ae4c239711",
+      "working_checkout_lf_normalized_equal": true
+    }
+  ],
+  "warnings": [
+    {
+      "category": "LogSkinnedMeshComp",
+      "events": 108,
+      "scope": "Missing weapon_r/hand_l bone names on NoSkeletalMesh components at initialization and progression restart; retained, no visual correctness inferred."
+    },
+    {
+      "category": "LogCrowdFollowing",
+      "events": 6,
+      "scope": "No RecastNavMesh instance while creating UCrowdManager; initialization/restart warnings retained."
+    },
+    {
+      "category": "LogMaterial",
+      "events": 2,
+      "scope": "M_EyeDark lacks bUsedWithInstancedStaticMeshes and uses the default material; accompanying resave warning. Source binds it to ONE06FiniteImpactMarks transient finite world-impact cylinders, radius 0.6 cm pellet / 0.8 cm other, with collision/navigation/shadows disabled. This concerns world-impact marks, not Candidate07 infected eyes; appearance unreviewed."
+    },
+    {
+      "category": "LogTemp",
+      "events": 1,
+      "scope": "ONE04_MACHINE_TECHNICAL_RECOVERY box=0 is the intentional destroyed-machine rollback probe; exact ammo/refund assertions passed."
+    }
+  ],
+  "limitations": [
+    "Only five completed runs from immutable revision 18; subsequent cadence/UI/physicality/encounter/portability/profile results excluded.",
+    "Direct scene setup and scripted controller input; not native human play or every weapon/appearance/scenario combination.",
+    "Separately retained fixed-low-plane corpse miss remains a known limitation. These torso-plane and standing head/low trials do not demonstrate flattened-body targeting below 65 cm.",
+    "No image viewing, continuous playback, audio decode/audition, native session or performance analysis occurred in this review."
+  ]
+}

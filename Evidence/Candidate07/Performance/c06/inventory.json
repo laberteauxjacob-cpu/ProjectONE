@@ -1,0 +1,150 @@
+{
+  "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+  "files": [
+    {
+      "filename": "870_12_analysis.json",
+      "bytes": 347669,
+      "sha256": "2b89778c0801ef3ca5816440abcdde584f041effd2c8fbe7c9accba530be0c05"
+    },
+    {
+      "filename": "870_12_full.csv",
+      "bytes": 8781958,
+      "sha256": "4d53f827da5734e76fb6caa7dce661d32e67fe4b802cdbcc55434638d9e21d01"
+    },
+    {
+      "filename": "870_18_analysis.json",
+      "bytes": 348014,
+      "sha256": "c60b8a3513a36dc5d8adb3605bd8fe166d8e85de277d71f42611f18491ca2145"
+    },
+    {
+      "filename": "870_18_full.csv",
+      "bytes": 8776701,
+      "sha256": "f456622e88ae69c3147e2f6de447910ab68834a495569f712f9066820f617f9b"
+    },
+    {
+      "filename": "870_6_analysis.json",
+      "bytes": 347024,
+      "sha256": "c91184c0caaf8245e5227797ab983edab30f7ba1948179c4f1b658e80e379fcc"
+    },
+    {
+      "filename": "870_6_full.csv",
+      "bytes": 8759019,
+      "sha256": "4bc90ab67c25436256b17a47eb73782be11927a31fe0d0470560dd988198efde"
+    },
+    {
+      "filename": "m4a1_12_analysis.json",
+      "bytes": 348001,
+      "sha256": "58da4f2fcbeb560f2156274fce0b9c4d63a87d01f049d205ee0be0476187657e"
+    },
+    {
+      "filename": "m4a1_12_full.csv",
+      "bytes": 8845345,
+      "sha256": "944f4d2042cb96a3594cbad4d0b1348d0d42c715b65dc6547c619498949695cd"
+    },
+    {
+      "filename": "m4a1_18_analysis.json",
+      "bytes": 348470,
+      "sha256": "c157865f556d60cd7feb62f6902b33282be98bed0dda53e348feadf5592798ae"
+    },
+    {
+      "filename": "m4a1_18_full.csv",
+      "bytes": 8805189,
+      "sha256": "7289bf13152caf2a27bc4dc1a27b447c1f9f371ef01d43197e6a057a98352818"
+    },
+    {
+      "filename": "m4a1_6_analysis.json",
+      "bytes": 347620,
+      "sha256": "7cd3fc7f5b3db91ed3d25233c4904de9bb2fe14b07e758a834396af7409aea77"
+    },
+    {
+      "filename": "m4a1_6_full.csv",
+      "bytes": 8815428,
+      "sha256": "3369d158f87551898380b4c41a7680d596c22df02e148baa26a2ecc9efca0e01"
+    },
+    {
+      "filename": "README.md",
+      "bytes": 3759,
+      "sha256": "4a81bfd19222880954c1039910472a727c7a076bbc504a6d023c3a2c47cbefe8"
+    },
+    {
+      "filename": "summary.json",
+      "bytes": 6326,
+      "sha256": "cf9de7524bd433ba0a2ee3a9707929c8912c530bb55ef4bbab748c206e35b6e1"
+    }
+  ],
+  "workloads": [
+    {
+      "weapon": "870",
+      "requested_alive": 6,
+      "full_timeline": "870_6_full.csv",
+      "analysis": "870_6_analysis.json",
+      "raw_frame_rows": 3695,
+      "retained_frame_rows": 3695,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "870",
+      "requested_alive": 12,
+      "full_timeline": "870_12_full.csv",
+      "analysis": "870_12_analysis.json",
+      "raw_frame_rows": 3693,
+      "retained_frame_rows": 3693,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "870",
+      "requested_alive": 18,
+      "full_timeline": "870_18_full.csv",
+      "analysis": "870_18_analysis.json",
+      "raw_frame_rows": 3689,
+      "retained_frame_rows": 3689,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 6,
+      "full_timeline": "m4a1_6_full.csv",
+      "analysis": "m4a1_6_analysis.json",
+      "raw_frame_rows": 3694,
+      "retained_frame_rows": 3694,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 12,
+      "full_timeline": "m4a1_12_full.csv",
+      "analysis": "m4a1_12_analysis.json",
+      "raw_frame_rows": 3687,
+      "retained_frame_rows": 3687,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    },
+    {
+      "weapon": "M4A1",
+      "requested_alive": 18,
+      "full_timeline": "m4a1_18_full.csv",
+      "analysis": "m4a1_18_analysis.json",
+      "raw_frame_rows": 3664,
+      "retained_frame_rows": 3664,
+      "spikes_removed": 0,
+      "recording_enabled": false,
+      "machine_overlap_verified": true
+    }
+  ],
+  "baseline_comparable": false,
+  "isolated_host": false,
+  "host_condition": "ambient_processes_recorded_no_isolation_claim",
+  "full_numeric_timelines": 6,
+  "analysis_reports": 6,
+  "inventory_note": "Root manifest lists every payload file; it does not self-hash.",
+  "raw_capture_files": "Remain private; only full numeric timelines and measured reports are curated."
+}

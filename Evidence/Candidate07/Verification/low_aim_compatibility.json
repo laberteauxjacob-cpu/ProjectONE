@@ -1,0 +1,959 @@
+{
+  "schema": "one07.low_aim_compatibility.v1",
+  "status": "KNOWN_COMPATIBILITY_FAILURE",
+  "candidate": "07",
+  "source_commit": null,
+  "observed_head": "9cd876f72a307f905a160bc19b2a965e26f5d26b",
+  "source_clean": false,
+  "execution": "Editor -game WIP, RenderOffScreen, scripted ordinary Controller InputKey; not a final-source package or native human session.",
+  "run_id": "Motion_20260914T082618",
+  "capture_id": "20260914_082625_8993FD54",
+  "original_runner_state": "ENDED_REVIEW_REQUIRED",
+  "exit_code": 0,
+  "settings": {
+    "width": 1600,
+    "height": 900,
+    "max_fps": 120,
+    "vsync": 0,
+    "screen_percentage": 100,
+    "rhi": "D3D12"
+  },
+  "source_binding": {
+    "kind": "Recorded dirty protected-input snapshot; stable before/after, not a clean-source build receipt.",
+    "snapshot_sha256": "b3ff60488bb7428f27e4cdd7c9eb6f45fc9e335f12e9ed2e4505fa43a42459a2",
+    "protected_inputs_unchanged": true,
+    "source_snapshot_entries": 680,
+    "selected_recorded_source_files": [
+      {
+        "path": "Source/ProjectONE/ONE05MotionCheck.cpp",
+        "bytes": 29450,
+        "sha256": "5b05b07b7aa13d0d45a619a6fbf63798c814a4a8a140542a75c30f562b978ceb"
+      },
+      {
+        "path": "Source/ProjectONE/ONE07RegionalTrace.cpp",
+        "bytes": 8951,
+        "sha256": "f34f2b1b8087b3e43664343a847c6f4423e031192dc7ab8aa45450f08cc35363"
+      },
+      {
+        "path": "Source/ProjectONE/ONEPlayer.cpp",
+        "bytes": 32831,
+        "sha256": "03ab3718710e056e24bb6af4b0167abe565e13bb523c49b4764ba154954ed5f3"
+      },
+      {
+        "path": "Source/ProjectONE/ONEWeaponComponent.cpp",
+        "bytes": 39441,
+        "sha256": "bff65af3bf3844489b8629700413cd1c9856910a9bcb24c27b8afc686b57a4b5"
+      }
+    ],
+    "recorded_editor_module": {
+      "path": "Binaries/Win64/UnrealEditor-ProjectONE.dll",
+      "bytes": 3070464,
+      "sha256": "4cbc9799f842bbdaea7ab028cefac6359e9094c1b66058f2bfbba3f1ff098ed9"
+    },
+    "editor_module_unchanged_during_run": true,
+    "limit": "The runtime DLL identity and source snapshot were recorded by the WIP launcher. This review rehashes retained reports, not the historical compiled/source files; no correspondence to final S is asserted."
+  },
+  "original_artifacts": [
+    {
+      "path": "run.json",
+      "bytes": 280270,
+      "sha256": "2ecdde94b1a267015c59ce32736b6b7da9d3bb32b29ddfeb1846e647a7a7449b"
+    },
+    {
+      "path": "engine.log",
+      "bytes": 144029,
+      "sha256": "98bd702897c34c617de06bdecbfdf0207926842163aa88941e8b9592c236134a"
+    },
+    {
+      "path": "checks.txt",
+      "bytes": 13636,
+      "sha256": "f20e789bbf537f26ed0e67c59db023faabb6fe67a5d25e6b1e4bab19e3654136"
+    },
+    {
+      "path": "input_events.csv",
+      "bytes": 3524,
+      "sha256": "038247cd6ac7e33d3fa758b26465c802750e3c03830b71120bb5e5c70875055f"
+    },
+    {
+      "path": "poses.csv",
+      "bytes": 1664476,
+      "sha256": "0cda8beb0b89bf77f2f52f0e92e0299e01d30d01f7c51a094dd2ce1b00ff17fa"
+    },
+    {
+      "path": "frames.csv",
+      "bytes": 82021,
+      "sha256": "f4993f0d45a2c866f342739d69729b49a465f0a0553048eff15c3fdc7058e491"
+    },
+    {
+      "path": "chapters.csv",
+      "bytes": 1457,
+      "sha256": "48433fe4cd0ea41af72c37caee4f2c503d39ce7583a2b6676fdced93a57ebeb1"
+    }
+  ],
+  "completion": {
+    "complete": true,
+    "assertions": 90,
+    "passed": 89,
+    "failed": 1,
+    "recorded_frames": 1484,
+    "headless_cursor_fallback_calls": 0
+  },
+  "ordered_assertions": [
+    {
+      "pass": true,
+      "label": "Explicit motion scenario uses sandbox mode"
+    },
+    {
+      "pass": true,
+      "label": "All 18 revised directional and turn player clips loaded on the production graph"
+    },
+    {
+      "pass": true,
+      "label": "Accepted player speed tuning remains225/370"
+    },
+    {
+      "pass": true,
+      "label": "Phase0 production keys produce expected speed 225.0; mean 225.000 min 225.000 max 225.000 samples70"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.466/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase1 production keys produce expected speed 225.0; mean 225.000 min 225.000 max 225.000 samples69"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.455/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase2 production keys produce expected speed 225.0; mean 225.000 min 225.000 max 225.000 samples70"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.453/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase3 production keys produce expected speed 225.0; mean 225.000 min 225.000 max 225.000 samples62"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.455/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase4 production keys produce expected speed 225.0; mean 225.000 min 225.000 max 225.000 samples71"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.468/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase5 production keys produce expected speed 225.0; mean 225.000 min 225.000 max 225.000 samples69"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.478/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase6 production keys produce expected speed 225.0; mean 225.000 min 225.000 max 225.000 samples61"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.482/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase7 production keys produce expected speed 225.0; mean 225.000 min 225.000 max 225.000 samples66"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.478/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase8 production keys produce expected speed 370.0; mean 370.000 min 370.000 max 370.000 samples60"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.459/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase9 production keys produce expected speed 370.0; mean 370.000 min 370.000 max 370.000 samples65"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.454/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase10 production keys produce expected speed 370.0; mean 370.000 min 370.000 max 370.000 samples68"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.442/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase11 production keys produce expected speed 370.0; mean 370.000 min 370.000 max 370.000 samples61"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.449/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase12 production keys produce expected speed 370.0; mean 370.000 min 370.000 max 370.000 samples63"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.469/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase13 production keys produce expected speed 370.0; mean 370.000 min 370.000 max 370.000 samples63"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.488/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase14 production keys produce expected speed 370.0; mean 370.000 min 370.000 max 370.000 samples62"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.492/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Phase15 production keys produce expected speed 370.0; mean 370.000 min 370.000 max 370.000 samples64"
+    },
+    {
+      "pass": true,
+      "label": "Processed Shift state matches requested movement mode"
+    },
+    {
+      "pass": true,
+      "label": "Named direction verified against actual body heading and velocity; maximum aim/direction errors 0.488/0.000 degrees"
+    },
+    {
+      "pass": true,
+      "label": "Turn phase16 has evaluated lift on both feet 7.887/7.981 cm; not a planting assertion"
+    },
+    {
+      "pass": true,
+      "label": "Turn phase17 has evaluated lift on both feet 7.579/6.888 cm; not a planting assertion"
+    },
+    {
+      "pass": true,
+      "label": "Explicit infected fixture spawned without collision adjustment"
+    },
+    {
+      "pass": true,
+      "label": "All five revised attacks loaded on the production infected graph"
+    },
+    {
+      "pass": true,
+      "label": "Requested family used the production attack entry"
+    },
+    {
+      "pass": true,
+      "label": "Family dispatched exactly one consuming contact"
+    },
+    {
+      "pass": true,
+      "label": "Ordinary contact removed19 health without an in-phase restore"
+    },
+    {
+      "pass": true,
+      "label": "Accepted player damage produced a brief directional reaction window"
+    },
+    {
+      "pass": true,
+      "label": "Attack family issued one actual component audio cue"
+    },
+    {
+      "pass": true,
+      "label": "Explicit infected fixture spawned without collision adjustment"
+    },
+    {
+      "pass": true,
+      "label": "Requested family used the production attack entry"
+    },
+    {
+      "pass": true,
+      "label": "Family dispatched exactly one consuming contact"
+    },
+    {
+      "pass": true,
+      "label": "Ordinary contact removed19 health without an in-phase restore"
+    },
+    {
+      "pass": true,
+      "label": "Accepted player damage produced a brief directional reaction window"
+    },
+    {
+      "pass": true,
+      "label": "Attack family issued one actual component audio cue"
+    },
+    {
+      "pass": true,
+      "label": "Explicit infected fixture spawned without collision adjustment"
+    },
+    {
+      "pass": true,
+      "label": "Requested family used the production attack entry"
+    },
+    {
+      "pass": true,
+      "label": "Family dispatched exactly one consuming contact"
+    },
+    {
+      "pass": true,
+      "label": "Ordinary contact removed19 health without an in-phase restore"
+    },
+    {
+      "pass": true,
+      "label": "Accepted player damage produced a brief directional reaction window"
+    },
+    {
+      "pass": true,
+      "label": "Attack family issued one actual component audio cue"
+    },
+    {
+      "pass": true,
+      "label": "Explicit infected fixture spawned without collision adjustment"
+    },
+    {
+      "pass": true,
+      "label": "Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"
+    },
+    {
+      "pass": true,
+      "label": "Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"
+    },
+    {
+      "pass": true,
+      "label": "Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"
+    },
+    {
+      "pass": true,
+      "label": "Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"
+    },
+    {
+      "pass": true,
+      "label": "Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"
+    },
+    {
+      "pass": true,
+      "label": "Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"
+    },
+    {
+      "pass": true,
+      "label": "Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"
+    },
+    {
+      "pass": true,
+      "label": "Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"
+    },
+    {
+      "pass": true,
+      "label": "Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"
+    },
+    {
+      "pass": true,
+      "label": "Corpse LMB press follows processed ordinary Left Ctrl low-aim selection"
+    },
+    {
+      "pass": true,
+      "label": "Real nonfatal torso-aimed shot reported live feedback with minor pose reaction while no full stagger; exact hit region not asserted"
+    },
+    {
+      "pass": true,
+      "label": "Real trace transitioned one living target to one new kill"
+    },
+    {
+      "pass": false,
+      "label": "Later real Left Ctrl plus LMB corpse trace stayed cosmetic and did not repeat kill feedback; a fixed low-plane miss remains a failure"
+    },
+    {
+      "pass": true,
+      "label": "Death issued one cue and stopped living audio scheduling"
+    },
+    {
+      "pass": true,
+      "label": "Target fixture completed while player remained alive"
+    },
+    {
+      "pass": true,
+      "label": "Rendered capture has actual viewport frames and no headless cursor fallback"
+    },
+    {
+      "pass": true,
+      "label": "Complete frame, evaluated-pose, input and chapter manifests saved successfully"
+    }
+  ],
+  "preserved_failed_check": "Later real Left Ctrl plus LMB corpse trace stayed cosmetic and did not repeat kill feedback; a fixed low-plane miss remains a failure",
+  "observed_low_shots": [
+    {
+      "seconds": 50.497475,
+      "frame": 3670,
+      "shot": 5,
+      "outcome": 0,
+      "ctrl": 1,
+      "lmb": 1,
+      "height": "Low",
+      "plane_z": 68.474,
+      "body_center_z": 30.262,
+      "body_min_z": -1.22,
+      "body_max_z": 61.743,
+      "body_below_plane": 1,
+      "aim": [
+        65.4,
+        365.366,
+        68.474
+      ],
+      "muzzle": [
+        -132.094,
+        357.229,
+        146.215
+      ],
+      "direction": [
+        0.92982,
+        0.038314,
+        -0.366014
+      ],
+      "corpse_transactions": 0,
+      "preceding_lmb_input": {
+        "seconds": "50.474365",
+        "phase": "21",
+        "frame": "3669",
+        "key": "LeftMouseButton",
+        "event": "pressed",
+        "handled": "1"
+      },
+      "preceding_ctrl_input": {
+        "seconds": "50.216717",
+        "phase": "21",
+        "frame": "3653",
+        "key": "LeftControl",
+        "event": "pressed",
+        "handled": "0"
+      },
+      "pose_row_frame_verified": true
+    },
+    {
+      "seconds": 50.898869,
+      "frame": 3700,
+      "shot": 6,
+      "outcome": 0,
+      "ctrl": 1,
+      "lmb": 1,
+      "height": "Low",
+      "plane_z": 68.474,
+      "body_center_z": 29.344,
+      "body_min_z": -3.796,
+      "body_max_z": 62.485,
+      "body_below_plane": 1,
+      "aim": [
+        66.339,
+        366.425,
+        68.474
+      ],
+      "muzzle": [
+        -132.104,
+        357.463,
+        147.066
+      ],
+      "direction": [
+        0.928922,
+        0.041952,
+        -0.367892
+      ],
+      "corpse_transactions": 0,
+      "preceding_lmb_input": {
+        "seconds": "50.875706",
+        "phase": "21",
+        "frame": "3699",
+        "key": "LeftMouseButton",
+        "event": "pressed",
+        "handled": "1"
+      },
+      "preceding_ctrl_input": {
+        "seconds": "50.216717",
+        "phase": "21",
+        "frame": "3653",
+        "key": "LeftControl",
+        "event": "pressed",
+        "handled": "0"
+      },
+      "pose_row_frame_verified": true
+    },
+    {
+      "seconds": 51.30685,
+      "frame": 3731,
+      "shot": 7,
+      "outcome": 0,
+      "ctrl": 1,
+      "lmb": 1,
+      "height": "Low",
+      "plane_z": 68.474,
+      "body_center_z": 29.316,
+      "body_min_z": -3.879,
+      "body_max_z": 62.511,
+      "body_below_plane": 1,
+      "aim": [
+        66.054,
+        366.425,
+        68.474
+      ],
+      "muzzle": [
+        -132.104,
+        357.465,
+        147.042
+      ],
+      "direction": [
+        0.928776,
+        0.041997,
+        -0.368253
+      ],
+      "corpse_transactions": 0,
+      "preceding_lmb_input": {
+        "seconds": "51.298515",
+        "phase": "21",
+        "frame": "3730",
+        "key": "LeftMouseButton",
+        "event": "pressed",
+        "handled": "1"
+      },
+      "preceding_ctrl_input": {
+        "seconds": "50.216717",
+        "phase": "21",
+        "frame": "3653",
+        "key": "LeftControl",
+        "event": "pressed",
+        "handled": "0"
+      },
+      "pose_row_frame_verified": true
+    },
+    {
+      "seconds": 53.321857,
+      "frame": 3874,
+      "shot": 8,
+      "outcome": 0,
+      "ctrl": 1,
+      "lmb": 1,
+      "height": "Low",
+      "plane_z": 68.474,
+      "body_center_z": 29.223,
+      "body_min_z": -4.166,
+      "body_max_z": 62.611,
+      "body_below_plane": 1,
+      "aim": [
+        66.04,
+        366.425,
+        68.474
+      ],
+      "muzzle": [
+        -132.105,
+        357.465,
+        146.993
+      ],
+      "direction": [
+        0.928846,
+        0.042003,
+        -0.368077
+      ],
+      "corpse_transactions": 0,
+      "preceding_lmb_input": {
+        "seconds": "53.313522",
+        "phase": "21",
+        "frame": "3873",
+        "key": "LeftMouseButton",
+        "event": "pressed",
+        "handled": "1"
+      },
+      "preceding_ctrl_input": {
+        "seconds": "50.216717",
+        "phase": "21",
+        "frame": "3653",
+        "key": "LeftControl",
+        "event": "pressed",
+        "handled": "0"
+      },
+      "pose_row_frame_verified": true
+    },
+    {
+      "seconds": 53.747047,
+      "frame": 3898,
+      "shot": 9,
+      "outcome": 0,
+      "ctrl": 1,
+      "lmb": 1,
+      "height": "Low",
+      "plane_z": 68.474,
+      "body_center_z": 29.212,
+      "body_min_z": -4.171,
+      "body_max_z": 62.595,
+      "body_below_plane": 1,
+      "aim": [
+        66.04,
+        366.425,
+        68.474
+      ],
+      "muzzle": [
+        -132.104,
+        357.465,
+        147.034
+      ],
+      "direction": [
+        0.928781,
+        0.041999,
+        -0.368241
+      ],
+      "corpse_transactions": 0,
+      "preceding_lmb_input": {
+        "seconds": "53.738712",
+        "phase": "21",
+        "frame": "3897",
+        "key": "LeftMouseButton",
+        "event": "pressed",
+        "handled": "1"
+      },
+      "preceding_ctrl_input": {
+        "seconds": "50.216717",
+        "phase": "21",
+        "frame": "3653",
+        "key": "LeftControl",
+        "event": "pressed",
+        "handled": "0"
+      },
+      "pose_row_frame_verified": true
+    },
+    {
+      "seconds": 54.147114,
+      "frame": 3923,
+      "shot": 10,
+      "outcome": 0,
+      "ctrl": 1,
+      "lmb": 1,
+      "height": "Low",
+      "plane_z": 68.474,
+      "body_center_z": 29.243,
+      "body_min_z": -4.163,
+      "body_max_z": 62.649,
+      "body_below_plane": 1,
+      "aim": [
+        66.04,
+        366.425,
+        68.474
+      ],
+      "muzzle": [
+        -132.104,
+        357.464,
+        146.936
+      ],
+      "direction": [
+        0.928937,
+        0.042012,
+        -0.367845
+      ],
+      "corpse_transactions": 0,
+      "preceding_lmb_input": {
+        "seconds": "54.138779",
+        "phase": "21",
+        "frame": "3922",
+        "key": "LeftMouseButton",
+        "event": "pressed",
+        "handled": "1"
+      },
+      "preceding_ctrl_input": {
+        "seconds": "50.216717",
+        "phase": "21",
+        "frame": "3653",
+        "key": "LeftControl",
+        "event": "pressed",
+        "handled": "0"
+      },
+      "pose_row_frame_verified": true
+    },
+    {
+      "seconds": 54.567368,
+      "frame": 3954,
+      "shot": 11,
+      "outcome": 0,
+      "ctrl": 1,
+      "lmb": 1,
+      "height": "Low",
+      "plane_z": 68.474,
+      "body_center_z": 29.153,
+      "body_min_z": -4.284,
+      "body_max_z": 62.589,
+      "body_below_plane": 1,
+      "aim": [
+        66.04,
+        366.425,
+        68.474
+      ],
+      "muzzle": [
+        -132.104,
+        357.465,
+        146.876
+      ],
+      "direction": [
+        0.929034,
+        0.042011,
+        -0.367603
+      ],
+      "corpse_transactions": 0,
+      "preceding_lmb_input": {
+        "seconds": "54.543575",
+        "phase": "21",
+        "frame": "3953",
+        "key": "LeftMouseButton",
+        "event": "pressed",
+        "handled": "1"
+      },
+      "preceding_ctrl_input": {
+        "seconds": "50.216717",
+        "phase": "21",
+        "frame": "3653",
+        "key": "LeftControl",
+        "event": "pressed",
+        "handled": "0"
+      },
+      "pose_row_frame_verified": true
+    },
+    {
+      "seconds": 54.967899,
+      "frame": 3984,
+      "shot": 12,
+      "outcome": 0,
+      "ctrl": 1,
+      "lmb": 1,
+      "height": "Low",
+      "plane_z": 68.474,
+      "body_center_z": 29.113,
+      "body_min_z": -4.346,
+      "body_max_z": 62.572,
+      "body_below_plane": 1,
+      "aim": [
+        66.04,
+        366.425,
+        68.474
+      ],
+      "muzzle": [
+        -132.104,
+        357.465,
+        146.918
+      ],
+      "direction": [
+        0.928967,
+        0.042007,
+        -0.367771
+      ],
+      "corpse_transactions": 0,
+      "preceding_lmb_input": {
+        "seconds": "54.943764",
+        "phase": "21",
+        "frame": "3983",
+        "key": "LeftMouseButton",
+        "event": "pressed",
+        "handled": "1"
+      },
+      "preceding_ctrl_input": {
+        "seconds": "50.216717",
+        "phase": "21",
+        "frame": "3653",
+        "key": "LeftControl",
+        "event": "pressed",
+        "handled": "0"
+      },
+      "pose_row_frame_verified": true
+    },
+    {
+      "seconds": 55.372208,
+      "frame": 4014,
+      "shot": 13,
+      "outcome": 0,
+      "ctrl": 1,
+      "lmb": 1,
+      "height": "Low",
+      "plane_z": 68.474,
+      "body_center_z": 29.079,
+      "body_min_z": -4.49,
+      "body_max_z": 62.648,
+      "body_below_plane": 1,
+      "aim": [
+        66.04,
+        366.425,
+        68.474
+      ],
+      "muzzle": [
+        -132.105,
+        357.465,
+        147.018
+      ],
+      "direction": [
+        0.928807,
+        0.041999,
+        -0.368175
+      ],
+      "corpse_transactions": 0,
+      "preceding_lmb_input": {
+        "seconds": "55.348610",
+        "phase": "21",
+        "frame": "4013",
+        "key": "LeftMouseButton",
+        "event": "pressed",
+        "handled": "1"
+      },
+      "preceding_ctrl_input": {
+        "seconds": "50.216717",
+        "phase": "21",
+        "frame": "3653",
+        "key": "LeftControl",
+        "event": "pressed",
+        "handled": "0"
+      },
+      "pose_row_frame_verified": true
+    },
+    {
+      "seconds": 55.776119,
+      "frame": 4044,
+      "shot": 14,
+      "outcome": 0,
+      "ctrl": 1,
+      "lmb": 1,
+      "height": "Low",
+      "plane_z": 68.474,
+      "body_center_z": 29.059,
+      "body_min_z": -4.579,
+      "body_max_z": 62.698,
+      "body_below_plane": 1,
+      "aim": [
+        66.04,
+        366.425,
+        68.474
+      ],
+      "muzzle": [
+        -132.104,
+        357.465,
+        147.072
+      ],
+      "direction": [
+        0.92872,
+        0.041997,
+        -0.368397
+      ],
+      "corpse_transactions": 0,
+      "preceding_lmb_input": {
+        "seconds": "55.752525",
+        "phase": "21",
+        "frame": "4043",
+        "key": "LeftMouseButton",
+        "event": "pressed",
+        "handled": "1"
+      },
+      "preceding_ctrl_input": {
+        "seconds": "50.216717",
+        "phase": "21",
+        "frame": "3653",
+        "key": "LeftControl",
+        "event": "pressed",
+        "handled": "0"
+      },
+      "pose_row_frame_verified": true
+    }
+  ],
+  "metrics": {
+    "actual_low_discharges": 10,
+    "actual_corpse_hit_transactions": 0,
+    "outcome_miss_rows": 10,
+    "low_plane_world_z_cm": [
+      68.474
+    ],
+    "corpse_body_query_top_min_cm": 61.743,
+    "corpse_body_query_top_max_cm": 62.698,
+    "plane_minus_body_query_top_cm": [
+      5.776000000000003,
+      6.731000000000002
+    ]
+  },
+  "interpretation": "The ten accepted LMB events follow held ordinary Left Ctrl state. At each discharge the low aim plane/selected cursor is above the evaluated corpse body-query top, and the actual shot outcome is Miss with no corpse transaction. This reproduces a limitation of fixed floor-relative low aim; direct posed-region query success does not establish ordinary mouse access to this floor-level pose.",
+  "input_return_limit": "The modifier InputKey events retain handled=0 in the original CSV; actual processed Ctrl=1/Low selection is separately recorded at all ten discharges. The field is not rewritten or treated as a modifier failure.",
+  "exclusions": [
+    "Retained failure is excluded from final packaged matrix PASS totals. No fresh final-S rerun is claimed.",
+    "Source/build/editor content was dirty WIP; observed HEAD is context, not the source revision of a clean artifact.",
+    "The log and numeric manifests were reviewed; no new images viewed, no continuous playback or audition, no waveform/frame decode.",
+    "The plane/body bounds are serialized to 0.001 cm; this is one posed corpse sequence, not all geometries, headings or weapons."
+  ],
+  "reviewed_utc": "2026-09-14T10:01:28.522316+00:00"
+}

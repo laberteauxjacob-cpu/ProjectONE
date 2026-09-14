@@ -1,0 +1,435 @@
+{
+	"candidate": "05",
+	"fixture": "Rendered production Controller InputKey events and SetMouseLocation at read-back drawn HUD button rectangles, with press/release separated by real frames. Not native OS input. Actual sandbox10000-point button grant followed by explicit TrySpendPoints8500 fixture exposes1500 typography. One safe-contact teleport to existing mystery box precedes a real production F-hold so death/restart invalidates an active machine. Fatal ReceiveAttack is an explicit death fixture. Sparse original viewport PNGs only; no screenshot replacement, audio recording or performance claim. Final Quit is verified by engine exit request; runner must also verify process exit.",
+	"width": 1600,
+	"height": 900,
+	"checks": 49,
+	"failures": 0,
+	"quit_requested_via_button": true,
+	"assertions": [
+		{
+			"label": "Rendered UI fixture has a supported viewport and explicit sandbox",
+			"pass": true,
+			"stage": 0,
+			"world_seconds": 0.68302330002188683
+		},
+		{
+			"label": "Custom HUD artwork resolves before visual capture",
+			"pass": true,
+			"stage": 0,
+			"world_seconds": 0.68302330002188683
+		},
+		{
+			"label": "Starter UI corresponds to actual zero points, seven loaded, fifty-six reserve and empty slot two",
+			"pass": true,
+			"stage": 0,
+			"world_seconds": 0.68302330002188683
+		},
+		{
+			"label": "Default compact gameplay HUD has no expanded tray or overlapping measured panels",
+			"pass": true,
+			"stage": 0,
+			"world_seconds": 0.68302330002188683
+		},
+		{
+			"label": "Sparse screenshot requests do not overlap",
+			"pass": true,
+			"stage": 0,
+			"world_seconds": 0.68302330002188683
+		},
+		{
+			"label": "Real rendered PNG preserves requested viewport dimensions",
+			"pass": true,
+			"stage": 1,
+			"world_seconds": 0.68302330002188683
+		},
+		{
+			"label": "Production H opens tool tray and exposes the UI pointer",
+			"pass": true,
+			"stage": 3,
+			"world_seconds": 1.2151067033410072
+		},
+		{
+			"label": "Expanded tools preserve separated measured gameplay panels",
+			"pass": true,
+			"stage": 3,
+			"world_seconds": 1.2151067033410072
+		},
+		{
+			"label": "Sparse screenshot requests do not overlap",
+			"pass": true,
+			"stage": 3,
+			"world_seconds": 1.2151067033410072
+		},
+		{
+			"label": "Drawn action8 has a nonempty in-viewport hit rectangle",
+			"pass": true,
+			"stage": 3,
+			"world_seconds": 1.2151067033410072
+		},
+		{
+			"kind": "drawn_button_target",
+			"action": 8,
+			"x": 972.5,
+			"y": 443,
+			"min_x": 808,
+			"min_y": 422,
+			"max_x": 1137,
+			"max_y": 464
+		},
+		{
+			"label": "Real rendered PNG preserves requested viewport dimensions",
+			"pass": true,
+			"stage": 3,
+			"world_seconds": 1.2151067033410072
+		},
+		{
+			"label": "Controller cursor readback reaches the actual drawn button center",
+			"pass": true,
+			"stage": 3,
+			"world_seconds": 1.340531300753355
+		},
+		{
+			"label": "Drawn Grant Points button grants exactly10000 through production UI without firing",
+			"pass": true,
+			"stage": 4,
+			"world_seconds": 1.6738712042570114
+		},
+		{
+			"label": "Declared exact8500 spend fixture exposes genuine1500 point display",
+			"pass": true,
+			"stage": 4,
+			"world_seconds": 1.6738712042570114
+		},
+		{
+			"label": "Drawn action16 has a nonempty in-viewport hit rectangle",
+			"pass": true,
+			"stage": 4,
+			"world_seconds": 1.6738712042570114
+		},
+		{
+			"kind": "drawn_button_target",
+			"action": 16,
+			"x": 800,
+			"y": 794,
+			"min_x": 463,
+			"min_y": 772,
+			"max_x": 1137,
+			"max_y": 816
+		},
+		{
+			"label": "Controller cursor readback reaches the actual drawn button center",
+			"pass": true,
+			"stage": 4,
+			"world_seconds": 1.7988734021782875
+		},
+		{
+			"label": "Back to game button closes tray without allowing its release to fire",
+			"pass": true,
+			"stage": 5,
+			"world_seconds": 2.1322363018989563
+		},
+		{
+			"label": "Compact1500-point HUD retains separate point/health/weapon regions",
+			"pass": true,
+			"stage": 5,
+			"world_seconds": 2.1322363018989563
+		},
+		{
+			"label": "Sparse screenshot requests do not overlap",
+			"pass": true,
+			"stage": 5,
+			"world_seconds": 2.1322363018989563
+		},
+		{
+			"label": "Real rendered PNG preserves requested viewport dimensions",
+			"pass": true,
+			"stage": 6,
+			"world_seconds": 2.1322363018989563
+		},
+		{
+			"label": "Fresh H reopens tools",
+			"pass": true,
+			"stage": 8,
+			"world_seconds": 2.6728255040943623
+		},
+		{
+			"label": "H also closes the tray through its normal binding",
+			"pass": true,
+			"stage": 10,
+			"world_seconds": 2.9978312030434608
+		},
+		{
+			"label": "Escape enters pause menu and closes any tools",
+			"pass": true,
+			"stage": 12,
+			"world_seconds": 3.0061648041009903
+		},
+		{
+			"label": "Sparse screenshot requests do not overlap",
+			"pass": true,
+			"stage": 12,
+			"world_seconds": 3.0061648041009903
+		},
+		{
+			"label": "Real rendered PNG preserves requested viewport dimensions",
+			"pass": true,
+			"stage": 13,
+			"world_seconds": 3.0061648041009903
+		},
+		{
+			"label": "Paused survival clock and weapon remain frozen across real elapsed time",
+			"pass": true,
+			"stage": 13,
+			"world_seconds": 3.0061648041009903
+		},
+		{
+			"label": "Drawn action1 has a nonempty in-viewport hit rectangle",
+			"pass": true,
+			"stage": 13,
+			"world_seconds": 3.0061648041009903
+		},
+		{
+			"kind": "drawn_button_target",
+			"action": 1,
+			"x": 800,
+			"y": 538,
+			"min_x": 558,
+			"min_y": 512,
+			"max_x": 1042,
+			"max_y": 564
+		},
+		{
+			"label": "Controller cursor readback reaches the actual drawn button center",
+			"pass": true,
+			"stage": 13,
+			"world_seconds": 3.0061648041009903
+		},
+		{
+			"label": "Resume button restarts live time without leaking its pointer release into a shot",
+			"pass": true,
+			"stage": 14,
+			"world_seconds": 3.3061704039573669
+		},
+		{
+			"label": "Existing physical mystery box is available for old-callback restart fixture",
+			"pass": true,
+			"stage": 14,
+			"world_seconds": 3.3061704039573669
+		},
+		{
+			"label": "Production F hold starts a real paid box roll before death fixture",
+			"pass": true,
+			"stage": 17,
+			"world_seconds": 4.5145273059606552
+		},
+		{
+			"label": "Ambient voices are active before the death cleanup test",
+			"pass": true,
+			"stage": 17,
+			"world_seconds": 4.5145273059606552
+		},
+		{
+			"label": "Explicit fatal-damage fixture exposes the real death menu",
+			"pass": true,
+			"stage": 18,
+			"world_seconds": 4.8228671066462994
+		},
+		{
+			"label": "Death shuts down the previously active ambient voices",
+			"pass": true,
+			"stage": 18,
+			"world_seconds": 4.8228671066462994
+		},
+		{
+			"label": "Sparse screenshot requests do not overlap",
+			"pass": true,
+			"stage": 18,
+			"world_seconds": 4.8228671066462994
+		},
+		{
+			"label": "Real rendered PNG preserves requested viewport dimensions",
+			"pass": true,
+			"stage": 19,
+			"world_seconds": 4.8228671066462994
+		},
+		{
+			"label": "Dead survival time freezes and no new ambient cue or leaked UI shot appears",
+			"pass": true,
+			"stage": 19,
+			"world_seconds": 5.4277859032154083
+		},
+		{
+			"label": "Drawn action2 has a nonempty in-viewport hit rectangle",
+			"pass": true,
+			"stage": 19,
+			"world_seconds": 5.4277859032154083
+		},
+		{
+			"kind": "drawn_button_target",
+			"action": 2,
+			"x": 800,
+			"y": 538,
+			"min_x": 558,
+			"min_y": 512,
+			"max_x": 1042,
+			"max_y": 564
+		},
+		{
+			"label": "Controller cursor readback reaches the actual drawn button center",
+			"pass": true,
+			"stage": 19,
+			"world_seconds": 5.5527880005538464
+		},
+		{
+			"label": "Try Again button actually reloads the level into live compact gameplay",
+			"pass": true,
+			"stage": 90,
+			"world_seconds": 0.95917010307312012
+		},
+		{
+			"label": "Restart resets owned slots, points and held input without turning the restart click into a shot",
+			"pass": true,
+			"stage": 90,
+			"world_seconds": 0.95917010307312012
+		},
+		{
+			"label": "Restart destroys previous active box and creates clean idle machine instances",
+			"pass": true,
+			"stage": 90,
+			"world_seconds": 0.95917010307312012
+		},
+		{
+			"label": "Restart HUD remains within separated measured layout bounds",
+			"pass": true,
+			"stage": 90,
+			"world_seconds": 0.95917010307312012
+		},
+		{
+			"label": "Sparse screenshot requests do not overlap",
+			"pass": true,
+			"stage": 90,
+			"world_seconds": 0.95917010307312012
+		},
+		{
+			"label": "Real rendered PNG preserves requested viewport dimensions",
+			"pass": true,
+			"stage": 91,
+			"world_seconds": 0.95917010307312012
+		},
+		{
+			"label": "All six original UI screenshots completed before final pause/quit",
+			"pass": true,
+			"stage": 93,
+			"world_seconds": 1.1701864004135132
+		},
+		{
+			"label": "Drawn action3 has a nonempty in-viewport hit rectangle",
+			"pass": true,
+			"stage": 93,
+			"world_seconds": 1.1701864004135132
+		},
+		{
+			"kind": "drawn_button_target",
+			"action": 3,
+			"x": 800,
+			"y": 666,
+			"min_x": 558,
+			"min_y": 644,
+			"max_x": 1042,
+			"max_y": 688
+		},
+		{
+			"label": "Controller cursor readback reaches the actual drawn button center",
+			"pass": true,
+			"stage": 93,
+			"world_seconds": 1.1701864004135132
+		},
+		{
+			"label": "Production Quit button requests engine exit after matched pointer release",
+			"pass": true,
+			"stage": 94,
+			"world_seconds": 1.1701864004135132
+		}
+	],
+	"frames": [
+		{
+			"file": "01_starter_0_7_56.png",
+			"width": 1600,
+			"height": 900,
+			"world_seconds": 0.68302330002188683,
+			"frame": 80,
+			"points": 0,
+			"paused": false,
+			"tools": false,
+			"dead": false,
+			"ammo": 7,
+			"reserve": 56
+		},
+		{
+			"file": "02_expanded_tools.png",
+			"width": 1600,
+			"height": 900,
+			"world_seconds": 1.2151067033410072,
+			"frame": 130,
+			"points": 0,
+			"paused": false,
+			"tools": true,
+			"dead": false,
+			"ammo": 7,
+			"reserve": 56
+		},
+		{
+			"file": "03_compact_1500.png",
+			"width": 1600,
+			"height": 900,
+			"world_seconds": 2.1322363018989563,
+			"frame": 233,
+			"points": 1500,
+			"paused": false,
+			"tools": false,
+			"dead": false,
+			"ammo": 7,
+			"reserve": 56
+		},
+		{
+			"file": "04_pause.png",
+			"width": 1600,
+			"height": 900,
+			"world_seconds": 3.0061648041009903,
+			"frame": 363,
+			"points": 1500,
+			"paused": true,
+			"tools": false,
+			"dead": false,
+			"ammo": 7,
+			"reserve": 56
+		},
+		{
+			"file": "05_death.png",
+			"width": 1600,
+			"height": 900,
+			"world_seconds": 4.8228671066462994,
+			"frame": 678,
+			"points": 550,
+			"paused": false,
+			"tools": false,
+			"dead": true,
+			"ammo": 7,
+			"reserve": 56
+		},
+		{
+			"file": "06_restarted_starter.png",
+			"width": 1600,
+			"height": 900,
+			"world_seconds": 0.95917010307312012,
+			"frame": 866,
+			"points": 0,
+			"paused": false,
+			"tools": false,
+			"dead": false,
+			"ammo": 7,
+			"reserve": 56
+		}
+	]
+}

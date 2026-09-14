@@ -1,0 +1,450 @@
+{
+  "schema": "one07.movie_inspection.v1",
+  "status": "PASS",
+  "technical_status": "PASS",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "declared_review_source_label": null,
+  "intended_public_evidence": true,
+  "generated_utc": "2026-09-14T10:37:30.536337+00:00",
+  "checks": [
+    {
+      "check": "Actual nonempty MP4 input exists",
+      "status": "PASS"
+    },
+    {
+      "check": "Inspection output is separate from original capture inputs",
+      "status": "PASS"
+    },
+    {
+      "check": "Explicit FFmpeg binary exists",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly sidecar records an actual successful C07 encode",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly identifies its actual recorder format",
+      "status": "PASS"
+    },
+    {
+      "check": "Public inspection requires actual public-mode exact-S packaged assembly",
+      "status": "PASS"
+    },
+    {
+      "check": "Public inspection requires original run result and current clean build root",
+      "status": "PASS"
+    },
+    {
+      "check": "Assembly render mode is explicit",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual capture metadata, ordered JPEG bytes, timestamps and WAV match the assembly sidecar",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual gameplay outcomes remain exactly as assembled, including any diagnostic failures",
+      "status": "PASS"
+    },
+    {
+      "check": "Bound common assembly must retain its actual original runner result",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual original run, source/runtime observations and frame/actor binding match the assembly",
+      "status": "PASS"
+    },
+    {
+      "check": "Source capture is 1600x900 with 48 kHz stereo master audio",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual MP4 bytes match the completed assembly sidecar",
+      "status": "PASS"
+    },
+    {
+      "check": "Container has exactly one video and one audio stream",
+      "status": "PASS"
+    },
+    {
+      "check": "Video metadata is H.264 1600x900 planar 8-bit 4:2:0 (including full-range yuvj420p) 30 fps with a declared frame count",
+      "status": "PASS"
+    },
+    {
+      "check": "Audio metadata is AAC 48 kHz stereo",
+      "status": "PASS"
+    },
+    {
+      "check": "video endpoint differs from the original WAV by no more than one codec frame plus 2 ms",
+      "status": "PASS"
+    },
+    {
+      "check": "video start remains at the original time origin within declared codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "audio endpoint differs from the original WAV by no more than one codec frame plus 2 ms",
+      "status": "PASS"
+    },
+    {
+      "check": "audio start remains at the original time origin within declared codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Container duration agrees with the original WAV within combined endpoint tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Complete FFmpeg decode exits zero with strict errors enabled",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode emits terminal progress=end",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode reports a positive terminal video frame count",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual decoded video frame count equals the MP4 declared video count",
+      "status": "PASS"
+    },
+    {
+      "check": "Full decode reaches the original timeline endpoint within codec tolerance",
+      "status": "PASS"
+    },
+    {
+      "check": "Numerical PCM audit reads the exact original bound master WAV",
+      "status": "PASS"
+    },
+    {
+      "check": "Bound common assembly must retain its actual original runner result",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual original run, source/runtime observations and frame/actor binding match the assembly",
+      "status": "PASS"
+    },
+    {
+      "check": "Source/runtime/run binding remains stable throughout the inspection",
+      "status": "PASS"
+    },
+    {
+      "check": "Movie, sidecar and capture inputs remain unchanged throughout inspection",
+      "status": "PASS"
+    }
+  ],
+  "tools": [
+    {
+      "file": "inspect_media.py",
+      "bytes": 23011,
+      "sha256": "0312d0b9457bb50fa54b0a41d098cf3d3b3d0bea9fe79bc2e7c6404a3d0833e0"
+    },
+    {
+      "file": "assemble_candidate07_capture.py",
+      "bytes": 26199,
+      "sha256": "565201b47fd6d61d35b67ebe52785536848f193f925096756c60a8714b64cd6f"
+    },
+    {
+      "file": "assemble_candidate06_capture.py",
+      "bytes": 22470,
+      "sha256": "ebc3259e83cbe0886a42c61ee819d04b7c26ca926e18ddf250d0187baa1ef96a"
+    },
+    {
+      "file": "candidate07_legacy_motion.py",
+      "bytes": 10647,
+      "sha256": "68e3e1b9db5433df96274c6f17ee70093d2f17e715a9babbbe541d49af1234c6"
+    },
+    {
+      "file": "audit_gameplay_audio.py",
+      "bytes": 16284,
+      "sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d"
+    }
+  ],
+  "limits": [
+    "Public mode independently rechecks the actual passing capture run, clean exact-S source, all six runtime identities and original build proof/logs. Review-only mode cannot become public evidence and retains null exact source_commit.",
+    "Format, byte identity and full decode completion are separate from visual gameplay review, perceptual audio audition, native input and performance.",
+    "Source WAV measurements describe original PCM. Encoded AAC audio is fully decoded for errors but not compared sample-for-sample with lossy source audio.",
+    "Existing outputs and originals are preserved. Path-bearing command, error and progress diagnostics remain private."
+  ],
+  "source_runtime_binding": {
+    "status": "PASSING_RUN_SOURCE_RUNTIME_AND_BUILD_BOUND",
+    "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+    "observed_head": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+    "report": {
+      "file": "result.json",
+      "bytes": 870634,
+      "sha256": "7fa97b7579ba52ce61323b5c8136205aaa26c7c72abc408ce7934e3c3939625c"
+    },
+    "state": "PASS",
+    "exit_code": 0,
+    "completion": {
+      "checks": 3,
+      "failures": 0,
+      "encounter": 1,
+      "phases": 0,
+      "frames": 2972
+    },
+    "source_snapshot_before_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+    "source_snapshot_after_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+    "inputs_unchanged": true,
+    "runtime_files": [
+      {
+        "path": "ProjectONE.exe",
+        "bytes": 164864,
+        "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+        "bytes": 293055488,
+        "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+        "bytes": 10737169,
+        "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+        "bytes": 226088848,
+        "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+        "bytes": 277601,
+        "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+      },
+      {
+        "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+        "bytes": 25646504,
+        "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+      }
+    ],
+    "validation_tool": {
+      "file": "run_candidate07_checks.py",
+      "bytes": 29721,
+      "sha256": "be8f02483a4d9dafcf885e625a3f8fb48ad6a4e2ebf256d681186ba1b683c2c3"
+    },
+    "limit": "Actual captured run, clean exact-source checkout, all six runtime files and fresh-build proof/logs rechecked. No new build, public-download verification, playback or audition is claimed.",
+    "build_proof": {
+      "file": "runtime_build.json",
+      "bytes": 29215,
+      "sha256": "07ee50383fd86373d8f47589dc982dbe98b7d26390b0dfc60e728b46fbe9140d"
+    }
+  },
+  "gameplay_checks": {
+    "kind": "encounter",
+    "status": "PASS",
+    "checks": 3,
+    "failures": 0,
+    "health_restores": 0,
+    "input_edges": 224,
+    "encounter": 1,
+    "report": {
+      "file": "checks.txt",
+      "bytes": 540,
+      "sha256": "3f1b1d4144e1f93186b2ec49198c4ed1c1f943f5a9e6177fe26398459369e26f"
+    },
+    "scope": "Actual scripted ordinary encounter"
+  },
+  "input_format": "common",
+  "source_frame_inventory": {
+    "file": "source_frame_inventory.json",
+    "bytes": 558617,
+    "sha256": "26e4cd2da86b2ec3b350d9bfedb87cc61593bfe783cbe55fc67fe0d2108261e9"
+  },
+  "movie": {
+    "file": "ProjectONE-Candidate07-Encounter.mp4",
+    "bytes": 61099955,
+    "sha256": "4f528be9779522233b1876fca9114a06a6f3f6431e1ee9f6e2f0e9bd1bcd9220"
+  },
+  "assembly": {
+    "file": "ProjectONE-Candidate07-Encounter.assembly.json",
+    "bytes": 7995,
+    "sha256": "6ad2e1a36fa8f5e6e759eb23938b1e68509bdfcd975f7d3c9144250acbdfd532"
+  },
+  "source_capture": {
+    "frames": 2972,
+    "dimensions": [
+      1600,
+      900
+    ],
+    "first_frame_audio_seconds": 0.0145742,
+    "last_frame_audio_seconds": 109.310324699,
+    "audio_duration_seconds": 109.71733333333333,
+    "audio_sample_frames": 5266432,
+    "actual_real_stop_tail_seconds": 0.4076012000441551,
+    "recorded_audio_after_last_callback_seconds": 0.407008634333323,
+    "input_files": [
+      {
+        "file": "capture.json",
+        "sha256": "03887c3ac7c1b19d9defdc2e1e6ad87a7ed13727e4447daa12fc95183bb6d2f3",
+        "bytes": 1894
+      },
+      {
+        "file": "frames.csv",
+        "sha256": "23f783ba93cedbe0637713629687488d37e48000b4fedfc77da34f71a0a75afd",
+        "bytes": 329690
+      },
+      {
+        "file": "gameplay_master.wav",
+        "sha256": "68082a06ba4765df2a5b25b016c179e0b8592f17035890c8cc78f8e2b9ab1abc",
+        "bytes": 21065772
+      }
+    ],
+    "ordered_frame_identity_sha256": "e3df327c598f24ce21201c95881d99bbe8a975b0e0c95e5737436d0f3e06b187",
+    "source_wav_layout": {
+      "header_block_align": 2,
+      "computed_frame_bytes": 4,
+      "unreal_block_align_quirk": true,
+      "pcm_bytes": 21065728,
+      "channels": 2,
+      "rate": 48000
+    },
+    "chapters": [],
+    "timebase_limit": "audio_seconds is screenshot callback platform time minus the CPU timestamp immediately after StartRecordingOutput; audio render scheduling offset is not measured",
+    "frame_treatment": "First actual image held from audio time zero; subsequent actual images held by original callback timestamps; last image held to unmodified WAV endpoint. Millisecond concat timebase, CFR30 samples may duplicate/drop captured images; no generated pixels, crop, overlays, motion interpolation or retiming to hide stalls.",
+    "audio_treatment": "AAC transcode of the original engine WAV on its original timeline; no replacement, padding, tempo change or synthetic silence. Codec/container endpoint quantization requires separate output probing. This does not establish timbre/localization approval."
+  },
+  "probe": {
+    "tool": "PyAV",
+    "version": "17.1.0",
+    "method": "Container and stream metadata only; no PyAV frame decode.",
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "container_duration_seconds": 109.733333,
+    "container_start_seconds": 0.0,
+    "streams": [
+      {
+        "index": 0,
+        "type": "video",
+        "codec": "h264",
+        "time_base": "1/15360",
+        "duration_ticks": 1685504,
+        "duration_seconds": 109.73333333333333,
+        "start_seconds": 0.0,
+        "declared_frames": 3292,
+        "width": 1600,
+        "height": 900,
+        "average_rate": "30",
+        "pixel_format": "yuvj420p"
+      },
+      {
+        "index": 1,
+        "type": "audio",
+        "codec": "aac",
+        "time_base": "1/48000",
+        "duration_ticks": 5266416,
+        "duration_seconds": 109.717,
+        "start_seconds": 0.0,
+        "declared_frames": 5144,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "channel_layout": "stereo",
+        "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+      }
+    ]
+  },
+  "endpoint_tolerances_seconds": {
+    "video": 0.035333333333333335,
+    "audio": 0.02333333333333333,
+    "limit": "Codec/container endpoint checks do not measure perceived audiovisual synchronization or the capture clock start offset."
+  },
+  "decode": {
+    "status": "PASS",
+    "exit_code": 0,
+    "elapsed_seconds": 1.157,
+    "ffmpeg": {
+      "file": "ffmpeg-win-x86_64-v7.1.exe",
+      "bytes": 87638016,
+      "sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3"
+    },
+    "terminal_progress_end": true,
+    "terminal_video_frames": 3292,
+    "terminal_output_seconds": 109.717333,
+    "scope": "Both mapped streams fully decoded to null; no seek, duration or frame limit. Video frame passthrough.",
+    "private_logs": [
+      "decode_command.private.json",
+      "decode_progress.private.log",
+      "decode_stderr.private.log"
+    ]
+  },
+  "full_decode": {
+    "status": "PASS",
+    "exit_code": 0,
+    "elapsed_seconds": 1.157,
+    "ffmpeg": {
+      "file": "ffmpeg-win-x86_64-v7.1.exe",
+      "bytes": 87638016,
+      "sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3"
+    },
+    "terminal_progress_end": true,
+    "terminal_video_frames": 3292,
+    "terminal_output_seconds": 109.717333,
+    "scope": "Both mapped streams fully decoded to null; no seek, duration or frame limit. Video frame passthrough.",
+    "private_logs": [
+      "decode_command.private.json",
+      "decode_progress.private.log",
+      "decode_stderr.private.log"
+    ]
+  },
+  "source_audio": {
+    "status": "MEASURED",
+    "metrics_file": {
+      "file": "source_audio_metrics.json",
+      "bytes": 109394,
+      "sha256": "adaca023a1913a3ddb1234f5aa775f38dd2ad87d4ec141a12f13aac791ca46df"
+    },
+    "format": {
+      "encoding": "integer PCM",
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "bits_per_sample": 16,
+      "frame_count": 5266432,
+      "duration_seconds": 109.71733333
+    },
+    "overall": {
+      "duration_seconds": 109.71733333,
+      "frame_count": 5266432,
+      "channel_sample_count": 10532864,
+      "sample_peak_normalized": 0.2278442383,
+      "sample_peak_dbfs": -12.847239,
+      "rms_normalized": 0.0134470643,
+      "rms_dbfs": -37.42745,
+      "crest_factor_db": 24.580211,
+      "sample_peak_headroom_db": 12.847239,
+      "full_scale_sample_count": 0,
+      "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+      "nonzero_sample_count": 10461162,
+      "nonzero_sample_percent": 99.319254,
+      "exact_zero_frame_count": 1600,
+      "longest_exact_zero_seconds": 8.333e-05,
+      "silent_frame_count_at_threshold": 858369,
+      "silent_frame_percent_at_threshold": 16.298872,
+      "longest_silence_seconds_at_threshold": 0.00327083,
+      "channels": [
+        {
+          "channel_index": 0,
+          "sample_peak_dbfs": -13.10943,
+          "rms_dbfs": -37.334933,
+          "dc_normalized": -1.9595e-06,
+          "absolute_dc_dbfs": -114.157115,
+          "full_scale_sample_count": 0,
+          "nonzero_sample_count": 5233938
+        },
+        {
+          "channel_index": 1,
+          "sample_peak_dbfs": -12.847239,
+          "rms_dbfs": -37.521982,
+          "dc_normalized": -2.1215e-06,
+          "absolute_dc_dbfs": -113.467263,
+          "full_scale_sample_count": 0,
+          "nonzero_sample_count": 5227224
+        }
+      ]
+    },
+    "warnings": [],
+    "perceptual_audio_review": false
+  }
+}

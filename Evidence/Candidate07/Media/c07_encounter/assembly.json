@@ -1,0 +1,178 @@
+{
+  "schema": "one07.capture_assembly.v1",
+  "candidate": "Candidate07",
+  "input_validation": "PASS",
+  "encoded": true,
+  "full_output_probe_and_decode": "Not performed by this assembler",
+  "capture_kind": "packaged",
+  "render_mode": "offscreen",
+  "source_revision": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "source_state": "exact-commit",
+  "source_binding_limit": "Runtime kind/revision are operator supplied; encoding does not independently establish package identity or parent-check acceptance.",
+  "source": "Actual full engine viewport JPEG callbacks and actual engine master-output PCM WAV",
+  "native_input_evidence": false,
+  "performance_evidence": false,
+  "perceptual_audio_review": false,
+  "frames": 2972,
+  "dimensions": [
+    1600,
+    900
+  ],
+  "first_frame_audio_seconds": 0.0145742,
+  "last_frame_audio_seconds": 109.310324699,
+  "capture_span_seconds": 109.29575049900001,
+  "actual_callback_fps": 27.1831245628089,
+  "audio_duration_seconds": 109.71733333333333,
+  "actual_real_stop_tail_seconds": 0.4076012000441551,
+  "stop_audio_clock_seconds": 109.72821049764752,
+  "recorded_audio_after_last_callback_seconds": 0.407008634333323,
+  "first_image_prepadding_seconds": 0.0145742,
+  "final_image_hold_seconds": 0.407008634333323,
+  "maximum_image_hold_seconds": 0.407008634333323,
+  "audio_sample_rate": 48000,
+  "audio_channels": 2,
+  "audio_sample_frames": 5266432,
+  "source_wav_layout": {
+    "header_block_align": 2,
+    "computed_frame_bytes": 4,
+    "unreal_block_align_quirk": true,
+    "pcm_bytes": 21065728,
+    "channels": 2,
+    "rate": 48000
+  },
+  "wav_layout_limit": "UE5.7 SerializeWaveFile may write blockAlign=2 for stereo. Only its exact 44-byte PCM16 header exception is accepted with correct byteRate and complete channel-aligned payload; original WAV bytes are not changed.",
+  "input_files": [
+    {
+      "file": "capture.json",
+      "sha256": "03887c3ac7c1b19d9defdc2e1e6ad87a7ed13727e4447daa12fc95183bb6d2f3",
+      "bytes": 1894
+    },
+    {
+      "file": "frames.csv",
+      "sha256": "23f783ba93cedbe0637713629687488d37e48000b4fedfc77da34f71a0a75afd",
+      "bytes": 329690
+    },
+    {
+      "file": "gameplay_master.wav",
+      "sha256": "68082a06ba4765df2a5b25b016c179e0b8592f17035890c8cc78f8e2b9ab1abc",
+      "bytes": 21065772
+    }
+  ],
+  "ordered_frame_identity_sha256": "e3df327c598f24ce21201c95881d99bbe8a975b0e0c95e5737436d0f3e06b187",
+  "frame_identity_method": "SHA256 of UTF-8 JSON lines [relative filename, original audio_seconds string, JPEG SHA256] in CSV order",
+  "input_pixel_validation": "JPEG signature, complete-file end marker and actual SOF dimensions; full decoding occurs during FFmpeg encoding and independent output decode review.",
+  "timebase_limit": "audio_seconds is screenshot callback platform time minus the CPU timestamp immediately after StartRecordingOutput; audio render scheduling offset is not measured",
+  "tail_policy": "A measured real-time stop delay of at least .4 seconds is required separately from positive recorded-WAV coverage after the last callback. CPU and audio-render clocks have an unmeasured start offset; no correction is applied.",
+  "frame_treatment": "First actual image held from audio time zero; subsequent actual images held by original callback timestamps; last image held to unmodified WAV endpoint. Millisecond concat timebase, CFR30 samples may duplicate/drop captured images; no generated pixels, crop, overlays, motion interpolation or retiming to hide stalls.",
+  "audio_treatment": "AAC transcode of the original engine WAV on its original timeline; no replacement, padding, tempo change or synthetic silence. Codec/container endpoint quantization requires separate output probing. This does not establish timbre/localization approval.",
+  "video_output_fps": 30,
+  "chapters": [],
+  "chapter_timing_limit": "Chapter boundaries use the first observed frame of each phase, not exact operation boundaries.",
+  "input_format": "common",
+  "status": "ENCODED_PENDING_INSPECTION",
+  "intended_public_evidence": true,
+  "public_input_requirements_met": true,
+  "gameplay_checks": {
+    "kind": "encounter",
+    "status": "PASS",
+    "checks": 3,
+    "failures": 0,
+    "health_restores": 0,
+    "input_edges": 224,
+    "encounter": 1,
+    "report": {
+      "file": "checks.txt",
+      "bytes": 540,
+      "sha256": "3f1b1d4144e1f93186b2ec49198c4ed1c1f943f5a9e6177fe26398459369e26f"
+    },
+    "scope": "Actual scripted ordinary encounter"
+  },
+  "source_runtime_binding": {
+    "status": "PASSING_RUN_SOURCE_RUNTIME_AND_BUILD_BOUND",
+    "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+    "observed_head": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+    "report": {
+      "file": "result.json",
+      "bytes": 870634,
+      "sha256": "7fa97b7579ba52ce61323b5c8136205aaa26c7c72abc408ce7934e3c3939625c"
+    },
+    "state": "PASS",
+    "exit_code": 0,
+    "completion": {
+      "checks": 3,
+      "failures": 0,
+      "encounter": 1,
+      "phases": 0,
+      "frames": 2972
+    },
+    "source_snapshot_before_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+    "source_snapshot_after_sha256": "24349e0ea442580295f6b08fbc5c29421403d22d25a01ea058d11b162d72af33",
+    "inputs_unchanged": true,
+    "runtime_files": [
+      {
+        "path": "ProjectONE.exe",
+        "bytes": 164864,
+        "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+      },
+      {
+        "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+        "bytes": 293055488,
+        "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+        "bytes": 10737169,
+        "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+        "bytes": 226088848,
+        "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+      },
+      {
+        "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+        "bytes": 277601,
+        "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+      },
+      {
+        "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+        "bytes": 25646504,
+        "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+      }
+    ],
+    "validation_tool": {
+      "file": "run_candidate07_checks.py",
+      "bytes": 30122,
+      "sha256": "4143e4a6e601791b21cd711be99e4de6478c512cd4f2c1746081d6efe90400ed"
+    },
+    "limit": "Actual captured run, clean exact-source checkout, all six runtime files and fresh-build proof/logs rechecked. No new build, public-download verification, playback or audition is claimed.",
+    "build_proof": {
+      "file": "runtime_build.json",
+      "bytes": 29215,
+      "sha256": "07ee50383fd86373d8f47589dc982dbe98b7d26390b0dfc60e728b46fbe9140d"
+    }
+  },
+  "release_verified": false,
+  "tools": [
+    {
+      "file": "assemble_candidate07_capture.py",
+      "bytes": 26547,
+      "sha256": "b0709cc42b7e863d60b3c7f05f2a032e952f8fc433f6e5eb46615f24937e2e98"
+    },
+    {
+      "file": "assemble_candidate06_capture.py",
+      "bytes": 22820,
+      "sha256": "ca69dbdcf512e0f86b5e2903ddd9c78fc69c6638664054ff52dddd87b1872c4e"
+    },
+    {
+      "file": "assemble_candidate05_capture.py",
+      "bytes": 23127,
+      "sha256": "5c15f3af12f98404d603f4a5f58f7984a733aa70f6595dc475d404844fa588c0"
+    }
+  ],
+  "encoder_exit_code": 0,
+  "encoder_binary_sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3",
+  "output_file": "ProjectONE-Candidate07-Encounter.mp4",
+  "output_bytes": 61099955,
+  "output_sha256": "4f528be9779522233b1876fca9114a06a6f3f6431e1ee9f6e2f0e9bd1bcd9220"
+}

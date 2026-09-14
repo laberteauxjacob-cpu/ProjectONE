@@ -1,0 +1,120 @@
+{
+  "schema": "one07.audio_processor_checkout_restoration.v1",
+  "status": "EXACT_COMMITTED_PROCESSOR_BYTES_RESTORED",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "verified_utc": "2026-09-14T10:03:16.474171+00:00",
+  "changes": [
+    {
+      "path": "Scripts/process_candidate07_audio.py",
+      "checkout_before": {
+        "bytes": 9757,
+        "sha256": "44ef699ec6226e0c48337db0640739cab49d6a0fe0fe2cb4ce4018629b0ba6f0"
+      },
+      "committed_original": {
+        "bytes": 9601,
+        "sha256": "f4a05f644d2eeba705ebf5638354713b1d90cd58be47dbdf10e1f641fb2aff76"
+      },
+      "checkout_after": {
+        "bytes": 9601,
+        "sha256": "f4a05f644d2eeba705ebf5638354713b1d90cd58be47dbdf10e1f641fb2aff76"
+      },
+      "newline_only": true
+    }
+  ],
+  "json_transport": [
+    {
+      "path": "ArtSource/Audio/Candidate07/source_inventory.json",
+      "expected_sha256": "6ef6502e44c592d7529378b9a4a183643c0123757787bf8655ed85ca876dcb3c",
+      "local_and_fresh": {
+        "bytes": 50506,
+        "sha256": "6ef6502e44c592d7529378b9a4a183643c0123757787bf8655ed85ca876dcb3c",
+        "crlf": 967,
+        "lf_without_cr": 0
+      },
+      "git_blob": {
+        "bytes": 49539,
+        "sha256": "330f68abf9e49f28de2b00b0099af223ef8e169dfa4a087f709d2bd09d68ab5e",
+        "crlf": 0,
+        "lf_without_cr": 967
+      },
+      "explicit_transport_rule": "ArtSource/Audio/Candidate07/source_inventory.json text eol=crlf",
+      "modified": false
+    },
+    {
+      "path": "ArtSource/Audio/Candidate07/recipes.json",
+      "expected_sha256": "e74dd6f4596b377f39e0e747b57d41879398086b26cc393b91388332b0a17660",
+      "local_and_fresh": {
+        "bytes": 80659,
+        "sha256": "e74dd6f4596b377f39e0e747b57d41879398086b26cc393b91388332b0a17660",
+        "crlf": 2795,
+        "lf_without_cr": 0
+      },
+      "git_blob": {
+        "bytes": 77864,
+        "sha256": "8c9a022212a14d9072f9a5b60ebda6ae44e5f304bbc773c09966a2cbbf577415",
+        "crlf": 0,
+        "lf_without_cr": 2795
+      },
+      "explicit_transport_rule": "ArtSource/Audio/Candidate07/recipes.json text eol=crlf",
+      "modified": false
+    }
+  ],
+  "clean_git_status_after": true,
+  "unchanged_git_index_tree": true,
+  "six_runtime_identities_unchanged": true,
+  "runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 293055488,
+      "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10737169,
+      "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 226088848,
+      "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 277601,
+      "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "index_cache_refreshed_only_for_same_processor_blob": true,
+  "source_commit_changed": false,
+  "build_or_engine_run": false,
+  "preparation": {
+    "name": "preparation.json",
+    "bytes": 2434,
+    "sha256": "52d2a6c1f764b00c6e0ba04b4c5ef0c33bfa2a54a91816efa120f2a64367c139"
+  },
+  "build_proof": {
+    "name": "runtime_build.json",
+    "bytes": 29215,
+    "sha256": "07ee50383fd86373d8f47589dc982dbe98b7d26390b0dfc60e728b46fbe9140d"
+  },
+  "scope": "One checkout-added CR per line removed to recover exact committed processor bytes. No audio regeneration, compiled/cooked runtime change or source commit. Inventory/recipes CRLF bytes remain intact.",
+  "recommended_documentation_attributes": [
+    "Scripts/process_candidate07_audio.py -text",
+    "ArtSource/Audio/Candidate07/source_inventory.json text eol=crlf",
+    "ArtSource/Audio/Candidate07/recipes.json text eol=crlf"
+  ],
+  "limits": [
+    "Owner runs only after the runtime matrix; this receipt is not a rerun of build, engine tests, source gate or release audit.",
+    "Preserved before bytes and preparation receipt remain private and hash-bound. A new separate full release audit must pass afterward."
+  ]
+}

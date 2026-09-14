@@ -1,0 +1,133 @@
+{
+  "schema": "one07.release_assets.v1",
+  "status": "LOCAL_ASSETS_BOUND",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "recorded_utc": "2026-09-14T10:40:41.772241+00:00",
+  "assets": [
+    {
+      "name": "ProjectONE-Candidate07-Windows.zip",
+      "bytes": 414510213,
+      "sha256": "e3dae5b6ead801d03c6bc67362f8849ae465df88bd1e691ceed2681b18e61348"
+    },
+    {
+      "name": "ProjectONE-Candidate07-Windows.json",
+      "bytes": 1628,
+      "sha256": "bc49d84038fad82910cf638609d64f4c2af6260d9178225b549adcff72c87059"
+    },
+    {
+      "name": "ProjectONE-Candidate07-Windows.sha256",
+      "bytes": 102,
+      "sha256": "c6da5967dbadc7ab100e80904a7f47a5be4033e52e3c4d13b9c7eb5c315ad612"
+    },
+    {
+      "name": "reference_then_current.wav",
+      "bytes": 73699372,
+      "sha256": "bb70e7daf17978ad77352403c762332d95b5b2eebccdb648b7100578a4321859"
+    },
+    {
+      "name": "ProjectONE-Candidate07-Combat.mp4",
+      "bytes": 14031228,
+      "sha256": "461fc606e5e5e3c28d64de5c3b06eaa5efd80266bd3d8743d34a4f457e458eb4"
+    },
+    {
+      "name": "ProjectONE-Candidate07-Combat.assembly.json",
+      "bytes": 7927,
+      "sha256": "02c7ab204c3e8ee7985539ed51cfedae28822f999762c5b8428a311c067f51d7"
+    },
+    {
+      "name": "ProjectONE-Candidate07-Physicality.mp4",
+      "bytes": 15221648,
+      "sha256": "8f52fa9cb189189ffce451d4ebcf843c73a5f86f9ad7db105bf8d2efbab1d0a9"
+    },
+    {
+      "name": "ProjectONE-Candidate07-Physicality.assembly.json",
+      "bytes": 8001,
+      "sha256": "b88787c50b94c57c1d4f6969082babd27c3687abc976e6feab88ff0afee2f2cb"
+    },
+    {
+      "name": "ProjectONE-Candidate07-Encounter.mp4",
+      "bytes": 61099955,
+      "sha256": "4f528be9779522233b1876fca9114a06a6f3f6431e1ee9f6e2f0e9bd1bcd9220"
+    },
+    {
+      "name": "ProjectONE-Candidate07-Encounter.assembly.json",
+      "bytes": 7995,
+      "sha256": "6ad2e1a36fa8f5e6e759eb23938b1e68509bdfcd975f7d3c9144250acbdfd532"
+    },
+    {
+      "name": "ProjectONE-Candidate07-Portability.mp4",
+      "bytes": 5118419,
+      "sha256": "289b8c1f42457611ceba006a0b1c7884bae2200f9fdd7aa9508844d96f8de354"
+    },
+    {
+      "name": "ProjectONE-Candidate07-Portability.assembly.json",
+      "bytes": 8163,
+      "sha256": "a65f174b1b9ecf8b71766878f11c67bba359bd195b1d66249210fa7e0b24c0b1"
+    }
+  ],
+  "media": [
+    {
+      "movie": "ProjectONE-Candidate07-Combat.mp4",
+      "assembly": "ProjectONE-Candidate07-Combat.assembly.json",
+      "inspection": {
+        "name": "inspection.json",
+        "bytes": 15634,
+        "sha256": "136e018078dcf7eb62f0f87f73f30be228cb86740518d640262ffe75116a1fec"
+      },
+      "decoded_video_frames": 2380,
+      "perceptual_audio_review": false
+    },
+    {
+      "movie": "ProjectONE-Candidate07-Physicality.mp4",
+      "assembly": "ProjectONE-Candidate07-Physicality.assembly.json",
+      "inspection": {
+        "name": "inspection.json",
+        "bytes": 15712,
+        "sha256": "3b4bca4c52a904650492cfaf092c3c715072c4bf1960b7b2ac5ffc562123345e"
+      },
+      "decoded_video_frames": 2413,
+      "perceptual_audio_review": false
+    },
+    {
+      "movie": "ProjectONE-Candidate07-Encounter.mp4",
+      "assembly": "ProjectONE-Candidate07-Encounter.assembly.json",
+      "inspection": {
+        "name": "inspection.json",
+        "bytes": 15705,
+        "sha256": "14ff43055c87ad0b28c01ef9ba96c16b3bac68e651c83033cd1915288d6419f2"
+      },
+      "decoded_video_frames": 3292,
+      "perceptual_audio_review": false
+    },
+    {
+      "movie": "ProjectONE-Candidate07-Portability.mp4",
+      "assembly": "ProjectONE-Candidate07-Portability.assembly.json",
+      "inspection": {
+        "name": "inspection.json",
+        "bytes": 15822,
+        "sha256": "3cf2b929f39fc2d1c7127a94f534779710d0c6c2f9c1c4d891cc522266840207"
+      },
+      "decoded_video_frames": 867,
+      "perceptual_audio_review": false
+    }
+  ],
+  "archive_report": {
+    "name": "ArchiveVerification.json",
+    "bytes": 233678,
+    "sha256": "60cb750118d28fc4cb07f65ae2b03db351e6e7ba3d9c73a2d249855eea7631a1"
+  },
+  "build_proof": {
+    "name": "runtime_build.json",
+    "bytes": 29215,
+    "sha256": "07ee50383fd86373d8f47589dc982dbe98b7d26390b0dfc60e728b46fbe9140d"
+  },
+  "fresh_audit": {
+    "name": "FreshReleaseAudit.json",
+    "bytes": 575251,
+    "sha256": "cb8157ad4c43865a167c700cb75c0ac58572254a23a79c43a670c5c864aff6c3"
+  },
+  "limits": [
+    "Explicit local release files only; no upload/download/refs/playback/audition claim.",
+    "Final publication verification attachment is intentionally excluded from its own input inventory."
+  ]
+}

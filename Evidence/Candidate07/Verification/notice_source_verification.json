@@ -1,0 +1,77 @@
+{
+  "schema": "one07.post_notice_restoration_source.v1",
+  "candidate": "07",
+  "status": "SOURCE_PAYLOADS_VERIFIED",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "verified_utc": "2026-09-14T09:40:55.492720+00:00",
+  "checks": {
+    "exact_clean_head": true,
+    "no_object_alternates": true,
+    "tracked_files": 1816,
+    "lfs_files": 1132,
+    "lfs_bytes": 449311411,
+    "all_lfs_hashes_and_sizes_match": true,
+    "candidate07_payloads": 459
+  },
+  "source_asset_manifest": {
+    "path": "Evidence/Candidate07/SourceAssets.json",
+    "bytes": 93548,
+    "sha256": "6ed79e0421cc9db6b7d72f3ae8d46e2979b4fac89568d50c22c18014b026145f"
+  },
+  "engine_automation_tests_expected": [
+    "ProjectONE.Aim.CloseCursorFullCircle",
+    "ProjectONE.Aim.RegionConvergenceAndObstructionSegments",
+    "ProjectONE.Candidate05.Attacks.BoundedStepAndLimbMasks",
+    "ProjectONE.Candidate05.Attacks.ThreeFamiliesOneContact",
+    "ProjectONE.Candidate05.Attacks.WallHeadingLimbAndDeathCancel",
+    "ProjectONE.Candidate05.Feedback.LiveKillCorpseAndMinorContinuity",
+    "ProjectONE.Candidate06.Ballistics.PrivateSpreadStreamIgnoresGlobalRandomNoise",
+    "ProjectONE.Candidate06.Ballistics.SixProfilesOriginalDistanceAndBodyBudgets",
+    "ProjectONE.Candidate06.Combat.BaseHeadDamageCannotBypassHealth",
+    "ProjectONE.Candidate06.Combat.ExplicitInstaKillKeepsOrdinaryImpulseBounds",
+    "ProjectONE.Candidate06.Combat.LethalDischargeStrictHeadMajority",
+    "ProjectONE.Candidate06.Inventory.EmptyReloadAndPumpTransfer",
+    "ProjectONE.Candidate06.Machines.ReadyBoundaryOrdering",
+    "ProjectONE.Candidate06.Machines.RelocatedApproachesAndWalls",
+    "ProjectONE.Candidate06.PowerUps.ChanceWeightsAndRefresh",
+    "ProjectONE.Candidate06.Rewards.DischargeVictimAndRunDedup",
+    "ProjectONE.Candidate06.Survival.AcceptedDamageDelayAndMaximum",
+    "ProjectONE.Candidate07.Animation.ExplicitTimeEventBoundariesAndReset",
+    "ProjectONE.Candidate07.Attacks.ContextLimbsAndIndependentSelection",
+    "ProjectONE.Candidate07.Attacks.MomentumBudgetAndRecoveryContinuity",
+    "ProjectONE.Candidate07.Attacks.ValidDefinitionsAndPreservedBudgets",
+    "ProjectONE.Candidate07.Audio.StoppedAttackPlantAndIdleRejection",
+    "ProjectONE.Candidate07.Physicality.BlockedLocalRecoveryAndMissingLimb",
+    "ProjectONE.Candidate07.Physicality.ConcurrentFallCapAndLethalGetUp",
+    "ProjectONE.Candidate07.Physicality.FallenDamageAndDeathIdentity",
+    "ProjectONE.Candidate07.Physicality.FrozenBodyEffortClearsActualCorpse",
+    "ProjectONE.Candidate07.RegionalTrace.ExactSegmentBoundaries",
+    "ProjectONE.Candidate07.RegionalTrace.WorldOcclusionAndVictimIdentity",
+    "ProjectONE.Combat.AnatomicalSidesAndCorpseTransactions",
+    "ProjectONE.Combat.DamageAndDeathAreMonotonic",
+    "ProjectONE.Combat.RegionalPelletsKeepSpatialData",
+    "ProjectONE.Combat.RegionalTraumaBoundaries",
+    "ProjectONE.Combat.WeaponPacketsAreIdempotent",
+    "ProjectONE.Inventory.AcquisitionPlansAndUpgradeRefill",
+    "ProjectONE.Inventory.ExactInstanceReservationAndRollback",
+    "ProjectONE.Inventory.ResetRejectsOldMachineCallbacks",
+    "ProjectONE.Inventory.SixIndependentVariantsAndTiming",
+    "ProjectONE.Weapons.Candidate05.AutomaticPhaseAndHitch",
+    "ProjectONE.Weapons.Candidate05.CatalogCadenceAndUpgradeBanks"
+  ],
+  "raw_report": {
+    "name": "source_gate.json",
+    "bytes": 227456,
+    "sha256": "ad1366b32f7efd4bdab82bbdf3afab92770d0c1548f93cc9a5c129ca60a2060e"
+  },
+  "notice_inventory": {
+    "name": "source_inventory.json",
+    "bytes": 50506,
+    "sha256": "6ef6502e44c592d7529378b9a4a183643c0123757787bf8655ed85ca876dcb3c"
+  },
+  "notice_count": 8,
+  "limits": [
+    "Source/LFS and exact notice-byte verification after checkout transport restoration; no new build, engine test or runtime execution.",
+    "Raw source-gate inventory remains private under its original hash; the build and release audit retain their separate original receipts."
+  ]
+}

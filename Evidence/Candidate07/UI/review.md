@@ -1,0 +1,9 @@
+# Candidate07 final UI pixel review
+
+All twelve original screenshots from exact source `3d75c2faa0cecef6075f00755d8e4f5dd2562817` were viewed individually at their full 1600×900 and 1280×720 resolutions. Both packaged UI runs passed 49 assertions. [Exact frames/hashes](frame_identities.csv) and [source/runtime/results](review.json) retain the distinction between automated fixture checks and this static pixel review.
+
+The zero/1500-point readouts, health 100/full bar, 7/56 ammo, M1911/Empty slots and compact H hint remain readable. The entire help tray fits at both sizes, including LMB fire, RMB head/Left Ctrl low, wheel switch, machine input instructions, shake strength and three forced-pickup buttons. Pause, death and restart states are visually distinct; no cropped panel or missing-glyph box was observed. Death shows 550 points/health 0; restart restores 0 points/health 100/7/56 and the compact HUD.
+
+One minor contrast limitation remains: `03_compact_1500.png` places the small Torso 125 cm caption over pale floor-stencil lettering, most apparent at 1280×720. The same caption is clearer on plain floor after restart. The teal/gold sandbox range ruler is world debug geometry, not HUD clipping.
+
+These are newly generated Candidate07 pixels from the reused legacy Candidate05 UI fixture. Controller events, an explicit grant/spend and fatal packet, and a disclosed box-contact teleport supply the test states; this is not native play. The six images per size do not establish continuous motion, every active timer/health state, audio quality or visual approval of the infected. Runtime identity comparison reuses the actual pre/post-verified runner records while original image/log/report hashes were checked directly. No game, capture or encoding process was launched for this review.

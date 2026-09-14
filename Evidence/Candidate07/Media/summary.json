@@ -1,0 +1,801 @@
+{
+  "schema": "one07.media_summary.v1",
+  "status": "LOCAL_MEDIA_TECHNICAL_PASS",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "recordings": [
+    {
+      "case": "c07_combat",
+      "movie": {
+        "name": "ProjectONE-Candidate07-Combat.mp4",
+        "bytes": 14031228,
+        "sha256": "461fc606e5e5e3c28d64de5c3b06eaa5efd80266bd3d8743d34a4f457e458eb4"
+      },
+      "url": "https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate07/ProjectONE-Candidate07-Combat.mp4",
+      "inspection": "c07_combat/inspection.json",
+      "assembly": "c07_combat/assembly.json",
+      "source_audio_metrics": "c07_combat/source_audio_metrics.json",
+      "source_capture": {
+        "frames": 2177,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "first_frame_audio_seconds": 0.1590335,
+        "last_frame_audio_seconds": 79.024263598,
+        "audio_duration_seconds": 79.31733333333334,
+        "audio_sample_frames": 3807232,
+        "actual_real_stop_tail_seconds": 0.40649789944291115,
+        "recorded_audio_after_last_callback_seconds": 0.2930697353333329,
+        "input_files": [
+          {
+            "file": "capture.json",
+            "sha256": "fe4e0fcffefaefb711c0e388d9d9c9b8ce2fa30004ebed4c8597c34f9f468e33",
+            "bytes": 35649
+          },
+          {
+            "file": "frames.csv",
+            "sha256": "e7459eddc4c52924ba9a82f5abe22e2bc41c2e1d22bf2edfdc5fe936bf0fd56e",
+            "bytes": 266631
+          },
+          {
+            "file": "gameplay_master.wav",
+            "sha256": "c1dedc05d29ddd7bd8f94e7b6c81c9d4df269f168c7cc182360f74c6c96b5910",
+            "bytes": 15228972
+          }
+        ],
+        "ordered_frame_identity_sha256": "7f7048448c722fad016d548360a68e61f4e0115f417bfa6a9a9319cd240c87b7",
+        "source_wav_layout": {
+          "header_block_align": 2,
+          "computed_frame_bytes": 4,
+          "unreal_block_align_quirk": true,
+          "pcm_bytes": 15228928,
+          "channels": 2,
+          "rate": 48000
+        },
+        "chapters": [],
+        "timebase_limit": "audio_seconds is screenshot callback platform time minus the CPU timestamp immediately after StartRecordingOutput; audio render scheduling offset is not measured",
+        "frame_treatment": "First actual image held from audio time zero; subsequent actual images held by original callback timestamps; last image held to unmodified WAV endpoint. Millisecond concat timebase, CFR30 samples may duplicate/drop captured images; no generated pixels, crop, overlays, motion interpolation or retiming to hide stalls.",
+        "audio_treatment": "AAC transcode of the original engine WAV on its original timeline; no replacement, padding, tempo change or synthetic silence. Codec/container endpoint quantization requires separate output probing. This does not establish timbre/localization approval."
+      },
+      "probe": {
+        "tool": "PyAV",
+        "version": "17.1.0",
+        "method": "Container and stream metadata only; no PyAV frame decode.",
+        "format": "mov,mp4,m4a,3gp,3g2,mj2",
+        "container_duration_seconds": 79.333333,
+        "container_start_seconds": 0.0,
+        "streams": [
+          {
+            "index": 0,
+            "type": "video",
+            "codec": "h264",
+            "time_base": "1/15360",
+            "duration_ticks": 1218560,
+            "duration_seconds": 79.33333333333333,
+            "start_seconds": 0.0,
+            "declared_frames": 2380,
+            "width": 1600,
+            "height": 900,
+            "average_rate": "30",
+            "pixel_format": "yuvj420p"
+          },
+          {
+            "index": 1,
+            "type": "audio",
+            "codec": "aac",
+            "time_base": "1/48000",
+            "duration_ticks": 3807216,
+            "duration_seconds": 79.317,
+            "start_seconds": 0.0,
+            "declared_frames": 3719,
+            "sample_rate_hz": 48000,
+            "channels": 2,
+            "channel_layout": "stereo",
+            "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+          }
+        ]
+      },
+      "decode": {
+        "status": "PASS",
+        "exit_code": 0,
+        "elapsed_seconds": 0.703,
+        "ffmpeg": {
+          "file": "ffmpeg-win-x86_64-v7.1.exe",
+          "bytes": 87638016,
+          "sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3"
+        },
+        "terminal_progress_end": true,
+        "terminal_video_frames": 2380,
+        "terminal_output_seconds": 79.317333,
+        "scope": "Both mapped streams fully decoded to null; no seek, duration or frame limit. Video frame passthrough.",
+        "private_logs": [
+          "decode_command.private.json",
+          "decode_progress.private.log",
+          "decode_stderr.private.log"
+        ]
+      },
+      "source_audio": {
+        "status": "MEASURED",
+        "metrics_file": {
+          "file": "source_audio_metrics.json",
+          "bytes": 93617,
+          "sha256": "5b96b7d1cb1847c3b09babf3636eafefe4200c88b0647a946abaaa7b300ed409"
+        },
+        "format": {
+          "encoding": "integer PCM",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "bits_per_sample": 16,
+          "frame_count": 3807232,
+          "duration_seconds": 79.31733333
+        },
+        "overall": {
+          "duration_seconds": 79.31733333,
+          "frame_count": 3807232,
+          "channel_sample_count": 7614464,
+          "sample_peak_normalized": 0.2816162109,
+          "sample_peak_dbfs": -11.006847,
+          "rms_normalized": 0.0170657623,
+          "rms_dbfs": -35.357486,
+          "crest_factor_db": 24.350639,
+          "sample_peak_headroom_db": 11.006847,
+          "full_scale_sample_count": 0,
+          "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+          "nonzero_sample_count": 7538217,
+          "nonzero_sample_percent": 98.998656,
+          "exact_zero_frame_count": 8572,
+          "longest_exact_zero_seconds": 0.14266667,
+          "silent_frame_count_at_threshold": 812981,
+          "silent_frame_percent_at_threshold": 21.353598,
+          "longest_silence_seconds_at_threshold": 0.16814583,
+          "channels": [
+            {
+              "channel_index": 0,
+              "sample_peak_dbfs": -12.493874,
+              "rms_dbfs": -36.00503,
+              "dc_normalized": 4.9486e-06,
+              "absolute_dc_dbfs": -106.110402,
+              "full_scale_sample_count": 0,
+              "nonzero_sample_count": 3772254
+            },
+            {
+              "channel_index": 1,
+              "sample_peak_dbfs": -11.006847,
+              "rms_dbfs": -34.794082,
+              "dc_normalized": 5.7532e-06,
+              "absolute_dc_dbfs": -104.801794,
+              "full_scale_sample_count": 0,
+              "nonzero_sample_count": 3765963
+            }
+          ]
+        },
+        "warnings": [],
+        "perceptual_audio_review": false
+      },
+      "tools": [
+        {
+          "file": "inspect_media.py",
+          "bytes": 23011,
+          "sha256": "0312d0b9457bb50fa54b0a41d098cf3d3b3d0bea9fe79bc2e7c6404a3d0833e0"
+        },
+        {
+          "file": "assemble_candidate07_capture.py",
+          "bytes": 26199,
+          "sha256": "565201b47fd6d61d35b67ebe52785536848f193f925096756c60a8714b64cd6f"
+        },
+        {
+          "file": "assemble_candidate06_capture.py",
+          "bytes": 22470,
+          "sha256": "ebc3259e83cbe0886a42c61ee819d04b7c26ca926e18ddf250d0187baa1ef96a"
+        },
+        {
+          "file": "candidate07_legacy_motion.py",
+          "bytes": 10647,
+          "sha256": "68e3e1b9db5433df96274c6f17ee70093d2f17e715a9babbbe541d49af1234c6"
+        },
+        {
+          "file": "audit_gameplay_audio.py",
+          "bytes": 16284,
+          "sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d"
+        }
+      ]
+    },
+    {
+      "case": "c07_physicality",
+      "movie": {
+        "name": "ProjectONE-Candidate07-Physicality.mp4",
+        "bytes": 15221648,
+        "sha256": "8f52fa9cb189189ffce451d4ebcf843c73a5f86f9ad7db105bf8d2efbab1d0a9"
+      },
+      "url": "https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate07/ProjectONE-Candidate07-Physicality.mp4",
+      "inspection": "c07_physicality/inspection.json",
+      "assembly": "c07_physicality/assembly.json",
+      "source_audio_metrics": "c07_physicality/source_audio_metrics.json",
+      "source_capture": {
+        "frames": 2226,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "first_frame_audio_seconds": 0.0260083,
+        "last_frame_audio_seconds": 80.060016301,
+        "audio_duration_seconds": 80.42666666666666,
+        "audio_sample_frames": 3860480,
+        "actual_real_stop_tail_seconds": 0.4011995978653431,
+        "recorded_audio_after_last_callback_seconds": 0.36665036566665776,
+        "input_files": [
+          {
+            "file": "capture.json",
+            "sha256": "7c9a50cf7a58dc670e727629baf9b0a67a1bbe7e3d75a37e3574bfc4736860e0",
+            "bytes": 2563
+          },
+          {
+            "file": "frames.csv",
+            "sha256": "902435e3a77bb7549f221e18eeea7247c1a259974420d998a82b7c9bb9e2b75b",
+            "bytes": 254801
+          },
+          {
+            "file": "gameplay_master.wav",
+            "sha256": "0d95c5061778e7bd226e9fce8732d7a764cc5fcb4b99a0445dd0a36ad2cfcffa",
+            "bytes": 15441964
+          }
+        ],
+        "ordered_frame_identity_sha256": "00251d67c7a661cfeb636d0894adbcd8f95ca0dfaab4b3f0a3c3d5feac804f04",
+        "source_wav_layout": {
+          "header_block_align": 2,
+          "computed_frame_bytes": 4,
+          "unreal_block_align_quirk": true,
+          "pcm_bytes": 15441920,
+          "channels": 2,
+          "rate": 48000
+        },
+        "chapters": [],
+        "timebase_limit": "audio_seconds is screenshot callback platform time minus the CPU timestamp immediately after StartRecordingOutput; audio render scheduling offset is not measured",
+        "frame_treatment": "First actual image held from audio time zero; subsequent actual images held by original callback timestamps; last image held to unmodified WAV endpoint. Millisecond concat timebase, CFR30 samples may duplicate/drop captured images; no generated pixels, crop, overlays, motion interpolation or retiming to hide stalls.",
+        "audio_treatment": "AAC transcode of the original engine WAV on its original timeline; no replacement, padding, tempo change or synthetic silence. Codec/container endpoint quantization requires separate output probing. This does not establish timbre/localization approval."
+      },
+      "probe": {
+        "tool": "PyAV",
+        "version": "17.1.0",
+        "method": "Container and stream metadata only; no PyAV frame decode.",
+        "format": "mov,mp4,m4a,3gp,3g2,mj2",
+        "container_duration_seconds": 80.43333299999999,
+        "container_start_seconds": 0.0,
+        "streams": [
+          {
+            "index": 0,
+            "type": "video",
+            "codec": "h264",
+            "time_base": "1/15360",
+            "duration_ticks": 1235456,
+            "duration_seconds": 80.43333333333334,
+            "start_seconds": 0.0,
+            "declared_frames": 2413,
+            "width": 1600,
+            "height": 900,
+            "average_rate": "30",
+            "pixel_format": "yuvj420p"
+          },
+          {
+            "index": 1,
+            "type": "audio",
+            "codec": "aac",
+            "time_base": "1/48000",
+            "duration_ticks": 3860448,
+            "duration_seconds": 80.426,
+            "start_seconds": 0.0,
+            "declared_frames": 3771,
+            "sample_rate_hz": 48000,
+            "channels": 2,
+            "channel_layout": "stereo",
+            "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+          }
+        ]
+      },
+      "decode": {
+        "status": "PASS",
+        "exit_code": 0,
+        "elapsed_seconds": 0.656,
+        "ffmpeg": {
+          "file": "ffmpeg-win-x86_64-v7.1.exe",
+          "bytes": 87638016,
+          "sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3"
+        },
+        "terminal_progress_end": true,
+        "terminal_video_frames": 2413,
+        "terminal_output_seconds": 80.426667,
+        "scope": "Both mapped streams fully decoded to null; no seek, duration or frame limit. Video frame passthrough.",
+        "private_logs": [
+          "decode_command.private.json",
+          "decode_progress.private.log",
+          "decode_stderr.private.log"
+        ]
+      },
+      "source_audio": {
+        "status": "MEASURED",
+        "metrics_file": {
+          "file": "source_audio_metrics.json",
+          "bytes": 87706,
+          "sha256": "445865048d4d0e67ef2d0c912954336f0ae3e8c3b5c5ba22291681a3089dba70"
+        },
+        "format": {
+          "encoding": "integer PCM",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "bits_per_sample": 16,
+          "frame_count": 3860480,
+          "duration_seconds": 80.42666667
+        },
+        "overall": {
+          "duration_seconds": 80.42666667,
+          "frame_count": 3860480,
+          "channel_sample_count": 7720960,
+          "sample_peak_normalized": 0.1934509277,
+          "sample_peak_dbfs": -14.268584,
+          "rms_normalized": 0.0164960947,
+          "rms_dbfs": -35.652377,
+          "crest_factor_db": 21.383793,
+          "sample_peak_headroom_db": 14.268584,
+          "full_scale_sample_count": 0,
+          "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+          "nonzero_sample_count": 7668855,
+          "nonzero_sample_percent": 99.325149,
+          "exact_zero_frame_count": 3237,
+          "longest_exact_zero_seconds": 0.00010417,
+          "silent_frame_count_at_threshold": 716729,
+          "silent_frame_percent_at_threshold": 18.5658,
+          "longest_silence_seconds_at_threshold": 0.00366667,
+          "channels": [
+            {
+              "channel_index": 0,
+              "sample_peak_dbfs": -14.268584,
+              "rms_dbfs": -35.408584,
+              "dc_normalized": -2.513e-07,
+              "absolute_dc_dbfs": -131.995741,
+              "full_scale_sample_count": 0,
+              "nonzero_sample_count": 3837033
+            },
+            {
+              "channel_index": 1,
+              "sample_peak_dbfs": -14.348423,
+              "rms_dbfs": -35.910674,
+              "dc_normalized": -2.773e-07,
+              "absolute_dc_dbfs": -131.139643,
+              "full_scale_sample_count": 0,
+              "nonzero_sample_count": 3831822
+            }
+          ]
+        },
+        "warnings": [],
+        "perceptual_audio_review": false
+      },
+      "tools": [
+        {
+          "file": "inspect_media.py",
+          "bytes": 23011,
+          "sha256": "0312d0b9457bb50fa54b0a41d098cf3d3b3d0bea9fe79bc2e7c6404a3d0833e0"
+        },
+        {
+          "file": "assemble_candidate07_capture.py",
+          "bytes": 26199,
+          "sha256": "565201b47fd6d61d35b67ebe52785536848f193f925096756c60a8714b64cd6f"
+        },
+        {
+          "file": "assemble_candidate06_capture.py",
+          "bytes": 22470,
+          "sha256": "ebc3259e83cbe0886a42c61ee819d04b7c26ca926e18ddf250d0187baa1ef96a"
+        },
+        {
+          "file": "candidate07_legacy_motion.py",
+          "bytes": 10647,
+          "sha256": "68e3e1b9db5433df96274c6f17ee70093d2f17e715a9babbbe541d49af1234c6"
+        },
+        {
+          "file": "audit_gameplay_audio.py",
+          "bytes": 16284,
+          "sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d"
+        }
+      ]
+    },
+    {
+      "case": "c07_encounter",
+      "movie": {
+        "name": "ProjectONE-Candidate07-Encounter.mp4",
+        "bytes": 61099955,
+        "sha256": "4f528be9779522233b1876fca9114a06a6f3f6431e1ee9f6e2f0e9bd1bcd9220"
+      },
+      "url": "https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate07/ProjectONE-Candidate07-Encounter.mp4",
+      "inspection": "c07_encounter/inspection.json",
+      "assembly": "c07_encounter/assembly.json",
+      "source_audio_metrics": "c07_encounter/source_audio_metrics.json",
+      "source_capture": {
+        "frames": 2972,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "first_frame_audio_seconds": 0.0145742,
+        "last_frame_audio_seconds": 109.310324699,
+        "audio_duration_seconds": 109.71733333333333,
+        "audio_sample_frames": 5266432,
+        "actual_real_stop_tail_seconds": 0.4076012000441551,
+        "recorded_audio_after_last_callback_seconds": 0.407008634333323,
+        "input_files": [
+          {
+            "file": "capture.json",
+            "sha256": "03887c3ac7c1b19d9defdc2e1e6ad87a7ed13727e4447daa12fc95183bb6d2f3",
+            "bytes": 1894
+          },
+          {
+            "file": "frames.csv",
+            "sha256": "23f783ba93cedbe0637713629687488d37e48000b4fedfc77da34f71a0a75afd",
+            "bytes": 329690
+          },
+          {
+            "file": "gameplay_master.wav",
+            "sha256": "68082a06ba4765df2a5b25b016c179e0b8592f17035890c8cc78f8e2b9ab1abc",
+            "bytes": 21065772
+          }
+        ],
+        "ordered_frame_identity_sha256": "e3df327c598f24ce21201c95881d99bbe8a975b0e0c95e5737436d0f3e06b187",
+        "source_wav_layout": {
+          "header_block_align": 2,
+          "computed_frame_bytes": 4,
+          "unreal_block_align_quirk": true,
+          "pcm_bytes": 21065728,
+          "channels": 2,
+          "rate": 48000
+        },
+        "chapters": [],
+        "timebase_limit": "audio_seconds is screenshot callback platform time minus the CPU timestamp immediately after StartRecordingOutput; audio render scheduling offset is not measured",
+        "frame_treatment": "First actual image held from audio time zero; subsequent actual images held by original callback timestamps; last image held to unmodified WAV endpoint. Millisecond concat timebase, CFR30 samples may duplicate/drop captured images; no generated pixels, crop, overlays, motion interpolation or retiming to hide stalls.",
+        "audio_treatment": "AAC transcode of the original engine WAV on its original timeline; no replacement, padding, tempo change or synthetic silence. Codec/container endpoint quantization requires separate output probing. This does not establish timbre/localization approval."
+      },
+      "probe": {
+        "tool": "PyAV",
+        "version": "17.1.0",
+        "method": "Container and stream metadata only; no PyAV frame decode.",
+        "format": "mov,mp4,m4a,3gp,3g2,mj2",
+        "container_duration_seconds": 109.733333,
+        "container_start_seconds": 0.0,
+        "streams": [
+          {
+            "index": 0,
+            "type": "video",
+            "codec": "h264",
+            "time_base": "1/15360",
+            "duration_ticks": 1685504,
+            "duration_seconds": 109.73333333333333,
+            "start_seconds": 0.0,
+            "declared_frames": 3292,
+            "width": 1600,
+            "height": 900,
+            "average_rate": "30",
+            "pixel_format": "yuvj420p"
+          },
+          {
+            "index": 1,
+            "type": "audio",
+            "codec": "aac",
+            "time_base": "1/48000",
+            "duration_ticks": 5266416,
+            "duration_seconds": 109.717,
+            "start_seconds": 0.0,
+            "declared_frames": 5144,
+            "sample_rate_hz": 48000,
+            "channels": 2,
+            "channel_layout": "stereo",
+            "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+          }
+        ]
+      },
+      "decode": {
+        "status": "PASS",
+        "exit_code": 0,
+        "elapsed_seconds": 1.157,
+        "ffmpeg": {
+          "file": "ffmpeg-win-x86_64-v7.1.exe",
+          "bytes": 87638016,
+          "sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3"
+        },
+        "terminal_progress_end": true,
+        "terminal_video_frames": 3292,
+        "terminal_output_seconds": 109.717333,
+        "scope": "Both mapped streams fully decoded to null; no seek, duration or frame limit. Video frame passthrough.",
+        "private_logs": [
+          "decode_command.private.json",
+          "decode_progress.private.log",
+          "decode_stderr.private.log"
+        ]
+      },
+      "source_audio": {
+        "status": "MEASURED",
+        "metrics_file": {
+          "file": "source_audio_metrics.json",
+          "bytes": 109394,
+          "sha256": "adaca023a1913a3ddb1234f5aa775f38dd2ad87d4ec141a12f13aac791ca46df"
+        },
+        "format": {
+          "encoding": "integer PCM",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "bits_per_sample": 16,
+          "frame_count": 5266432,
+          "duration_seconds": 109.71733333
+        },
+        "overall": {
+          "duration_seconds": 109.71733333,
+          "frame_count": 5266432,
+          "channel_sample_count": 10532864,
+          "sample_peak_normalized": 0.2278442383,
+          "sample_peak_dbfs": -12.847239,
+          "rms_normalized": 0.0134470643,
+          "rms_dbfs": -37.42745,
+          "crest_factor_db": 24.580211,
+          "sample_peak_headroom_db": 12.847239,
+          "full_scale_sample_count": 0,
+          "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+          "nonzero_sample_count": 10461162,
+          "nonzero_sample_percent": 99.319254,
+          "exact_zero_frame_count": 1600,
+          "longest_exact_zero_seconds": 8.333e-05,
+          "silent_frame_count_at_threshold": 858369,
+          "silent_frame_percent_at_threshold": 16.298872,
+          "longest_silence_seconds_at_threshold": 0.00327083,
+          "channels": [
+            {
+              "channel_index": 0,
+              "sample_peak_dbfs": -13.10943,
+              "rms_dbfs": -37.334933,
+              "dc_normalized": -1.9595e-06,
+              "absolute_dc_dbfs": -114.157115,
+              "full_scale_sample_count": 0,
+              "nonzero_sample_count": 5233938
+            },
+            {
+              "channel_index": 1,
+              "sample_peak_dbfs": -12.847239,
+              "rms_dbfs": -37.521982,
+              "dc_normalized": -2.1215e-06,
+              "absolute_dc_dbfs": -113.467263,
+              "full_scale_sample_count": 0,
+              "nonzero_sample_count": 5227224
+            }
+          ]
+        },
+        "warnings": [],
+        "perceptual_audio_review": false
+      },
+      "tools": [
+        {
+          "file": "inspect_media.py",
+          "bytes": 23011,
+          "sha256": "0312d0b9457bb50fa54b0a41d098cf3d3b3d0bea9fe79bc2e7c6404a3d0833e0"
+        },
+        {
+          "file": "assemble_candidate07_capture.py",
+          "bytes": 26199,
+          "sha256": "565201b47fd6d61d35b67ebe52785536848f193f925096756c60a8714b64cd6f"
+        },
+        {
+          "file": "assemble_candidate06_capture.py",
+          "bytes": 22470,
+          "sha256": "ebc3259e83cbe0886a42c61ee819d04b7c26ca926e18ddf250d0187baa1ef96a"
+        },
+        {
+          "file": "candidate07_legacy_motion.py",
+          "bytes": 10647,
+          "sha256": "68e3e1b9db5433df96274c6f17ee70093d2f17e715a9babbbe541d49af1234c6"
+        },
+        {
+          "file": "audit_gameplay_audio.py",
+          "bytes": 16284,
+          "sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d"
+        }
+      ]
+    },
+    {
+      "case": "c07_portability",
+      "movie": {
+        "name": "ProjectONE-Candidate07-Portability.mp4",
+        "bytes": 5118419,
+        "sha256": "289b8c1f42457611ceba006a0b1c7884bae2200f9fdd7aa9508844d96f8de354"
+      },
+      "url": "https://github.com/laberteauxjacob-cpu/ProjectONE/releases/download/candidate07/ProjectONE-Candidate07-Portability.mp4",
+      "inspection": "c07_portability/inspection.json",
+      "assembly": "c07_portability/assembly.json",
+      "source_audio_metrics": "c07_portability/source_audio_metrics.json",
+      "source_capture": {
+        "frames": 732,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "first_frame_audio_seconds": 0.178909604,
+        "last_frame_audio_seconds": 28.640418801,
+        "audio_duration_seconds": 28.906666666666666,
+        "audio_sample_frames": 1387520,
+        "actual_real_stop_tail_seconds": 0.4078307971358299,
+        "recorded_audio_after_last_callback_seconds": 0.26624786566666714,
+        "input_files": [
+          {
+            "file": "capture.json",
+            "sha256": "9f31e1f14ba8eb9c1b389e57ce9dafbdaa20aec28d1cdeec437ef3fa55f8f313",
+            "bytes": 3412
+          },
+          {
+            "file": "frames.csv",
+            "sha256": "5beb7ba5fa9d2bf8214b460054d36b0e9708dbae25a64140f1036b279d8c596f",
+            "bytes": 76160
+          },
+          {
+            "file": "gameplay_master.wav",
+            "sha256": "3685cddccebd9ee5c572b531bcb107dac8546f4be5452a416c527c7d7f37ec8c",
+            "bytes": 5550124
+          }
+        ],
+        "ordered_frame_identity_sha256": "ea0fc602efb1083a657d15e8f05d0d8d11f9b6dcc827c33dfa1773f0c75cf0e3",
+        "source_wav_layout": {
+          "header_block_align": 2,
+          "computed_frame_bytes": 4,
+          "unreal_block_align_quirk": true,
+          "pcm_bytes": 5550080,
+          "channels": 2,
+          "rate": 48000
+        },
+        "chapters": [],
+        "timebase_limit": "audio_seconds is screenshot callback platform time minus the CPU timestamp immediately after StartRecordingOutput; audio render scheduling offset is not measured",
+        "frame_treatment": "First actual image held from audio time zero; subsequent actual images held by original callback timestamps; last image held to unmodified WAV endpoint. Millisecond concat timebase, CFR30 samples may duplicate/drop captured images; no generated pixels, crop, overlays, motion interpolation or retiming to hide stalls.",
+        "audio_treatment": "AAC transcode of the original engine WAV on its original timeline; no replacement, padding, tempo change or synthetic silence. Codec/container endpoint quantization requires separate output probing. This does not establish timbre/localization approval."
+      },
+      "probe": {
+        "tool": "PyAV",
+        "version": "17.1.0",
+        "method": "Container and stream metadata only; no PyAV frame decode.",
+        "format": "mov,mp4,m4a,3gp,3g2,mj2",
+        "container_duration_seconds": 28.906,
+        "container_start_seconds": 0.0,
+        "streams": [
+          {
+            "index": 0,
+            "type": "video",
+            "codec": "h264",
+            "time_base": "1/15360",
+            "duration_ticks": 443904,
+            "duration_seconds": 28.9,
+            "start_seconds": 0.0,
+            "declared_frames": 867,
+            "width": 1600,
+            "height": 900,
+            "average_rate": "30",
+            "pixel_format": "yuvj420p"
+          },
+          {
+            "index": 1,
+            "type": "audio",
+            "codec": "aac",
+            "time_base": "1/48000",
+            "duration_ticks": 1387488,
+            "duration_seconds": 28.906,
+            "start_seconds": 0.0,
+            "declared_frames": 1356,
+            "sample_rate_hz": 48000,
+            "channels": 2,
+            "channel_layout": "stereo",
+            "declared_frames_limit": "AAC coded-frame metadata; not decoded PCM sample frames."
+          }
+        ]
+      },
+      "decode": {
+        "status": "PASS",
+        "exit_code": 0,
+        "elapsed_seconds": 0.25,
+        "ffmpeg": {
+          "file": "ffmpeg-win-x86_64-v7.1.exe",
+          "bytes": 87638016,
+          "sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3"
+        },
+        "terminal_progress_end": true,
+        "terminal_video_frames": 867,
+        "terminal_output_seconds": 28.9,
+        "scope": "Both mapped streams fully decoded to null; no seek, duration or frame limit. Video frame passthrough.",
+        "private_logs": [
+          "decode_command.private.json",
+          "decode_progress.private.log",
+          "decode_stderr.private.log"
+        ]
+      },
+      "source_audio": {
+        "status": "MEASURED",
+        "metrics_file": {
+          "file": "source_audio_metrics.json",
+          "bytes": 31017,
+          "sha256": "d547fdfb11434d3e773fe1d269a67c90507d3a7daa601b3e76c0f4d80d2fa78a"
+        },
+        "format": {
+          "encoding": "integer PCM",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "bits_per_sample": 16,
+          "frame_count": 1387520,
+          "duration_seconds": 28.90666667
+        },
+        "overall": {
+          "duration_seconds": 28.90666667,
+          "frame_count": 1387520,
+          "channel_sample_count": 2775040,
+          "sample_peak_normalized": 0.1080932617,
+          "sample_peak_dbfs": -19.324028,
+          "rms_normalized": 0.0101446426,
+          "rms_dbfs": -39.875265,
+          "crest_factor_db": 20.551237,
+          "sample_peak_headroom_db": 19.324028,
+          "full_scale_sample_count": 0,
+          "near_full_scale_samples_above_minus_0_1_dbfs": 0,
+          "nonzero_sample_count": 2738762,
+          "nonzero_sample_percent": 98.692704,
+          "exact_zero_frame_count": 7551,
+          "longest_exact_zero_seconds": 0.14266667,
+          "silent_frame_count_at_threshold": 301559,
+          "silent_frame_percent_at_threshold": 21.733669,
+          "longest_silence_seconds_at_threshold": 0.1548125,
+          "channels": [
+            {
+              "channel_index": 0,
+              "sample_peak_dbfs": -19.324028,
+              "rms_dbfs": -39.860647,
+              "dc_normalized": 1.5969e-06,
+              "absolute_dc_dbfs": -115.934334,
+              "full_scale_sample_count": 0,
+              "nonzero_sample_count": 1369697
+            },
+            {
+              "channel_index": 1,
+              "sample_peak_dbfs": -19.363353,
+              "rms_dbfs": -39.889932,
+              "dc_normalized": 1.5214e-06,
+              "absolute_dc_dbfs": -116.355177,
+              "full_scale_sample_count": 0,
+              "nonzero_sample_count": 1369065
+            }
+          ]
+        },
+        "warnings": [],
+        "perceptual_audio_review": false
+      },
+      "tools": [
+        {
+          "file": "inspect_media.py",
+          "bytes": 23011,
+          "sha256": "0312d0b9457bb50fa54b0a41d098cf3d3b3d0bea9fe79bc2e7c6404a3d0833e0"
+        },
+        {
+          "file": "assemble_candidate07_capture.py",
+          "bytes": 26199,
+          "sha256": "565201b47fd6d61d35b67ebe52785536848f193f925096756c60a8714b64cd6f"
+        },
+        {
+          "file": "assemble_candidate06_capture.py",
+          "bytes": 22470,
+          "sha256": "ebc3259e83cbe0886a42c61ee819d04b7c26ca926e18ddf250d0187baa1ef96a"
+        },
+        {
+          "file": "candidate07_legacy_motion.py",
+          "bytes": 10647,
+          "sha256": "68e3e1b9db5433df96274c6f17ee70093d2f17e715a9babbbe541d49af1234c6"
+        },
+        {
+          "file": "audit_gameplay_audio.py",
+          "bytes": 16284,
+          "sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d"
+        }
+      ]
+    }
+  ],
+  "publication_verified": false,
+  "limits": [
+    "Actual source frames/master WAV, original timing, codec metadata and full decode are bound by each inspection.",
+    "No continuous playback, perceptual audio audition, native-input or art approval is inferred.",
+    "URLs are intended release destinations, not verified downloads. Separate native presentation/audio comparisons keep their own source and unknown-stop-time limits."
+  ]
+}

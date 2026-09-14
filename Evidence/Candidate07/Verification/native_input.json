@@ -1,0 +1,147 @@
+{
+  "schema": "one07.native_input_review.v1",
+  "status": "BLOCKED_NATIVE_CAPTURE",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "reviewed_utc": "2026-09-14T10:11:13.526652+00:00",
+  "native_pass_eligible": false,
+  "native_actions": [],
+  "native_action_count": 0,
+  "input_trace_events": [],
+  "usable_capture_count": 0,
+  "usable_image_obtained": false,
+  "normal_quit_verified": false,
+  "requested_viewport": [
+    1600,
+    900
+  ],
+  "actual_viewport_visually_verified": false,
+  "map": "/Game/ONE/Maps/Containment",
+  "sandbox_launch": true,
+  "launch_utc": "2026-09-14T10:06:57.7710214Z",
+  "termination_utc": "2026-09-14T10:09:07.4787977Z",
+  "termination_kind": "OWNER_TEST_PROCESS_TERMINATED_AFTER_CAPTURE_FAILURE",
+  "runtime_files": [
+    {
+      "path": "ProjectONE.exe",
+      "bytes": 164864,
+      "sha256": "803a1d1f821f6c67af62c0bd2f64d6e3fc331fadadd73a7a6f9a47b2755053e7"
+    },
+    {
+      "path": "ProjectONE/Binaries/Win64/ProjectONE.exe",
+      "bytes": 293055488,
+      "sha256": "e49b752c10b013b4e3cd7eea1d3898c515d2afa39691163c33e86eb325f62975"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.pak",
+      "bytes": 10737169,
+      "sha256": "ab9a8f35fad2b42eda1e59e15408f2783b9e88ba2cc05ea50c9e61871e21214f"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.ucas",
+      "bytes": 226088848,
+      "sha256": "2a17a21b6fc427756ba5ae1d53d286bef0ad04c1bf0d3e4f3d817ffd3395e4b6"
+    },
+    {
+      "path": "ProjectONE/Content/Paks/ProjectONE-Windows.utoc",
+      "bytes": 277601,
+      "sha256": "054ccd0af4a66c3154b6054a0ac52d7e1731e7f597db3def57b6152274e14f23"
+    },
+    {
+      "path": "Engine/Extras/Redist/en-us/vc_redist.x64.exe",
+      "bytes": 25646504,
+      "sha256": "d72f9f1c8375c178818f6666259ba10b4aa08e0be0c2df79b12cf168a4a2e08e"
+    }
+  ],
+  "runtime_identity_unchanged_after_exit": true,
+  "source_verification_before_hashing": {
+    "head": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+    "working_tree_clean": true,
+    "index_clean": true,
+    "verified_utc": "2026-09-14T10:11:12.338380+00:00"
+  },
+  "source_verification_after_exit": {
+    "head": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+    "working_tree_clean": true,
+    "index_clean": true,
+    "verified_utc": "2026-09-14T10:11:13.510942+00:00"
+  },
+  "build_proof": {
+    "path": "runtime_build.json",
+    "bytes": 29215,
+    "sha256": "07ee50383fd86373d8f47589dc982dbe98b7d26390b0dfc60e728b46fbe9140d"
+  },
+  "engine_log": {
+    "path": "engine.log",
+    "bytes": 86812,
+    "sha256": "9e35343955815035fff34712e1dabd4fd33c39405b7b0273e0e185e23335d4b9"
+  },
+  "raw_receipts": {
+    "launch.private.json": {
+      "path": "launch.private.json",
+      "bytes": 697,
+      "sha256": "c54ef79b040663ea5401f652685396f87ecca7bf48ba9efc5741e744ec2e7ee5"
+    },
+    "termination.private.json": {
+      "path": "termination.private.json",
+      "bytes": 244,
+      "sha256": "1b94beb60a8c12d16b7fb5b90bb98a4c4268bad91ad10dc35c67b4ecb095fccd"
+    },
+    "runtime_before.json": {
+      "path": "runtime_before.json",
+      "bytes": 1045,
+      "sha256": "55b3c484be6f1b7438fcbb3fcdf978b80b5437f131ef060a815e9b059031f9d2"
+    },
+    "runtime_after.json": {
+      "path": "runtime_after.json",
+      "bytes": 1404,
+      "sha256": "94e6883a4f21d22534355e66d9faa9196eb810e33140642c7895fe84a655b59c"
+    },
+    "console.private.log": {
+      "path": "console.private.log",
+      "bytes": 13314,
+      "sha256": "b69c290dd9ed021deea5142b01df99e75696ba86add63ac016149dfb5ccc9701"
+    }
+  },
+  "separate_release_audit_at_launch": {
+    "status": "FINDINGS",
+    "sha256": "c267d85c23b119c7efa2a1249b736ca131a58d7de3692f80ee879eba1ba77b58"
+  },
+  "capture_attempts": [
+    {
+      "attempt": 1,
+      "stage": "Window selection/activation/capture",
+      "error": "GetCursorPos: Access denied",
+      "hresult": "0x80070005",
+      "usable_image": false,
+      "evidence": "Owner actual tool-console report"
+    },
+    {
+      "attempt": 2,
+      "stage": "One fresh-selection retry",
+      "error": "IGraphicsCaptureItemInterop.CreateForMonitor: cannot capture monitor",
+      "hresult": "0x80070057",
+      "usable_image": false,
+      "evidence": "Owner actual tool-console report"
+    }
+  ],
+  "observations": [
+    "The owner identified the exact launched game window through window metadata before capture failed.",
+    "The actual engine log confirms the requested sandbox map initialized.",
+    "No usable native image was obtained and no gameplay input action was sent.",
+    "Six post-termination payload identities match the build and prelaunch receipts; the exact source checkout is clean."
+  ],
+  "limits": [
+    "This attempt is blocked, not a limited native pass. Zero gameplay input actions and zero usable captured images are recorded.",
+    "Window identification and the two capture errors are the owner agent's actual tool-console observations supplied to this reviewer. No separate native screenshot or capture-error file exists; none is invented.",
+    "The engine log verifies sandbox map initialization, not a visually observed game state, usable viewport, accepted controls, animation, performance or audio quality.",
+    "Requested 1600x900 window settings were not confirmed through a usable image.",
+    "The owner terminated only its test process after verifying its executable identity and start time. The termination receipt is retained; normal in-game Quit was not verified.",
+    "Build/runtime identity verification remains separate from native capture capability, packaged automation, the release audit and publication. The separate release audit was FINDINGS at launch; no later audit result is inferred here.",
+    "This review launched no game, retried no desktop capture and sent no native input. It performed read-only source checks and exact post-exit runtime hashing."
+  ],
+  "readme": {
+    "path": "native_review.md",
+    "bytes": 1497,
+    "sha256": "61d28cc770e886bbd85b56a04e442fd8959a620916aead4042a383cd9700f430"
+  }
+}

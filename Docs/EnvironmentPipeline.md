@@ -91,7 +91,9 @@ and zero primitive shapes. It fails explicitly if the full-editor subsystem is
 unavailable. Original FBX axes remain `force_front_x_axis=False`; rebuilding
 collision prevents older orientations from surviving future reimports.
 
-Stage D rendered physicality gates remain pending. Successful hull readback and
+At this historical Stage D checkpoint, rendered physicality gates remained
+pending; current results are in the [Candidate07 pass](Passes/Candidate07.md).
+Successful hull readback and
 headless navigation do not establish natural corpse settling, readable pools,
 all detached-part contacts or user acceptance. Agent-run captures and automation
 remain distinct from the user's own playtest; no final user playtest pass is

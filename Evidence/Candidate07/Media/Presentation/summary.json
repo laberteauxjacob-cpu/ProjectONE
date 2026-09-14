@@ -1,0 +1,1270 @@
+{
+  "schema": 1,
+  "status": "MEASURED",
+  "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+  "source_state": "exact-commit",
+  "generated_utc": "2026-09-14T10:10:41.589039+00:00",
+  "tools": [
+    {
+      "file": "analyze_candidate07_audio.py",
+      "bytes": 18215,
+      "sha256": "c8232611261eea36b548d403a84c9182a9547e7b6dddf8df5dc5b7f1c54f5597"
+    },
+    {
+      "file": "assemble_candidate07_capture.py",
+      "bytes": 26547,
+      "sha256": "b0709cc42b7e863d60b3c7f05f2a032e952f8fc433f6e5eb46615f24937e2e98"
+    },
+    {
+      "file": "assemble_candidate06_capture.py",
+      "bytes": 22820,
+      "sha256": "ca69dbdcf512e0f86b5e2903ddd9c78fc69c6638664054ff52dddd87b1872c4e"
+    },
+    {
+      "file": "audit_gameplay_audio.py",
+      "bytes": 16284,
+      "sha256": "701e6d880fda76c4773e93393d6247bde708d1b360479e91157080e14f27800d"
+    },
+    {
+      "file": "candidate07_presentation_capture.py",
+      "bytes": 11627,
+      "sha256": "a9ad868c832bab890e93f1833941f1eb0894ccdf74299a430816189b5c5855a2"
+    },
+    {
+      "file": "candidate07_legacy_motion.py",
+      "bytes": 10766,
+      "sha256": "f7e8e97d3eecb527288fd60a351e733ab3a09417ccd3c1f1436eb0150c2193f4"
+    }
+  ],
+  "current_report": {
+    "file": "current_audio.json",
+    "bytes": 411501,
+    "sha256": "9ad5b385059bb2465cfeb70195d3e43b85df5aaa74e90fa66d3dbf37be775c5d"
+  },
+  "reference_report": {
+    "file": "reference_audio.json",
+    "bytes": 405586,
+    "sha256": "c72b51d0592ff696f3d027177f73d5c56c77d0d2718e4f615d66c362353edfd3"
+  },
+  "perceptual_audio_review": false,
+  "encoded_or_decoded_movie": false,
+  "release_verified": false,
+  "comparison": {
+    "status": "PCM_SEGMENTS_EXACT",
+    "output": {
+      "file": "reference_then_current.wav",
+      "bytes": 73699372,
+      "sha256": "bb70e7daf17978ad77352403c762332d95b5b2eebccdb648b7100578a4321859"
+    },
+    "segments": [
+      {
+        "label": "reference",
+        "source_commit": "c2c422012f4f219fb5e63ac24294a6ba8428f999",
+        "source_wav_sha256": "cfced3491f38644b85f3f20de665856c5a87fd442d5f2a76b78801947c96db0a",
+        "pcm_sha256": "b5e9e207414a4617cb24edc97944d9b7faf9e0c8d6e24ac314dc6a78866c378a",
+        "sample_frames": 9210880,
+        "comparison_start_frame": 0,
+        "comparison_end_frame_exclusive": 9210880,
+        "comparison_start_seconds": 0.0,
+        "comparison_end_seconds": 191.89333333333335,
+        "source_start_seconds": 0,
+        "source_end_seconds": 191.89333333333335,
+        "phases": [
+          {
+            "name": "0: QUIET FACILITY / ORIGINAL SPATIAL AMBIENCE / ORDINARY HUD",
+            "source_start_seconds": 0,
+            "source_end_seconds": 8.036533,
+            "comparison_start_seconds": 0.0,
+            "comparison_end_seconds": 8.036533
+          },
+          {
+            "name": "1: DISCLOSED SANDBOX +10000 POINTS",
+            "source_start_seconds": 8.036533,
+            "source_end_seconds": 8.180615,
+            "comparison_start_seconds": 8.036533,
+            "comparison_end_seconds": 8.180615
+          },
+          {
+            "name": "2: RELEASED T / SEPARATE INPUT FRAME",
+            "source_start_seconds": 8.180615,
+            "source_end_seconds": 8.397236,
+            "comparison_start_seconds": 8.180615,
+            "comparison_end_seconds": 8.397236
+          },
+          {
+            "name": "3: DISCLOSED SANDBOX +10000 POINTS",
+            "source_start_seconds": 8.397236,
+            "source_end_seconds": 8.579246,
+            "comparison_start_seconds": 8.397236,
+            "comparison_end_seconds": 8.579246
+          },
+          {
+            "name": "5: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 8.579246,
+            "source_end_seconds": 14.578601,
+            "comparison_start_seconds": 8.579246,
+            "comparison_end_seconds": 14.578601
+          },
+          {
+            "name": "6: COMMITTED MAGAZINE / SHIFT AND INVALID FIRE / RELEASE WITHOUT A QUEUED SHOT",
+            "source_start_seconds": 14.578601,
+            "source_end_seconds": 18.091733,
+            "comparison_start_seconds": 14.578601,
+            "comparison_end_seconds": 18.091733
+          },
+          {
+            "name": "7: DISCLOSED SANDBOX NEXT-ROLL FAMILY",
+            "source_start_seconds": 18.091733,
+            "source_end_seconds": 18.273762,
+            "comparison_start_seconds": 18.091733,
+            "comparison_end_seconds": 18.273762
+          },
+          {
+            "name": "8: WASD THROUGH CENTER AISLE TO MYSTERY BOX",
+            "source_start_seconds": 18.273762,
+            "source_end_seconds": 22.971968,
+            "comparison_start_seconds": 18.273762,
+            "comparison_end_seconds": 22.971968
+          },
+          {
+            "name": "9: HOLD F / PAY 950 / OPEN AND CYCLE",
+            "source_start_seconds": 22.971968,
+            "source_end_seconds": 23.576781,
+            "comparison_start_seconds": 22.971968,
+            "comparison_end_seconds": 23.576781
+          },
+          {
+            "name": "10: ACTUAL BOX PREVIEW CYCLE / WAIT FOR REWARD",
+            "source_start_seconds": 23.576781,
+            "source_end_seconds": 28.570701,
+            "comparison_start_seconds": 23.576781,
+            "comparison_end_seconds": 28.570701
+          },
+          {
+            "name": "11: READY REWARD WAITS FOR DELIBERATE COLLECTION",
+            "source_start_seconds": 28.570701,
+            "source_end_seconds": 29.881164,
+            "comparison_start_seconds": 28.570701,
+            "comparison_end_seconds": 29.881164
+          },
+          {
+            "name": "12: F RELEASED THEN HELD AGAIN / COLLECT BOX REWARD",
+            "source_start_seconds": 29.881164,
+            "source_end_seconds": 30.502806,
+            "comparison_start_seconds": 29.881164,
+            "comparison_end_seconds": 30.502806
+          },
+          {
+            "name": "13: ACTUAL COLLECTION AND EQUIP",
+            "source_start_seconds": 30.502806,
+            "source_end_seconds": 31.506213,
+            "comparison_start_seconds": 30.502806,
+            "comparison_end_seconds": 31.506213
+          },
+          {
+            "name": "16: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 31.506213,
+            "source_end_seconds": 37.508625,
+            "comparison_start_seconds": 31.506213,
+            "comparison_end_seconds": 37.508625
+          },
+          {
+            "name": "17: COMMITTED MAGAZINE / SHIFT AND INVALID FIRE / RELEASE WITHOUT A QUEUED SHOT",
+            "source_start_seconds": 37.508625,
+            "source_end_seconds": 41.026976,
+            "comparison_start_seconds": 37.508625,
+            "comparison_end_seconds": 41.026976
+          },
+          {
+            "name": "18: M4A1 / BASE AUTOMATIC FIRE AND MAGAZINE RELOAD",
+            "source_start_seconds": 41.026976,
+            "source_end_seconds": 43.450933,
+            "comparison_start_seconds": 41.026976,
+            "comparison_end_seconds": 43.450933
+          },
+          {
+            "name": "19: COMMITTED RIFLE RELOAD / SHIFT REMAINS HELD",
+            "source_start_seconds": 43.450933,
+            "source_end_seconds": 46.966486,
+            "comparison_start_seconds": 43.450933,
+            "comparison_end_seconds": 46.966486
+          },
+          {
+            "name": "20: F7 / DIM ARENA / COMPLETE PACK-A-PUNCH LIGHTING CYCLE",
+            "source_start_seconds": 46.966486,
+            "source_end_seconds": 47.110773,
+            "comparison_start_seconds": 46.966486,
+            "comparison_end_seconds": 47.110773
+          },
+          {
+            "name": "21: WASD THROUGH CENTER AISLE TO PACK-A-PUNCH",
+            "source_start_seconds": 47.110773,
+            "source_end_seconds": 51.61403,
+            "comparison_start_seconds": 47.110773,
+            "comparison_end_seconds": 51.61403
+          },
+          {
+            "name": "22: TAP F / ACCEPTED TRANSFER / PHYSICAL HANDOFF / PAY 5000",
+            "source_start_seconds": 51.61403,
+            "source_end_seconds": 51.774363,
+            "comparison_start_seconds": 51.61403,
+            "comparison_end_seconds": 51.774363
+          },
+          {
+            "name": "24: REMAINING HANDOFF / RETURN MOVEMENT CONTROL",
+            "source_start_seconds": 51.774363,
+            "source_end_seconds": 52.065794,
+            "comparison_start_seconds": 51.774363,
+            "comparison_end_seconds": 52.065794
+          },
+          {
+            "name": "25: WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING",
+            "source_start_seconds": 52.065794,
+            "source_end_seconds": 53.111948,
+            "comparison_start_seconds": 52.065794,
+            "comparison_end_seconds": 53.111948
+          },
+          {
+            "name": "26: DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT",
+            "source_start_seconds": 53.111948,
+            "source_end_seconds": 53.291979,
+            "comparison_start_seconds": 53.111948,
+            "comparison_end_seconds": 53.291979
+          },
+          {
+            "name": "27: FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING",
+            "source_start_seconds": 53.291979,
+            "source_end_seconds": 57.798985,
+            "comparison_start_seconds": 53.291979,
+            "comparison_end_seconds": 57.798985
+          },
+          {
+            "name": "28: NINE-SECOND PROCESS / PHYSICAL OUTPUT",
+            "source_start_seconds": 57.798985,
+            "source_end_seconds": 60.602426,
+            "comparison_start_seconds": 57.798985,
+            "comparison_end_seconds": 60.602426
+          },
+          {
+            "name": "29: READY UPGRADE / FIFTEEN-SECOND RETURN DEADLINE WHILE AWAY",
+            "source_start_seconds": 60.602426,
+            "source_end_seconds": 61.905571,
+            "comparison_start_seconds": 60.602426,
+            "comparison_end_seconds": 61.905571
+          },
+          {
+            "name": "30: RETURN TO OUTPUT CONTACT POSITION",
+            "source_start_seconds": 61.905571,
+            "source_end_seconds": 65.470829,
+            "comparison_start_seconds": 61.905571,
+            "comparison_end_seconds": 65.470829
+          },
+          {
+            "name": "31: AUTOMATIC SAME-INSTANCE RETURN / NO F REQUIRED",
+            "source_start_seconds": 65.470829,
+            "source_end_seconds": 65.508755,
+            "comparison_start_seconds": 65.470829,
+            "comparison_end_seconds": 65.508755
+          },
+          {
+            "name": "32: HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP",
+            "source_start_seconds": 65.508755,
+            "source_end_seconds": 66.528334,
+            "comparison_start_seconds": 65.508755,
+            "comparison_end_seconds": 66.528334
+          },
+          {
+            "name": "34: F7 / BRIGHT ARENA / READABLE WEAPON MECHANICS",
+            "source_start_seconds": 66.528334,
+            "source_end_seconds": 66.680519,
+            "comparison_start_seconds": 66.528334,
+            "comparison_end_seconds": 66.680519
+          },
+          {
+            "name": "35: OVERCURRENT / ACTUAL UPGRADED ASSEMBLY AND FIRE",
+            "source_start_seconds": 66.680519,
+            "source_end_seconds": 66.718752,
+            "comparison_start_seconds": 66.680519,
+            "comparison_end_seconds": 66.718752
+          },
+          {
+            "name": "36: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 66.718752,
+            "source_end_seconds": 72.73677,
+            "comparison_start_seconds": 66.718752,
+            "comparison_end_seconds": 72.73677
+          },
+          {
+            "name": "37: COMMITTED MAGAZINE / SHIFT AND INVALID FIRE / RELEASE WITHOUT A QUEUED SHOT",
+            "source_start_seconds": 72.73677,
+            "source_end_seconds": 76.222808,
+            "comparison_start_seconds": 72.73677,
+            "comparison_end_seconds": 76.222808
+          },
+          {
+            "name": "38: OVERCURRENT / ACTUAL UPGRADED ASSEMBLY AND FIRE",
+            "source_start_seconds": 76.222808,
+            "source_end_seconds": 78.646264,
+            "comparison_start_seconds": 76.222808,
+            "comparison_end_seconds": 78.646264
+          },
+          {
+            "name": "39: COMMITTED RIFLE RELOAD / SHIFT REMAINS HELD",
+            "source_start_seconds": 78.646264,
+            "source_end_seconds": 82.157839,
+            "comparison_start_seconds": 78.646264,
+            "comparison_end_seconds": 82.157839
+          },
+          {
+            "name": "40: SELECT ORIGINAL PISTOL INSTANCE",
+            "source_start_seconds": 82.157839,
+            "source_end_seconds": 82.532502,
+            "comparison_start_seconds": 82.157839,
+            "comparison_end_seconds": 82.532502
+          },
+          {
+            "name": "41: RESTORE PISTOL MAGAZINE THROUGH ACTUAL RELOAD",
+            "source_start_seconds": 82.532502,
+            "source_end_seconds": 87.537337,
+            "comparison_start_seconds": 82.532502,
+            "comparison_end_seconds": 87.537337
+          },
+          {
+            "name": "42: WASD THROUGH CENTER AISLE TO PACK-A-PUNCH",
+            "source_start_seconds": 87.537337,
+            "source_end_seconds": 91.847785,
+            "comparison_start_seconds": 87.537337,
+            "comparison_end_seconds": 91.847785
+          },
+          {
+            "name": "43: TAP F / ACCEPTED TRANSFER / PHYSICAL HANDOFF / PAY 5000",
+            "source_start_seconds": 91.847785,
+            "source_end_seconds": 91.992573,
+            "comparison_start_seconds": 91.847785,
+            "comparison_end_seconds": 91.992573
+          },
+          {
+            "name": "44: HANDOFF ACCEPTANCE / RESERVED INSTANCE",
+            "source_start_seconds": 91.992573,
+            "source_end_seconds": 92.029406,
+            "comparison_start_seconds": 91.992573,
+            "comparison_end_seconds": 92.029406
+          },
+          {
+            "name": "45: REMAINING HANDOFF / RETURN MOVEMENT CONTROL",
+            "source_start_seconds": 92.029406,
+            "source_end_seconds": 92.323949,
+            "comparison_start_seconds": 92.029406,
+            "comparison_end_seconds": 92.323949
+          },
+          {
+            "name": "46: WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING",
+            "source_start_seconds": 92.323949,
+            "source_end_seconds": 93.33677,
+            "comparison_start_seconds": 92.323949,
+            "comparison_end_seconds": 93.33677
+          },
+          {
+            "name": "47: DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT",
+            "source_start_seconds": 93.33677,
+            "source_end_seconds": 93.525526,
+            "comparison_start_seconds": 93.33677,
+            "comparison_end_seconds": 93.525526
+          },
+          {
+            "name": "48: FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING",
+            "source_start_seconds": 93.525526,
+            "source_end_seconds": 98.00769,
+            "comparison_start_seconds": 93.525526,
+            "comparison_end_seconds": 98.00769
+          },
+          {
+            "name": "49: NINE-SECOND PROCESS / PHYSICAL OUTPUT",
+            "source_start_seconds": 98.00769,
+            "source_end_seconds": 100.860777,
+            "comparison_start_seconds": 98.00769,
+            "comparison_end_seconds": 100.860777
+          },
+          {
+            "name": "50: READY UPGRADE / FIFTEEN-SECOND RETURN DEADLINE WHILE AWAY",
+            "source_start_seconds": 100.860777,
+            "source_end_seconds": 102.160411,
+            "comparison_start_seconds": 100.860777,
+            "comparison_end_seconds": 102.160411
+          },
+          {
+            "name": "51: RETURN TO OUTPUT CONTACT POSITION",
+            "source_start_seconds": 102.160411,
+            "source_end_seconds": 105.701191,
+            "comparison_start_seconds": 102.160411,
+            "comparison_end_seconds": 105.701191
+          },
+          {
+            "name": "53: HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP",
+            "source_start_seconds": 105.701191,
+            "source_end_seconds": 106.706589,
+            "comparison_start_seconds": 105.701191,
+            "comparison_end_seconds": 106.706589
+          },
+          {
+            "name": "54: SELECT RETURNED UPGRADED SLOT",
+            "source_start_seconds": 106.706589,
+            "source_end_seconds": 106.743873,
+            "comparison_start_seconds": 106.706589,
+            "comparison_end_seconds": 106.743873
+          },
+          {
+            "name": "56: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 106.743873,
+            "source_end_seconds": 112.747275,
+            "comparison_start_seconds": 106.743873,
+            "comparison_end_seconds": 112.747275
+          },
+          {
+            "name": "57: COMMITTED MAGAZINE / SHIFT AND INVALID FIRE / RELEASE WITHOUT A QUEUED SHOT",
+            "source_start_seconds": 112.747275,
+            "source_end_seconds": 116.262815,
+            "comparison_start_seconds": 112.747275,
+            "comparison_end_seconds": 116.262815
+          },
+          {
+            "name": "58: SELECT AVAILABLE SLOT FOR NEXT BOX ACQUISITION",
+            "source_start_seconds": 116.262815,
+            "source_end_seconds": 116.633449,
+            "comparison_start_seconds": 116.262815,
+            "comparison_end_seconds": 116.633449
+          },
+          {
+            "name": "59: F7 / DIM ARENA / COMPLETE MYSTERY BOX LIGHTING CYCLE",
+            "source_start_seconds": 116.633449,
+            "source_end_seconds": 116.820007,
+            "comparison_start_seconds": 116.633449,
+            "comparison_end_seconds": 116.820007
+          },
+          {
+            "name": "60: DISCLOSED SANDBOX NEXT-ROLL FAMILY",
+            "source_start_seconds": 116.820007,
+            "source_end_seconds": 116.967723,
+            "comparison_start_seconds": 116.820007,
+            "comparison_end_seconds": 116.967723
+          },
+          {
+            "name": "61: WASD THROUGH CENTER AISLE TO MYSTERY BOX",
+            "source_start_seconds": 116.967723,
+            "source_end_seconds": 121.438688,
+            "comparison_start_seconds": 116.967723,
+            "comparison_end_seconds": 121.438688
+          },
+          {
+            "name": "62: HOLD F / PAY 950 / OPEN AND CYCLE",
+            "source_start_seconds": 121.438688,
+            "source_end_seconds": 122.05532,
+            "comparison_start_seconds": 121.438688,
+            "comparison_end_seconds": 122.05532
+          },
+          {
+            "name": "63: ACTUAL BOX PREVIEW CYCLE / WAIT FOR REWARD",
+            "source_start_seconds": 122.05532,
+            "source_end_seconds": 127.070991,
+            "comparison_start_seconds": 122.05532,
+            "comparison_end_seconds": 127.070991
+          },
+          {
+            "name": "64: READY REWARD WAITS FOR DELIBERATE COLLECTION",
+            "source_start_seconds": 127.070991,
+            "source_end_seconds": 128.35613,
+            "comparison_start_seconds": 127.070991,
+            "comparison_end_seconds": 128.35613
+          },
+          {
+            "name": "65: F RELEASED THEN HELD AGAIN / COLLECT BOX REWARD",
+            "source_start_seconds": 128.35613,
+            "source_end_seconds": 128.969023,
+            "comparison_start_seconds": 128.35613,
+            "comparison_end_seconds": 128.969023
+          },
+          {
+            "name": "66: ACTUAL COLLECTION AND EQUIP",
+            "source_start_seconds": 128.969023,
+            "source_end_seconds": 129.986409,
+            "comparison_start_seconds": 128.969023,
+            "comparison_end_seconds": 129.986409
+          },
+          {
+            "name": "68: F7 / BRIGHT ARENA / READABLE SHOTGUN MECHANICS",
+            "source_start_seconds": 129.986409,
+            "source_end_seconds": 130.169006,
+            "comparison_start_seconds": 129.986409,
+            "comparison_end_seconds": 130.169006
+          },
+          {
+            "name": "70: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 130.169006,
+            "source_end_seconds": 136.174885,
+            "comparison_start_seconds": 130.169006,
+            "comparison_end_seconds": 136.174885
+          },
+          {
+            "name": "71: ACTUAL RELOAD / EARNED INDIVIDUAL SHELLS",
+            "source_start_seconds": 136.174885,
+            "source_end_seconds": 144.178553,
+            "comparison_start_seconds": 136.174885,
+            "comparison_end_seconds": 144.178553
+          },
+          {
+            "name": "72: WASD THROUGH CENTER AISLE TO PACK-A-PUNCH",
+            "source_start_seconds": 144.178553,
+            "source_end_seconds": 148.639512,
+            "comparison_start_seconds": 144.178553,
+            "comparison_end_seconds": 148.639512
+          },
+          {
+            "name": "73: TAP F / ACCEPTED TRANSFER / PHYSICAL HANDOFF / PAY 5000",
+            "source_start_seconds": 148.639512,
+            "source_end_seconds": 148.824089,
+            "comparison_start_seconds": 148.639512,
+            "comparison_end_seconds": 148.824089
+          },
+          {
+            "name": "75: REMAINING HANDOFF / RETURN MOVEMENT CONTROL",
+            "source_start_seconds": 148.824089,
+            "source_end_seconds": 149.116166,
+            "comparison_start_seconds": 148.824089,
+            "comparison_end_seconds": 149.116166
+          },
+          {
+            "name": "76: WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING",
+            "source_start_seconds": 149.116166,
+            "source_end_seconds": 150.118466,
+            "comparison_start_seconds": 149.116166,
+            "comparison_end_seconds": 150.118466
+          },
+          {
+            "name": "77: DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT",
+            "source_start_seconds": 150.118466,
+            "source_end_seconds": 150.305431,
+            "comparison_start_seconds": 150.118466,
+            "comparison_end_seconds": 150.305431
+          },
+          {
+            "name": "78: FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING",
+            "source_start_seconds": 150.305431,
+            "source_end_seconds": 154.791983,
+            "comparison_start_seconds": 150.305431,
+            "comparison_end_seconds": 154.791983
+          },
+          {
+            "name": "79: NINE-SECOND PROCESS / PHYSICAL OUTPUT",
+            "source_start_seconds": 154.791983,
+            "source_end_seconds": 157.650948,
+            "comparison_start_seconds": 154.791983,
+            "comparison_end_seconds": 157.650948
+          },
+          {
+            "name": "80: READY UPGRADE / FIFTEEN-SECOND RETURN DEADLINE WHILE AWAY",
+            "source_start_seconds": 157.650948,
+            "source_end_seconds": 158.958406,
+            "comparison_start_seconds": 157.650948,
+            "comparison_end_seconds": 158.958406
+          },
+          {
+            "name": "81: RETURN TO OUTPUT CONTACT POSITION",
+            "source_start_seconds": 158.958406,
+            "source_end_seconds": 162.564596,
+            "comparison_start_seconds": 158.958406,
+            "comparison_end_seconds": 162.564596
+          },
+          {
+            "name": "83: HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP",
+            "source_start_seconds": 162.564596,
+            "source_end_seconds": 163.575654,
+            "comparison_start_seconds": 162.564596,
+            "comparison_end_seconds": 163.575654
+          },
+          {
+            "name": "86: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 163.575654,
+            "source_end_seconds": 169.593346,
+            "comparison_start_seconds": 163.575654,
+            "comparison_end_seconds": 169.593346
+          },
+          {
+            "name": "87: ACTUAL RELOAD / EARNED INDIVIDUAL SHELLS",
+            "source_start_seconds": 169.593346,
+            "source_end_seconds": 177.602986,
+            "comparison_start_seconds": 169.593346,
+            "comparison_end_seconds": 177.602986
+          },
+          {
+            "name": "88: FINAL INVENTORY / BOTH MACHINES RETURNED TO IDLE",
+            "source_start_seconds": 177.602986,
+            "source_end_seconds": 180.590996,
+            "comparison_start_seconds": 177.602986,
+            "comparison_end_seconds": 180.590996
+          },
+          {
+            "name": "89: H / EXPAND GROUPED CONTROL TRAY",
+            "source_start_seconds": 180.590996,
+            "source_end_seconds": 180.777909,
+            "comparison_start_seconds": 180.590996,
+            "comparison_end_seconds": 180.777909
+          },
+          {
+            "name": "90: COMPACT TOOLS / ORIGINAL ICONS AND CONTROL GROUPS",
+            "source_start_seconds": 180.777909,
+            "source_end_seconds": 183.293542,
+            "comparison_start_seconds": 180.777909,
+            "comparison_end_seconds": 183.293542
+          },
+          {
+            "name": "91: H / CLOSE TOOLS",
+            "source_start_seconds": 183.293542,
+            "source_end_seconds": 183.442804,
+            "comparison_start_seconds": 183.293542,
+            "comparison_end_seconds": 183.442804
+          },
+          {
+            "name": "92: ESCAPE / PAUSE DESIGNED OVER THE REAL SCENE",
+            "source_start_seconds": 183.442804,
+            "source_end_seconds": 183.630308,
+            "comparison_start_seconds": 183.442804,
+            "comparison_end_seconds": 183.630308
+          },
+          {
+            "name": "93: PAUSE / MOUSE POINTER / RESUME RESTART QUIT",
+            "source_start_seconds": 183.630308,
+            "source_end_seconds": 186.143123,
+            "comparison_start_seconds": 183.630308,
+            "comparison_end_seconds": 186.143123
+          },
+          {
+            "name": "94: ACTUAL DRAWN RESUME BUTTON / MOUSE PRESS AND RELEASE",
+            "source_start_seconds": 186.143123,
+            "source_end_seconds": 186.509099,
+            "comparison_start_seconds": 186.143123,
+            "comparison_end_seconds": 186.509099
+          },
+          {
+            "name": "95: RESUMED / NO MENU CLICK FIRES A SHOT",
+            "source_start_seconds": 186.509099,
+            "source_end_seconds": 187.511356,
+            "comparison_start_seconds": 186.509099,
+            "comparison_end_seconds": 187.511356
+          },
+          {
+            "name": "96: DECLARED FATAL DAMAGE FIXTURE / GAME OVER / REAL RUN STATS",
+            "source_start_seconds": 187.511356,
+            "source_end_seconds": 191.89333333333335,
+            "comparison_start_seconds": 187.511356,
+            "comparison_end_seconds": 191.89333333333335
+          }
+        ]
+      },
+      {
+        "label": "current",
+        "source_commit": "3d75c2faa0cecef6075f00755d8e4f5dd2562817",
+        "source_wav_sha256": "0319be6855b5201d63c5723aa2a077b53e1107226e447b6040133e24c9eab168",
+        "pcm_sha256": "eb294f0d14402f938217ac9bcb808ff3ab8af1a43480997bdf03d13eab32bd9f",
+        "sample_frames": 9213952,
+        "comparison_start_frame": 9210880,
+        "comparison_end_frame_exclusive": 18424832,
+        "comparison_start_seconds": 191.89333333333335,
+        "comparison_end_seconds": 383.85066666666665,
+        "source_start_seconds": 0,
+        "source_end_seconds": 191.95733333333334,
+        "phases": [
+          {
+            "name": "0: QUIET FACILITY / ORIGINAL SPATIAL AMBIENCE / ORDINARY HUD",
+            "source_start_seconds": 0,
+            "source_end_seconds": 8.023081,
+            "comparison_start_seconds": 191.89333333333335,
+            "comparison_end_seconds": 199.91641433333334
+          },
+          {
+            "name": "1: DISCLOSED SANDBOX +10000 POINTS",
+            "source_start_seconds": 8.023081,
+            "source_end_seconds": 8.219867,
+            "comparison_start_seconds": 199.91641433333334,
+            "comparison_end_seconds": 200.11320033333334
+          },
+          {
+            "name": "2: RELEASED T / SEPARATE INPUT FRAME",
+            "source_start_seconds": 8.219867,
+            "source_end_seconds": 8.419048,
+            "comparison_start_seconds": 200.11320033333334,
+            "comparison_end_seconds": 200.31238133333335
+          },
+          {
+            "name": "3: DISCLOSED SANDBOX +10000 POINTS",
+            "source_start_seconds": 8.419048,
+            "source_end_seconds": 8.575885,
+            "comparison_start_seconds": 200.31238133333335,
+            "comparison_end_seconds": 200.46921833333334
+          },
+          {
+            "name": "4: M1911 / BASE SEMIAUTOMATIC FIRE AND RELOAD",
+            "source_start_seconds": 8.575885,
+            "source_end_seconds": 8.62617,
+            "comparison_start_seconds": 200.46921833333334,
+            "comparison_end_seconds": 200.51950333333335
+          },
+          {
+            "name": "5: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 8.62617,
+            "source_end_seconds": 14.619136,
+            "comparison_start_seconds": 200.51950333333335,
+            "comparison_end_seconds": 206.51246933333334
+          },
+          {
+            "name": "6: COMMITTED MAGAZINE / SHIFT AND INVALID FIRE / RELEASE WITHOUT A QUEUED SHOT",
+            "source_start_seconds": 14.619136,
+            "source_end_seconds": 18.109223,
+            "comparison_start_seconds": 206.51246933333334,
+            "comparison_end_seconds": 210.00255633333336
+          },
+          {
+            "name": "7: DISCLOSED SANDBOX NEXT-ROLL FAMILY",
+            "source_start_seconds": 18.109223,
+            "source_end_seconds": 18.305309,
+            "comparison_start_seconds": 210.00255633333336,
+            "comparison_end_seconds": 210.19864233333334
+          },
+          {
+            "name": "8: WASD THROUGH CENTER AISLE TO MYSTERY BOX",
+            "source_start_seconds": 18.305309,
+            "source_end_seconds": 22.998838,
+            "comparison_start_seconds": 210.19864233333334,
+            "comparison_end_seconds": 214.89217133333335
+          },
+          {
+            "name": "9: HOLD F / PAY 950 / OPEN AND CYCLE",
+            "source_start_seconds": 22.998838,
+            "source_end_seconds": 23.606321,
+            "comparison_start_seconds": 214.89217133333335,
+            "comparison_end_seconds": 215.49965433333335
+          },
+          {
+            "name": "10: ACTUAL BOX PREVIEW CYCLE / WAIT FOR REWARD",
+            "source_start_seconds": 23.606321,
+            "source_end_seconds": 28.621679,
+            "comparison_start_seconds": 215.49965433333335,
+            "comparison_end_seconds": 220.51501233333335
+          },
+          {
+            "name": "11: READY REWARD WAITS FOR DELIBERATE COLLECTION",
+            "source_start_seconds": 28.621679,
+            "source_end_seconds": 29.920267,
+            "comparison_start_seconds": 220.51501233333335,
+            "comparison_end_seconds": 221.81360033333334
+          },
+          {
+            "name": "12: F RELEASED THEN HELD AGAIN / COLLECT BOX REWARD",
+            "source_start_seconds": 29.920267,
+            "source_end_seconds": 30.521082,
+            "comparison_start_seconds": 221.81360033333334,
+            "comparison_end_seconds": 222.41441533333335
+          },
+          {
+            "name": "13: ACTUAL COLLECTION AND EQUIP",
+            "source_start_seconds": 30.521082,
+            "source_end_seconds": 31.556345,
+            "comparison_start_seconds": 222.41441533333335,
+            "comparison_end_seconds": 223.44967833333334
+          },
+          {
+            "name": "16: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 31.556345,
+            "source_end_seconds": 37.590775,
+            "comparison_start_seconds": 223.44967833333334,
+            "comparison_end_seconds": 229.48410833333335
+          },
+          {
+            "name": "17: COMMITTED MAGAZINE / SHIFT AND INVALID FIRE / RELEASE WITHOUT A QUEUED SHOT",
+            "source_start_seconds": 37.590775,
+            "source_end_seconds": 41.088636,
+            "comparison_start_seconds": 229.48410833333335,
+            "comparison_end_seconds": 232.98196933333335
+          },
+          {
+            "name": "18: M4A1 / BASE AUTOMATIC FIRE AND MAGAZINE RELOAD",
+            "source_start_seconds": 41.088636,
+            "source_end_seconds": 43.5122,
+            "comparison_start_seconds": 232.98196933333335,
+            "comparison_end_seconds": 235.40553333333335
+          },
+          {
+            "name": "19: COMMITTED RIFLE RELOAD / SHIFT REMAINS HELD",
+            "source_start_seconds": 43.5122,
+            "source_end_seconds": 47.001376,
+            "comparison_start_seconds": 235.40553333333335,
+            "comparison_end_seconds": 238.89470933333334
+          },
+          {
+            "name": "20: F7 / DIM ARENA / COMPLETE PACK-A-PUNCH LIGHTING CYCLE",
+            "source_start_seconds": 47.001376,
+            "source_end_seconds": 47.175612,
+            "comparison_start_seconds": 238.89470933333334,
+            "comparison_end_seconds": 239.06894533333335
+          },
+          {
+            "name": "21: WASD THROUGH CENTER AISLE TO PACK-A-PUNCH",
+            "source_start_seconds": 47.175612,
+            "source_end_seconds": 51.651021,
+            "comparison_start_seconds": 239.06894533333335,
+            "comparison_end_seconds": 243.54435433333333
+          },
+          {
+            "name": "22: TAP F / ACCEPTED TRANSFER / PHYSICAL HANDOFF / PAY 5000",
+            "source_start_seconds": 51.651021,
+            "source_end_seconds": 51.80598,
+            "comparison_start_seconds": 243.54435433333333,
+            "comparison_end_seconds": 243.69931333333335
+          },
+          {
+            "name": "24: REMAINING HANDOFF / RETURN MOVEMENT CONTROL",
+            "source_start_seconds": 51.80598,
+            "source_end_seconds": 52.110605,
+            "comparison_start_seconds": 243.69931333333335,
+            "comparison_end_seconds": 244.00393833333334
+          },
+          {
+            "name": "25: WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING",
+            "source_start_seconds": 52.110605,
+            "source_end_seconds": 53.150562,
+            "comparison_start_seconds": 244.00393833333334,
+            "comparison_end_seconds": 245.04389533333335
+          },
+          {
+            "name": "26: DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT",
+            "source_start_seconds": 53.150562,
+            "source_end_seconds": 53.304834,
+            "comparison_start_seconds": 245.04389533333335,
+            "comparison_end_seconds": 245.19816733333334
+          },
+          {
+            "name": "27: FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING",
+            "source_start_seconds": 53.304834,
+            "source_end_seconds": 57.806907,
+            "comparison_start_seconds": 245.19816733333334,
+            "comparison_end_seconds": 249.70024033333334
+          },
+          {
+            "name": "28: NINE-SECOND PROCESS / PHYSICAL OUTPUT",
+            "source_start_seconds": 57.806907,
+            "source_end_seconds": 60.654904,
+            "comparison_start_seconds": 249.70024033333334,
+            "comparison_end_seconds": 252.54823733333336
+          },
+          {
+            "name": "29: READY UPGRADE / FIFTEEN-SECOND RETURN DEADLINE WHILE AWAY",
+            "source_start_seconds": 60.654904,
+            "source_end_seconds": 61.948242,
+            "comparison_start_seconds": 252.54823733333336,
+            "comparison_end_seconds": 253.84157533333334
+          },
+          {
+            "name": "30: RETURN TO OUTPUT CONTACT POSITION",
+            "source_start_seconds": 61.948242,
+            "source_end_seconds": 65.498629,
+            "comparison_start_seconds": 253.84157533333334,
+            "comparison_end_seconds": 257.39196233333337
+          },
+          {
+            "name": "31: AUTOMATIC SAME-INSTANCE RETURN / NO F REQUIRED",
+            "source_start_seconds": 65.498629,
+            "source_end_seconds": 65.537103,
+            "comparison_start_seconds": 257.39196233333337,
+            "comparison_end_seconds": 257.4304363333333
+          },
+          {
+            "name": "32: HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP",
+            "source_start_seconds": 65.537103,
+            "source_end_seconds": 66.545609,
+            "comparison_start_seconds": 257.4304363333333,
+            "comparison_end_seconds": 258.43894233333333
+          },
+          {
+            "name": "34: F7 / BRIGHT ARENA / READABLE WEAPON MECHANICS",
+            "source_start_seconds": 66.545609,
+            "source_end_seconds": 66.735651,
+            "comparison_start_seconds": 258.43894233333333,
+            "comparison_end_seconds": 258.62898433333334
+          },
+          {
+            "name": "36: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 66.735651,
+            "source_end_seconds": 72.749299,
+            "comparison_start_seconds": 258.62898433333334,
+            "comparison_end_seconds": 264.6426323333333
+          },
+          {
+            "name": "37: COMMITTED MAGAZINE / SHIFT AND INVALID FIRE / RELEASE WITHOUT A QUEUED SHOT",
+            "source_start_seconds": 72.749299,
+            "source_end_seconds": 76.266325,
+            "comparison_start_seconds": 264.6426323333333,
+            "comparison_end_seconds": 268.15965833333337
+          },
+          {
+            "name": "38: OVERCURRENT / ACTUAL UPGRADED ASSEMBLY AND FIRE",
+            "source_start_seconds": 76.266325,
+            "source_end_seconds": 78.666927,
+            "comparison_start_seconds": 268.15965833333337,
+            "comparison_end_seconds": 270.56026033333336
+          },
+          {
+            "name": "39: COMMITTED RIFLE RELOAD / SHIFT REMAINS HELD",
+            "source_start_seconds": 78.666927,
+            "source_end_seconds": 82.184275,
+            "comparison_start_seconds": 270.56026033333336,
+            "comparison_end_seconds": 274.07760833333333
+          },
+          {
+            "name": "40: SELECT ORIGINAL PISTOL INSTANCE",
+            "source_start_seconds": 82.184275,
+            "source_end_seconds": 82.598417,
+            "comparison_start_seconds": 274.07760833333333,
+            "comparison_end_seconds": 274.49175033333336
+          },
+          {
+            "name": "41: RESTORE PISTOL MAGAZINE THROUGH ACTUAL RELOAD",
+            "source_start_seconds": 82.598417,
+            "source_end_seconds": 87.587393,
+            "comparison_start_seconds": 274.49175033333336,
+            "comparison_end_seconds": 279.48072633333334
+          },
+          {
+            "name": "42: WASD THROUGH CENTER AISLE TO PACK-A-PUNCH",
+            "source_start_seconds": 87.587393,
+            "source_end_seconds": 91.909082,
+            "comparison_start_seconds": 279.48072633333334,
+            "comparison_end_seconds": 283.80241533333333
+          },
+          {
+            "name": "43: TAP F / ACCEPTED TRANSFER / PHYSICAL HANDOFF / PAY 5000",
+            "source_start_seconds": 91.909082,
+            "source_end_seconds": 92.083135,
+            "comparison_start_seconds": 283.80241533333333,
+            "comparison_end_seconds": 283.97646833333334
+          },
+          {
+            "name": "45: REMAINING HANDOFF / RETURN MOVEMENT CONTROL",
+            "source_start_seconds": 92.083135,
+            "source_end_seconds": 92.378027,
+            "comparison_start_seconds": 283.97646833333334,
+            "comparison_end_seconds": 284.27136033333335
+          },
+          {
+            "name": "46: WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING",
+            "source_start_seconds": 92.378027,
+            "source_end_seconds": 93.425576,
+            "comparison_start_seconds": 284.27136033333335,
+            "comparison_end_seconds": 285.31890933333335
+          },
+          {
+            "name": "47: DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT",
+            "source_start_seconds": 93.425576,
+            "source_end_seconds": 93.584228,
+            "comparison_start_seconds": 285.31890933333335,
+            "comparison_end_seconds": 285.47756133333337
+          },
+          {
+            "name": "48: FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING",
+            "source_start_seconds": 93.584228,
+            "source_end_seconds": 98.077911,
+            "comparison_start_seconds": 285.47756133333337,
+            "comparison_end_seconds": 289.97124433333335
+          },
+          {
+            "name": "49: NINE-SECOND PROCESS / PHYSICAL OUTPUT",
+            "source_start_seconds": 98.077911,
+            "source_end_seconds": 100.901629,
+            "comparison_start_seconds": 289.97124433333335,
+            "comparison_end_seconds": 292.79496233333333
+          },
+          {
+            "name": "50: READY UPGRADE / FIFTEEN-SECOND RETURN DEADLINE WHILE AWAY",
+            "source_start_seconds": 100.901629,
+            "source_end_seconds": 102.234715,
+            "comparison_start_seconds": 292.79496233333333,
+            "comparison_end_seconds": 294.12804833333337
+          },
+          {
+            "name": "51: RETURN TO OUTPUT CONTACT POSITION",
+            "source_start_seconds": 102.234715,
+            "source_end_seconds": 105.760417,
+            "comparison_start_seconds": 294.12804833333337,
+            "comparison_end_seconds": 297.65375033333333
+          },
+          {
+            "name": "52: AUTOMATIC SAME-INSTANCE RETURN / NO F REQUIRED",
+            "source_start_seconds": 105.760417,
+            "source_end_seconds": 105.799268,
+            "comparison_start_seconds": 297.65375033333333,
+            "comparison_end_seconds": 297.69260133333336
+          },
+          {
+            "name": "53: HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP",
+            "source_start_seconds": 105.799268,
+            "source_end_seconds": 106.81245,
+            "comparison_start_seconds": 297.69260133333336,
+            "comparison_end_seconds": 298.70578333333333
+          },
+          {
+            "name": "56: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 106.81245,
+            "source_end_seconds": 112.838763,
+            "comparison_start_seconds": 298.70578333333333,
+            "comparison_end_seconds": 304.73209633333335
+          },
+          {
+            "name": "57: COMMITTED MAGAZINE / SHIFT AND INVALID FIRE / RELEASE WITHOUT A QUEUED SHOT",
+            "source_start_seconds": 112.838763,
+            "source_end_seconds": 116.352009,
+            "comparison_start_seconds": 304.73209633333335,
+            "comparison_end_seconds": 308.2453423333333
+          },
+          {
+            "name": "58: SELECT AVAILABLE SLOT FOR NEXT BOX ACQUISITION",
+            "source_start_seconds": 116.352009,
+            "source_end_seconds": 116.726929,
+            "comparison_start_seconds": 308.2453423333333,
+            "comparison_end_seconds": 308.62026233333336
+          },
+          {
+            "name": "59: F7 / DIM ARENA / COMPLETE MYSTERY BOX LIGHTING CYCLE",
+            "source_start_seconds": 116.726929,
+            "source_end_seconds": 116.913579,
+            "comparison_start_seconds": 308.62026233333336,
+            "comparison_end_seconds": 308.80691233333334
+          },
+          {
+            "name": "60: DISCLOSED SANDBOX NEXT-ROLL FAMILY",
+            "source_start_seconds": 116.913579,
+            "source_end_seconds": 117.063506,
+            "comparison_start_seconds": 308.80691233333334,
+            "comparison_end_seconds": 308.95683933333333
+          },
+          {
+            "name": "61: WASD THROUGH CENTER AISLE TO MYSTERY BOX",
+            "source_start_seconds": 117.063506,
+            "source_end_seconds": 121.543734,
+            "comparison_start_seconds": 308.95683933333333,
+            "comparison_end_seconds": 313.43706733333335
+          },
+          {
+            "name": "62: HOLD F / PAY 950 / OPEN AND CYCLE",
+            "source_start_seconds": 121.543734,
+            "source_end_seconds": 122.144833,
+            "comparison_start_seconds": 313.43706733333335,
+            "comparison_end_seconds": 314.0381663333334
+          },
+          {
+            "name": "63: ACTUAL BOX PREVIEW CYCLE / WAIT FOR REWARD",
+            "source_start_seconds": 122.144833,
+            "source_end_seconds": 127.139847,
+            "comparison_start_seconds": 314.0381663333334,
+            "comparison_end_seconds": 319.03318033333335
+          },
+          {
+            "name": "64: READY REWARD WAITS FOR DELIBERATE COLLECTION",
+            "source_start_seconds": 127.139847,
+            "source_end_seconds": 128.445508,
+            "comparison_start_seconds": 319.03318033333335,
+            "comparison_end_seconds": 320.33884133333333
+          },
+          {
+            "name": "65: F RELEASED THEN HELD AGAIN / COLLECT BOX REWARD",
+            "source_start_seconds": 128.445508,
+            "source_end_seconds": 129.071841,
+            "comparison_start_seconds": 320.33884133333333,
+            "comparison_end_seconds": 320.9651743333334
+          },
+          {
+            "name": "66: ACTUAL COLLECTION AND EQUIP",
+            "source_start_seconds": 129.071841,
+            "source_end_seconds": 130.083207,
+            "comparison_start_seconds": 320.9651743333334,
+            "comparison_end_seconds": 321.97654033333333
+          },
+          {
+            "name": "68: F7 / BRIGHT ARENA / READABLE SHOTGUN MECHANICS",
+            "source_start_seconds": 130.083207,
+            "source_end_seconds": 130.265641,
+            "comparison_start_seconds": 321.97654033333333,
+            "comparison_end_seconds": 322.15897433333333
+          },
+          {
+            "name": "70: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 130.265641,
+            "source_end_seconds": 136.277156,
+            "comparison_start_seconds": 322.15897433333333,
+            "comparison_end_seconds": 328.1704893333333
+          },
+          {
+            "name": "71: ACTUAL RELOAD / EARNED INDIVIDUAL SHELLS",
+            "source_start_seconds": 136.277156,
+            "source_end_seconds": 144.274296,
+            "comparison_start_seconds": 328.1704893333333,
+            "comparison_end_seconds": 336.16762933333337
+          },
+          {
+            "name": "72: WASD THROUGH CENTER AISLE TO PACK-A-PUNCH",
+            "source_start_seconds": 144.274296,
+            "source_end_seconds": 148.739225,
+            "comparison_start_seconds": 336.16762933333337,
+            "comparison_end_seconds": 340.63255833333335
+          },
+          {
+            "name": "73: TAP F / ACCEPTED TRANSFER / PHYSICAL HANDOFF / PAY 5000",
+            "source_start_seconds": 148.739225,
+            "source_end_seconds": 148.898892,
+            "comparison_start_seconds": 340.63255833333335,
+            "comparison_end_seconds": 340.79222533333336
+          },
+          {
+            "name": "75: REMAINING HANDOFF / RETURN MOVEMENT CONTROL",
+            "source_start_seconds": 148.898892,
+            "source_end_seconds": 149.201307,
+            "comparison_start_seconds": 340.79222533333336,
+            "comparison_end_seconds": 341.09464033333336
+          },
+          {
+            "name": "76: WASD RETREAT 180 CM FROM INTAKE WHILE PROCESSING",
+            "source_start_seconds": 149.201307,
+            "source_end_seconds": 150.231112,
+            "comparison_start_seconds": 341.09464033333336,
+            "comparison_end_seconds": 342.12444533333337
+          },
+          {
+            "name": "77: DISCLOSED SANDBOX ENEMY FOR OTHER-WEAPON COMBAT",
+            "source_start_seconds": 150.231112,
+            "source_end_seconds": 150.381635,
+            "comparison_start_seconds": 342.12444533333337,
+            "comparison_end_seconds": 342.27496833333333
+          },
+          {
+            "name": "78: FIGHT WITH AVAILABLE WEAPON DURING REAL PROCESSING",
+            "source_start_seconds": 150.381635,
+            "source_end_seconds": 154.882944,
+            "comparison_start_seconds": 342.27496833333333,
+            "comparison_end_seconds": 346.7762773333334
+          },
+          {
+            "name": "79: NINE-SECOND PROCESS / PHYSICAL OUTPUT",
+            "source_start_seconds": 154.882944,
+            "source_end_seconds": 157.732494,
+            "comparison_start_seconds": 346.7762773333334,
+            "comparison_end_seconds": 349.62582733333335
+          },
+          {
+            "name": "80: READY UPGRADE / FIFTEEN-SECOND RETURN DEADLINE WHILE AWAY",
+            "source_start_seconds": 157.732494,
+            "source_end_seconds": 159.053082,
+            "comparison_start_seconds": 349.62582733333335,
+            "comparison_end_seconds": 350.94641533333333
+          },
+          {
+            "name": "81: RETURN TO OUTPUT CONTACT POSITION",
+            "source_start_seconds": 159.053082,
+            "source_end_seconds": 162.643629,
+            "comparison_start_seconds": 350.94641533333333,
+            "comparison_end_seconds": 354.53696233333335
+          },
+          {
+            "name": "83: HAND RETRIEVAL / NORMAL EQUIP VISIBLE SWAP",
+            "source_start_seconds": 162.643629,
+            "source_end_seconds": 163.638797,
+            "comparison_start_seconds": 354.53696233333335,
+            "comparison_end_seconds": 355.5321303333334
+          },
+          {
+            "name": "84: SELECT RETURNED UPGRADED SLOT",
+            "source_start_seconds": 163.638797,
+            "source_end_seconds": 163.675983,
+            "comparison_start_seconds": 355.5321303333334,
+            "comparison_end_seconds": 355.56931633333335
+          },
+          {
+            "name": "86: NEAR CURSOR 8 / 35 / 95 CM / FULL CIRCLE / REAL MUZZLE COLLISION",
+            "source_start_seconds": 163.675983,
+            "source_end_seconds": 169.676619,
+            "comparison_start_seconds": 355.56931633333335,
+            "comparison_end_seconds": 361.56995233333333
+          },
+          {
+            "name": "87: ACTUAL RELOAD / EARNED INDIVIDUAL SHELLS",
+            "source_start_seconds": 169.676619,
+            "source_end_seconds": 177.700105,
+            "comparison_start_seconds": 361.56995233333333,
+            "comparison_end_seconds": 369.5934383333333
+          },
+          {
+            "name": "88: FINAL INVENTORY / BOTH MACHINES RETURNED TO IDLE",
+            "source_start_seconds": 177.700105,
+            "source_end_seconds": 180.689616,
+            "comparison_start_seconds": 369.5934383333333,
+            "comparison_end_seconds": 372.5829493333333
+          },
+          {
+            "name": "89: H / EXPAND GROUPED CONTROL TRAY",
+            "source_start_seconds": 180.689616,
+            "source_end_seconds": 180.873892,
+            "comparison_start_seconds": 372.5829493333333,
+            "comparison_end_seconds": 372.7672253333334
+          },
+          {
+            "name": "90: COMPACT TOOLS / ORIGINAL ICONS AND CONTROL GROUPS",
+            "source_start_seconds": 180.873892,
+            "source_end_seconds": 183.38662,
+            "comparison_start_seconds": 372.7672253333334,
+            "comparison_end_seconds": 375.2799533333333
+          },
+          {
+            "name": "91: H / CLOSE TOOLS",
+            "source_start_seconds": 183.38662,
+            "source_end_seconds": 183.536774,
+            "comparison_start_seconds": 375.2799533333333,
+            "comparison_end_seconds": 375.43010733333335
+          },
+          {
+            "name": "92: ESCAPE / PAUSE DESIGNED OVER THE REAL SCENE",
+            "source_start_seconds": 183.536774,
+            "source_end_seconds": 183.722325,
+            "comparison_start_seconds": 375.43010733333335,
+            "comparison_end_seconds": 375.6156583333334
+          },
+          {
+            "name": "93: PAUSE / MOUSE POINTER / RESUME RESTART QUIT",
+            "source_start_seconds": 183.722325,
+            "source_end_seconds": 186.216898,
+            "comparison_start_seconds": 375.6156583333334,
+            "comparison_end_seconds": 378.11023133333333
+          },
+          {
+            "name": "94: ACTUAL DRAWN RESUME BUTTON / MOUSE PRESS AND RELEASE",
+            "source_start_seconds": 186.216898,
+            "source_end_seconds": 186.584761,
+            "comparison_start_seconds": 378.11023133333333,
+            "comparison_end_seconds": 378.47809433333333
+          },
+          {
+            "name": "95: RESUMED / NO MENU CLICK FIRES A SHOT",
+            "source_start_seconds": 186.584761,
+            "source_end_seconds": 187.595961,
+            "comparison_start_seconds": 378.47809433333333,
+            "comparison_end_seconds": 379.4892943333333
+          },
+          {
+            "name": "96: DECLARED FATAL DAMAGE FIXTURE / GAME OVER / REAL RUN STATS",
+            "source_start_seconds": 187.595961,
+            "source_end_seconds": 191.95733333333334,
+            "comparison_start_seconds": 379.4892943333333,
+            "comparison_end_seconds": 383.8506666666667
+          }
+        ]
+      }
+    ],
+    "policy": "Complete reference recording then complete current recording, original sample order. No gain, trim, added silence, crossfade, replacement, resampling or time correction. The direct boundary may be discontinuous. These are separate sessions, not a synchronized continuous scene.",
+    "perceptual_audio_review": false
+  }
+}
