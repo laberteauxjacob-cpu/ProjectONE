@@ -13,11 +13,33 @@
 #include "PhysicsEngine/BodyInstance.h"
 #include "EngineUtils.h"
 #include "Engine/World.h"
+#include "Engine/OverlapResult.h"
 #include "Engine/SkeletalMesh.h"
 #include "Animation/AnimSequence.h"
 #include "ProfilingDebugging/CsvProfiler.h"
 
 CSV_DECLARE_CATEGORY_EXTERN(ONEPhysicality);
+
+namespace ONERecoveryCollision
+{
+    bool SupportsStanding(const UPrimitiveComponent* Component)
+    {
+        // Collection triggers and damage-only regions cannot support the
+        // transport capsule, even when their object type is WorldDynamic.
+        return Component && Component->GetCollisionResponseToChannel(ECC_Pawn)==ECR_Block;
+    }
+    bool OccupiesRecoverySpace(const UPrimitiveComponent* Component)
+    {
+        if (!Component) return false;
+        if (SupportsStanding(Component)) return true;
+        // Fallen meshes deliberately use PhysicsOnly. Their current-pose
+        // regional queries still represent occupied anatomy for clearance.
+        if (Cast<AONEZombie>(Component->GetOwner()) &&
+            Component->GetCollisionResponseToChannel(ECC_Visibility)==ECR_Block) return true;
+        return Component->IsPhysicsCollisionEnabled() &&
+            Component->GetCollisionResponseToChannel(ECC_PhysicsBody)==ECR_Block;
+    }
+}
 
 FVector AONEZombie::GetPhysicalRewardLocation() const
 {
@@ -248,8 +270,18 @@ bool AONEZombie::FindRecoverySpace(FVector& CapsuleLocation,FRotator& Facing) co
     FHitResult Floor;
     FCollisionObjectQueryParams Solids; Solids.AddObjectTypesToQuery(ECC_WorldStatic);
     Solids.AddObjectTypesToQuery(ECC_WorldDynamic); Solids.AddObjectTypesToQuery(ECC_PhysicsBody);
-    if (!GetWorld()->LineTraceSingleByObjectType(Floor,Pelvis+FVector(0,0,30),Pelvis-FVector(0,0,140),Solids,Params) ||
-        Floor.ImpactNormal.Z<.85f || Floor.bStartPenetrating) return false;
+    FCollisionQueryParams FloorParams=Params;
+    bool FoundSupport=false;
+    // Object traces may stop at their first blocking result. Ignore only each
+    // rejected component, so a trigger cannot hide solid geometry behind it.
+    for (int32 Attempt=0;Attempt<32;++Attempt)
+    {
+        if (!GetWorld()->LineTraceSingleByObjectType(Floor,Pelvis+FVector(0,0,30),Pelvis-FVector(0,0,140),Solids,FloorParams)) break;
+        if (ONERecoveryCollision::SupportsStanding(Floor.GetComponent())) { FoundSupport=true; break; }
+        if (!Floor.GetComponent()) break;
+        FloorParams.AddIgnoredComponent(Floor.GetComponent());
+    }
+    if (!FoundSupport || Floor.ImpactNormal.Z<.85f || Floor.bStartPenetrating) return false;
     // The only solution is directly above the actual body's supported pelvis.
     // No offset search toward the player, navigation projection or distant warp.
     CapsuleLocation=FVector(Pelvis.X,Pelvis.Y,Floor.ImpactPoint.Z+GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+2.f);
@@ -262,13 +294,19 @@ bool AONEZombie::FindRecoverySpace(FVector& CapsuleLocation,FRotator& Facing) co
     // solid cover. Physics-only own body is ignored by actor identity.
     FCollisionObjectQueryParams Clearance=Solids; Clearance.AddObjectTypesToQuery(ECC_Pawn);
     const FVector Center(CapsuleLocation.X,CapsuleLocation.Y,Floor.ImpactPoint.Z+96.f);
-    if (GetWorld()->OverlapAnyTestByObjectType(Center,FQuat::Identity,Clearance,
-        FCollisionShape::MakeCapsule(43.f,93.f),Params)) return false;
+    auto Occupied=[&](const FVector& At,const FQuat& Rotation,const FCollisionShape& Shape)
+    {
+        TArray<FOverlapResult> Overlaps;
+        GetWorld()->OverlapMultiByObjectType(Overlaps,At,Rotation,Clearance,Shape,Params);
+        for (const FOverlapResult& Overlap:Overlaps)
+            if (ONERecoveryCollision::OccupiesRecoverySpace(Overlap.GetComponent())) return true;
+        return false;
+    };
+    if (Occupied(Center,FQuat::Identity,FCollisionShape::MakeCapsule(43.f,93.f))) return false;
     // The initial body, palms and feet occupy more floor than the upright
     // capsule. Wait if another body or cover occupies that rollout footprint.
     const FQuat AlongBody=FQuat::FindBetweenNormals(FVector::UpVector,Axis);
-    return !GetWorld()->OverlapAnyTestByObjectType(FVector(Pelvis.X,Pelvis.Y,Floor.ImpactPoint.Z+29.f),AlongBody,Clearance,
-        FCollisionShape::MakeCapsule(26.f,96.f),Params);
+    return !Occupied(FVector(Pelvis.X,Pelvis.Y,Floor.ImpactPoint.Z+29.f),AlongBody,FCollisionShape::MakeCapsule(26.f,96.f));
 }
 
 bool AONEZombie::TryBeginGetUp()
@@ -327,7 +365,8 @@ bool AONEZombie::TryBeginGetUp()
     for (const auto& Pair:Before) RecoveryRebaseError=FMath::Max(RecoveryRebaseError,float(FVector::Dist(Pair.Value,PhysicalMesh->GetSocketLocation(Pair.Key))));
     GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
     GetWorld()->GetTimerManager().ClearTimer(RestTimer);
-    UE_LOG(LogTemp,Display,TEXT("ONE07_GETUP_BEGIN id=%u health=%.3f rebase_cm=%.5f blocked=%d"),GetUniqueID(),GetHealth(),RecoveryRebaseError,RecoveryBlockedCount);
+    UE_LOG(LogTemp,Display,TEXT("ONE07_GETUP_BEGIN id=%u health=%.3f rebase_cm=%.5f blocked=%d clip=%s duration=%.3f"),
+        GetUniqueID(),GetHealth(),RecoveryRebaseError,RecoveryBlockedCount,*RecoveryKey.ToString(),GetUpDuration);
     return true;
 }
 

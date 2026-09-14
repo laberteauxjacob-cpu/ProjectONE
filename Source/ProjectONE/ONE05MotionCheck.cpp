@@ -32,9 +32,9 @@
 
 namespace
 {
-    const FVector Directions[]={FVector(1,0,0),FVector(1,1,0),FVector(0,1,0),FVector(-1,1,0),
+    const FVector MotionFixtureDirections[]={FVector(1,0,0),FVector(1,1,0),FVector(0,1,0),FVector(-1,1,0),
         FVector(-1,0,0),FVector(-1,-1,0),FVector(0,-1,0),FVector(1,-1,0)};
-    const TCHAR* DirectionNames[]={TEXT("FORWARD"),TEXT("FORWARD RIGHT"),TEXT("RIGHT"),TEXT("BACK RIGHT"),
+    const TCHAR* MotionFixtureDirectionNames[]={TEXT("FORWARD"),TEXT("FORWARD RIGHT"),TEXT("RIGHT"),TEXT("BACK RIGHT"),
         TEXT("BACK"),TEXT("BACK LEFT"),TEXT("LEFT"),TEXT("FORWARD LEFT")};
 }
 AONE05MotionCheck::AONE05MotionCheck()
@@ -128,10 +128,10 @@ void AONE05MotionCheck::EnterPhase()
     for (int32 I=0;I<2;++I) { FootMin[I]=BIG_NUMBER;FootMax[I]=-BIG_NUMBER; }
     if (Phase<16)
     {
-        MoveDirection=Directions[Phase%8];
+        MoveDirection=MotionFixtureDirections[Phase%8];
         const float Span=Phase<8?135.f:220.f;
         Player->SetActorLocation(Origin-MoveDirection.GetSafeNormal()*Span,false,nullptr,ETeleportType::TeleportPhysics);
-        Segment=FString::Printf(TEXT("INPUT STRIDE FIXTURE / %s / %s"),Phase<8?TEXT("WALK 225"):TEXT("SPRINT 370"),DirectionNames[Phase%8]);
+        Segment=FString::Printf(TEXT("INPUT STRIDE FIXTURE / %s / %s"),Phase<8?TEXT("WALK 225"):TEXT("SPRINT 370"),MotionFixtureDirectionNames[Phase%8]);
     }
     else if (Phase<18)
     {

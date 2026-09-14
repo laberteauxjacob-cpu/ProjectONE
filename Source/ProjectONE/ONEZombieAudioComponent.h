@@ -21,6 +21,7 @@ public:
     void NotifyAttack(int32 Variant);
     void NotifyHit(bool Heavy);
     void NotifyDeath();
+    // Called after the animation graph has evaluated a grounded foot plant.
     void NotifyFootContact(bool bLeftFoot);
     void NotifyFall();
     void NotifyBodyContact(const FVector& Location,float NormalImpactSpeedCmPerSec);
@@ -39,6 +40,7 @@ private:
     void Play(UAudioComponent* Voice,const FString& Stem,int32 Index,float Gain);
     int32 Choose(int32 Count,int32& Previous);
     void UpdateVoiceLocation();
+    void ObserveAttackFootMotion();
     void SeedPresentationRandom();
     UPROPERTY() TObjectPtr<UAudioComponent> BreathVoice;
     UPROPERTY() TObjectPtr<UAudioComponent> ActionVoice;
@@ -49,6 +51,8 @@ private:
     int32 AttackCueCount=0,HitCueCount=0,DeathCueCount=0;
     int32 FootCueCount=0,FallCueCount=0,BodyCueCount=0;
     double NextFoot[2]={0.,0.},NextBodyContact=0.,NextFall=0.;
+    double LastAttackFootMotion=-100.;
+    uint64 FootMotionActionSerial=MAX_uint64;
     float BreathGain=.45f,ActionGain=.85f;
     int32 VoiceVariation=0;
     bool bPresentationSeeded=false;

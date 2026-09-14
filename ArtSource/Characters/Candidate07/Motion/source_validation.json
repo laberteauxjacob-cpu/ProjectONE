@@ -109,12 +109,14 @@
         6.167989253997803
       ],
       "support_samples": 256,
-      "low_roll_pelvis_z_cm": null
+      "low_roll_pelvis_z_cm": null,
+      "retained_fbx_unchanged": true,
+      "refreshed_blend_pose_maximum_error_cm": 0.0
     },
     "A_Infected_C07_GetUpSupine": {
       "samples": 301,
-      "maximum_chain_gap_cm": 5.9250734584842936e-05,
-      "head_min_z_cm": 21.755197525024414,
+      "maximum_chain_gap_cm": 5.2957376788656036e-05,
+      "head_min_z_cm": 10.639307022094727,
       "head_max_z_cm": 155.4289093017578,
       "maximum_support_anchor_error_cm": 1.1875543027317307e-05,
       "maximum_target_error_cm": 1.7086480014008443e-05,
@@ -124,9 +126,20 @@
       ],
       "support_samples": 256,
       "low_roll_pelvis_z_cm": [
-        25.0,
-        25.0
-      ]
+        10.200752258300781,
+        23.98303985595703
+      ],
+      "evaluated_floor_support": {
+        "scope": "Actual deformed upper garment contact through supine roll; gradual release into the palm brace. Actual head skin and boot clearances checked independently.",
+        "samples": 76,
+        "maximum_cloth_target_error_cm": 0.014321899414062506,
+        "minimum_head_skin_clearance_cm": 1.02740478515625,
+        "minimum_boot_clearance_cm": 0.14999675750732422,
+        "roll_cloth_clearance_range_cm": [
+          0.149993896484375,
+          0.1643218994140625
+        ]
+      }
     }
   },
   "result": "PASS",
@@ -153,7 +166,8 @@
     "A_Infected_C07_RakeRight",
     "A_Infected_C07_TwoHand",
     "A_Infected_C07_HeavyHit",
-    "A_Infected_C07_Stumble"
+    "A_Infected_C07_Stumble",
+    "A_Infected_C07_GetUpProne"
   ],
   "saved_blend_reload_actions": [
     "A_Infected_C07_GetUpProne",

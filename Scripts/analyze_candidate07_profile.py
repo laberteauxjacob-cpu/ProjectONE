@@ -14,7 +14,7 @@ from pathlib import Path
 import re
 import statistics
 import analyze_candidate03_performance as engine_csv
-from run_candidate07_checks import require, record, readtext, assertions, RUNTIME
+from run_candidate07_checks import require, record, readtext, assertions, same_runtime_inputs, RUNTIME
 
 C05='ONECandidate05Presentation/'
 C07='ONECandidate07Profile/'
@@ -51,7 +51,7 @@ def analyze(result_path):
     require(result['exit_code']==0,'Nonzero runtime exit')
     before=result['source_before']
     require(before.get('files'),'Empty source/content input snapshot')
-    require(result.get('source_after')==before and result['observed_head']==before['observed_head'] and
+    require(same_runtime_inputs(before,result.get('source_after',{}),result['mode']) and result['observed_head']==before['observed_head'] and
             re.fullmatch(r'[0-9a-f]{40}',result['observed_head']), 'Run source snapshot/HEAD binding differs')
     require(before['snapshot_sha256']==hashlib.sha256(json.dumps(before['files'],sort_keys=True).encode()).hexdigest(), 'Input snapshot digest differs')
     require((result['mode']=='editor' and result['source_commit'] is None) or

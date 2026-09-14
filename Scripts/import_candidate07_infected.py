@@ -1,22 +1,28 @@
-"""Targeted C07 Maintenance import; run only in the root-coordinated UE process.
+"""Targeted C07 variant import; run only in the root-coordinated UE process.
 
 Creates C07 meshes/materials/variant definition and scoped C07 physics copies.
 No historical physics resave, skeleton-reference-pose update, player edit or
 broad reimport.
+Set PROJECTONE_C07_VARIANT to maintenance, laboratory or facility_staff.
+Default maintenance preserves the established first-character command.
 """
 from pathlib import Path
-import hashlib, json
+import hashlib, json, os
 import unreal as u
 
 ROOT=Path(__file__).resolve().parents[1]
-manifest=json.loads((ROOT/'ArtSource/Characters/Candidate07/maintenance_inventory.json').read_text())
-assert manifest['candidate']=='07' and manifest['variant']=='maintenance'
+VARIANT_KEY=os.environ.get('PROJECTONE_C07_VARIANT','maintenance')
+variants={'maintenance':'Maintenance','laboratory':'Laboratory','facility_staff':'FacilityStaff'}
+assert VARIANT_KEY in variants,'Explicit known C07 variant required'
+variant_id=variants[VARIANT_KEY]
+manifest=json.loads((ROOT/('ArtSource/Characters/Candidate07/'+VARIANT_KEY+'_inventory.json')).read_text())
+assert manifest['candidate']=='07' and manifest['variant']==VARIANT_KEY
 LIB=u.EditorAssetLibrary; TOOLS=u.AssetToolsHelpers.get_asset_tools(); MEL=u.MaterialEditingLibrary
 skeleton=LIB.load_asset(manifest['skeleton_asset'])
 assert isinstance(skeleton,u.Skeleton), 'Existing infected skeleton is required'
 assert hasattr(u,'ONEInfectedVariant'), 'Compile native C07 variant definition before importing'
 u.SystemLibrary.execute_console_command(None,'Interchange.FeatureFlags.Import.FBX 0')
-report={'candidate':'07','variant':'maintenance','status':'IMPORT_PASS_PENDING_RUNTIME_FIT_AND_VISUAL_REVIEW',
+report={'candidate':'07','variant':VARIANT_KEY,'status':'IMPORT_PASS_PENDING_RUNTIME_FIT_AND_VISUAL_REVIEW',
         'skeleton':manifest['skeleton_asset'],'meshes':{},'materials':{},'physics_scope':'C07-only copies retain C03 non-head bodies, constraints, solver and mass settings. The head shape is refitted by ONE07PhysicsAssets; authored geometry fit and runtime settling remain separate checks. Historical assets are not resaved.',
         'scope':'Source identity, explicit import settings, material bindings and variant references only. No game launch or visual quality claim.'}
 
@@ -33,7 +39,17 @@ for name,d in manifest.get('textures',{}).items():
     source=(ROOT/d['source']).resolve()
     assert source.is_relative_to((ROOT/'ArtSource/Characters/Candidate07').resolve()) and source.is_file()
     assert hashlib.sha256(source.read_bytes()).hexdigest()==d['sha256']
-    target=safe_asset(d['asset']);task=u.AssetImportTask();task.filename=str(source)
+    target=safe_asset(d['asset'])
+    if VARIANT_KEY!='maintenance':
+        # The two new variants reuse the existing original detail pixels without
+        # reimporting or resaving Maintenance's texture assets.
+        texture=LIB.load_asset(target);assert isinstance(texture,u.Texture2D)
+        assert texture.get_editor_property('compression_settings')==u.TextureCompressionSettings.TC_NORMALMAP
+        assert not texture.get_editor_property('srgb') and texture.get_editor_property('flip_green_channel')
+        textures[name]=texture
+        report['textures'][name]={'asset':target,'source':d['source'],'source_sha256':d['sha256'],'reused_without_resave':True}
+        continue
+    task=u.AssetImportTask();task.filename=str(source)
     task.destination_path=target.rsplit('/',1)[0];task.destination_name=name
     task.automated=True;task.replace_existing=True;task.replace_existing_settings=True;task.save=False;task.factory=u.TextureFactory()
     TOOLS.import_asset_tasks([task]);texture=LIB.load_asset(target);assert isinstance(texture,u.Texture2D)
@@ -44,6 +60,7 @@ for name,d in manifest.get('textures',{}).items():
 
 def material(name,d):
     path=safe_asset(d['asset'])
+    if VARIANT_KEY!='maintenance':assert name.startswith('M_C07_'+variant_id+'_')
     m=LIB.load_asset(path) if LIB.does_asset_exist(path) else TOOLS.create_asset(name,path.rsplit('/',1)[0],u.Material,u.MaterialFactoryNew())
     assert isinstance(m,u.Material)
     MEL.delete_all_material_expressions(m)
@@ -107,14 +124,14 @@ for part,d in manifest['meshes'].items():
     report['meshes'][part]={'asset':target,'source':d['source'],'source_sha256':digest,'material_slots':actual,'reference_pose_update':False}
 
 assert hasattr(u,'ONE07PhysicsAssets'), 'Compile the scoped C07 physics authoring helper before importing'
-assert u.ONE07PhysicsAssets.build_infected_assets(), 'C07-only physics copy/refit failed'
-path='/Game/ONE/Characters/Candidate07/DA_Infected_Maintenance'
+if VARIANT_KEY=='maintenance':assert u.ONE07PhysicsAssets.build_infected_assets(), 'C07-only physics copy/refit failed'
+path='/Game/ONE/Characters/Candidate07/DA_Infected_'+variant_id
 if LIB.does_asset_exist(path):variant=LIB.load_asset(path)
 else:
     factory=u.DataAssetFactory();factory.set_editor_property('data_asset_class',u.ONEInfectedVariant)
-    variant=TOOLS.create_asset('DA_Infected_Maintenance',path.rsplit('/',1)[0],u.ONEInfectedVariant,factory)
+    variant=TOOLS.create_asset('DA_Infected_'+variant_id,path.rsplit('/',1)[0],u.ONEInfectedVariant,factory)
 assert isinstance(variant,u.ONEInfectedVariant)
-variant.set_editor_property('variant_id','Maintenance');variant.set_editor_property('display_name','Maintenance worker')
+variant.set_editor_property('variant_id',variant_id);variant.set_editor_property('display_name',manifest.get('display_name','Maintenance worker'))
 for part,prop in [('Core','core'),('Head','head'),('ArmLeft','arm_left'),('ArmRight','arm_right'),('LegLeft','leg_left')]:
     variant.set_editor_property(prop,loaded[part])
 physics={'body_physics':'PA_Infected_C07','head_physics':'PA_Infected_Head_C07','arm_left_physics':'PA_Infected_ArmLeft_C07','arm_right_physics':'PA_Infected_ArmRight_C07','leg_left_physics':'PA_Infected_LegLeft_C07'}
@@ -125,7 +142,7 @@ for prop,name in physics.items():
     loaded[part].set_editor_property('physics_asset',asset)
     assert loaded[part].get_editor_property('physics_asset')==asset
     LIB.save_loaded_asset(loaded[part])
-variant.set_editor_property('voice_variation',0)
+variant.set_editor_property('voice_variation',list(variants).index(VARIANT_KEY))
 # A later coordinated motion import fills the authoritative C07 map. Reimport
 # never clears a map already populated by that importer.
 clips=variant.get_editor_property('clips')
@@ -137,6 +154,6 @@ for key in ('Idle','Walk','Run','TurnLeft','TurnRight','SwipeLeft','SwipeRight',
 variant.set_editor_property('clips',clips);LIB.save_loaded_asset(variant)
 report['definition']=path;report['clips_present']=[str(k) for k in clips]
 report['physics_references']=physics
-out=ROOT/'Saved/Candidate07/CharacterImport.json';out.parent.mkdir(parents=True,exist_ok=True)
+out=ROOT/('Saved/Candidate07/CharacterImport.json' if VARIANT_KEY=='maintenance' else 'Saved/Candidate07/CharacterImport_'+variant_id+'.json');out.parent.mkdir(parents=True,exist_ok=True)
 out.write_text(json.dumps(report,indent=2)+'\n')
-u.log('C07_MAINTENANCE_IMPORT_COMPLETE five new meshes; runtime/physics/appearance review remains separate')
+u.log('C07_'+variant_id.upper()+'_IMPORT_COMPLETE five meshes; runtime/physics/appearance review remains separate')

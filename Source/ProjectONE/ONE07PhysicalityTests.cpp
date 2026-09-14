@@ -5,10 +5,12 @@
 #include "ONEGameMode.h"
 #include "ONEHealthComponent.h"
 #include "ONEPowerUpComponent.h"
+#include "ONEPowerUpPickup.h"
 #include "ONEAim.h"
 #include "ONE07RegionalTrace.h"
 #include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/SphereComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Engine/Engine.h"
 #include "Engine/GameInstance.h"
@@ -112,8 +114,10 @@ namespace ONE07PhysicalityTestDetails
         TUniquePtr<FWorld> Scene;
         TArray<AONEZombie*> Zombies;
         AActor* Obstruction=nullptr;
+        AONEPowerUpPickup* RecoveryPickup=nullptr;
         int32 Phase=0;
         float PhaseStart=0;
+        float LethalRecoveryWait=0;
         uint32 Identity=0;
         double WallStart=FPlatformTime::Seconds();
         bool Finish() { Scene.Reset(); return true; }
@@ -493,18 +497,27 @@ namespace ONE07PhysicalityTestDetails
                     Test->TestTrue(TEXT("Local obstruction keeps infected alive and fallen"),Z->IsLivingFallen() && !Z->IsDead());
                     Test->TestEqual(TEXT("Blocked recovery does not fabricate a completion"),Z->GetRecoveryCount(),0);
                     Test->TestTrue(TEXT("Missing arm has no rigid bodies while fallen"),Z->GetRegionPhysicsBodyCount(EONEHitRegion::ArmLeft)==0);
-                    Obstruction->Destroy(); Obstruction=nullptr; Next(3); return false;
+                    Obstruction->Destroy(); Obstruction=nullptr;
+                    const FVector Pelvis=Z->GetMesh()->GetSocketLocation(TEXT("pelvis"));
+                    RecoveryPickup=Scene->World->SpawnActor<AONEPowerUpPickup>(FVector(Pelvis.X,Pelvis.Y,40),FRotator::ZeroRotator);
+                    if (!Test->TestNotNull(TEXT("Actual nearby pickup collection volume"),RecoveryPickup)) return Finish();
+                    RecoveryPickup->Initialize(Scene->Mode->GetPowerUps(),EONEPowerUpType::MaxAmmo,Scene->Mode->GetPowerUps()->GetRunId(),30.f,80.f);
+                    Test->TestEqual(TEXT("Pickup remains non-solid WorldDynamic"),RecoveryPickup->Collection->GetCollisionObjectType(),ECC_WorldDynamic);
+                    Test->TestEqual(TEXT("Pickup only overlaps transport"),RecoveryPickup->Collection->GetCollisionResponseToChannel(ECC_Pawn),ECR_Overlap);
+                    Next(3); return false;
                 }
                 if (Phase==3)
                 {
                     if (!Z->IsGettingUp())
                     { if (WaitLimit(10.f,TEXT("Unblocked local recovery"))) return Finish(); return false; }
                     Test->TestTrue(TEXT("Recovery snapshot rebase preserves world pose"),Z->GetRecoveryRebaseErrorCm()<.5f);
+                    Test->TestTrue(TEXT("Nearby available pickup does not block local floor or get-up clearance"),IsValid(RecoveryPickup) && RecoveryPickup->IsAvailable());
                     Queries(Z,TEXT("Get-up:")); Next(4); return false;
                 }
                 if (Z->GetRecoveryCount()==0)
-                { if (WaitLimit(3.f,TEXT("Authored get-up completion"))) return Finish(); return false; }
+                { if (WaitLimit(4.5f,TEXT("Authored get-up completion"))) return Finish(); return false; }
                 Test->TestEqual(TEXT("Get-up completes once"),Z->GetRecoveryCount(),1);
+                Test->TestTrue(TEXT("Uncollected pickup remains available through completed get-up"),IsValid(RecoveryPickup) && RecoveryPickup->IsAvailable());
                 Test->TestEqual(TEXT("Get-up retains actor identity"),Z->GetUniqueID(),Identity);
                 Test->TestTrue(TEXT("Get-up retains living post-trauma health"),FMath::IsNearlyEqual(Z->GetHealth(),111.6f,.001f));
                 Test->TestFalse(TEXT("Get-up cannot restore missing left arm"),Z->HasLeftArm());
@@ -522,9 +535,11 @@ namespace ONE07PhysicalityTestDetails
                 if (!Z->IsGettingUp())
                 { if (WaitLimit(14.f,TEXT("Natural supported get-up after capped falls"))) return Finish(); return false; }
                 Test->TestTrue(TEXT("Get-up death fixture is still alive before the lethal packet"),!Z->IsDead() && Z->GetHealth()==112.f);
+                const auto Recovery=Z->GetInfectedAnimationState();
+                LethalRecoveryWait=Recovery.ActionDurationSeconds+Recovery.ActionLeadInSeconds+.25f;
                 Queries(Z,TEXT("Get-up before lethal:")); KillOnce(Z,TEXT("Get-up:")); Next(2); return false;
             }
-            if (Age()<2.3f) return false;
+            if (Age()<LethalRecoveryWait) return false;
             Test->TestTrue(TEXT("Lethal get-up remains dead after the former recovery deadline"),Z->IsDead());
             Test->TestEqual(TEXT("Lethal get-up never completes a recovery"),Z->GetRecoveryCount(),0);
             Test->TestEqual(TEXT("Other living actors are not killed by the transition"),Scene->Mode->GetRemaining(),4);

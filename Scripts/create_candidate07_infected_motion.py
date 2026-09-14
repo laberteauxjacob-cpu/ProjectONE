@@ -22,10 +22,12 @@ EXPORT = ROOT / 'ArtSource/Exports/Candidate07/Motion'
 FPS = 100
 parser = argparse.ArgumentParser()
 parser.add_argument('--recoveries-only', action='store_true', help='Refresh current character source and only the two recovery FBXs; retain the other twelve actions and files exactly.')
+parser.add_argument('--supine-only', action='store_true', help='Preserve the working prone clip and all other twelve clips; revise only supine recovery.')
 parser.add_argument('--retained-source', type=Path, help='Explicit preserved Motion.blend supplying the twelve original actions when recovering an incomplete refresh.')
 parser.add_argument('--render-recovery', action='store_true', help='Render bounded chronological source contact sheets for the two recoveries.')
 args = parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
-RECOVERIES = {'A_Infected_C07_GetUpProne', 'A_Infected_C07_GetUpSupine'}
+if args.supine_only:args.recoveries_only=True
+RECOVERIES = {'A_Infected_C07_GetUpSupine'} if args.supine_only else {'A_Infected_C07_GetUpProne', 'A_Infected_C07_GetUpSupine'}
 GUARD_PATHS = [INPUT, ROOT/'ArtSource/Characters/Response.blend', ROOT/'ArtSource/Characters/C05/ResponseMotion.blend', ROOT/'ArtSource/Characters/Candidate03/InfectedModular.blend']
 GUARDS = {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in GUARD_PATHS}
 retained_inventory = retained_validation = retained_samples = None
@@ -41,7 +43,7 @@ if args.recoveries_only:
         assert p.is_relative_to(EXPORT) and p.is_file()
         retained_fbx[name] = hashlib.sha256(p.read_bytes()).hexdigest()
         assert retained_fbx[name] == definition['fbx_sha256'], name
-    assert len(retained_fbx) == 12 and retained_action_source.is_file()
+    assert len(retained_fbx) == 14-len(RECOVERIES) and retained_action_source.is_file()
 # These are the same family budgets/contact clocks as ONEInfectedAttackDefinition.
 ATTACKS = [('Swipe', .96, .45, 18., .34, .67),
            ('Rake', 1.08, .48, 12., .34, .75),
@@ -77,6 +79,36 @@ def surfaces():
 
 
 SURFACES = surfaces()
+FLOOR_VERTICES={}
+for ob in bpy.data.objects:
+    if ob.type!='MESH' or not ob.name.startswith('SK_Infected_C07_Maintenance_'):continue
+    materials_by_vertex={}
+    for polygon in ob.data.polygons:
+        name=ob.data.materials[polygon.material_index].name
+        for index in polygon.vertices:materials_by_vertex.setdefault(index,set()).add(name)
+    groups={name:[] for name in ('upper_cloth','head_skin','boot_l','boot_r')}
+    for index,materials in materials_by_vertex.items():
+        p=ob.data.vertices[index].co
+        if ob.name.endswith('_Core') and p.z>=89 and 'M_C07_WorkCloth' in materials:groups['upper_cloth'].append(index)
+        if ob.name.endswith('_Head') and 'M_C07_InfectedSkin' in materials:groups['head_skin'].append(index)
+        if 'M_C07_Boot' in materials:groups['boot_r' if p.y>0 else 'boot_l'].append(index)
+    FLOOR_VERTICES[ob.name]=groups
+
+
+def evaluated_floor_heights():
+    """Actual armature-deformed cloth/skin/boot vertices, not bone proxies."""
+    result={key:float('inf') for key in ('upper_cloth','head_skin','boot_l','boot_r')}
+    deps=bpy.context.evaluated_depsgraph_get()
+    for name,groups in FLOOR_VERTICES.items():
+        ob=bpy.data.objects[name].evaluated_get(deps);mesh=ob.to_mesh()
+        try:
+            for group,indices in groups.items():
+                if indices:result[group]=min(result[group],min((ob.matrix_world@mesh.vertices[i].co).z for i in indices))
+        finally:ob.to_mesh_clear()
+    assert all(math.isfinite(value) for value in result.values())
+    return result
+
+
 if args.recoveries_only:
     for name in retained_fbx:
         existing = bpy.data.actions.get(name)
@@ -363,48 +395,76 @@ def get_up(phase, prone):
     rotate('spine_01',(0,1,0),5*finish)
     rotate('spine_02',(1,0,0),1.2*finish)
     rotate('neck',(0,1,0),-2*finish)
-    anchors={}; maximum_error=0.
-    for side,sign in (('l',-1),('r',1)):
-        # Right knee tucks under the trunk; left foot makes a distinct lifted
-        # swing. Both targets then remain fixed through the weight transfer.
-        if side=='l':
-            ankle=recovery_step(u,(-82,sign*10.5,10),(-33,sign*10.5,10),.12,.32,9)
-            if u>=.80:ankle=recovery_step(u,(-33,sign*10.5,10),(0,sign*10.5,10),.80,.91,11)
-            pole=Vector((50,sign*13,-30))
-            planted=(.32<=u<=.80) or u>=.91
-        else:
-            ankle=recovery_step(u,(-82,sign*10.5,10),(15,sign*10.5,10),.32,.51,14)
-            swing=max(0.,min(1.,(u-.32)/.19))
-            ankle.y+=sign*18*math.sin(math.pi*swing)**2
-            if u>=.92:ankle=recovery_step(u,(15,sign*10.5,10),(0,sign*10.5,10),.92,1.,6)
-            # Bring the boot around the outside of the planted knee. An upward
-            # pole while the ankle passes close to the hip folded the knee
-            # above the back in the first source preview despite valid lengths.
-            pole=Vector((-35,sign*14,-10)).lerp(Vector((55,sign*45,10)),smooth((u-.24)/.12))
-            pole=pole.lerp(Vector((80,sign*10,53)),smooth((u-.46)/.10))
-            planted=(.51<=u<=.92) or u>=1
-        if roll>0:
-            ankle.y=sign*10.5*math.cos(math.radians(roll))
-            ankle.z=10+max(0.,sign*10.5*math.sin(math.radians(roll)))
-            pole=Vector((-35,sign*25*math.cos(math.radians(roll)),25-35*math.cos(math.radians(roll))))
-        maximum_error=max(maximum_error,recovery_leg(side,ankle,pole,roll))
-        if planted and roll==0:anchors['foot_'+side]=list(ankle)
-        plant=Vector((42,sign*28,2.4))
-        release=smooth((u-(.56 if side=='r' else .59))/(.11 if side=='r' else .08))
-        shoulder=rig.pose.bones['upperarm_'+side].head
-        free=shoulder+Vector((3,sign*8,-43))
-        free=free.lerp(Vector((7,sign*26,94)),smooth((u-.76)/.24))
-        goal=plant.lerp(free,release)
-        if roll>0:
-            a=math.radians(roll)
-            goal=Vector((42,sign*28*math.cos(a)+22.6*math.sin(a),max(2.4,25+sign*28*math.sin(a)-22.6*math.cos(a))))
-        hand=Vector((10,0,.8)).lerp(Vector((2,sign*.6,-10)),release)
-        arm(side,goal,(goal.x-16,sign*43,max(14,goal.z+20)),hand)
-        maximum_error=max(maximum_error,(rig.pose.bones['hand_'+side].head-goal).length)
-        if release==0 and roll==0:anchors['hand_'+side]=list(plant)
+    low_supine=not prone and u<=.12
+    def pose_limbs(boot_lift=None):
+        anchors={}; maximum_error=0.
+        for side,sign in (('l',-1),('r',1)):
+            # Right knee tucks under the trunk; left foot makes a distinct lifted
+            # swing. Both targets then remain fixed through the weight transfer.
+            if side=='l':
+                ankle=recovery_step(u,(-82,sign*10.5,10),(-33,sign*10.5,10),.12,.32,9)
+                if u>=.80:ankle=recovery_step(u,(-33,sign*10.5,10),(0,sign*10.5,10),.80,.91,11)
+                pole=Vector((50,sign*13,-30))
+                planted=(.32<=u<=.80) or u>=.91
+            else:
+                ankle=recovery_step(u,(-82,sign*10.5,10),(15,sign*10.5,10),.32,.51,14)
+                swing=max(0.,min(1.,(u-.32)/.19))
+                ankle.y+=sign*18*math.sin(math.pi*swing)**2
+                if u>=.92:ankle=recovery_step(u,(15,sign*10.5,10),(0,sign*10.5,10),.92,1.,6)
+                pole=Vector((-35,sign*14,-10)).lerp(Vector((55,sign*45,10)),smooth((u-.24)/.12))
+                pole=pole.lerp(Vector((80,sign*10,53)),smooth((u-.46)/.10))
+                planted=(.51<=u<=.92) or u>=1
+            if roll>0:
+                ankle.y=sign*10.5*math.cos(math.radians(roll))
+                ankle.z=10+max(0.,sign*10.5*math.sin(math.radians(roll)))
+                pole=Vector((-35,sign*25*math.cos(math.radians(roll)),25-35*math.cos(math.radians(roll))))
+            if low_supine:
+                ankle.z+=(boot_lift or {}).get(side,0.)
+                # Keep a nearly extended lying leg when the supported pelvis
+                # moves down. This avoids folding its knee through the floor.
+                hip=rig.pose.bones['thigh_'+side].head
+                length=rig.data.bones['thigh_'+side].length+rig.data.bones['calf_'+side].length-.18
+                x=hip.x-math.sqrt(max(.01,length*length-(ankle.y-hip.y)**2-(ankle.z-hip.z)**2))
+                ankle.x=ankle.x*smooth(u/.12)+x*(1-smooth(u/.12))
+            maximum_error=max(maximum_error,recovery_leg(side,ankle,pole,roll))
+            if planted and roll==0:anchors['foot_'+side]=list(ankle)
+            plant=Vector((42,sign*28,2.4))
+            release=smooth((u-(.56 if side=='r' else .59))/(.11 if side=='r' else .08))
+            shoulder=rig.pose.bones['upperarm_'+side].head
+            free=shoulder+Vector((3,sign*8,-43))
+            free=free.lerp(Vector((7,sign*26,94)),smooth((u-.76)/.24))
+            goal=plant.lerp(free,release)
+            if roll>0:
+                a=math.radians(roll)
+                goal=Vector((42,sign*28*math.cos(a)+22.6*math.sin(a),max(2.4,25+sign*28*math.sin(a)-22.6*math.cos(a))))
+            hand=Vector((10,0,.8)).lerp(Vector((2,sign*.6,-10)),release)
+            arm(side,goal,(goal.x-16,sign*43,max(14,goal.z+20)),hand)
+            maximum_error=max(maximum_error,(rig.pose.bones['hand_'+side].head-goal).length)
+            if release==0 and roll==0:anchors['hand_'+side]=list(plant)
+        return anchors,maximum_error
+    anchors,maximum_error=pose_limbs()
+    floor_fit=None
+    if low_supine:
+        before=evaluated_floor_heights()
+        # Roll on the actual cloth envelope. After reaching prone, gradually
+        # unload that support into the unchanged planted palms over .306 s.
+        target=.15+(before['upper_cloth']-.15)*smooth(u/.12)
+        boot_lift={'l':0.,'r':0.}
+        for iteration in range(8):
+            heights=evaluated_floor_heights()
+            delta=target-heights['upper_cloth']
+            if abs(delta)<.015 and min(heights['boot_l'],heights['boot_r'])>=.10:break
+            move('pelvis',(0,0,delta))
+            for side in ('l','r'):boot_lift[side]+=max(0.,.15-heights['boot_'+side])
+            anchors,maximum_error=pose_limbs(boot_lift)
+        heights=evaluated_floor_heights()
+        assert abs(heights['upper_cloth']-target)<.04, ('Supine cloth support did not converge',phase,heights,target)
+        assert min(heights['head_skin'],heights['boot_l'],heights['boot_r'])>=.05, ('Supine head/boot floor penetration',phase,heights)
+        floor_fit={'before_cm':before,'after_cm':heights,'target_upper_cloth_cm':target,'iterations':iteration+1,'boot_target_lift_cm':boot_lift,
+                   'pelvis_vertical_correction_cm':rig.pose.bones['pelvis'].head.z-pelvis.z}
     label='roll_to_prone' if roll>0 else next(label for end,label in [(.12,'palm_brace'),(.32,'right_knee_tuck'),(.51,'left_foot_swing'),(.59,'planted_weight_transfer'),(.80,'supported_rise'),(.91,'right_foot_step'),(1.001,'left_foot_settle')] if u<=end)
     assert maximum_error<.15, ('Recovery unreachable support target',phase,prone,maximum_error)
-    return {'recovery_phase':label,'rise_phase':u,'roll_degrees':roll,'support_anchors':anchors,'maximum_target_error_cm':maximum_error}
+    return {'recovery_phase':label,'rise_phase':u,'roll_degrees':roll,'support_anchors':anchors,'maximum_target_error_cm':maximum_error,'surface_floor_fit':floor_fit}
 
 
 inventory = {'candidate': '07', 'fps': FPS, 'destination': '/Game/ONE/Animations/Candidate07',
@@ -419,7 +479,7 @@ if args.recoveries_only:
     retained_source_manifest=json.loads(retained_source_manifest_path.read_text())
     for name,digest in retained_fbx.items():
         assert retained_source_manifest['clips'][name]['fbx_sha256']==digest, ('Preserved action-source inventory mismatch',name)
-    inventory['retained_action_source']={'description':'Previously authored C07 InfectedMotion.blend supplies the twelve unchanged actions; exported FBX identities remain authoritative in clips.',
+    inventory['retained_action_source']={'description':f'Previously authored C07 InfectedMotion.blend supplies {len(retained_fbx)} unchanged actions; exported FBX identities remain authoritative in clips.',
         'bytes':retained_action_source.stat().st_size,'sha256':hashlib.sha256(retained_action_source.read_bytes()).hexdigest(),
         'source_inventory_sha256':hashlib.sha256(retained_source_manifest_path.read_bytes()).hexdigest(),
         'recorded_character_source':retained_source_manifest['source'],'recorded_character_source_sha256':retained_source_manifest['source_sha256']}
@@ -495,10 +555,21 @@ def export(key, duration, pose, extra=None, loop=False):
         lead_swing=[s for s in samples if .36<=s['rise_phase']<=.49]
         assert lead_swing and max(s['calf_r'][2]-s['pelvis'][2] for s in lead_swing)<20, (name,'Lead knee folds above back')
         rolling=[s for s in samples if s['recovery_phase']=='roll_to_prone']
-        if rolling:assert max(s['pelvis'][2] for s in rolling)-min(s['pelvis'][2] for s in rolling)<.01
+        if rolling:
+            assert all(s['surface_floor_fit'] is not None for s in rolling)
+            assert max(abs(s['surface_floor_fit']['after_cm']['upper_cloth']-.15) for s in rolling)<.04
+            assert min(s['surface_floor_fit']['after_cm'][part] for s in rolling for part in ('head_skin','boot_l','boot_r'))>=.05
         validation['clips'][name].update(maximum_support_anchor_error_cm=max(s['maximum_support_anchor_error_cm'] for s in samples),
             maximum_target_error_cm=max(s['maximum_target_error_cm'] for s in samples),rear_knee_support_z_cm=[min(knee),max(knee)],
             support_samples=sum(bool(s['support_anchors']) for s in samples),low_roll_pelvis_z_cm=[min(s['pelvis'][2] for s in rolling),max(s['pelvis'][2] for s in rolling)] if rolling else None)
+        fitted=[s['surface_floor_fit'] for s in samples if s.get('surface_floor_fit')]
+        if fitted:
+            validation['clips'][name]['evaluated_floor_support']={
+                'scope':'Actual deformed upper garment contact through supine roll; gradual release into the palm brace. Actual head skin and boot clearances checked independently.',
+                'samples':len(fitted),'maximum_cloth_target_error_cm':max(abs(s['after_cm']['upper_cloth']-s['target_upper_cloth_cm']) for s in fitted),
+                'minimum_head_skin_clearance_cm':min(s['after_cm']['head_skin'] for s in fitted),
+                'minimum_boot_clearance_cm':min(s['after_cm'][part] for s in fitted for part in ('boot_l','boot_r')),
+                'roll_cloth_clearance_range_cm':[min(s['surface_floor_fit']['after_cm']['upper_cloth'] for s in rolling),max(s['surface_floor_fit']['after_cm']['upper_cloth'] for s in rolling)]}
     all_samples[name] = samples
 
 
@@ -517,6 +588,7 @@ if not args.recoveries_only:
     export('HeavyHit', .52, lambda p: reaction(p, False))
     export('Stumble', .70, lambda p: reaction(p, True))
 for prone in (True,False):
+    if args.recoveries_only and ('A_Infected_C07_GetUpProne' if prone else 'A_Infected_C07_GetUpSupine') not in RECOVERIES:continue
     export('GetUpProne' if prone else 'GetUpSupine', GET_UP_RISE_SECONDS+(0 if prone else GET_UP_ROLL_SECONDS), lambda p,prone=prone:get_up(p,prone),
         {'recovery_phases':['low_roll' if not prone else 'prone_entry','palm_brace','right_knee_tuck','left_foot_swing','planted_weight_transfer','supported_rise','right_foot_step','left_foot_settle'],
          'support_contract':'Stationary component-space palm frames during brace/tuck/lead-foot plant; stationary planted foot targets through weight transfer. Separate lifted adjustment steps before standing. Runtime snapshot blend precedes this clip clock.'})
@@ -576,7 +648,7 @@ print('CANDIDATE07_INFECTED_MOTION_AUTHORED ' + str(len(inventory['clips'])))
 if args.render_recovery:
     # Optional bounded source preview, separate from the editable character and
     # numeric evidence. Actual runtime recovery is still the integration gate.
-    output=ROOT/'Saved/Candidate07/CharacterAudit/RecoverySourceR3'
+    output=ROOT/'Saved/Candidate07/CharacterAudit/RecoverySourceR4'
     output.mkdir(parents=True,exist_ok=True)
     for ob in list(bpy.data.objects):
         if ob.type in ('CAMERA','LIGHT'):bpy.data.objects.remove(ob,do_unlink=True)
@@ -593,7 +665,8 @@ if args.render_recovery:
     preview=[]
     for prone in (True,False):
         name='A_Infected_C07_GetUpProne' if prone else 'A_Infected_C07_GetUpSupine';rig.animation_data.action=bpy.data.actions[name]
-        duration=inventory['clips'][name]['duration'];times=([0,.30,.65,1.02,1.40,1.68,2.10,2.55] if prone else [0,.225,.45,.80,1.35,1.85,2.35,3.0])
+        if args.recoveries_only and name not in RECOVERIES:continue
+        duration=inventory['clips'][name]['duration'];times=([0,.30,.65,1.02,1.40,1.68,2.10,2.55] if prone else [0,.15,.225,.30,.375,.45,.60,.75,1.,1.35,1.85,2.35,3.0])
         for index,t in enumerate(times):
             scene.frame_set(round(t*FPS)+1);file=output/(name+'_'+str(index).zfill(2)+'.png');scene.render.filepath=str(file);bpy.ops.render.render(write_still=True)
             preview.append({'clip':name,'seconds':t,'frame':round(t*FPS)+1,'path':file.relative_to(ROOT).as_posix(),'sha256':hashlib.sha256(file.read_bytes()).hexdigest()})

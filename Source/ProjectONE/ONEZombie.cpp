@@ -214,9 +214,9 @@ void AONEZombie::BeginPlay()
 }
 TArray<FString> AONEZombie::GetProductionVariantPaths()
 {
-    // Maintenance is integrated first. The reviewed trio will extend this
-    // explicit pool; missing assets never silently load the old mannequin.
-    static const TCHAR* Names[]={TEXT("Maintenance")};
+    // Presentation selection is independent of combat/spread/reward streams.
+    // Missing definitions never silently load a historical mannequin.
+    static const TCHAR* Names[]={TEXT("Maintenance"),TEXT("Laboratory"),TEXT("FacilityStaff")};
     TArray<FString> Paths;
     for (const TCHAR* Name:Names)
         Paths.Add(FString::Printf(TEXT("/Game/ONE/Characters/Candidate07/DA_Infected_%s.DA_Infected_%s"),Name,Name));

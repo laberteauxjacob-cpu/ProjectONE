@@ -1,5 +1,6 @@
 #include "ONE07PhysicalityCheck.h"
 #include "ONEZombie.h"
+#include "ONEInfectedVariant.h"
 #include "ONEInfectedAnimInstance.h"
 #include "ONEPlayer.h"
 #include "ONEPlayerController.h"
@@ -47,7 +48,7 @@ void AONE07PhysicalityCheck::BeginPlay()
     IFileManager::Get().MakeDirectory(*Folder,true);
     Report=TEXT("Candidate07 actual runtime evidence. Not native human play, audio audition or visual acceptance.\n");
     Report+=bEncounter?TEXT("Ordinary encounter: scripted production controller movement, projected torso-height cursor and LMB/R only. No grants, teleports, health restores, actor spawning or forced damage. Actual survival may end early.\n"):
-        TEXT("Controlled registered sandbox fixtures: declared phase-boundary retirement/cleanup/player placement and health restore; group phases also replenish player health for observation. Fall and regional sever packets are explicit diagnostic interventions. They are not ordinary player aiming or naturally triggered knockdowns.\n");
+        TEXT("Controlled registered sandbox fixtures: declared phase-boundary retirement/cleanup/player placement and health restore; group phases also replenish player health for observation. The isolated fall stops approach velocity once and applies a backward bounded impulse; mixed falls retain approach velocity. Fall and regional sever packets are explicit diagnostic interventions. The final lineup explicitly cycles the production appearance pool, then pursues normally. These are not ordinary player aiming or naturally triggered knockdowns.\n");
     Telemetry=TEXT("seconds,phase,id,variant,state,health,x,y,z,pelvis_x,pelvis_y,pelvis_z,head_x,head_y,head_z,speed,physics,awake,contacts,falls,recoveries,blocked,pose_cm,rebase_cm,head_present,left_arm,right_arm,left_leg,foot_cues,body_cues,attack_cues,live,kills,player_health,health_restores\n");
     Inputs=TEXT("seconds,key,event,handled\n");
 }
@@ -75,13 +76,13 @@ void AONE07PhysicalityCheck::EnterPhase()
     Mode->ClearSandboxPresentation(); Subjects.Reset();
     ++Phase; PhaseStart=Elapsed; Action=0;
     if (Phase>=7) { Finish(); return; }
-    const TCHAR* Labels[]={TEXT("ONE MAINTENANCE / ORDINARY CAMERA / APPROACH AND ATTACK"),
+    const TCHAR* Labels[]={TEXT("ONE INFECTED / ORDINARY CAMERA / APPROACH AND ATTACK"),
         TEXT("ONE BODY / EXPLICIT BOUNDED LIVING FALL / HEALTH RETAINED"),
         TEXT("TWO BODIES / SHARED APPROACH / REAL CONTACT"),
         TEXT("SIX BODIES / DECLARED SOLID OBSTACLE / REAL CONTACT"),
         TEXT("MIXED LIVING FALL AND GET-UP / PHYSICALITY PROBE"),
         TEXT("CURRENT-POSE LIMB LOSS AND DEATH / REGIONAL PACKET PROBE"),
-        TEXT("ORDINARY SPAWN VARIATION / SIX BODY PURSUIT")};
+        TEXT("EXPLICIT THREE-VARIANT LINEUP / SIX BODY PURSUIT")};
     Label=Labels[Phase];
     Player->SetActorLocation(Origin,false,nullptr,ETeleportType::TeleportPhysics);
     Player->GetCharacterMovement()->StopMovementImmediately(); Player->GetHealthComponent()->Restore(); ++HealthRestores;
@@ -107,8 +108,17 @@ void AONE07PhysicalityCheck::EnterPhase()
     for (int32 I=0;I<Count;++I)
     {
         const float Distance=Phase==1?300.f:Phase==5?390.f:550.f;
-        const FVector Position=Origin+FVector(-Distance-float(I/2)*72.f,(I%2?.5f:-.5f)*(Count<=2?58.f:76.f),0);
-        if (auto* Z=Mode->SpawnSandboxEnemyAt(Position)) Subjects.Add(Z);
+        const FVector Position=Phase==6?Origin+FVector(-Distance-float(I/3)*90.f,(I%3-1)*145.f,0):
+            Origin+FVector(-Distance-float(I/2)*72.f,(I%2?.5f:-.5f)*(Count<=2?58.f:76.f),0);
+        UONEInfectedVariant* Appearance=nullptr;
+        if (Phase==6)
+        {
+            const TArray<FString> Paths=AONEZombie::GetProductionVariantPaths();
+            if (I==0) Check(Paths.Num()==3,TEXT("Lineup uses all three production appearances"));
+            if (!Paths.IsEmpty()) Appearance=LoadObject<UONEInfectedVariant>(nullptr,*Paths[I%Paths.Num()]);
+            Check(Appearance!=nullptr,TEXT("Declared lineup appearance resolves from the production pool"));
+        }
+        if (auto* Z=Mode->SpawnSandboxEnemyAt(Position,Appearance)) Subjects.Add(Z);
     }
     Check(Subjects.Num()==Count,FString::Printf(TEXT("Phase%d registered %d intended actors"),Phase,Count));
     for (const auto& Z:Subjects)
@@ -204,12 +214,22 @@ void AONE07PhysicalityCheck::Tick(float Dt)
         for (int32 I=0;I<Count;++I)
         {
             const float Before=Subjects[I]->GetHealth();
-            Check(Subjects[I]->TryLivingFall(FVector(220,30,15),TEXT("explicit_recorded_probe")),TEXT("Declared probe entered living physics"));
+            if (Phase==1) Subjects[I]->GetCharacterMovement()->StopMovementImmediately();
+            const FVector Impulse=Phase==1?FVector(-320,20,15):FVector(220,30,15);
+            Check(Subjects[I]->TryLivingFall(Impulse,TEXT("explicit_recorded_probe")),TEXT("Declared probe entered living physics"));
             Check(Subjects[I]->GetHealth()==Before && !Subjects[I]->IsDead(),TEXT("Falling retained health and living identity"));
         }
         Check(Mode->GetKills()==StartKills && Mode->GetRemaining()==StartRemaining,TEXT("Fall did not count a kill or remove registered population"));
         ++Action;
     }
+    if (Phase==4 && Age>7.5f && Action==1)
+    {
+        // A disclosed production-input escape clears the traffic that blocked
+        // the fallen actors. No actor is moved or retired to create clearance.
+        Key(EKeys::D,true); Action=2;
+        Label=TEXT("MIXED FALLS / PRODUCTION D ESCAPE / LOCAL RECOVERY CLEARANCE");
+    }
+    if (Phase==4 && Age>9.f && Action==2) { Key(EKeys::D,false); Action=3; }
     if (Phase==5 && Age>2.f+Action*2.2f && Action<4 && Subjects.IsValidIndex(Action))
     {
         auto* Z=Subjects[Action].Get(); const EONEHitRegion Regions[]={EONEHitRegion::ArmLeft,EONEHitRegion::ArmRight,EONEHitRegion::Head,EONEHitRegion::LegLeft};
@@ -222,6 +242,12 @@ void AONE07PhysicalityCheck::Tick(float Dt)
     if (Phase>=0 && Age>=Durations[Phase])
     {
         if (Phase==1) Check(Subjects.Num()==1 && Subjects[0]->GetRecoveryCount()>0,TEXT("One living fall recovered in local clear space"));
+        if (Phase==4)
+        {
+            int32 Recovered=0;
+            for (const auto& Subject:Subjects) if (Subject && Subject->GetRecoveryCount()>0) ++Recovered;
+            Check(Recovered>0,TEXT("A living fall in the mixed group completed local recovery"));
+        }
         EnterPhase();
     }
 }

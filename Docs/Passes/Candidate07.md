@@ -1,7 +1,7 @@
 # Candidate07 — infected physicality and recorded audio
 
-Status: internal checkpoint C, first Maintenance character and connected
-attack families inspected in actual Editor-game frames. Candidate07 remains in progress; it is
+Status: internal checkpoints D/E, physical contact, all three appearances and
+recorded event audio integrated in the Editor game. Candidate07 remains in progress; it is
 not packaged, publicly released or approved by the user for visual/audio quality.
 The latest verified playable release remains Candidate06.
 
@@ -114,10 +114,9 @@ event checks and digital clipping analysis do not substitute for listening.
 
 ## Completion gates still pending
 
-Physical-contact checkpoint and final combined attack review;
-living fall/recovery and lethal-state checks; all-variant dismemberment/query
-fit; recorded audio and event synchronization; chronological engine review;
-representative comparative performance; full regression checks; fresh neutral
+Final combined attack/physicality/audio review; all-variant portability and
+ordinary encounter checks; representative comparative performance; full
+packaged regression checks; fresh neutral
 build, source/LFS verification, archive and public download verification.
 
 Candidate06 controls remain: LMB fires; hold RMB for head height; hold Left Ctrl
@@ -153,3 +152,45 @@ zero full-scale samples and zero near-clip windows. Actual PCM segments match
 their sources; no sound was perceptually heard or approved. Candidate07 remains
 an Editor WIP with null exact packaged-source identity, and final media/package
 evidence remains required.
+
+## Physical-contact, variants and audio checkpoint
+
+The source trio is Maintenance (60,406 triangles), Laboratory (64,798) and
+Facility Staff (64,982). Laboratory adds lined coat tails/lapels and grey
+receding hair; Staff adds rolled sleeves, bare forearms, tan trousers and a
+different crown/hair treatment. They share the rig, paired cuts, head-query
+envelope and gameplay statistics. All ten new source previews were inspected;
+coat/hip and hair-surface intersections found during authoring were corrected
+before import. Both new imports completed with zero errors and warnings.
+
+The latest physicality recording completed all seven phases: 84 assertions,
+zero failures, 2,144 original frames and 80.448 seconds of actual engine audio.
+It includes one/two/group contact, an obstacle, mixed living falls, both actual
+recovery clips and a declared two-of-each appearance lineup. Prone and supine
+recoveries retain 112 health, and the recorded snapshot rebases report 0 cm.
+Bounded chronological review found a readable Maintenance floor roll and
+supported rise; Staff's initial roll is partly occluded. Laboratory's coat
+remains coherent in sampled contact and folded death poses. Hidden crowd
+contacts/seams and continuous playback are outside this review.
+
+The revised supine source uses measured garment/head/boot support and retains
+the other thirteen FBXs. Its actual gameplay recovery lasts 3.35 seconds,
+including the initial 0.35-second snapshot blend; prone lasts 2.90 seconds.
+Both still have a brisk, stylized initial transition.
+
+Subsequent integration review fixed two concrete issues: non-solid pickup
+collection spheres no longer supply floor support or block recovery, and
+stopped attack footplants can use grounded movement from the same action's
+preceding 0.22 seconds. Idle/airborne/stale callbacks remain rejected. All
+38 engine tests now pass (35 clean, three with warnings), including real
+pickup availability through recovery and the stopped-footplant regression.
+The 80.448-second recording predates these two fixes; final packaged recordings
+are still required. The combined build also exposed and fixed a Unity-build
+test-helper name collision.
+
+That recording encoded to a 15.5 MB private preview and passed 31 integrity,
+timing and complete video/audio decode checks. It remains REVIEW_ONLY with
+null exact packaged-source identity. No perceptual audition occurred. Current
+source inventory records 459 C07 LFS payloads; visible-string review found no
+actionable private-path/token matches. Final outgoing-history, fresh checkout,
+package and publication audits remain separate.

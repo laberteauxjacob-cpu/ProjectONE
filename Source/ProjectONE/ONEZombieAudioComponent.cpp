@@ -1,6 +1,7 @@
 #include "ONEZombieAudioComponent.h"
 #include "ONE05Audio.h"
 #include "ONEZombie.h"
+#include "ONEInfectedAnimInstance.h"
 #include "Components/AudioComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -82,6 +83,7 @@ void UONEZombieAudioComponent::TickComponent(float Dt,ELevelTick TickType,FActor
     if (BreathVoice) BreathVoice->SetVolumeMultiplier(BreathGain*ONE05Audio::GetZombieGain());
     if (ActionVoice) ActionVoice->SetVolumeMultiplier(ActionGain*ONE05Audio::GetZombieGain());
     if (bDead) return;
+    ObserveAttackFootMotion();
     const double Now=GetWorld()->GetTimeSeconds();
     if (Now>=NextBreath)
     {
@@ -121,9 +123,20 @@ void UONEZombieAudioComponent::UpdateVoiceLocation()
 void UONEZombieAudioComponent::NotifyFootContact(bool bLeftFoot)
 {
     auto* Zombie=Cast<AONEZombie>(GetOwner()); const int32 I=bLeftFoot?0:1;
-    if (!IsLivingAudioEnabled() || !Zombie || Zombie->IsDead() || Zombie->IsLivingFallen() || Zombie->IsGettingUp() ||
-        !Zombie->GetCharacterMovement()->IsMovingOnGround() || Zombie->GetVelocity().SizeSquared2D()<FMath::Square(15.f) ||
-        GetWorld()->GetTimeSeconds()<NextFoot[I]) return;
+    if (!IsLivingAudioEnabled() || !Zombie || !GetWorld() || Zombie->IsDead() || Zombie->IsLivingFallen() || Zombie->IsGettingUp() ||
+        !Zombie->GetCharacterMovement()->IsMovingOnGround()) return;
+    const auto State=Zombie->GetInfectedAnimationState();
+    if (State.Motion!=EONEInfectedMotionState::Locomotion && State.Motion!=EONEInfectedMotionState::Attack) return;
+    const double Now=GetWorld()->GetTimeSeconds();
+    // The caller already evaluated the planting foot against the ground. An
+    // attack brakes before that plant, so instantaneous velocity alone loses
+    // its sound. Match the graph's recent-motion window, within this action
+    // only; stationary locomotion and an old attack never gain timer footsteps.
+    const bool RecentAttackMotion=State.Motion==EONEInfectedMotionState::Attack &&
+        State.ActionSerial==FootMotionActionSerial && Now>=LastAttackFootMotion && Now-LastAttackFootMotion<=.22;
+    const double SpeedSquared=Zombie->GetVelocity().SizeSquared2D();
+    const bool Moving=FMath::IsFinite(SpeedSquared) && SpeedSquared>=FMath::Square(15.f);
+    if ((!RecentAttackMotion && !Moving) || Now<NextFoot[I]) return;
     auto* Mesh=Zombie->GetMesh(); const FName Toe=bLeftFoot?FName(TEXT("toe_r")):FName(TEXT("toe_l"));
     const FName Foot=bLeftFoot?FName(TEXT("foot_r")):FName(TEXT("foot_l"));
     const FVector Position=Mesh->GetSocketLocation(Mesh->GetBoneIndex(Toe)!=INDEX_NONE?Toe:Foot);
@@ -131,10 +144,22 @@ void UONEZombieAudioComponent::NotifyFootContact(bool bLeftFoot)
     if (GetWorld()->LineTraceSingleByObjectType(Hit,Position+FVector(0,0,12),Position-FVector(0,0,22),
         FCollisionObjectQueryParams(ECC_WorldStatic),Query) && Hit.ImpactNormal.Z>.55f)
     {
-        NextFoot[I]=GetWorld()->GetTimeSeconds()+.16;
+        NextFoot[I]=Now+.16;
         if (auto* Audio=GetWorld()->GetSubsystem<UONE05AudioWorldSubsystem>()) Audio->PlayFootContact(Hit,false);
         ++FootCueCount;
     }
+}
+void UONEZombieAudioComponent::ObserveAttackFootMotion()
+{
+    const auto* Zombie=Cast<AONEZombie>(GetOwner());
+    if (!Zombie || !GetWorld() || !Zombie->GetCharacterMovement()->IsMovingOnGround() ||
+        Zombie->GetCombatState()!=EONEZombieState::Attack)
+    { LastAttackFootMotion=-100.; FootMotionActionSerial=MAX_uint64; return; }
+    const auto State=Zombie->GetInfectedAnimationState();
+    if (FootMotionActionSerial!=State.ActionSerial)
+    { LastAttackFootMotion=-100.; FootMotionActionSerial=State.ActionSerial; }
+    const double SpeedSquared=Zombie->GetVelocity().SizeSquared2D();
+    if (FMath::IsFinite(SpeedSquared) && SpeedSquared>FMath::Square(8.f)) LastAttackFootMotion=GetWorld()->GetTimeSeconds();
 }
 void UONEZombieAudioComponent::NotifyFall()
 {
@@ -154,6 +179,7 @@ void UONEZombieAudioComponent::NotifyBodyContact(const FVector& Location,float N
 void UONEZombieAudioComponent::StopLiving()
 {
     bDead=true; bPursuing=false;
+    LastAttackFootMotion=-100.; FootMotionActionSerial=MAX_uint64;
     if (BreathVoice) BreathVoice->Stop();
     if (ActionVoice) ActionVoice->Stop();
 }

@@ -1,0 +1,607 @@
+{
+  "candidate": "07",
+  "variant": "facility_staff",
+  "variant_id": "FacilityStaff",
+  "display_name": "Facility staff",
+  "skeleton_asset": "/Game/ONE/Characters/SK_Infected_Skeleton",
+  "editable_source": "ArtSource/Characters/Candidate07/FacilityStaff.blend",
+  "anatomy": {
+    "left_arm": "upperarm_r",
+    "right_arm": "upperarm_l",
+    "left_leg": "thigh_r",
+    "head": "head"
+  },
+  "fbx_vertex_color_space": "LINEAR: Unreal skeletal FBX importer directly quantizes these RGB/alpha values",
+  "meshes": {
+    "Core": {
+      "vertices": 7829,
+      "triangles": 15350,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000298023224,
+      "materials": [
+        "M_C07_FacilityStaff_WorkCloth",
+        "M_C07_FacilityStaff_CutTissue",
+        "M_C07_FacilityStaff_BoneTeeth",
+        "M_C07_FacilityStaff_Trousers",
+        "M_C07_FacilityStaff_Boot",
+        "M_C07_FacilityStaff_Hair",
+        "M_C07_FacilityStaff_WorkMetal",
+        "M_C07_FacilityStaff_InfectedSkin"
+      ],
+      "features": {
+        "Torn_chest_workwear": {
+          "kind": "open_cloth_with_thickness_dark_underlayer_and_loose_threads"
+        },
+        "Crossed_boot_lace_11": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_14": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_17": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_20": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Continuous_knee": {
+          "rings": 44,
+          "weights": "smooth thigh/calf window 62\u201344 cm"
+        },
+        "Front_placket": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.16
+        },
+        "Pocket_outer_-9": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.18
+        },
+        "Pocket_flap_-9": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.3
+        },
+        "Curved_pocket_panel_-9": {
+          "kind": "conforming_cloth_panel",
+          "grid": [
+            7,
+            7
+          ]
+        },
+        "Folded_collar_-1": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.7
+        },
+        "Shoulder_sewn_line_-1": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.08
+        },
+        "Folded_collar_1": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.7
+        },
+        "Shoulder_sewn_line_1": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.08
+        },
+        "Small_ID_card": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.14
+        },
+        "ID_marking": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.08
+        },
+        "Loose_work_tie": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.35
+        },
+        "Shirt_button_109": {
+          "kind": "modeled_volume"
+        },
+        "Shirt_button_118": {
+          "kind": "modeled_volume"
+        },
+        "Shirt_button_128": {
+          "kind": "modeled_volume"
+        },
+        "Shirt_button_138": {
+          "kind": "modeled_volume"
+        },
+        "Worn_belt_buckle": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.25
+        },
+        "Staff_shirt_and_tie": {
+          "rolled_sleeves": true,
+          "single_chest_pocket": true,
+          "waist_scale": 0.93
+        }
+      },
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_FacilityStaff_Core.fbx",
+      "bytes": 634972,
+      "sha256": "bf95911afd40ddfa9543d16a3fc9effcf59d52a2416d528dc7c8ccf7026b7323",
+      "exported_vertex_colors": {
+        "space": "LINEAR",
+        "rgba_records": 8374,
+        "minimum": [
+          0.022617172449827194,
+          0.01696287840604782,
+          0.01048331055790186,
+          0.44502726197242737
+        ],
+        "maximum": [
+          0.49049368500709534,
+          0.4087447226047516,
+          0.25035613775253296,
+          0.9749846458435059
+        ],
+        "source_range_match": true
+      },
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_FacilityStaff_Core"
+    },
+    "Head": {
+      "vertices": 18517,
+      "triangles": 35464,
+      "weight_sum_min": 1.0,
+      "weight_sum_max": 1.0,
+      "materials": [
+        "M_C07_FacilityStaff_InfectedSkin",
+        "M_C07_FacilityStaff_CutTissue",
+        "M_C07_FacilityStaff_Hair",
+        "M_C07_FacilityStaff_BoneTeeth",
+        "M_C07_FacilityStaff_CloudedEye"
+      ],
+      "features": {
+        "Modeled_asymmetric_face": {
+          "longitudinal_rings": 73,
+          "circumference": 96,
+          "features": [
+            "nose_bridge",
+            "brow",
+            "integrated_socket_lids",
+            "zygomatic_plane",
+            "temple_hollows",
+            "uneven_jaw",
+            "recessed_mouth_gums",
+            "open_cheek_wound"
+          ]
+        },
+        "Recessed_eye_-1": {
+          "kind": "modeled_volume"
+        },
+        "Clouded_iris_-1": {
+          "kind": "modeled_volume"
+        },
+        "Auricle_-1": {
+          "kind": "modeled_volume"
+        },
+        "Concha_-1": {
+          "kind": "modeled_volume"
+        },
+        "Integrated_nasal_ala_-1": {
+          "kind": "continuous_skull_form_and_recessed_underside_colour"
+        },
+        "Recessed_eye_1": {
+          "kind": "modeled_volume"
+        },
+        "Clouded_iris_1": {
+          "kind": "modeled_volume"
+        },
+        "Auricle_1": {
+          "kind": "modeled_volume"
+        },
+        "Concha_1": {
+          "kind": "modeled_volume"
+        },
+        "Integrated_nasal_ala_1": {
+          "kind": "continuous_skull_form_and_recessed_underside_colour"
+        },
+        "Inset_tooth_0": {
+          "kind": "chipped_inset_volume"
+        },
+        "Inset_tooth_1": {
+          "kind": "chipped_inset_volume"
+        },
+        "Inset_tooth_2": {
+          "kind": "chipped_inset_volume"
+        },
+        "Inset_tooth_3": {
+          "kind": "chipped_inset_volume"
+        },
+        "Inset_tooth_4": {
+          "kind": "chipped_inset_volume"
+        },
+        "Irregular_swept_hair": {
+          "modeled_locks": 84,
+          "fine_strands": 160,
+          "opaque": true,
+          "scalp_surface": "curved receding side/back coverage with irregular edge and partial crown sweep",
+          "placement": "deterministic continuous sampling; no grid of roots"
+        },
+        "Eyebrows": {
+          "modeled_strands": 22,
+          "attached_to": "sampled original brow surface"
+        },
+        "Variant_facial_structure": {
+          "variant": "FacilityStaff",
+          "method": "Complete modeled face deformation with unchanged neck rim",
+          "form": "broader lower jaw and chin, asymmetric eye plane"
+        }
+      },
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_FacilityStaff_Head.fbx",
+      "bytes": 1429100,
+      "sha256": "ca28289aa7fcf1b61d0844172960ed4a3b7a608467a583c97844e6073281a8b2",
+      "exported_vertex_colors": {
+        "space": "LINEAR",
+        "rgba_records": 18964,
+        "minimum": [
+          0.012954162433743477,
+          0.009715622290968895,
+          0.008018477819859982,
+          0.36523565649986267
+        ],
+        "maximum": [
+          0.49022388458251953,
+          0.4085199236869812,
+          0.2502184510231018,
+          0.9749867916107178
+        ],
+        "source_range_match": true
+      },
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_FacilityStaff_Head"
+    },
+    "ArmLeft": {
+      "vertices": 2808,
+      "triangles": 5548,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000298023224,
+      "materials": [
+        "M_C07_FacilityStaff_WorkCloth",
+        "M_C07_FacilityStaff_CutTissue",
+        "M_C07_FacilityStaff_BoneTeeth",
+        "M_C07_FacilityStaff_InfectedSkin"
+      ],
+      "features": {
+        "Rolled_shirt_cuff": {
+          "thick_fold_cm": 2.0
+        },
+        "Knuckle_0": {
+          "kind": "modeled_volume"
+        },
+        "Nail_0": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_1": {
+          "kind": "modeled_volume"
+        },
+        "Nail_1": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_2": {
+          "kind": "modeled_volume"
+        },
+        "Nail_2": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_3": {
+          "kind": "modeled_volume"
+        },
+        "Nail_3": {
+          "kind": "modeled_volume"
+        },
+        "Continuous_elbow_sleeve": {
+          "rows": 35,
+          "hem": "ragged short",
+          "thickness_cm": 0.25
+        },
+        "Individual_fingers_nails": {
+          "fingers": 5,
+          "rig_limit": "hand-bone rigid; no new finger joints"
+        }
+      },
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_FacilityStaff_ArmLeft.fbx",
+      "bytes": 273740,
+      "sha256": "a66c19aaeff0a1dad5380a983e09b7fd39a62b4999c6211f3f9e0bfc1f2cf4cc",
+      "exported_vertex_colors": {
+        "space": "LINEAR",
+        "rgba_records": 2968,
+        "minimum": [
+          0.1733003556728363,
+          0.027534617111086845,
+          0.0283689983189106,
+          0.4450758099555969
+        ],
+        "maximum": [
+          0.4908595085144043,
+          0.4090496003627777,
+          0.25353991985321045,
+          0.9749584197998047
+        ],
+        "source_range_match": true
+      },
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_FacilityStaff_ArmLeft"
+    },
+    "ArmRight": {
+      "vertices": 2808,
+      "triangles": 5548,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000298023224,
+      "materials": [
+        "M_C07_FacilityStaff_WorkCloth",
+        "M_C07_FacilityStaff_CutTissue",
+        "M_C07_FacilityStaff_BoneTeeth",
+        "M_C07_FacilityStaff_InfectedSkin"
+      ],
+      "features": {
+        "Rolled_shirt_cuff": {
+          "thick_fold_cm": 2.0
+        },
+        "Knuckle_0": {
+          "kind": "modeled_volume"
+        },
+        "Nail_0": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_1": {
+          "kind": "modeled_volume"
+        },
+        "Nail_1": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_2": {
+          "kind": "modeled_volume"
+        },
+        "Nail_2": {
+          "kind": "modeled_volume"
+        },
+        "Knuckle_3": {
+          "kind": "modeled_volume"
+        },
+        "Nail_3": {
+          "kind": "modeled_volume"
+        },
+        "Continuous_elbow_sleeve": {
+          "rows": 35,
+          "hem": "worn long",
+          "thickness_cm": 0.25
+        },
+        "Individual_fingers_nails": {
+          "fingers": 5,
+          "rig_limit": "hand-bone rigid; no new finger joints"
+        }
+      },
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_FacilityStaff_ArmRight.fbx",
+      "bytes": 272444,
+      "sha256": "ae435fd07a3e38310482167f48937762861fb026ae46ab531e70a0be3c327b95",
+      "exported_vertex_colors": {
+        "space": "LINEAR",
+        "rgba_records": 2968,
+        "minimum": [
+          0.05868561565876007,
+          0.022065715864300728,
+          0.012436547316610813,
+          0.4452836215496063
+        ],
+        "maximum": [
+          0.44438380002975464,
+          0.37031981348991394,
+          0.2542803883552551,
+          0.9749182462692261
+        ],
+        "source_range_match": true
+      },
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_FacilityStaff_ArmRight"
+    },
+    "LegLeft": {
+      "vertices": 1552,
+      "triangles": 3072,
+      "weight_sum_min": 0.9999999701976776,
+      "weight_sum_max": 1.0000000298023224,
+      "materials": [
+        "M_C07_FacilityStaff_CutTissue",
+        "M_C07_FacilityStaff_BoneTeeth",
+        "M_C07_FacilityStaff_Trousers",
+        "M_C07_FacilityStaff_Boot"
+      ],
+      "features": {
+        "Crossed_boot_lace_11": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_14": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_17": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Crossed_boot_lace_20": {
+          "kind": "thick_sewn_geometry",
+          "thickness_cm": 0.28
+        },
+        "Continuous_knee": {
+          "rings": 44,
+          "weights": "smooth thigh/calf window 62\u201344 cm"
+        }
+      },
+      "source": "ArtSource/Exports/Candidate07/SK_Infected_C07_FacilityStaff_LegLeft.fbx",
+      "bytes": 177212,
+      "sha256": "041e5fbebbf3a4d3ca59c534d641121ad6a6bda670fab8afd03cf3fcdf845859",
+      "exported_vertex_colors": {
+        "space": "LINEAR",
+        "rgba_records": 1647,
+        "minimum": [
+          0.027750086039304733,
+          0.02522170916199684,
+          0.02177109196782112,
+          0.44585779309272766
+        ],
+        "maximum": [
+          0.4604078233242035,
+          0.38367319107055664,
+          0.23499982059001923,
+          0.9749252200126648
+        ],
+        "source_range_match": true
+      },
+      "asset": "/Game/ONE/Characters/Candidate07/SK_Infected_C07_FacilityStaff_LegLeft"
+    }
+  },
+  "materials": {
+    "M_C07_FacilityStaff_InfectedSkin": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_FacilityStaff_InfectedSkin",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.82,
+      "normal_texture": "T_C07_SkinPores_N"
+    },
+    "M_C07_FacilityStaff_WorkCloth": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_FacilityStaff_WorkCloth",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.94,
+      "normal_texture": "T_C07_WorkWeave_N"
+    },
+    "M_C07_FacilityStaff_Hair": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_FacilityStaff_Hair",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.94,
+      "normal_texture": null
+    },
+    "M_C07_FacilityStaff_Boot": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_FacilityStaff_Boot",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.86,
+      "normal_texture": null
+    },
+    "M_C07_FacilityStaff_CutTissue": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_FacilityStaff_CutTissue",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.48,
+      "normal_texture": null
+    },
+    "M_C07_FacilityStaff_BoneTeeth": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_FacilityStaff_BoneTeeth",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.78,
+      "normal_texture": null
+    },
+    "M_C07_FacilityStaff_CloudedEye": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_FacilityStaff_CloudedEye",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.4,
+      "normal_texture": null
+    },
+    "M_C07_FacilityStaff_WorkMetal": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_FacilityStaff_WorkMetal",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0.35,
+      "fallback_roughness": 0.65,
+      "normal_texture": null
+    },
+    "M_C07_FacilityStaff_Trousers": {
+      "asset": "/Game/ONE/Materials/Candidate07/M_C07_FacilityStaff_Trousers",
+      "vertex_color": "RGB actual authored base colour; Alpha roughness",
+      "metallic": 0,
+      "fallback_roughness": 0.94,
+      "normal_texture": "T_C07_WorkWeave_N"
+    }
+  },
+  "textures": {
+    "T_C07_SkinPores_N": {
+      "source": "ArtSource/Characters/Candidate07/T_C07_SkinPores_N.png",
+      "asset": "/Game/ONE/Textures/Candidate07/T_C07_SkinPores_N",
+      "bytes": 41402,
+      "sha256": "8cc31e70e494eac47c62487fa245917ee275b13aabf6924302221ed0a4c4aaf7",
+      "size": [
+        256,
+        256
+      ],
+      "kind": "original periodic tangent-space normal",
+      "green_convention": "OpenGL; Unreal flip green channel",
+      "external_inputs": false
+    },
+    "T_C07_WorkWeave_N": {
+      "source": "ArtSource/Characters/Candidate07/T_C07_WorkWeave_N.png",
+      "asset": "/Game/ONE/Textures/Candidate07/T_C07_WorkWeave_N",
+      "bytes": 9225,
+      "sha256": "ef06853f819f342517d85312e23638f16ddd516aae42c3446f6f7ef8a464afd5",
+      "size": [
+        256,
+        256
+      ],
+      "kind": "original periodic tangent-space normal",
+      "green_convention": "OpenGL; Unreal flip green channel",
+      "external_inputs": false
+    }
+  },
+  "cuts": {
+    "Head": {
+      "bone": "head",
+      "source_component_cm": [
+        0,
+        0,
+        157.8
+      ],
+      "ue_component_cm": [
+        0,
+        0,
+        157.8
+      ],
+      "paired_rim_weights": "Identical across split; retain proximal bone and terminate removed physics chains."
+    },
+    "ArmLeft": {
+      "bone": "upperarm_r",
+      "source_component_cm": [
+        0.6531972885131836,
+        19.306394577026367,
+        140.4276123046875
+      ],
+      "ue_component_cm": [
+        0.6531972885131836,
+        -19.306394577026367,
+        140.4276123046875
+      ],
+      "paired_rim_weights": "Identical across split; retain proximal bone and terminate removed physics chains."
+    },
+    "ArmRight": {
+      "bone": "upperarm_l",
+      "source_component_cm": [
+        0.6531972885131836,
+        -19.306394577026367,
+        140.4276123046875
+      ],
+      "ue_component_cm": [
+        0.6531972885131836,
+        19.306394577026367,
+        140.4276123046875
+      ],
+      "paired_rim_weights": "Identical across split; retain proximal bone and terminate removed physics chains."
+    },
+    "LegLeft": {
+      "bone": "thigh_r",
+      "source_component_cm": [
+        0.4560000002384186,
+        9.0,
+        79.04000091552734
+      ],
+      "ue_component_cm": [
+        0.4560000002384186,
+        -9.0,
+        79.04000091552734
+      ],
+      "paired_rim_weights": "Identical across split; retain proximal bone and terminate removed physics chains."
+    }
+  },
+  "validation_limit": "Finite weights, exact evaluated seams and source bounds do not prove visual quality, motion, query/physics fit or gameplay."
+}

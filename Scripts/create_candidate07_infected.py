@@ -1,4 +1,4 @@
-"""Original C07 Maintenance mesh on the unchanged Project ONE infected bind rig.
+"""Original C07 facility-worker variants on the unchanged infected bind rig.
 
 Blender 5.1: --background --factory-startup --python this_file -- --variant maintenance --render
 Writes only Candidate07 character/export paths. No player/old asset is changed.
@@ -13,14 +13,20 @@ from io_scene_fbx import parse_fbx
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT/'ArtSource/Characters/Candidate07'
 EXPORT = ROOT/'ArtSource/Exports/Candidate07'
-CONFIG = json.loads((SOURCE/'maintenance_design.json').read_text())
 parser = argparse.ArgumentParser()
-parser.add_argument('--variant', choices=['maintenance'], default='maintenance')
+parser.add_argument('--variant', choices=['maintenance','laboratory','facility_staff'], default='maintenance')
 parser.add_argument('--render', action='store_true')
 args = parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
+CONFIG = json.loads((SOURCE/(args.variant+'_design.json')).read_text())
+VARIANT={'maintenance':'Maintenance','laboratory':'Laboratory','facility_staff':'FacilityStaff'}[args.variant]
+LAB=args.variant=='laboratory';STAFF=args.variant=='facility_staff'
 EXPORT.mkdir(parents=True, exist_ok=True)
 GUARD_PATHS = ['ArtSource/Characters/Response.blend', 'ArtSource/Characters/C05/ResponseMotion.blend',
                'ArtSource/Characters/Infected.blend', CONFIG['rig_source']]
+if args.variant!='maintenance':
+    preserved=json.loads((SOURCE/'maintenance_inventory.json').read_text())
+    GUARD_PATHS += [preserved['editable_source'],'ArtSource/Characters/Candidate07/maintenance_inventory.json','ArtSource/Characters/Candidate07/maintenance_validation.json']
+    GUARD_PATHS += [d['source'] for d in preserved['meshes'].values()]+[d['source'] for d in preserved['textures'].values()]
 GUARDS = {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in GUARD_PATHS}
 bpy.ops.wm.open_mainfile(filepath=str(ROOT/CONFIG['rig_source']))
 rig = bpy.data.objects[CONFIG['rig_object']]
@@ -33,7 +39,7 @@ assert len(REST) == 21 and all(abs(s-1)<1e-8 for s in rig.scale)
 scene = bpy.context.scene
 scene.unit_settings.system = 'METRIC'; scene.unit_settings.scale_length = .01
 scene.render.fps = 30; scene.frame_set(1)
-PREFIX = 'SK_Infected_C07_Maintenance_'
+PREFIX = 'SK_Infected_C07_'+VARIANT+'_'
 
 def clamp(x, lo=0., hi=1.): return max(lo, min(hi, x))
 def smooth(x):
@@ -59,9 +65,25 @@ PALETTE = {
  'eye': ('M_C07_CloudedEye',(.39,.40,.31),.40,0),
  'metal': ('M_C07_WorkMetal',(.14,.14,.12),.65,.35),
 }
+if LAB:
+    PALETTE['skin']=('M_C07_InfectedSkin',(.35,.31,.28),.87,0)
+    PALETTE['cloth']=('M_C07_WorkCloth',(.49,.475,.39),.95,0)
+    PALETTE['hair']=('M_C07_Hair',(.12,.11,.087),.96,0)
+elif STAFF:
+    PALETTE['skin']=('M_C07_InfectedSkin',(.34,.25,.19),.82,0)
+    PALETTE['cloth']=('M_C07_WorkCloth',(.27,.25,.205),.94,0)
+    PALETTE['hair']=('M_C07_Hair',(.024,.018,.016),.94,0)
+if args.variant!='maintenance':
+    PALETTE={key:(name.replace('M_C07_','M_C07_'+VARIANT+'_'),color,rough,metal) for key,(name,color,rough,metal) in PALETTE.items()}
+    PALETTE['trouser']=('M_C07_'+VARIANT+'_Trousers',(.10,.115,.12) if LAB else (.15,.115,.077),.94,0)
 MATS={}
 DETAIL_TEXTURES={}
 for key,size,frequency,strength in [('skin',256,19,.065),('cloth',256,24,.20)]:
+    if args.variant!='maintenance':
+        name='T_C07_'+('SkinPores' if key=='skin' else 'WorkWeave')+'_N'
+        texture=bpy.data.images.load(str(SOURCE/(name+'.png')),check_existing=True)
+        texture.name=name;texture.colorspace_settings.name='Non-Color';DETAIL_TEXTURES[key]=texture
+        continue
     # Original tileable tangent normals: periodic pores or woven warp/weft.
     def height(px,py):
         x=math.tau*px/size;y=math.tau*py/size
@@ -93,14 +115,18 @@ for key,(name,color,rough,metal) in PALETTE.items():
     links.new(attr.outputs['Color'],principled.inputs['Base Color'])
     links.new(attr.outputs['Alpha'],principled.inputs['Roughness'])
     principled.inputs['Metallic'].default_value=metal
-    if key in DETAIL_TEXTURES:
-        image=nodes.new('ShaderNodeTexImage');image.image=DETAIL_TEXTURES[key];image.extension='REPEAT'
+    detail_key='cloth' if key=='trouser' else key
+    if detail_key in DETAIL_TEXTURES:
+        image=nodes.new('ShaderNodeTexImage');image.image=DETAIL_TEXTURES[detail_key];image.extension='REPEAT'
         normal=nodes.new('ShaderNodeNormalMap');normal.inputs['Strength'].default_value=1.
         links.new(image.outputs['Color'],normal.inputs['Color']);links.new(normal.outputs['Normal'],principled.inputs['Normal'])
     MATS[key]=m
 
 def paint(key,p,accent=None):
     base=accent or PALETTE[key][1]; rough=PALETTE[key][2]
+    if args.variant!='maintenance' and key in ('cloth','hair','trouser'):
+        shade=clamp(sum(accent)/max(.001,sum((.10,.155,.18) if key=='cloth' else (.064,.048,.029))),.60,1.24) if accent else 1.
+        base=tuple(c*shade for c in PALETTE[key][1])
     x,y,z=p
     fine=math.sin(x*3.19+y*4.7+z*2.43)*math.sin(y*2.83-z*4.19)
     patch=math.sin(x*.37+z*.19)*math.sin(y*.23-z*.29)
@@ -135,11 +161,12 @@ def paint(key,p,accent=None):
         scalp=smooth((z-170.8)/1.1)*smooth((177.5-z)/1.4)*smooth((.8-x)/2.2)
         scalp*=clamp(.55+.40*math.sin(y*1.7+z*2.3)+.18*fine)
         color=mix(color,(.095,.075,.047),scalp*.66)
-    if key=='cloth':
+    if key in ('cloth','trouser'):
         dirt=.26*clamp((45-z)/35)+.20*clamp(-patch)
         color=mix(color,(.075,.065,.043),dirt)
         stains=0.
-        for cy,cz,sy,sz in [(-7,132,6,10),(9,114,3.2,7),(10,67,4,12),(-27,130,4,10)]:
+        patches=([(-10,139,6,11),(-5,124,3,18),(24,120,5,16),(8,88,6,10)] if LAB else [(4,139,4,11),(2,122,3,18),(-8,105,7,6),(-25,129,5,7)] if STAFF else [(-7,132,6,10),(9,114,3.2,7),(10,67,4,12),(-27,130,4,10)])
+        for cy,cz,sy,sz in patches:
             stains=max(stains,gaussian(y,cy,sy)*gaussian(z,cz,sz)*clamp((x+2)/8))
         edge=clamp(stains*(1+.45*patch+.65*fine)*2.8-.90)
         color=mix(color,(.055,.018,.009),edge*.98)
@@ -247,6 +274,8 @@ def cut_cap(g,ring,center,normal,bone,sid,distal):
 # Continuous jacket torso with weighted shoulder volumes rooted inside it.
 core=G['Core']; sides=64; torso_rows=[]; torso_centers=[]
 torso_profile=[(99,-.6,10.4,15.0),(106,-.6,10.1,14.8),(117,-.8,10.2,15.2),(127,-.4,11.6,17.6),(136,-.4,11.2,18.7),(143,-1.1,9.0,19.0),(148,-1,7.0,16.0),(153,-1,4.9,5.8)]
+if STAFF:torso_profile=[(z,cx,rx*(.91 if z<137 else 1),ry*(.93 if z<137 else 1)) for z,cx,rx,ry in torso_profile]
+if LAB:torso_profile=[(z,cx,rx*(1.035 if z<120 else 1),ry*(1.045 if z<120 else 1)) for z,cx,rx,ry in torso_profile]
 for j in range(45):
     z=99+54*j/44;cx,rx,ry=sample_profile(z,torso_profile)
     points=[]
@@ -333,7 +362,7 @@ for side,sign,part,sid in [('r',1,'ArmLeft',1),('l',-1,'ArmRight',2)]:
     # One continuous sleeve spans the elbow. Its variable hem has real thickness.
     wf=lambda p,s=side:arm_weight(s,p)
     arm_rim=g.ring(rim,rigid(ub));last=arm_rim
-    hem_fraction=.30 if side=='r' else .82
+    hem_fraction=(.82 if side=='r' else .58) if LAB else (.05 if side=='r' else .14) if STAFF else (.30 if side=='r' else .82)
     end=elbow.lerp(wrist,hem_fraction);full=(elbow-cut).length+(end-elbow).length
     for row in range(1,35):
         distance=full*row/34
@@ -351,6 +380,9 @@ for side,sign,part,sid in [('r',1,'ArmLeft',1),('l',-1,'ArmRight',2)]:
             coords.append(center+ru*((radii[0]+fold)*math.cos(a))+rv*((radii[1]+fold)*math.sin(a))+direction*tear)
         ring=g.ring(coords,wf);g.bridge(last,ring,'cloth');last=ring
     inner=g.ring([end+(g.v[i]-end)*.945 for i in last],wf);g.bridge(last,inner,'cloth',(.19,.225,.215));g.cap(inner,'cloth')
+    if STAFF:
+        skin_tube(g,[(end-(wrist-elbow).normalized()*1.2,4.85,4.5),(end,5.05,4.65),(end+(wrist-elbow).normalized()*.8,4.78,4.4)],'cloth',wf,32,accent=(.13,.15,.14))
+        g.feature('Rolled_shirt_cuff',thick_fold_cm=2.0)
     cut_cap(g,arm_rim,cut,n,ub,sid,True)
     # Exposed forearm beneath the torn sleeve, including visible tendons.
     start=elbow.lerp(wrist,max(.05,hem_fraction-.16))
@@ -377,7 +409,8 @@ def horizontal_loft(g,rings,key,wf,sides=40,caps=True,accent=None):
     for a,b in zip(rows,rows[1:]):g.bridge(a,b,key,accent)
     if caps:g.cap(rows[0],key,True,accent);g.cap(rows[-1],key,False,accent)
     return rows
-horizontal_loft(core,[(89,-.5,0,8.5,14.4),(95,-.7,0,10.2,17.0),(102,-.5,0,10.6,15.1)],'cloth',rigid('pelvis'),40,True,(.10,.125,.13))
+leg_material='cloth' if args.variant=='maintenance' else 'trouser'
+horizontal_loft(core,[(89,-.5,0,8.5,14.4),(95,-.7,0,10.2,17.0),(102,-.5,0,10.6,15.1)],leg_material,rigid('pelvis'),40,True,(.10,.125,.13))
 for side,sign in [('r',1),('l',-1)]:
     thigh='thigh_'+side;calf='calf_'+side;foot='foot_'+side
     hip=rig.data.bones[thigh].head_local.copy();knee=rig.data.bones[calf].head_local.copy();ankle=rig.data.bones[foot].head_local.copy()
@@ -404,12 +437,12 @@ for side,sign in [('r',1),('l',-1)]:
             assert side=='r';oldpts=[core.v[i].copy() for i in last]
             last=owner.ring(oldpts,rigid(thigh));cut_cap(owner,last,cut,n,thigh,3,True)
         ring=owner.ring(points,leg_weights)
-        if last is not None:owner.bridge(last,ring,'cloth',(.10,.125,.13))
+        if last is not None:owner.bridge(last,ring,leg_material,(.10,.125,.13))
         if abs(z-cut.z)<1e-5 and side=='r':cut_cap(core,ring,cut,n,thigh,3,False)
-        if last is None:owner.cap(ring,'cloth')
+        if last is None:owner.cap(ring,leg_material)
         last=ring;last_owner=owner
     owner=G['LegLeft'] if side=='r' else core
-    owner.cap(last,'cloth',True)
+    owner.cap(last,leg_material,True)
     # Deformable leather shaft, rounded toe, layered sole, raised lacing.
     bootwf=lambda p,c=calf,f=foot:blend_weights(c,f,smooth((25-p.z)/13))
     horizontal_loft(owner,[(6,1,sign*9,7,5.3),(11,.1,sign*9,5.9,5.0),(18,-.1,sign*9,5.2,4.7),(24,-.2,sign*9,5.35,4.8)],'boot',bootwf,28)
@@ -420,11 +453,11 @@ for side,sign in [('r',1),('l',-1)]:
 
 # Reinforced jacket hem, offset placket, thick collar/lapels and sewn pockets.
 horizontal_loft(core,[(98.7,-.6,0,10.5,15.1),(101.2,-.6,0,10.5,15.1)],'cloth',torso_weights,48,True,(.074,.10,.115))
-for y in (-.55,.55):ribbon(core,'Front_placket',[(10.4,y,103),(10.6,y,114),(11.6,y,126),(10.8,y,137),(6.4,y,147)],.60,.16,'cloth',torso_weights,(.105,.135,.13))
+for y in (() if LAB else (-.55,.55)):ribbon(core,'Front_placket',[(10.4,y,103),(10.6,y,114),(11.6,y,126),(10.8,y,137),(6.4,y,147)],.60,.16,'cloth',torso_weights,(.105,.135,.13))
 def jacket_front(y,z,offset=.48):
     cx,rx,ry=sample_profile(z,torso_profile)
     return Vector((cx+rx*math.sqrt(max(.1,1-(y/ry)**2))+offset,y,z))
-for y in (-9,9):
+for y in ((-9,) if STAFF else (-9,9)):
     panel=[]
     for row in range(7):
         z=125+9*row/6
@@ -438,7 +471,7 @@ for y in (-9,9):
 for sign in (-1,1):
     ribbon(core,'Folded_collar_'+str(sign),[(5.5,sign*2,144),(6.6,sign*6.5,149),(1,sign*6.8,153),(-3.9,sign*4.8,153)],3.0,.7,'cloth',torso_weights,(.13,.18,.185))
     ribbon(core,'Shoulder_sewn_line_'+str(sign),[(-1,sign*6,148),(0,sign*11,146.8),(0,sign*16,145.2)],.24,.08,'cloth',torso_weights,(.135,.155,.125))
-    ribbon(core,'Faded_safety_strip_'+str(sign),[(11.1,sign*4,138),(10.3,sign*10,138),(7.0,sign*15,137)],.85,.065,'cloth',torso_weights,(.225,.235,.17))
+    if args.variant=='maintenance':ribbon(core,'Faded_safety_strip_'+str(sign),[(11.1,sign*4,138),(10.3,sign*10,138),(7.0,sign*15,137)],.85,.065,'cloth',torso_weights,(.225,.235,.17))
 # Thick turned collar wraps the back and sides, shortening the visible neck.
 collar=[]
 for j in range(25):
@@ -451,6 +484,52 @@ core.cap(collar[0],'cloth');core.cap(collar[-1],'cloth',True)
 # ID is a restrained worker cue, not special-enemy equipment.
 ribbon(core,'Small_ID_card',[jacket_front(-8,129,.98),jacket_front(-8,133,.98)],3.1,.14,'cloth',rigid('spine_02'),(.32,.315,.215))
 ribbon(core,'ID_marking',[jacket_front(-9.0,130,1.10),jacket_front(-7.0,130,1.10)],.20,.08,'hair',rigid('spine_02'))
+if LAB:
+    shirt=[]
+    for z,width in [(117,.35),(126,2.1),(137,4.4),(146,1.8)]:
+        shirt.append(core.ring([jacket_front(-width,z,.68),jacket_front(width,z,.68)],torso_weights))
+    for a,b in zip(shirt,shirt[1:]):core.face((a[0],a[1],b[1],b[0]),'trouser')
+    # Open hip-length coat tails end above the supported thigh sever plane.
+    # Their lower left/right cloth weights follow their own proximal thigh.
+    # No panel spans the two legs or a detachable boundary.
+    for sign in (-1,1):
+        panel=[]
+        for j in range(15):
+            f=j/14;row=[]
+            for i in range(37):
+                a=sign*(.22+(math.pi-.25)*i/36)
+                hem=84.8+1.7*math.sin(3*a+.4)+.9*math.sin(7*a)
+                z=hem+(107-hem)*f
+                rx=11.3+2.2*(1-f)+.3*math.sin(a*7+f*5)
+                ry=16.4+4.5*(1-f)
+                row.append(Vector((-.6+rx*math.cos(a),ry*math.sin(a),z)))
+            wf=lambda p,sign=sign:blend_weights('thigh_r' if sign>0 else 'thigh_l','pelvis',smooth((p.z-85)/17))
+            panel.append(core.ring(row,wf))
+        panel_faces=[]
+        for j in range(14):
+            for i in range(36):
+                face=(panel[j][i],panel[j][i+1],panel[j+1][i+1],panel[j+1][i])
+                face=face if sign>0 else tuple(reversed(face));core.face(face,'cloth');panel_faces.append(face)
+        # Reverse-wound inset lining and consistently closed boundary edges
+        # remain visible from inside an open, one-sided opaque coat.
+        inside={i:core.vertex(core.v[i]-Vector((.16*core.v[i].x/13,.16*core.v[i].y/18,0)),core.w[i]) for row in panel for i in row}
+        edges={}
+        for face in panel_faces:
+            core.face(tuple(inside[i] for i in reversed(face)),'cloth',(.18,.17,.14))
+            for a,b in zip(face,face[1:]+face[:1]):edges.setdefault(tuple(sorted((a,b))),[]).append((a,b))
+        for pairs in edges.values():
+            if len(pairs)==1:
+                a,b=pairs[0];core.face((b,a,inside[a],inside[b]),'cloth',(.18,.17,.14))
+        ribbon(core,'Open_lab_lapel_'+str(sign),[jacket_front(sign*1.8,116,1.1),jacket_front(sign*7.5,135,1.1),jacket_front(sign*5.3,146,1.1)],4.7,.42,'cloth',torso_weights)
+        ribbon(core,'Low_lab_pocket_'+str(sign),[jacket_front(sign*7,107,.95),jacket_front(sign*12,107,.95)],1.5,.30,'cloth',torso_weights)
+    core.feature('Split_lab_coat_tails',minimum_hem_cm=82.2,supported_thigh_cut_cm=79.04,open_front=True,thickness_cm=.16)
+elif STAFF:
+    # Narrow work shirt with rolled cuffs and loose tie has an everyday silhouette.
+    ribbon(core,'Loose_work_tie',[(6.8,0,147.5),(10.0,.5,140),(11.6,1.0,133),(11.0,2.4,120)],2.15,.35,'trouser',torso_weights,(.085,.065,.049))
+    for z in (109,118,128,138):ellipsoid(core,'Shirt_button_'+str(z),jacket_front(-.35,z,.84),(.22,.27,.27),'bone','pelvis' if z<115 else 'spine_01' if z<128 else 'spine_02',12,6,accent=(.25,.23,.18))
+    horizontal_loft(core,[(99.0,-.6,0,10.8,15.4),(100.6,-.6,0,10.8,15.4)],'boot',rigid('pelvis'),40)
+    ribbon(core,'Worn_belt_buckle',[(10.8,-1.0,99.6),(10.8,1.2,99.6)],1.7,.25,'metal',rigid('pelvis'))
+    core.feature('Staff_shirt_and_tie',rolled_sleeves=True,single_chest_pocket=True,waist_scale=.93)
 
 # Neck and shared head seam: core's top ring deliberately uses head weights.
 def neck_weights(p):return blend_weights('neck','head',smooth((p.z-153.3)/3.4))
@@ -554,6 +633,14 @@ for j in range(3):
 # A coherent receding side/back mass has curved irregular edges, rather than
 # a rectangular patch. The higher left-side edge sweeps partway over the crown.
 def hair_bounds(a):
+    if STAFF:
+        lower=171.0+3.8*max(0,math.cos(a))+.38*math.sin(7*a)+.22*math.sin(13*a)
+        return lower,180.75-.25*math.cos(a*2)+.08*math.sin(11*a)
+    if LAB:
+        lower=166.9+4.0*abs(math.sin(a))+.45*math.sin(5*a)+.2*math.sin(12*a)
+        upper=175.8+.75*math.sin(2*a+.6)+.15*math.sin(17*a)
+        taper=smooth((a-1.05)/.38)*smooth((5.2-a)/.45);middle=(lower+upper)*.5
+        return middle+(lower-middle)*taper,middle+(upper-middle)*taper
     lower=168.6+2.7*abs(math.sin(a))+.28*math.sin(8*a)+.16*math.sin(17*a+.7)
     upper=177.4+1.2*gaussian(a,4.15,.85)+.55*math.sin(a*2.1+.4)+.18*math.sin(13*a)
     taper=smooth((a-.88)/.43)*smooth((5.43-a)/.55)
@@ -567,28 +654,33 @@ def scalp_point(a,z,lift=0.):
     return p+n*lift
 
 mass=[]
-for j in range(11):
-    t=j/10;points=[]
+hair_start,hair_end=(.02,math.tau-.02) if STAFF else (1.07,5.18) if LAB else (.90,5.40)
+hair_rows=33 if STAFF else 11
+for j in range(hair_rows):
+    t=j/(hair_rows-1);points=[]
     for i in range(81):
-        a=.90+4.50*i/80;lo,hi=hair_bounds(a);z=lo+(hi-lo)*t
+        a=hair_start+(hair_end-hair_start)*i/80;lo,hi=hair_bounds(a);z=lo+(hi-lo)*t
         ripple=.026*math.sin(a*37+t*9)*math.sin(math.pi*t)
-        points.append(scalp_point(a,z,.035+ripple))
+        points.append(scalp_point(a,z,(.18 if STAFF else .035)+ripple))
     mass.append(head.ring(points,rigid('head')))
-for j in range(10):
+for j in range(hair_rows-1):
     for i in range(80):head.face((mass[j][i],mass[j][i+1],mass[j+1][i+1],mass[j+1][i]),'hair',(.065,.050,.032))
 
-rng=random.Random(707031)
+rng=random.Random(707031+(17 if LAB else 41 if STAFF else 0))
 for index in range(84+160):
-    fine=index>=84;a=rng.uniform(1.02,5.25);lo,hi=hair_bounds(a)
+    fine=index>=84;a=rng.uniform(1.02 if args.variant=='maintenance' else hair_start+.11,hair_end-.15);lo,hi=hair_bounds(a)
     root_z=rng.uniform(lo+.15,hi-.1)
     length=rng.uniform(1.0,3.5) if not fine else rng.uniform(.9,3.1)
+    if LAB:length*=1.35
+    if STAFF:length*=.75
     sweep=rng.uniform(.10,.23);curl=rng.uniform(.035,.13);phase=rng.uniform(0,math.tau)
     thickness=rng.uniform(.10,.21) if not fine else rng.uniform(.025,.045)
     points=[];count=6 if not fine else 4
     for j in range(count):
         t=j/(count-1);az=a+(math.pi-a)*sweep*t+.021*math.sin(t*5+phase)*math.sin(math.pi*t)
         z=root_z-length*t
-        lift=.042+(rng.uniform(.10,.24) if j==count//2 else .12)*math.sin(math.pi*t)
+        lift=(.20 if STAFF else .042)+(rng.uniform(.10,.24) if j==count//2 else .12)*math.sin(math.pi*t)
+        if STAFF:lift+=.12*math.sin(math.pi*t)**2;az+=.065*math.sin(t*7+phase)*math.sin(math.pi*t)
         p=scalp_point(az,z,lift)
         # Broad flattened locks overlap; thin strands follow that same sweep.
         radius=thickness*(.22+.95*math.sin(math.pi*t))*(1-.87*t)
@@ -612,9 +704,31 @@ for sign in (-1,1):
         a=brow_surface(y,z);b=brow_surface(y+sign*.29,z+.10)
         skin_tube(head,[(a,.036,.026),(a.lerp(b,.5)+Vector((.018,0,.02)),.043,.031),(b,.006,.006)],'hair',rigid('head'),5,accent=(.10,.07,.043))
 head.feature('Eyebrows',modeled_strands=22,attached_to='sampled original brow surface')
+if args.variant!='maintenance':
+    # Deform the complete face assembly together: eyelid rims, eyes, teeth,
+    # wound, ears and hair stay registered to their skull, not floating props.
+    for p in head.v:
+        if LAB:p.y=-p.y
+        influence=smooth((p.z-157.8)/3.0)
+        if LAB:
+            p.y*=1-influence*(.055+.075*gaussian(p.z,162.5,2.8))
+            p.x-=influence*(.35*gaussian(p.z,164.0,2.4)+.18*gaussian(p.z,173,2.3))*clamp(p.x/5)
+            p.y+=influence*.24*gaussian(p.z,168,4)
+        else:
+            p.y*=1+influence*.055*gaussian(p.z,162.7,2.6)
+            p.x+=influence*.28*gaussian(p.z,161.4,1.5)*clamp(p.x/5)
+            p.x-=influence*.20*gaussian(p.y,3.5,1.3)*gaussian(p.z,170.0,2.8)
+    if LAB:head.f=[tuple(reversed(face)) for face in head.f]
+    head.feature('Variant_facial_structure',variant=VARIANT,method='Complete modeled face deformation with unchanged neck rim',form='narrow jaw and cheek plane, asymmetric shifted midface' if LAB else 'broader lower jaw and chin, asymmetric eye plane')
 # A rounded adult cranium, preserving the neck/cut location and bind matrices.
 for p in head.v:
     if p.z>171:p.z=171+(p.z-171)*.76
+head_skin_vertices={i for face,key in zip(head.f,head.mat) if key=='skin' for i in face}
+head_center=Vector((-.2,0,168.7));head_margin=[]
+for i in head_skin_vertices:
+    p=head.v[i];closest=Vector((head_center.x,head_center.y,clamp(p.z,165.4,172.0)))
+    head_margin.append(9.-(p-closest).length)
+assert min(head_margin)>=-.001, ('Variant head exceeds the established query',VARIANT,min(head_margin))
 
 # Create the actual five meshes and preserve identical exterior seam normals.
 objects={part:g.object() for part,g in G.items()}
@@ -624,7 +738,7 @@ normal_overrides={part:{} for part in objects}
 def exterior_normal(part,index):
     result=Vector()
     for polygon,key in zip(objects[part].data.polygons,G[part].mat):
-        if index in polygon.vertices and key in ('skin','cloth'):
+        if index in polygon.vertices and key in ('skin','cloth','trouser'):
             result+=polygon.normal*polygon.area
     assert result.length>1e-8
     return result.normalized()
@@ -640,7 +754,7 @@ for sid,part in [(1,'ArmLeft'),(2,'ArmRight'),(3,'LegLeft'),(4,'Head')]:
 for part,ob in objects.items():
     normals=[n.vector.copy() for n in ob.data.corner_normals]
     for polygon,key in zip(ob.data.polygons,G[part].mat):
-        if key not in ('skin','cloth'):continue
+        if key not in ('skin','cloth','trouser'):continue
         for li in polygon.loop_indices:
             vi=ob.data.loops[li].vertex_index
             if vi in normal_overrides[part]:normals[li]=normal_overrides[part][vi]
@@ -682,6 +796,7 @@ validation={'status':'SOURCE_NUMERIC_PASS_PENDING_VISUAL_AND_GAMEPLAY_REVIEW','r
     'bind_matrices_unchanged':all(max(abs(REST[b.name][i][j]-b.matrix_local[i][j]) for i in range(4) for j in range(4))<1e-8 for b in rig.data.bones),
     'bone_count':len(REST),'seam_samples':samples,'meshes':{},'source_inputs_unchanged':{},
     'limit':'Finite weights, exact evaluated seams and source bounds do not prove visual quality, motion, query/physics fit or gameplay.'}
+validation['head_query_fit']={'component_center_cm':list(head_center),'radius_cm':9.,'half_height_cm':12.3,'skin_vertices':len(head_skin_vertices),'minimum_margin_cm':min(head_margin),'cosmetic_hair_excluded':True,'scope':'Bind-pose actual modeled skin envelope; runtime evaluated fit remains separate.'}
 for part,ob in objects.items():
     totals=[sum(w.weight for w in v.groups) for v in ob.data.vertices]
     assert min(totals)>.9999 and max(totals)<1.0001
@@ -694,7 +809,8 @@ for key,m in MATS.items():
     assert p.inputs['Base Color'].is_linked and p.inputs['Base Color'].links[0].from_node.type=='VERTEX_COLOR'
     assert p.inputs['Roughness'].is_linked and p.inputs['Roughness'].links[0].from_node.type=='VERTEX_COLOR'
     colors=[c.color for ob in objects.values() for poly in ob.data.polygons if ob.data.materials[poly.material_index]==m for li in poly.loop_indices for c in [ob.data.color_attributes['Color'].data[li]]]
-    if colors:validation['material_graphs'][m.name]={'vertex_color_node':'Color','rgb_min':[min(c[i] for c in colors) for i in range(3)],'rgb_max':[max(c[i] for c in colors) for i in range(3)],'roughness_min':min(c[3] for c in colors),'roughness_max':max(c[3] for c in colors),'normal_texture':DETAIL_TEXTURES[key].name if key in DETAIL_TEXTURES else None}
+    detail_key='cloth' if key=='trouser' else key
+    if colors:validation['material_graphs'][m.name]={'vertex_color_node':'Color','rgb_min':[min(c[i] for c in colors) for i in range(3)],'rgb_max':[max(c[i] for c in colors) for i in range(3)],'roughness_min':min(c[3] for c in colors),'roughness_max':max(c[3] for c in colors),'normal_texture':DETAIL_TEXTURES[detail_key].name if detail_key in DETAIL_TEXTURES else None}
 assert sum(d['triangles'] for d in validation['meshes'].values())<CONFIG['provisional_triangle_budget']
 for path,before in GUARDS.items():
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==before
@@ -715,7 +831,7 @@ def export(ob):
     actual_min=[min(exported[i::4]) for i in range(4)];actual_max=[max(exported[i::4]) for i in range(4)]
     assert max(abs(a-b) for a,b in zip(expected_min+expected_max,actual_min+actual_max))<1e-6
     return {'source':path.relative_to(ROOT).as_posix(),'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'exported_vertex_colors':{'space':'LINEAR','rgba_records':len(exported)//4,'minimum':actual_min,'maximum':actual_max,'source_range_match':True}}
-inventory={'candidate':'07','variant':'maintenance','skeleton_asset':CONFIG['skeleton_asset'],'editable_source':'ArtSource/Characters/Candidate07/Maintenance.blend','anatomy':CONFIG['anatomy'],'fbx_vertex_color_space':'LINEAR: Unreal skeletal FBX importer directly quantizes these RGB/alpha values','meshes':{},'materials':{},'textures':{},'cuts':{},'validation_limit':validation['limit']}
+inventory={'candidate':'07','variant':args.variant,'variant_id':VARIANT,'display_name':CONFIG['display_name'],'skeleton_asset':CONFIG['skeleton_asset'],'editable_source':'ArtSource/Characters/Candidate07/'+VARIANT+'.blend','anatomy':CONFIG['anatomy'],'fbx_vertex_color_space':'LINEAR: Unreal skeletal FBX importer directly quantizes these RGB/alpha values','meshes':{},'materials':{},'textures':{},'cuts':{},'validation_limit':validation['limit']}
 # FBX carries geometry, vertex colour and slots only. Dedicated material import
 # binds original normal maps, avoiding absolute texture paths in the FBX.
 image_nodes=[(n,n.image) for m in MATS.values() for n in m.node_tree.nodes if n.type=='TEX_IMAGE']
@@ -726,7 +842,9 @@ for key,image in DETAIL_TEXTURES.items():
     path=SOURCE/(image.name+'.png')
     inventory['textures'][image.name]={'source':path.relative_to(ROOT).as_posix(),'asset':'/Game/ONE/Textures/Candidate07/'+image.name,'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'size':[256,256],'kind':'original periodic tangent-space normal','green_convention':'OpenGL; Unreal flip green channel','external_inputs':False}
     image.filepath='//'+image.name+'.png'
-for key,(name,color,rough,metal) in PALETTE.items():inventory['materials'][name]={'asset':'/Game/ONE/Materials/Candidate07/'+name,'vertex_color':'RGB actual authored base colour; Alpha roughness','metallic':metal,'fallback_roughness':rough,'normal_texture':DETAIL_TEXTURES[key].name if key in DETAIL_TEXTURES else None}
+for key,(name,color,rough,metal) in PALETTE.items():
+    detail_key='cloth' if key=='trouser' else key
+    inventory['materials'][name]={'asset':'/Game/ONE/Materials/Candidate07/'+name,'vertex_color':'RGB actual authored base colour; Alpha roughness','metallic':metal,'fallback_roughness':rough,'normal_texture':DETAIL_TEXTURES[detail_key].name if detail_key in DETAIL_TEXTURES else None}
 old=json.loads((ROOT/'ArtSource/Characters/Candidate03/infected_inventory.json').read_text())
 for part in ('Head','ArmLeft','ArmRight','LegLeft'):
     entry=old['cuts'][part];inventory['cuts'][part]={k:entry[k] for k in ('bone','source_component_cm','ue_component_cm')}
@@ -735,15 +853,16 @@ for screen in bpy.data.screens:
     for area in screen.areas:
         for space in area.spaces:
             if space.type=='FILE_BROWSER' and space.params:space.params.directory=b'//';space.params.filename=''
-scene.render.filepath='//Maintenance_neutral.png';scene.frame_set(1)
-bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/'Maintenance.blend'),compress=True,relative_remap=False)
+scene.render.filepath='//'+VARIANT+'_neutral.png';scene.frame_set(1)
+bpy.ops.wm.save_as_mainfile(filepath=str(SOURCE/(VARIANT+'.blend')),compress=True,relative_remap=False)
 for image in DETAIL_TEXTURES.values():
     resolved=Path(bpy.path.abspath(image.filepath)).resolve()
     assert resolved==(SOURCE/(image.name+'.png')).resolve() and resolved.is_file(),resolved
     image.reload()
-(SOURCE/'maintenance_inventory.json').write_text(json.dumps(inventory,indent=2)+'\n')
-(SOURCE/'maintenance_validation.json').write_text(json.dumps(validation,indent=2)+'\n')
-print('C07_MAINTENANCE_SOURCE',json.dumps({'triangles':sum(d['triangles'] for d in validation['meshes'].values()),'seam_samples':len(samples),'output':'ArtSource/Characters/Candidate07'}),flush=True)
+(SOURCE/(args.variant+'_inventory.json')).write_text(json.dumps(inventory,indent=2)+'\n')
+(SOURCE/(args.variant+'_validation.json')).write_text(json.dumps(validation,indent=2)+'\n')
+for path,before in GUARDS.items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==before,path
+print('C07_'+VARIANT.upper()+'_SOURCE',json.dumps({'triangles':sum(d['triangles'] for d in validation['meshes'].values()),'seam_samples':len(samples),'output':'ArtSource/Characters/Candidate07'}),flush=True)
 
 if args.render:
     scene.render.engine='CYCLES';scene.cycles.samples=24;scene.render.threads_mode='FIXED';scene.render.threads=8
@@ -761,5 +880,5 @@ if args.render:
         if label=='cuts':
             for part,offset in [('Head',(0,0,26)),('ArmLeft',(0,32,0)),('ArmRight',(0,-32,0)),('LegLeft',(0,26,-12))]:objects[part].location=offset
         camera.location=location;camera.rotation_euler=(Vector(target)-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.ortho_scale=scale
-        scene.render.filepath=str(SOURCE/('Maintenance_'+label+'.png'));bpy.ops.render.render(write_still=True)
+        scene.render.filepath=str(SOURCE/(VARIANT+'_'+label+'.png'));bpy.ops.render.render(write_still=True)
     print('C07_SOURCE_PREVIEWS_DONE actual source stills; no gameplay acceptance',flush=True)

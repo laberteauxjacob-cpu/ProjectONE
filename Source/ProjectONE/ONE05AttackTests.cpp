@@ -4,6 +4,7 @@
 #include "ONEZombie.h"
 #include "ONEPlayer.h"
 #include "ONEHealthComponent.h"
+#include "ONEZombieAudioComponent.h"
 #include "Engine/World.h"
 #include "Engine/Engine.h"
 #include "Engine/SkeletalMesh.h"
@@ -109,6 +110,54 @@ bool FONE05AttackFamilyTest::RunTest(const FString&)
     }
     return true;
 }
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FONE07AttackPlantAudioTest,"ProjectONE.Candidate07.Audio.StoppedAttackPlantAndIdleRejection",
+    EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FONE07AttackPlantAudioTest::RunTest(const FString&)
+{
+    FAttackWorld F;
+    auto* Audio=F.Zombie->ZombieAudio.Get();
+    if (!TestNotNull(TEXT("Production infected audio component exists"),Audio)) return false;
+    auto* Mesh=F.Zombie->GetMesh(); Mesh->RefreshBoneTransforms();
+    const float FloorZ=FMath::Min(Mesh->GetSocketLocation(TEXT("toe_r")).Z,Mesh->GetSocketLocation(TEXT("toe_l")).Z)-1.f;
+    auto* Floor=F.World->SpawnActor<AActor>();
+    auto* Shape=NewObject<UBoxComponent>(Floor); Floor->SetRootComponent(Shape); Floor->AddInstanceComponent(Shape);
+    Shape->SetBoxExtent(FVector(300,300,2)); Shape->SetCollisionObjectType(ECC_WorldStatic);
+    Shape->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics); Shape->SetCollisionResponseToAllChannels(ECR_Block);
+    Shape->RegisterComponent(); Floor->SetActorLocation(FVector(0,0,FloorZ-2.f));
+    // Explicit contact callbacks isolate audio eligibility. Production attack
+    // time/velocity and an actual floor trace are used; this does not claim
+    // animation marker playback, audio output or an audible quality review.
+    Audio->NotifyFootContact(true);
+    TestEqual(TEXT("Idle callback cannot invent a footstep"),Audio->GetFootCueCount(),0);
+    TestTrue(TEXT("Actual attack begins from rest"),F.Zombie->TryStartAttack(F.Player,0));
+    Audio->NotifyFootContact(true);
+    TestEqual(TEXT("Attack state alone cannot invent a plant before any movement"),Audio->GetFootCueCount(),0);
+    F.Advance(.15f);
+    TestTrue(TEXT("Production committed step has actual movement to remember"),F.Zombie->GetVelocity().SizeSquared2D()>FMath::Square(8.f));
+    Audio->TickComponent(0.f,LEVELTICK_All,nullptr);
+    F.Advance(.20f);
+    TestTrue(TEXT("Production step has stopped at its plant"),F.Zombie->GetVelocity().SizeSquared2D()<1.f);
+    Audio->NotifyFootContact(true);
+    TestEqual(TEXT("Recent stopped attack plant passes the component and floor gate"),Audio->GetFootCueCount(),1);
+    Audio->NotifyFootContact(true);
+    TestEqual(TEXT("Repeated callback still obeys the per-foot cooldown"),Audio->GetFootCueCount(),1);
+    F.Zombie->GetCharacterMovement()->SetMovementMode(MOVE_Falling);
+    F.Zombie->GetCharacterMovement()->Velocity=FVector(20,0,0);
+    Audio->NotifyFootContact(false);
+    TestEqual(TEXT("Recent attack motion cannot bypass grounded state"),Audio->GetFootCueCount(),1);
+    F.Zombie->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+    F.Zombie->GetCharacterMovement()->Velocity=FVector::ZeroVector;
+    F.Advance(.25f);
+    Audio->NotifyFootContact(false);
+    TestEqual(TEXT("An expired movement sample cannot create a late plant"),Audio->GetFootCueCount(),1);
+    F.Advance(.40f);
+    TestTrue(TEXT("Attack returns to ordinary locomotion before idle check"),F.Zombie->GetCombatState()==EONEZombieState::Pursue);
+    F.Zombie->GetCharacterMovement()->StopMovementImmediately();
+    Audio->NotifyFootContact(false);
+    TestEqual(TEXT("Completed attack cannot enable an idle callback"),Audio->GetFootCueCount(),1);
+    return true;
+}
+
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FONE05AttackCancellationTest,"ProjectONE.Candidate05.Attacks.WallHeadingLimbAndDeathCancel",
     EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
 bool FONE05AttackCancellationTest::RunTest(const FString&)

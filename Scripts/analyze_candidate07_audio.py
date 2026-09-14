@@ -5,6 +5,8 @@ input/WAV guards and all-sample PCM auditor. Output is a new private directory.
 Optional reference-then-current comparison joins entire PCM recordings without
 gain, trimming, silence, resampling, time changes or crossfades. It is an audio
 comparison artifact, not a continuous session or synchronized gameplay movie.
+Public mode shares the assembler's strict actual-run/source/runtime/build-proof
+binding. Editor WIP remains private with a null exact-source commit.
 """
 import argparse
 import datetime
@@ -16,6 +18,7 @@ from types import SimpleNamespace
 import wave
 
 import assemble_candidate06_capture as capture_tools
+import assemble_candidate07_capture as c07_media
 import audit_gameplay_audio as pcm_tools
 
 
@@ -61,45 +64,41 @@ def peak_windows(envelope, threshold):
     return result
 
 
-def analyze(folder, source, run_path=None, build_root=None, review_only=False, source_state='exact-commit', capture_kind='packaged'):
+def analyze(folder, source, run_path=None, build_root=None, review_only=False, source_state='exact-commit', capture_kind='packaged', input_format='common'):
+    require(input_format in ('common','legacy-motion') and (input_format != 'legacy-motion' or review_only),
+            'Legacy motion audio is explicitly private review only')
     require(not source or re.fullmatch(r'[0-9a-f]{40}', source), 'Expected a full source/base commit when supplied')
     require(source_state != 'exact-commit' or source, 'Exact-commit source state requires its actual source commit')
+    require(capture_kind != 'editor-game' or (review_only and source_state != 'exact-commit'),
+            'Editor audio stays review-only with null exact-source identity')
     require(review_only or (source and source_state == 'exact-commit' and capture_kind == 'packaged' and run_path and build_root),
             'Public analysis requires exact committed packaged source and a passing run binding')
     folder = folder.resolve(strict=True)
+    run_identity = identity(run_path) if run_path else None
     # prepare() never invokes FFmpeg or writes files. Its original capture
     # schema is shared by C06 and C07; no historical result is relabeled here.
     args = SimpleNamespace(chapters=True, capture_kind=capture_kind, render_mode='unknown',
-                           source_revision=source, source_state=source_state)
-    _, _, wav, inputs, ledger = capture_tools.prepare(folder, args)
+                           source_revision=source, source_state=source_state, run_result=run_path, build_root=build_root,
+                           review_only=review_only, input_format=input_format)
+    _, _, wav, inputs, ledger, actor, _ = c07_media.prepare_input(folder, args)
     binding = {'status': 'UNVERIFIED_DIAGNOSTIC_SOURCE', 'source_state': source_state,
                'source_commit': source if source_state == 'exact-commit' else None,
                'working_tree_base_commit': source if source_state == 'working-tree' else None,
                'limit': 'The source label alone does not establish runtime identity; use the separate package report.'}
     if run_path and review_only:
         run = capture_tools.strict_json(run_path)
-        diagnostic = {'report': identity(run_path), 'state': run.get('state'), 'exit_code': run.get('exit_code')}
-        dll_hash = run.get('dll_sha256')
-        if dll_hash:
-            require(re.fullmatch(r'[0-9a-f]{64}', dll_hash), 'Invalid diagnostic DLL hash')
-            diagnostic['recorded_dll_sha256'] = dll_hash
-        diagnostic['limit'] = 'Hash of the supplied diagnostic run record and its recorded DLL identity; no independent binary recheck or exact committed-source claim. Private command paths are omitted.'
-        binding['diagnostic_run'] = diagnostic
+        if input_format == 'common' and run.get('schema') == 'one07.private_runtime.v1':
+            binding = c07_media.run_binding(args,folder,actor,inputs,ledger,False)
+        else:
+            diagnostic = {'report': identity(run_path), 'state': run.get('state'), 'exit_code': run.get('exit_code')}
+            dll_hash = run.get('dll_sha256')
+            if dll_hash:
+                require(re.fullmatch(r'[0-9a-f]{64}', dll_hash), 'Invalid diagnostic DLL hash')
+                diagnostic['recorded_dll_sha256'] = dll_hash
+            diagnostic['limit'] = 'Hash of the supplied diagnostic run record and its recorded DLL identity; no independent binary recheck or exact committed-source claim. Private command paths are omitted.'
+            binding['diagnostic_run'] = diagnostic
     elif run_path:
-        require(build_root is not None, 'A run result requires its actual build root')
-        run = capture_tools.strict_json(run_path)
-        require(run.get('state') == 'PASS' and run.get('source_commit') == source and run.get('capture_requested') is True,
-                'Run result does not identify a passing capture at this source')
-        require(run.get('prelaunch_source_runtime_verified') is True and run.get('postrun_source_runtime_verified') is True,
-                'Run result lacks both runtime/source verification gates')
-        fixture = run.get('fixture_folder')
-        require(isinstance(fixture, str) and fixture and not Path(fixture).is_absolute() and '..' not in Path(fixture).parts,
-                'Run result fixture folder is not portable')
-        fixture_path = (build_root.resolve() / fixture).resolve()
-        require(fixture_path.is_relative_to(build_root.resolve()) and folder == fixture_path / 'Media',
-                'Supplied media is not the passing run fixture Media folder')
-        binding = {'status': 'PASSING_RUN_REPORT_BOUND', 'source_commit': source, 'report': identity(run_path),
-                   'mode': run.get('mode'), 'limit': 'Binds the actual passing runner report; this analyzer does not execute the game or rehash packaged binaries.'}
+        binding = c07_media.run_binding(args,folder,actor,inputs,ledger,True)
     phases = [{'name': str(p['phase']) + ': ' + p['title'], 'start_seconds': p['start_seconds'], 'end_seconds': p['end_seconds']}
               for p in inputs['chapters']]
     measured = pcm_tools.audit(wav, phases, 100, -60, -38, 50)
@@ -113,6 +112,7 @@ def analyze(folder, source, run_path=None, build_root=None, review_only=False, s
     measured['phase_energy_policy'] = 'Zero-energy phases are measured, never automatically failed; pause/death and intentionally quiet intervals require context. Threshold bursts are not inferred shots, contacts, voices or exact animation markers.'
     report = {'schema': 'one07.master_audio_analysis.v1', 'status': 'REVIEW_ONLY' if review_only else 'MEASURED',
               'numerical_status': 'MEASURED', 'input_validation': 'PASS', 'capture_kind': capture_kind,
+              'input_format': input_format, 'gameplay_checks': actor,
               'source_binding': binding, 'capture_inputs': inputs['input_files'],
               'capture_frame_count': inputs['frames'], 'ordered_frame_identity_sha256': inputs['ordered_frame_identity_sha256'],
               'capture_timebase': inputs['timebase_limit'], 'phase_timebase_limit': inputs['chapter_timing_limit'],
@@ -124,6 +124,7 @@ def analyze(folder, source, run_path=None, build_root=None, review_only=False, s
                          'Sample peaks are not true peak or LUFS. Numerical energy does not establish timbre, spatial localization, realism, event synchronization or user approval.',
                          'Phase boundaries use first observed frame timestamps. CPU/audio-render clock offset is not measured or corrected.']}
     capture_tools.verify_inputs(folder, inputs['input_files'] + ledger)
+    if run_path: require(identity(run_path) == run_identity, 'Run evidence changed during audio measurement')
     portable(report)
     return report, wav
 
@@ -187,6 +188,7 @@ def main():
     policy.add_argument('--public', action='store_true', help='Require a passing exact-source packaged run binding')
     policy.add_argument('--review-only', action='store_true', help='Private WIP diagnostic measurement; never a source/runtime PASS')
     parser.add_argument('--media-folder', required=True, type=Path)
+    parser.add_argument('--input-format', choices=('common','legacy-motion'), default='common')
     parser.add_argument('--source', help='Exact source commit, or optional base commit for explicitly working-tree diagnostics')
     parser.add_argument('--source-state', choices=('exact-commit', 'working-tree', 'unknown'), default='unknown')
     parser.add_argument('--capture-kind', choices=('packaged', 'editor-game'), default='packaged')
@@ -194,6 +196,7 @@ def main():
     parser.add_argument('--run-result', type=Path)
     parser.add_argument('--build-root', type=Path)
     parser.add_argument('--reference-media', type=Path)
+    parser.add_argument('--reference-input-format', choices=('common','legacy-motion'), default='common')
     parser.add_argument('--reference-source')
     parser.add_argument('--reference-source-state', choices=('exact-commit', 'working-tree', 'unknown'), default='exact-commit')
     parser.add_argument('--reference-capture-kind', choices=('packaged', 'editor-game'), default='packaged')
@@ -201,6 +204,8 @@ def main():
     parser.add_argument('--reference-build-root', type=Path)
     parser.add_argument('--write-comparison-wav', action='store_true')
     args = parser.parse_args()
+    require(args.review_only or (args.input_format == 'common' and args.reference_input_format == 'common'),
+            'Legacy motion audio cannot satisfy public capture requirements')
     require(args.reference_media is not None or not args.reference_source, 'Reference source requires reference media')
     require(args.review_only or bool(args.run_result) == bool(args.build_root), 'Public run result and build root must be supplied together')
     require(args.review_only or bool(args.reference_run_result) == bool(args.reference_build_root), 'Public reference run result and build root must be supplied together')
@@ -212,11 +217,11 @@ def main():
         if folder:
             require(not output.is_relative_to(folder.resolve()), 'Output must be outside original capture inputs')
     current, current_wav = analyze(args.media_folder, args.source, args.run_result, args.build_root,
-                                   args.review_only, args.source_state, args.capture_kind)
+                                   args.review_only, args.source_state, args.capture_kind, args.input_format)
     reference = reference_wav = None
     if args.reference_media:
         reference, reference_wav = analyze(args.reference_media, args.reference_source, args.reference_run_result, args.reference_build_root,
-                                           args.review_only, args.reference_source_state, args.reference_capture_kind)
+                                           args.review_only, args.reference_source_state, args.reference_capture_kind, args.reference_input_format)
     output.mkdir(parents=True, exist_ok=False)
     write_json(output / 'current_audio.json', current)
     if reference:
@@ -224,9 +229,11 @@ def main():
     summary = {'schema': 1, 'status': 'REVIEW_ONLY' if args.review_only else 'MEASURED', 'source_commit': current['source_binding']['source_commit'],
                'source_state': args.source_state,
                'generated_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-               'tools': [identity(Path(__file__)), identity(Path(capture_tools.__file__)), identity(Path(pcm_tools.__file__))],
+               'tools': [identity(Path(__file__)), identity(Path(c07_media.__file__)), identity(Path(capture_tools.__file__)), identity(Path(pcm_tools.__file__))],
                'current_report': identity(output / 'current_audio.json'), 'reference_report': identity(output / 'reference_audio.json') if reference else None,
                'perceptual_audio_review': False, 'encoded_or_decoded_movie': False, 'release_verified': False}
+    if 'legacy-motion' in (args.input_format,args.reference_input_format):
+        summary['tools'].append(identity(Path(c07_media.legacy_motion.__file__)))
     if args.write_comparison_wav:
         summary['comparison'] = concatenate(reference_wav, current_wav, output / 'reference_then_current.wav', (reference, current))
     write_json(output / 'summary.json', summary)
